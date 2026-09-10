@@ -107,8 +107,8 @@ describe("narrate: Maya, below level", () => {
 
   it("reads the plan back: path, dose, milestones, first unit", () => {
     const path = byId(lines, "path");
-    expect(path).toContain("starts with 2nd-grade words and sounds");
-    expect(path).toContain("skips 2nd-grade stories and 2nd-grade nonfiction");
+    expect(path).toContain("starts with 2nd-grade nonfiction");
+    expect(path).toContain("skips 2nd-grade stories since");
     expect(path).toContain("targets 3rd-grade words next");
     expect(path).toContain("Luna");
     expect(byId(lines, "path-crafted")).toContain("hand-crafted and reviewed by Jennifer Klingerman");
@@ -118,8 +118,8 @@ describe("narrate: Maya, below level", () => {
     expect(plan).toContain("read like a 3rd grader by late April");
     expect(plan).toContain("reach the 4th-grade bar by next fall");
     const ask = byId(lines, "ask");
-    expect(ask).toContain("Her Custom Reading Journey starts with 2nd Grade Sound Workshop");
-    expect(ask.endsWith("Everything on the Custom Reading Journey is included with Readee Plus. You can start it now.")).toBe(true);
+    expect(ask).toContain("Her Custom Reading Journey starts with 2nd Grade Fact Finders");
+    expect(ask.endsWith("The first reading unit is free. Let’s start with the first lesson.")).toBe(true);
   });
 
   it("uses her pronouns throughout", () => {
@@ -198,7 +198,7 @@ describe("narrate: a kindergartner with foundations only and no passages", () =>
     expect(byId(lines, "placement")).toContain("on grade level");
     expect(byId(lines, "plan")).toContain("for letter sounds by mid-October");
     expect(byId(lines, "plan")).toContain("for first words by mid-December");
-    expect(byId(lines, "ask")).toContain("Kindergarten Story Treasures");
+    expect(byId(lines, "ask")).toContain("Kindergarten Sound Workshop");
   });
 
   it("defaults to they with the right verb agreement", () => {

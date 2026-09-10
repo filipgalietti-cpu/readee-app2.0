@@ -3,11 +3,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
 import RevealFlow from "../_components/RevealFlow";
 
-/**
- * /placement/reveal?child=<id> — the show: celebration (child), hold-to-build
- * (the grown-up gate that is also the loading beat), then the card-by-card
- * reveal with the audio guide, ending in "Start <Name>'s plan".
- */
+/** Saved assessment → first free lesson, with the full report available to the parent. */
 export default async function PlacementRevealPage({ searchParams }: { searchParams: Promise<{ child?: string }> }) {
   const profile = await requireProfile();
   const { child: childId } = await searchParams;

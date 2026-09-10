@@ -132,15 +132,15 @@ describe("buildPlan: Maya, 4th grade in September, placed at 2nd", () => {
     for (let i = 1; i < kinds.length; i++) expect(RANK[kinds[i]]).toBeGreaterThanOrEqual(RANK[kinds[i - 1]]);
   });
 
-  it("enters at 2nd and starts on the 2nd-grade words unit", () => {
+  it("enters at 2nd and retains unassessed nonfiction", () => {
     expect(plan.entryBand).toBe(2);
     expect(plan.steps[0]).toEqual({
       kind: "start",
-      title: "2nd-grade words and sounds",
+      title: "2nd-grade nonfiction",
       reason: "where reading is comfortable today",
-      unit: { grade: "2nd Grade", domain: "Foundational Skills", lessons: 11 },
+      unit: { grade: "2nd Grade", domain: "Informational", lessons: 10 },
     });
-    expect(plan.firstUnit).toEqual({ grade: "2nd Grade", domain: "Foundational Skills", title: "2nd Grade Sound Workshop", lessons: 11 });
+    expect(plan.firstUnit).toEqual({ grade: "2nd Grade", domain: "Informational", title: "2nd Grade Fact Finders", lessons: 10 });
   });
 
   it("skips the 2nd-grade story units on three of three comprehension, never Language", () => {
@@ -151,7 +151,7 @@ describe("buildPlan: Maya, 4th grade in September, placed at 2nd", () => {
       expect(s.unit?.domain).not.toBe("Language");
       expect(s.unit?.grade).toBe("2nd Grade");
     }
-    expect(skipped.map((s) => s.title)).toEqual(["2nd-grade stories", "2nd-grade nonfiction"]);
+    expect(skipped.map((s) => s.title)).toEqual(["2nd-grade stories"]);
     expect(skipped[0].reason).toBe("every 2nd-grade story question was right");
   });
 
@@ -210,17 +210,17 @@ describe("buildPlan: a 3rd grader on grade level in spring", () => {
     expect(plan.entryBand).toBe(3);
     for (const s of plan.steps) if (s.unit) expect(s.unit.grade).toBe("3rd Grade");
     const skipped = plan.steps.filter((s) => s.kind === "skipped").map((s) => s.unit?.domain);
-    expect(skipped).toEqual(["Literature", "Informational", "Foundational Skills"]);
-    expect(plan.steps[0].unit?.domain).toBe("Language");
-    expect(plan.firstUnit?.title).toBe("3rd Grade Word Magic");
+    expect(skipped).toEqual(["Literature", "Foundational Skills"]);
+    expect(plan.steps[0].unit?.domain).toBe("Informational");
+    expect(plan.firstUnit?.title).toBe("3rd Grade Fact Finders");
   });
 
   it("still has exactly one Luna node and ends at the 3rd-grade bar", () => {
-    expect(kindsOf(plan)).toEqual(["start", "skipped", "skipped", "skipped", "luna", "end"]);
+    expect(kindsOf(plan)).toEqual(["start", "skipped", "skipped", "luna", "end"]);
     expect(plan.steps[plan.steps.length - 1]).toEqual({ kind: "end", title: "The 3rd-grade bar", reason: "112 words per minute by spring" });
     expect(plan.milestones.map((m) => m.label)).toEqual(["Reaches the 3rd-grade bar"]);
-    expect(plan.lessons).toBe(13);
-    expect(plan.weeksAt10Min).toBe(4);
+    expect(plan.lessons).toBe(23);
+    expect(plan.weeksAt10Min).toBe(6);
   });
 });
 
@@ -230,14 +230,13 @@ describe("buildPlan: a kindergartner with foundations only", () => {
   const { decision, moments, today } = kindergartner();
   const plan = buildPlan({ decision, moments, today });
 
-  it("starts at kindergarten stories, targets letters and sounds, ends at the kindergarten bar", () => {
+  it("starts with identified foundation needs and ends at the kindergarten bar", () => {
     expect(plan.entryBand).toBe(0);
-    expect(plan.steps[0].title).toBe("kindergarten stories");
+    expect(plan.steps[0].title).toBe("kindergarten letters and sounds");
+    expect(plan.steps[0].reason).toBe("letter sounds and blending come first");
     expect(plan.steps.filter((s) => s.kind === "skipped")).toEqual([]);
-    expect(plan.steps.filter((s) => s.kind === "target")).toEqual([
-      { kind: "target", title: "kindergarten letters and sounds", reason: "letter sounds and blending come first", unit: { grade: "Kindergarten", domain: "Foundational Skills", lessons: 14 } },
-    ]);
-    expect(kindsOf(plan)).toEqual(["start", "target", "luna", "end"]);
+    expect(plan.steps.filter((s) => s.kind === "target")).toEqual([]);
+    expect(kindsOf(plan)).toEqual(["start", "luna", "end"]);
     expect(plan.steps[plan.steps.length - 1]).toEqual({ kind: "end", title: "The kindergarten bar", reason: "letter sounds, blending, and first words by spring" });
     expect(plan.lessons).toBe(38);
     expect(plan.weeksAt10Min).toBe(10);

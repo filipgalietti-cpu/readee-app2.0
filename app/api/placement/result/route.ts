@@ -1,3 +1,4 @@
+import { withCurrentPlan } from "@/lib/placement/current-plan";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import type { PlacementResult } from "@/lib/placement/types";
@@ -14,16 +15,18 @@ export async function GET(req: Request) {
   const childId = new URL(req.url).searchParams.get("child") ?? "";
   if (!/^[0-9a-f-]{36}$/.test(childId)) return NextResponse.json({ ok: false, error: "bad child" }, { status: 400 });
 
-  const { data: child } = await supabase.from("children").select("id, first_name, parent_id").eq("id", childId).maybeSingle();
+  const { data: child, error: childError } = await supabase.from("children").select("id, first_name, parent_id").eq("id", childId).maybeSingle();
+  if (childError) return NextResponse.json({ ok: false, error: "Could not load the reading plan. Please retry." }, { status: 503 });
   if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
 
-  const { data: row } = await supabase
+  const { data: row, error: placementError } = await supabase
     .from("placements")
     .select("id, child_id, enrolled, decision, moments, plan, narration, passage_recording_path, duration_seconds, created_at")
     .eq("child_id", childId)
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
+  if (placementError) return NextResponse.json({ ok: false, error: "Could not load the reading plan. Please retry." }, { status: 503 });
   if (!row) return NextResponse.json({ ok: true, result: null });
 
   const r = row as Record<string, unknown>;
@@ -40,5 +43,5 @@ export async function GET(req: Request) {
     durationSeconds: Number(r.duration_seconds ?? 0),
     createdAt: String(r.created_at),
   };
-  return NextResponse.json({ ok: true, result });
+  return NextResponse.json({ ok: true, result: withCurrentPlan(result) });
 }

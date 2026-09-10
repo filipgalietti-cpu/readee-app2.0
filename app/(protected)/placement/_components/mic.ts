@@ -23,7 +23,7 @@ let tokCache: Token | null = null;
 async function speechToken(): Promise<Token | null> {
   if (tokCache && tokCache.exp > Date.now() + 30000) return tokCache;
   try {
-    const r = await fetch("/api/luna/speech-token", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ purpose: "placement" }) });
+    const r = await fetch("/api/luna/speech-token", { method: "POST", headers: { "content-type": "application/json" }, signal: AbortSignal.timeout(12000), body: JSON.stringify({ purpose: "placement" }) });
     const j = await r.json();
     if (r.ok && j.ok && j.token) {
       tokCache = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 };
@@ -50,6 +50,7 @@ export function usePlacementMic() {
   const ctrlRef = useRef<StreamController | null>(null);
   const recRef = useRef<{ chunks: Float32Array[]; rate: number } | null>(null);
   const levelRef = useRef(0);
+  const errorRef = useRef<((message: string) => void) | undefined>(undefined);
 
   const open = useCallback(async (): Promise<MicState> => {
     if (ctxRef.current && streamRef.current) return "open";
@@ -58,6 +59,10 @@ export function usePlacementMic() {
     if (!tok) { setState("unavailable"); return "unavailable"; }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      for (const track of stream.getAudioTracks()) track.addEventListener("ended", () => {
+        errorRef.current?.("Microphone disconnected.");
+        setState("unavailable");
+      }, { once: true });
       const ctx = new AudioContext();
       if (ctx.state === "suspended") { try { await ctx.resume(); } catch { /* ignore */ } }
       const src = ctx.createMediaStreamSource(stream);
@@ -94,20 +99,29 @@ export function usePlacementMic() {
   }, []);
 
   /** Start recognizing against a reference text. Resolves once the recognizer is live. */
-  const listen = useCallback(async (referenceText: string, onPhrase?: (p: PAPhrase) => void): Promise<Listener | null> => {
+  const listen = useCallback(async (referenceText: string, onPhrase?: (p: PAPhrase) => void, onError?: (message: string) => void): Promise<Listener> => {
     const tok = await speechToken();
-    if (!tok || !ctxRef.current) return null;
-    if (ctrlRef.current) { const old = ctrlRef.current; ctrlRef.current = null; void old.stop(); }
+    if (!tok || !ctxRef.current) throw new Error("Speech recognition is unavailable.");
+    const captureContext = ctxRef.current;
+    if (ctrlRef.current) { const old = ctrlRef.current; ctrlRef.current = null; await old.stop(); }
     const phrases: PAWord[][] = [];
+    errorRef.current = onError;
+    const pending = startPronAssessment({
+      token: tok.token, region: tok.region, referenceText,
+      onPhrase: (p) => { phrases.push(p.words); onPhrase?.(p); },
+      onError,
+    });
+    let timer: ReturnType<typeof setTimeout> | undefined;
     let ctrl: StreamController;
     try {
-      ctrl = await startPronAssessment({
-        token: tok.token,
-        region: tok.region,
-        referenceText,
-        onPhrase: (p) => { phrases.push(p.words); onPhrase?.(p); },
-      });
-    } catch { return null; }
+      ctrl = await Promise.race([pending, new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error("Speech recognition did not start.")), 12000);
+      })]);
+    } catch (e) {
+      void pending.then((late) => late.stop(), () => {});
+      throw e;
+    } finally { clearTimeout(timer); }
+    if (ctxRef.current !== captureContext) { await ctrl.stop(); throw new Error("Microphone session changed."); }
     ctrlRef.current = ctrl;
     return {
       phrases,
@@ -127,6 +141,7 @@ export function usePlacementMic() {
   }, []);
 
   const close = useCallback(() => {
+    errorRef.current = undefined;
     const c = ctrlRef.current; ctrlRef.current = null; if (c) void c.stop();
     try { streamRef.current?.getTracks().forEach((t) => t.stop()); } catch { /* ignore */ }
     try { void ctxRef.current?.close(); } catch { /* ignore */ }

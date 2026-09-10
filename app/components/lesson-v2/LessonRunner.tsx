@@ -38,6 +38,8 @@ export default function LessonRunner({
   onComplete,
   onScene,
   onFinish,
+  finishLabel = "Start the questions →",
+  finishPrompt = "Now let’s try some questions.",
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
@@ -46,6 +48,8 @@ export default function LessonRunner({
   onComplete?: () => void;
   /** Where "Start the questions" goes. Omit and the button is not shown. */
   onFinish?: () => void;
+  finishLabel?: string;
+  finishPrompt?: string;
   /** Fires on every scene change, including the first. Lets a host follow along
    *  without reaching into the runner's state - the founder review tool pins its
    *  thumbs to whatever is actually on screen. Not used in the child's path. */
@@ -371,14 +375,14 @@ export default function LessonRunner({
           </p>
         )}
         <p className="mt-6 max-w-[460px] text-xl leading-relaxed text-zinc-500">
-          Now let&apos;s try some questions.
+          {finishPrompt}
         </p>
         {onFinish && (
           <button
             onClick={onFinish}
             className="mt-7 rounded-2xl bg-violet-600 px-8 py-4 text-xl font-bold text-white shadow-lg transition hover:bg-violet-700"
           >
-            Start the questions →
+            {finishLabel}
           </button>
         )}
       </div>
@@ -485,6 +489,7 @@ export default function LessonRunner({
         nextDisabled={!done && !canAdvance}
         nextLabel={isLast ? "Finish" : "Next →"}
         leftSlot={leftSlot}
+        interactiveLeft={!!inter && !full && !done}
         contentSlot={contentSlot}
         audioPlaying={audioPlaying}
         wide={full}

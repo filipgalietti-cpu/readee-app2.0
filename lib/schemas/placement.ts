@@ -13,7 +13,10 @@ const Count = z.object({ correct: z.number().int().min(0), total: z.number().int
 const Band = z.number().int().min(0).max(5);
 
 export const PlacementSubmissionSchema = z.object({
+  evidenceVersion: z.literal(3).optional(),
+  comprehensionChecks: z.array(Count.extend({ band: Band })).max(5).optional(),
   childId: z.string().uuid(),
+  sessionId: z.string().uuid().optional(),
   enrolled: z.number().int().min(0).max(4),
   ladder: z.object({
     enrolled: z.number().int().min(0).max(4),
@@ -42,7 +45,7 @@ export const PlacementSubmissionSchema = z.object({
     // a worse failure than a slightly odd rate.
     minuteWordsCorrect: z.number().int().min(0).optional(),
     minuteSeconds: z.number().min(0).max(600).optional(),
-  })).max(3),
+  })).max(5),
   comprehension: Count.extend({ band: Band }).nullable(),
   foundations: z.object({ letterSounds: Count, blending: Count, nonsenseWords: Count }).nullable(),
   moments: z.array(z.record(z.string(), z.unknown())).max(40),

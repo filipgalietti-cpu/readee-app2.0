@@ -9,7 +9,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
-import { usePlanStore } from "@/lib/stores/plan-store";
+import Link from "next/link";
+import { reportFailure } from "@/lib/observability/critical";
+import { ASK_CLOSE } from "@/lib/placement/narration";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { CelebrationScreen, HoldToBuild, RevealWizard } from "./reveal";
 
@@ -36,30 +38,14 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     });
   }, [phase, result, childId]);
 
-  // "Start <Name>'s Reading Journey": straight into Stripe Checkout (14-day
-  // card trial, monthly). The wizard has already explained the trial, so no
-  // /upgrade detour. Already on Readee+ -> the dashboard, where the next
-  // lesson now starts at the placed band. Any failure falls back to /upgrade.
-  const rawPlan = usePlanStore((s) => s.rawPlan);
-  const startingRef = useRef(false);
-  const startPlan = useCallback(async () => {
-    if (rawPlan === "premium") { router.push("/dashboard"); return; }
-    if (startingRef.current) return;
-    startingRef.current = true;
-    trackFunnelClient("funnel.checkout_started", { child_id: childId, source: "placement_reveal" });
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ billing: "monthly", sku: "premium", cancelTo: `/placement/report?child=${childId}` }),
-      });
-      const data = (await res.json()) as { url?: string };
-      if (data.url) { window.location.href = data.url; return; }
-    } catch { /* fall through */ }
-    startingRef.current = false;
-    router.push("/upgrade?reason=placement");
-  }, [childId, rawPlan, router]);
+  const startPlan = useCallback(() => {
+    trackFunnelClient("funnel.placement_lesson_clicked", { child_id: childId });
+    router.push(`/placement/start?child=${encodeURIComponent(childId)}`);
+  }, [childId, router]);
 
+  const [loadError, setLoadError] = useState(false);
+  const loadingRef = useRef(false);
+  const alive = useRef(true);
   // Only publish a poll that actually changed something. Every 4 s tick used to
   // hand down a fresh object, so `result` changed identity even when the
   // placement had not — re-rendering HoldToBuild and RevealWizard, whose
@@ -68,26 +54,38 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   // 'removeChild'" on /placement/reveal (Sentry JAVASCRIPT-NEXTJS-F).
   const lastPayload = useRef<string | null>(null);
   const load = useCallback(async () => {
+    if (loadingRef.current) return;
+    loadingRef.current = true;
     try {
       const r = await fetch(`/api/placement/result?child=${childId}`, { cache: "no-store" });
       const j = await r.json();
-      if (!r.ok || !j.ok || !j.result) return;
+      if (!r.ok || !j.ok || !j.result) throw new Error("placement_result_unavailable");
+      if (!alive.current) return;
+      setLoadError(false);
+      // Historical recordings may describe a trial. Keep every report card,
+      // but do not play a billing invitation over the new free-lesson action.
+      j.result.narration = j.result.narration.map((line: NarrationLine) => line.id === "ask" && !line.text.endsWith(ASK_CLOSE)
+        ? { ...line, text: ASK_CLOSE, audioPath: null } : line);
       const payload = JSON.stringify(j.result);
       if (payload === lastPayload.current) return;
       lastPayload.current = payload;
       setResult(j.result as PlacementResult);
-    } catch { /* keep polling */ }
+    } catch (error) {
+      if (alive.current) setLoadError(true);
+      reportFailure("placement.reveal_load", error, { route: "/placement/reveal" });
+    } finally { loadingRef.current = false; }
   }, [childId]);
 
   // Load immediately; keep polling every 4 s until every narration line has audio (or 2 minutes pass).
   useEffect(() => {
+    alive.current = true;
     void load();
     const started = Date.now();
     pollRef.current = window.setInterval(() => {
       if (Date.now() - started > 120000) { if (pollRef.current) window.clearInterval(pollRef.current); return; }
       void load();
     }, 4000);
-    return () => { if (pollRef.current) window.clearInterval(pollRef.current); };
+    return () => { alive.current = false; if (pollRef.current) window.clearInterval(pollRef.current); };
   }, [load]);
   useEffect(() => {
     if (result && result.narration.length > 0 && result.narration.every((l) => l.audioPath) && pollRef.current) {
@@ -119,11 +117,18 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
       <RevealWizard
         result={result}
         audioUrlFor={audioUrlFor}
-        onStartPlan={() => { void startPlan(); }}
+        onStartPlan={startPlan}
+        outfitId={outfitId}
         onNotNow={() => router.push(`/placement/report?child=${childId}`)}
         onSkipToReport={() => router.push(`/placement/report?child=${childId}`)}
       />
     );
   }
-  return <div className="h-dvh overflow-hidden bg-zinc-50">{screen}</div>;
+  return <div className="relative h-dvh overflow-hidden bg-zinc-50">{screen}
+    {loadError && !result && <div role="alert" className="absolute inset-x-4 bottom-4 mx-auto max-w-md rounded-2xl border border-rose-200 bg-white p-4 text-center shadow-sm">
+      <p className="text-sm text-zinc-700">Your answers are saved, but we couldn’t load the report. Please try again.</p>
+      <button onClick={() => { void load(); }} className="mt-3 rounded-xl bg-violet-600 px-4 py-2 font-semibold text-white">Try again</button>
+      <Link href="/dashboard" className="ml-4 text-sm text-violet-700 underline">Back to dashboard</Link>
+    </div>}
+  </div>;
 }

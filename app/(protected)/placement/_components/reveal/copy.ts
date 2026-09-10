@@ -274,10 +274,10 @@ export const HOME_TIPS = (name: string): HomeTip[] => [
 
 const shortDate = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
-/** The trial as three dated steps: today, the reminder (Stripe emails it 7
+/** The trial as three dated steps: today, the reminder (Stripe emails it 3
  *  days before the trial ends), and the first charge. */
 export function trialSteps(start: Date, name: string): TrialStep[] {
-  const reminder = new Date(start.getTime() + 7 * 86400000);
+  const reminder = new Date(start.getTime() + 11 * 86400000);
   const charge = new Date(start.getTime() + 14 * 86400000);
   return [
     { when: "14-day free trial starts today", text: `Full access to ${name}'s Custom Reading Journey, $0 due now` },
@@ -448,13 +448,13 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     ask: {
       headline: `${name}'s Reading Journey is Ready`,
       subhead: `${plan.lessons} lessons across ${plan.weeksAt10Min} weeks, curated from today's placement.`,
-      line: `Everything on ${name}'s Custom Reading Journey is included with Readee+.`,
-      button: `Start ${name}'s Reading Journey`,
+      line: "The first reading unit is free. Start with one lesson together.",
+      button: "Start my first lesson",
       finePrint: trialTimeline(now, name),
       timeline: trialSteps(now, name),
       trust: `Reviewed by ${reviewer.name}, ${reviewer.role}`,
       reviewer,
-      notNow: `Not right now. ${name} keeps the free first unit.`,
+      notNow: "See the full reading report",
       notNowSub: "The full report stays on your dashboard.",
     },
   };

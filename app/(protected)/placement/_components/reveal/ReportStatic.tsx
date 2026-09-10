@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 import Link from "next/link";
 import type { PlacementResult } from "@/lib/placement/types";
 import { Glyph } from "@/app/_components/Glyph";
@@ -9,13 +10,12 @@ import { SkillBar } from "./SkillBar";
 import { PathRoute } from "./PathRoute";
 import { GradeLadder } from "./GradeLadder";
 import { BandChip } from "./BandChip";
-import { TrialTimeline } from "./TrialTimeline";
 import { GrowthChart } from "./GrowthChart";
 import { buildRevealCopy } from "./copy";
 
 export type ReportStaticProps = {
   result: PlacementResult;
-  /** When absent the ask links to /upgrade. */
+  /** When absent the button opens the first free lesson in the saved plan. */
   onStartPlan?: () => void;
 };
 
@@ -40,6 +40,9 @@ const PRIMARY =
 
 /** The same content as the reveal, in one printable column (720 px wide at desktop). */
 export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
+  useEffect(() => {
+    trackFunnelClient("funnel.report_view", { child_id: result.childId, placement_id: result.id, placed_band: result.decision.placedBand });
+  }, [result.childId, result.id, result.decision.placedBand]);
   const copy = useMemo(() => buildRevealCopy(result), [result]);
   const n = copy.number;
   const p = copy.placement;
@@ -197,22 +200,18 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           <p className="mt-4 text-xs text-zinc-400">{copy.plan.projection}</p>
         </Section>
 
-        <Section title={copy.ask.headline} centered>
-          <p className="text-center text-base font-semibold text-zinc-800">{copy.ask.subhead}</p>
-          <p className="mt-1 text-center text-base text-zinc-600">{copy.ask.line}</p>
+        <Section title="Your next step: read together" centered>
+          <p className="text-center text-base font-semibold text-zinc-800">Start with the first lesson in your child’s reading plan.</p>
+          <p className="mt-1 text-center text-base text-zinc-600">The first reading unit is free. No card needed.</p>
           <div className="reveal-print-hide mt-4 flex flex-col items-center text-center">
-            <div className="mx-auto w-full max-w-xl">
-              <TrialTimeline steps={copy.ask.timeline} horizontal />
-            </div>
-            <p className="mt-2 text-xs text-zinc-500">Cancel anytime in one tap.</p>
             <div className="mt-4">
               {onStartPlan ? (
                 <button type="button" onClick={onStartPlan} className={PRIMARY}>
-                  {copy.ask.button}
+                  Start the first lesson
                 </button>
               ) : (
-                <Link href="/upgrade?reason=placement" className={PRIMARY}>
-                  {copy.ask.button}
+                <Link href={`/placement/start?child=${encodeURIComponent(result.childId)}`} className={PRIMARY}>
+                  Start the first lesson
                 </Link>
               )}
             </div>

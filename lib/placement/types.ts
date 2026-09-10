@@ -24,7 +24,10 @@ export type Moment =
 
 /** Everything the runner hands to the complete route. */
 export type PlacementSubmission = {
+  evidenceVersion?: 3;
+  comprehensionChecks?: import("./passage-search").ComprehensionCheck[];
   childId: string;
+  sessionId?: string;
   enrolled: PlacedBand;
   ladder: LadderState;
   passages: PassageEvidence[];
@@ -54,6 +57,7 @@ export type PlanStep = {
 export type PlanMilestone = { label: string; month: string; date: string; /** Words a minute the milestone reaches, when the plan has a timed passage. */ wcpm?: number };
 
 export type PlacementPlan = {
+  version?: 2;
   entryBand: PlacedBand;
   steps: PlanStep[];
   /** Lessons the child will actually do (skips excluded). */

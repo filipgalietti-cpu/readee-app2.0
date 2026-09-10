@@ -202,6 +202,7 @@ function perfectComprehensionBands(decision: PlacementDecision, moments: Moment[
 
 function skipReason(u: PlanUnit, entry: PlacedBand, decision: PlacementDecision, moments: Moment[], perfect: Set<Band>): string | null {
   const g = gradeAdjective(u.band);
+  if (u.domKey === "RF" && decision.needs.some((n) => FOUNDATION_NEEDS.includes(n) || n === "accurate reading")) return null;
   if (u.domKey === "RF" && u.band === entry) {
     const acc = accuracyAt(decision, moments, u.band);
     if (decision.decoding.listsPassed.includes(u.band) && acc !== null && acc >= 0.95) {
@@ -209,7 +210,7 @@ function skipReason(u: PlanUnit, entry: PlacedBand, decision: PlacementDecision,
     }
     return null;
   }
-  if ((u.domKey === "RL" || u.domKey === "RI") && perfect.has(u.band)) {
+  if (u.domKey === "RL" && !decision.needs.includes("understanding what they read") && perfect.has(u.band)) {
     return `every ${g} story question was right`;
   }
   // Language: no evidence is collected for it, so it is never skipped.
@@ -233,7 +234,7 @@ function targetsFor(decision: PlacementDecision, entry: PlacedBand, path: PlanUn
       const unit = unitAt(entry, "RL");
       if (unit) push({ unit, title: unitPhrase(unit.band, unit.domKey), reason: "the story questions were the hard part" });
     } else if (FOUNDATION_NEEDS.includes(need)) {
-      const unit = unitAt(entry, "RF");
+      const unit = unitAt(0, "RF") ?? unitAt(entry, "RF");
       if (unit) push({ unit, title: unitPhrase(unit.band, unit.domKey), reason: "letter sounds and blending come first" });
     }
     // "reading speed and smoothness" and "accurate reading" are Luna's job: the luna node.
@@ -294,7 +295,8 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   const entry = decision.placedBand;
   const enrolled = clampBand(entry + decision.relative.delta);
   const top = Math.max(entry, enrolled) as PlacedBand;
-  const path = catalogUnits().filter((u) => u.band >= entry && u.band <= top);
+  const foundationGap = decision.needs.some((n) => FOUNDATION_NEEDS.includes(n));
+  const path = catalogUnits().filter((u) => (u.band >= entry && u.band <= top) || (foundationGap && u.band === 0 && u.domKey === "RF"));
 
   // 1. What the evidence already covers.
   const perfect = perfectComprehensionBands(decision, moments, entry);
@@ -305,7 +307,8 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   }
 
   // 2. Where the walk starts: the first unit the child actually does.
-  const startUnit = path.find((u) => !skips.has(u)) ?? null;
+  const startUnit = (foundationGap ? path.find((u) => u.band === 0 && u.domKey === "RF") : undefined)
+    ?? path.find((u) => !skips.has(u)) ?? null;
 
   // 3. What answers the needs.
   const targets = targetsFor(decision, entry, path).filter((t) => !skips.has(t.unit));
@@ -352,6 +355,7 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
     : qualitativeMilestones(decision, entry, top, today);
 
   return {
+    version: 2,
     entryBand: entry,
     steps,
     lessons,

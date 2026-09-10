@@ -16,6 +16,7 @@ import { classifyAccuracy, type ReadingLevel } from "@/lib/orion/reading/text-le
 import { wcpm as computeWcpm } from "@/lib/luna/grading-decision";
 import { grades, type GradeKey } from "@/lib/assessment/questions";
 import { BAND_LABEL, CEILING_BAND, decodingLevel, type Band, type LadderState, type PlacedBand } from "./ladder";
+import { passageIsComfortable, type ComprehensionCheck } from "./passage-search";
 import {
   estimatePercentile, gradeEquivalent, seasonFor, typicalWcpm,
   type GradeEquivalent, type NormGrade, type PercentileEstimate, type Season,
@@ -52,6 +53,8 @@ export type FoundationsEvidence = {
   nonsenseWords: CountEvidence;
 };
 export type PlacementEvidence = {
+  evidenceVersion?: 3;
+  comprehensionChecks?: ComprehensionCheck[];
   enrolled: PlacedBand;
   ladder: LadderState;
   passages: PassageEvidence[];
@@ -145,33 +148,45 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
     candidate = dec.band as PlacedBand;
   }
 
-  // 2. Text-level guard: the passage at (or nearest below) the candidate band.
-  //    Frustration-level accuracy on it steps the placement down one band.
-  const instructional = ev.passages
-    .filter((p) => p.band <= candidate)
-    .sort((a, b) => b.band - a.band)[0] ?? null;
-  if (instructional && instructional.band === candidate && candidate > 0) {
-    const acc = instructional.wordsTotal > 0 ? instructional.wordsCorrect / instructional.wordsTotal : 0;
-    if (classifyAccuracy(acc) === "frustration") {
+  if (ev.evidenceVersion === 3) {
+    const comfortable = ev.passages.find((p) => {
+      const check = ev.comprehensionChecks?.find((c) => c.band === p.band);
+      return check && passageIsComfortable(p, check);
+    });
+    candidate = Math.min(candidate, comfortable?.band ?? 0) as PlacedBand;
+    if (candidate < Math.min(dec.band ?? 0, 4)) flags.push("passage-followup-placement");
+  } else {
+    // 2. Legacy evidence has no lower-passage follow-ups. Preserve its original rules.
+    //    Frustration-level accuracy on it steps the placement down one band.
+    const instructional = ev.passages
+      .filter((p) => p.band <= candidate)
+      .sort((a, b) => b.band - a.band)[0] ?? null;
+    if (instructional && instructional.band === candidate && candidate > 0) {
+      const acc = instructional.wordsTotal > 0 ? instructional.wordsCorrect / instructional.wordsTotal : 0;
+      if (classifyAccuracy(acc) === "frustration") {
+        candidate = (candidate - 1) as PlacedBand;
+        flags.push("passage-frustration-stepdown");
+      }
+    }
+
+    // 3. Comprehension guard (Betts: instructional level needs about 70% on the
+    //    questions). Half or fewer right on the placed band's passage steps down
+    //    one band, unless accuracy already did.
+    if (
+      ev.comprehension && ev.comprehension.total >= 3 && pct(ev.comprehension) <= 0.5 &&
+      candidate > 0 && ev.comprehension.band >= candidate && !flags.includes("passage-frustration-stepdown")
+    ) {
       candidate = (candidate - 1) as PlacedBand;
-      flags.push("passage-frustration-stepdown");
+      flags.push("comprehension-stepdown");
     }
   }
 
-  // 3. Comprehension guard (Betts: instructional level needs about 70% on the
-  //    questions). Half or fewer right on the placed band's passage steps down
-  //    one band, unless accuracy already did.
-  if (
-    ev.comprehension && ev.comprehension.total >= 3 && pct(ev.comprehension) <= 0.5 &&
-    candidate > 0 && ev.comprehension.band >= candidate && !flags.includes("passage-frustration-stepdown")
-  ) {
-    candidate = (candidate - 1) as PlacedBand;
-    flags.push("comprehension-stepdown");
-  }
-
-  // 4. Fluency numbers: the enrolled-grade passage when it was read, else the highest read.
+  // 4. New assessments report the confirmed instructional passage. Legacy reads
+  // keep the enrolled-grade (or highest available) norm passage.
   const enrolledPassage = ev.passages.find((p) => p.band === ev.enrolled) ?? null;
-  const normPassage = enrolledPassage ?? ev.passages.slice().sort((a, b) => b.band - a.band)[0] ?? null;
+  const normPassage = ev.evidenceVersion === 3
+    ? (candidate === 0 ? null : ev.passages.at(-1) ?? null)
+    : enrolledPassage ?? ev.passages.slice().sort((a, b) => b.band - a.band)[0] ?? null;
   const fluency = normPassage ? fluencyFor(normPassage, ev.enrolled, season) : null;
   if (fluency && !fluency.onEnrolledPassage && ev.enrolled >= 1) flags.push("norm-passage-not-at-enrolled-grade");
 

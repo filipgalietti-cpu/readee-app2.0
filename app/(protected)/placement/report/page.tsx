@@ -1,3 +1,4 @@
+import { withCurrentPlan } from "@/lib/placement/current-plan";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
@@ -34,5 +35,5 @@ export default async function PlacementReportPage({ searchParams }: { searchPara
     durationSeconds: Number(r.duration_seconds ?? 0),
     createdAt: String(r.created_at),
   };
-  return <ReportStatic result={result} />;
+  return <ReportStatic result={withCurrentPlan(result)} />;
 }

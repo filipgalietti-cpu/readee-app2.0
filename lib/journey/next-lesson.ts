@@ -1,3 +1,4 @@
+import type { PlacementPlan } from "@/lib/placement/types";
 /**
  * The SINGLE source of truth for "what lesson is next" — the exact logic the
  * Journey (/journey) uses, so the dashboard mirrors the path instead of
@@ -86,25 +87,31 @@ function orderedCatalog(): CatalogLesson[] {
   return out;
 }
 
+/** Content outside the assigned path is omitted, not counted as mastered. */
+export function assignedJourneyCatalog(readingLevel: string | null, placement?: PlacementPlan | null): CatalogLesson[] {
+  const floor = placement?.entryBand ?? GRADE_ORDER.indexOf(levelNameToGradeKey(readingLevel));
+  const match = (l: CatalogLesson, u?: { grade: string; domain: string }) => !!u && l.grade === u.grade && l.domain === u.domain;
+  return orderedCatalog().filter((l) => {
+    const targeted = placement?.steps.some((s) => (s.kind === "start" || s.kind === "target") && match(l, s.unit));
+    if (targeted) return true;
+    if (placement?.steps.some((s) => s.kind === "skipped" && match(l, s.unit))) return false;
+    return GRADE_ORDER.indexOf(CATALOG_GRADE_KEY[l.grade]) >= floor;
+  }).sort((a, b) => Number(match(b, placement?.firstUnit ?? undefined)) - Number(match(a, placement?.firstUnit ?? undefined)));
+}
+
 export function computeJourneyProgress(opts: {
   practice: PracticeRow[];
   lessonProgress: LessonProgRow[];
   readingLevel: string | null;
+  placement?: PlacementPlan | null;
 }): JourneyProgress {
-  const ordered = orderedCatalog();
+  const ordered = assignedJourneyCatalog(opts.readingLevel, opts.placement);
 
   const isCompleted = (sid: string) =>
     opts.practice.some((p) => p.standard_id === sid && p.questions_correct >= 3) ||
     opts.lessonProgress.some((p) => p.lesson_id === sid && p.section === "practice" && p.score >= 60);
 
-  // Placement floor: lessons in grades below the tested grade are "mastered".
-  const testedIdx = GRADE_ORDER.indexOf(levelNameToGradeKey(opts.readingLevel ?? null));
-  const belowTested = (catalogGrade: string) => {
-    const k = CATALOG_GRADE_KEY[catalogGrade];
-    return k ? GRADE_ORDER.indexOf(k) < testedIdx : false;
-  };
-
-  const done = (l: CatalogLesson) => isCompleted(l.standardId) || belowTested(l.grade);
+  const done = (l: CatalogLesson) => isCompleted(l.standardId);
 
   const current = ordered.find((l) => !done(l)) ?? null;
 

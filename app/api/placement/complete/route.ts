@@ -1,4 +1,7 @@
 import { reportFailure } from "@/lib/observability/critical";
+import { createHash } from "node:crypto";
+import { bandFromGrade } from "@/lib/placement/decide";
+import { validatePlacementEvidence } from "@/lib/placement/validate-evidence";
 import { NextResponse, after } from "next/server";
 import { PlacementSubmissionSchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
@@ -52,7 +55,7 @@ async function complete(req: Request, requestId: string) {
   try { body = await req.json(); } catch { return NextResponse.json({ ok: false, error: "Bad request." }, { status: 400 }); }
   const parsed = PlacementSubmissionSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Bad submission.", issues: parsed.error.issues.slice(0, 5) }, { status: 400 });
-  const sub = parsed.data as unknown as PlacementSubmission;
+  let sub = parsed.data as unknown as PlacementSubmission;
 
   const { data: child, error: childError } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
   if (childError) {
@@ -60,11 +63,15 @@ async function complete(req: Request, requestId: string) {
     return NextResponse.json({ ok: false, error: "Could not load the reader. Please retry.", requestId }, { status: 503 });
   }
   if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
+  try { sub = validatePlacementEvidence(sub, bandFromGrade(child.grade)); }
+  catch { return NextResponse.json({ ok: false, error: "The assessment evidence is incomplete or inconsistent." }, { status: 400 }); }
   const childName = (((child as { first_name?: string }).first_name ?? "").split(" ")[0] || "Reader");
   if (sub.passageRecordingPath && !sub.passageRecordingPath.startsWith(`placement/${sub.childId}/`)) sub.passageRecordingPath = null;
 
   const now = new Date();
   const decision = decidePlacement({
+    evidenceVersion: sub.evidenceVersion,
+    comprehensionChecks: sub.comprehensionChecks,
     enrolled: sub.enrolled,
     ladder: sub.ladder as LadderState,
     passages: sub.passages,
@@ -77,45 +84,21 @@ async function complete(req: Request, requestId: string) {
   const narration: NarrationLine[] = narrate({ childName, pronoun: "they", decision, moments, plan, today: now });
 
   const admin = supabaseAdmin();
-  const { data: inserted, error: insErr } = await admin
-    .from("placements")
-    .insert({
+  const placement = {
       child_id: sub.childId,
       enrolled: String(sub.enrolled),
       decision,
-      evidence: { ladder: sub.ladder, passages: sub.passages, comprehension: sub.comprehension, foundations: sub.foundations },
+      evidence: { evidenceVersion: sub.evidenceVersion, comprehensionChecks: sub.comprehensionChecks, ladder: sub.ladder, passages: sub.passages, comprehension: sub.comprehension, foundations: sub.foundations },
       moments,
       plan,
       narration,
       passage_recording_path: sub.passageRecordingPath ?? null,
       duration_seconds: Math.round(sub.durationSeconds),
-    })
-    .select("id")
-    .single();
-  if (insErr || !inserted) {
-    reportFailure("placement.save", insErr, { route: "/api/placement/complete", userId: user.id, requestId });
-    return NextResponse.json({ ok: false, error: "Could not save the placement.", requestId }, { status: 500 });
-  }
-  const placementId = (inserted as { id: string }).id;
-
-  // The funnel's assessment step. Server-side because it must not depend on the
-  // child's browser surviving the redirect to the reveal.
-  void trackFunnel("funnel.placement_complete", user.id, {
-    child_id: sub.childId,
-    placement_id: placementId,
-    enrolled: sub.enrolled,
-    placed_band: decision.placedBand,
-    relative_delta: decision.relative.delta,
-    reading_level: decision.readingLevelName,
-    wcpm: decision.fluency?.wcpm ?? null,
-    duration_seconds: Math.round(sub.durationSeconds),
-    version: "v2",
-  });
-
+    };
   // Legacy row the dashboard, journey and results page already key off.
   const comp = decision.comprehension;
   const scorePercent = comp && comp.total > 0 ? Math.round((comp.correct / comp.total) * 100) : decision.decoding.level !== null ? 100 : 0;
-  const { error: assessmentError } = await admin.from("assessments").insert({
+  const assessment = {
     child_id: sub.childId,
     grade_tested: grades[decision.gradeKey]?.grade_label ?? String(sub.enrolled),
     score_percent: Math.max(0, Math.min(100, scorePercent)),
@@ -123,7 +106,6 @@ async function complete(req: Request, requestId: string) {
     answers: [],
     dimension_profile: {
       source: "placement-v2",
-      placementId,
       placedBand: decision.placedBand,
       relative: decision.relative.label,
       fluency: decision.fluency ? { wcpm: decision.fluency.wcpm, accuracy: decision.fluency.accuracy, percentile: decision.fluency.percentile?.percentile ?? null } : null,
@@ -131,22 +113,29 @@ async function complete(req: Request, requestId: string) {
       strengths: decision.strengths,
       needs: decision.needs,
     },
+  };
+  // Older cached clients have no session ID: the same submission still retries safely.
+  const sessionId = sub.sessionId ?? createHash("sha256").update(JSON.stringify(sub)).digest("hex");
+  const { data: saved, error: saveError } = await admin.rpc("complete_placement", {
+    p_parent: user.id, p_child: sub.childId, p_session: sessionId,
+    p_placement: placement, p_assessment: assessment,
+    p_seeds: decision.seeds.map((s) => seedRow(sub.childId, s.standard_id, s.pass, now)),
   });
-  if (assessmentError) reportFailure("placement.assessment_sync", assessmentError, { route: "/api/placement/complete", userId: user.id, requestId });
-  const { error: readingLevelError } = await admin.from("children").update({ reading_level: decision.readingLevelName }).eq("id", sub.childId);
-
-  if (readingLevelError) reportFailure("placement.reading_level_sync", readingLevelError, { route: "/api/placement/complete", userId: user.id, requestId });
-
-  // Learner spine seeds (best-effort, never fail the placement).
-  try {
-    const rows = decision.seeds.map((s) => seedRow(sub.childId, s.standard_id, s.pass, now));
-    if (rows.length) await admin.from("child_skill_memory").upsert(rows, { onConflict: "child_id,standard_id" });
-  } catch { /* seeds are a garnish */ }
+  if (saveError || !saved?.[0]) {
+    const limited = saveError?.message?.includes("placement daily limit");
+    if (!limited) reportFailure("placement.save", saveError, { route: "/api/placement/complete", userId: user.id, requestId });
+    return NextResponse.json({ ok: false, requestId, error: limited ? "Please try another assessment tomorrow." : "Could not save the placement. Your answers can be retried." }, { status: limited ? 429 : 500 });
+  }
+  const { placement_id: placementId, replayed } = saved[0] as { placement_id: string; replayed: boolean };
+  if (!replayed) void trackFunnel("funnel.placement_complete", user.id, {
+    child_id: sub.childId, placement_id: placementId, enrolled: sub.enrolled,
+    placed_band: decision.placedBand, reading_level: decision.readingLevelName, version: "v2",
+  });
 
   // Narration clips: sequential Vertex synthesis after the response is sent
   // (next/server `after` keeps the serverless function alive for it); the
   // reveal polls for the paths. Each line says the child's name -> private bucket.
-  after(async () => {
+  if (!replayed) after(async () => {
     // The parent's report email first (needs no audio): the same numbers and plan as the reveal.
     try { await sendPlacementReportEmail(placementId); } catch { /* the reveal still works without the email */ }
     const paths: Record<string, string> = {};
@@ -185,6 +174,6 @@ export async function POST(req: Request) {
   try { return await complete(req, requestId); }
   catch (error) {
     reportFailure("placement.complete", error, { route: "/api/placement/complete", requestId });
-    return NextResponse.json({ ok: false, error: "Could not save the placement. Please retry.", requestId }, { status: 500 });
+    return NextResponse.json({ ok: false, error: "Could not save the placement. Your answers can be retried.", requestId }, { status: 500 });
   }
 }

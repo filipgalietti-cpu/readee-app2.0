@@ -35,7 +35,7 @@ export const NARRATION_ORDER: readonly NarrationId[] = [
 
 export const NARRATION_MAX_CHARS = 340;
 export const REASSURANCE = "Below grade level does not mean failing. It means the practice needs to be aimed.";
-export const ASK_CLOSE = "Everything on the Custom Reading Journey is included with Readee Plus. You can start it now.";
+export const ASK_CLOSE = "The first reading unit is free. Let’s start with the first lesson.";
 /** On top of bank.FORBIDDEN_CHILD_WORDS. */
 export const FORBIDDEN_NARRATION_WORDS = ["typical", "behind", "kid", "kids", "test", "quiz", "exam", "guaranteed"];
 const NO_EXCLAMATION: ReadonlySet<NarrationId> = new Set<NarrationId>(["number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension"]);

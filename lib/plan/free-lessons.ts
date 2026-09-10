@@ -1,6 +1,7 @@
 /**
  * Unit-aware free-lesson rule. The free tier unlocks exactly the FIRST UNIT of
- * each grade — matching the journey, where a "unit" is a grade's domain group
+ * each grade, plus the first unit assigned by placement. A journey unit is a
+ * grade’s domain group
  * (RL = "Story Treasures", RI = "Fact Finders", RF = "Sound Workshop",
  * L = "Word Magic"). Unit 1 = the grade's first-appearance domain.
  *
@@ -19,10 +20,12 @@ export function firstUnitDomainByGrade(lessons: LessonLite[]): Map<string, strin
   return m;
 }
 
-/** Is this lesson in its grade's first (free) unit? */
+/** The default free units plus this child’s saved placement start unit. */
 export function isLessonInFreeUnit(
   lesson: LessonLite,
   firstDomain: Map<string, string>,
+  placementStart?: LessonLite | null,
 ): boolean {
-  return firstDomain.get(lesson.grade) === lesson.domain;
+  return firstDomain.get(lesson.grade) === lesson.domain ||
+    (!!placementStart && lesson.grade === placementStart.grade && lesson.domain === placementStart.domain);
 }
