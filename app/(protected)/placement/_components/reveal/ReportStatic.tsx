@@ -26,10 +26,22 @@ const PRINT_CSS = `
 }
 `;
 
-function Section({ title, children, centered = false }: { title: string; children: React.ReactNode; centered?: boolean }) {
+function Section({
+  title,
+  children,
+  centered = false,
+}: {
+  title: string;
+  children: React.ReactNode;
+  centered?: boolean;
+}) {
   return (
     <section className="border-t border-zinc-200 pt-6 @2xl:pt-8">
-      <h2 className={`text-lg font-semibold text-zinc-900 @2xl:text-xl ${centered ? "text-center" : ""}`}>{title}</h2>
+      <h2
+        className={`text-lg font-semibold text-zinc-900 @2xl:text-xl ${centered ? "text-center" : ""}`}
+      >
+        {title}
+      </h2>
       <div className="mt-3 @2xl:mt-4">{children}</div>
     </section>
   );
@@ -41,7 +53,11 @@ const PRIMARY =
 /** The same content as the reveal, in one printable column (720 px wide at desktop). */
 export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
   useEffect(() => {
-    trackFunnelClient("funnel.report_view", { child_id: result.childId, placement_id: result.id, placed_band: result.decision.placedBand });
+    trackFunnelClient("funnel.report_view", {
+      child_id: result.childId,
+      placement_id: result.id,
+      placed_band: result.decision.placedBand,
+    });
   }, [result.childId, result.id, result.decision.placedBand]);
   const copy = useMemo(() => buildRevealCopy(result), [result]);
   const n = copy.number;
@@ -53,7 +69,9 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
       <div className="mx-auto max-w-3xl space-y-6 px-6 py-8 @2xl:space-y-8 @2xl:py-12">
         <header className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-zinc-900 @2xl:text-3xl">{copy.childName}&apos;s reading placement</h1>
+            <h1 className="text-2xl font-semibold text-zinc-900 @2xl:text-3xl">
+              {copy.childName}&apos;s reading placement
+            </h1>
             <p className="mt-1 text-sm text-zinc-500 @2xl:text-base">
               {copy.dateLong} · Enrolled in {copy.enrolledLabel} · {copy.minutesLine}
             </p>
@@ -76,6 +94,50 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
             </button>
           </div>
         </header>
+
+        <section
+          aria-label="Reading starting point"
+          className="rounded-2xl border border-violet-200 bg-violet-50 p-5 @2xl:p-6"
+        >
+          <dl className="grid grid-cols-2 gap-5">
+            <div>
+              <dt className="text-sm text-zinc-600">Enrolled grade</dt>
+              <dd className="mt-1 text-xl font-bold text-zinc-900">{copy.enrolledLabel}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-zinc-600">Recommended lesson level</dt>
+              <dd className="mt-1 text-xl font-bold text-violet-800">
+                {p.placed === 0 ? "Kindergarten" : `Grade ${p.placed}`}
+              </dd>
+            </div>
+          </dl>
+          <p className="mt-4 font-semibold text-violet-900">{p.category}</p>
+          <p className="mt-2 text-base leading-relaxed text-zinc-700">{p.support}</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+            The journey begins with these reading skills. Your child’s enrolled grade stays the
+            same.
+          </p>
+          <div className="reveal-print-hide mt-5 flex flex-wrap items-center gap-4">
+            {onStartPlan ? (
+              <button type="button" onClick={onStartPlan} className={PRIMARY}>
+                Start the first free lesson
+              </button>
+            ) : (
+              <Link
+                href={`/placement/start?child=${encodeURIComponent(result.childId)}`}
+                className={PRIMARY}
+              >
+                Start the first free lesson
+              </Link>
+            )}
+            <a
+              href="#reading-journey"
+              className="text-sm font-semibold text-violet-700 underline underline-offset-4"
+            >
+              See the reading journey
+            </a>
+          </div>
+        </section>
 
         <Section title="Strengths">
           <ul className="grid gap-3 @2xl:grid-cols-2">
@@ -109,19 +171,28 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
             <p className="text-sm text-zinc-500">{n.subtitle}</p>
             <div className="mt-3 flex items-end gap-8">
               <div>
-                <div className="text-5xl font-semibold leading-none text-violet-700 tabular-nums @2xl:text-7xl">{n.wcpm}</div>
+                <div className="text-5xl font-semibold leading-none text-violet-700 tabular-nums @2xl:text-7xl">
+                  {n.wcpm}
+                </div>
                 <div className="mt-1 text-sm text-zinc-500">words per minute</div>
               </div>
               {n.benchmark !== null && (
                 <div className="ml-auto text-right">
-                  <div className="text-2xl font-semibold leading-none text-zinc-400 tabular-nums @2xl:text-4xl">{n.benchmark}</div>
+                  <div className="text-2xl font-semibold leading-none text-zinc-400 tabular-nums @2xl:text-4xl">
+                    {n.benchmark}
+                  </div>
                   <div className="mt-1 text-sm text-zinc-500">{n.benchmarkLabel}</div>
                 </div>
               )}
             </div>
             {n.percentile !== null && (
               <div className="mt-5">
-                <PercentileBar percentile={n.percentile} childName={copy.childName} animate instant />
+                <PercentileBar
+                  percentile={n.percentile}
+                  childName={copy.childName}
+                  animate
+                  instant
+                />
               </div>
             )}
             <p className="mt-4 text-base leading-6 text-zinc-700">{n.sentence}</p>
@@ -138,20 +209,42 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
             <span className="text-base font-semibold text-zinc-900">{p.category}</span>
           </div>
           <p className="mt-3 text-base leading-6 text-zinc-800">{p.support}</p>
-          {p.reassurance && <p className="mt-3 border-l-2 border-violet-200 pl-4 text-sm leading-6 text-zinc-500">{p.reassurance}</p>}
+          {p.reassurance && (
+            <p className="mt-3 border-l-2 border-violet-200 pl-4 text-sm leading-6 text-zinc-500">
+              {p.reassurance}
+            </p>
+          )}
           <div className="mt-5">
-            <GradeLadder enrolled={p.enrolled} placed={p.placed} childName={copy.childName} bandName={p.band} categoryText={p.categoryText} animate instant />
+            <GradeLadder
+              enrolled={p.enrolled}
+              placed={p.placed}
+              childName={copy.childName}
+              bandName={p.band}
+              categoryText={p.categoryText}
+              animate
+              instant
+            />
           </div>
         </Section>
 
         <Section title="Three skills">
           <div className="grid gap-5 @2xl:grid-cols-3 @2xl:gap-6">
             {copy.skills.map((s) => (
-              <SkillBar key={s.id} icon={s.icon} label={s.label} value={s.value} fillPct={s.fillPct} meaning={s.meaning} animate instant />
+              <SkillBar
+                key={s.id}
+                icon={s.icon}
+                label={s.label}
+                value={s.value}
+                fillPct={s.fillPct}
+                meaning={s.meaning}
+                animate
+                instant
+              />
             ))}
           </div>
         </Section>
 
+        <div id="reading-journey" className="scroll-mt-6" />
         <Section title={`${copy.childName}'s Custom Reading Journey`}>
           <p className="mb-3 text-sm text-zinc-500">{copy.path.craftedLine}</p>
           <div className="rounded-2xl border border-zinc-200 bg-white p-4 @2xl:p-6">
@@ -201,8 +294,12 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
         </Section>
 
         <Section title="Your next step: read together" centered>
-          <p className="text-center text-base font-semibold text-zinc-800">Start with the first lesson in your child’s reading plan.</p>
-          <p className="mt-1 text-center text-base text-zinc-600">The first reading unit is free. No card needed.</p>
+          <p className="text-center text-base font-semibold text-zinc-800">
+            Start with the first lesson in your child’s reading plan.
+          </p>
+          <p className="mt-1 text-center text-base text-zinc-600">
+            The first reading unit is free. No card needed.
+          </p>
           <div className="reveal-print-hide mt-4 flex flex-col items-center text-center">
             <div className="mt-4">
               {onStartPlan ? (
@@ -210,7 +307,10 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
                   Start the first lesson
                 </button>
               ) : (
-                <Link href={`/placement/start?child=${encodeURIComponent(result.childId)}`} className={PRIMARY}>
+                <Link
+                  href={`/placement/start?child=${encodeURIComponent(result.childId)}`}
+                  className={PRIMARY}
+                >
                   Start the first lesson
                 </Link>
               )}
@@ -219,7 +319,8 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           <p className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-500">
             <Glyph name="shield-check" size={16} />
             <span>
-              Content created and reviewed by <span className="font-semibold text-zinc-800">{copy.ask.reviewer.name}</span>,
+              Content created and reviewed by{" "}
+              <span className="font-semibold text-zinc-800">{copy.ask.reviewer.name}</span>,
               <br />
               {copy.ask.reviewer.role}
             </span>

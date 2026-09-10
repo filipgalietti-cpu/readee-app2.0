@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import { ArrowLeft, ArrowRight, Volume2 } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
-import { FluentIcon } from "@/app/_components/FluentIcon";
 import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import type { MicState } from "./mic";
 import "./placement.css";
@@ -28,14 +30,6 @@ export type PlacementScreen =
   | { kind: "recovery" }
   | { kind: "closing"; error: string | null };
 
-const CHAPTERS = ["Get ready", "Sounds & words", "A story", "Story questions"];
-function chapterFor(stage: string) {
-  if (["warmup", "foundations", "words"].includes(stage)) return 1;
-  if (["passage", "listening"].includes(stage)) return 2;
-  if (["comprehension", "closing"].includes(stage)) return 3;
-  return 0;
-}
-
 type Props = {
   screen: PlacementScreen;
   stage: string;
@@ -55,7 +49,119 @@ type Props = {
   exitHref?: string;
 };
 
-/** Assessment presentation follows the golden lesson frame, with neutral examiner feedback. */
+/** The CoachedChoose card structure from Pip/Houses, without teaching feedback.
+ * Selection is provisional until Next. Replay never submits an answer. */
+function AnswerCards({
+  options,
+  picked,
+  readingIdx = -1,
+  onAnswer,
+  onRead,
+  readDisabled = false,
+  robotKeys,
+  actionHost,
+}: {
+  options: { id: string; label: string }[];
+  picked: string | null;
+  readingIdx?: number;
+  onAnswer: (id: string) => void;
+  onRead?: (id: string) => void;
+  readDisabled?: boolean;
+  robotKeys?: string;
+  actionHost: HTMLElement | null;
+}) {
+  const [selected, setSelected] = useState<string | null>(picked);
+  const [submitted, setSubmitted] = useState(false);
+  const locked = picked !== null || submitted;
+  return (
+    <>
+      <div className="pa-options">
+        {options.map((option, i) => (
+          <div
+            key={option.id}
+            className={`pa-option ${readingIdx === i ? "is-reading" : ""} ${selected === option.id ? "is-selected" : ""}`}
+          >
+            <button
+              className="pa-tile"
+              data-option-id={option.id}
+              data-tile={option.id}
+              data-correct={robotKeys === option.id ? "1" : undefined}
+              aria-pressed={selected === option.id}
+              disabled={locked}
+              onClick={() => setSelected(option.id)}
+            >
+              <span>{option.label}</span>
+            </button>
+            {onRead && (
+              <button
+                className="pa-listen"
+                aria-label={`Hear ${option.label}`}
+                data-option-speaker={option.id}
+                disabled={locked || readDisabled}
+                onClick={() => onRead(option.id)}
+              >
+                <Volume2 size={21} />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+      {actionHost &&
+        createPortal(
+          <div className="pa-answer-action">
+            <span aria-live="polite">
+              {locked
+                ? "Answer saved for this activity"
+                : selected
+                  ? "You can change your answer."
+                  : "Choose an answer."}
+            </span>
+            <button
+              className="pa-primary"
+              disabled={!selected || locked}
+              data-confirm-answer
+              onClick={() => {
+                if (selected && !locked) {
+                  setSubmitted(true);
+                  onAnswer(selected);
+                }
+              }}
+            >
+              Next <ArrowRight size={20} />
+            </button>
+          </div>,
+          actionHost,
+        )}
+    </>
+  );
+}
+
+function ReadingOrb({
+  mode,
+  analyser,
+  large = false,
+  onTap,
+  label,
+}: {
+  mode: LunaMode;
+  analyser?: AnalyserNode | null;
+  large?: boolean;
+  onTap?: () => void;
+  label: string;
+}) {
+  return (
+    <div className={`pa-reading-orb ${large ? "pa-orb-large" : ""}`}>
+      <LunaOrb
+        mode={mode}
+        analyser={analyser}
+        size={large ? 156 : 104}
+        onTap={onTap}
+        label={label}
+      />
+    </div>
+  );
+}
+
 export default function PlacementView({
   screen,
   stage,
@@ -74,123 +180,94 @@ export default function PlacementView({
   onReadOption,
   exitHref = "/dashboard",
 }: Props) {
-  const chapter = chapterFor(stage);
+  const [actionHost, setActionHost] = useState<HTMLDivElement | null>(null);
   const listening =
-    screen.kind === "mic" ||
+    (screen.kind === "mic" && screen.status === "open" && orb !== "speaking") ||
     (screen.kind === "word" && screen.listening) ||
     (screen.kind === "passage" && screen.reading);
-  const status = listening
-    ? "I’m listening"
-    : orb === "speaking"
-      ? "Listen to Luna"
-      : screen.kind === "ready"
-        ? "Ready when you are"
-        : screen.kind === "closing"
-          ? "Putting your journey together"
-          : "Take your time";
+  const inTaskOrb = [
+    "ready",
+    "luna",
+    "mic",
+    "word",
+    "passage",
+    "blocked",
+    "recovery",
+    "closing",
+  ].includes(screen.kind);
+  const label =
+    stage === "warmup"
+      ? "Try one together"
+      : stage === "foundations"
+        ? "Sounds & words"
+        : stage === "words"
+          ? "Read with Luna"
+          : stage === "passage"
+            ? "Read a story"
+            : stage === "comprehension"
+              ? "Think about the story"
+              : stage === "listening"
+                ? "Listen to a story"
+                : "Reading with Luna";
+  const mode = listening ? "listening" : orb;
   return (
     <main className="pa-frame" data-placement-stage={stage}>
       <header className="pa-top" data-runner-header>
-        <a className="pa-exit" href={exitHref} aria-label="Leave assessment">
-          Back
+        <a href={exitHref} className="pa-exit" aria-label="Leave assessment">
+          <ArrowLeft size={18} /> <span>Back</span>
         </a>
-        <span className="pa-title">Reading with Luna</span>
+        <span>{label}</span>
         <span className="pa-reader">{childName}</span>
       </header>
-      <ol className="pa-chapters" aria-label="Assessment sections">
-        {CHAPTERS.map((label, i) => (
-          <li
-            key={label}
-            aria-current={i === chapter ? "step" : undefined}
-            className={i === chapter ? "is-current" : ""}
-          >
-            <span aria-hidden="true">{i + 1}</span>
-            <span>{label}</span>
-          </li>
-        ))}
-      </ol>
       <section className={`pa-stage pa-${screen.kind}`} aria-label="Current activity">
         {screen.kind === "ready" && (
-          <div className="pa-welcome">
-            <div className="pa-welcome-art" aria-hidden="true">
-              <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
-            </div>
-            <div className="pa-welcome-copy">
-              <h1>
-                Let’s find your
-                <br />
-                reading adventure.
-              </h1>
-              <p>
-                Hi, {childName}. We’ll try some words and a story together. Some might be easy. Some
-                might be tricky. That’s okay.
-              </p>
-              <div className="pa-preview-steps">
-                <span>
-                  <FluentIcon name="microphone" size={25} /> Say hello
-                </span>
-                <span>
-                  <FluentIcon name="memo" size={25} /> Try some words
-                </span>
-                <span>
-                  <FluentIcon name="open-book" size={25} /> Explore a story
-                </span>
-              </div>
-              <button className="pa-primary" onClick={onBegin} data-begin>
-                Let’s begin
-              </button>
-              <p className="pa-parent-note">
-                Grown-up: stay nearby for the microphone check. Let your reader answer
-                independently.
-              </p>
-            </div>
+          <div className="pa-intro">
+            <h1>Hi, {childName}.</h1>
+            <ReadingOrb mode="idle" large onTap={onBegin} label="Begin reading with Luna" />
+            <p className="pa-intro-line">Let’s read a little together.</p>
+            <button className="pa-primary" onClick={onBegin} data-begin>
+              Start with Luna <ArrowRight size={20} />
+            </button>
+            <p className="pa-small">Your grown-up can stay nearby.</p>
           </div>
         )}
         {screen.kind === "luna" && (
-          <div className="pa-instruction" data-caption>
-            <div className="pa-section-art">
-              <FluentIcon
-                name={chapter === 2 ? "open-book" : chapter === 3 ? "lightbulb" : "microphone"}
-                size={68}
-              />
-            </div>
-            <h1>{screen.caption}</h1>
+          <div className="pa-intro" data-caption>
+            <ReadingOrb mode={orb} analyser={analyser} large label="Luna is speaking" />
+            <h1 className="pa-spoken">{screen.caption}</h1>
           </div>
         )}
         {screen.kind === "mic" && (
-          <div className="pa-instruction" data-mic-check>
-            <div className="pa-section-art">
-              <FluentIcon name="microphone" size={68} />
+          <div className="pa-intro" data-mic-check>
+            <p className="pa-eyebrow">Before we read</p>
+            <h1>Say “hello, Luna.”</h1>
+            <ReadingOrb mode={mode} analyser={analyser} large label="Microphone check with Luna" />
+            <p className="pa-intro-line">
+              {screen.retry
+                ? "I didn’t hear you yet. Try once more."
+                : "Use your normal reading voice."}
+            </p>
+            <div className="pa-sound-state" role="status">
+              <span className={level > 0.12 ? "is-hearing" : ""} />
+              {orb === "speaking"
+                ? "Listen to Luna first"
+                : level > 0.12
+                  ? "Luna can hear sound"
+                  : "Listening for your hello…"}
             </div>
-            <h1>{screen.retry ? "Let’s hear your hello." : "Say hello to Luna."}</h1>
-            <p>Use your normal reading voice. Watch the sound bar move.</p>
-            <div
-              className="pa-meter"
-              role="meter"
-              aria-label="Microphone sound level"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={Math.round(level * 100)}
-            >
-              <span style={{ width: `${Math.max(2, Math.round(level * 100))}%` }} />
-            </div>
-            <p className="pa-small">This is just a microphone check.</p>
           </div>
         )}
         {screen.kind === "word" && (
           <div className="pa-word-task" data-word={screen.word} data-band={screen.band ?? ""}>
-            <p className="pa-task-label">
-              {screen.nonsense
-                ? "A make-believe word. Try sounding it out."
-                : "Read this word out loud."}
-            </p>
-            <div className="pa-word-card">
-              <span>{screen.word}</span>
-            </div>
-            <p className="pa-small">
-              {screen.listening
-                ? "Take your time. It’s okay if you don’t know it."
-                : "Getting the microphone ready…"}
+            <h1>{screen.nonsense ? "Try this make-believe word." : "Read this word to Luna."}</h1>
+            <p className="pa-reading-word">{screen.word}</p>
+            <ReadingOrb
+              mode={screen.listening ? "listening" : "thinking"}
+              analyser={analyser}
+              label="Luna is listening to your reading"
+            />
+            <p className="pa-small" role="status">
+              {screen.listening ? "I’m listening." : "Opening the microphone…"}
             </p>
             <button
               className="pa-secondary"
@@ -214,31 +291,45 @@ export default function PlacementView({
         )}
         {screen.kind === "tiles" && (
           <div className="pa-task">
-            <h1>{screen.caption}</h1>
-            <div className="pa-tiles">
-              {screen.tiles.map((t) => (
-                <button
-                  key={t}
-                  data-tile={t}
-                  disabled={screen.picked !== null}
-                  aria-pressed={screen.picked === t}
-                  onClick={() => onTap(t)}
-                >
-                  {t}
-                </button>
-              ))}
+            <div className="pa-prompt">
+              <p className="pa-eyebrow">Listen, then choose</p>
+              <h1>{screen.caption}</h1>
+            </div>
+            <div className="pa-letter-choices">
+              <AnswerCards
+                actionHost={actionHost}
+                key={
+                  screen.tiles.join("|") +
+                  screen.caption +
+                  (screen.picked === null ? "open" : "answered")
+                }
+                options={screen.tiles.map((t) => ({ id: t, label: t }))}
+                picked={screen.picked}
+                onAnswer={onTap}
+              />
             </div>
           </div>
         )}
         {screen.kind === "passage" && (
           <article className="pa-reading-page" data-passage-reading={screen.reading ? "1" : "0"}>
-            <div className="pa-reading-heading">
-              <FluentIcon name="open-book" size={30} />
+            <div className="pa-prompt">
+              <p className="pa-eyebrow">Read out loud</p>
               <h1>{screen.title}</h1>
             </div>
-            <p className="pa-task-label">Read out loud. If a word is tricky, keep going.</p>
             <div className="pa-passage-scroll" tabIndex={0} aria-label={screen.title}>
               <p>{screen.text}</p>
+            </div>
+            <div className="pa-reading-control">
+              <ReadingOrb
+                mode={screen.reading ? "listening" : "thinking"}
+                analyser={analyser}
+                label="Luna is listening to the story"
+              />
+              <p className="pa-small">
+                {screen.reading
+                  ? "I’m listening. If a word is tricky, keep going."
+                  : "Getting ready to listen…"}
+              </p>
             </div>
             {robot && screen.reading && (
               <form
@@ -261,14 +352,17 @@ export default function PlacementView({
           </article>
         )}
         {screen.kind === "question" && (
-          <div className={`pa-question-task ${screen.passage ? "has-passage" : ""}`} data-question>
+          <div className="pa-question-task" data-question>
+            <div className="pa-prompt">
+              <p className="pa-eyebrow">Think about the story</p>
+              <h1>{screen.prompt}</h1>
+            </div>
             {screen.passage && (
               <aside className="pa-look-back" data-look-back>
-                <div className="pa-reading-heading">
-                  <FluentIcon name="open-book" size={25} />
+                <div className="pa-story-label">
                   <h2>{screen.passage.title}</h2>
+                  <span>You can look back.</span>
                 </div>
-                <p className="pa-small">You can look back at the story.</p>
                 <div
                   className="pa-look-back-scroll"
                   tabIndex={0}
@@ -278,71 +372,39 @@ export default function PlacementView({
                 </div>
               </aside>
             )}
-            <div className="pa-question-answers">
-              <h1>{screen.prompt}</h1>
-              <div className="pa-options">
-                {screen.options.map((o, i) => (
-                  <div className="pa-option" key={o.id}>
-                    <button
-                      className={screen.readingIdx === i ? "is-reading" : ""}
-                      data-option-id={o.id}
-                      data-correct={screen.correctId === o.id ? "1" : undefined}
-                      disabled={screen.picked !== null}
-                      aria-pressed={screen.picked === o.id}
-                      onClick={() => onTap(o.id)}
-                    >
-                      <span className="pa-choice-mark" aria-hidden="true">
-                        {String.fromCharCode(65 + i)}
-                      </span>
-                      <span>{o.label}</span>
-                    </button>
-                    {screen.speakers && screen.qid && (
-                      <button
-                        className="pa-option-speaker"
-                        aria-label={`Read choice ${String.fromCharCode(65 + i)} aloud`}
-                        data-option-speaker={o.id}
-                        disabled={screen.picked !== null || orb === "speaking"}
-                        onClick={() => onReadOption(screen.qid!, o.id)}
-                      >
-                        <FluentIcon name="speaker" size={22} />
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AnswerCards
+              actionHost={actionHost}
+              key={(screen.qid ?? screen.prompt) + (screen.picked === null ? "open" : "answered")}
+              options={screen.options}
+              picked={screen.picked}
+              readingIdx={screen.readingIdx}
+              onAnswer={onTap}
+              robotKeys={screen.correctId}
+              readDisabled={orb === "speaking"}
+              onRead={screen.qid ? (id) => onReadOption(screen.qid!, id) : undefined}
+            />
           </div>
         )}
         {(screen.kind === "blocked" || screen.kind === "recovery") && (
           <div
-            className="pa-instruction pa-help"
+            className="pa-intro pa-help"
             role="alert"
             data-blocked={screen.kind === "blocked" ? screen.reason : undefined}
           >
-            <div className="pa-section-art">
-              <FluentIcon name="microphone" size={60} />
-            </div>
+            <ReadingOrb mode="idle" large label="Luna is waiting" />
             <h1>
-              {screen.kind === "recovery"
-                ? "Let’s try that together again."
-                : screen.reason === "audio"
-                  ? "Let’s get Luna’s sound working."
-                  : "Let’s help Luna hear you."}
+              {screen.kind === "blocked" && screen.reason === "audio"
+                ? "Luna’s sound didn’t play."
+                : "Luna couldn’t hear you."}
             </h1>
             <p>
-              {screen.kind === "recovery"
-                ? "We didn’t capture a clear response. This hasn’t counted as a wrong answer."
-                : screen.reason === "audio"
-                  ? "Luna’s instructions didn’t play. Check the volume and connection, then try again. We won’t score a task you couldn’t hear."
-                  : screen.reason === "denied"
-                    ? "Allow the microphone in your browser’s site settings, then try again."
-                    : "Check your microphone and connection. A grown-up can help."}
+              {screen.kind === "blocked" && screen.reason === "audio"
+                ? "Grown-up: check the volume and connection, then try again."
+                : screen.kind === "blocked" && screen.reason === "denied"
+                  ? "Grown-up: allow the microphone in your browser’s site settings, then try again."
+                  : "Grown-up: check the microphone and connection, then try again."}
             </p>
-            {screen.kind === "recovery" && (
-              <p className="pa-small">
-                Check the microphone and connection, then try this same part again.
-              </p>
-            )}
+            <p className="pa-small">This hasn’t counted as a wrong answer.</p>
             <button
               className="pa-primary"
               onClick={screen.kind === "recovery" ? () => onTap("retry") : onRetry}
@@ -352,6 +414,7 @@ export default function PlacementView({
                 : screen.reason === "audio"
                   ? "Try sound again"
                   : "Check microphone again"}
+              <ArrowRight size={20} />
             </button>
             <a className="pa-text-link" href={exitHref}>
               Come back later
@@ -359,53 +422,58 @@ export default function PlacementView({
           </div>
         )}
         {screen.kind === "closing" && (
-          <div className="pa-instruction" data-closing>
-            <div className="pa-section-art">
-              <FluentIcon name="open-book" size={52} />
-            </div>
-            <h1>You did it, {childName}.</h1>
-            <p>{screen.error ?? "Let’s put your reading journey together."}</p>
+          <div className="pa-intro" data-closing>
+            <ReadingOrb
+              mode={screen.error ? "idle" : "thinking"}
+              large
+              label="Luna is preparing your results"
+            />
+            <h1>You’re all done, {childName}.</h1>
+            <p>{screen.error ?? "Your grown-up can join you now."}</p>
             {screen.error ? (
               <button className="pa-primary" onClick={onSave}>
                 Save my results again
               </button>
             ) : (
-              <div className="pa-saving" role="status">
+              <p className="pa-small" role="status">
                 Saving your answers…
-              </div>
+              </p>
             )}
           </div>
         )}
       </section>
       <footer className="pa-dock">
         <div className="pa-bunny" data-bunny aria-hidden="true">
-          {screen.kind === "closing" ? (
+          {screen.kind === "ready" || screen.kind === "closing" ? (
             <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
           ) : (
             <Bunny outfitId={outfitId ?? "bunny_classic"} />
           )}
         </div>
-        <div className="pa-luna">
-          <div aria-hidden="true" inert className="pa-orb">
-            <LunaOrb mode={orb} analyser={analyser} size={52} />
+        {!inTaskOrb && (
+          <div className="pa-narrator">
+            <LunaOrb
+              mode={orb}
+              analyser={analyser}
+              size={64}
+              onTap={onReplay && orb !== "speaking" ? onReplay : undefined}
+              label="Hear the question again"
+            />
           </div>
-          <div>
-            <span className="pa-luna-name">Luna</span>
-            <p role="status">{status}</p>
-          </div>
+        )}
+        <div className="pa-dock-action">
+          {onReplay && !listening && (
+            <button
+              className="pa-replay"
+              onClick={onReplay}
+              disabled={orb === "speaking"}
+              aria-label="Hear the prompt again"
+            >
+              <Volume2 size={21} /> Hear again
+            </button>
+          )}
         </div>
-        {onReplay && !listening && orb !== "speaking" && (
-          <button className="pa-replay" onClick={onReplay} aria-label="Hear the prompt again">
-            <FluentIcon name="speaker" size={23} />
-            <span>Hear again</span>
-          </button>
-        )}
-        {listening && (
-          <div className="pa-live">
-            <FluentIcon name="microphone" size={20} />
-            <span>Microphone on</span>
-          </div>
-        )}
+        <div className="pa-answer-dock" ref={setActionHost} />
       </footer>
     </main>
   );

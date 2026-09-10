@@ -39,11 +39,13 @@ export default function LunaOrb({
   analyser,
   onTap,
   size = 210,
+  label = "Tap to talk to Luna",
 }: {
   mode: LunaMode;
   analyser?: AnalyserNode | null;
   onTap?: () => void;
   size?: number;
+  label?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const blobRef = useRef<HTMLButtonElement>(null);
@@ -191,7 +193,8 @@ export default function LunaOrb({
       <button
         type="button"
         onClick={onTap}
-        aria-label="Tap to talk to Luna"
+        aria-label={label}
+        tabIndex={onTap ? 0 : -1}
         ref={blobRef}
         style={{
           width: size, height: size, borderRadius: "50%",

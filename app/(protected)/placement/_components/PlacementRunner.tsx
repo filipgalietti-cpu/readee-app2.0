@@ -182,7 +182,7 @@ export default function PlacementRunner({
 
   /** Tap items (letter sounds, blending, comprehension): play the prompt audio, then wait for a tap. */
   const askTiles = useCallback(async (caption: string, tiles: string[], audio: () => Promise<void>): Promise<string> => {
-    replayRef.current = audio;
+    replayRef.current = async () => { setOrb("speaking"); try { await audio(); } finally { if (!cancelledRef.current) setOrb("idle"); } };
     setScreen({ kind: "tiles", caption, tiles, picked: null });
     setOrb("speaking");
     const answer = waitTap();
@@ -200,7 +200,7 @@ export default function PlacementRunner({
    * support; from 2nd grade up the child reads the choices (each has its own speaker for a re-read on request).
    */
   const askQuestion = useCallback(async (q: BankQuestion, readOptions = true, passage?: { title: string; text: string }): Promise<boolean> => {
-    replayRef.current = () => playUrlAsync(clipUrl(`q-${q.id}`));
+    replayRef.current = async () => { setOrb("speaking"); try { await playUrlAsync(clipUrl(`q-${q.id}`)); } finally { if (!cancelledRef.current) setOrb("idle"); } };
     const correctId = robot ? q.correctId : undefined; // robots may see the key; children never do
     const base = { kind: "question" as const, prompt: q.prompt, options: q.options, correctId, speakers: !readOptions, qid: q.id, passage };
     setScreen({ ...base, picked: null, readingIdx: -1 });
@@ -378,11 +378,15 @@ export default function PlacementRunner({
         return false;
       };
       setScreen({ kind: "mic", status, retry: false });
+      setOrb("speaking");
       await playNarr("mic-check", 4000);
+      setOrb("listening");
       let ok = robot ? true : await heard();
       if (!ok) {
         setScreen({ kind: "mic", status, retry: true });
+        setOrb("speaking");
         await playNarr("mic-again", 4000);
+        setOrb("listening");
         ok = await heard();
       }
       if (!ok) { status = "unavailable"; setScreen({ kind: "blocked", reason: status }); return; }
@@ -551,7 +555,20 @@ export default function PlacementRunner({
       onRetry={() => window.location.reload()} onSave={() => { void saveSubmission(); }}
       onReplay={(screen.kind === "tiles" && screen.picked === null) || (screen.kind === "question" && screen.picked === null)
         ? () => { void replayRef.current?.().catch((error) => { if (error instanceof PlacementAudioCancelled || cancelledRef.current) return; micRef.current.close(); setScreen({ kind: "blocked", reason: "audio" }); }); } : undefined}
-      onReadOption={(qid, id) => { void playUrlAsync(clipUrl(`opt-${qid}-${id}`), 4000).catch((error) => { if (error instanceof PlacementAudioCancelled || cancelledRef.current) return; micRef.current.close(); setScreen({ kind: "blocked", reason: "audio" }); }); }}
+      onReadOption={(qid, id) => {
+        setOrb("speaking");
+        setScreen(current => current.kind === "question" && current.qid === qid
+          ? { ...current, readingIdx: current.options.findIndex(option => option.id === id) } : current);
+        void playUrlAsync(clipUrl(`opt-${qid}-${id}`), 4000).catch((error) => {
+          if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
+          micRef.current.close(); setScreen({ kind: "blocked", reason: "audio" });
+        }).finally(() => {
+          if (cancelledRef.current) return;
+          setOrb("idle");
+          setScreen(current => current.kind === "question" && current.qid === qid
+            ? { ...current, readingIdx: -1 } : current);
+        });
+      }}
     />
   );
 }

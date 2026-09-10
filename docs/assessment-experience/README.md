@@ -1,32 +1,36 @@
-# Assessment experience, September 9, 2026
+# Assessment experience
 
-This pass brings the actual placement runner into the presentation language of the approved Pip, Three Little Houses, and Little Pond lesson references. It preserves the assessment bank, enrollment-relative placement, adaptive passage search, evidence contract, atomic save, seven-card narrated reveal and assigned free first unit.
+## Product flow
 
-Reference evidence: `/Users/filipgalietti/readee-product-memory/2026-09-09-k-first-golden-references.md` and `/private/tmp/readee-grammar-studio/docs/lesson-production/REFERENCE_PARITY_PASS.md`. The references supply experience patterns, not new assessment answers. Pip/Houses are Kindergarten; Pond is Grade 1. Their taught examples are not inserted into the cold assessment, and correct-answer rewards/coaching are not transferred into examiner mode.
+Parent supplies an optional nickname and actual K–4 enrollment grade → saved reader → explicit parent-to-child handoff → Luna microphone check → independent adaptive assessment → parent report comparing demonstrated reading skills with enrollment → custom journey → first free lesson.
 
-## Experience
+Enrollment is context, not a minimum placement. For example, a fourth-grade enrollee demonstrating second-grade reading begins at second-grade skills. The existing atomic completion RPC writes `children.reading_level`, preserves `children.grade`, and saves the evidence, relative placement and plan together. The plan identifies covered units, needs to target and the first available unit. `/placement/start` resolves that owned plan into `/learn`; neither results CTA calls checkout.
 
-- Explicit child-ready welcome before narration or microphone startup. QA robot runs remain automatic.
-- Violet `#faf8ff` stage, Baloo/Nunito/reading typography, raised violet controls, existing animated Rabbit, and existing Luna in a compact bottom dock.
-- Four named sections identify the current activity without displaying a countdown, score, reading-grade label, or invented percentage of an adaptive test.
-- Large isolated reading words; neutral selected answers; story look-back beside questions on desktop and above them on phones; scrollable long passages; prompt replay outside active microphone capture.
-- Missing speech, unavailable sound, and saving failures have distinct messages and next actions. Answer keys remain visible only in gated QA robot mode.
-- No-login local screen review at `/demo/placement-studio`; this renders the same `PlacementView` as the real runner. Its toolbar explicitly labels the non-recording, non-saving design preview. `/demo` remains gated off in production by the existing demo layout.
+The existing parent setup allows an optional nickname, explicit enrollment selection and Explore first. Saving creates the reader before the handoff. The new handoff explains the distinction between assessment and lessons and allows exploring instead. Pricing, trial duration and child limits are unchanged.
+
+## Lesson reference parity
+
+References are the approved Pip’s Tree (RL.K.1), Three Little Houses (RL.K.2), and Little Pond (L.1.1) in `/private/tmp/readee-grammar-studio`, including `CoachedChoose`, `CoachedSpeak`, `AdaptivePractice`, and `delivery.css`. The assessment uses their activity-first frame, actual shared LunaOrb and Rabbit, large reading text, answer-card structure, integrated spoken-choice buttons and narration highlights. The draft welcome hero and four-section navigation were removed.
+
+A selected answer can be changed until Next. The action lives in the footer so long text cannot hide it. Replay never selects or submits. Selected and narrated states are violet, not correctness feedback. Question keys remain gated to QA robots. The assessment retains its independent bank and adaptive logic; taught lesson answers, hints and rewards are not introduced into scoring.
+
+The microphone check and reading turns place the real Luna orb inside the activity at 156px/104px, with the microphone analyser driving listening movement. Opening, speaking, listening, retry and saving states remain distinct. Cold passages are not narrated to the child. The seven narrated result cards remain; the printable report now leads with enrolled grade, recommended lesson level, their relationship, and a direct first-free-lesson action.
+
+The golden lesson packages are still authored in their separate worktree. This change uses their interaction design; it does not publish those unfinished packages. The current curriculum catalogue continues to supply the journey and first lesson.
 
 ## Reliability
 
-Required assessment narration fails closed when an instruction or listening clip cannot play. Optional non-assessment playback retains its old nonblocking behavior. Switching an optional replay to another choice is cancellation, not a playback failure. Stopped audio clears its timers. Narrated instruction captions use the actual narration source text.
+Silence and technical capture failures stay unmeasured. Required narration that fails or stalls blocks the task with retry, and cancelled replays do not count as failure. A silent passage retries after 12 seconds; audible speech with delayed recognition retains its scoring window. Recognition drain is bounded. Microphone permission timeout and late grants release acquired devices. Completed evidence is retained for a save retry.
 
-A passage with no detected audio and no recognized words retries after 12 seconds rather than waiting through the reading window. Audible speech with delayed final recognition still receives the original scoring window. Recognizer drain is bounded at four seconds. These are technical retries, not incorrect evidence.
+## Review and verification
 
-Microphone permission requests have a 15-second bound. Late grants are stopped if the reader leaves or the request times out; setup failures release acquired tracks and contexts. This uses the lifecycle pattern already exercised by the golden lesson work.
+Local, no-login presentation review: `/demo/placement-studio`. The toolbar explicitly labels this as a preview with no recording or saved answers. Parent handoff is included in its screen selector. `/demo/placement-reveal` provides the synthetic parent report. Production demo gates are unchanged.
 
-## Verification
+- 216 placement/assessment tests pass, including silence, delayed final recognition, recovery, enrollment-relative decisions, custom plans, completion and first-lesson access.
+- TypeScript passes. Browser review covers nine states at six viewport sizes (320×568 through 1440×900), with no clipped child-task controls. The parent handoff can scroll on small phones.
+- `ASSESSMENT_BASE_URL=http://127.0.0.1:3431 node scripts/assessment-experience-browser.cjs` checks selection, changing answers, confirmation, replay highlighting without submission, footer visibility and absence of writes.
+- Synthetic full runner: enrolled grade 4 → second-grade evidence → placement 2, with no runtime errors or production writes. The plan tests verify second-grade first-unit selection and targeted higher-grade needs.
+- The parent report fixture displays enrollment 4, recommended level 2 and a first-free-lesson action. Desktop and phone screenshots were inspected.
+- Earlier asset checks found all 127 referenced public assessment clips available; this revision changes no audio URLs or assessment items.
 
-- 512 tests across 55 files pass, including below-enrollment placement, delayed recognition, silence, stalled recognizer drain, required audio failures, clip cancellation, and late microphone permission cleanup.
-- TypeScript passes.
-- 48 screen/viewport combinations checked at 1440×900, 1280×720, 768×1024, 390×844, 390×667, and 320×568. A cropped orb and smallest-phone answer overflow were fixed; the repeated checks report no frame/answer overflow and no browser runtime errors. Actual desktop/mobile screenshots were inspected.
-- Full synthetic browser assessment: fourth-grade enrollment, second-grade reading evidence, second-grade final placement; no assessment save or checkout request.
-- All 127 referenced public narration, title, question, choice and phoneme clips return HTTP 200. This verifies availability, not human listening quality.
-
-This is a local implementation and review branch. The prior reliability/onboarding release is already live at production commit `43b18b69`. This visual pass is separate. Physical child microphone testing and age-appropriate instructional review remain unverified; no educational calibration or efficacy claim is made. No pricing, trial, subscription, child-cap, historical placement or lesson-content changes are included.
+Physical microphone testing with a child remains unverified. Automated checks establish behavior, not founder design approval or educational calibration. This branch is separate from the prior reliability/onboarding production release (`43b18b69`); it does not rewrite historical placements or send family messages.
