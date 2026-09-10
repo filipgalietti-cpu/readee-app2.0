@@ -2,6 +2,7 @@ import { WORD_STEPS } from "@/app/data/placement-spectrum/words";
 import { readingScore, validateSpectrum, type SpectrumEvidence } from "./spectrum";
 import { BAND_GRADE_KEY, type PlacementDecision } from "./decide";
 import { BAND_LABEL, type PlacedBand } from "./ladder";
+import { wcpm as computeWcpm } from "@/lib/luna/grading-decision";
 import { seasonFor } from "./norms";
 import { grades } from "@/lib/assessment/questions";
 
@@ -25,7 +26,9 @@ export function decideSpectrum(
   date = new Date(),
 ): PlacementDecision {
   const { words: w, reading: r, language: l } = validateSpectrum(enrolled, ev);
-  const entry = r.confirmed ?? 0;
+  // Unconfirmed comprehension is not evidence of absent decoding. A word-based
+  // lesson recommendation stays explicitly provisional until connected reading confirms.
+  const entry = r.confirmed ?? w.grade;
   const wordLabel = WORD_STEPS[w.highest ?? 0].label;
   const nextStep = w.failed.length ? Math.min(...w.failed) : null;
   const oralBlending = ev.blending.length
@@ -61,7 +64,12 @@ export function decideSpectrum(
     nextStep === null
       ? ["applying word knowledge in longer texts"]
       : [WORD_STEPS[nextStep].label.toLowerCase()];
-  if (r.confirmed === null) needs.push("guided practice with letters, words and short sentences");
+  if (r.confirmed === null)
+    needs.push(
+      w.highest !== null && w.highest >= 2
+        ? "guided reading and discussion to check understanding of connected text"
+        : "guided practice with letters, words and short sentences",
+    );
   else if (r.confirmed < w.grade) needs.push("understanding and accurately reading connected text");
   if (oralBlending && oralBlending.correct < 2) needs.push("blending spoken sounds into words");
   const pair =
@@ -73,7 +81,7 @@ export function decideSpectrum(
   const delta = enrolled - entry;
   const comparison =
     r.confirmed === null
-      ? "starting with foundational reading; placement needs follow-up"
+      ? "provisional lesson starting point; independent reading needs follow-up"
       : delta === 0
         ? "starting in the enrolled grade's reading lessons"
         : delta > 0
@@ -97,7 +105,10 @@ export function decideSpectrum(
     fluency: p
       ? {
           band: p.band,
-          wcpm: Math.round((p.wordsCorrect * 60) / p.durationSeconds),
+          wcpm:
+            p.minuteSeconds && p.minuteWordsCorrect !== undefined
+              ? computeWcpm(p.minuteWordsCorrect, p.minuteSeconds)
+              : computeWcpm(p.wordsCorrect, p.durationSeconds),
           accuracy,
           textLevel: accuracy >= 0.95 ? "independent" : "instructional",
           prosody: null,
@@ -117,6 +128,7 @@ export function decideSpectrum(
       "criterion-based-placement",
       "not-a-normed-grade-equivalent",
       ...(r.confirmed === null ? ["placement-needs-followup"] : []),
+      ...(r.limited ? ["reading-sample-limit-reached"] : []),
       ...(profile.ceilingReached ? ["k4-ceiling-reached"] : []),
     ],
   };

@@ -23,5 +23,13 @@ const fourthGradeStory: SpectrumPassage = {
     q("sp-r4a3", "How did Nia's interpretation of the taller plants change?", ["She realized that being taller did not mean being healthier", "She decided that the lamp plants needed less water", "She learned that her original prediction was correct", "She concluded that measurements were not useful"], 0, "inferential"),
   ],
 };
-export const SPECTRUM_PASSAGES: SpectrumPassage[] = [kindergarten,fourthGradeStory,...([1,2,3] as const).map(grade => ({...PLACEMENT_BANK.bands[grade].passage!,id:`sp-read-${grade}-a`,grade,genre:"story" as const,legacy:true})),...confirmations];
+// Short v4 forms retain the legacy titles and question audio, not the legacy
+// passage length. Each answer still has evidence in the shortened story.
+// The v3 bank stays immutable for existing reports and evidence replay.
+const shortStories: Record<1 | 2 | 3, string> = {
+  1: "Sam has a pup named Max. Max is black with one white spot. Rain taps on the roof. Sam hides a ball in a box. Max sniffs at the box. He lifts the lid and gets the ball. Sam puts it in his hat next. Max runs to find it.",
+  2: "Rosa's grandpa gave her sunflower seeds. She planted six seeds beside the fence and watered them each morning. For a week, nothing came up. Rosa wondered if the seeds would ever grow. Her grandpa told her to give them time. On the tenth day, she spotted a green sprout. She jumped and called for her grandpa. Soon all six plants were growing. By summer, they stood taller than Rosa. She saved some seeds so she could plant sunflowers again next spring.",
+  3: "Omar's grandmother knitted him blue mittens with white stripes. After a snowy school day, he came home with only one. He searched his backpack and every pocket, but the mitten was missing. His sister Kim suggested remembering where he had last worn both mittens. Omar remembered wearing them on the bus and then patting the puppy when he arrived home. They checked the puppy's basket. Beneath a blanket lay the missing mitten, damp and chewed. Omar grinned at the puppy, relieved to have it back. He hung both mittens near the heater. After that, he checked for both before taking off his coat so he would not lose one again.",
+};
+export const SPECTRUM_PASSAGES: SpectrumPassage[] = [kindergarten,fourthGradeStory,...([1,2,3] as const).map(grade => ({...PLACEMENT_BANK.bands[grade].passage!,text:shortStories[grade],id:`sp-read-${grade}-a`,grade,genre:"story" as const,legacy:true})),...confirmations];
 export const spectrumPassage = (grade: PlacedBand, form: "a" | "b") => SPECTRUM_PASSAGES.find(p=>p.id===`sp-read-${grade}-${form}`)!;

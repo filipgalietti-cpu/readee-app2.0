@@ -395,8 +395,10 @@ export function narrate(input: NarrateInput): NarrationLine[] {
       strengths: `${profile.readingBand !== null ? `${name} read two texts and answered questions about both.` : profile.wordStep === null ? `${name} worked through the reading activities with Luna.` : profile.wordStep === 0 ? `${name} matched letters to their sounds.` : `${name} read words from the ${profile.wordLabel.toLowerCase()} set.`}${profile.languageBand !== null ? ` With read-aloud support, ${name} also answered ${g(profile.languageBand)} meaning questions.` : ""}`,
       number: d.fluency
         ? `${name} read this passage at ${d.fluency.wcpm} correct words per minute. This describes today's sample, not a national percentile.`
-        : "We are starting with guided practice in letters, sounds and short words. We need more reading evidence before confirming a level.",
-      placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? "The first lessons will help us check the foundational starting point." : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
+        : (profile.wordStep ?? 0) >= 2
+          ? "We will start with guided reading and discussion using the word reading evidence. Independent reading still needs follow-up."
+          : "We are starting with guided practice in letters, sounds and short words. We need more reading evidence before confirming a level.",
+      placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? "The first lessons will help us check this provisional starting point." : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
       "skill-decoding":
         profile.wordStep === null
           ? "Word reading needs follow-up. We will begin with guided practice in letters and sounds."

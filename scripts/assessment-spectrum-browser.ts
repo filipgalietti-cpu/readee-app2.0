@@ -37,7 +37,8 @@ async function main() {
         waitUntil: "domcontentloaded",
       });
       let lastPassageGrade = 0,
-        inLanguage = false;
+        inLanguage = false,
+        letterIndex = 0;
       for (let tick = 0; tick < 1500; tick++) {
         assert.deepEqual(errors, [], "Browser exception");
         if (await page.locator("[data-demo-done]").count()) break;
@@ -71,7 +72,13 @@ async function main() {
             .click();
           await page.locator("[data-confirm-answer]").click();
         } else if (await page.locator(".pa-letter-choices [data-option-id]:enabled").count()) {
-          await page.getByRole("button", { name: "b", exact: true }).click();
+          const target = ["m", "s", "t", "p", "n", "f"][letterIndex++];
+          await page
+            .locator(
+              `.pa-letter-choices [data-option-id]:not([data-option-id="${target}"]):enabled`,
+            )
+            .first()
+            .click();
           await page.locator("[data-confirm-answer]").click();
         }
         await page.waitForTimeout(80);

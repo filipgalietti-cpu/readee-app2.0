@@ -2318,5 +2318,13 @@
     "audioSha256": "26add0d9b8d9604e9f9b887ef87906bdf0730790a4e55777748a5906bdc982e6",
     "wordErrorRate": 0.0,
     "status": "matched"
+  },
+  "word-try-again": {
+    "model": "small",
+    "script": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
+    "transcript": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
+    "audioSha256": "052d3fec7520385c222c8eb30b666455584b64acd83d23963bfc4826fb027676",
+    "wordErrorRate": 0.0,
+    "status": "matched"
   }
 }

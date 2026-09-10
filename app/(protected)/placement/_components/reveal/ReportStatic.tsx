@@ -114,7 +114,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
                 <dt className="text-sm text-zinc-600">Independent reading</dt>
                 <dd className="mt-1 font-semibold">
                   {result.decision.spectrum.readingBand === null
-                    ? "Foundational starting point; follow-up needed"
+                    ? "Not yet confirmed; follow-up needed"
                     : `${result.decision.spectrum.readingBand === 0 ? "Kindergarten" : `Grade ${result.decision.spectrum.readingBand}`} texts, checked twice`}
                 </dd>
               </div>

@@ -6,7 +6,7 @@ This extends the existing placement, rather than replacing the lesson design or 
 
 - The Luna orb, Rabbit, lesson-style answer cards, separate selection/Next, microphone recovery, audio player, atomic completion, report, and free-first-unit route.
 - Claude’s authored K–4 difficulty axis and nearest-question staircase pattern; the implementation replays answers purely so rendering/retry cannot change difficulty.
-- Fifty source-linked questions from the existing curriculum banks (ten per grade), existing full-prompt narration, word sets, phoneme clips, and four original reading passages. Fourth-grade questions on Nia’s story now ask theme, textual evidence, and changing interpretation.
+- Fifty source-linked questions from the existing curriculum banks (ten per grade), existing full-prompt narration, word sets, phoneme clips, and the original story titles/questions. Version 4 shortens the Grade 1–3 narratives while preserving evidence for every question and leaving the v3 texts unchanged. Fourth-grade questions on Nia’s story now ask theme, textual evidence, and changing interpretation.
 - The lesson authorship work remains in its own worktree. This does not publish unfinished golden lessons or change subscriptions.
 
 ## Child flow
@@ -22,7 +22,7 @@ The starting word step uses enrollment. It is not a floor or ceiling. Any enroll
 | 2    | Blends and digraphs: ship, stop, hand, chin                                                     | RF.1.3                                                                         |
 | 3    | Long vowels, common words and endings                                                           | RF.1.3                                                                         |
 | 4    | R-controlled vowels and vowel teams                                                             | RF.2.3                                                                         |
-| 5    | Two-syllable words and endings                                                                  | RF.2.3                                                                         |
+| 5    | Two-syllable, common words and endings                                                                  | RF.2.3                                                                         |
 | 6    | Prefixes, suffixes and longer words                                                             | RF.3.3                                                                         |
 | 7    | Longer multisyllabic words                                                                      | RF.3.3                                                                         |
 | 8    | Multisyllabic words containing roots/affixes                                                    | RF.4.3a                                                                        |
@@ -30,15 +30,17 @@ The starting word step uses enrollment. It is not a floor or ceiling. Any enroll
 
 Word naming samples decoding; it does not independently prove understanding of every root or affix. Oral blending uses three phoneme sequences, with the printed answer hidden. This corrects the earlier printed-word choice task’s conflation of phonemic awareness and decoding. Oral phoneme blending corresponds to RF.1.2b; RF.K.2c specifically concerns onset/rime and should not be claimed for this task.
 
-Four correct responses establish a word step. Two incorrect responses open an easier step, or end a climb when a lower step was already established. There are six distinct probes available per step. A completed hardest step ends at fourth grade; no fifth-grade ability claim is made.
+Four correct responses establish a word step; two misses rule it out for this sample. After the enrollment-based first step, binary bracketing probes the midpoint of the remaining range. A completed set updates the lower or upper bound, never an enrollment ceiling. Across ten steps this requires at most five sets and **25 measured word responses**, including mixed answers within sets. Every K–4 outcome remains reachable from every enrollment grade. Unprobed intermediate steps are not recorded as passed or mastered. There are six distinct probes available per step. A completed hardest step ends at fourth grade; no fifth-grade ability claim is made.
 
 ## Confirming independent reading
 
 The word evidence proposes a starting band. The child reads a story and an informational text independently, then answers three questions about each. The text remains available in an expandable look-back for reference. Luna reads questions/options as support; she never reads the cold passage to the child.
 
-Each reading sample requires at least 80% of the passage attempted, at least 90% accuracy on attempted words, and two of three meaning answers. Confirmation additionally requires **five of six answers across the pair**. A short accurate fragment cannot establish a level. A difficult sample opens fresh lower-band text. If no connected-text band can be confirmed, the report names foundational instruction as a provisional starting point and requests follow-up; it does not label the child a nonreader.
+Each reading sample requires at least 80% of the passage attempted, at least 90% accuracy on attempted words, and two of three meaning answers. Confirmation additionally requires **five of six answers across the pair**. A short accurate fragment cannot establish a level. A difficult sample opens fresh lower-band text. Sampling stops after **three unsuccessful bands (at most six passages)**, preserving room for a Grade 4 word reader to confirm Grade 2 reading without an exhaustive descent through every band. This is a fatigue bound, not a new passing threshold. An unconfirmed result remains explicitly provisional and requests follow-up. Demonstrated word reading proposes the lesson band; children who passed step 2 or higher start with guided comprehension there, while children showing only letters/CVC words begin with foundations. Neither outcome is a confirmed independent reading level. The old unconditional Kindergarten fallback is removed.
 
-These are explicit Readee instructional rules, not published diagnostic cut scores. Authored texts and thresholds require educator review and child-response calibration. Rate is descriptive correct words per minute on the sample. It is not converted to a national percentile, grade equivalent, or promised catch-up date.
+These are explicit Readee instructional rules, not published diagnostic cut scores. Authored texts and thresholds require educator review and child-response calibration. Grade 1–3 form-A stories contain 50, 81 and 110 words; form B contains 52, 87 and 114. The 150-second cap and 80% coverage gate now permit the continuous-reading rate scenarios in the audit regression tests. This removes that particular speed-floor defect; it does not establish equated difficulty or eliminate every timing effect.
+
+Rate uses the runner's captured first-minute count and duration, falling back to overall duration only when legacy evidence lacks a window. A completed short passage can use its shorter timed window. Pauses within an unfinished first minute remain part of that minute: 28 words by second 35 followed by no further reading is 28 WCPM over the first minute, not 48. Rate is descriptive correct words per minute on the sample. It is not converted to a national percentile, grade equivalent, or promised catch-up date.
 
 ## Understanding with read-aloud support
 
@@ -71,4 +73,25 @@ Still required before treating this as a validated assessment: reading-specialis
 - `node scripts/assessment-experience-browser.cjs` (lesson-style screens and responsive controls)
 - `npx tsx scripts/placement-spectrum-audio.ts --dry` (missing/changed assets)
 
-Audio generation is static and resumable. Only fixed author scripts go to Google. Batched synthesis strips spoken delimiters before publishing individual clips; local Whisper transcribes each resulting clip for a separate check. A single-clip mode repairs clipped, altered or incomplete speech; 306 final clips have matching checks. Transcription agreement is not a specialist content review. No child recordings are sent to this build process.
+Audio generation is static and resumable. Only fixed author scripts go to Google. Batched synthesis strips spoken delimiters before publishing individual clips; local Whisper transcribes each resulting clip for a separate check. A single-clip mode repairs clipped, altered or incomplete speech; 307 final clips have matching checks. Transcription agreement is not a specialist content review. No child recordings are sent to this build process.
+
+
+## Resume and hesitation
+
+Each measured word, oral blend, cold-read result, committed comprehension choice, and listening answer checkpoints to sessionStorage. The checkpoint contains a stable session ID, accumulated active duration, content/policy revision, child ID, enrollment, and evidence. Restore validates the whole prefix with the server's replay functions. It rejects another child/enrollment, expired (24-hour), future-dated, malformed, or old-revision drafts. Time away is excluded. The microphone check and unscored warm-up repeat on resume; completed probes do not. An unfinished recording is retried, never scored as silence. Completed cold-read evidence and partial comprehension survive; the audio blob itself does not survive a refresh. Completed-submit retry and atomic idempotency are unchanged. Browser storage must be available, and this is same-tab/device recovery, not cross-device sync.
+
+First word silence opens the child-facing “Take your time” choice, with spoken guidance, retry, an explicit “I don't know this word,” and exit. Retry does not append an answer. A second silence on the same item, a recognizer error, or a failed drain opens microphone recovery. Only a recognized attempt or an explicit pass yields a measured word verdict. Sound contrasts reuse the existing authored letter distractors, including other targets; there is no constant b/d/g trio.
+
+## Specialist review: confirmation policy remains open
+
+The five-of-six pair threshold is unchanged. With independent Bernoulli questions sharing the same success probability p, its confirmation probability is `6*p^5*(1-p) + p^6`:
+
+| Assumed per-question p | Current 5/6 pair | 4/6 pair, still requiring 2/3 on each passage |
+| --- | --- | --- |
+| 0.90 | 88.6% | 94.5% |
+| 0.80 | 65.5% | 80.3% |
+| 0.70 | 42.0% | 61.5% |
+
+Both columns assume independent, equally difficult items. These are conditional confirmation probabilities, not measured placement accuracy or proof that a particular p is an instructional norm. Comprehension questions within a passage are plausibly correlated. Jennifer should review these alongside actual items, passage comparability, the 80%/90% gates, and whether an additional same-band sample is preferable to lowering the threshold. No specialist endorsement is implied by the implementation.
+
+Still deferred from the September 10 audit: independent review of story/information equivalence, irregular-word attribution beyond honest mixed-set labels, real microphone/child/accent testing, and historical v3 report interpretations. The required legacy `score_percent` column remains a compatibility value with `overallScoreAvailable: false`; writing null requires a database/consumer migration, not a one-line route change. New v4 reports do not use it as a score. The authored difficulty axis remains an uncalibrated routing aid.

@@ -8,10 +8,9 @@ import AssessmentHandoff from "@/app/(protected)/placement/_components/Assessmen
 import { spectrumPassage } from "@/app/data/placement-spectrum/reading";
 import { LANGUAGE_ITEMS } from "@/lib/placement/spectrum";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
-import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { clipUrl, playUrlAsync } from "@/app/(protected)/placement/_components/audio";
 
-const passage = PLACEMENT_BANK.bands[2].passage!;
+const passage = spectrumPassage(2, "a");
 const question = passage.questions[2];
 const kRead = spectrumPassage(0, "a");
 const stretch = spectrumPassage(4, "a");
@@ -94,6 +93,7 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
     stage: "foundations",
     screen: { kind: "word", word: "Say the word", oral: true, listening: true },
   },
+  { label: "Take your time", stage: "words", screen: { kind: "hesitation" } },
 ];
 
 export default function PlacementStudio() {

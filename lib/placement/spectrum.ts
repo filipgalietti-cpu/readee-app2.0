@@ -23,6 +23,11 @@ export type SpectrumEvidence = {
 export type LanguageItem = (typeof languageBank)[number];
 export const LANGUAGE_ITEMS: readonly LanguageItem[] = languageBank;
 export const LANGUAGE_LIMIT = 10;
+// Enrollment chooses the first word probe, never the reachable floor or ceiling.
+// Bracketing ten steps takes at most five sets of five measured responses.
+export const WORD_RESPONSE_LIMIT = 25;
+export const READING_BAND_LIMIT = 3;
+export const READING_PAIR_MIN_CORRECT = 5; // Authored policy; specialist review pending.
 export const ORAL_BLENDS = [
   { id: "sp-blend-0", sounds: ["m", "short_a", "p"], word: "map" },
   { id: "sp-blend-1", sounds: ["s", "short_i", "t"], word: "sit" },
@@ -38,12 +43,15 @@ const clamp = (n: number) => Math.min(499, Math.max(0, n));
  * Technical failures have no response and cannot move this staircase. */
 export function wordSearch(enrolled: PlacedBand, responses: WordResponse[]) {
   let step = Math.max(1, enrolled * 2);
+  let lower = 0,
+    upper = 9;
   let correct = 0,
     missed = 0,
     index = 0,
     done = false;
   const passed: number[] = [],
     failed: number[] = [];
+  if (responses.length > WORD_RESPONSE_LIMIT) fail();
   for (const r of responses) {
     if (done || r.itemId !== wordItemId(step, index)) fail();
     index++;
@@ -52,13 +60,13 @@ export function wordSearch(enrolled: PlacedBand, responses: WordResponse[]) {
     if (correct < 4 && missed < 2) continue;
     if (correct >= 4) {
       passed.push(step);
-      if (step === 9 || failed.some((s) => s > step)) done = true;
-      else step++;
+      lower = step + 1;
     } else {
       failed.push(step);
-      if (step === 0 || passed.some((s) => s < step)) done = true;
-      else step--;
+      upper = step - 1;
     }
+    done = lower > upper;
+    if (!done) step = Math.floor((lower + upper) / 2);
     index = 0;
     correct = 0;
     missed = 0;
@@ -129,12 +137,16 @@ export function readingSearch(enrolled: PlacedBand, words: WordResponse[], trial
   let grade = w.grade;
   let form: "a" | "b" = "a";
   let firstCorrect = 0;
+  let failedBands = 0;
   let done = w.highest === null || w.highest === 0;
   let confirmed: PlacedBand | null = null;
   for (const trial of trials) {
     if (done || trial.passageId !== spectrumPassage(grade, form).id) fail();
     const score = readingScore(trial);
-    if (score.comfortable && (form === "a" || firstCorrect + score.correct >= 5)) {
+    if (
+      score.comfortable &&
+      (form === "a" || firstCorrect + score.correct >= READING_PAIR_MIN_CORRECT)
+    ) {
       if (form === "b") {
         confirmed = grade;
         done = true;
@@ -142,13 +154,21 @@ export function readingSearch(enrolled: PlacedBand, words: WordResponse[], trial
         firstCorrect = score.correct;
         form = "b";
       }
-    } else if (grade === 0) done = true;
-    else {
-      grade = (grade - 1) as PlacedBand;
-      form = "a";
+    } else {
+      failedBands++;
+      if (grade === 0 || failedBands >= READING_BAND_LIMIT) done = true;
+      else {
+        grade = (grade - 1) as PlacedBand;
+        form = "a";
+      }
     }
   }
-  return { done, confirmed, next: done ? null : spectrumPassage(grade, form) };
+  return {
+    done,
+    confirmed,
+    limited: confirmed === null && failedBands >= READING_BAND_LIMIT,
+    next: done ? null : spectrumPassage(grade, form),
+  };
 }
 
 /** Reuses Claude's authored difficulty axis and nearest-item staircase, with

@@ -9,7 +9,10 @@
   height: 100dvh;
   display: grid;
   grid-template-rows: 56px minmax(0, 1fr) 132px;
-  padding: 0 clamp(16px, 3vw, 48px) 12px;
+  padding: env(safe-area-inset-top, 0px)
+    max(clamp(16px, 3vw, 48px), env(safe-area-inset-right, 0px))
+    max(12px, env(safe-area-inset-bottom, 0px))
+    max(clamp(16px, 3vw, 48px), env(safe-area-inset-left, 0px));
   border-top: 5px solid #7860f9;
   background: #faf8ff;
   color: var(--pa-ink);
@@ -434,7 +437,8 @@
 @media (max-width: 767px) {
   .pa-frame {
     grid-template-rows: 48px minmax(0, 1fr) 96px;
-    padding: 0 16px 8px;
+    padding: env(safe-area-inset-top, 0px) max(16px, env(safe-area-inset-right, 0px))
+      max(8px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
   }
   .pa-top {
     font-size: 12px;

@@ -27,6 +27,13 @@ import {
   type SpectrumEvidence,
 } from "@/lib/placement/spectrum";
 import { type SpectrumPassage } from "@/app/data/placement-spectrum/reading";
+import {
+  CHECKPOINT_REVISION,
+  checkpointKey,
+  restoreSpectrumCheckpoint,
+  type SpectrumCheckpoint,
+} from "@/lib/placement/spectrum-checkpoint";
+import { LETTER_SOUND_CHOICES } from "@/app/data/placement-spectrum/words";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import { gradeRead, gradeWord, passageRate } from "@/lib/placement/read-grade";
 import {
@@ -58,6 +65,11 @@ import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 /** What a child says to pass on a word (the intro invites "I don't know"). */
 const SKIP_PHRASE = /\b(i\s+)?(don'?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
 const WORD_TIMEOUT_MS = 6000; // No recognized response means retry, never an incorrect answer.
+class NoSpeechCaptured extends Error {
+  constructor() {
+    super("No speech captured.");
+  }
+}
 const WARMUP_WORD = "sun"; // not in any list; never scored
 
 export default function PlacementRunner({
@@ -166,6 +178,7 @@ export default function PlacementRunner({
       if (!r.ok || !j.ok) throw new Error(j.error ?? "Could not save your results.");
       try {
         sessionStorage.removeItem(`readee.placement.pending.${childId}`);
+        sessionStorage.removeItem(checkpointKey(childId));
       } catch {
         /* storage unavailable */
       }
@@ -216,10 +229,10 @@ export default function PlacementRunner({
           verdict = v;
           res();
         };
-        const fail = () => {
+        const fail = (error: Error = new Error("Recognition failed.")) => {
           if (resolved) return;
           resolved = true;
-          reject(new Error("Recognition failed."));
+          reject(error);
         };
         skipRef.current = () => finish(false);
         const phrases: import("@/app/(protected)/luna/_components/azure-stream").PAWord[][] = [];
@@ -237,7 +250,7 @@ export default function PlacementRunner({
               const g = gradeWord(word, phrases);
               if (g.heard) finish(g.correct);
             },
-            fail,
+            () => fail(),
           )
           .then((l) => {
             let stopping: Promise<void> | undefined;
@@ -258,9 +271,9 @@ export default function PlacementRunner({
             // A bounded drain also recovers when the SDK never acknowledges stop.
             let drainTimer: number | undefined;
             const t = window.setTimeout(() => {
-              drainTimer = window.setTimeout(fail, 4000);
+              drainTimer = window.setTimeout(() => fail(), 4000);
               void stop().then(() => {
-                if (!resolved) fail();
+                if (!resolved) fail(new NoSpeechCaptured());
               }, fail);
             }, WORD_TIMEOUT_MS);
             const cleanup = () => {
@@ -283,10 +296,41 @@ export default function PlacementRunner({
     [robot, waitTap],
   );
 
+  const listenWordWithRetry = useCallback(
+    async (task: () => Promise<boolean>): Promise<boolean> => {
+      let silences = 0;
+      return recover(async () => {
+        for (;;) {
+          try {
+            return await task();
+          } catch (error) {
+            if (!(error instanceof NoSpeechCaptured) || ++silences > 1) throw error;
+            // The first hesitation is unmeasured. Only an explicit pass is a
+            // miss; retry keeps the same probe and cannot lower placement.
+            setScreen({ kind: "hesitation" });
+            setOrb("speaking");
+            const answer = waitTap();
+            await Promise.race([
+              playUrlAsync(spectrumClip("word-try-again")).catch((e) => {
+                if (!(e instanceof PlacementAudioCancelled)) throw e;
+              }),
+              answer,
+            ]);
+            setOrb("idle");
+            const choice = await answer;
+            stopClip();
+            if (cancelledRef.current) throw new Error("Assessment closed.");
+            if (choice === "pass") return false;
+          }
+        }
+      });
+    },
+    [recover, waitTap],
+  );
   const listenWord = useCallback(
     (word: string, nonsense = false, band?: number) =>
-      recover(() => listenWordOnce(word, nonsense, band)),
-    [recover, listenWordOnce],
+      listenWordWithRetry(() => listenWordOnce(word, nonsense, band)),
+    [listenWordWithRetry, listenWordOnce],
   );
 
   /** Tap items (letter sounds, blending, comprehension): play the prompt audio, then wait for a tap. */
@@ -597,6 +641,49 @@ export default function PlacementRunner({
     setFastAudio(robot); // robots do not wait for clips to finish
     const cancelled = () => cancelledRef.current;
     const moments: Moment[] = [];
+    let restored: SpectrumCheckpoint | null = null;
+    if (!demo) {
+      try {
+        restored = restoreSpectrumCheckpoint(
+          sessionStorage.getItem(checkpointKey(childId)),
+          childId,
+          enrolled,
+        );
+      } catch {
+        /* storage unavailable */
+      }
+    }
+    const sessionId = restored?.sessionId ?? crypto.randomUUID();
+    const previousSeconds = restored?.elapsedSeconds ?? 0;
+    const spectrum: SpectrumEvidence = restored?.spectrum ?? {
+      words: [],
+      reading: [],
+      language: [],
+      blending: [],
+    };
+    let activeReading = restored?.activeReading ?? null;
+    const elapsedSeconds = () =>
+      Math.min(3600, previousSeconds + Math.max(0, (Date.now() - startedRef.current) / 1000));
+    const checkpoint = () => {
+      if (demo || cancelled()) return;
+      try {
+        sessionStorage.setItem(
+          checkpointKey(childId),
+          JSON.stringify({
+            revision: CHECKPOINT_REVISION,
+            childId,
+            enrolled,
+            sessionId,
+            savedAt: Date.now(),
+            elapsedSeconds: elapsedSeconds(),
+            spectrum,
+            activeReading,
+          } satisfies SpectrumCheckpoint),
+        );
+      } catch {
+        /* evidence remains in memory when storage is unavailable */
+      }
+    };
     (async () => {
       // 0. Greeting: the child's own name if the pack clip exists, else the generic line.
       setStage("greeting");
@@ -646,11 +733,12 @@ export default function PlacementRunner({
       startedRef.current = Date.now();
 
       // The unscored warm-up checks recognition before any reading evidence.
-      if (!demo) trackFunnelClient("funnel.assessment_start", { child_id: childId, enrolled });
+      if (!demo && !restored)
+        trackFunnelClient("funnel.assessment_start", { child_id: childId, enrolled });
       setStage("warmup");
       await say("warmup-word", "Let's try one together first.");
       await listenWord(WARMUP_WORD);
-      const spectrum: SpectrumEvidence = { words: [], reading: [], language: [], blending: [] };
+      checkpoint();
       setStage("words");
       await say("words-intro", "Read each word out loud when it appears.");
       let wordState = wordSearch(enrolled, spectrum.words);
@@ -659,18 +747,14 @@ export default function PlacementRunner({
         const item = wordState.next;
         let correct: boolean;
         if (item.step === 0) {
-          const letters = [
-            item.word,
-            ...["b", "d", "g", "r"].filter((l) => l !== item.word).slice(0, 3),
-          ];
-          // Vary the answer location; receptive recognition, not sound production.
-          for (let n = 0; n < item.index % 4; n++) letters.push(letters.shift()!);
+          const letters = [...LETTER_SOUND_CHOICES[item.word]];
           const picked = await askTiles("Which letter makes this sound?", letters, () =>
             playSeq([clipUrl("narr-letter-sounds-prompt"), phonemeUrl(item.word)], 350),
           );
           correct = picked === item.word;
         } else correct = await listenWord(item.word, false, item.grade);
         spectrum.words.push({ itemId: item.id, correct });
+        checkpoint();
         wordState = wordSearch(enrolled, spectrum.words);
         await ack(spectrum.words.length);
       }
@@ -680,14 +764,15 @@ export default function PlacementRunner({
         setScreen({ kind: "luna", caption: "Listen to the sounds. Say the word." });
         setOrb("speaking");
         await playUrlAsync(spectrumClip("blend-intro"));
-        for (const item of ORAL_BLENDS) {
-          const correct = await recover(async () => {
+        for (const item of ORAL_BLENDS.slice(spectrum.blending.length)) {
+          const correct = await listenWordWithRetry(async () => {
             setScreen({ kind: "luna", caption: "Listen to the sounds." });
             setOrb("speaking");
             await playSeq(item.sounds.map(phonemeUrl), 350);
             return listenWordOnce(item.word, false, undefined, "Say the word");
           });
           spectrum.blending.push({ itemId: item.id, correct });
+          checkpoint();
           await ack(spectrum.blending.length);
         }
       }
@@ -696,24 +781,33 @@ export default function PlacementRunner({
       while (readingState.next) {
         if (cancelled()) return;
         const passage = readingState.next;
-        setStage("passage");
-        setScreen({ kind: "luna", caption: "Read this text out loud. Take your time." });
-        setOrb("speaking");
-        await playUrlAsync(spectrumClip("reading-intro"));
-        const read = await readPassage(passage.grade, passage);
+        if (!activeReading) {
+          setStage("passage");
+          setScreen({ kind: "luna", caption: "Read this text out loud. Take your time." });
+          setOrb("speaking");
+          await playUrlAsync(spectrumClip("reading-intro"));
+        }
+        const read = activeReading ? null : await readPassage(passage.grade, passage);
+        if (!activeReading) {
+          activeReading = { passageId: passage.id, speech: read!.ev, choices: [] };
+          checkpoint();
+        }
         setStage("comprehension");
-        const choices = [];
-        for (const q of passage.questions) {
+        const choices = activeReading.choices;
+        for (const q of passage.questions.slice(choices.length)) {
           const choiceId = await askQuestion(q, passage.grade <= 1, {
             title: passage.title,
             text: passage.text,
           });
           choices.push({ itemId: q.id, choiceId });
+          checkpoint();
           await ack(choices.length);
         }
-        spectrum.reading.push({ passageId: passage.id, speech: read.ev, choices });
+        spectrum.reading.push(activeReading);
+        activeReading = null;
+        checkpoint();
         readingState = readingSearch(enrolled, spectrum.words, spectrum.reading);
-        if (readingState.confirmed !== null && read.blob && !demo)
+        if (readingState.confirmed !== null && read?.blob && !demo)
           recordingPath = await uploadRecording(read.blob, passage.grade);
       }
       setStage("listening");
@@ -734,6 +828,7 @@ export default function PlacementRunner({
           { title: "Listen and think", text: item.text },
         );
         spectrum.language.push({ itemId: item.id, choiceId });
+        checkpoint();
         languageState = languageSearch(languageStart, spectrum.language);
         await ack(spectrum.language.length);
       }
@@ -751,14 +846,14 @@ export default function PlacementRunner({
         evidenceVersion: 4,
         spectrum,
         childId,
-        sessionId: crypto.randomUUID(),
+        sessionId,
         enrolled,
         ladder,
         passages: [],
         comprehension: null,
         foundations: null,
         moments,
-        durationSeconds: Math.round((Date.now() - startedRef.current) / 1000),
+        durationSeconds: Math.round(elapsedSeconds()),
         passageRecordingPath: recordingPath,
       };
       if (demo) {

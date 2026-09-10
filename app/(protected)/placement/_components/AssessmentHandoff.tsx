@@ -48,7 +48,7 @@ export default function AssessmentHandoff({
             </dl>
             <p className="pa-small">
               School grade guides the first questions. What {name} can read and understand
-              determines where their journey begins—even if that’s a different grade.
+              determines where their journey begins, even if that’s a different grade.
             </p>
           </div>
           <div className="pa-handoff-next">

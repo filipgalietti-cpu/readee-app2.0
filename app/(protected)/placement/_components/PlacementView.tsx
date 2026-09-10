@@ -35,6 +35,7 @@ export type PlacementScreen =
     }
   | { kind: "blocked"; reason: MicState | "audio" }
   | { kind: "recovery" }
+  | { kind: "hesitation" }
   | { kind: "closing"; error: string | null };
 
 type Props = {
@@ -402,6 +403,24 @@ export default function PlacementView({
               readDisabled={orb === "speaking"}
               onRead={screen.qid ? (id) => onReadOption(screen.qid!, id) : undefined}
             />
+          </div>
+        )}
+        {screen.kind === "hesitation" && (
+          <div className="pa-intro pa-help" role="status">
+            <ReadingOrb mode={orb} large label="Luna is waiting" />
+            <h1>Take your time.</h1>
+            <p>
+              You can try this word again. If you don’t know it, choose “I don’t know this word.”
+            </p>
+            <button className="pa-primary" onClick={() => onTap("retry")}>
+              Try again <ArrowRight size={20} />
+            </button>
+            <button className="pa-secondary" onClick={() => onTap("pass")}>
+              I don’t know this word
+            </button>
+            <a className="pa-text-link" href={exitHref}>
+              Come back later
+            </a>
           </div>
         )}
         {(screen.kind === "blocked" || screen.kind === "recovery") && (

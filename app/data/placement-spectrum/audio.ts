@@ -3,6 +3,7 @@ import language from "./language.json";
 /** Fixed author scripts only; no child's name, voice or other personal data. */
 export function spectrumAudioScripts(): Record<string, string> {
   const clips: Record<string, string> = {
+    "word-try-again": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
     "language-intro": "Now I will read some short texts to you. Listen, then choose an answer. You can hear each one again.",
     "blend-intro": "Listen to the sounds. Put them together and say the word. You will not see the word this time.",
     "reading-intro": "Read this text out loud. Take your time. If a word is tricky, try it and keep going.",

@@ -528,7 +528,8 @@ function buildSpectrumPlan(input: BuildPlanInput): PlacementPlan {
   const enrolled = clampBand(entry + d.relative.delta);
   const top = Math.max(entry, enrolled) as PlacedBand;
   const units = catalogUnits().filter((u) => u.band >= entry && u.band <= top);
-  const firstDomain = profile.readingBand === null || profile.wordBand <= entry ? "RF" : "RL";
+  const comprehensionFollowup = profile.readingBand === null && (profile.wordStep ?? 0) >= 2;
+  const firstDomain = comprehensionFollowup || profile.wordBand > entry ? "RL" : "RF";
   const first = units.find((u) => u.band === entry && u.domKey === firstDomain) ?? units[0];
   const steps: PlanStep[] = [];
   const unit = (u: PlanUnit) => ({ grade: u.grade, domain: u.domain, lessons: u.lessons });
