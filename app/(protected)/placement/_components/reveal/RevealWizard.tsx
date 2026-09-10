@@ -12,7 +12,6 @@ import { SkillBar } from "./SkillBar";
 import { PathRoute } from "./PathRoute";
 import { GradeLadder } from "./GradeLadder";
 import { BandChip } from "./BandChip";
-import { TrialTimeline } from "./TrialTimeline";
 import { GrowthChart } from "./GrowthChart";
 import { buildRevealCopy, narrationFor, type RevealCopy } from "./copy";
 import { AUTO_ADVANCE_MS, CARD_SLIDE, COUNT_MS, NODE_GAP_MS, POP_GAP_S, RISE, riseT, useCountUp, useReduced, wait } from "./motion";
@@ -630,8 +629,8 @@ function AskCard({ copy, reduced, onStartPlan, onNotNow }: CardProps & { onStart
   const steps = copy.path.steps.filter((s) => s.kind !== "skipped").length;
   const included: { icon: GlyphName; text: string }[] = [
     { icon: "map", text: `${copy.childName}'s curated path: ${steps} steps, starting where reading is comfortable today` },
-    { icon: "mic", text: "Luna listens every day and adjusts the next lesson" },
-    { icon: "mail", text: "A weekly progress email with the numbers from this report" },
+    { icon: "book-open", text: "Start with the first lesson in the recommended reading unit" },
+    { icon: "clipboard-check", text: "Keep the full reading report to revisit anytime" },
   ];
   return (
     <div className="my-auto @2xl:grid @2xl:grid-cols-5 @2xl:items-center @2xl:gap-10">
@@ -643,7 +642,7 @@ function AskCard({ copy, reduced, onStartPlan, onNotNow }: CardProps & { onStart
           {a.subhead}
         </motion.p>
         <motion.p className="mt-1 text-xs text-zinc-600 @2xl:text-lg" {...rise(reduced, 0.2)}>
-          {a.line.split("Readee+")[0]}<span className="font-semibold text-violet-700">Readee+</span>{a.line.split("Readee+")[1] ?? ""}
+          {a.line}
         </motion.p>
         <motion.ul className="mt-2.5 space-y-1 @2xl:mt-6 @2xl:space-y-3" {...rise(reduced, 0.3)}>
           {included.map((it) => (
@@ -666,11 +665,9 @@ function AskCard({ copy, reduced, onStartPlan, onNotNow }: CardProps & { onStart
         </motion.p>
       </div>
       <motion.div className={`mt-5 p-3.5 @2xl:col-span-2 @2xl:mt-0 @2xl:p-6 ${SURFACE}`} {...rise(reduced, 0.35)}>
-        <p className="text-sm font-bold uppercase tracking-wide text-violet-600 @2xl:text-base">How the trial works</p>
-        <div className="mt-2 @2xl:mt-3">
-          <TrialTimeline steps={a.timeline} />
-        </div>
-        <p className="mt-2 text-xs text-zinc-500 @2xl:mt-3">Cancel anytime in one tap.<span className="hidden @2xl:inline"> Nothing is charged before {a.timeline[2]?.when ?? "the trial ends"}.</span></p>
+        <h3 className="text-lg font-semibold text-zinc-900">Begin with a lesson</h3>
+        <p className="mt-3 text-sm leading-relaxed text-zinc-600">The assessment found the starting point. Now your child can learn and practice one skill at a time.</p>
+        <p className="mt-3 text-sm font-semibold text-violet-700">Your first reading unit is free. No card needed.</p>
         <button
           type="button"
           onClick={onStartPlan}
