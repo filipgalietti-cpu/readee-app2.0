@@ -16,8 +16,9 @@
 import { reportFailure } from "@/lib/observability/critical";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { PLACEMENT_NARRATION } from "@/app/data/placement-bank/narration";
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
-import { createLadder, recordWord, activeList, decodingLevel, needsFoundations, BAND_LABEL, type LadderState, type Band, type PlacedBand } from "@/lib/placement/ladder";
+import { createLadder, recordWord, activeList, decodingLevel, needsFoundations, type LadderState, type Band, type PlacedBand } from "@/lib/placement/ladder";
 import { gradeRead, gradeWord, passageRate } from "@/lib/placement/read-grade";
 import { nextPassageBand, type ComprehensionCheck } from "@/lib/placement/passage-search";
 import { PASSAGE_MAX_SECONDS, PASSAGE_READ_SECONDS, PASSAGE_SILENCE_STOP_MS, type BankQuestion } from "@/lib/placement/bank";
@@ -25,29 +26,14 @@ import { trackFunnelClient } from "@/lib/analytics/funnel";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
 import type { PassageEvidence, CountEvidence } from "@/lib/placement/decide";
 import { usePlacementMic, type MicState } from "./mic";
-import { playNarr, playUrlAsync, playSeq, clipUrl, phonemeUrl, childAudioUrl, stopClip, setFastAudio, softTick } from "./audio";
-import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
-import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
-import { FluentIcon } from "@/app/_components/FluentIcon";
+import { PlacementAudioCancelled, PlacementAudioError, playNarrRequired as playNarr, playUrlRequired as playUrlAsync, playSeqRequired as playSeq, clipUrl, phonemeUrl, childAudioUrl, stopClip, setFastAudio, softTick } from "./audio";
+import { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
+import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 
 /** What a child says to pass on a word (the intro invites "I don't know"). */
 const SKIP_PHRASE = /\b(i\s+)?(don'?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
 const WORD_TIMEOUT_MS = 6000; // No recognized response means retry, never an incorrect answer.
 const WARMUP_WORD = "sun"; // not in any list; never scored
-
-type Screen =
-  | { kind: "luna"; caption: string }
-  | { kind: "mic"; status: MicState; retry: boolean }
-  | { kind: "word"; word: string; listening: boolean; nonsense?: boolean; band?: number }
-  | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
-  | { kind: "passage"; title: string; text: string; reading: boolean }
-  // `passage` is set ONLY for comprehension on a passage the child read
-  // themselves. The listening questions deliberately leave it undefined -
-  // showing the text there would turn a listening task into a reading one.
-  | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string; speakers?: boolean; qid?: string; passage?: { title: string; text: string } }
-  | { kind: "blocked"; reason: MicState }
-  | { kind: "recovery" }
-  | { kind: "closing"; error: string | null };
 
 export default function PlacementRunner({
   childId,
@@ -70,7 +56,9 @@ export default function PlacementRunner({
 }) {
   const router = useRouter();
   const mic = usePlacementMic();
-  const [screen, setScreen] = useState<Screen>({ kind: "luna", caption: "" });
+  const [begun, setBegun] = useState(robot);
+  const [screen, setScreen] = useState<Screen>({ kind: "ready" });
+  const replayRef = useRef<(() => Promise<void>) | null>(null);
   const [orb, setOrb] = useState<LunaMode>("idle");
   const [stage, setStage] = useState("greeting");
   const tapRef = useRef<((id: string) => void) | null>(null);
@@ -85,7 +73,9 @@ export default function PlacementRunner({
 
   const waitTap = useCallback(() => new Promise<string>((res) => { tapRef.current = res; }), []);
   const tap = useCallback((id: string) => { const r = tapRef.current; tapRef.current = null; r?.(id); }, []);
-  const say = useCallback(async (key: Parameters<typeof playNarr>[0], caption: string) => {
+  const say = useCallback(async (key: Parameters<typeof playNarr>[0], _caption: string) => {
+    const caption = PLACEMENT_NARRATION[key];
+    replayRef.current = null;
     setOrb("speaking");
     setScreen({ kind: "luna", caption });
     await playNarr(key);
@@ -136,6 +126,7 @@ export default function PlacementRunner({
 
   /** One spoken word: listen with the word as the reference; score only a recognized response or an explicit skip; silence remains unmeasured. */
   const listenWordOnce = useCallback(async (word: string, nonsense = false, band?: number): Promise<boolean> => {
+    replayRef.current = null;
     setScreen({ kind: "word", word, listening: false, nonsense, band });
     setOrb("listening");
     if (robot) {
@@ -191,12 +182,15 @@ export default function PlacementRunner({
 
   /** Tap items (letter sounds, blending, comprehension): play the prompt audio, then wait for a tap. */
   const askTiles = useCallback(async (caption: string, tiles: string[], audio: () => Promise<void>): Promise<string> => {
+    replayRef.current = audio;
     setScreen({ kind: "tiles", caption, tiles, picked: null });
     setOrb("speaking");
     const answer = waitTap();
     await audio();
     setOrb("idle");
     const picked = await answer;
+    replayRef.current = null;
+    stopClip();
     setScreen({ kind: "tiles", caption, tiles, picked });
     return picked;
   }, [waitTap]);
@@ -206,6 +200,7 @@ export default function PlacementRunner({
    * support; from 2nd grade up the child reads the choices (each has its own speaker for a re-read on request).
    */
   const askQuestion = useCallback(async (q: BankQuestion, readOptions = true, passage?: { title: string; text: string }): Promise<boolean> => {
+    replayRef.current = () => playUrlAsync(clipUrl(`q-${q.id}`));
     const correctId = robot ? q.correctId : undefined; // robots may see the key; children never do
     const base = { kind: "question" as const, prompt: q.prompt, options: q.options, correctId, speakers: !readOptions, qid: q.id, passage };
     setScreen({ ...base, picked: null, readingIdx: -1 });
@@ -226,6 +221,7 @@ export default function PlacementRunner({
     // Never re-enable the choices once answered (a flash of enabled buttons between two renders).
     if (answered === null) setScreen({ ...base, picked: null, readingIdx: -1 });
     const picked = answered ?? (await tapP);
+    replayRef.current = null;
     stopClip();
     setScreen({ ...base, picked, readingIdx: -1 });
     await new Promise((r) => setTimeout(r, 400));
@@ -238,6 +234,7 @@ export default function PlacementRunner({
    * or a long silence after the window. Accuracy comes from everything read. Returns evidence + the recording.
    */
   const readPassageOnce = useCallback(async (band: Band): Promise<{ ev: PassageEvidence; keptGoing: boolean; blob: Blob | null }> => {
+    replayRef.current = null;
     const p = PLACEMENT_BANK.bands[band].passage!;
     await playUrlAsync(clipUrl(`title-${band}`), 5000);
     setScreen({ kind: "passage", title: p.title, text: p.text, reading: false });
@@ -255,6 +252,7 @@ export default function PlacementRunner({
     let finishedEarly = false;
     let stopNow: (() => void) | null = null;
     let lastAttempted = 0;
+    let heardAudio = false;
     let captureError: string | null = null;
     const listener = await micRef.current.listen(p.text, (ph) => {
       phrases.push(ph.words);
@@ -274,11 +272,16 @@ export default function PlacementRunner({
       const end = () => { if (settled) return; settled = true; timers.forEach((t) => window.clearTimeout(t)); window.clearInterval(quiet); res(); };
       stopNow = end;
       if (captureError) { res(); return; }
+      // Missing speech is a technical retry, not a minute of silent testing.
+      timers.push(window.setTimeout(() => {
+        if (lastAttempted === 0 && !heardAudio) { captureError = "No reading was captured."; end(); }
+      }, 12000));
       // The rate window is scored from word timestamps after recognition drains.
       timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
       // Silence means the child has stopped: a short one once most of the passage is read, a long one otherwise
       // (never before the rate window unless they are near the end).
       const quiet = window.setInterval(() => {
+        heardAudio ||= micRef.current.level > 0.12;
         const nearlyDone = lastAttempted >= totalWords * 0.8;
         const pastWindow = Date.now() - startedAt > PASSAGE_READ_SECONDS * 1000;
         const quietMs = nearlyDone ? 5000 : PASSAGE_SILENCE_STOP_MS;
@@ -286,7 +289,14 @@ export default function PlacementRunner({
       }, 1000);
     });
     const elapsed = Math.min(PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
-    if (listener) await listener.stop();
+    if (listener) {
+      let drainTimer: ReturnType<typeof setTimeout> | undefined;
+      try {
+        await Promise.race([listener.stop(), new Promise<never>((_, reject) => {
+          drainTimer = setTimeout(() => reject(new Error("Speech recognition did not finish.")), 4000);
+        })]);
+      } finally { clearTimeout(drainTimer); }
+    }
     const blob = micRef.current.stopRecording();
     setOrb("idle");
     if (captureError) throw new Error(captureError);
@@ -324,6 +334,7 @@ export default function PlacementRunner({
 
   // ───────────────────────────────────────────────── the exam script
   useEffect(() => {
+    if (!begun) return;
     // StrictMode mounts twice in dev: the script starts once (runRef) and the
     // first fake cleanup must not cancel it, so cancellation lives in a ref
     // that each (re)mount resets and only a real unmount leaves set.
@@ -501,6 +512,7 @@ export default function PlacementRunner({
         setScreen({ kind: "luna", caption: "Listen..." });
         setOrb("speaking");
         await playUrlAsync(clipUrl("story-listen"), 60000);
+        setStage("comprehension");
         await say("listen-questions", "Here come the questions.");
         let correct = 0;
         for (const [i, q] of f.listening.questions.entries()) { if (await askQuestion(q)) correct++; await ack(i); }
@@ -508,6 +520,7 @@ export default function PlacementRunner({
         moments.push({ kind: "comprehension", band: 0, correct, total: f.listening.questions.length });
       }
 
+      if (cancelled()) return;
       // 6. Close and save.
       setStage("closing");
       setScreen({ kind: "closing", error: null });
@@ -524,199 +537,21 @@ export default function PlacementRunner({
       submissionRef.current = submission;
       try { sessionStorage.setItem(`readee.placement.pending.${childId}`, JSON.stringify({ savedAt: Date.now(), submission })); } catch { /* retry still works in memory */ }
       await saveSubmission();
-    })().catch(() => { if (!cancelled()) { micRef.current.close(); setScreen({ kind: "blocked", reason: "unavailable" }); } });
+    })().catch((error) => { if (!cancelled()) { micRef.current.close(); setOrb("idle"); setScreen({ kind: "blocked", reason: error instanceof PlacementAudioError ? "audio" : "unavailable" }); } });
     return () => { cancelledRef.current = true; stopClip(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [begun]);
 
   // ───────────────────────────────────────────────── render
   return (
-    <main className="h-dvh overflow-hidden bg-violet-50/40 text-violet-950" data-placement-stage={stage}>
-      <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-5 py-4 md:px-10 md:py-6">
-        {/* Header: the child's own bunny (their equipped outfit) with their name on the left, Luna on the right. */}
-        <header className="flex w-full shrink-0 items-center justify-between" data-runner-header>
-          <div className="flex items-center gap-3 md:gap-4">
-            <div className="h-20 w-20 md:h-28 md:w-28" data-bunny>
-              {stage === "greeting" ? (
-                <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
-              ) : (
-                <Bunny outfitId={outfitId ?? "bunny_classic"} />
-              )}
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-base font-semibold text-violet-900 md:text-lg" data-child-name>{childName}</p>
-              <p className="text-xs text-violet-500 md:text-sm">{BAND_LABEL[enrolled]} grade placement</p>
-            </div>
-          </div>
-          <LunaOrb mode={orb} analyser={mic.analyser} size={88} />
-        </header>
-
-        <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center gap-6 py-4 md:gap-8">
-          {screen.kind === "luna" && (
-            <p className="max-w-2xl text-center text-2xl font-semibold leading-relaxed md:text-4xl md:leading-snug" data-caption>{screen.caption}</p>
-          )}
-
-          {screen.kind === "mic" && (
-            <div className="flex flex-col items-center gap-6" data-mic-check>
-              <p className="text-center text-2xl font-semibold">{screen.retry ? "Let's try once more. Say hello!" : "Say hello to me!"}</p>
-              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]">
-                <FluentIcon name="microphone" size={44} />
-              </div>
-              <div className="h-2 w-48 overflow-hidden rounded-full bg-violet-100">
-                <div className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500 transition-[width] duration-150" style={{ width: `${Math.round(mic.level * 100)}%` }} />
-              </div>
-            </div>
-          )}
-
-          {screen.kind === "word" && (
-            <div className="flex flex-col items-center gap-6" data-word={screen.word} data-band={screen.band ?? ""}>
-              <div className="rounded-3xl bg-white px-12 py-8 text-6xl font-semibold tracking-wide text-violet-900 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] md:px-20 md:py-12 md:text-8xl">
-                {screen.word}
-              </div>
-              <div className={`flex items-center gap-2 text-sm ${screen.listening ? "text-violet-700" : "text-violet-400"}`}>
-                <FluentIcon name="microphone" size={18} /> {screen.listening ? "I'm listening" : "One moment"}
-              </div>
-              <button
-                type="button"
-                className="min-h-14 rounded-2xl border border-violet-200 bg-white px-8 py-3 text-lg font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.97] md:text-xl"
-                onClick={() => skipRef.current?.()}
-                disabled={!screen.listening && !robot}
-                data-skip-word
-              >
-                I don&apos;t know
-              </button>
-              {robot && screen.listening && (
-                <div className="flex gap-3" data-robot-controls>
-                  <button type="button" data-robot="correct" className="rounded-xl bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800" onClick={() => tap("correct")}>read it</button>
-                  <button type="button" data-robot="wrong" className="rounded-xl bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-800" onClick={() => tap("wrong")}>missed it</button>
-                </div>
-              )}
-            </div>
-          )}
-
-          {screen.kind === "tiles" && (
-            <div className="flex w-full flex-col items-center gap-6">
-              <p className="text-center text-xl font-semibold md:text-3xl">{screen.caption}</p>
-              <div className={`grid w-full max-w-3xl gap-4 md:gap-6 ${screen.tiles.length > 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
-                {screen.tiles.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    data-tile={t}
-                    disabled={screen.picked !== null}
-                    onClick={() => tap(t)}
-                    className={`rounded-2xl bg-white py-8 text-4xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.96] md:py-12 md:text-6xl ${screen.picked === t ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : "hover:-translate-y-0.5"}`}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {screen.kind === "passage" && (
-            <article className="flex min-h-0 w-full max-w-3xl flex-col overflow-y-auto rounded-3xl bg-white p-6 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] md:p-10" data-passage-reading={screen.reading ? "1" : "0"}>
-              <h1 className="mb-3 text-2xl font-semibold text-violet-900 md:text-3xl">{screen.title}</h1>
-              <p className="whitespace-pre-line text-[20px] leading-[1.8] text-violet-950 md:text-[24px]">{screen.text}</p>
-              <div className={`mt-6 flex items-center gap-2 text-sm ${screen.reading ? "text-violet-700" : "text-violet-400"}`}>
-                <FluentIcon name="microphone" size={18} /> {screen.reading ? "Read it out loud" : "Get ready"}
-              </div>
-              {robot && screen.reading && (
-                <form
-                  className="mt-4 flex items-center gap-2 text-sm"
-                  data-robot-passage
-                  onSubmit={(e) => { e.preventDefault(); const f = e.currentTarget; tap(`${(f.elements.namedItem("c") as HTMLInputElement).value}/${(f.elements.namedItem("t") as HTMLInputElement).value}`); }}
-                >
-                  <input name="c" defaultValue="60" className="w-16 rounded-lg border border-violet-200 px-2 py-1" aria-label="words correct" />
-                  <span>of</span>
-                  <input name="t" defaultValue="70" className="w-16 rounded-lg border border-violet-200 px-2 py-1" aria-label="words attempted" />
-                  <button type="submit" data-robot="passage" className="rounded-xl bg-violet-100 px-3 py-1 font-semibold text-violet-800">done</button>
-                </form>
-              )}
-            </article>
-          )}
-
-          {screen.kind === "question" && (
-            <div className="flex w-full max-w-3xl flex-col items-center gap-6" data-question>
-              {screen.passage && (
-                <div className="max-h-40 w-full overflow-y-auto rounded-2xl border border-violet-200 bg-white px-5 py-4 text-left" data-look-back>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-violet-600">
-                    {screen.passage.title}
-                  </div>
-                  <p className="mt-1 whitespace-pre-line text-base leading-relaxed text-zinc-700 md:text-lg">
-                    {screen.passage.text}
-                  </p>
-                </div>
-              )}
-              <p className="text-center text-2xl font-semibold leading-snug md:text-3xl">{screen.prompt}</p>
-              <div className="grid w-full gap-3 md:gap-4">
-                {screen.options.map((o, i) => (
-                  <div key={o.id} className="relative">
-                    <button
-                      type="button"
-                      data-option-id={o.id}
-                      data-correct={screen.correctId === o.id ? "1" : undefined}
-                      disabled={screen.picked !== null}
-                      onClick={() => tap(o.id)}
-                      className={`w-full rounded-2xl bg-white px-6 py-5 text-left text-xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.98] ${screen.speakers ? "pr-16" : ""} ${screen.readingIdx === i ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""} ${screen.picked === o.id ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : ""}`}
-                    >
-                      {o.label}
-                    </button>
-                    {screen.speakers && screen.qid && (
-                      <button
-                        type="button"
-                        aria-label="Read this choice to me"
-                        data-option-speaker={o.id}
-                        onClick={() => { void playUrlAsync(clipUrl(`opt-${screen.qid}-${o.id}`), 4000); }}
-                        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-violet-50 text-violet-700 transition active:scale-95"
-                      >
-                        <FluentIcon name="speaker" size={20} />
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {screen.kind === "blocked" && (
-            <div className="flex max-w-md flex-col items-center gap-4 text-center" data-blocked={screen.reason}>
-              <p className="text-2xl font-semibold">Luna can&apos;t hear yet.</p>
-              <p className="text-violet-700">
-                {screen.reason === "denied"
-                  ? "The microphone is blocked for this site. Allow it in the browser's address bar, then try again."
-                  : "Check that a microphone is connected and nothing else is using it, then try again."}
-              </p>
-              <button type="button" className="rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-3 font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]" onClick={() => window.location.reload()}>
-                Try again
-              </button>
-              <a href="/dashboard" className="text-sm text-violet-500 underline underline-offset-4">Skip the placement for now</a>
-            </div>
-          )}
-
-          {screen.kind === "recovery" && (
-            <div className="flex max-w-md flex-col items-center gap-4 text-center" role="alert">
-              <p className="text-2xl font-semibold">Let’s check the microphone.</p>
-              <p>We could not hear a clear response. Nothing was marked wrong. Check that your microphone is on and try this part again. If you don’t know a word, you can say “I don’t know” or tap the skip button.</p>
-              <button className="rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white" onClick={() => tap("retry")}>Try this part again</button>
-              <a href="/dashboard" className="underline">Return to dashboard</a>
-            </div>
-          )}
-          {screen.kind === "closing" && (
-            <div className="flex flex-col items-center gap-4 text-center" data-closing>
-              <p className="text-2xl font-semibold">That&apos;s everything. You did it.</p>
-              {screen.error ? (
-                <>
-                  <p className="text-violet-700">{screen.error}</p>
-                  <button type="button" className="rounded-2xl bg-white px-5 py-3 font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]" onClick={() => { void saveSubmission(); }}>Save my results again</button>
-                </>
-              ) : (
-                <p className="text-violet-500">One moment...</p>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </main>
+    <PlacementView
+      screen={screen} stage={stage} childName={childName} outfitId={outfitId}
+      orb={orb} analyser={mic.analyser} level={mic.level} robot={robot}
+      onBegin={() => setBegun(true)} onTap={tap} onSkip={() => skipRef.current?.()}
+      onRetry={() => window.location.reload()} onSave={() => { void saveSubmission(); }}
+      onReplay={(screen.kind === "tiles" && screen.picked === null) || (screen.kind === "question" && screen.picked === null)
+        ? () => { void replayRef.current?.().catch((error) => { if (error instanceof PlacementAudioCancelled || cancelledRef.current) return; micRef.current.close(); setScreen({ kind: "blocked", reason: "audio" }); }); } : undefined}
+      onReadOption={(qid, id) => { void playUrlAsync(clipUrl(`opt-${qid}-${id}`), 4000).catch((error) => { if (error instanceof PlacementAudioCancelled || cancelledRef.current) return; micRef.current.close(); setScreen({ kind: "blocked", reason: "audio" }); }); }}
+    />
   );
 }

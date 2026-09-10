@@ -60,15 +60,16 @@ describe("assessment audit: enrollment to reading level to journey", () => {
 
 describe("assessment audit: recognition timing", () => {
   afterEach(() => vi.useRealTimers());
-  it("counts pre-cutoff speech when recognition arrives after the cutoff", async () => {
+  it.each(["delayed speech", "silence", "stalled stop"])("handles passage capture: %s", async (mode) => {
     vi.useFakeTimers();
     const text = PLACEMENT_BANK.bands[2].passage!.text;
     const words = text.split(/\s+/).slice(0, 70).map((word, i) => ({ word, accuracy: 100, errorType: "None", phonemeMin: 100, worst: "", offsetSeconds: i * 0.8, durationSeconds: 0.5 }));
     // Model 70 correctly spoken words whose finalized recognition arrives at 61s.
     const mic = {
+      level: mode === "delayed speech" ? 0.3 : 0,
       listen: async (_text: string, onPhrase: (p: unknown) => void) => {
-        setTimeout(() => onPhrase({ words }), 61000);
-        return { stop: async () => {} };
+        if (mode === "delayed speech") setTimeout(() => onPhrase({ words }), 61000);
+        return { stop: async () => mode === "stalled stop" ? new Promise<void>(() => {}) : undefined };
       }, startRecording: () => {}, stopRecording: () => null,
     };
     const hooks = { useEffect: () => {}, useCallback: (fn: unknown) => fn, useRef: (v: unknown) => ({ current: v }), useState: (v: unknown) => [v, () => {}] };
@@ -77,7 +78,7 @@ describe("assessment audit: recognition timing", () => {
       window: { setTimeout, clearTimeout, setInterval, clearInterval },
       require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({}) }
         : s === "./mic" ? { usePlacementMic: () => mic }
-        : s === "./audio" ? { playUrlAsync: async () => {}, playNarr: async () => {}, clipUrl: () => "" }
+        : s === "./audio" ? { playUrlRequired: async () => {}, playNarrRequired: async () => {}, clipUrl: () => "" }
         : s === "@/app/data/placement-bank" ? { PLACEMENT_BANK }
         : s === "@/lib/placement/bank" ? bank : s === "@/lib/placement/read-grade" ? grader : {},
     };
@@ -89,6 +90,12 @@ describe("assessment audit: recognition timing", () => {
     vm.runInNewContext(ts.transpileModule(source, { compilerOptions: { jsx: ts.JsxEmit.ReactJSX, module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, box);
     box.module.exports.default({ childId: "audit", childName: "Reader", enrolled: 4, outfitId: null });
     const result = box.readPassageOnce(2);
+    if (mode !== "delayed speech") {
+      const failure = expect(result).rejects.toThrow(mode === "silence" ? "No reading was captured" : "did not finish");
+      await vi.advanceTimersByTimeAsync(mode === "silence" ? 12000 : 16000);
+      await failure;
+      return;
+    }
     await vi.advanceTimersByTimeAsync(80000);
     const { ev } = await result;
     expect(ev.wordsCorrect).toBe(70);

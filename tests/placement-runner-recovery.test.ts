@@ -16,7 +16,7 @@ function runner(listen: (...args: any[]) => Promise<any> = async () => { throw n
   const box: Record<string, any> = {
     module: { exports: {} }, console, setTimeout, clearTimeout, Date, Promise,
     window: { setTimeout, clearTimeout }, fetch, AbortSignal, sessionStorage: storage,
-    require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({ push }) } : s === "./mic" ? { usePlacementMic: () => ({ listen }) } : s === "@/lib/observability/critical" ? { reportFailure: vi.fn() } : s === "@/lib/placement/read-grade" ? { gradeWord } : {},
+    require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({ push }) } : s === "./audio" ? { stopClip: vi.fn() } : s === "./mic" ? { usePlacementMic: () => ({ listen }) } : s === "@/lib/observability/critical" ? { reportFailure: vi.fn() } : s === "@/lib/placement/read-grade" ? { gradeWord } : {},
   };
   box.exports = box.module.exports;
   box.globalThis = box;

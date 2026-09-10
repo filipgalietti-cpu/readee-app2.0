@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function DemoShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   useEffect(() => {
+    if (pathname.startsWith("/demo/placement-")) return;
     // Hide nav, footer, and remove main padding for full-screen demo
     const nav = document.querySelector("nav, [data-nav]") as HTMLElement;
     const footer = document.querySelector("footer") as HTMLElement;
@@ -35,7 +38,7 @@ export default function DemoShell({ children }: { children: React.ReactNode }) {
       }
       style.remove();
     };
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 }
