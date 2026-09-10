@@ -4,6 +4,7 @@ import { useState } from "react";
 import PlacementView, {
   type PlacementScreen,
 } from "@/app/(protected)/placement/_components/PlacementView";
+import ParentReaderSetup from "@/app/(protected)/dashboard/_components/ParentReaderSetup";
 import AssessmentHandoff from "@/app/(protected)/placement/_components/AssessmentHandoff";
 import { spectrumPassage } from "@/app/data/placement-spectrum/reading";
 import { LANGUAGE_ITEMS } from "@/lib/placement/spectrum";
@@ -93,7 +94,28 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
     stage: "foundations",
     screen: { kind: "word", word: "Say the word", oral: true, listening: true },
   },
-  { label: "Take your time", stage: "words", screen: { kind: "hesitation" } },
+  {
+    label: "Take your time",
+    stage: "words",
+    screen: { kind: "word", word: "garden", listening: false, issue: "quiet" },
+  },
+  { label: "Parent setup", stage: "greeting", screen: { kind: "ready" } },
+  {
+    label: "Word microphone retry",
+    stage: "words",
+    screen: { kind: "word", word: "garden", listening: false, issue: "technical" },
+  },
+  {
+    label: "Story microphone retry",
+    stage: "passage",
+    screen: {
+      kind: "passage",
+      title: passage.title,
+      text: passage.text,
+      reading: false,
+      issue: "technical",
+    },
+  },
 ];
 
 export default function PlacementStudio() {
@@ -127,7 +149,9 @@ export default function PlacementStudio() {
         </label>
         <button onClick={next}>Next screen</button>
       </div>
-      {index === 8 ? (
+      {index === 14 ? (
+        <ParentReaderSetup parentId="preview-reader-setup" preview />
+      ) : index === 8 ? (
         <AssessmentHandoff
           name="Maya"
           gradeLabel="Grade 4"
@@ -145,6 +169,14 @@ export default function PlacementStudio() {
           onBegin={next}
           onTap={(id) => (id === "retry" ? change(2) : setPicked(id))}
           onSkip={next}
+          onFinish={next}
+          onReplay={
+            screen.kind === "tiles" || (screen.kind === "word" && screen.oral)
+              ? () => {
+                  void playUrlAsync(spectrumClip("sound-prompt-1"));
+                }
+              : undefined
+          }
           onRetry={() => change(1)}
           onSave={next}
           onReadOption={(qid, id) => {
@@ -162,7 +194,7 @@ export default function PlacementStudio() {
           exitHref="/demo/placement-run"
         />
       )}
-      <style>{`.pa-studio .pa-frame{top:54px;height:calc(100dvh - 54px)}.pa-studio-controls{position:fixed;inset:0 0 auto;z-index:60;height:54px;padding:8px 18px;display:flex;gap:18px;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e6ddf4;font:12px var(--font-nunito),sans-serif;color:#655874}.pa-studio-controls label{display:flex;align-items:center;gap:8px}.pa-studio-controls select,.pa-studio-controls button{border:1px solid #e6ddf4;border-radius:8px;background:white;padding:7px;color:#5b21b6;font:inherit;min-height:36px}.pa-studio-controls button{cursor:pointer}@media(max-width:650px){.pa-studio-controls{gap:8px;padding:5px 10px;font-size:10px}.pa-studio-controls>span{max-width:110px}.pa-studio-controls label{gap:4px}}`}</style>
+      <style>{`.pa-studio .pa-reader-setup{padding-top:78px}.pa-studio .pa-frame{top:54px;height:calc(100dvh - 54px)}.pa-studio-controls{position:fixed;inset:0 0 auto;z-index:60;height:54px;padding:8px 18px;display:flex;gap:18px;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e6ddf4;font:12px var(--font-nunito),sans-serif;color:#655874}.pa-studio-controls label{display:flex;align-items:center;gap:8px}.pa-studio-controls select,.pa-studio-controls button{border:1px solid #e6ddf4;border-radius:8px;background:white;padding:7px;color:#5b21b6;font:inherit;min-height:36px}.pa-studio-controls button{cursor:pointer}@media(max-width:650px){.pa-studio-controls{gap:8px;padding:5px 10px;font-size:10px}.pa-studio-controls>span{max-width:110px}.pa-studio-controls label{gap:4px}}`}</style>
     </div>
   );
 }

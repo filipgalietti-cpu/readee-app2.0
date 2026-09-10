@@ -31,7 +31,7 @@ import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
-import ParentReaderSetup from "./_components/ParentReaderSetup";
+import ReaderSetupRedirect from "./_components/ReaderSetupRedirect";
 import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel, hasCustomName } from "@/lib/levels/levels";
@@ -356,7 +356,7 @@ export default function Dashboard() {
   }
 
   if (children.length === 0) {
-    return parentId ? <ParentReaderSetup parentId={parentId} /> : <SkeletonPage cards={1} />;
+    return parentId ? <ReaderSetupRedirect /> : <SkeletonPage cards={1} />;
   }
 
   if (selectedChild) {

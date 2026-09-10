@@ -3,6 +3,11 @@ import language from "./language.json";
 /** Fixed author scripts only; no child's name, voice or other personal data. */
 export function spectrumAudioScripts(): Record<string, string> {
   const clips: Record<string, string> = {
+    "hello-back": "Hello! I heard you. I'm glad you're here.",
+    "sound-prompt-0": "Which letter makes this sound?",
+    "sound-prompt-1": "And what about this sound?",
+    "sound-prompt-2": "Which letter goes with this one?",
+    "sound-prompt-3": "And this sound?",
     "word-try-again": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
     "language-intro": "Now I will read some short texts to you. Listen, then choose an answer. You can hear each one again.",
     "blend-intro": "Listen to the sounds. Put them together and say the word. You will not see the word this time.",

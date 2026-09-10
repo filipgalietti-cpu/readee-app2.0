@@ -14,7 +14,7 @@ import type { PlacedBand } from "./ladder";
 // A draft is local, short-lived evidence, never a saved placement or a recording.
 // Bump when authored content or the replay policy changes, so old answers cannot
 // silently be applied to a different item or route.
-export const CHECKPOINT_REVISION = 2;
+export const CHECKPOINT_REVISION = 3;
 const Evidence = PlacementSubmissionSchema.shape.spectrum.unwrap();
 const ActiveReading = Evidence.shape.reading.element.extend({
   choices: z.array(Evidence.shape.reading.element.shape.choices.element).max(3),
@@ -63,10 +63,11 @@ export function restoreSpectrumCheckpoint(
     if (ev.blending.length > blends.length || ev.blending.some((r, i) => r.itemId !== blends[i].id))
       return null;
     if (!w.done || ev.blending.length < blends.length) {
-      if (ev.reading.length || ev.language.length || draft.activeReading) return null;
+      if (ev.reading.length || ev.language.length || draft.activeReading || ev.readingStopped)
+        return null;
       return draft;
     }
-    const r = readingSearch(enrolled, ev.words, ev.reading);
+    const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped);
     if (draft.activeReading) {
       const active = draft.activeReading;
       if (!r.next || active.passageId !== r.next.id || ev.language.length) return null;

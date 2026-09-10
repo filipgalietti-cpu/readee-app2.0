@@ -180,6 +180,7 @@ export function usePlacementMic() {
       referenceText: string,
       onPhrase?: (p: PAPhrase) => void,
       onError?: (message: string) => void,
+      onRecognizing?: (text: string) => void,
     ): Promise<Listener> => {
       const tok = await speechToken();
       if (!tok || !ctxRef.current) throw new Error("Speech recognition is unavailable.");
@@ -195,6 +196,7 @@ export function usePlacementMic() {
         token: tok.token,
         region: tok.region,
         referenceText,
+        onRecognizing,
         onPhrase: (p) => {
           phrases.push(p.words);
           onPhrase?.(p);

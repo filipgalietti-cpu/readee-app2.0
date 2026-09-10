@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowLeft, ArrowRight, Volume2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Volume2, Mic } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import type { MicState } from "./mic";
+import { readingPages } from "@/lib/placement/reading-pages";
+import { PASS_CHOICE } from "@/lib/placement/spectrum";
 import "./placement.css";
 
 export type PlacementScreen =
@@ -19,9 +21,17 @@ export type PlacementScreen =
       nonsense?: boolean;
       band?: number;
       oral?: boolean;
+      issue?: "quiet" | "technical";
     }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
-  | { kind: "passage"; title: string; text: string; reading: boolean }
+  | {
+      kind: "passage";
+      title: string;
+      text: string;
+      reading: boolean;
+      reached?: number;
+      issue?: "quiet" | "technical";
+    }
   | {
       kind: "question";
       prompt: string;
@@ -50,6 +60,7 @@ type Props = {
   onBegin: () => void;
   onTap: (id: string) => void;
   onSkip: () => void;
+  onFinish?: () => void;
   onRetry: () => void;
   onSave: () => void;
   onReplay?: () => void;
@@ -170,6 +181,75 @@ function ReadingOrb({
   );
 }
 
+function StoryPages({
+  text,
+  reached = 0,
+  controls,
+}: {
+  text: string;
+  reached?: number;
+  controls: HTMLElement | null;
+}) {
+  const [capacity, setCapacity] = useState(12);
+  useEffect(() => {
+    const resize = () =>
+      setCapacity(
+        window.innerWidth >= 900 && window.innerHeight >= 850
+          ? 40
+          : window.innerHeight >= 760
+            ? 24
+            : 12,
+      );
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+  const pages = useMemo(() => readingPages(text, capacity), [text, capacity]);
+  const [navigation, setNavigation] = useState({ pages, reached, page: 0 });
+  let page = navigation.page;
+  if (navigation.pages !== pages || navigation.reached !== reached) {
+    const following = pages.findIndex((p) => p.endWord > reached);
+    const next = following < 0 ? pages.length - 1 : following;
+    page = Math.min(pages.length - 1, Math.max(page, next));
+    // Adjust before rendering so recognition advances immediately; manual page
+    // turns remain available until the next recognized phrase or viewport change.
+    setNavigation({ pages, reached, page });
+  }
+  const setPage = (next: number) => setNavigation({ pages, reached, page: next });
+  return (
+    <>
+      <div className="pa-book-page" data-story-page>
+        <p>{pages[Math.min(page, pages.length - 1)]?.text}</p>
+      </div>
+      {controls &&
+        createPortal(
+          <nav className="pa-page-controls" aria-label="Story pages">
+            <button
+              className="pa-secondary"
+              disabled={page === 0}
+              onClick={() => setPage(page - 1)}
+              aria-label="Previous page"
+            >
+              <ArrowLeft size={24} />
+            </button>
+            <span>
+              Page {page + 1} of {pages.length}
+            </span>
+            <button
+              className="pa-primary"
+              disabled={page >= pages.length - 1}
+              onClick={() => setPage(page + 1)}
+              aria-label="Next page"
+            >
+              <ArrowRight size={24} />
+            </button>
+          </nav>,
+          controls,
+        )}
+    </>
+  );
+}
+
 export default function PlacementView({
   screen,
   stage,
@@ -182,6 +262,7 @@ export default function PlacementView({
   onBegin,
   onTap,
   onSkip,
+  onFinish,
   onRetry,
   onSave,
   onReplay,
@@ -189,10 +270,12 @@ export default function PlacementView({
   exitHref = "/dashboard",
 }: Props) {
   const [actionHost, setActionHost] = useState<HTMLDivElement | null>(null);
+  const [pageHost, setPageHost] = useState<HTMLDivElement | null>(null);
   const listening =
     (screen.kind === "mic" && screen.status === "open" && orb !== "speaking") ||
     (screen.kind === "word" && screen.listening) ||
     (screen.kind === "passage" && screen.reading);
+  const voiceTask = screen.kind === "word" || screen.kind === "passage";
   const inTaskOrb = [
     "ready",
     "luna",
@@ -219,7 +302,11 @@ export default function PlacementView({
                 : "Reading with Luna";
   const mode = listening ? "listening" : orb;
   return (
-    <main className="pa-frame" data-placement-stage={stage}>
+    <main
+      className={`pa-frame ${voiceTask ? "pa-voice-frame" : ""} ${screen.kind === "passage" ? "pa-book-frame" : ""}`}
+      data-placement-stage={stage}
+      data-screen={screen.kind}
+    >
       <header className="pa-top" data-runner-header>
         <a href={exitHref} className="pa-exit" aria-label="Leave assessment">
           <ArrowLeft size={18} /> <span>Back</span>
@@ -277,26 +364,15 @@ export default function PlacementView({
             <p className={screen.oral ? "pa-oral-prompt" : "pa-reading-word"}>
               {screen.oral ? "Your turn" : screen.word}
             </p>
-            <ReadingOrb
-              mode={screen.listening ? "listening" : "thinking"}
-              analyser={analyser}
-              label={
-                screen.oral
-                  ? "Luna is listening to your answer"
-                  : "Luna is listening to your reading"
-              }
-            />
-            <p className="pa-small" role="status">
-              {screen.listening ? "I’m listening." : "Opening the microphone…"}
+            <p className="pa-turn-status" role="status">
+              {screen.issue === "technical"
+                ? "Let’s try the microphone again. Your word is still here."
+                : screen.issue === "quiet"
+                  ? "Take your time. Try again, or pass this word."
+                  : screen.listening
+                    ? "Take your time. I’m listening."
+                    : "Opening the microphone…"}
             </p>
-            <button
-              className="pa-secondary"
-              onClick={onSkip}
-              disabled={!screen.listening && !robot}
-              data-skip-word
-            >
-              I don’t know this word
-            </button>
             {robot && screen.listening && (
               <div className="pa-robot" data-robot-controls>
                 <button data-robot="correct" onClick={() => onTap("correct")}>
@@ -328,6 +404,11 @@ export default function PlacementView({
                 onAnswer={onTap}
               />
             </div>
+            {screen.picked === null && (
+              <button className="pa-text-pass" onClick={() => onTap(PASS_CHOICE)}>
+                I don’t know yet
+              </button>
+            )}
           </div>
         )}
         {screen.kind === "passage" && (
@@ -336,21 +417,17 @@ export default function PlacementView({
               <p className="pa-eyebrow">Read out loud</p>
               <h1>{screen.title}</h1>
             </div>
-            <div className="pa-passage-scroll" tabIndex={0} aria-label={screen.title}>
-              <p>{screen.text}</p>
-            </div>
-            <div className="pa-reading-control">
-              <ReadingOrb
-                mode={screen.reading ? "listening" : "thinking"}
-                analyser={analyser}
-                label="Luna is listening to the story"
-              />
-              <p className="pa-small">
-                {screen.reading
-                  ? "I’m listening. If a word is tricky, keep going."
-                  : "Getting ready to listen…"}
+            <StoryPages
+              key={screen.text}
+              text={screen.text}
+              reached={screen.reached}
+              controls={pageHost}
+            />
+            {screen.issue && (
+              <p className="pa-turn-status" role="status">
+                Your story is still here. Try the microphone again, or skip this story.
               </p>
-            </div>
+            )}
             {robot && screen.reading && (
               <form
                 className="pa-robot"
@@ -403,6 +480,11 @@ export default function PlacementView({
               readDisabled={orb === "speaking"}
               onRead={screen.qid ? (id) => onReadOption(screen.qid!, id) : undefined}
             />
+            {screen.picked === null && (
+              <button className="pa-text-pass" onClick={() => onTap(PASS_CHOICE)}>
+                I don’t know yet
+              </button>
+            )}
           </div>
         )}
         {screen.kind === "hesitation" && (
@@ -480,38 +562,87 @@ export default function PlacementView({
           </div>
         )}
       </section>
-      <footer className="pa-dock">
-        <div className="pa-bunny" data-bunny aria-hidden="true">
-          {screen.kind === "ready" || screen.kind === "closing" ? (
-            <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
-          ) : (
-            <Bunny outfitId={outfitId ?? "bunny_classic"} />
-          )}
-        </div>
-        {!inTaskOrb && (
-          <div className="pa-narrator">
-            <LunaOrb
-              mode={orb}
-              analyser={analyser}
-              size={64}
-              onTap={onReplay && orb !== "speaking" ? onReplay : undefined}
-              label="Hear the question again"
-            />
-          </div>
+      <footer className={`pa-dock ${voiceTask ? "pa-voice-dock" : ""}`}>
+        {voiceTask ? (
+          <>
+            {screen.kind === "passage" && <div className="pa-page-dock" ref={setPageHost} />}
+            <div className="pa-mic-row">
+              <ReadingOrb
+                mode={listening ? "listening" : orb}
+                analyser={analyser}
+                onTap={screen.issue ? () => onTap("retry") : onFinish}
+                label={screen.issue ? "Try the microphone again" : "Done speaking to Luna"}
+              />
+              <button
+                className="pa-primary"
+                onClick={screen.issue ? () => onTap("retry") : onFinish}
+                disabled={!listening && !screen.issue}
+                data-finish-speaking
+              >
+                <Mic size={24} />{" "}
+                {screen.issue
+                  ? "Try again"
+                  : screen.kind === "passage"
+                    ? "Done reading"
+                    : "Done speaking"}
+              </button>
+            </div>
+            <div className="pa-voice-actions">
+              {onReplay && (
+                <button className="pa-replay" onClick={onReplay} aria-label="Hear the sounds again">
+                  <Volume2 size={24} /> Hear again
+                </button>
+              )}
+              <button
+                className="pa-secondary"
+                onClick={onSkip}
+                disabled={!listening && !screen.issue && !robot}
+                data-skip-word={screen.kind === "word" ? "" : undefined}
+                data-skip-story={screen.kind === "passage" ? "" : undefined}
+              >
+                {screen.kind === "passage"
+                  ? "Skip this story"
+                  : screen.oral
+                    ? "I don’t know yet"
+                    : "I don’t know this word"}
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="pa-bunny" data-bunny aria-hidden="true">
+              {screen.kind === "ready" || screen.kind === "closing" ? (
+                <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
+              ) : (
+                <Bunny outfitId={outfitId ?? "bunny_classic"} />
+              )}
+            </div>
+            {!inTaskOrb && (
+              <div className="pa-narrator">
+                <LunaOrb
+                  mode={orb}
+                  analyser={analyser}
+                  size={64}
+                  onTap={onReplay && orb !== "speaking" ? onReplay : undefined}
+                  label="Hear the question again"
+                />
+              </div>
+            )}
+            <div className="pa-dock-action">
+              {onReplay && !listening && (
+                <button
+                  className="pa-replay"
+                  onClick={onReplay}
+                  disabled={orb === "speaking"}
+                  aria-label="Hear the prompt again"
+                >
+                  <Volume2 size={21} /> Hear again
+                </button>
+              )}
+            </div>
+            <div className="pa-answer-dock" ref={setActionHost} />
+          </>
         )}
-        <div className="pa-dock-action">
-          {onReplay && !listening && (
-            <button
-              className="pa-replay"
-              onClick={onReplay}
-              disabled={orb === "speaking"}
-              aria-label="Hear the prompt again"
-            >
-              <Volume2 size={21} /> Hear again
-            </button>
-          )}
-        </div>
-        <div className="pa-answer-dock" ref={setActionHost} />
       </footer>
     </main>
   );

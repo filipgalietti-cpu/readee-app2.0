@@ -18,6 +18,7 @@ async function main() {
       { enrolled: 4, wordGrade: 2, readGrade: 2, expected: 2 },
       { enrolled: 0, wordGrade: 4, readGrade: 4, expected: 4 },
       { enrolled: 4, wordGrade: -1, readGrade: 0, expected: 0 },
+      { enrolled: 4, wordGrade: 2, readGrade: 2, expected: 2, skipStory: true },
     ].filter((s) => !process.env.SPECTRUM_FLOOR_ONLY || s.wordGrade === -1)) {
       const page = await browser.newPage({
         viewport: { width: 390, height: 844 },
@@ -48,6 +49,11 @@ async function main() {
           const correct = value === "" || Number(value) <= scenario.wordGrade;
           await page.locator(`[data-robot="${correct ? "correct" : "wrong"}"]`).click();
         } else if (await page.locator("[data-robot-passage]").count()) {
+          if ("skipStory" in scenario && scenario.skipStory) {
+            await page.locator("[data-skip-story]").click();
+            await page.waitForTimeout(100);
+            continue;
+          }
           const title = await page.locator(".pa-reading-page h1").innerText();
           const passage = SPECTRUM_PASSAGES.find((p) => p.title === title)!;
           assert(passage, `Unknown passage ${title}`);
@@ -95,6 +101,11 @@ async function main() {
       const decision = decidePlacement(canonical);
       assert.equal(decision.placedBand, scenario.expected);
       assert.equal(decision.spectrum?.languageBand, 4);
+      if ("skipStory" in scenario && scenario.skipStory) {
+        assert.equal(decision.spectrum?.readingBand, null);
+        assert.equal(canonical.spectrum?.reading.length, 0);
+        assert.equal(canonical.spectrum?.readingStopped?.reason, "child-pass");
+      }
       assert.deepEqual(errors, []);
       assert.deepEqual(writes, []);
       console.log(

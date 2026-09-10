@@ -6,7 +6,7 @@ Parent supplies an optional nickname and actual K–4 enrollment grade → saved
 
 Enrollment is context, not a minimum placement. For example, a fourth-grade enrollee demonstrating second-grade reading begins at second-grade skills. The existing atomic completion RPC writes `children.reading_level`, preserves `children.grade`, and saves the evidence, relative placement and plan together. The new plan identifies practice needs and the first available unit; short assessment probes do not mark whole units mastered. `/placement/start` resolves that owned plan into `/learn`; neither results CTA calls checkout.
 
-The existing parent setup allows an optional nickname, explicit enrollment selection and Explore first. Saving creates the reader before the handoff. The new handoff explains the distinction between assessment and lessons and allows exploring instead. Pricing, trial duration and child limits are unchanged.
+The full-screen parent setup at `/placement/setup`, without app sidebar or header, places a large animated Readee below the introduction (below the form on phones). It allows an optional nickname, explicit enrollment selection and Explore first. Saving creates the reader before the handoff. The new handoff explains the distinction between assessment and lessons and allows exploring instead. Pricing, trial duration and child limits are unchanged.
 
 ## Lesson reference parity
 
@@ -20,18 +20,18 @@ The golden lesson packages are still authored in their separate worktree. This c
 
 ## Reliability
 
-Silence and technical capture failures stay unmeasured. Required narration that fails or stalls blocks the task with retry, and cancelled replays do not count as failure. A silent passage retries after 12 seconds; audible speech with delayed recognition retains its scoring window. Recognition drain is bounded. Microphone permission timeout and late grants release acquired devices. Completed evidence is retained for a save retry.
+Silence and technical capture failures stay unmeasured. Required narration that fails or stalls blocks the task with retry, and cancelled replays do not count as failure. Word and story recovery stays inline. Words allow 15 seconds of quiet, extended by input activity; a passage with no words and no sound retries after 30 seconds. Stories page without restarting recording and offer explicit Done reading and Skip this story controls. A story pass is unmeasured. Recognition drain is bounded. Microphone permission timeout and late grants release acquired devices. Completed evidence is retained for a save retry.
 
 ## Review and verification
 
-Local, no-login presentation review: `/demo/placement-studio`. The toolbar explicitly labels this as a preview with no recording or saved answers. Parent handoff is included in its screen selector. `/demo/placement-reveal` provides the synthetic parent report. Production demo gates are unchanged.
+Local, no-login presentation review: `/demo/placement-studio`. The toolbar explicitly labels this as a preview with no recording or saved answers. Parent setup and handoff are included in its screen selector. `/demo/placement-reveal` provides the synthetic parent report. Production demo gates are unchanged.
 
-- 555 repository tests pass (259 placement/assessment tests), including silence, delayed final recognition, recovery, enrollment-relative decisions, custom plans, completion and first-lesson access.
-- TypeScript passes. Browser review covers fourteen states at six viewport sizes (320×568 through 1440×900), with no clipped child-task controls. The parent handoff can scroll on small phones.
+- 565 repository tests pass, including silence, delayed final recognition, recovery, enrollment-relative decisions, custom plans, completion and first-lesson access.
+- TypeScript passes. Browser review covers seventeen states at six viewport sizes (320×568 through 1440×900), with no clipped child-task controls. The parent handoff can scroll on small phones.
 - `ASSESSMENT_BASE_URL=http://127.0.0.1:3431 node scripts/assessment-experience-browser.cjs` checks selection, changing answers, confirmation, replay highlighting without submission, footer visibility and absence of writes.
-- Synthetic full runners: enrollment 4 → reading 2 with supported language 4; enrollment K → fourth-grade ceiling; enrollment 4 → a provisional foundational starting point with supported language 4. No runtime errors or production writes. The plan tests verify second-grade first-unit selection and targeted higher-grade needs.
+- Synthetic full runners: enrollment 4 → reading 2 with supported language 4; enrollment K → fourth-grade ceiling; enrollment 4 → a provisional foundational starting point with supported language 4; explicit story skip → unmeasured independent reading with a provisional word-based journey. No runtime errors or production writes. The plan tests verify second-grade first-unit selection and targeted higher-grade needs.
 - The parent report fixture displays enrollment 4, recommended level 2 and a first-free-lesson action. Desktop and phone screenshots were inspected.
-- All 307 new/repaired static clips have matching local transcript checks and binary hashes. The reused-language audit found a broken narration link, a missing spoken question, and inconsistent inclusion of choices; playback and assets now account for each.
+- All 312 new/repaired static clips have matching local transcript checks and binary hashes. The reused-language audit found a broken narration link, a missing spoken question, and inconsistent inclusion of choices; playback and assets now account for each.
 - [K–4 spectrum design, standards mapping, decision rules and limits](K4-SPECTRUM.md).
 
 Physical microphone testing with a child remains unverified. Automated checks establish behavior, not founder design approval or educational calibration. This branch is separate from the prior reliability/onboarding production release (`43b18b69`); it does not rewrite historical placements or send family messages.

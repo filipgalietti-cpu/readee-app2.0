@@ -2326,5 +2326,45 @@
     "audioSha256": "052d3fec7520385c222c8eb30b666455584b64acd83d23963bfc4826fb027676",
     "wordErrorRate": 0.0,
     "status": "matched"
+  },
+  "hello-back": {
+    "model": "small",
+    "script": "Hello! I heard you. I'm glad you're here.",
+    "transcript": "Hello! I heard you. I'm glad you're here.",
+    "audioSha256": "78c060d7709102beaeb829accbc73a5e6ebd18d9a7ff70d195564ee77c251907",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-0": {
+    "model": "small",
+    "script": "Which letter makes this sound?",
+    "transcript": "Which letter makes this sound?",
+    "audioSha256": "24eecead342dd7f39cbd355e6fdf78ce7f873410265907c33d61dd428aef77c1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-1": {
+    "model": "small",
+    "script": "And what about this sound?",
+    "transcript": "And what about this sound?",
+    "audioSha256": "c14518ba6fa538358ee81f2db325321179357645683372177b62edcb6cd129ab",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-2": {
+    "model": "small",
+    "script": "Which letter goes with this one?",
+    "transcript": "Which letter goes with this one?",
+    "audioSha256": "44f078a629d2cec20d1acbc6e7b3f39d6e3efa15e48f358439384b33d5881868",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-3": {
+    "model": "small",
+    "script": "And this sound?",
+    "transcript": "And this sound...",
+    "audioSha256": "d313caafc691bdf240cca58e4d67f727af28e933b9cdad98be05e25bc4b37e78",
+    "wordErrorRate": 0.0,
+    "status": "matched"
   }
 }

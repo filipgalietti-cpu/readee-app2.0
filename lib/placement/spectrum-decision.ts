@@ -129,6 +129,7 @@ export function decideSpectrum(
       "not-a-normed-grade-equivalent",
       ...(r.confirmed === null ? ["placement-needs-followup"] : []),
       ...(r.limited ? ["reading-sample-limit-reached"] : []),
+      ...(ev.readingStopped ? ["reading-sample-declined"] : []),
       ...(profile.ceilingReached ? ["k4-ceiling-reached"] : []),
     ],
   };

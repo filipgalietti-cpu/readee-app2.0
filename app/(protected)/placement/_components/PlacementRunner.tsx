@@ -33,15 +33,11 @@ import {
   restoreSpectrumCheckpoint,
   type SpectrumCheckpoint,
 } from "@/lib/placement/spectrum-checkpoint";
+import { waitForHello } from "@/lib/placement/turn-taking";
 import { LETTER_SOUND_CHOICES } from "@/app/data/placement-spectrum/words";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import { gradeRead, gradeWord, passageRate } from "@/lib/placement/read-grade";
-import {
-  PASSAGE_MAX_SECONDS,
-  PASSAGE_READ_SECONDS,
-  PASSAGE_SILENCE_STOP_MS,
-  type BankQuestion,
-} from "@/lib/placement/bank";
+import { PASSAGE_MAX_SECONDS, type BankQuestion } from "@/lib/placement/bank";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
 import type { PassageEvidence } from "@/lib/placement/decide";
@@ -63,13 +59,15 @@ import { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 
 /** What a child says to pass on a word (the intro invites "I don't know"). */
-const SKIP_PHRASE = /\b(i\s+)?(don'?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
-const WORD_TIMEOUT_MS = 6000; // No recognized response means retry, never an incorrect answer.
+const SKIP_PHRASE = /\b(i\s+)?(don['’]?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
+const WORD_TIMEOUT_MS = 15000; // No recognized response means retry, never an incorrect answer.
 class NoSpeechCaptured extends Error {
   constructor() {
     super("No speech captured.");
   }
 }
+class RepeatSounds extends Error {}
+class StoryPassed extends Error {}
 const WARMUP_WORD = "sun"; // not in any list; never scored
 
 export default function PlacementRunner({
@@ -101,6 +99,8 @@ export default function PlacementRunner({
   const [stage, setStage] = useState("greeting");
   const tapRef = useRef<((id: string) => void) | null>(null);
   const skipRef = useRef<(() => void) | null>(null);
+  const finishRef = useRef<(() => void) | null>(null);
+  const repeatRef = useRef<(() => void) | null>(null);
   const startedRef = useRef<number>(0);
   const runRef = useRef(false);
   const submissionRef = useRef<PlacementSubmission | null>(null);
@@ -122,7 +122,14 @@ export default function PlacementRunner({
     r?.(id);
   }, []);
   const say = useCallback(async (key: Parameters<typeof playNarr>[0], _caption: string) => {
-    const caption = PLACEMENT_NARRATION[key];
+    const caption =
+      key === "intro-frame"
+        ? "Some words are easy. Some are tricky. Just try your best."
+        : key === "words-intro"
+          ? "Read the word. You can always pass."
+          : key === "warmup-word"
+            ? "Let’s try one together."
+            : PLACEMENT_NARRATION[key];
     replayRef.current = null;
     setOrb("speaking");
     setScreen({ kind: "luna", caption });
@@ -140,20 +147,33 @@ export default function PlacementRunner({
   );
 
   const recover = useCallback(
-    async <T,>(task: () => Promise<T>): Promise<T> => {
+    async <T,>(task: () => Promise<T>, onPass?: () => T): Promise<T> => {
       for (;;) {
         try {
           return await task();
-        } catch {
+        } catch (error) {
+          if (error instanceof StoryPassed) throw error;
           micRef.current.close();
           setOrb("idle");
-          setScreen({ kind: "recovery" });
-          await waitTap();
+          const showHelp = () =>
+            setScreen((current) =>
+              current.kind === "word" || current.kind === "passage"
+                ? {
+                    ...current,
+                    issue: "technical",
+                    ...(current.kind === "word" ? { listening: false } : { reading: false }),
+                  }
+                : { kind: "recovery" },
+            );
+          showHelp();
+          const choice = await waitTap();
+          if (choice === "pass" && onPass) return onPass();
           if (cancelledRef.current) throw new Error("Assessment closed.");
           // A failed reopen remains a technical failure, never a scored attempt.
           while ((await micRef.current.open()) !== "open") {
-            setScreen({ kind: "recovery" });
-            await waitTap();
+            showHelp();
+            const retryChoice = await waitTap();
+            if (retryChoice === "pass" && onPass) return onPass();
             if (cancelledRef.current) throw new Error("Assessment closed.");
           }
         }
@@ -216,7 +236,9 @@ export default function PlacementRunner({
           nonsense,
           band,
         });
+        skipRef.current = () => tap("wrong");
         const v = await waitTap();
+        skipRef.current = null;
         setOrb("idle");
         return v === "correct";
       }
@@ -235,6 +257,8 @@ export default function PlacementRunner({
           reject(error);
         };
         skipRef.current = () => finish(false);
+        if (displayWord !== word) repeatRef.current = () => fail(new RepeatSounds());
+        let lastVoiceAt = Date.now();
         const phrases: import("@/app/(protected)/luna/_components/azure-stream").PAWord[][] = [];
         void micRef.current
           .listen(
@@ -251,6 +275,10 @@ export default function PlacementRunner({
               if (g.heard) finish(g.correct);
             },
             () => fail(),
+            (text) => {
+              lastVoiceAt = Date.now();
+              if (SKIP_PHRASE.test(text)) finish(false);
+            },
           )
           .then((l) => {
             let stopping: Promise<void> | undefined;
@@ -270,14 +298,23 @@ export default function PlacementRunner({
             // Drain the last phrase before deciding that nothing was measured.
             // A bounded drain also recovers when the SDK never acknowledges stop.
             let drainTimer: number | undefined;
-            const t = window.setTimeout(() => {
+            lastVoiceAt = Date.now();
+            let draining = false;
+            const drain = () => {
+              if (draining || resolved) return;
+              draining = true;
               drainTimer = window.setTimeout(() => fail(), 4000);
               void stop().then(() => {
                 if (!resolved) fail(new NoSpeechCaptured());
               }, fail);
-            }, WORD_TIMEOUT_MS);
+            };
+            finishRef.current = drain;
+            const t = window.setInterval(() => {
+              if (micRef.current.level > 0.12) lastVoiceAt = Date.now();
+              if (Date.now() - lastVoiceAt >= WORD_TIMEOUT_MS) drain();
+            }, 250);
             const cleanup = () => {
-              window.clearTimeout(t);
+              window.clearInterval(t);
               window.clearTimeout(drainTimer);
               void stop().catch(() => {});
             };
@@ -290,40 +327,49 @@ export default function PlacementRunner({
         return verdict;
       } finally {
         skipRef.current = null;
+        finishRef.current = null;
+        repeatRef.current = null;
         setOrb("idle");
       }
     },
-    [robot, waitTap],
+    [robot, waitTap, tap],
   );
 
   const listenWordWithRetry = useCallback(
     async (task: () => Promise<boolean>): Promise<boolean> => {
-      let silences = 0;
-      return recover(async () => {
-        for (;;) {
-          try {
-            return await task();
-          } catch (error) {
-            if (!(error instanceof NoSpeechCaptured) || ++silences > 1) throw error;
-            // The first hesitation is unmeasured. Only an explicit pass is a
-            // miss; retry keeps the same probe and cannot lower placement.
-            setScreen({ kind: "hesitation" });
-            setOrb("speaking");
-            const answer = waitTap();
-            await Promise.race([
-              playUrlAsync(spectrumClip("word-try-again")).catch((e) => {
-                if (!(e instanceof PlacementAudioCancelled)) throw e;
-              }),
-              answer,
-            ]);
-            setOrb("idle");
-            const choice = await answer;
-            stopClip();
-            if (cancelledRef.current) throw new Error("Assessment closed.");
-            if (choice === "pass") return false;
+      return recover(
+        async () => {
+          for (;;) {
+            try {
+              return await task();
+            } catch (error) {
+              if (error instanceof RepeatSounds) continue;
+              if (!(error instanceof NoSpeechCaptured)) throw error;
+              // The first hesitation is unmeasured. Only an explicit pass is a
+              // miss; retry keeps the same probe and cannot lower placement.
+              setScreen((current) =>
+                current.kind === "word"
+                  ? { ...current, listening: false, issue: "quiet" }
+                  : { kind: "hesitation" },
+              );
+              setOrb("speaking");
+              const answer = waitTap();
+              await Promise.race([
+                playUrlAsync(spectrumClip("word-try-again")).catch((e) => {
+                  if (!(e instanceof PlacementAudioCancelled)) throw e;
+                }),
+                answer,
+              ]);
+              setOrb("idle");
+              const choice = await answer;
+              stopClip();
+              if (cancelledRef.current) throw new Error("Assessment closed.");
+              if (choice === "pass") return false;
+            }
           }
-        }
-      });
+        },
+        () => false,
+      );
     },
     [recover, waitTap],
   );
@@ -348,7 +394,7 @@ export default function PlacementRunner({
       setOrb("speaking");
       const answer = waitTap();
       try {
-        await audio();
+        await Promise.race([audio(), answer]);
       } catch (error) {
         if (!(error instanceof PlacementAudioCancelled)) throw error;
       }
@@ -438,13 +484,14 @@ export default function PlacementRunner({
       await new Promise((r) => setTimeout(r, 400));
       return picked;
     },
-    [robot, waitTap],
+    [robot, waitTap, tap],
   );
 
   /**
    * The cold read: reference = the whole passage, no help. The one-minute mark is scored silently for rate
-   * (DIBELS window); the child reads on to the end (MAP Reading Fluency style), capped at PASSAGE_MAX_SECONDS
-   * or a long silence after the window. Accuracy comes from everything read. Returns evidence + the recording.
+   * from the captured first-minute window. V4 continues through pauses and page turns until completion,
+   * explicit finish/pass, or an unmeasured technical pause. Accuracy uses everything read.
+   * The legacy fallback retains PASSAGE_MAX_SECONDS. Returns evidence and the recording.
    */
   const readPassageOnce = useCallback(
     async (
@@ -461,7 +508,10 @@ export default function PlacementRunner({
       setOrb("listening");
       if (robot) {
         setScreen({ kind: "passage", title: p.title, text: p.text, reading: true });
+        skipRef.current = () => tap("__pass");
         const v = await waitTap(); // "<wordsCorrect>/<wordsTotal>"
+        skipRef.current = null;
+        if (v === "__pass") throw new StoryPassed();
         const [c, t] = v.split("/").map((n) => Number(n));
         setOrb("idle");
         return {
@@ -482,6 +532,7 @@ export default function PlacementRunner({
       const totalWords = p.text.split(/\s+/).filter(Boolean).length;
       let lastPhraseAt = Date.now();
       let finishedEarly = false;
+      let passed = false;
       let stopNow: (() => void) | null = null;
       let lastAttempted = 0;
       let heardAudio = false;
@@ -493,9 +544,12 @@ export default function PlacementRunner({
           lastPhraseAt = Date.now();
           const g = gradeRead(p.text, phrases);
           lastAttempted = g.wordsAttempted;
-          // Within three words of the end counts as finished: the recognizer rarely aligns the very last words,
-          // and waiting for them (then for the silence rule) was a long pause after the child had stopped.
-          if (g.wordsAttempted >= Math.max(Math.ceil(totalWords * 0.95), totalWords - 3)) {
+          // Wait for the complete reference or the child's Done reading button.
+          // Do not interrupt the final sentence because most words were reached.
+          setScreen((current) =>
+            current.kind === "passage" ? { ...current, reached: g.wordsAttempted } : current,
+          );
+          if (g.wordsAttempted >= totalWords) {
             finishedEarly = true;
             stopNow?.();
           }
@@ -519,6 +573,11 @@ export default function PlacementRunner({
           res();
         };
         stopNow = end;
+        finishRef.current = end;
+        skipRef.current = () => {
+          passed = true;
+          end();
+        };
         if (captureError) {
           res();
           return;
@@ -530,21 +589,31 @@ export default function PlacementRunner({
               captureError = "No reading was captured.";
               end();
             }
-          }, 12000),
+          }, 30000),
         );
         // The rate window is scored from word timestamps after recognition drains.
-        timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
-        // Silence means the child has stopped: a short one once most of the passage is read, a long one otherwise
-        // (never before the rate window unless they are near the end).
+        timers.push(
+          window.setTimeout(
+            () => {
+              if (custom) captureError = "Reading paused. Your story is still here.";
+              end();
+            },
+            (custom ? 600 : PASSAGE_MAX_SECONDS) * 1000,
+          ),
+        );
+        // Pausing to decode or turning a page is not an instruction to end.
         const quiet = window.setInterval(() => {
           heardAudio ||= micRef.current.level > 0.12;
-          const nearlyDone = lastAttempted >= totalWords * 0.8;
-          const pastWindow = Date.now() - startedAt > PASSAGE_READ_SECONDS * 1000;
-          const quietMs = nearlyDone ? 5000 : PASSAGE_SILENCE_STOP_MS;
-          if ((pastWindow || nearlyDone) && Date.now() - lastPhraseAt > quietMs) end();
-        }, 1000);
+        }, 250);
       });
-      const elapsed = Math.min(PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
+      const elapsed = Math.min(custom ? 600 : PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
+      finishRef.current = null;
+      skipRef.current = null;
+      if (passed) {
+        micRef.current.stopRecording();
+        void listener?.stop().catch(() => {});
+        throw new StoryPassed();
+      }
       if (listener) {
         let drainTimer: ReturnType<typeof setTimeout> | undefined;
         try {
@@ -583,11 +652,17 @@ export default function PlacementRunner({
         blob,
       };
     },
-    [robot, waitTap],
+    [robot, waitTap, tap],
   );
 
   const readPassage = useCallback(
-    (band: Band, custom?: SpectrumPassage) => recover(() => readPassageOnce(band, custom)),
+    (band: Band, custom?: SpectrumPassage) =>
+      recover(
+        () => readPassageOnce(band, custom),
+        () => {
+          throw new StoryPassed();
+        },
+      ),
     [recover, readPassageOnce],
   );
 
@@ -703,15 +778,7 @@ export default function PlacementRunner({
         setScreen({ kind: "blocked", reason: status });
         return;
       }
-      const heard = async (): Promise<boolean> => {
-        const until = Date.now() + 8000;
-        while (Date.now() < until) {
-          if (cancelled()) return false;
-          if (micRef.current.level > 0.12) return true;
-          await new Promise((r) => setTimeout(r, 100));
-        }
-        return false;
-      };
+      const heard = () => waitForHello(() => micRef.current.level, cancelled);
       setScreen({ kind: "mic", status, retry: false });
       setOrb("speaking");
       await playNarr("mic-check", 4000);
@@ -729,7 +796,10 @@ export default function PlacementRunner({
         setScreen({ kind: "blocked", reason: status });
         return;
       }
-      await say("mic-heard", "I heard you. Let's begin.");
+      setScreen({ kind: "luna", caption: "Hello! I’m glad you’re here." });
+      setOrb("speaking");
+      await playUrlAsync(spectrumClip("hello-back"));
+      setOrb("idle");
       startedRef.current = Date.now();
 
       // The unscored warm-up checks recognition before any reading evidence.
@@ -748,8 +818,14 @@ export default function PlacementRunner({
         let correct: boolean;
         if (item.step === 0) {
           const letters = [...LETTER_SOUND_CHOICES[item.word]];
-          const picked = await askTiles("Which letter makes this sound?", letters, () =>
-            playSeq([clipUrl("narr-letter-sounds-prompt"), phonemeUrl(item.word)], 350),
+          const prompt = [
+            "Which letter makes this sound?",
+            "And what about this sound?",
+            "Which letter goes with this one?",
+            "And this sound?",
+          ][item.index % 4];
+          const picked = await askTiles(prompt, letters, () =>
+            playSeq([spectrumClip(`sound-prompt-${item.index % 4}`), phonemeUrl(item.word)], 350),
           );
           correct = picked === item.word;
         } else correct = await listenWord(item.word, false, item.grade);
@@ -776,7 +852,12 @@ export default function PlacementRunner({
           await ack(spectrum.blending.length);
         }
       }
-      let readingState = readingSearch(enrolled, spectrum.words, spectrum.reading);
+      let readingState = readingSearch(
+        enrolled,
+        spectrum.words,
+        spectrum.reading,
+        spectrum.readingStopped,
+      );
       let recordingPath: string | null = null;
       while (readingState.next) {
         if (cancelled()) return;
@@ -787,7 +868,22 @@ export default function PlacementRunner({
           setOrb("speaking");
           await playUrlAsync(spectrumClip("reading-intro"));
         }
-        const read = activeReading ? null : await readPassage(passage.grade, passage);
+        let read: Awaited<ReturnType<typeof readPassage>> | null = null;
+        try {
+          if (!activeReading) read = await readPassage(passage.grade, passage);
+        } catch (error) {
+          if (!(error instanceof StoryPassed)) throw error;
+          spectrum.readingStopped = { passageId: passage.id, reason: "child-pass" };
+          activeReading = null;
+          checkpoint();
+          readingState = readingSearch(
+            enrolled,
+            spectrum.words,
+            spectrum.reading,
+            spectrum.readingStopped,
+          );
+          break;
+        }
         if (!activeReading) {
           activeReading = { passageId: passage.id, speech: read!.ev, choices: [] };
           checkpoint();
@@ -806,7 +902,12 @@ export default function PlacementRunner({
         spectrum.reading.push(activeReading);
         activeReading = null;
         checkpoint();
-        readingState = readingSearch(enrolled, spectrum.words, spectrum.reading);
+        readingState = readingSearch(
+          enrolled,
+          spectrum.words,
+          spectrum.reading,
+          spectrum.readingStopped,
+        );
         if (readingState.confirmed !== null && read?.blob && !demo)
           recordingPath = await uploadRecording(read.blob, passage.grade);
       }
@@ -900,22 +1001,29 @@ export default function PlacementRunner({
       robot={robot}
       onBegin={() => setBegun(true)}
       onTap={tap}
-      onSkip={() => skipRef.current?.()}
+      onSkip={() =>
+        (screen.kind === "word" || screen.kind === "passage") && screen.issue
+          ? tap("pass")
+          : skipRef.current?.()
+      }
+      onFinish={() => finishRef.current?.()}
       onRetry={() => window.location.reload()}
       onSave={() => {
         void saveSubmission();
       }}
       onReplay={
-        (screen.kind === "tiles" && screen.picked === null) ||
-        (screen.kind === "question" && screen.picked === null)
-          ? () => {
-              void replayRef.current?.().catch((error) => {
-                if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
-                micRef.current.close();
-                setScreen({ kind: "blocked", reason: "audio" });
-              });
-            }
-          : undefined
+        screen.kind === "word" && screen.oral && screen.listening
+          ? () => repeatRef.current?.()
+          : (screen.kind === "tiles" && screen.picked === null) ||
+              (screen.kind === "question" && screen.picked === null)
+            ? () => {
+                void replayRef.current?.().catch((error) => {
+                  if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
+                  micRef.current.close();
+                  setScreen({ kind: "blocked", reason: "audio" });
+                });
+              }
+            : undefined
       }
       onReadOption={(qid, id) => {
         manualQuestionAudio.current = true;

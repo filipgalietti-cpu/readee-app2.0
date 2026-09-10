@@ -14,11 +14,14 @@ export type ReadingTrial = {
   speech: PassageEvidence;
   choices: ChoiceResponse[];
 };
+export const PASS_CHOICE = "__pass";
+export type ReadingStop = { passageId: string; reason: "child-pass" };
 export type SpectrumEvidence = {
   words: WordResponse[];
   reading: ReadingTrial[];
   language: ChoiceResponse[];
   blending: WordResponse[];
+  readingStopped?: ReadingStop;
 };
 export type LanguageItem = (typeof languageBank)[number];
 export const LANGUAGE_ITEMS: readonly LanguageItem[] = languageBank;
@@ -114,7 +117,11 @@ export function readingScore(trial: ReadingTrial) {
   let correct = 0;
   p.questions.forEach((q, i) => {
     const r = trial.choices[i];
-    if (r.itemId !== q.id || !q.options.some((o) => o.id === r.choiceId)) fail();
+    if (
+      r.itemId !== q.id ||
+      (r.choiceId !== PASS_CHOICE && !q.options.some((o) => o.id === r.choiceId))
+    )
+      fail();
     if (r.choiceId === q.correctId) correct++;
   });
   const coverage = s.wordsTotal / countWords(p.text);
@@ -131,7 +138,12 @@ export function readingScore(trial: ReadingTrial) {
 /** Story + information at the same level before confirmation. A difficult
  * passage opens a lower fresh pair. No K passage is forced on a child who has
  * not yet shown CVC word reading. */
-export function readingSearch(enrolled: PlacedBand, words: WordResponse[], trials: ReadingTrial[]) {
+export function readingSearch(
+  enrolled: PlacedBand,
+  words: WordResponse[],
+  trials: ReadingTrial[],
+  stopped?: ReadingStop,
+) {
   const w = wordSearch(enrolled, words);
   if (!w.done) fail();
   let grade = w.grade;
@@ -163,6 +175,15 @@ export function readingSearch(enrolled: PlacedBand, words: WordResponse[], trial
       }
     }
   }
+  if (stopped) {
+    if (
+      done ||
+      stopped.reason !== "child-pass" ||
+      stopped.passageId !== spectrumPassage(grade, form).id
+    )
+      fail();
+    done = true;
+  }
   return {
     done,
     confirmed,
@@ -193,7 +214,12 @@ export function languageSearch(start: PlacedBand, responses: ChoiceResponse[]) {
   for (const r of responses) {
     if (used.size >= LANGUAGE_LIMIT) fail();
     const q = pick();
-    if (!q || r.itemId !== q.id || !q.options.some((o) => o.id === r.choiceId)) fail();
+    if (
+      !q ||
+      r.itemId !== q.id ||
+      (r.choiceId !== PASS_CHOICE && !q.options.some((o) => o.id === r.choiceId))
+    )
+      fail();
     used.add(q.id);
     const correct = r.choiceId === q.correctId;
     counts[q.grade].total++;
@@ -210,7 +236,7 @@ export function languageSearch(start: PlacedBand, responses: ChoiceResponse[]) {
 
 export function validateSpectrum(enrolled: PlacedBand, ev: SpectrumEvidence) {
   const w = wordSearch(enrolled, ev.words);
-  const r = readingSearch(enrolled, ev.words, ev.reading);
+  const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped);
   const l = languageSearch(Math.max(enrolled, r.confirmed ?? 0) as PlacedBand, ev.language);
   if (!w.done || !r.done || l.next) fail();
   const blends = w.grade <= 1 ? ORAL_BLENDS : [];

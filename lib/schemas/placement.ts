@@ -16,6 +16,9 @@ export const PlacementSubmissionSchema = z.object({
   evidenceVersion: z.union([z.literal(3), z.literal(4)]).optional(),
   spectrum: z
     .object({
+      readingStopped: z
+        .object({ passageId: z.string().max(80), reason: z.literal("child-pass") })
+        .optional(),
       words: z.array(z.object({ itemId: z.string().max(80), correct: z.boolean() })).max(60),
       blending: z.array(z.object({ itemId: z.string().max(80), correct: z.boolean() })).max(3),
       language: z

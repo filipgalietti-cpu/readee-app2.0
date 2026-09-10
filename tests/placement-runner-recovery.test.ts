@@ -10,7 +10,8 @@ import { PLACEMENT_NARRATION } from "@/app/data/placement-bank/narration";
 import { spectrumSubmission } from "./fixtures/placement-spectrum";
 import { randomUUID } from "node:crypto";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
-import { gradeWord } from "@/lib/placement/read-grade";
+import * as readingGrade from "@/lib/placement/read-grade";
+import { spectrumPassage } from "@/app/data/placement-spectrum/reading";
 
 /** Exercise the actual callbacks without opening a microphone or starting the
  * exam's effect. The tiny hook host keeps refs and captures state setters. */
@@ -23,6 +24,7 @@ function runner(
     childId?: string;
     enrolled?: number;
     saved?: Record<string, string>;
+    getLevel?: () => number;
   } = {},
 ) {
   const states: unknown[] = [];
@@ -39,7 +41,13 @@ function runner(
     useEffect: (effect: () => (() => void) | undefined) => effects.push(effect),
     useCallback: (fn: unknown) => fn,
     useRef: (v: unknown) => ({ current: v }),
-    useState: (v: unknown) => [v, (next: unknown) => states.push(next)],
+    useState: (v: unknown) => [
+      v,
+      (next: any) => {
+        v = typeof next === "function" ? next(v) : next;
+        states.push(v);
+      },
+    ],
   };
   const box: Record<string, any> = {
     module: { exports: {} },
@@ -49,7 +57,7 @@ function runner(
     clearTimeout,
     Date,
     Promise,
-    window: { setTimeout, clearTimeout },
+    window: { setTimeout, clearTimeout, setInterval, clearInterval },
     fetch,
     AbortSignal,
     sessionStorage: storage,
@@ -69,11 +77,22 @@ function runner(
                 softTick: () => {},
               }
             : s === "./mic"
-              ? { usePlacementMic: () => ({ listen, close: vi.fn(), open: async () => "open" }) }
+              ? {
+                  usePlacementMic: () => ({
+                    listen,
+                    close: vi.fn(),
+                    open: async () => "open",
+                    get level() {
+                      return options.getLevel?.() ?? 0;
+                    },
+                    startRecording: vi.fn(),
+                    stopRecording: () => null,
+                  }),
+                }
               : s === "@/lib/observability/critical"
                 ? { reportFailure: vi.fn() }
                 : s === "@/lib/placement/read-grade"
-                  ? { gradeWord }
+                  ? readingGrade
                   : s === "@/lib/placement/spectrum-checkpoint"
                     ? checkpoints
                     : s === "@/app/data/placement-spectrum/audio"
@@ -93,7 +112,7 @@ function runner(
     "utf8",
   ).replace(
     "  // ───────────────────────────────────────────────── render",
-    "  globalThis.callbacks = { listenWordOnce, listenWord, askTiles, tap, skip: () => skipRef.current?.(), saveSubmission, setSubmission: (s) => { submissionRef.current = s; } }; return null;\n  // ───────────────────────────────────────────────── render",
+    "  globalThis.callbacks = { listenWordOnce, listenWord, readPassageOnce, readPassage, askTiles, tap, finish: () => finishRef.current?.(), repeat: () => repeatRef.current?.(), skip: () => skipRef.current?.(), saveSubmission, setSubmission: (s) => { submissionRef.current = s; } }; return null;\n  // ───────────────────────────────────────────────── render",
   );
   vm.runInNewContext(
     ts.transpileModule(source, {
@@ -117,12 +136,12 @@ function runner(
 
 describe("placement runner recovery", () => {
   afterEach(() => vi.useRealTimers());
-  it("keeps six seconds of silence unmeasured, and clears the skip callback", async () => {
+  it("keeps fifteen quiet seconds unmeasured, and clears the skip callback", async () => {
     vi.useFakeTimers();
     const stop = vi.fn(async () => {});
     const r = runner(async () => ({ stop }));
     const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow("No speech captured");
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(15000);
     await outcome;
     expect(stop).toHaveBeenCalledOnce();
     expect(() => r.skip()).not.toThrow();
@@ -136,8 +155,10 @@ describe("placement runner recovery", () => {
       return { stop: async () => {} };
     });
     const result = r.listenWord("cat");
-    await vi.advanceTimersByTimeAsync(6000);
-    expect(r.states).toContainEqual({ kind: "hesitation" });
+    await vi.advanceTimersByTimeAsync(15000);
+    expect(r.states).toContainEqual(
+      expect.objectContaining({ kind: "word", word: "cat", issue: "quiet" }),
+    );
     expect(r.states).not.toContainEqual({ kind: "recovery" });
     r.tap("retry");
     expect(await result).toBe(true);
@@ -147,11 +168,11 @@ describe("placement runner recovery", () => {
     vi.useFakeTimers();
     const r = runner(async () => ({ stop: async () => {} }));
     const result = r.listenWord("cat");
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(15000);
     r.tap("pass");
     expect(await result).toBe(false);
   });
-  it("escalates repeated silence, then retries the same word after microphone recovery", async () => {
+  it("keeps repeated quiet retries on the same word without a technical-error page", async () => {
     vi.useFakeTimers();
     let attempt = 0;
     const r = runner(async (_word, phrase) => {
@@ -160,12 +181,83 @@ describe("placement runner recovery", () => {
       return { stop: async () => {} };
     });
     const result = r.listenWord("cat");
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(15000);
     r.tap("retry");
-    await vi.advanceTimersByTimeAsync(6000);
-    expect(r.states).toContainEqual({ kind: "recovery" });
+    await vi.advanceTimersByTimeAsync(15000);
+    expect(r.states).not.toContainEqual({ kind: "recovery" });
+    expect(r.states).toContainEqual(
+      expect.objectContaining({ kind: "word", word: "cat", issue: "quiet" }),
+    );
     r.tap("retry");
     expect(await result).toBe(true);
+  });
+  it("waits while the child is sounding out a word, even after fifteen seconds", async () => {
+    vi.useFakeTimers();
+    let phrase!: (p: unknown) => void;
+    const r = runner(
+      async (_word, callback) => {
+        phrase = callback;
+        return { stop: async () => {} };
+      },
+      { getLevel: () => 0.3 },
+    );
+    const outcome = r.listenWordOnce("cat");
+    await vi.advanceTimersByTimeAsync(22000);
+    expect(r.states).not.toContainEqual(expect.objectContaining({ issue: "quiet" }));
+    phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] });
+    expect(await outcome).toBe(true);
+  });
+  it("accepts spoken I don't know from interim recognition before a reference-biased final result", async () => {
+    const r = runner(async (_word, _phrase, _error, interim) => {
+      interim("I don’t know this word");
+      return { stop: async () => {} };
+    });
+    expect(await r.listenWordOnce("cat")).toBe(false);
+  });
+  it("lets a child skip a story without manufacturing a zero-word result", async () => {
+    vi.useFakeTimers();
+    const stop = vi.fn(async () => {});
+    const r = runner(async () => ({ stop }));
+    const outcome = expect(r.readPassageOnce(2, spectrumPassage(2, "a"))).rejects.toThrow();
+    await vi.advanceTimersByTimeAsync(1);
+    r.skip();
+    await outcome;
+    expect(stop).toHaveBeenCalled();
+  });
+  it("keeps a paused story open past 150 seconds and allows Done reading", async () => {
+    vi.useFakeTimers();
+    const p = spectrumPassage(2, "a");
+    let phrase!: (p: unknown) => void;
+    const r = runner(async (_word, callback) => {
+      phrase = callback;
+      return { stop: async () => {} };
+    });
+    let settled = false;
+    const result = r.readPassageOnce(2, p).then((v: unknown) => {
+      settled = true;
+      return v;
+    });
+    await vi.advanceTimersByTimeAsync(1);
+    phrase({
+      words: p.text
+        .split(/\s+/)
+        .slice(0, 12)
+        .map((word, i) => ({
+          word,
+          accuracy: 95,
+          errorType: "None",
+          offsetSeconds: i,
+          durationSeconds: 1,
+        })),
+    });
+    await vi.advanceTimersByTimeAsync(151000);
+    expect(settled).toBe(false);
+    expect(r.states).not.toContainEqual({ kind: "recovery" });
+    r.finish();
+    const read = await result;
+    expect(read.ev.wordsTotal).toBe(12);
+    expect(read.ev.minuteWordsCorrect).toBe(12);
+    expect(read.ev.minuteSeconds).toBe(60);
   });
   it("does not turn an omission-only response into a wrong answer", async () => {
     vi.useFakeTimers();
@@ -174,7 +266,7 @@ describe("placement runner recovery", () => {
       return { stop: async () => {} };
     });
     const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(15000);
     await outcome;
   });
   it("accepts a final phrase delivered while stopping at the timeout", async () => {
@@ -187,7 +279,7 @@ describe("placement runner recovery", () => {
       return { stop };
     });
     const outcome = r.listenWordOnce("cat");
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(15000);
     expect(await outcome).toBe(true);
     expect(stop).toHaveBeenCalledOnce();
   });
@@ -195,7 +287,7 @@ describe("placement runner recovery", () => {
     vi.useFakeTimers();
     const r = runner(async () => ({ stop: () => new Promise(() => {}) }));
     const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
-    await vi.advanceTimersByTimeAsync(10000);
+    await vi.advanceTimersByTimeAsync(19000);
     await outcome;
   });
   it.each([
