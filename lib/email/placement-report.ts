@@ -6,9 +6,20 @@
  * placement (idempotent via lifecycle_email_sends). Parent email only (COPPA).
  */
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { buildRevealCopy, type RevealCopy } from "@/app/(protected)/placement/_components/reveal/copy";
+import {
+  buildRevealCopy,
+  type RevealCopy,
+} from "@/app/(protected)/placement/_components/reveal/copy";
 import type { PlacementResult } from "@/lib/placement/types";
-import { BASE_URL, alreadySentStage, escapeHtml, recordSendStage, sendEmail, shell, unsubscribeToken } from "@/lib/email/lifecycle";
+import {
+  BASE_URL,
+  alreadySentStage,
+  escapeHtml,
+  recordSendStage,
+  sendEmail,
+  shell,
+  unsubscribeToken,
+} from "@/lib/email/lifecycle";
 
 export type ReportEmailFraming = "below" | "at" | "above";
 
@@ -18,46 +29,69 @@ export function framingFor(result: PlacementResult): ReportEmailFraming {
 }
 
 /** "two grade levels below" -> "Two grade levels below." */
-const sentence = (t: string) => { const x = t.trim(); return x ? x[0].toUpperCase() + x.slice(1) + (/[.!?]$/.test(x) ? "" : ".") : ""; };
-const P = (t: string) => `<p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${t}</p>`;
-const H = (t: string) => `<p style="margin:24px 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4338ca;">${escapeHtml(t)}</p>`;
+const sentence = (t: string) => {
+  const x = t.trim();
+  return x ? x[0].toUpperCase() + x.slice(1) + (/[.!?]$/.test(x) ? "" : ".") : "";
+};
+const P = (t: string) =>
+  `<p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${t}</p>`;
+const H = (t: string) =>
+  `<p style="margin:24px 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4338ca;">${escapeHtml(t)}</p>`;
 
-function skillRow(label: string, value: string, fillPct: number, meaning: string): string {
-  const pct = Math.max(4, Math.min(100, Math.round(fillPct)));
+function skillRow(label: string, value: string, fillPct: number | null, meaning: string): string {
+  const pct = Math.max(4, Math.min(100, Math.round(fillPct ?? 0)));
   return `<tr><td style="padding:10px 0;border-top:1px solid #f1f0f5;">
     <table width="100%" cellpadding="0" cellspacing="0" role="presentation"><tr>
       <td style="font-size:14px;font-weight:700;color:#1e1b4b;">${escapeHtml(label)}</td>
       <td align="right" style="font-size:14px;font-weight:700;color:#1e1b4b;">${escapeHtml(value)}</td>
     </tr></table>
-    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-top:6px;"><tr>
+    ${
+      fillPct === null
+        ? ""
+        : `<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-top:6px;"><tr>
       <td style="background:#ede9fe;border-radius:999px;height:8px;line-height:8px;font-size:0;">
         <div style="width:${pct}%;height:8px;border-radius:999px;background:#7c3aed;"></div>
       </td>
-    </tr></table>
+    </tr></table>`
+    }
     <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#52525b;">${escapeHtml(meaning)}</div>
   </td></tr>`;
 }
 
-export function renderPlacementReportEmail(result: PlacementResult, opts: { parentName: string | null; premium: boolean; unsubscribeUrl: string }): { subject: string; preheader: string; html: string; text: string; ctaHref: string } {
+export function renderPlacementReportEmail(
+  result: PlacementResult,
+  opts: { parentName: string | null; premium: boolean; unsubscribeUrl: string },
+): { subject: string; preheader: string; html: string; text: string; ctaHref: string } {
   const copy: RevealCopy = buildRevealCopy(result);
   const name = copy.childName;
   const framing = framingFor(result);
   const reportHref = `${BASE_URL}/placement/report?child=${result.childId}`;
   const ctaHref = opts.premium ? `${BASE_URL}/dashboard` : reportHref;
-  const ctaLabel = opts.premium ? `Start ${name}'s first lesson` : `Start ${name}'s Reading Journey`;
-  const heading =
-    opts.premium ? `${name}'s reading placement is in` :
-    framing === "below" ? `${name}'s Reading Journey is ready` :
-    framing === "above" ? `${name} is reading ahead of grade` : `${name} is reading right on track`;
-  const subject =
-    framing === "below" ? `${name}'s reading placement: the plan to catch up` :
-    framing === "above" ? `${name}'s reading placement: ahead of grade` : `${name}'s reading placement results`;
+  const ctaLabel = opts.premium
+    ? `Start ${name}'s first lesson`
+    : `Start ${name}'s Reading Journey`;
+  const heading = result.decision.spectrum
+    ? `${name}’s reading starting point is ready`
+    : opts.premium
+      ? `${name}'s reading placement is in`
+      : framing === "below"
+        ? `${name}'s Reading Journey is ready`
+        : framing === "above"
+          ? `${name} is reading ahead of grade`
+          : `${name} is reading right on track`;
+  const subject = result.decision.spectrum
+    ? `${name}’s reading starting point and next lesson`
+    : framing === "below"
+      ? `${name}'s reading placement: the plan to catch up`
+      : framing === "above"
+        ? `${name}'s reading placement: ahead of grade`
+        : `${name}'s reading placement results`;
   const preheader = copy.headline;
 
   const steps = copy.path.steps.filter((s) => s.kind !== "skipped");
   const lead = [copy.headline, copy.momentLine ?? ""].filter(Boolean).join(" ");
   const stats: [string, string][] = [
-    [copy.placement.band, "reading level"],
+    [copy.placement.band, result.decision.spectrum ? "lesson starting point" : "reading level"],
     ...(copy.number ? [[String(copy.number.wcpm), "words a minute"] as [string, string]] : []),
     [copy.enrolledLabel, "grade in school"],
   ];
@@ -65,7 +99,7 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
   const bodyHtml = `
     ${P(escapeHtml(lead))}
     ${P(escapeHtml(sentence(copy.placement.categoryText) + " " + copy.placement.support))}
-    ${copy.number ? `<p style="margin:6px 0 0;font-size:12px;color:#71717a;">${escapeHtml(copy.number.benchmarkLabel)}</p>` : ""}
+    ${copy.number ? `<p style="margin:6px 0 0;font-size:12px;color:#71717a;">${escapeHtml(result.decision.spectrum ? copy.number.source : copy.number.benchmarkLabel)}</p>` : ""}
     ${H("Three skills, one at a time")}
     <table width="100%" cellpadding="0" cellspacing="0" role="presentation">${copy.skills.map((s) => skillRow(s.label, s.value, s.fillPct, s.meaning)).join("")}</table>
     ${H(name + "'s Custom Reading Journey")}
@@ -112,26 +146,52 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
     "",
     `Unsubscribe: ${opts.unsubscribeUrl}`,
     "- Readee",
-  ].filter((l) => l !== null).join("\n");
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
 
-  const html = shell({ preheader, parentName: opts.parentName, bodyHtml, ctaHref, ctaLabel, unsubscribeUrl: opts.unsubscribeUrl, heading, eyebrow: "Reading placement", banner: "banner-report", heroStats: stats.map(([value, label]) => ({ value, label })), secondary: { href: reportHref, label: "See the full report" } });
+  const html = shell({
+    preheader,
+    parentName: opts.parentName,
+    bodyHtml,
+    ctaHref,
+    ctaLabel,
+    unsubscribeUrl: opts.unsubscribeUrl,
+    heading,
+    eyebrow: "Reading placement",
+    banner: "banner-report",
+    heroStats: stats.map(([value, label]) => ({ value, label })),
+    secondary: { href: reportHref, label: "See the full report" },
+  });
   return { subject, preheader, html, text, ctaHref };
 }
 
 /** Load the placement, build the result, render and send once. Safe to call fire-and-forget. */
-export async function sendPlacementReportEmail(placementId: string): Promise<{ ok: boolean; reason?: string }> {
+export async function sendPlacementReportEmail(
+  placementId: string,
+): Promise<{ ok: boolean; reason?: string }> {
   const admin = supabaseAdmin();
   const { data: row } = await admin
     .from("placements")
-    .select("id, child_id, enrolled, decision, moments, plan, narration, passage_recording_path, duration_seconds, created_at")
+    .select(
+      "id, child_id, enrolled, decision, moments, plan, narration, passage_recording_path, duration_seconds, created_at",
+    )
     .eq("id", placementId)
     .maybeSingle();
   if (!row) return { ok: false, reason: "no placement" };
   const r = row as Record<string, unknown>;
-  const { data: child } = await admin.from("children").select("id, first_name, parent_id").eq("id", String(r.child_id)).maybeSingle();
+  const { data: child } = await admin
+    .from("children")
+    .select("id, first_name, parent_id")
+    .eq("id", String(r.child_id))
+    .maybeSingle();
   if (!child?.parent_id) return { ok: false, reason: "no parent" };
   const parentId = String(child.parent_id);
-  const { data: parent } = await admin.from("profiles").select("id, email, display_name, plan").eq("id", parentId).maybeSingle();
+  const { data: parent } = await admin
+    .from("profiles")
+    .select("id, email, display_name, plan")
+    .eq("id", parentId)
+    .maybeSingle();
   if (!parent?.email) return { ok: false, reason: "no email" };
   const stage = `placement_report:${placementId}`;
   if (await alreadySentStage(parentId, stage)) return { ok: true, reason: "already sent" };
@@ -139,7 +199,7 @@ export async function sendPlacementReportEmail(placementId: string): Promise<{ o
   const result: PlacementResult = {
     id: String(r.id),
     childId: String(r.child_id),
-    childName: ((String(child.first_name ?? "")).split(" ")[0] || "Reader"),
+    childName: String(child.first_name ?? "").split(" ")[0] || "Reader",
     enrolled: Number(r.enrolled) as PlacementResult["enrolled"],
     decision: r.decision as PlacementResult["decision"],
     moments: (r.moments ?? []) as PlacementResult["moments"],
@@ -154,7 +214,17 @@ export async function sendPlacementReportEmail(placementId: string): Promise<{ o
     premium: parent.plan === "premium",
     unsubscribeUrl: `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(parentId)}`,
   });
-  const res = await sendEmail({ to: String(parent.email), subject: email.subject, text: email.text, html: email.html });
-  await recordSendStage(parentId, stage, res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
+  const res = await sendEmail({
+    to: String(parent.email),
+    subject: email.subject,
+    text: email.text,
+    html: email.html,
+  });
+  await recordSendStage(
+    parentId,
+    stage,
+    res.ok ? "sent" : "failed",
+    res.ok ? undefined : res.error,
+  );
   return res.ok ? { ok: true } : { ok: false, reason: res.error };
 }

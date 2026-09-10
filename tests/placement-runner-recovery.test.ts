@@ -7,25 +7,72 @@ import { gradeWord } from "@/lib/placement/read-grade";
 
 /** Exercise the actual callbacks without opening a microphone or starting the
  * exam's effect. The tiny hook host keeps refs and captures state setters. */
-function runner(listen: (...args: any[]) => Promise<any> = async () => { throw new Error("offline"); }) {
+function runner(
+  listen: (...args: any[]) => Promise<any> = async () => {
+    throw new Error("offline");
+  },
+) {
   const states: unknown[] = [];
   const fetch = vi.fn();
   const push = vi.fn();
   const storage = { removeItem: vi.fn() };
-  const hooks = { useEffect: () => {}, useCallback: (fn: unknown) => fn, useRef: (v: unknown) => ({ current: v }), useState: (v: unknown) => [v, (next: unknown) => states.push(next)] };
+  const hooks = {
+    useEffect: () => {},
+    useCallback: (fn: unknown) => fn,
+    useRef: (v: unknown) => ({ current: v }),
+    useState: (v: unknown) => [v, (next: unknown) => states.push(next)],
+  };
   const box: Record<string, any> = {
-    module: { exports: {} }, console, setTimeout, clearTimeout, Date, Promise,
-    window: { setTimeout, clearTimeout }, fetch, AbortSignal, sessionStorage: storage,
-    require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({ push }) } : s === "./audio" ? { stopClip: vi.fn() } : s === "./mic" ? { usePlacementMic: () => ({ listen }) } : s === "@/lib/observability/critical" ? { reportFailure: vi.fn() } : s === "@/lib/placement/read-grade" ? { gradeWord } : {},
+    module: { exports: {} },
+    console,
+    setTimeout,
+    clearTimeout,
+    Date,
+    Promise,
+    window: { setTimeout, clearTimeout },
+    fetch,
+    AbortSignal,
+    sessionStorage: storage,
+    require: (s: string) =>
+      s === "react"
+        ? hooks
+        : s === "next/navigation"
+          ? { useRouter: () => ({ push }) }
+          : s === "./audio"
+            ? { stopClip: vi.fn() }
+            : s === "./mic"
+              ? { usePlacementMic: () => ({ listen }) }
+              : s === "@/lib/observability/critical"
+                ? { reportFailure: vi.fn() }
+                : s === "@/lib/placement/read-grade"
+                  ? { gradeWord }
+                  : {},
   };
   box.exports = box.module.exports;
   box.globalThis = box;
-  const source = readFileSync("app/(protected)/placement/_components/PlacementRunner.tsx", "utf8").replace(
+  const source = readFileSync(
+    "app/(protected)/placement/_components/PlacementRunner.tsx",
+    "utf8",
+  ).replace(
     "  // ───────────────────────────────────────────────── render",
     "  globalThis.callbacks = { listenWordOnce, askTiles, tap, skip: () => skipRef.current?.(), saveSubmission, setSubmission: (s) => { submissionRef.current = s; } }; return null;\n  // ───────────────────────────────────────────────── render",
   );
-  vm.runInNewContext(ts.transpileModule(source, { compilerOptions: { jsx: ts.JsxEmit.ReactJSX, module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, box);
-  box.module.exports.default({ childId: "child", childName: "Reader", enrolled: 2, outfitId: null });
+  vm.runInNewContext(
+    ts.transpileModule(source, {
+      compilerOptions: {
+        jsx: ts.JsxEmit.ReactJSX,
+        module: ts.ModuleKind.CommonJS,
+        target: ts.ScriptTarget.ES2020,
+      },
+    }).outputText,
+    box,
+  );
+  box.module.exports.default({
+    childId: "child",
+    childName: "Reader",
+    enrolled: 2,
+    outfitId: null,
+  });
   return { ...box.callbacks, fetch, push, states, storage };
 }
 
@@ -55,7 +102,9 @@ describe("placement runner recovery", () => {
     vi.useFakeTimers();
     const stop = vi.fn();
     const r = runner(async (_word, phrase) => {
-      stop.mockImplementation(async () => phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] }));
+      stop.mockImplementation(async () =>
+        phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] }),
+      );
       return { stop };
     });
     const outcome = r.listenWordOnce("cat");
@@ -74,7 +123,10 @@ describe("placement runner recovery", () => {
     { text: "cat", words: [{ word: "cat", accuracy: 20, errorType: "Mispronunciation" }] },
     { text: "I don't know", words: [] },
   ])("scores an actual response as incorrect: $text", async (response) => {
-    const r = runner(async (_word, phrase) => { phrase(response); return { stop: async () => {} }; });
+    const r = runner(async (_word, phrase) => {
+      phrase(response);
+      return { stop: async () => {} };
+    });
     expect(await r.listenWordOnce("cat")).toBe(false);
   });
   it("still allows an intentional tap to skip", async () => {
@@ -86,12 +138,27 @@ describe("placement runner recovery", () => {
   it("rejects recognition failure instead of returning an incorrect verdict", async () => {
     await expect(runner().listenWordOnce("ship")).rejects.toThrow();
   });
+  it("measures oral blending without displaying its reference word", async () => {
+    const listen = vi.fn(async (_word, phrase) => {
+      phrase({ text: "map", words: [{ word: "map", accuracy: 95, errorType: "None" }] });
+      return { stop: async () => {} };
+    });
+    const r = runner(listen);
+    expect(await r.listenWordOnce("map", false, undefined, "Say the word")).toBe(true);
+    expect(listen.mock.calls[0][0]).toBe("map");
+    const screens = r.states.filter((s: any) => s?.kind === "word");
+    expect(screens.length).toBeGreaterThan(0);
+    expect(screens.every((s: any) => s.oral && s.word !== "map")).toBe(true);
+  });
   it("retains a foundation answer tapped during narration", async () => {
     const r = runner();
     let finishAudio!: () => void;
-    const audio = new Promise<void>((resolve) => { finishAudio = resolve; });
+    const audio = new Promise<void>((resolve) => {
+      finishAudio = resolve;
+    });
     const answer = r.askTiles("Which letter?", ["a", "b"], () => audio);
-    r.tap("a"); finishAudio();
+    r.tap("a");
+    finishAudio();
     expect(await answer).toBe("a");
   });
   it("retains the completed submission after a network failure and retries identical evidence", async () => {
@@ -109,10 +176,17 @@ describe("placement runner recovery", () => {
     expect(r.storage.removeItem).toHaveBeenCalledOnce();
   });
   it("does not submit twice while a save is in flight", async () => {
-    const r = runner(); r.setSubmission({ childId: "child" });
+    const r = runner();
+    r.setSubmission({ childId: "child" });
     let resolve!: (value: unknown) => void;
-    r.fetch.mockImplementation(() => new Promise((done) => { resolve = done; }));
-    const first = r.saveSubmission(); await r.saveSubmission();
+    r.fetch.mockImplementation(
+      () =>
+        new Promise((done) => {
+          resolve = done;
+        }),
+    );
+    const first = r.saveSubmission();
+    await r.saveSubmission();
     expect(r.fetch).toHaveBeenCalledOnce();
     resolve({ ok: true, json: async () => ({ ok: true }) });
     await first;

@@ -12,7 +12,14 @@ export type PlacementScreen =
   | { kind: "ready" }
   | { kind: "luna"; caption: string }
   | { kind: "mic"; status: MicState; retry: boolean }
-  | { kind: "word"; word: string; listening: boolean; nonsense?: boolean; band?: number }
+  | {
+      kind: "word";
+      word: string;
+      listening: boolean;
+      nonsense?: boolean;
+      band?: number;
+      oral?: boolean;
+    }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | { kind: "passage"; title: string; text: string; reading: boolean }
   | {
@@ -259,12 +266,24 @@ export default function PlacementView({
         )}
         {screen.kind === "word" && (
           <div className="pa-word-task" data-word={screen.word} data-band={screen.band ?? ""}>
-            <h1>{screen.nonsense ? "Try this make-believe word." : "Read this word to Luna."}</h1>
-            <p className="pa-reading-word">{screen.word}</p>
+            <h1>
+              {screen.oral
+                ? "Put the sounds together."
+                : screen.nonsense
+                  ? "Try this make-believe word."
+                  : "Read this word to Luna."}
+            </h1>
+            <p className={screen.oral ? "pa-oral-prompt" : "pa-reading-word"}>
+              {screen.oral ? "Your turn" : screen.word}
+            </p>
             <ReadingOrb
               mode={screen.listening ? "listening" : "thinking"}
               analyser={analyser}
-              label="Luna is listening to your reading"
+              label={
+                screen.oral
+                  ? "Luna is listening to your answer"
+                  : "Luna is listening to your reading"
+              }
             />
             <p className="pa-small" role="status">
               {screen.listening ? "I’m listening." : "Opening the microphone…"}
@@ -358,11 +377,11 @@ export default function PlacementView({
               <h1>{screen.prompt}</h1>
             </div>
             {screen.passage && (
-              <aside className="pa-look-back" data-look-back>
-                <div className="pa-story-label">
+              <details className="pa-look-back" data-look-back key={screen.qid}>
+                <summary className="pa-story-label">
                   <h2>{screen.passage.title}</h2>
-                  <span>You can look back.</span>
-                </div>
+                  <span>Look back ▾</span>
+                </summary>
                 <div
                   className="pa-look-back-scroll"
                   tabIndex={0}
@@ -370,7 +389,7 @@ export default function PlacementView({
                 >
                   <p>{screen.passage.text}</p>
                 </div>
-              </aside>
+              </details>
             )}
             <AnswerCards
               actionHost={actionHost}

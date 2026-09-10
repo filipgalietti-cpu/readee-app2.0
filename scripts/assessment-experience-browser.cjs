@@ -33,12 +33,12 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
       [320, 568],
     ]) {
       await page.setViewportSize({ width, height });
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 13; i++) {
         await page.getByRole("combobox").selectOption(String(i));
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
           true,
         );
-        if (i === 3 || i === 5) {
+        if ([3, 5, 10, 11].includes(i)) {
           const action = page.locator("[data-confirm-answer]");
           await expect(
             action,
@@ -66,7 +66,7 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
     expect(errors).toEqual([]);
     expect(writes).toEqual([]);
     console.log(
-      "54 viewport states; selection, confirmation and spoken-choice isolation passed. No writes.",
+      "78 viewport states; selection, confirmation and spoken-choice isolation passed. No writes.",
     );
   } finally {
     await browser.close();

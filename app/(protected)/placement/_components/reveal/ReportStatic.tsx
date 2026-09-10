@@ -95,6 +95,51 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           </div>
         </header>
 
+        {result.decision.spectrum && (
+          <section
+            aria-label="Reading skill profile"
+            className="rounded-2xl border border-violet-100 p-5"
+          >
+            <h2 className="text-lg font-semibold">Different skills, different starting points</h2>
+            <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+              <div>
+                <dt className="text-sm text-zinc-600">Word reading</dt>
+                <dd className="mt-1 font-semibold">
+                  {result.decision.spectrum.wordStep === null
+                    ? "Needs follow-up"
+                    : result.decision.spectrum.wordLabel}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm text-zinc-600">Independent reading</dt>
+                <dd className="mt-1 font-semibold">
+                  {result.decision.spectrum.readingBand === null
+                    ? "Foundational starting point; follow-up needed"
+                    : `${result.decision.spectrum.readingBand === 0 ? "Kindergarten" : `Grade ${result.decision.spectrum.readingBand}`} texts, checked twice`}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm text-zinc-600">Understanding with read-aloud support</dt>
+                <dd className="mt-1 font-semibold">
+                  {result.decision.spectrum.languageBand === null
+                    ? "More evidence needed"
+                    : `${result.decision.spectrum.languageBand === 0 ? "Kindergarten" : `Grade ${result.decision.spectrum.languageBand}`} question set`}
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-4 text-sm text-zinc-600">
+              These are instructional samples, not a diagnosis or a standardized grade-equivalent
+              score. Listening support does not establish independent reading at that grade.
+            </p>
+            {result.decision.spectrum.ceilingReached && (
+              <p className="mt-3 text-sm font-semibold text-violet-800">
+                Reached Readee’s fourth-grade ceiling. This assessment does not measure beyond
+                fourth grade.
+              </p>
+            )}
+          </section>
+        )}
+
         <section
           aria-label="Reading starting point"
           className="rounded-2xl border border-violet-200 bg-violet-50 p-5 @2xl:p-6"

@@ -1,0 +1,1503 @@
+[
+  {
+    "id": "sp-RL.K.1-Q1",
+    "sourceId": "RL.K.1-Q1",
+    "grade": 0,
+    "standard": "RL.K.1",
+    "difficulty": 6,
+    "text": "Max the dog ran to the park. He played fetch with a red ball.",
+    "prompt": "What did Max PLAY with?",
+    "options": [
+      {
+        "id": "a",
+        "label": "A stick"
+      },
+      {
+        "id": "b",
+        "label": "A toy car"
+      },
+      {
+        "id": "c",
+        "label": "A red ball"
+      },
+      {
+        "id": "d",
+        "label": "A bone"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.K.8-Q2",
+    "sourceId": "RI.K.8-Q2",
+    "grade": 0,
+    "standard": "RI.K.8",
+    "difficulty": 11,
+    "text": "Kids need lots of sleep. Sleep helps your body grow and helps your brain learn new things.",
+    "prompt": "What REASONS does the author give for why kids need sleep?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Sleep is boring"
+      },
+      {
+        "id": "b",
+        "label": "You need sleep to watch TV."
+      },
+      {
+        "id": "c",
+        "label": "Sleep makes you hungry."
+      },
+      {
+        "id": "d",
+        "label": "It helps your body grow and your brain learn."
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q2.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.K.4-Q5",
+    "sourceId": "RL.K.4-Q5",
+    "grade": 0,
+    "standard": "RL.K.4",
+    "difficulty": 28,
+    "text": "The lion let out a mighty ROAR. All the animals ran away because they were FRIGHTENED.",
+    "prompt": "What does FRIGHTENED mean?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Sleepy"
+      },
+      {
+        "id": "b",
+        "label": "Hungry"
+      },
+      {
+        "id": "c",
+        "label": "Scared"
+      },
+      {
+        "id": "d",
+        "label": "Happy"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.K.2-Q4",
+    "sourceId": "RI.K.2-Q4",
+    "grade": 0,
+    "standard": "RI.K.2",
+    "difficulty": 29,
+    "text": "Firefighters help keep us safe. They put out fires and rescue people. They drive big red trucks.",
+    "prompt": "Which is a KEY DETAIL from this passage?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Firefighters like cats"
+      },
+      {
+        "id": "b",
+        "label": "Firefighters eat lunch"
+      },
+      {
+        "id": "c",
+        "label": "Firefighters go to school."
+      },
+      {
+        "id": "d",
+        "label": "Firefighters rescue people"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q4.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.K.4-Q2",
+    "sourceId": "RL.K.4-Q2",
+    "grade": 0,
+    "standard": "RL.K.4",
+    "difficulty": 26,
+    "text": "After winning the game, Kai was DELIGHTED. He smiled and jumped up and down.",
+    "prompt": "What does DELIGHTED mean?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Tired"
+      },
+      {
+        "id": "b",
+        "label": "Very happy"
+      },
+      {
+        "id": "c",
+        "label": "Sad"
+      },
+      {
+        "id": "d",
+        "label": "Scared"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.K.9-Q5",
+    "sourceId": "RI.K.9-Q5",
+    "grade": 0,
+    "standard": "RI.K.9",
+    "difficulty": 35,
+    "text": "Book 1: \"Butterflies have colorful wings and drink nectar from flowers.\"\nBook 2: \"Butterflies start as caterpillars and go through metamorphosis.\"",
+    "prompt": "What is SIMILAR about both books?",
+    "options": [
+      {
+        "id": "a",
+        "label": "They both talk about caterpillars."
+      },
+      {
+        "id": "b",
+        "label": "They are about different insects."
+      },
+      {
+        "id": "c",
+        "label": "They both talk about wings."
+      },
+      {
+        "id": "d",
+        "label": "They are both about butterflies."
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.K.4-H4",
+    "sourceId": "RL.K.4-H4",
+    "grade": 0,
+    "standard": "RL.K.4",
+    "difficulty": 76,
+    "text": "After being sick in bed all week, Grandpa felt FEEBLE. He could not lift his own cup. He needed Mom to help him stand up.",
+    "prompt": "What does FEEBLE mean?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Loud"
+      },
+      {
+        "id": "b",
+        "label": "Strong"
+      },
+      {
+        "id": "c",
+        "label": "Angry"
+      },
+      {
+        "id": "d",
+        "label": "Weak"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-H4.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.K.2-H5",
+    "sourceId": "RI.K.2-H5",
+    "grade": 0,
+    "standard": "RI.K.2",
+    "difficulty": 75,
+    "text": "Owls sleep all day. At night, they wake up. They hunt for food in the dark. Owls can see very well at night.",
+    "prompt": "Why can owls hunt at night?",
+    "options": [
+      {
+        "id": "a",
+        "label": "They can see well in the dark"
+      },
+      {
+        "id": "b",
+        "label": "They are big"
+      },
+      {
+        "id": "c",
+        "label": "They sleep all day"
+      },
+      {
+        "id": "d",
+        "label": "They like the moon"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-H5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.K.4-H5",
+    "sourceId": "RL.K.4-H5",
+    "grade": 0,
+    "standard": "RL.K.4",
+    "difficulty": 93,
+    "text": "When the puppet bonked its head and fell off the stage, the crowd thought it was HILARIOUS. Every single kid was laughing so hard they could barely breathe.",
+    "prompt": "What does HILARIOUS mean?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Very funny"
+      },
+      {
+        "id": "b",
+        "label": "Very sad"
+      },
+      {
+        "id": "c",
+        "label": "Very scary"
+      },
+      {
+        "id": "d",
+        "label": "Very boring"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-H5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.K.8-H4",
+    "sourceId": "RI.K.8-H4",
+    "grade": 0,
+    "standard": "RI.K.8",
+    "difficulty": 89,
+    "text": "Firefighters are helpers. They rush into fires to save people. They carry pets out to keep them safe.",
+    "prompt": "WHY does the author say firefighters are helpers?",
+    "options": [
+      {
+        "id": "a",
+        "label": "They save only cats from trees."
+      },
+      {
+        "id": "b",
+        "label": "Because they are helpers."
+      },
+      {
+        "id": "c",
+        "label": "Because fires are very hot."
+      },
+      {
+        "id": "d",
+        "label": "They save people and pets from fires."
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-H4.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.1.1-Q2",
+    "sourceId": "RL.1.1-Q2",
+    "grade": 1,
+    "standard": "RL.1.1",
+    "difficulty": 119,
+    "text": "The frog sat on a lily pad in the pond. He was waiting for a fly.",
+    "prompt": "Where was the frog sitting?",
+    "options": [
+      {
+        "id": "a",
+        "label": "On a rock"
+      },
+      {
+        "id": "b",
+        "label": "On a lily pad"
+      },
+      {
+        "id": "c",
+        "label": "In the mud"
+      },
+      {
+        "id": "d",
+        "label": "On the grass"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.1.1-Q3",
+    "sourceId": "RI.1.1-Q3",
+    "grade": 1,
+    "standard": "RI.1.1",
+    "difficulty": 116,
+    "text": "The sun is a star. It gives Earth light and heat. Without the sun, Earth would be very cold.",
+    "prompt": "What does the sun give Earth?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Snow and ice"
+      },
+      {
+        "id": "b",
+        "label": "Wind and rain"
+      },
+      {
+        "id": "c",
+        "label": "Water and food"
+      },
+      {
+        "id": "d",
+        "label": "Light and heat"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q3.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.1.2-Q1",
+    "sourceId": "RL.1.2-Q1",
+    "grade": 1,
+    "standard": "RL.1.2",
+    "difficulty": 129,
+    "text": "Tom wanted to win the race. He practiced running every day. On race day, he came in first!",
+    "prompt": "What is the lesson of this story?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Running is boring"
+      },
+      {
+        "id": "b",
+        "label": "Practice helps you get better"
+      },
+      {
+        "id": "c",
+        "label": "Races are scary"
+      },
+      {
+        "id": "d",
+        "label": "Tom is the fastest kid"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q1.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.1.1-Q4",
+    "sourceId": "RI.1.1-Q4",
+    "grade": 1,
+    "standard": "RI.1.1",
+    "difficulty": 131,
+    "text": "Dogs need fresh water every day. They also need food and exercise to stay healthy.",
+    "prompt": "What do dogs need to stay healthy?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Water, food, and exercise"
+      },
+      {
+        "id": "b",
+        "label": "Only exercise"
+      },
+      {
+        "id": "c",
+        "label": "Just food"
+      },
+      {
+        "id": "d",
+        "label": "Just water"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q4.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.1.1-Q4",
+    "sourceId": "RL.1.1-Q4",
+    "grade": 1,
+    "standard": "RL.1.1",
+    "difficulty": 137,
+    "text": "Dad made pancakes for breakfast. He put blueberries on top.",
+    "prompt": "What did Dad put on the pancakes?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Chocolate chips"
+      },
+      {
+        "id": "b",
+        "label": "Syrup"
+      },
+      {
+        "id": "c",
+        "label": "Bananas"
+      },
+      {
+        "id": "d",
+        "label": "Blueberries"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.1.8-Q5",
+    "sourceId": "RI.1.8-Q5",
+    "grade": 1,
+    "standard": "RI.1.8",
+    "difficulty": 143,
+    "text": "Reading every day makes you smarter. It helps you learn new words and understand more stories.",
+    "prompt": "The author supports the point by saying reading:",
+    "options": [
+      {
+        "id": "a",
+        "label": "Helps you learn words and understand stories"
+      },
+      {
+        "id": "b",
+        "label": "Is only for school"
+      },
+      {
+        "id": "c",
+        "label": "Is boring"
+      },
+      {
+        "id": "d",
+        "label": "Takes too long"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.1.1-H3",
+    "sourceId": "RL.1.1-H3",
+    "grade": 1,
+    "standard": "RL.1.1",
+    "difficulty": 176,
+    "text": "At the park, Ben's balloon was not in his hand anymore. He looked up at the sky. His face was sad and he began to cry.",
+    "prompt": "Why is Ben crying?",
+    "options": [
+      {
+        "id": "a",
+        "label": "He is tired and wants a nap."
+      },
+      {
+        "id": "b",
+        "label": "He does not like the park."
+      },
+      {
+        "id": "c",
+        "label": "His balloon floated away."
+      },
+      {
+        "id": "d",
+        "label": "He fell down and got hurt."
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-H3.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.1.2-H2",
+    "sourceId": "RI.1.2-H2",
+    "grade": 1,
+    "standard": "RI.1.2",
+    "difficulty": 176,
+    "text": "It has a soft mane. It runs fast across the grass. Children love to ride on its back. It says 'neigh, neigh!'",
+    "prompt": "What is this text MOSTLY about?",
+    "options": [
+      {
+        "id": "a",
+        "label": "A ride"
+      },
+      {
+        "id": "b",
+        "label": "A horse"
+      },
+      {
+        "id": "c",
+        "label": "A dog"
+      },
+      {
+        "id": "d",
+        "label": "A field"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-H2.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.1.3-H3",
+    "sourceId": "RL.1.3-H3",
+    "grade": 1,
+    "standard": "RL.1.3",
+    "difficulty": 192,
+    "text": "Rosa put some seeds in a cup of dirt. She set the cup on the sunny windowsill. Every single day, she gave it a little water. One morning, a tiny green leaf poked out of the dirt.",
+    "prompt": "Why did the leaf most likely grow?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Because the dirt got wet one time"
+      },
+      {
+        "id": "b",
+        "label": "Because Rosa poked the leaf"
+      },
+      {
+        "id": "c",
+        "label": "Because Rosa watered it and gave it light"
+      },
+      {
+        "id": "d",
+        "label": "Because Rosa put the seeds in a cup"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-H3.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.1.1-H5",
+    "sourceId": "RI.1.1-H5",
+    "grade": 1,
+    "standard": "RI.1.1",
+    "difficulty": 193,
+    "text": "Firefighters wear thick coats to their job. Their coats are made so they do not burn easily. Firefighters get very close to fire when they work.",
+    "prompt": "Why do firefighters wear coats that do not burn easily?",
+    "options": [
+      {
+        "id": "a",
+        "label": "To keep safe when they are close to fire"
+      },
+      {
+        "id": "b",
+        "label": "To look the same as each other"
+      },
+      {
+        "id": "c",
+        "label": "To stay warm on cold days"
+      },
+      {
+        "id": "d",
+        "label": "To run faster to the fire truck"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-H5.wav",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.2.4-Q5",
+    "sourceId": "RL.2.4-Q5",
+    "grade": 2,
+    "standard": "RL.2.4",
+    "difficulty": 230,
+    "text": "Tick-tock, tick-tock, the clock on the wall. Tick-tock, tick-tock, it counts for us all.",
+    "prompt": "Why does the author repeat tick-tock?",
+    "options": [
+      {
+        "id": "a",
+        "label": "To make it scary"
+      },
+      {
+        "id": "b",
+        "label": "Because they forgot what to write"
+      },
+      {
+        "id": "c",
+        "label": "To make the poem longer"
+      },
+      {
+        "id": "d",
+        "label": "To copy the sound and rhythm of a clock"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.4/RL.2.4-Q5.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.2.9-Q3",
+    "sourceId": "RI.2.9-Q3",
+    "grade": 2,
+    "standard": "RI.2.9",
+    "difficulty": 229,
+    "text": "Text A: \"Bats use sound to find food in the dark.\" Text B: \"Bats eat insects and help farmers by keeping pests away.\"",
+    "prompt": "What does Text B tell you that Text A does not?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Bats are mammals"
+      },
+      {
+        "id": "b",
+        "label": "Bats help farmers"
+      },
+      {
+        "id": "c",
+        "label": "Bats use sound"
+      },
+      {
+        "id": "d",
+        "label": "Bats fly at night"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q3.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.2.1-Q3",
+    "sourceId": "RL.2.1-Q3",
+    "grade": 2,
+    "standard": "RL.2.1",
+    "difficulty": 231,
+    "text": "On the first day of second grade, Emma felt nervous. She didn't know anyone in her new class. At lunch, a girl named Priya sat next to her and said, \"Want to share my crackers?\"",
+    "prompt": "Why was Emma nervous?",
+    "options": [
+      {
+        "id": "a",
+        "label": "She was late"
+      },
+      {
+        "id": "b",
+        "label": "She lost her backpack"
+      },
+      {
+        "id": "c",
+        "label": "She didn't know anyone"
+      },
+      {
+        "id": "d",
+        "label": "She forgot her lunch"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q3.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.2.1-Q1",
+    "sourceId": "RI.2.1-Q1",
+    "grade": 2,
+    "standard": "RI.2.1",
+    "difficulty": 230,
+    "text": "Honeybees live in hives. A hive can have up to 60,000 bees! The queen bee lays all the eggs, and worker bees collect nectar from flowers.",
+    "prompt": "What does the queen bee do?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Guards the hive"
+      },
+      {
+        "id": "b",
+        "label": "Lays all the eggs"
+      },
+      {
+        "id": "c",
+        "label": "Collects nectar"
+      },
+      {
+        "id": "d",
+        "label": "Build the hive"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.2.4-Q4",
+    "sourceId": "RL.2.4-Q4",
+    "grade": 2,
+    "standard": "RL.2.4",
+    "difficulty": 256,
+    "text": "The leaves danced in the wind, twirling and spinning to the ground.",
+    "prompt": "The word danced makes the leaves seem —",
+    "options": [
+      {
+        "id": "a",
+        "label": "Wet and cold"
+      },
+      {
+        "id": "b",
+        "label": "Heavy and slow"
+      },
+      {
+        "id": "c",
+        "label": "Lively and playful"
+      },
+      {
+        "id": "d",
+        "label": "Scary and dark"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.4/RL.2.4-Q4.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.2.3-Q1",
+    "sourceId": "RI.2.3-Q1",
+    "grade": 2,
+    "standard": "RI.2.3",
+    "difficulty": 250,
+    "text": "First, the caterpillar eats lots of leaves. Then, it makes a chrysalis. Finally, it comes out as a butterfly.",
+    "prompt": "What happens AFTER the caterpillar makes a chrysalis?",
+    "options": [
+      {
+        "id": "a",
+        "label": "It makes another chrysalis"
+      },
+      {
+        "id": "b",
+        "label": "It eats more leaves"
+      },
+      {
+        "id": "c",
+        "label": "It goes to sleep forever"
+      },
+      {
+        "id": "d",
+        "label": "It becomes a butterfly"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.2.4-H1",
+    "sourceId": "RL.2.4-H1",
+    "grade": 2,
+    "standard": "RL.2.4",
+    "difficulty": 275,
+    "text": "The turtle plods. He plods and plods. Slow . . . slow . . . slow he goes.\nThe rabbit zips! Zip-zip! He's gone before your nose.",
+    "prompt": "Why did the poet write slow . . . slow . . . slow with long dots between the words?",
+    "options": [
+      {
+        "id": "a",
+        "label": "To make the reading feel slow, like the turtle moving"
+      },
+      {
+        "id": "b",
+        "label": "To show the turtle is lost and can't find his way"
+      },
+      {
+        "id": "c",
+        "label": "To show the turtle is quietly sleeping"
+      },
+      {
+        "id": "d",
+        "label": "To count how many steps the turtle took"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.4/RL.2.4-H1.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.2.1-H1",
+    "sourceId": "RI.2.1-H1",
+    "grade": 2,
+    "standard": "RI.2.1",
+    "difficulty": 281,
+    "text": "Every morning, Mrs. Lee puts a dish of seeds on her back porch. Soon little birds fly down to eat. But when her cat sits by the door, no birds come at all. So Mrs. Lee keeps the cat inside during breakfast time.",
+    "prompt": "Why does Mrs. Lee keep the cat inside in the morning?",
+    "options": [
+      {
+        "id": "a",
+        "label": "So the birds are not scared away"
+      },
+      {
+        "id": "b",
+        "label": "So the porch stays nice and clean"
+      },
+      {
+        "id": "c",
+        "label": "So the cat can sleep a little longer"
+      },
+      {
+        "id": "d",
+        "label": "So the cat will not eat the seeds"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-H1.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.2.1-H4",
+    "sourceId": "RL.2.1-H4",
+    "grade": 2,
+    "standard": "RL.2.1",
+    "difficulty": 295,
+    "text": "When Tomas opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week Tomas had told Dad that plain square sandwiches were boring.",
+    "prompt": "What does this tell us about Tomas's dad?",
+    "options": [
+      {
+        "id": "a",
+        "label": "He wanted Tomas to share his lunch with friends"
+      },
+      {
+        "id": "b",
+        "label": "He always makes star-shaped food for everyone"
+      },
+      {
+        "id": "c",
+        "label": "He forgot to pack a real lunch that day"
+      },
+      {
+        "id": "d",
+        "label": "He listened to what Tomas said and tried to make him happy"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-H4.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.2.2-H5",
+    "sourceId": "RI.2.2-H5",
+    "grade": 2,
+    "standard": "RI.2.2",
+    "difficulty": 294,
+    "text": "Read the text.\n\nA librarian's day begins early. She turns on the lights and unlocks the big doors. All morning and afternoon she helps kids find books they will love. Before the library closes, she reads a story out loud so everyone can listen together.",
+    "prompt": "What is this text MOSTLY about?",
+    "options": [
+      {
+        "id": "a",
+        "label": "The different ways a librarian helps at the library"
+      },
+      {
+        "id": "b",
+        "label": "Why kids love to check out library books"
+      },
+      {
+        "id": "c",
+        "label": "How a librarian opens the library in the morning"
+      },
+      {
+        "id": "d",
+        "label": "How to find a good book on the shelf"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-H5.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.3.2-Q1",
+    "sourceId": "RL.3.2-Q1",
+    "grade": 3,
+    "standard": "RL.3.2",
+    "difficulty": 338,
+    "text": "The crow found a piece of cheese. A fox said, \"What a beautiful voice you must have! Please sing for me.\" The crow opened its beak to sing, and the cheese fell right into the fox's mouth.",
+    "prompt": "What is the moral of this fable?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Don't trust flattery from someone who wants something"
+      },
+      {
+        "id": "b",
+        "label": "Foxes are faster than crows"
+      },
+      {
+        "id": "c",
+        "label": "Crows can't sing"
+      },
+      {
+        "id": "d",
+        "label": "Cheese is delicious"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.2/RL.3.2-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.3.3-E1",
+    "sourceId": "RI.3.3-E1",
+    "grade": 3,
+    "standard": "RI.3.3",
+    "difficulty": 310,
+    "text": "The ground got very cold. Because of the cold, the water in the pond turned to ice.",
+    "prompt": "What caused the water to turn to ice?",
+    "options": [
+      {
+        "id": "a",
+        "label": "The ground got very cold"
+      },
+      {
+        "id": "b",
+        "label": "Someone stirred the water"
+      },
+      {
+        "id": "c",
+        "label": "A duck landed on the pond"
+      },
+      {
+        "id": "d",
+        "label": "The sun came out"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-E1.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.3.2-Q2",
+    "sourceId": "RL.3.2-Q2",
+    "grade": 3,
+    "standard": "RL.3.2",
+    "difficulty": 339,
+    "text": "A boy cried \"Wolf!\" when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him.",
+    "prompt": "What is the central message?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Wolves are dangerous"
+      },
+      {
+        "id": "b",
+        "label": "Boys shouldn't be shepherds"
+      },
+      {
+        "id": "c",
+        "label": "Lying destroys trust"
+      },
+      {
+        "id": "d",
+        "label": "Villagers are mean"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.2/RL.3.2-Q2.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.3.3-E4",
+    "sourceId": "RI.3.3-E4",
+    "grade": 3,
+    "standard": "RI.3.3",
+    "difficulty": 322,
+    "text": "The volcano erupted. After the eruption, hot lava flowed down the mountain.",
+    "prompt": "What happened AFTER the volcano erupted?",
+    "options": [
+      {
+        "id": "a",
+        "label": "People planted trees"
+      },
+      {
+        "id": "b",
+        "label": "The volcano was built"
+      },
+      {
+        "id": "c",
+        "label": "Snow fell on the town"
+      },
+      {
+        "id": "d",
+        "label": "Hot lava flowed down the mountain"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-E4.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.3.4-Q4",
+    "sourceId": "RL.3.4-Q4",
+    "grade": 3,
+    "standard": "RL.3.4",
+    "difficulty": 350,
+    "text": "The classroom was a zoo today!",
+    "prompt": "This means —",
+    "options": [
+      {
+        "id": "a",
+        "label": "They went on a field trip to the zoo"
+      },
+      {
+        "id": "b",
+        "label": "The teacher likes animals"
+      },
+      {
+        "id": "c",
+        "label": "There were animals in the classroom"
+      },
+      {
+        "id": "d",
+        "label": "The classroom was very loud and chaotic"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.3.3-Q8",
+    "sourceId": "RI.3.3-Q8",
+    "grade": 3,
+    "standard": "RI.3.3",
+    "difficulty": 350,
+    "text": "Mangrove trees grow along tropical coastlines. Their roots extend into the water and slow down waves. Due to this, mangroves prevent erosion and protect the shore during storms.",
+    "prompt": "What is the EFFECT of mangrove roots slowing down waves?",
+    "options": [
+      {
+        "id": "a",
+        "label": "The trees grow taller"
+      },
+      {
+        "id": "b",
+        "label": "Fish cannot swim"
+      },
+      {
+        "id": "c",
+        "label": "The shore is protected from erosion"
+      },
+      {
+        "id": "d",
+        "label": "The water gets warmer"
+      }
+    ],
+    "correctId": "c",
+    "audio": "/audio/placement-spectrum/q-sp-RI.3.3-Q8.mp3",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.3.1-H3",
+    "sourceId": "RL.3.1-H3",
+    "grade": 3,
+    "standard": "RL.3.1",
+    "difficulty": 391,
+    "text": "The morning of the trip, Leo checked the sky three times before breakfast. He packed his raincoat even though the forecast said sunny. He added an extra pair of dry socks, a flashlight, and a whistle to his bag. His mom laughed and said, 'It's just a walk in the park.' Leo zipped the bag anyway.",
+    "prompt": "Which word BEST describes Leo, based on the text?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Forgetful"
+      },
+      {
+        "id": "b",
+        "label": "Cheerful"
+      },
+      {
+        "id": "c",
+        "label": "Careful"
+      },
+      {
+        "id": "d",
+        "label": "Fearful"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-H3.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.3.9-H2",
+    "sourceId": "RI.3.9-H2",
+    "grade": 3,
+    "standard": "RI.3.9",
+    "difficulty": 383,
+    "text": "Text A: \"The Sahara Desert is one of the hottest places on Earth. In the daytime the sand can get hot enough to burn your feet.\"\n\nText B: \"People think deserts are always warm, but that is not true. A desert is any place that gets almost no rain. At night the Sahara can get cold enough to freeze water.\"",
+    "prompt": "How would the AUTHOR of Text B most likely respond to Text A?",
+    "options": [
+      {
+        "id": "a",
+        "label": "\"I agree, deserts are always warm places.\""
+      },
+      {
+        "id": "b",
+        "label": "\"That is true in the daytime, but the Sahara is not hot all the time.\""
+      },
+      {
+        "id": "c",
+        "label": "\"You are wrong, the Sahara is never hot.\""
+      },
+      {
+        "id": "d",
+        "label": "\"Deserts are hot because they get almost no rain.\""
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-H2.wav",
+    "audioIncludesOptions": false,
+    "promptAudio": "/audio/placement-spectrum/q-sp-RI.3.9-H2.mp3"
+  },
+  {
+    "id": "sp-RL.3.1-H2",
+    "sourceId": "RL.3.1-H2",
+    "grade": 3,
+    "standard": "RL.3.1",
+    "difficulty": 395,
+    "text": "Every recess, Priya sat alone on the bench and read her book. The other kids thought she was shy. But Priya always sat where she could see the whole playground, and she kept a small notebook tucked inside her book. When Coach asked who had seen who knocked over the equipment shed, only Priya raised her hand.",
+    "prompt": "What does the text suggest about Priya?",
+    "options": [
+      {
+        "id": "a",
+        "label": "She is not telling the truth about what she saw"
+      },
+      {
+        "id": "b",
+        "label": "She notices and pays attention to what happens around her"
+      },
+      {
+        "id": "c",
+        "label": "She is too shy to make any friends at recess"
+      },
+      {
+        "id": "d",
+        "label": "She would rather read than play with the other kids"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-H2.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.3.2-H4",
+    "sourceId": "RI.3.2-H4",
+    "grade": 3,
+    "standard": "RI.3.2",
+    "difficulty": 395,
+    "text": "Penguins have clever ways to stay warm in the freezing cold. They huddle together in huge groups so their bodies block the icy wind. They also have a thick layer of fat under their skin that holds in heat.",
+    "prompt": "Which NEW sentence would best support the main idea of this passage?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Baby penguins are covered in soft gray fluff"
+      },
+      {
+        "id": "b",
+        "label": "Penguins cannot fly up into the air like other birds"
+      },
+      {
+        "id": "c",
+        "label": "Penguins dive into the sea to catch fish to eat"
+      },
+      {
+        "id": "d",
+        "label": "Their feathers are packed tightly together to trap warm air against their skin"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-H4.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.4.4-E3",
+    "sourceId": "RL.4.4-E3",
+    "grade": 4,
+    "standard": "RL.4.4",
+    "difficulty": 412,
+    "text": "Maya felt gloomy all day. She frowned and did not want to play or smile.",
+    "prompt": "In this sentence, \"gloomy\" means Maya felt —",
+    "options": [
+      {
+        "id": "a",
+        "label": "hungry"
+      },
+      {
+        "id": "b",
+        "label": "curious"
+      },
+      {
+        "id": "c",
+        "label": "sad"
+      },
+      {
+        "id": "d",
+        "label": "excited"
+      }
+    ],
+    "correctId": "c",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E3.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.4.2-E2",
+    "sourceId": "RI.4.2-E2",
+    "grade": 4,
+    "standard": "RI.4.2",
+    "difficulty": 410,
+    "text": "Read the paragraph, then pick the main idea.\n\n\"The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body.\"",
+    "prompt": "What is this paragraph mostly about?",
+    "options": [
+      {
+        "id": "a",
+        "label": "People sleep at night"
+      },
+      {
+        "id": "b",
+        "label": "The heart pumps blood through your body"
+      },
+      {
+        "id": "c",
+        "label": "Muscles get tired"
+      },
+      {
+        "id": "d",
+        "label": "Blood is the color red"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E2.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.4.4-E1",
+    "sourceId": "RL.4.4-E1",
+    "grade": 4,
+    "standard": "RL.4.4",
+    "difficulty": 426,
+    "text": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.",
+    "prompt": "In this sentence, \"as brave as a lion\" means the knight was —",
+    "options": [
+      {
+        "id": "a",
+        "label": "very brave"
+      },
+      {
+        "id": "b",
+        "label": "very short"
+      },
+      {
+        "id": "c",
+        "label": "very hungry"
+      },
+      {
+        "id": "d",
+        "label": "very sleepy"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E1.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.4.9-E4",
+    "sourceId": "RI.4.9-E4",
+    "grade": 4,
+    "standard": "RI.4.9",
+    "difficulty": 418,
+    "text": "Two texts are about rain.\n\nText A says: \"Rain gives water to plants.\"\nText B says: \"Rain fills up rivers and lakes.\"",
+    "prompt": "Using information from BOTH texts, name two things rain does.",
+    "options": [
+      {
+        "id": "a",
+        "label": "It makes the sun brighter"
+      },
+      {
+        "id": "b",
+        "label": "It only waters plants"
+      },
+      {
+        "id": "c",
+        "label": "It paints the sky orange"
+      },
+      {
+        "id": "d",
+        "label": "It waters plants and fills rivers and lakes"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E4.wav",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RL.4.2-Q1",
+    "sourceId": "RL.4.2-Q1",
+    "grade": 4,
+    "standard": "RL.4.2",
+    "difficulty": 450,
+    "text": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.",
+    "prompt": "What is the theme?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Working alone is always best"
+      },
+      {
+        "id": "b",
+        "label": "Collaboration leads to better results than working alone"
+      },
+      {
+        "id": "c",
+        "label": "Science fairs are unfair"
+      },
+      {
+        "id": "d",
+        "label": "Winning is everything"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.4.3-Q1",
+    "sourceId": "RI.4.3-Q1",
+    "grade": 4,
+    "standard": "RI.4.3",
+    "difficulty": 450,
+    "text": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.",
+    "prompt": "What caused the Boston Tea Party?",
+    "options": [
+      {
+        "id": "a",
+        "label": "The ships were blocking the harbor"
+      },
+      {
+        "id": "b",
+        "label": "Anger over taxation without representation"
+      },
+      {
+        "id": "c",
+        "label": "The colonists wanted free tea"
+      },
+      {
+        "id": "d",
+        "label": "Britain declared war"
+      }
+    ],
+    "correctId": "b",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.4.4-Q5",
+    "sourceId": "RL.4.4-Q5",
+    "grade": 4,
+    "standard": "RL.4.4",
+    "difficulty": 475,
+    "text": "The silence in the library was so thick you could cut it with a knife.",
+    "prompt": "This phrase means —",
+    "options": [
+      {
+        "id": "a",
+        "label": "People were cooking in the library"
+      },
+      {
+        "id": "b",
+        "label": "Someone had a knife in the library"
+      },
+      {
+        "id": "c",
+        "label": "The library was noisy"
+      },
+      {
+        "id": "d",
+        "label": "The silence was intense and heavy"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RI.4.1-Q1",
+    "sourceId": "RI.4.1-Q1",
+    "grade": 4,
+    "standard": "RI.4.1",
+    "difficulty": 473,
+    "text": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.",
+    "prompt": "What detail explains why astronauts see so many sunrises?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Astronauts sleep less"
+      },
+      {
+        "id": "b",
+        "label": "The sun moves faster in space"
+      },
+      {
+        "id": "c",
+        "label": "The station is large"
+      },
+      {
+        "id": "d",
+        "label": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
+      }
+    ],
+    "correctId": "d",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q1.mp3",
+    "audioIncludesOptions": true
+  },
+  {
+    "id": "sp-RL.4.4-Q4",
+    "sourceId": "RL.4.4-Q4",
+    "grade": 4,
+    "standard": "RL.4.4",
+    "difficulty": 484,
+    "text": "His Achilles’ heel was his temper — it always got him into trouble.",
+    "prompt": "An Achilles’ heel refers to —",
+    "options": [
+      {
+        "id": "a",
+        "label": "A type of shoe"
+      },
+      {
+        "id": "b",
+        "label": "A battle strategy"
+      },
+      {
+        "id": "c",
+        "label": "A person's greatest weakness or vulnerability"
+      },
+      {
+        "id": "d",
+        "label": "A foot injury"
+      }
+    ],
+    "correctId": "c",
+    "audio": "/audio/placement-spectrum/q-sp-RL.4.4-Q4.mp3",
+    "audioIncludesOptions": false
+  },
+  {
+    "id": "sp-RI.4.1-Q2",
+    "sourceId": "RI.4.1-Q2",
+    "grade": 4,
+    "standard": "RI.4.1",
+    "difficulty": 478,
+    "text": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.",
+    "prompt": "What inference can you make about why this discovery was so important?",
+    "options": [
+      {
+        "id": "a",
+        "label": "Scientists previously believed only humans used tools"
+      },
+      {
+        "id": "b",
+        "label": "Tanzania is a new country"
+      },
+      {
+        "id": "c",
+        "label": "People didn't know about termites before"
+      },
+      {
+        "id": "d",
+        "label": "Chimpanzees are smarter than humans"
+      }
+    ],
+    "correctId": "a",
+    "audio": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q2.mp3",
+    "audioIncludesOptions": true
+  }
+]

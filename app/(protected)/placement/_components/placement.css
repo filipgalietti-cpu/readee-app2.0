@@ -761,3 +761,28 @@
 .pa-look-back-scroll p {
   white-space: pre-line;
 }
+
+.pa-oral-prompt {
+  color: #655874;
+  font-family: var(--font-baloo), sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.pa-look-back > summary {
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 0;
+}
+.pa-look-back[open] > summary {
+  margin-bottom: 10px;
+}
+.pa-look-back > summary::-webkit-details-marker {
+  display: none;
+}
+.pa-look-back > summary:focus-visible {
+  outline: 3px solid #7860f9;
+  outline-offset: 5px;
+  border-radius: 4px;
+}

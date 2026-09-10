@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { fixtureMaya } from "@/lib/placement/fixtures";
+import { fixtureSpectrumMaya } from "@/lib/placement/spectrum-fixtures";
 import {
   CelebrationScreen,
   HoldToBuild,
@@ -31,7 +31,7 @@ const FRAMES: { id: Frame; label: string }[] = [
 ];
 
 export default function Page() {
-  const [result] = useState(() => fixtureMaya());
+  const [result] = useState(() => fixtureSpectrumMaya());
   const [tab, setTab] = useState<Tab>("celebration");
   const [frame, setFrame] = useState<Frame>("desktop");
   const [note, setNote] = useState<string>("");
@@ -91,7 +91,10 @@ export default function Page() {
           className={`mx-auto overflow-hidden rounded-3xl bg-white shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] ${phone ? "overflow-y-auto" : "max-w-3xl"}`}
           style={phone ? frameStyle : undefined}
         >
-          <ReportStatic result={result} onStartPlan={() => setNote("Start plan pressed on the static report.")} />
+          <ReportStatic
+            result={result}
+            onStartPlan={() => setNote("Start plan pressed on the static report.")}
+          />
         </div>
       ) : (
         <div
@@ -100,17 +103,28 @@ export default function Page() {
           style={frameStyle}
         >
           {tab === "celebration" && (
-            <CelebrationScreen childName={result.childName} outfitId="bunny_astronaut" carrots={30} onHandoff={toHold} />
+            <CelebrationScreen
+              childName={result.childName}
+              outfitId="bunny_astronaut"
+              carrots={30}
+              onHandoff={toHold}
+            />
           )}
           {tab === "hold" && (
-            <HoldToBuild childName={result.childName} enrolledGrade={bandGrade(result.enrolled)} onComplete={toWizard} />
+            <HoldToBuild
+              childName={result.childName}
+              enrolledGrade={bandGrade(result.enrolled)}
+              onComplete={toWizard}
+            />
           )}
           {tab === "wizard" && (
             <RevealWizard
               result={result}
               outfitId="bunny_astronaut"
               audioUrlFor={() => null}
-              onStartPlan={() => setNote("Start plan pressed. Stripe Checkout would open here.")}
+              onStartPlan={() =>
+                setNote("Start plan pressed. The first assigned free lesson would open here.")
+              }
               onNotNow={toReport}
               onSkipToReport={toReport}
             />

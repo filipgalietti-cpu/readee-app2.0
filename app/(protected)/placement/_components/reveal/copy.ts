@@ -12,7 +12,14 @@ import type { GrowthData } from "./GrowthChart";
 import type { GlyphName } from "@/app/_components/Glyph";
 import { BAND_LABEL, type Band, type PlacedBand } from "@/lib/placement/ladder";
 import { ordinal, type GradePhase, type Season } from "@/lib/placement/norms";
-import type { Moment, NarrationId, NarrationLine, PlacementResult, PlanMilestone, PlanStep } from "@/lib/placement/types";
+import type {
+  Moment,
+  NarrationId,
+  NarrationLine,
+  PlacementResult,
+  PlanMilestone,
+  PlanStep,
+} from "@/lib/placement/types";
 
 export type SkillCopy = {
   id: "decoding" | "fluency" | "comprehension";
@@ -20,7 +27,7 @@ export type SkillCopy = {
   icon: GlyphName;
   label: string;
   value: string;
-  fillPct: number;
+  fillPct: number | null;
   meaning: string;
 };
 
@@ -112,7 +119,19 @@ export type RevealCopy = {
   };
 };
 
-const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+const NUMBER_WORDS = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+];
 const numberWord = (n: number): string => NUMBER_WORDS[n] ?? String(n);
 const capitalize = (s: string): string => (s.length ? s[0].toUpperCase() + s.slice(1) : s);
 
@@ -171,7 +190,12 @@ export function momentLine(m: Moment, name: string): string {
         ? `${name} answered all ${numberWord(m.total)} questions.`
         : `${name} answered ${numberWord(m.correct)} of ${numberWord(m.total)} questions.`;
     case "foundation": {
-      const skill = m.skill === "letterSounds" ? "letter sounds" : m.skill === "blending" ? "blends" : "new words";
+      const skill =
+        m.skill === "letterSounds"
+          ? "letter sounds"
+          : m.skill === "blending"
+            ? "blends"
+            : "new words";
       return `${name} got ${m.correct} of ${m.total} ${skill}.`;
     }
   }
@@ -188,7 +212,9 @@ export function evidenceFor(strength: string, moments: Moment[]): string | null 
   if (s.includes("words") && !s.includes("new words")) {
     const m = findMoment(moments, "list-passed");
     if (!m) return null;
-    return m.misses === 0 ? `Read every word on the ${bandGrade(m.band)} list` : `Passed the ${bandGrade(m.band)} list`;
+    return m.misses === 0
+      ? `Read every word on the ${bandGrade(m.band)} list`
+      : `Passed the ${bandGrade(m.band)} list`;
   }
   if (s.includes("understands")) {
     const m = findMoment(moments, "comprehension");
@@ -199,22 +225,30 @@ export function evidenceFor(strength: string, moments: Moment[]): string | null 
   }
   if (s.includes("accurately")) {
     const m = findMoment(moments, "passage-accurate");
-    return m ? `Read the ${bandGrade(m.band)} story with ${Math.round(m.accuracy * 100)} percent accuracy` : null;
+    return m
+      ? `Read the ${bandGrade(m.band)} story with ${Math.round(m.accuracy * 100)} percent accuracy`
+      : null;
   }
   if (s.includes("expression")) {
     const m = findMoment(moments, "passage-expressive");
     return m ? `Read the ${bandGrade(m.band)} story with expression` : null;
   }
   if (s.includes("letter sounds")) {
-    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "letterSounds");
+    const m = moments.find(
+      (x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "letterSounds",
+    );
     return m ? `Got ${m.correct} of ${m.total} letter sounds` : null;
   }
   if (s.includes("blends")) {
-    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "blending");
+    const m = moments.find(
+      (x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "blending",
+    );
     return m ? `Blended ${m.correct} of ${m.total} words` : null;
   }
   if (s.includes("sounds out")) {
-    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "nonsenseWords");
+    const m = moments.find(
+      (x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "nonsenseWords",
+    );
     return m ? `Sounded out ${m.correct} of ${m.total} new words` : null;
   }
   return null;
@@ -242,7 +276,11 @@ export function mergeSkipped(steps: PlanStep[], name: string): PlanStep[] {
       while (words.every((w) => w.length > i + 1 && w[i] === words[0][i])) i++;
       const prefix = words[0].slice(0, i).join(" ");
       const tails = words.map((w) => w.slice(i).join(" "));
-      out.push({ kind: "skipped", title: `${prefix ? `${prefix} ` : ""}${joinList(tails)}`, reason: `${name} already showed us those` });
+      out.push({
+        kind: "skipped",
+        title: `${prefix ? `${prefix} ` : ""}${joinList(tails)}`,
+        reason: `${name} already showed us those`,
+      });
     }
     run = [];
   };
@@ -263,7 +301,12 @@ export function narrationFor(result: PlacementResult, id: NarrationId): Narratio
 
 function formatDate(iso: string, withYear: boolean): string {
   const d = new Date(iso);
-  return d.toLocaleDateString("en-US", withYear ? { month: "long", day: "numeric", year: "numeric" } : { month: "long", day: "numeric" });
+  return d.toLocaleDateString(
+    "en-US",
+    withYear
+      ? { month: "long", day: "numeric", year: "numeric" }
+      : { month: "long", day: "numeric" },
+  );
 }
 
 export const HOME_TIPS = (name: string): HomeTip[] => [
@@ -280,7 +323,10 @@ export function trialSteps(start: Date, name: string): TrialStep[] {
   const reminder = new Date(start.getTime() + 11 * 86400000);
   const charge = new Date(start.getTime() + 14 * 86400000);
   return [
-    { when: "14-day free trial starts today", text: `Full access to ${name}'s Custom Reading Journey, $0 due now` },
+    {
+      when: "14-day free trial starts today",
+      text: `Full access to ${name}'s Custom Reading Journey, $0 due now`,
+    },
     { when: shortDate(reminder), text: "We email you a reminder" },
     { when: shortDate(charge), text: "First charge, $9.99 a month" },
   ];
@@ -299,7 +345,8 @@ export function reviewerFrom(reviewedBy: string): { name: string; role: string; 
   const comma = reviewedBy.indexOf(",");
   const name = comma > 0 ? reviewedBy.slice(0, comma).trim() : reviewedBy;
   let role = comma > 0 ? reviewedBy.slice(comma + 1).trim() : "";
-  if (name === "Jennifer Klingerman" && !role.includes("teacher")) role = `${role} and 3rd-grade teacher`;
+  if (name === "Jennifer Klingerman" && !role.includes("teacher"))
+    role = `${role} and 3rd-grade teacher`;
   return { name, role, photo: REVIEWER_PHOTO };
 }
 
@@ -318,19 +365,26 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     const bench = f.typicalForEnrolled;
     const pctl = f.percentile?.percentile ?? null;
     const ge = f.gradeEquivalent;
-    const first = bench !== null ? `The ${season} benchmark for ${enrolledLabel} is ${bench} words per minute. ` : "";
-    let second = bench !== null ? `${name} read ${f.wcpm}` : `${name} read ${f.wcpm} words per minute`;
+    const first =
+      bench !== null
+        ? `The ${season} benchmark for ${enrolledLabel} is ${bench} words per minute. `
+        : "";
+    let second =
+      bench !== null ? `${name} read ${f.wcpm}` : `${name} read ${f.wcpm} words per minute`;
     if (pctl !== null) second += `, about the ${ordinal(pctl)} percentile`;
-    if (ge) second += `, similar to the average ${ordinal(ge.grade)} grader ${phaseWords(ge.phase)}`;
+    if (ge)
+      second += `, similar to the average ${ordinal(ge.grade)} grader ${phaseWords(ge.phase)}`;
     number = {
-      title: "Reading speed",
+      title: decision.spectrum ? "Reading sample" : "Reading speed",
       subtitle: `${capitalize(bandGrade(f.band))} passage`,
       wcpm: f.wcpm,
       benchmark: bench,
       benchmarkLabel: `${season} benchmark for ${enrolledLabel}`,
       percentile: pctl,
       sentence: `${first}${second}.`,
-      source: "Hasbrouck and Tindal 2017 national norms",
+      source: decision.spectrum
+        ? "Observed on a Readee reading sample; not a national percentile or grade-equivalent score"
+        : "Hasbrouck and Tindal 2017 national norms",
     };
   }
 
@@ -345,7 +399,11 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     support: decision.needs.length
       ? `${name} will benefit from targeted practice in ${joinList(decision.needs)}.`
       : `${name} is ready to keep building from here.`,
-    reassurance: delta > 0 ? "Below grade level does not mean failing. It means the practice needs to be aimed." : null,
+    reassurance: decision.spectrum
+      ? "This is a starting point for instruction. Enrollment stays the same, and lesson evidence can change the recommendation."
+      : delta > 0
+        ? "Below grade level does not mean failing. It means the practice needs to be aimed."
+        : null,
   };
 
   // Skills
@@ -358,7 +416,12 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     icon: "text",
     label: "Decoding",
     value: level === null ? "Getting started" : `${bandGrade(level)} words`,
-    fillPct: level === null ? 0 : result.enrolled === 0 ? 100 : Math.min(100, Math.round((level / result.enrolled) * 100)),
+    fillPct:
+      level === null
+        ? 0
+        : result.enrolled === 0
+          ? 100
+          : Math.min(100, Math.round((level / result.enrolled) * 100)),
     meaning:
       nextTarget !== null && nextTarget <= 4
         ? `${capitalize(bandGrade(nextTarget))} words are next.`
@@ -388,13 +451,38 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       label: "Comprehension",
       value: `${c.correct} of ${c.total}`,
       fillPct: Math.round(c.pct * 100),
-      meaning: c.pct >= 0.99 ? "Understands what they read." : c.pct >= 0.66 ? "Understands most of what they read." : "Understanding is the skill to build.",
+      meaning:
+        c.pct >= 0.99
+          ? "Understands what they read."
+          : c.pct >= 0.66
+            ? "Understands most of what they read."
+            : "Understanding is the skill to build.",
     });
   }
 
   // Strengths with their evidence, and what Luna measured
+  if (decision.spectrum) {
+    const profile = decision.spectrum;
+    skills[0].value = profile.wordStep === null ? "Needs follow-up" : profile.wordLabel;
+    skills[0].meaning =
+      "Word patterns sampled today; this does not certify mastery of a whole standard.";
+    skills[0].fillPct = null;
+    const fluencySkill = skills.find((s) => s.id === "fluency");
+    if (fluencySkill && f) fluencySkill.fillPct = Math.round(f.accuracy * 100);
+    const compSkill = skills.find((s) => s.id === "comprehension");
+    if (compSkill)
+      compSkill.meaning =
+        "Questions about two texts read independently. Listening understanding was measured separately.";
+    placement.support +=
+      profile.languageBand === null
+        ? " Listening answers need more follow-up before a supported language level is named."
+        : ` With read-aloud support, ${name} also showed understanding on ${gradeWord(profile.languageBand)} language questions.`;
+  }
   const strengths = decision.strengths.map(capitalize);
-  const strengthTiles: StrengthTile[] = decision.strengths.map((s) => ({ text: capitalize(s), evidence: evidenceFor(s, result.moments) }));
+  const strengthTiles: StrengthTile[] = decision.strengths.map((s) => ({
+    text: capitalize(s),
+    evidence: decision.spectrum ? null : evidenceFor(s, result.moments),
+  }));
   const extraMoment = extraMomentLine(result.moments);
   const measured: MeasuredItem[] = [{ icon: "text", label: "Words" }];
   if (f) measured.push({ icon: "book-open", label: "Story" });
@@ -430,19 +518,43 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       minutesPerDay: plan.minutesPerDay,
       reviewedBy: plan.reviewedBy,
       countLine: `${plan.lessons} lessons · about ${plan.weeksAt10Min} weeks at ${plan.minutesPerDay} minutes a day`,
-      curatedLine: `Curated from ${name}'s placement · Reviewed by ${plan.reviewedBy}`,
-      craftedLine: "Hand-crafted lessons on the science of reading and Common Core, reviewed by Jennifer Klingerman, Reading Specialist.",
+      curatedLine: decision.spectrum
+        ? `Starting sequence from ${name}'s reading samples; adjust after lesson practice`
+        : `Curated from ${name}'s placement · Reviewed by ${plan.reviewedBy}`,
+      craftedLine:
+        "Hand-crafted lessons on the science of reading and Common Core, reviewed by Jennifer Klingerman, Reading Specialist.",
       trustChips: ["Science of reading", "Common Core aligned", "Hand-crafted lessons"],
     },
     plan: {
       dose: `${plan.minutesPerDay} minutes a day, ${plan.daysPerWeek} days a week.`,
       milestones: plan.milestones,
       tipsHeading: "Three things to do at home this week",
-      tips: HOME_TIPS(name),
-      projection: `Based on how fast readers typically grow with ${plan.minutesPerDay} minutes of practice a day.`,
+      tips: decision.spectrum
+        ? [
+            {
+              icon: "book-open",
+              text: "Read richer, age-appropriate stories aloud and talk about their ideas",
+            },
+            {
+              icon: "headphones",
+              text: "Let your reader practice short texts matched to their word-reading skills",
+            },
+            {
+              icon: "message-circle",
+              text: "Discuss what happened and ask which detail supports the answer",
+            },
+          ]
+        : HOME_TIPS(name),
+      projection: decision.spectrum
+        ? "A practice schedule, not a prediction of when a reading level will be reached. Review progress in lessons."
+        : `Based on how fast readers typically grow with ${plan.minutesPerDay} minutes of practice a day.`,
       growth:
         decision.fluency && plan.milestones.some((m) => typeof m.wcpm === "number")
-          ? { currentWcpm: decision.fluency.wcpm, startDate: result.createdAt, milestones: plan.milestones.filter((m) => typeof m.wcpm === "number") }
+          ? {
+              currentWcpm: decision.fluency.wcpm,
+              startDate: result.createdAt,
+              milestones: plan.milestones.filter((m) => typeof m.wcpm === "number"),
+            }
           : null,
     },
     ask: {

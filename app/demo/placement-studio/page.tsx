@@ -5,11 +5,17 @@ import PlacementView, {
   type PlacementScreen,
 } from "@/app/(protected)/placement/_components/PlacementView";
 import AssessmentHandoff from "@/app/(protected)/placement/_components/AssessmentHandoff";
+import { spectrumPassage } from "@/app/data/placement-spectrum/reading";
+import { LANGUAGE_ITEMS } from "@/lib/placement/spectrum";
+import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { clipUrl, playUrlAsync } from "@/app/(protected)/placement/_components/audio";
 
 const passage = PLACEMENT_BANK.bands[2].passage!;
 const question = passage.questions[2];
+const kRead = spectrumPassage(0, "a");
+const stretch = spectrumPassage(4, "a");
+const listen = LANGUAGE_ITEMS.find((q) => q.id === "sp-RI.3.9-H2")!;
 const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
   { label: "Welcome", stage: "greeting", screen: { kind: "ready" } },
   { label: "Microphone", stage: "mic", screen: { kind: "mic", status: "open", retry: false } },
@@ -49,6 +55,45 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
   },
   { label: "Retry", stage: "words", screen: { kind: "recovery" } },
   { label: "Finish", stage: "closing", screen: { kind: "closing", error: null } },
+  { label: "Parent handoff", stage: "greeting", screen: { kind: "ready" } },
+  {
+    label: "First K text",
+    stage: "passage",
+    screen: { kind: "passage", title: kRead.title, text: kRead.text, reading: true },
+  },
+  {
+    label: "Fourth-grade stretch",
+    stage: "comprehension",
+    screen: {
+      kind: "question",
+      prompt: stretch.questions[1].prompt,
+      options: stretch.questions[1].options,
+      picked: null,
+      readingIdx: -1,
+      speakers: true,
+      qid: stretch.questions[1].id,
+      passage: { title: stretch.title, text: stretch.text },
+    },
+  },
+  {
+    label: "Listening separately",
+    stage: "listening",
+    screen: {
+      kind: "question",
+      prompt: listen.prompt,
+      options: listen.options,
+      picked: null,
+      readingIdx: -1,
+      speakers: true,
+      qid: listen.id,
+      passage: { title: "Listen and think", text: listen.text },
+    },
+  },
+  {
+    label: "Spoken blending",
+    stage: "foundations",
+    screen: { kind: "word", word: "Say the word", oral: true, listening: true },
+  },
 ];
 
 export default function PlacementStudio() {
@@ -65,7 +110,7 @@ export default function PlacementStudio() {
     setPicked(null);
     setReadingIdx(-1);
   };
-  const next = () => change((index + 1) % (examples.length + 1));
+  const next = () => change((index + 1) % examples.length);
   return (
     <div className="pa-studio">
       <div className="pa-studio-controls">
@@ -78,7 +123,6 @@ export default function PlacementStudio() {
                 {e.label}
               </option>
             ))}
-            <option value={8}>Parent handoff</option>
           </select>
         </label>
         <button onClick={next}>Next screen</button>
@@ -104,8 +148,16 @@ export default function PlacementStudio() {
           onRetry={() => change(1)}
           onSave={next}
           onReadOption={(qid, id) => {
-            setReadingIdx(question.options.findIndex((option) => option.id === id));
-            void playUrlAsync(clipUrl(`opt-${qid}-${id}`)).finally(() => setReadingIdx(-1));
+            setReadingIdx(
+              screen.kind === "question"
+                ? screen.options.findIndex((option) => option.id === id)
+                : -1,
+            );
+            void playUrlAsync(
+              qid.startsWith("sp-")
+                ? spectrumClip(`opt-${qid}-${id}`)
+                : clipUrl(`opt-${qid}-${id}`),
+            ).finally(() => setReadingIdx(-1));
           }}
           exitHref="/demo/placement-run"
         />

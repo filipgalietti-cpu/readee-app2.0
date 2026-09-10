@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
@@ -90,7 +90,7 @@ const SKILL_MAP: Record<string, { label: string; Icon: GlyphName }> = {
   RF: { label: "Phonics & Word Skills", Icon: "waves" },
   RL: { label: "Reading Comprehension", Icon: "book-open" },
   RI: { label: "Reading Comprehension", Icon: "book-open" },
-  L:  { label: "Vocabulary & Grammar", Icon: "message-square" },
+  L: { label: "Vocabulary & Grammar", Icon: "message-square" },
 };
 
 const questionLookup: Record<string, QuestionMeta> = {};
@@ -116,32 +116,38 @@ const LEVEL_INFO: Record<string, { grade: string; summary: string; details: stri
   "Emerging Reader": {
     grade: "Kindergarten",
     summary: "Just getting started with reading",
-    details: "Your child is learning the building blocks - recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
+    details:
+      "Your child is learning the building blocks - recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
   },
   "Beginning Reader": {
     grade: "Kindergarten",
     summary: "Learning to read words and short sentences",
-    details: "Your child can recognize some letters and sounds, and is starting to read simple words. We'll work on sounding out words, learning sight words, and reading short sentences.",
+    details:
+      "Your child can recognize some letters and sounds, and is starting to read simple words. We'll work on sounding out words, learning sight words, and reading short sentences.",
   },
   "Developing Reader": {
     grade: "1st Grade",
     summary: "Reading simple stories with some help",
-    details: "Your child can sound out many words, read short passages, and answer basic questions about what they read. We'll keep building fluency and comprehension skills.",
+    details:
+      "Your child can sound out many words, read short passages, and answer basic questions about what they read. We'll keep building fluency and comprehension skills.",
   },
   "Growing Reader": {
     grade: "2nd Grade",
     summary: "Reading longer stories and learning new words",
-    details: "Your child reads with growing confidence, understands stories with multiple paragraphs, and is building a strong vocabulary. We'll focus on deeper comprehension and word skills.",
+    details:
+      "Your child reads with growing confidence, understands stories with multiple paragraphs, and is building a strong vocabulary. We'll focus on deeper comprehension and word skills.",
   },
   "Independent Reader": {
     grade: "3rd Grade",
     summary: "Reading on their own with good understanding",
-    details: "Your child reads chapter-level texts independently, identifies main ideas, and makes connections across what they read. We'll work on critical thinking and advanced comprehension.",
+    details:
+      "Your child reads chapter-level texts independently, identifies main ideas, and makes connections across what they read. We'll work on critical thinking and advanced comprehension.",
   },
   "Advanced Reader": {
     grade: "4th Grade",
     summary: "Reading complex texts and thinking critically",
-    details: "Your child reads challenging material, analyzes themes and author's purpose, and uses context to figure out new words. We'll push into higher-level analysis and writing connections.",
+    details:
+      "Your child reads challenging material, analyzes themes and author's purpose, and uses context to figure out new words. We'll push into higher-level analysis and writing connections.",
   },
 };
 
@@ -155,7 +161,6 @@ function formatDate(iso: string) {
   });
 }
 
-
 /* ── Page ──────────────────────────────────────────── */
 
 export default function AssessmentResultsPage() {
@@ -168,6 +173,7 @@ export default function AssessmentResultsPage() {
 
 function AssessmentResultsContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const childId = searchParams.get("child");
 
   const [child, setChild] = useState<Child | null>(null);
@@ -190,19 +196,23 @@ function AssessmentResultsContent() {
           .limit(1),
       ]);
 
+      if (assessmentRes.data?.[0]?.dimension_profile?.source === "placement-v4") {
+        router.replace(`/placement/report?child=${encodeURIComponent(childId)}`);
+        return;
+      }
       if (childRes.data) setChild(childRes.data as Child);
       if (assessmentRes.data?.length) setAssessment(assessmentRes.data[0] as AssessmentRecord);
       setLoading(false);
     }
     load();
-  }, [childId]);
+  }, [childId, router]);
 
   // Hooks must be called before any early returns
   const scorePct = useCountUp(assessment?.score_percent ?? 0, 1200, 400);
   const correctCount = useCountUp(
     assessment?.answers?.filter((a) => a.is_correct).length ?? 0,
     800,
-    400
+    400,
   );
 
   if (loading) {
@@ -233,7 +243,10 @@ function AssessmentResultsContent() {
 
   // Find where the child placed on the meter
   const placedLevel = assessment.reading_level_placed;
-  const placedIdx = Math.max(0, LEVEL_STEPS.findIndex((s) => s.label === placedLevel));
+  const placedIdx = Math.max(
+    0,
+    LEVEL_STEPS.findIndex((s) => s.label === placedLevel),
+  );
 
   // Group answers by reading skill
   const bySkill: Record<string, { correct: number; total: number; Icon: GlyphName }> = {};
@@ -301,7 +314,15 @@ function AssessmentResultsContent() {
           );
         })()}
         <p className="text-sm text-zinc-400 text-center mb-6">
-          Scored <span ref={scorePct.ref} className="font-semibold text-zinc-700">{scorePct.value}%</span> &middot; <span ref={correctCount.ref} className="font-semibold text-zinc-700">{correctCount.value}</span> of {totalQuestions} correct
+          Scored{" "}
+          <span ref={scorePct.ref} className="font-semibold text-zinc-700">
+            {scorePct.value}%
+          </span>{" "}
+          &middot;{" "}
+          <span ref={correctCount.ref} className="font-semibold text-zinc-700">
+            {correctCount.value}
+          </span>{" "}
+          of {totalQuestions} correct
         </p>
 
         {/* Meter */}
@@ -332,9 +353,11 @@ function AssessmentResultsContent() {
                     />
                   )}
                   {/* Labels */}
-                  <p className={`text-[10px] mt-2 text-center leading-tight ${
-                    isPlaced ? "font-bold text-zinc-900" : "text-zinc-400"
-                  }`}>
+                  <p
+                    className={`text-[10px] mt-2 text-center leading-tight ${
+                      isPlaced ? "font-bold text-zinc-900" : "text-zinc-400"
+                    }`}
+                  >
                     {step.gradeLabel}
                   </p>
                 </div>
@@ -423,7 +446,11 @@ function AssessmentResultsContent() {
           className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors"
         >
           <span className="font-bold text-zinc-900">Question Details</span>
-          <Glyph name="chevron-down" size={20} className={`text-zinc-400 transition-transform ${showDetails ? "rotate-180" : ""}`} />
+          <Glyph
+            name="chevron-down"
+            size={20}
+            className={`text-zinc-400 transition-transform ${showDetails ? "rotate-180" : ""}`}
+          />
         </button>
 
         {showDetails && (
@@ -441,21 +468,28 @@ function AssessmentResultsContent() {
                 >
                   <div className="flex items-start gap-2">
                     {a.is_correct ? (
-                      <Glyph name="check-circle2" size={20} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <Glyph
+                        name="check-circle2"
+                        size={20}
+                        className="text-emerald-500 flex-shrink-0 mt-0.5"
+                      />
                     ) : (
-                      <Glyph name="x-circle" size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
+                      <Glyph
+                        name="x-circle"
+                        size={20}
+                        className="text-red-400 flex-shrink-0 mt-0.5"
+                      />
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-zinc-800">
                         {i + 1}. {q?.prompt || a.question_id}
                       </p>
-                      <p className="text-xs text-zinc-500 mt-0.5">
-                        {q?.skill || ""}
-                      </p>
+                      <p className="text-xs text-zinc-500 mt-0.5">{q?.skill || ""}</p>
                       {!a.is_correct && (
                         <div className="mt-1.5 text-xs space-y-0.5">
                           <p className="text-red-600">
-                            <span className="font-medium">Answer:</span> {a.selected || "(no answer)"}
+                            <span className="font-medium">Answer:</span>{" "}
+                            {a.selected || "(no answer)"}
                           </p>
                           <p className="text-emerald-700">
                             <span className="font-medium">Correct:</span> {a.correct}
@@ -514,10 +548,7 @@ function AssessmentResultsContent() {
 
 /* ── Reading profile (5-dimension placement) ─────────────── */
 
-const DIMENSION_DISPLAY: Record<
-  string,
-  { label: string; blurb: string; icon: GlyphName }
-> = {
+const DIMENSION_DISPLAY: Record<string, { label: string; blurb: string; icon: GlyphName }> = {
   phonics: {
     label: "Phonics & Decoding",
     blurb: "Letter sounds, blends, sounding out new words.",
@@ -562,11 +593,7 @@ const DIMENSION_ORDER = [
   "fluency",
 ];
 
-function ReadingProfileCard({
-  profile,
-}: {
-  profile: Record<string, DimensionScore | null>;
-}) {
+function ReadingProfileCard({ profile }: { profile: Record<string, DimensionScore | null> }) {
   const measured = DIMENSION_ORDER.map((k) => ({
     key: k,
     score: profile[k] ?? null,
@@ -577,9 +604,7 @@ function ReadingProfileCard({
   // Strong = top 1-2 dimensions by score%. Needs work = bottom 1 if
   // significantly behind everything else. Used for the call-out
   // chips above the per-dimension list.
-  const sorted = [...measured].sort(
-    (a, b) => b.score.scorePercent - a.score.scorePercent,
-  );
+  const sorted = [...measured].sort((a, b) => b.score.scorePercent - a.score.scorePercent);
   const strongest = sorted[0];
   const weakest = sorted[sorted.length - 1];
   const showWeak =
@@ -597,8 +622,8 @@ function ReadingProfileCard({
         <h2 className="text-lg font-bold text-zinc-900">Reading Profile</h2>
       </div>
       <p className="text-sm text-zinc-500 mb-5 leading-relaxed">
-        Reading isn't one skill - it's five. Here's your child's grade-level
-        placement on each dimension we measured.
+        Reading isn't one skill - it's five. Here's your child's grade-level placement on each
+        dimension we measured.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
@@ -641,8 +666,7 @@ function ReadingProfileCard({
             icon: "•",
           };
           const pct = score.scorePercent;
-          const barColor =
-            pct >= 80 ? "#10b981" : pct >= 50 ? "#6366f1" : "#f59e0b";
+          const barColor = pct >= 80 ? "#10b981" : pct >= 50 ? "#6366f1" : "#f59e0b";
           return (
             <motion.div
               key={key}
@@ -653,18 +677,10 @@ function ReadingProfileCard({
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-start gap-2 min-w-0">
-                  <Glyph
-                    name={display.icon}
-                    size={18}
-                    className="flex-shrink-0 text-violet-500"
-                  />
+                  <Glyph name={display.icon} size={18} className="flex-shrink-0 text-violet-500" />
                   <div className="min-w-0">
-                    <div className="font-bold text-sm text-zinc-900 truncate">
-                      {display.label}
-                    </div>
-                    <div className="text-[11px] text-zinc-500 mt-0.5">
-                      {display.blurb}
-                    </div>
+                    <div className="font-bold text-sm text-zinc-900 truncate">{display.label}</div>
+                    <div className="text-[11px] text-zinc-500 mt-0.5">{display.blurb}</div>
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
@@ -675,9 +691,7 @@ function ReadingProfileCard({
                     {GRADE_LABEL_SHORT[score.gradeKey] ?? score.gradeKey}
                   </span>
                   {score.hitCeiling && (
-                    <span className="text-[10px] font-semibold text-emerald-600">
-                      ↑ maxed out
-                    </span>
+                    <span className="text-[10px] font-semibold text-emerald-600">↑ maxed out</span>
                   )}
                 </div>
               </div>
@@ -691,8 +705,7 @@ function ReadingProfileCard({
                 />
               </div>
               <p className="text-[10px] text-zinc-400 mt-1.5">
-                {score.itemsCorrect} of {score.itemsAttempted} correct ·{" "}
-                {pct}% within band
+                {score.itemsCorrect} of {score.itemsAttempted} correct · {pct}% within band
               </p>
             </motion.div>
           );
