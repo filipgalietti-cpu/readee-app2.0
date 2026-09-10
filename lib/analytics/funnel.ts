@@ -24,6 +24,9 @@
 
 export type FunnelEvent =
   | "funnel.signup_complete"
+  | "funnel.reader_setup_viewed"
+  | "funnel.reader_setup_skipped"
+  | "funnel.lesson_preview_started"
   | "funnel.kid_added"
   /** The child actually began the reading assessment (mic open, first word shown). */
   | "funnel.assessment_start"

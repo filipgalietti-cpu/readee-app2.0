@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import { getUserPlan } from "@/lib/plan/check-access";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
@@ -6,6 +6,7 @@ import { loadOwnedPlacementPlan } from "@/lib/placement/owned-plan";
 import LearnClient from "./LearnClient";
 import LessonV2Client from "./LessonV2Client";
 import { v2LessonForStandard } from "@/lib/lessons/v2-lookup";
+import PreviewLesson from "./PreviewLesson";
 
 type SL = { standardId: string; grade: string; domain: string };
 
@@ -29,11 +30,21 @@ type SL = { standardId: string; grade: string; domain: string };
 export default async function LearnPage({
   searchParams,
 }: {
-  searchParams: Promise<{ standard?: string; child?: string }>;
+  searchParams: Promise<{ standard?: string; child?: string; preview?: string }>;
 }) {
   const sp = await searchParams;
   const standardId = sp.standard ?? null;
   let placementStartUnlocked = false;
+
+  // Browsing does not require a child. Only existing free catalogue units
+  // can be previewed; ?preview=1 never bypasses a paid or owned-plan gate.
+  if (sp.preview === "1") {
+    const lesson = sampleLessons.find((item) => item.standardId === standardId);
+    if (!lesson || !isLessonInFreeUnit(lesson, firstUnitDomainByGrade(sampleLessons))) notFound();
+    const v2 = v2LessonForStandard(lesson.standardId);
+    if (!v2) notFound();
+    return <PreviewLesson lesson={v2} />;
+  }
 
   if (standardId) {
     const lessons = sampleLessons as SL[];
