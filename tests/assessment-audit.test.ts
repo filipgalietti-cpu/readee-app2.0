@@ -148,6 +148,7 @@ describe("assessment audit: recognition timing", () => {
                       playNarrRequired: async () => {},
                       clipUrl: () => "",
                     }
+                  : s === "@/app/data/placement-spectrum/audio" ? { spectrumClip: () => "" }
                   : s === "@/app/data/placement-bank"
                     ? { PLACEMENT_BANK }
                     : s === "@/lib/placement/bank"

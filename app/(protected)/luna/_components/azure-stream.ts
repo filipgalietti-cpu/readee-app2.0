@@ -25,6 +25,8 @@ export async function startPronAssessment(opts: {
   region: string;
   referenceText: string;
   language?: string;
+  segmentationSilenceMs?: number;
+  enableMiscue?: boolean;
   onRecognizing?: (partialText: string) => void;
   onPhrase?: (phrase: PAPhrase) => void;
   onError?: (msg: string) => void;
@@ -40,7 +42,7 @@ export async function startPronAssessment(opts: {
   // default endpointing (~0.5s) treats those pauses as the end of the utterance
   // and chops the read into a fragment. Widen the in-phrase silence tolerance so
   // a slow, word-by-word read is still captured as one continuous phrase.
-  try { speechConfig.setProperty(SDK.PropertyId.Speech_SegmentationSilenceTimeoutMs, "2500"); } catch { /* older SDK */ }
+  try { speechConfig.setProperty(SDK.PropertyId.Speech_SegmentationSilenceTimeoutMs, String(opts.segmentationSilenceMs ?? 2500)); } catch { /* older SDK */ }
 
   const format = SDK.AudioStreamFormat.getWaveFormatPCM(16000, 16, 1);
   const pushStream = SDK.AudioInputStream.createPushStream(format);
@@ -52,7 +54,7 @@ export async function startPronAssessment(opts: {
     opts.referenceText,
     SDK.PronunciationAssessmentGradingSystem.HundredMark,
     SDK.PronunciationAssessmentGranularity.Phoneme, // per-phoneme scores → catch a single wrong sound
-    true, // enableMiscue — align to the reference (omissions/insertions)
+    opts.enableMiscue ?? true, // enableMiscue — align to the reference (omissions/insertions)
   );
   try { (paConfig as unknown as { enableProsodyAssessment: boolean }).enableProsodyAssessment = true; } catch { /* older SDK */ }
   paConfig.applyTo(recognizer);

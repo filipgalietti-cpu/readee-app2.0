@@ -10,7 +10,7 @@ export function withCurrentPlan(
   result: PlacementResult,
   evidence?: { spectrum?: SpectrumEvidence },
 ): PlacementResult {
-  const reviseSpectrum = result.decision.spectrum?.version === 1 && evidence?.spectrum;
+  const reviseSpectrum = result.decision.spectrum && result.decision.spectrum.version < 3 && evidence?.spectrum;
   if (!reviseSpectrum && (result.plan.version === 2 || result.plan.version === 3)) return result;
   if (reviseSpectrum)
     result = {

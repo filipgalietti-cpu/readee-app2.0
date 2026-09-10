@@ -20,11 +20,11 @@ it("ships every fixed narration and option clip with a matching transcript audit
     );
   }
 });
-it("declares reused full-choice narration and repairs the missing question explicitly", () => {
+it("keeps every listening question separate from its answer narration", () => {
   expect(LANGUAGE_ITEMS.every((q) => typeof q.audioIncludesOptions === "boolean")).toBe(true);
   const repaired = LANGUAGE_ITEMS.find((q) => q.id === "sp-RI.3.9-H2")!;
-  expect(repaired.promptAudio).toBe("/audio/placement-spectrum/q-sp-RI.3.9-H2.mp3");
-  expect(repaired.audioIncludesOptions).toBe(false);
+  expect(repaired.audio).toBe("/audio/placement-spectrum/q-sp-RI.3.9-H2.mp3");
+  expect(LANGUAGE_ITEMS.every(q => !q.audioIncludesOptions && !q.text.startsWith("Read the text."))).toBe(true);
   expect(ORAL_BLENDS.flatMap((b) => b.sounds)).toContain("short_a");
   expect(ORAL_BLENDS.flatMap((b) => b.sounds)).not.toContain("a");
 });

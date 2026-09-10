@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Bunny } from "./Bunny/Bunny";
+import { PRICING } from "@/lib/billing-copy";
 import { Glyph } from "@/app/_components/Glyph";
 
 interface PaywallModalProps {
@@ -113,9 +114,9 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
               <div className="rounded-xl bg-indigo-50 p-4 text-center">
                 <p className="text-xs text-indigo-600 font-semibold">Starting at</p>
                 <p className="text-2xl font-extrabold text-zinc-900">
-                  $6.67<span className="text-sm font-medium text-zinc-500">/month</span>
+                  ${PRICING.annual.perMonth.toFixed(2)}<span className="text-sm font-medium text-zinc-500">/month</span>
                 </p>
-                <p className="text-xs text-zinc-500 mt-0.5">Billed annually at $79.99/year</p>
+                <p className="text-xs text-zinc-500 mt-0.5">Billed annually at ${PRICING.annual.perYear.toFixed(2)}/year</p>
               </div>
             </div>
 

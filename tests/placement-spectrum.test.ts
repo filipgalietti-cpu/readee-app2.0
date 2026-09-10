@@ -161,7 +161,7 @@ describe("K–4 adaptive instructional spectrum", () => {
     };
     const copy = buildRevealCopy(result);
     expect(copy.number?.source).not.toContain("Hasbrouck");
-    expect(copy.plan.growth).toBeNull();
+    expect(copy.plan.growth?.gradePractice).toMatchObject({ start: 2, target: 4, enrolled: 4, provisional: false });
     expect(copy.placement.support).toContain("read-aloud support");
     expect(
       narrate({ childName: "Maya", decision: d, moments: [], plan, today }).every(

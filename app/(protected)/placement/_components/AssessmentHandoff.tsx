@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Glyph } from "@/app/_components/Glyph";
-import { playUrlAsync, stopClip, subscribePlayback, getPlaybackAnalyser } from "./audio";
+import { PlacementAudioCancelled, playUrlRequired, stopClip, subscribePlayback, getPlaybackAnalyser } from "./audio";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
+import SayNameControl from "@/app/_components/SayNameControl";
 import "./placement.css";
 
 export default function AssessmentHandoff({
@@ -45,6 +46,7 @@ export default function AssessmentHandoff({
     }
   }
   const [speaking, setSpeaking] = useState(false);
+  const [welcomeError, setWelcomeError] = useState(false);
   const analyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   useEffect(() => () => stopClip(), []);
   const welcome = async () => {
@@ -53,9 +55,12 @@ export default function AssessmentHandoff({
       setSpeaking(false);
       return;
     }
+    setWelcomeError(false);
     setSpeaking(true);
     try {
-      await playUrlAsync(spectrumClip("parent-welcome"), 12000);
+      await playUrlRequired(spectrumClip("parent-welcome"), 12000);
+    } catch (error) {
+      if (!(error instanceof PlacementAudioCancelled)) setWelcomeError(true);
     } finally {
       setSpeaking(false);
     }
@@ -92,14 +97,7 @@ export default function AssessmentHandoff({
             {childId && (
               <details className="pa-name-pronunciation">
                 <summary>Help Luna say {name}’s name</summary>
-                <label htmlFor="name-said-as">Spell it how it sounds</label>
-                <input
-                  id="name-said-as"
-                  value={saidAs}
-                  maxLength={40}
-                  onChange={(e) => setSaidAs(e.target.value)}
-                  autoComplete="off"
-                />
+                <SayNameControl writtenName={name} value={saidAs} onChange={setSaidAs} />
                 <button
                   className="pa-secondary"
                   disabled={savingName}
@@ -130,6 +128,7 @@ export default function AssessmentHandoff({
               <Glyph name={speaking ? "volume-x" : "volume2"} size={24} />
               {speaking ? "Stop welcome" : "Hear a welcome from Readee"}
             </button>
+            {welcomeError && <p role="alert" className="pa-small">The welcome could not play. Check your sound and tap Hear a welcome to retry.</p>}
             <h2>Ready for your reader.</h2>
             <p>
               Hand over the device. Stay nearby for the microphone check, then let {name} answer
@@ -138,7 +137,7 @@ export default function AssessmentHandoff({
             <Link className="pa-primary" href={startHref}>
               Over to {name} <Glyph name="arrow-right" size={20} />
             </Link>
-            <p className="pa-small">Their results and first lesson are free.</p>
+            <p className="pa-small">The assessment and full reading report are free.</p>
             <Link className="pa-text-link" href={exploreHref}>
               Explore lessons first
             </Link>

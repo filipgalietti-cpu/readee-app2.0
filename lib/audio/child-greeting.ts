@@ -7,26 +7,14 @@
  * Fire-and-forget by design: greeting synthesis must never block or fail a
  * child-creation request. Callers invoke `void synthesizeChildGreeting(...)`.
  */
-import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
+import { generateReadeeSpeech } from "@/lib/audio/readee-speech";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function synthesizeChildGreeting(childId: string, firstName: string, spokenName?: string): Promise<void> {
   try {
     const name = (spokenName ?? firstName ?? "").trim().slice(0, 24);
     if (!name) return;
-    let res = await generateSpeechVertex({
-      text: `Welcome, ${name}! Time to warm up!`,
-      voice: "Autonoe",
-    });
-    if (!res.ok) {
-      // one paced retry — Vertex 429s are transient (the batch backfill proved it)
-      await new Promise((r) => setTimeout(r, 4000));
-      res = await generateSpeechVertex({ text: `Welcome, ${name}! Time to warm up!`, voice: "Autonoe" });
-      if (!res.ok) return;
-    }
-    // PCM (24kHz mono s16le) -> WAV container so browsers can play it without ffmpeg.
-    const pcm = Buffer.from(res.pcmBase64, "base64");
-    const wav = pcmToWav(pcm, 24000);
+    const wav = await generateReadeeSpeech(`Welcome, ${name}! Time to warm up!`, "LINEAR16");
     const admin = supabaseAdmin();
     const path = `greetings/${childId}.wav`;
     // PRIVATE bucket — this is a clip speaking the child's real first name;
@@ -90,13 +78,7 @@ export async function synthesizeChildNamePack(
         const { data: existing } = await admin.storage.from("child-audio").list("greetings", { search: `${childId}-${key}.wav`, limit: 1 });
         if (existing && existing.length > 0) continue;
       }
-      let res = await generateSpeechVertex({ text: NAME_PACK_LINES[key](name), voice: "Autonoe" });
-      if (!res.ok) {
-        await new Promise((r) => setTimeout(r, 4000));
-        res = await generateSpeechVertex({ text: NAME_PACK_LINES[key](name), voice: "Autonoe" });
-        if (!res.ok) continue;
-      }
-      const wav = pcmToWav(Buffer.from(res.pcmBase64, "base64"), 24000);
+      const wav = await generateReadeeSpeech(NAME_PACK_LINES[key](name), "LINEAR16");
       await admin.storage.from("child-audio").upload(path, wav, { contentType: "audio/wav", upsert: true });
     } catch {
       // a missing pack clip only costs the child a generic greeting

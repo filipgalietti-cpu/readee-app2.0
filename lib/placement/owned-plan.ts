@@ -34,7 +34,7 @@ export async function loadOwnedPlacementPlan(childId: string): Promise<Placement
   if (!saved.data) return null;
   const plan = saved.data.plan as PlacementPlan;
   const decision = saved.data.decision as PlacementDecision;
-  if (decision?.spectrum?.version === 1 && saved.data.evidence?.spectrum) {
+  if (decision?.spectrum && decision.spectrum.version < 3 && saved.data.evidence?.spectrum) {
     return buildPlan({
       decision: decideSpectrum(
         Number(saved.data.enrolled) as PlacedBand,

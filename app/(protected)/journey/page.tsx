@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { PRICING } from "@/lib/billing-copy";
 import { assignedJourneyCatalog } from "@/lib/journey/next-lesson";
 import { loadJourneyPlacement } from "@/lib/journey/load-placement";
 import type { PlacementPlan } from "@/lib/placement/types";
@@ -10,7 +12,6 @@ import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
-import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
 import { savedOk } from "@/lib/db/checked-write";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LESSON_META } from "@/lib/data/curriculum-manifest";
@@ -25,7 +26,7 @@ const GRADE_BADGES: Record<string, string> = {
 };
 import { PaywallModal } from "@/app/_components/PaywallModal";
 import JourneySkeleton from "./_components/JourneySkeleton";
-import { Glyph, type GlyphName } from "@/app/_components/Glyph";
+import { type GlyphName } from "@/app/_components/Glyph";
 import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -95,6 +96,7 @@ function JourneyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const childIdParam = searchParams.get("child");
+  const placementPreview = searchParams.get("from") === "placement";
   const plan = usePlanStore((s) => s.plan);
   const fetchPlan = usePlanStore((s) => s.fetch);
 
@@ -251,13 +253,12 @@ function JourneyContent() {
 
   const orderedLessons = assignedJourneyCatalog(child.reading_level ?? null, placement) as SampleLesson[];
 
-  let foundCurrent = false;
+  const firstIncomplete = orderedLessons.findIndex(lesson => !hasCompleted(lesson.standardId));
   const lessonsWithStatus: LessonWithStatus[] = orderedLessons.map((lesson, idx) => {
     let status: LessonStatus;
     if (hasCompleted(lesson.standardId)) {
       status = "completed";
-    } else if (!foundCurrent) {
-      foundCurrent = true;
+    } else if (idx === firstIncomplete) {
       status = "current";
     } else if (plan !== "premium" && !isLessonInFreeUnit(lesson, freeUnitDomain, placement?.firstUnit)) {
       // Free unlocks only the grade's first unit; everything past it is Readee+.
@@ -336,6 +337,12 @@ function JourneyContent() {
         childName={child.first_name}
         trigger="lesson"
       />
+      {placementPreview && plan !== "premium" && <section aria-label="For the grown-up" className="mx-auto my-6 max-w-4xl rounded-2xl border border-violet-200 bg-white p-6">
+        <h1 className="text-2xl font-semibold text-zinc-900">{child.first_name}’s custom reading journey</h1>
+        <p className="mt-2 text-base text-zinc-600">Explore the lessons below. Grown-up, start Readee+ when you’re ready for your reader to begin.</p>
+        <Link className="mt-4 inline-flex rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-3 font-semibold text-white" href={`/upgrade?child=${childId}&from=placement`}>Start {PRICING.trialDays}-day Readee+ trial</Link>
+        <p className="mt-2 text-sm text-zinc-500">Choose monthly or annual billing. Credit card required. Cancel anytime.</p>
+      </section>}
       <div style={{ position: "relative" }}>
       <div style={{ opacity: revealed ? 1 : 0, transition: "opacity .32s ease" }}>
       <JourneyMap
@@ -352,10 +359,14 @@ function JourneyContent() {
           // Unlock audio inside the launch gesture (Howler.ctx starts suspended;
           // it carries into /learn since it's the same tab) so the lesson's
           // karaoke audio isn't silently blocked by the autoplay policy.
+          if (placementPreview && plan !== "premium") {
+            router.push(`/upgrade?child=${childId}&from=placement`);
+            return;
+          }
           audioManager?.resumeContextSync();
           router.push(`/learn?child=${childId}&standard=${l.id}`);
         }}
-        onPremium={() => setShowPaywall(true)}
+        onPremium={() => placementPreview ? router.push(`/upgrade?child=${childId}&from=placement`) : setShowPaywall(true)}
       />
       </div>
       {!hideSkeleton && (

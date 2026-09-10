@@ -7,6 +7,7 @@ import json
 import pathlib
 import re
 import sys
+import unicodedata
 import whisper
 import torch
 
@@ -18,6 +19,12 @@ results = json.loads(out.read_text()) if out.exists() else {}
 model_name = sys.argv[4] if len(sys.argv)>4 else "base"
 model = whisper.load_model(model_name)
 def tokens(text):
+    # Orthographic variants with the same pronunciation, not missing words.
+    text = "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+    text = re.sub(r"\b(?:tick[ -]*tock|tiktok)\b", "ticktock", text, flags=re.I)
+    text = re.sub(r"\bneigh\b", "nay", text, flags=re.I)
+    for word, numeral in {"zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6", "seven":"7", "eight":"8", "nine":"9", "ten":"10", "first":"1st", "second":"2nd", "third":"3rd", "fourth":"4th"}.items():
+        text = re.sub(r"\b" + word + r"\b", numeral, text, flags=re.I)
     text = re.sub(r"\bmph\b", "miles per hour", text.lower())
     return re.sub(r"[^a-z0-9 ]", " ", text).split()
 def wer(a, b):

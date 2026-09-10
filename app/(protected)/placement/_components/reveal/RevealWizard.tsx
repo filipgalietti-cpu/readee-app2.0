@@ -14,7 +14,7 @@ import { GradeLadder } from "./GradeLadder";
 import { BandChip } from "./BandChip";
 import { GrowthChart } from "./GrowthChart";
 import { buildRevealCopy, narrationFor, type RevealCopy } from "./copy";
-import { CARD_SLIDE, COUNT_MS, NODE_GAP_MS, POP_GAP_S, RISE, riseT, useCountUp, useReduced, wait } from "./motion";
+import { AUTO_ADVANCE_MS, CARD_SLIDE, COUNT_MS, NODE_GAP_MS, POP_GAP_S, RISE, riseT, useCountUp, useReduced, wait } from "./motion";
 
 export type RevealWizardProps = {
   result: PlacementResult;
@@ -92,7 +92,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
   );
 
   // One run per card: narrate each line (when the voice is on and audio
-  // exists) and start that line's motion as it begins. The parent owns Next.
+  // exists) and start that line's motion as it begins. Manual Next remains available.
   useEffect(() => {
     const token = ++runRef.current;
     const alive = () => runRef.current === token;
@@ -117,7 +117,10 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
       }
       if (!alive()) return;
       setStage(count);
-      // Keep each result on screen until the parent chooses Next.
+      if (voiceRef.current && index < last) {
+        await wait(AUTO_ADVANCE_MS);
+        if (alive() && voiceRef.current) go(1);
+      }
 
     })();
     return () => {
@@ -221,7 +224,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
     );
 
   const shownCaption = cardId === "skills" && hoverSkill
-    ? copy.skills.find((skill) => skill.id === hoverSkill)?.meaning ?? caption
+    ? copy.skills.find((skill) => skill.id === hoverSkill)?.evidence ?? caption
     : caption;
   return (
     <div
@@ -277,7 +280,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
         <div className="mt-3 flex items-center justify-between @2xl:mt-0 @2xl:gap-6">
           {backButton}
           {dots}
-          <p className="hidden min-w-0 flex-1 text-base leading-6 text-zinc-500 @2xl:line-clamp-2" aria-live="polite">
+          <p className="hidden min-w-0 flex-1 text-base leading-6 text-zinc-500 @2xl:block" aria-live="polite">
             {shownCaption}
           </p>
           {nextButton}
@@ -608,8 +611,8 @@ function PlanCard({ copy, reduced }: CardProps) {
       <div className="flex flex-col gap-4 @2xl:col-span-3">
         <motion.div className={`p-4 @2xl:p-6 ${SURFACE}`} {...rise(reduced, 0.2)}>
           <div className="flex items-baseline justify-between gap-3">
-            <h3 className="text-base font-semibold text-zinc-900 @2xl:text-lg">Reading speed, projected</h3>
-            <span className="text-xs text-zinc-500">words a minute</span>
+            <h3 className="text-base font-semibold text-zinc-900 @2xl:text-lg">{p.growth.gradePractice ? "Reading progress" : "Reading speed, projected"}</h3>
+            <span className="text-xs text-zinc-500">{p.growth.gradePractice ? "grade · time" : "words a minute"}</span>
           </div>
           <GrowthChart {...p.growth} reduced={reduced} delay={reduced ? 0 : 0.6} height={180} className="mt-1" />
           <p className="mt-1 text-xs text-zinc-400 @2xl:hidden">{p.projection}</p>
@@ -667,7 +670,7 @@ function AskCard({ copy, reduced, onStartPlan, onNotNow }: CardProps & { onStart
       <motion.div className={`mt-5 p-3.5 @2xl:col-span-2 @2xl:mt-0 @2xl:p-6 ${SURFACE}`} {...rise(reduced, 0.35)}>
         <h3 className="text-lg font-semibold text-zinc-900">Begin with a lesson</h3>
         <p className="mt-3 text-sm leading-relaxed text-zinc-600">The assessment found the starting point. Now your child can learn and practice one skill at a time.</p>
-        <p className="mt-3 text-sm font-semibold text-violet-700">Your first reading unit is free. No card needed.</p>
+        <p className="mt-3 text-sm font-semibold text-violet-700">Explore the lessons chosen for your reader, then start Readee+.</p>
         <button
           type="button"
           onClick={onStartPlan}

@@ -15,6 +15,8 @@ import type { PlanMilestone } from "@/lib/placement/types";
 
 export type GrowthData = {
   currentWcpm: number;
+  /** Authored practice goal, never a measured future result or a rate conversion. */
+  gradePractice?: { start: number; target: number; enrolled: number; weeks: number; provisional: boolean };
   /** ISO date the placement was taken. */
   startDate: string;
   /** Milestones that carry a wcpm value. */
@@ -29,7 +31,7 @@ type Props = GrowthData & {
   className?: string;
 };
 
-const PAD = { left: 40, right: 24, top: 26, bottom: 30 };
+const PAD = { left: 48, right: 24, top: 26, bottom: 30 };
 /** Adjacent x labels closer than this (px) drop the earlier one to a second row. */
 const LABEL_MIN_GAP = 84;
 const DRAW_SECONDS = 1.4;
@@ -40,7 +42,7 @@ function niceStep(span: number): number {
   return 100;
 }
 
-export function GrowthChart({ currentWcpm, startDate, milestones, reduced = false, delay = 0, height = 220, className = "" }: Props) {
+export function GrowthChart({ gradePractice, currentWcpm, startDate, milestones, reduced = false, delay = 0, height = 220, className = "" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   /** Index of the point under the pointer (nearest by x), or null. */
@@ -59,18 +61,23 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
   const dated = milestones
     .filter((m): m is PlanMilestone & { wcpm: number } => typeof m.wcpm === "number")
     .sort((a, b) => a.date.localeCompare(b.date));
-  if (!dated.length) return null;
+  if (!dated.length && !gradePractice) return null;
+  const gradeLabel = (v: number) => v === 0 ? "K" : `Grade ${v}`;
+  const valueLabel = (v: number) => gradePractice ? gradeLabel(v) : `${Math.round(v)} words a minute`;
 
-  const points = [
+  const points = gradePractice ? [
+    { t: new Date(startDate).getTime(), v: gradePractice.start, when: "Today", name: gradePractice.provisional ? "Guided lesson start" : "Reading starting point" },
+    { t: new Date(startDate).getTime() + gradePractice.weeks * 7 * 86400000, v: gradePractice.target, when: `Week ${gradePractice.weeks}`, name: "Practice target to review" },
+  ] : [
     { t: new Date(startDate).getTime(), v: currentWcpm, when: "Today", name: "Today" },
     ...dated.map((m) => ({ t: new Date(m.date).getTime(), v: m.wcpm, when: m.month, name: m.label })),
   ];
 
   const t0 = points[0].t;
   const span = Math.max(1, points[points.length - 1].t - t0);
-  const vMin = Math.max(0, Math.floor((Math.min(...points.map((p) => p.v)) - 15) / 10) * 10);
-  const vMax = Math.ceil((Math.max(...points.map((p) => p.v)) + 12) / 10) * 10;
-  const step = niceStep(vMax - vMin);
+  const vMin = gradePractice ? 0 : Math.max(0, Math.floor((Math.min(...points.map((p) => p.v)) - 15) / 10) * 10);
+  const vMax = gradePractice ? 4 : Math.ceil((Math.max(...points.map((p) => p.v)) + 12) / 10) * 10;
+  const step = gradePractice ? 1 : niceStep(vMax - vMin);
   const ticks: number[] = [];
   for (let v = Math.ceil(vMin / step) * step; v <= vMax; v += step) ticks.push(v);
 
@@ -107,16 +114,16 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
     reduced ? {} : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: delay + DRAW_SECONDS * frac, duration: 0.25 } };
 
   return (
-    <div ref={ref} className={`relative w-full ${className}`}>
+    <div ref={ref} onTouchStart={e => e.stopPropagation()} onTouchEnd={e => e.stopPropagation()} className={`relative w-full ${className}`}>
       {hot && (
         <div
           className="pointer-events-none absolute z-10 w-48 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-left shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]"
           style={{ left: tipLeft, top: Math.max(0, hot.y - 84) }}
           role="status"
         >
-          <p className="text-sm font-semibold tabular-nums text-zinc-900">{hot.v} words a minute</p>
+          <p className="text-sm font-semibold tabular-nums text-zinc-900">{valueLabel(hot.v)}</p>
           <p className="text-xs text-zinc-600">{hot.name}</p>
-          <p className="text-xs text-zinc-500">{active ? `${hot.when} · +${gain} from today` : "From today's placement"}</p>
+          <p className="text-xs text-zinc-500">{active ? gradePractice ? `${hot.when} · practice goal` : `${hot.when} · +${gain} from today` : "From today's placement"}</p>
         </div>
       )}
       {width > 0 && (
@@ -125,7 +132,7 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
           height={height}
           viewBox={`0 0 ${w} ${height}`}
           role="img"
-          aria-label="Projected words a minute over the plan"
+          aria-label={gradePractice ? "Reading grade practice goal over time, with enrolled grade for comparison" : "Projected words a minute over the plan"}
           className="block touch-none overflow-visible"
           onPointerMove={pick}
           onPointerDown={pick}
@@ -136,13 +143,13 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
             <g key={v}>
               <line x1={PAD.left} x2={w - PAD.right} y1={y(v)} y2={y(v)} className="stroke-zinc-200" strokeWidth={1} />
               <text x={PAD.left - 8} y={y(v) + 4} textAnchor="end" className="fill-zinc-400 text-[11px] tabular-nums">
-                {v}
+                {gradePractice ? gradeLabel(v) : v}
               </text>
             </g>
           ))}
 
           {/* Benchmark each milestone reaches */}
-          {xy.slice(1).map((p) => (
+          {(gradePractice ? [] : xy.slice(1)).map((p) => (
             <g key={`bar-${p.t}`}>
               <line x1={PAD.left} x2={p.x} y1={p.y} y2={p.y} className="stroke-zinc-300" strokeWidth={1} strokeDasharray="4 4" />
               <text x={PAD.left + 6} y={p.y - 6} className="fill-zinc-500 text-[11px]">
@@ -158,13 +165,18 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
             fill="none"
             className="stroke-violet-600"
             strokeWidth={2.5}
+            strokeDasharray={gradePractice ? "6 5" : undefined}
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={reduced ? false : { pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            initial={reduced ? false : gradePractice ? { opacity: 0 } : { pathLength: 0 }}
+            animate={gradePractice ? { opacity: 1 } : { pathLength: 1 }}
             transition={{ delay, duration: DRAW_SECONDS, ease: "easeOut" }}
           />
 
+          {gradePractice && <g>
+            <line x1={PAD.left} x2={w - PAD.right} y1={y(gradePractice.enrolled)} y2={y(gradePractice.enrolled)} className="stroke-violet-300" strokeDasharray="4 4" />
+            <text x={w - PAD.right} y={y(gradePractice.enrolled) - 8} textAnchor="end" className="fill-violet-700 text-[11px]">Enrolled: {gradeLabel(gradePractice.enrolled)}</text>
+          </g>}
           {hot && <line x1={hot.x} x2={hot.x} y1={PAD.top} y2={baseline} className="stroke-violet-300" strokeWidth={1} strokeDasharray="3 3" />}
 
           {/* Markers, direct labels, x labels */}
@@ -173,13 +185,13 @@ export function GrowthChart({ currentWcpm, startDate, milestones, reduced = fals
             const anchor = i === 0 ? "start" : last ? "end" : "middle";
             const labelX = i === 0 ? p.x + 10 : last ? p.x - 10 : p.x;
             return (
-              <motion.g key={p.t} {...drawIn(i / (xy.length - 1))}>
+              <motion.g tabIndex={0} role="button" aria-label={`${p.name}: ${valueLabel(p.v)}, ${p.when}`} onFocus={() => setActive(i)} onBlur={() => setActive(null)} onClick={() => setActive(i)} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }} key={p.t} {...drawIn(i / (xy.length - 1))}>
                 <circle cx={p.x} cy={p.y} r={16} fill="transparent">
-                  <title>{`${p.name}: ${p.v} words a minute`}</title>
+                  <title>{`${p.name}: ${valueLabel(p.v)}`}</title>
                 </circle>
                 <circle cx={p.x} cy={p.y} r={active === i ? 7 : 5} className="fill-violet-600 stroke-white transition-[r]" strokeWidth={2} />
                 <text x={labelX} y={p.y - (i === 0 ? 10 : 10)} textAnchor={anchor} className="fill-zinc-900 text-[13px] font-semibold tabular-nums">
-                  {p.v}
+                  {gradePractice ? `${gradeLabel(p.v)}${i ? " goal" : ""}` : Math.round(p.v)}
                 </text>
                 <text x={p.x} y={baseline + (secondRow[i] ? 32 : 18)} textAnchor={anchor} className="fill-zinc-500 text-[12px]">
                   {p.when}

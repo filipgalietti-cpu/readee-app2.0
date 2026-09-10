@@ -29,6 +29,7 @@ export type SkillCopy = {
   value: string;
   fillPct: number | null;
   meaning: string;
+  evidence?: string;
 };
 
 export type NumberCopy = {
@@ -371,20 +372,20 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
         ? `The ${season} benchmark for ${enrolledLabel} is ${bench} words per minute. `
         : "";
     let second =
-      bench !== null ? `${name} read ${f.wcpm}` : `${name} read ${f.wcpm} words per minute`;
+      bench !== null ? `${name} read ${Math.round(f.wcpm)}` : `${name} read ${Math.round(f.wcpm)} words per minute`;
     if (pctl !== null) second += `, about the ${ordinal(pctl)} percentile`;
     if (ge)
       second += `, similar to the average ${ordinal(ge.grade)} grader ${phaseWords(ge.phase)}`;
     number = {
       title: decision.spectrum ? "Reading sample" : "Reading speed",
       subtitle: `${capitalize(bandGrade(f.band))} passage`,
-      wcpm: f.wcpm,
+      wcpm: Math.round(f.wcpm),
       benchmark: bench,
       benchmarkLabel: `${season} benchmark for ${enrolledLabel}`,
       percentile: pctl,
       sentence: `${first}${second}.`,
       source: decision.spectrum
-        ? "Observed on a Readee reading sample; not a national percentile or grade-equivalent score"
+        ? "Reading pace and accuracy from today’s passage"
         : "Hasbrouck and Tindal 2017 national norms",
     };
   }
@@ -397,7 +398,9 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       decision.spectrum?.readingBand === null
         ? "Provisional starting point"
         : decision.readingLevelName,
-    category: `${capitalize(decision.relative.label)}.`,
+    category: decision.spectrum?.readingBand === null
+      ? `Start with ${gradeWord(decision.placedBand)} reading.`
+      : `${capitalize(decision.relative.label)}.`,
     categoryText: decision.relative.label,
     enrolled: result.enrolled,
     placed: decision.placedBand,
@@ -442,7 +445,7 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       narrationId: "skill-fluency",
       icon: "gauge",
       label: "Fluency",
-      value: `${f.wcpm} words per minute`,
+      value: `${Math.round(f.wcpm)} words per minute`,
       fillPct: f.percentile?.percentile ?? 0,
       meaning: `${Math.round(f.accuracy * 100)} percent accuracy.${speedNeed ? " Speed is the skill to build." : good ? " A good pace." : ""}`,
     });
@@ -468,6 +471,12 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
   // Strengths with their evidence, and what Luna measured
   if (decision.spectrum) {
     const profile = decision.spectrum;
+    const wordSample = profile.wordSample;
+    const samples = profile.readingSamples ?? [];
+    const sampleDetail = samples.map(sample => `${gradeWord(sample.band)}: ${sample.wordsCorrect} of ${sample.wordsAttempted} captured words correct; ${sample.correct} of ${sample.total} questions correct${sample.coverage < 0.8 ? `; ${sample.wordsAttempted} of ${sample.referenceWords} passage words captured` : ""}.`).join(" ");
+    const listeningTotal = profile.languageByBand.reduce((sum, band) => sum + band.total, 0);
+    const listeningCorrect = profile.languageByBand.reduce((sum, band) => sum + band.correct, 0);
+    const listeningDetail = profile.languageByBand.map((band, grade) => band.total ? `${gradeWord(grade as PlacedBand)}: ${band.correct}/${band.total}` : "").filter(Boolean).join("; ");
     skills.splice(
       0,
       skills.length,
@@ -477,9 +486,9 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
         icon: "text",
         label: "Word reading",
         value: profile.wordStep === null ? "Needs follow-up" : profile.wordLabel,
-        fillPct: null,
-        meaning:
-          "Words read in isolation. This does not establish independent reading at the same grade.",
+        fillPct: wordSample?.total ? Math.round(wordSample.correct / wordSample.total * 100) : null,
+        meaning: "Recognizing words and applying sound patterns.",
+        evidence: wordSample ? `${wordSample.correct} of ${wordSample.total} word probes correct. Highest successful set: ${profile.wordLabel.toLowerCase()}.` : `Highest successful set: ${profile.wordLabel.toLowerCase()}.`,
       },
       {
         id: "fluency",
@@ -488,12 +497,13 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
         label: "Independent reading",
         value:
           profile.readingBand === null
-            ? "Not yet confirmed"
+            ? profile.supportedReadingBand !== null && profile.supportedReadingBand !== undefined ? `${gradeWord(profile.supportedReadingBand)} sample` : "Still gathering evidence"
             : `${gradeWord(profile.readingBand)} texts`,
-        fillPct: null,
+        fillPct: f ? Math.round(f.accuracy * 100) : null,
+        evidence: sampleDetail || "A complete passage sample is still needed.",
         meaning:
           profile.readingBand === null
-            ? "Reading and meaning did not yet confirm a band together. Begin with guided reading and check understanding in lessons."
+            ? "Bringing accurate word reading and understanding together."
             : "Reading accuracy and answers about two texts supported this starting point.",
       },
       {
@@ -503,16 +513,17 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
         label: "Listening understanding",
         value:
           profile.languageBand === null
-            ? "Needs follow-up"
+            ? `${listeningCorrect} of ${listeningTotal} correct`
             : `${gradeWord(profile.languageBand)} questions`,
-        fillPct: null,
+        fillPct: listeningTotal ? Math.round(listeningCorrect / listeningTotal * 100) : null,
+        evidence: `${listeningCorrect} of ${listeningTotal} listening questions correct. ${listeningDetail}.`,
         meaning:
           "Understanding with text read aloud. This is separate from reading the text independently.",
       },
     );
     placement.support +=
       profile.languageBand === null
-        ? " Listening answers need more follow-up before a supported language level is named."
+        ? listeningTotal ? ` ${name} answered ${listeningCorrect} of ${listeningTotal} listening questions correctly.` : ""
         : ` With read-aloud support, ${name} also showed understanding on ${gradeWord(profile.languageBand)} language questions.`;
   }
   const strengths = decision.strengths.map(capitalize);
@@ -583,12 +594,17 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
           ]
         : HOME_TIPS(name),
       projection: decision.spectrum
-        ? "A practice schedule, not a prediction of when a reading level will be reached. Review progress in lessons."
+        ? "The dotted line shows the practice goal. Review progress in lessons as you work toward it."
         : `Based on how fast readers typically grow with ${plan.minutesPerDay} minutes of practice a day.`,
       growth:
-        decision.fluency && plan.milestones.some((m) => typeof m.wcpm === "number")
+        decision.spectrum ? {
+          currentWcpm: 0,
+          startDate: result.createdAt,
+          milestones: [],
+          gradePractice: { start: decision.placedBand, target: Math.max(result.enrolled, Math.min(4, decision.placedBand + 1)), enrolled: result.enrolled, weeks: Math.max(1, plan.weeksAt10Min), provisional: decision.spectrum.readingBand === null },
+        } : decision.fluency && plan.milestones.some((m) => typeof m.wcpm === "number")
           ? {
-              currentWcpm: decision.fluency.wcpm,
+              currentWcpm: Math.round(decision.fluency.wcpm),
               startDate: result.createdAt,
               milestones: plan.milestones.filter((m) => typeof m.wcpm === "number"),
             }
@@ -597,8 +613,8 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     ask: {
       headline: `${name}'s Reading Journey is Ready`,
       subhead: `${plan.lessons} lessons across ${plan.weeksAt10Min} weeks, curated from today's placement.`,
-      line: "The first reading unit is free. Start with one lesson together.",
-      button: "Start my first lesson",
+      line: "Explore the lessons chosen for your reader, then start Readee+.",
+      button: "Go to custom reading journey",
       finePrint: trialTimeline(now, name),
       timeline: trialSteps(now, name),
       trust: `Reviewed by ${reviewer.name}, ${reviewer.role}`,

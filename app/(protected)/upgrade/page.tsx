@@ -77,7 +77,9 @@ function UpgradeContent() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ billing, sku }),
+        body: JSON.stringify({ billing, sku,
+          ...(searchParams.get("from") === "placement" ? { childId: searchParams.get("child"), cancelTo: `/journey?child=${encodeURIComponent(searchParams.get("child") ?? "")}&from=placement` } : {}),
+        }),
       });
       const data = await res.json();
       if (data.url) {

@@ -46,14 +46,26 @@ export function gradeRead(reference: string, phrases: PAWord[][]): ReadGrade {
   const annotations: WordAnnotation[] = ref.map((word) => ({ word, status: "unread", accuracy: null }));
   let cursor = 0;
   for (const phrase of phrases) {
-    for (const w of phrase) {
+    for (let wi = 0; wi < phrase.length; wi++) {
+      const w = phrase[wi];
       if (w.errorType === "Insertion") continue;
       const target = norm(w.word);
       let idx = -1;
       for (let j = cursor; j < Math.min(ref.length, cursor + 4); j++) {
         if (refNorm[j] === target) { idx = j; break; }
       }
-      if (idx === -1) continue; // could not place it; do not advance
+      if (idx === -1) {
+        // A dropped or skipped phrase must not freeze alignment for the rest
+        // of the story. Re-anchor only on three consecutive matching words;
+        // the gap remains omissions, never invented correct responses.
+        const anchor = phrase.slice(wi).filter(word => word.errorType !== "Insertion").slice(0, 3).map(word => norm(word.word));
+        if (anchor.length === 3) {
+          for (let j = cursor + 4; j <= ref.length - 3; j++) {
+            if (anchor.every((word, k) => word === refNorm[j + k])) { idx = j; break; }
+          }
+        }
+      }
+      if (idx === -1) continue; // unaligned speech never becomes scored text
       for (let j = cursor; j < idx; j++) if (annotations[j].status === "unread") annotations[j] = { ...annotations[j], status: "omitted" };
       annotations[idx] = {
         word: ref[idx],
@@ -88,11 +100,27 @@ export function gradeWord(word: string, phrases: PAWord[][]): { heard: boolean; 
   let best: PAWord | null = null;
   for (const phrase of phrases) {
     for (const w of phrase) {
-      if (w.errorType === "Insertion") continue;
+      if (w.errorType === "Insertion" || w.errorType === "Omission") continue;
       if (norm(w.word) === target && (!best || w.accuracy > best.accuracy)) best = w;
     }
   }
   if (!best) return { heard: false, correct: false, accuracy: null };
   if (best.errorType === "Omission") return { heard: false, correct: false, accuracy: null };
   return { heard: true, correct: isWordCorrect(best), accuracy: best.accuracy };
+}
+
+/** Interim recognition moves the page only. It never enters scored evidence.
+ * Require a multiword suffix so an isolated common word cannot jump pages. */
+export function previewReadingReached(reference: string, partial: string, finalized: number): number {
+  const ref = reference.split(/\s+/).filter(Boolean).map(norm);
+  const words = partial.split(/\s+/).filter(Boolean).map(norm);
+  if (words.length < 3) return finalized;
+  const suffix = words.slice(-Math.min(4, words.length));
+  const start = Math.max(0, finalized - words.length - 4);
+  const end = Math.min(ref.length, finalized + words.length + 12);
+  for (let i = start; i <= end - suffix.length; i++) {
+    if (suffix.every((word, k) => word === ref[i + k]))
+      return Math.max(finalized, i + suffix.length);
+  }
+  return finalized;
 }

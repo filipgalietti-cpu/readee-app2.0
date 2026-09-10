@@ -116,7 +116,7 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
       issue: "technical",
     },
   },
-  { label: "Reading break", stage: "passage", screen: { kind: "reading-break" } },
+  { label: "Practice success", stage: "warmup", screen: { kind: "word", word: "cat", listening: false, band: 0, practiceCorrect: true } },
   {
     label: "Long answer words",
     stage: "listening",

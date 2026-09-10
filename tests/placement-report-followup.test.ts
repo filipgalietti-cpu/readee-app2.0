@@ -8,22 +8,22 @@ import { readingPages } from "@/lib/placement/reading-pages";
 import { SPECTRUM_PASSAGES } from "@/app/data/placement-spectrum/reading";
 
 describe("unconfirmed reading reports", () => {
-  it("keeps advanced words separate from an enrollment-appropriate provisional journey", () => {
+  it("uses a complete higher passage for a provisional journey without inventing fourth-grade confirmation", () => {
     const result = fixtureUnconfirmedReader();
     expect(result.decision.spectrum).toMatchObject({
       wordBand: 4,
       readingBand: null,
       languageBand: null,
     });
-    expect(result.decision.placedBand).toBe(1);
-    expect(result.plan.firstUnit).toMatchObject({ grade: "1st Grade", domain: "Literature" });
+    expect(result.decision.placedBand).toBe(3);
+    expect(result.plan.firstUnit).toMatchObject({ grade: "3rd Grade", domain: "Literature" });
     const copy = buildRevealCopy(result);
     expect(copy.placement.band).toBe("Provisional starting point");
     expect(copy.skills).toHaveLength(3);
     expect(copy.skills.map((s) => s.value)).toEqual([
       "Fourth-grade stretch",
-      "Not yet confirmed",
-      "Needs follow-up",
+      "3rd grade sample",
+      "0 of 10 correct",
     ]);
     expect(copy.number).toMatchObject({ wcpm: 61, subtitle: "3rd-grade passage" });
   });
@@ -50,9 +50,22 @@ describe("unconfirmed reading reports", () => {
     const current = withCurrentPlan(old, { spectrum: ev });
     expect(old).toEqual(before);
     expect(current.decision).toEqual(decideSpectrum(1, ev, new Date(old.createdAt)));
-    expect(current.plan.entryBand).toBe(1);
+    expect(current.plan.entryBand).toBe(3);
     expect(current.decision.fluency).not.toBeNull();
     expect(current.narration.every((line) => !line.audioPath)).toBe(true);
+  });
+  it("rounds saved fractional rates and exposes actual evidence in each skill footer", () => {
+    const result = fixtureUnconfirmedReader();
+    result.decision.fluency!.wcpm = 146.01171698963498;
+    const copy = buildRevealCopy(result);
+    expect(copy.number?.wcpm).toBe(146);
+    expect(JSON.stringify(copy)).not.toContain("146.011");
+    expect(copy.skills[0].evidence).toMatch(/of \d+ word probes correct/);
+    expect(copy.skills[1].evidence).toContain("106 of 110");
+    expect(copy.skills[2].evidence).toContain("0 of 10");
+    for (const skill of copy.skills) expect(skill.evidence).not.toBe(skill.meaning);
+    expect(copy.plan.growth?.gradePractice).toMatchObject({ start: 3, enrolled: 1, target: 4, provisional: true });
+    expect(copy.ask.button).toBe("Go to custom reading journey");
   });
   it("balances page endings instead of leaving an orphan word", () => {
     for (const size of [6, 12, 20, 24, 32, 48])

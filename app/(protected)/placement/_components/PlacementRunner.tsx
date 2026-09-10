@@ -36,7 +36,7 @@ import {
 import { waitForHello } from "@/lib/placement/turn-taking";
 import { LETTER_SOUND_CHOICES } from "@/app/data/placement-spectrum/words";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
-import { gradeRead, gradeWord, passageRate } from "@/lib/placement/read-grade";
+import { gradeRead, gradeWord, passageRate, previewReadingReached } from "@/lib/placement/read-grade";
 import { PASSAGE_MAX_SECONDS, type BankQuestion } from "@/lib/placement/bank";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
@@ -429,7 +429,7 @@ export default function PlacementRunner({
           ? playSeq([promptAudio, q.promptAudio], 250)
           : playUrlAsync(promptAudio, 8000);
       const optionAudio = (id: string) =>
-        q.id.startsWith("sp-") ? spectrumClip(`opt-${q.id}-${id}`) : clipUrl(`opt-${q.id}-${id}`);
+        spectrumClip(`opt-${q.id}-${id}`);
       replayRef.current = async () => {
         manualQuestionAudio.current = true;
         setOrb("speaking");
@@ -501,7 +501,7 @@ export default function PlacementRunner({
       replayRef.current = null;
       const p = custom ?? PLACEMENT_BANK.bands[band].passage!;
       await playUrlAsync(
-        custom && !custom.legacy ? spectrumClip(`title-${custom.id}`) : clipUrl(`title-${band}`),
+        custom ? spectrumClip(`title-${custom.id}`) : clipUrl(`title-${band}`),
         5000,
       );
       setScreen({ kind: "passage", title: p.title, text: p.text, reading: false });
@@ -557,6 +557,10 @@ export default function PlacementRunner({
         (message) => {
           captureError = message;
           stopNow?.();
+        },
+        (partial) => {
+          const reached = previewReadingReached(p.text, partial, lastAttempted);
+          setScreen(current => current.kind === "passage" ? { ...current, reached: Math.max(current.reached ?? 0, reached) } : current);
         },
       );
       const startedAt = Date.now();
@@ -636,7 +640,7 @@ export default function PlacementRunner({
       const g = gradeRead(p.text, phrases);
       if (g.wordsAttempted === 0) throw new Error("No reading was captured.");
       const minute = passageRate(g, elapsed, finishedEarly);
-      await playNarr(finishedEarly ? "passage-done" : "passage-stop", 3000);
+      await playUrlAsync(spectrumClip("reading-questions"));
       const keptGoing = finishedEarly || Date.now() - lastPhraseAt < 15000;
       return {
         ev: {
@@ -807,7 +811,15 @@ export default function PlacementRunner({
         trackFunnelClient("funnel.assessment_start", { child_id: childId, enrolled });
       setStage("warmup");
       await say("warmup-word", "Let's try one together first.");
-      await listenWord(WARMUP_WORD);
+      const practiceCorrect = await listenWord(WARMUP_WORD);
+      if (practiceCorrect) {
+        setScreen({ kind: "word", word: WARMUP_WORD, listening: false, practiceCorrect: true });
+        if (!robot) {
+          const { audioManager } = await import("@/lib/audio/audio-manager");
+          audioManager.playCorrectChime();
+          await new Promise((resolve) => setTimeout(resolve, 700));
+        }
+      }
       checkpoint();
       setStage("words");
       await say("words-intro", "Read each word out loud when it appears.");
@@ -862,30 +874,6 @@ export default function PlacementRunner({
       while (readingState.next) {
         if (cancelled()) return;
         const passage = readingState.next;
-        if (!activeReading && spectrum.reading.length === 2 && !robot) {
-          setScreen({ kind: "reading-break" });
-          setOrb("speaking");
-          const choice = waitTap();
-          await Promise.race([
-            playUrlAsync(spectrumClip("reading-break")).catch((error: unknown) => {
-              if (!(error instanceof PlacementAudioCancelled)) throw error;
-            }),
-            choice,
-          ]);
-          const picked = await choice;
-          stopClip();
-          if (picked === "finish-reading") {
-            spectrum.readingStopped = { passageId: passage.id, reason: "child-pass" };
-            checkpoint();
-            readingState = readingSearch(
-              enrolled,
-              spectrum.words,
-              spectrum.reading,
-              spectrum.readingStopped,
-            );
-            break;
-          }
-        }
         if (!activeReading) {
           setStage("passage");
           setScreen({ kind: "luna", caption: "Read this text out loud. Take your time." });
@@ -915,7 +903,7 @@ export default function PlacementRunner({
         setStage("comprehension");
         const choices = activeReading.choices;
         for (const q of passage.questions.slice(choices.length)) {
-          const choiceId = await askQuestion(q, passage.grade <= 1, {
+          const choiceId = await askQuestion({ ...q, audio: spectrumClip(`q-${q.id}`) }, wordState.grade <= 1, {
             title: passage.title,
             text: passage.text,
           });
@@ -949,7 +937,7 @@ export default function PlacementRunner({
         const item = languageState.next;
         const choiceId = await askQuestion(
           { ...item, kind: "inferential" },
-          !item.audioIncludesOptions,
+          wordState.grade <= 1,
           { title: "Listen and think", text: item.text },
         );
         spectrum.language.push({ itemId: item.id, choiceId });
@@ -1058,7 +1046,7 @@ export default function PlacementRunner({
             : current,
         );
         void playUrlAsync(
-          qid.startsWith("sp-") ? spectrumClip(`opt-${qid}-${id}`) : clipUrl(`opt-${qid}-${id}`),
+          spectrumClip(`opt-${qid}-${id}`),
           12000,
         )
           .catch((error) => {

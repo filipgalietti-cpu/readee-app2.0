@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
-import { pcmToWav } from "@/lib/audio/child-greeting";
+import { generateReadeeSpeech } from "@/lib/audio/readee-speech";
 import { spokenNameOf } from "@/lib/audio/name-pronunciation";
 
 export const dynamic = "force-dynamic";
@@ -16,9 +15,10 @@ export async function POST(req: Request) {
   try { body = await req.json(); } catch { return NextResponse.json({ ok: false, error: "Bad request." }, { status: 400 }); }
   const spoken = spokenNameOf(String(body.name ?? ""), String(body.saidAs ?? ""));
   if (!spoken) return NextResponse.json({ ok: false, error: "No name." }, { status: 400 });
-  let res = await generateSpeechVertex({ text: `Hi, ${spoken}! Nice to meet you.`, voice: "Autonoe" });
-  if (!res.ok) { await new Promise((r) => setTimeout(r, 2500)); res = await generateSpeechVertex({ text: `Hi, ${spoken}! Nice to meet you.`, voice: "Autonoe" }); }
-  if (!res.ok) return NextResponse.json({ ok: false, error: res.error }, { status: 500 });
-  const wav = pcmToWav(Buffer.from(res.pcmBase64, "base64"), 24000);
-  return NextResponse.json({ ok: true, audioUrl: `data:audio/wav;base64,${wav.toString("base64")}` });
+  try {
+    const audio = await generateReadeeSpeech(`Hi, ${spoken}! Nice to meet you.`);
+    return NextResponse.json({ ok: true, audioUrl: `data:audio/mpeg;base64,${audio.toString("base64")}` });
+  } catch {
+    return NextResponse.json({ ok: false, error: "Luna’s voice is unavailable. Please try again." }, { status: 503 });
+  }
 }

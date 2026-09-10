@@ -13,12 +13,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { billing, sku, cancelTo } = (await req.json()) as {
+  let body: unknown;
+  try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid checkout request." }, { status: 400 }); }
+  if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid checkout request." }, { status: 400 });
+  const { billing, sku, cancelTo, childId } = body as {
     billing: "monthly" | "annual";
     sku?: "premium" | "teacher_solo";
     /** Same-site path to return to if the parent backs out (default /upgrade). */
     cancelTo?: string;
+    childId?: string;
   };
+  if (!["monthly", "annual"].includes(billing) || (sku !== undefined && !["premium", "teacher_solo"].includes(sku)))
+    return NextResponse.json({ error: "Choose a billing plan." }, { status: 400 });
   const safeCancelTo = typeof cancelTo === "string" && cancelTo.startsWith("/") && !cancelTo.startsWith("//") ? cancelTo : "/upgrade";
   const plan = sku ?? "premium";
   const priceId =
@@ -43,6 +49,16 @@ export async function POST(req: NextRequest) {
     .select("stripe_customer_id, had_subscription")
     .eq("id", user.id)
     .single();
+
+  let journeyReturn: string | null = null;
+  if (childId !== undefined) {
+    if (typeof childId !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(childId))
+      return NextResponse.json({ error: "Invalid reader." }, { status: 400 });
+    const { data: reader, error } = await admin.from("children").select("id").eq("id", childId).eq("parent_id", user.id).maybeSingle();
+    if (error) return NextResponse.json({ error: "Could not load the reading journey." }, { status: 503 });
+    if (!reader) return NextResponse.json({ error: "Reader not found." }, { status: 404 });
+    journeyReturn = `/journey?child=${childId}&checkout=success`;
+  }
 
   let customerId = profile?.stripe_customer_id as string | null;
 
@@ -73,9 +89,10 @@ export async function POST(req: NextRequest) {
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
     mode: "subscription",
+    payment_method_collection: "always",
     line_items: [{ price: priceId, quantity: 1 }],
     ...(usedTrial ? {} : { subscription_data: { trial_period_days: 14 } }),
-    success_url: `${origin}/dashboard?checkout=success`,
+    success_url: `${origin}${journeyReturn ?? "/dashboard?checkout=success"}`,
     cancel_url: `${origin}${safeCancelTo}`,
     allow_promotion_codes: true,
   });

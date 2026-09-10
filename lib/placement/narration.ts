@@ -45,7 +45,7 @@ export const NARRATION_ORDER: readonly NarrationId[] = [
 export const NARRATION_MAX_CHARS = 340;
 export const REASSURANCE =
   "Below grade level does not mean failing. It means the practice needs to be aimed.";
-export const ASK_CLOSE = "The first reading unit is free. Let’s start with the first lesson.";
+export const ASK_CLOSE = "Your custom reading journey is ready. Let’s explore the lessons chosen for your reader.";
 /** On top of bank.FORBIDDEN_CHILD_WORDS. */
 export const FORBIDDEN_NARRATION_WORDS = [
   "typical",
@@ -224,7 +224,7 @@ function numberLine(c: Ctx): string {
       );
       unit = " words per minute";
     }
-    let s = `${name} read ${f.wcpm}${unit}`;
+    let s = `${name} read ${Math.round(f.wcpm)}${unit}`;
     if (!f.onEnrolledPassage) s += ` on the ${gradeAdjective(f.band)} story`;
     if (f.percentile)
       s += `, about the ${pctOrdinal(f.percentile.percentile)} percentile${f.onEnrolledPassage ? "" : " for that grade"}`;
@@ -297,7 +297,7 @@ function fluencyLine(c: Ctx): string {
   if (!f) {
     return `Fluency: no timed reading yet. It starts once ${p.subj} ${v("is", "are")} reading short sentences, and Luna will track it from the first one.`;
   }
-  let s = `Fluency: ${f.wcpm} words per minute at ${pct(f.accuracy)} percent accuracy${f.onEnrolledPassage ? "" : ` on the ${gradeAdjective(f.band)} story`}.`;
+  let s = `Fluency: ${Math.round(f.wcpm)} words per minute at ${pct(f.accuracy)} percent accuracy${f.onEnrolledPassage ? "" : ` on the ${gradeAdjective(f.band)} story`}.`;
   const kept = moments.some((m) => m.kind === "passage-kept-going");
   const expressive = moments.some((m) => m.kind === "passage-expressive");
   const slow = moments.some((m) => m.kind === "passage-slow");
@@ -392,13 +392,13 @@ export function narrate(input: NarrateInput): NarrationLine[] {
       name = input.childName.trim() || "Your child";
     const g = (band: number) => (band === 0 ? "kindergarten" : `${ordinal(band)} grade`);
     const text: Record<NarrationId, string> = {
-      strengths: `${profile.readingBand !== null ? `${name} read two texts and answered questions about both.` : profile.wordStep === null ? `${name} worked through the reading activities with Luna.` : profile.wordStep === 0 ? `${name} matched letters to their sounds.` : `${name} read words from the ${profile.wordLabel.toLowerCase()} set.`}${profile.languageBand !== null ? ` With read-aloud support, ${name} also answered ${g(profile.languageBand)} meaning questions.` : ""}`,
+      strengths: `${name} ${joinAnd(d.strengths.slice(0, 3).map(s => s.replace(/^reads /, "read ").replace(/^matches /, "matched ").replace(/^understands /, "understood ").replace(/^blends /, "blended ")))}.`,
       number: d.fluency
-        ? `${name} read this passage at ${d.fluency.wcpm} correct words per minute. This describes today's sample, not a national percentile.`
+        ? `${name} read this passage at ${Math.round(d.fluency.wcpm)} correct words per minute.`
         : (profile.wordStep ?? 0) >= 2
           ? "We will start with guided reading and discussion using the word reading evidence. Independent reading still needs follow-up."
           : "We are starting with guided practice in letters, sounds and short words. We need more reading evidence before confirming a level.",
-      placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? "The first lessons will help us check this provisional starting point." : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
+      placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? `Start with guided reading in ${g(d.placedBand)}, then check progress in lessons.` : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
       "skill-decoding":
         profile.wordStep === null
           ? "Word reading needs follow-up. We will begin with guided practice in letters and sounds."
@@ -407,16 +407,16 @@ export function narrate(input: NarrateInput): NarrationLine[] {
             : `${name} read words from the ${profile.wordLabel.toLowerCase()} set. We will keep practicing the next word patterns.`,
       "skill-fluency":
         profile.readingBand === null
-          ? "Independent reading is not yet confirmed. We will begin with guided reading and check understanding in lessons."
+          ? profile.supportedReadingBand != null ? `${name} read a ${g(profile.supportedReadingBand)} passage accurately and answered questions about its meaning. We will build on that in lessons.` : "We will begin with guided reading and check understanding in lessons."
           : `Two texts supported independent reading at ${g(profile.readingBand)}. We build accuracy and understanding before speed.`,
       "skill-comprehension":
         profile.languageBand === null
-          ? "We measured understanding separately from word reading. The listening answers need more follow-up before we name a starting level."
+          ? `${name} answered ${profile.languageByBand.reduce((n, b) => n + b.correct, 0)} of ${profile.languageByBand.reduce((n, b) => n + b.total, 0)} listening questions correctly. This shows understanding with read-aloud support.`
           : `With read-aloud support, ${name} answered questions drawn from ${g(profile.languageBand)}. We can explore those ideas together while independent reading develops.`,
       path: "The journey starts with today's reading evidence and builds word reading and understanding together. A short assessment does not skip whole units.",
       "path-crafted":
         "The lesson sequence develops foundational reading, vocabulary and comprehension. Today's placement is an instructional starting point.",
-      plan: `Aim for ${input.plan.minutesPerDay} minutes of practice, ${input.plan.daysPerWeek} days a week. Review the lesson evidence to see what should come next. There is no promised catch-up date.`,
+      plan: `Aim for ${input.plan.minutesPerDay} minutes of practice, ${input.plan.daysPerWeek} days a week. Review the lesson evidence to see what should come next. We will check progress as your reader completes the lessons.`,
       ask: ASK_CLOSE,
     };
     return NARRATION_ORDER.map((id) => ({ id, text: text[id] }));
