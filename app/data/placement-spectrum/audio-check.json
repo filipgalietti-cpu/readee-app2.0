@@ -2127,10 +2127,11 @@
     "status": "matched"
   },
   "opt-sp-RL.4.2-Q1-b": {
-    "model": "small",
-    "script": "Collaboration leads to better results than working alone",
-    "transcript": "Collaboration leads to better results than working alone.",
-    "audioSha256": "78e26082c6bfc02933aa8a64906e70f9c32c37cf6672d4ac1ffdce4ebba33b2f",
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Working together can help people solve problems",
+    "transcript": "Working together can help people solve problems.",
+    "audioSha256": "895e3082eed3f71a215bbf82e9edb9b74d0e87867e4bcaf58f5ccedf7c6c60e9",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2207,10 +2208,11 @@
     "status": "matched"
   },
   "opt-sp-RL.4.4-Q5-d": {
-    "model": "small",
-    "script": "The silence was intense and heavy",
-    "transcript": "The silence was intense and heavy.",
-    "audioSha256": "08c71d65b2583733b32b47bdaa1ed3ed5537217f99872b45e467b29c3d25c9d2",
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "It was extremely quiet",
+    "transcript": "It was extremely quiet.",
+    "audioSha256": "51f8a2c7e6d408dc8d901c8c440820db011d8b5689023665117a45d894a34b0e",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2239,10 +2241,11 @@
     "status": "matched"
   },
   "opt-sp-RI.4.1-Q1-d": {
-    "model": "small",
-    "script": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
-    "transcript": "It orbits at 17,500 miles per hour, completing an orbit roughly every 90 minutes.",
-    "audioSha256": "08336a949c2f957e52da2d762988e0c98ed5dc11abe72ccfa11ec4b83457ea95",
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The station travels around Earth at 17,500 miles per hour",
+    "transcript": "The station travels around Earth at 17,500 miles per hour.",
+    "audioSha256": "65643ad8933f190875eb63a6e0570f40586e78c8d8453082a38245d8ebe514ba",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2263,10 +2266,11 @@
     "status": "matched"
   },
   "opt-sp-RL.4.4-Q4-c": {
-    "model": "small",
-    "script": "A person's greatest weakness or vulnerability",
-    "transcript": "A person's greatest weakness or vulnerability.",
-    "audioSha256": "ea70e20a92e904184d17f5c236249139f5534ac024c786083cc1908f047966d0",
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "A person’s greatest weakness",
+    "transcript": "A person's greatest weakness.",
+    "audioSha256": "9aac7624d37cb19e740c1e309325e78db9208e5791ac51779835b9334e7fe174",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2320,17 +2324,18 @@
     "status": "matched"
   },
   "q-sp-RL.4.4-Q4": {
-    "model": "small",
-    "script": "His Achilles\u2019 heel was his temper \u2014 it always got him into trouble. An Achilles\u2019 heel refers to \u2014",
-    "transcript": "His Achilles' heel was his temper. It always got him into trouble. An Achilles' heel refers to...",
-    "audioSha256": "26add0d9b8d9604e9f9b887ef87906bdf0730790a4e55777748a5906bdc982e6",
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "His Achilles’ heel was his temper — it always got him into trouble. What does “Achilles’ heel” mean in this sentence?",
+    "transcript": "His Achilles heel was his temper. It always got him into trouble. What does Achilles heel mean in this sentence?",
+    "audioSha256": "cd8d2d0c98c32548e17775a45ecb1fa6e11f647d38f4c50b62d13483beee526f",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "word-try-again": {
     "model": "base",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "I didn\u2019t catch that. Try the word again, or tap I don\u2019t know this word.",
+    "script": "I didn’t catch that. Try the word again, or tap I don’t know this word.",
     "transcript": "I didn't catch that. Try the word again or tap I don't know this word.",
     "audioSha256": "56f6b49a1af6fc34f53093beb22b35bdc5ade2118b8176cb98c12b6306db3880",
     "wordErrorRate": 0.0,
@@ -2396,7 +2401,7 @@
   "reading-questions": {
     "model": "base",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "Now let\u2019s answer a few questions about what you read.",
+    "script": "Now let’s answer a few questions about what you read.",
     "transcript": "Now let's answer a few questions about what you read.",
     "audioSha256": "f674d3dfd8e63fe3f34431f700c7de664103f75732002d9997996dc39984b958",
     "wordErrorRate": 0.0,
@@ -2405,7 +2410,7 @@
   "reveal-ask": {
     "model": "base",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "Your custom reading journey is ready. Let\u2019s explore the lessons chosen for your reader.",
+    "script": "Your custom reading journey is ready. Let’s explore the lessons chosen for your reader.",
     "transcript": "Your custom reading journey is ready. Let's explore the lessons chosen for your reader.",
     "audioSha256": "a34f96eadfdea433a2eb25978c0267f70dca0bb81aa3e471132c4657ddc60e14",
     "wordErrorRate": 0.0,
@@ -3045,7 +3050,7 @@
     "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "When Tomas opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week Tomas had told Dad that plain square sandwiches were boring. What does this tell us about Tomas's dad?",
-    "transcript": "When Tom\u00e1s opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week, Tom\u00e1s had told Dad that plain square sandwiches were boring. What does this tell us about Tom\u00e1s's dad?",
+    "transcript": "When Tomás opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week, Tomás had told Dad that plain square sandwiches were boring. What does this tell us about Tomás's dad?",
     "audioSha256": "b26f0c09e549c7987d22096e4c632b08d40fe590dcb9c6af9af4edbf78e72054",
     "wordErrorRate": 0.0,
     "status": "matched"
@@ -3098,7 +3103,7 @@
   "q-sp-RL.3.4-Q4": {
     "model": "base",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "The classroom was a zoo today! This means \u2014",
+    "script": "The classroom was a zoo today! This means —",
     "transcript": "The classroom was a zoo today. This means...",
     "audioSha256": "360a76251ee10bf052f4e3c37424e4660e13f55bb91b392371820dc53acd6ace",
     "wordErrorRate": 0.0,
@@ -3132,83 +3137,101 @@
     "status": "matched"
   },
   "q-sp-RL.4.4-E3": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "Maya felt gloomy all day. She frowned and did not want to play or smile. How does Maya feel when she is gloomy?",
     "transcript": "Maya felt gloomy all day. She frowned and did not want to play or smile. How does Maya feel when she is gloomy?",
-    "audioSha256": "aadcf892a314b1242f6015e41489d32138d09fc92a0bb390c91341bf494237a2",
+    "audioSha256": "58292eb2ef8854bbbe34927b798580ca19a22f2a908144fff9d5386fde80cfb8",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RI.4.2-E2": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body. What is this paragraph mostly about?",
     "transcript": "The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body. What is this paragraph mostly about?",
-    "audioSha256": "31cbdadb519fb2201547bdca35c133bfb90b2a43e5a2368bd5cdfca9bebba1d7",
+    "audioSha256": "2f4bc9caa7881ea6b9bd4e1bd7d37bee69a74571f3ff389b97ca138de4bc5177",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RL.4.4-E1": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "The knight was as brave as a lion, so he was not scared at all when the dragon roared. In this sentence, \"as brave as a lion\" means the knight was \u2014",
-    "transcript": "The Knight was as brave as a lion, so he was not scared at all when the dragon roared. In this sentence, as brave as a lion, means the Knight was...",
-    "audioSha256": "ad02a145f1f37e15b85c1dca8d6a405303943b506052643bad7a1853c70add2f",
+    "script": "The knight was as brave as a lion, so he was not scared at all when the dragon roared. What does “as brave as a lion” tell you about the knight?",
+    "transcript": "The knight was as brave as a lion, so he was not scared at all when the dragon roared. What does as brave as a lion tell you about the knight?",
+    "audioSha256": "c0641a2242c8f654dedf8fe1d513870cc930894e8d422d2a187efa5672042730",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RI.4.9-E4": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "Two texts are about rain.\n\nText A says: \"Rain gives water to plants.\"\nText B says: \"Rain fills up rivers and lakes.\" Using information from BOTH texts, name two things rain does.",
-    "transcript": "Two texts are about rain. Text A says rain gives water to plants. Text B says rain fills up rivers and lakes. Using information from both texts, name two things rain does.",
-    "audioSha256": "e9a08f463db6f051f638427a5cb3cfdb3545c58205b1cd0133dadeb9098bb952",
+    "transcript": "Two texts are about rain. Text A says, rain gives water to plants. Text B says, rain fills up rivers and lakes. Using information from both texts, name two things rain does.",
+    "audioSha256": "230d4c828be2e41b8f6bed74d01ac88042f344523331e6e4998f30be66a994a9",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RL.4.2-Q1": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him \u2014 who had shared ideas and caught each other's mistakes \u2014 won first place. What is the theme?",
+    "script": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place. What is the theme?",
     "transcript": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive, but had a major flaw he hadn't noticed. Meanwhile, the team next to him, who had shared ideas and caught each other's mistakes, won first place. What is the theme?",
-    "audioSha256": "58d3cb5215cbd26376e7d5a15ddbdcaa1357a011aaa2bafd79c209a9041f0b08",
+    "audioSha256": "7ab9b6fe36778de982a53082836c42ef910496d79852e4fdb7ee6fc12cb2f754",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RI.4.3-Q1": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor. What caused the Boston Tea Party?",
-    "transcript": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans, boarded British ships, and dumped 342 chests of tea into Boston Harbor. What caused the Boston Tea Party?",
-    "audioSha256": "0c0341f966d7cb2a55815e683c8c32df4bb09cb5bfdb9dfe1c57c736ee142813",
+    "transcript": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists, disguised as Native Americans, boarded British ships and dumped 342 chests of tea into Boston Harbor. What caused the Boston Tea Party?",
+    "audioSha256": "09d301a1ba3e762de8dca2500a45115b8b0b759ee08ec6861078717285076748",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RL.4.4-Q5": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "The silence in the library was so thick you could cut it with a knife. This phrase means \u2014",
-    "transcript": "The silence in the library was so thick, you could cut it with a knife. This phrase means...",
-    "audioSha256": "6f79cfce1900ec1d314278d477ec05f5cc28162f0449b699f3ca2938f4128926",
+    "script": "The silence in the library was so thick you could cut it with a knife. What does this sentence tell you about the library?",
+    "transcript": "The silence in the library was so thick you could cut it with a knife. What does this sentence tell you about the library?",
+    "audioSha256": "179803a5e8eb5d536b6ce75cc4d39a65f5c84dfd97de0b3c9cd1d3b58d6de003",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RI.4.1-Q1": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours. What detail explains why astronauts see so many sunrises?",
     "transcript": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours. What detail explains why astronauts see so many sunrises?",
-    "audioSha256": "3b3cbfbdeabd6ed84eb2fe44a42eb0d768b306cbfce4159a1032b3191d16b9cd",
+    "audioSha256": "3a50db201d227c112231abf06c66288e5f400ffc8ce6b205aa484b4b2d7d3e8b",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-RI.4.1-Q2": {
-    "model": "base",
+    "model": "medium",
     "vocabularyPrompt": "Names: Readee, Luna, Nia.",
-    "script": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites \u2014 a discovery that changed our understanding of what makes humans unique. What inference can you make about why this discovery was so important?",
-    "transcript": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites, a discovery that changed our understanding of what makes humans unique. What inference can you make about why this discovery was so important?",
-    "audioSha256": "1d9513b7a1c9c55f9d0466cdf7b2eb7743b56bb36cd43ce09f6857bc4c48af4b",
+    "script": "At that time, tool use was thought to be a skill that only humans had. Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique. Why did seeing chimpanzees use tools change what scientists believed?",
+    "transcript": "At that time, tool use was thought to be a skill that only humans had. Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites, a discovery that changed our understanding of what makes humans unique. Why did seeing chimpanzees use tools change what scientists believed?",
+    "audioSha256": "ebc5a3d3c5e139059928198482b984e40949a2b0efc08962268e25b7a2b56b5e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "ask-name": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "What is your name?",
+    "transcript": "What is your name?",
+    "audioSha256": "7ef8c7f192409edbc77a2a0e1bd0ad65cf99110899fd1863fbaaea3f0745ac85",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "assessment-complete": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "That’s everything. You did it. Let’s show your grown-up what you read.",
+    "transcript": "That's everything! You did it! Let's show your grown-up what you read.",
+    "audioSha256": "5fff5a77ffe7eb861e4c8210baa76cbf20931d94a027f70ad769307e5340945f",
     "wordErrorRate": 0.0,
     "status": "matched"
   }

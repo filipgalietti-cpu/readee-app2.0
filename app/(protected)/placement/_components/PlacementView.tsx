@@ -9,10 +9,12 @@ import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaO
 import type { MicState } from "./mic";
 import { readingPages } from "@/lib/placement/reading-pages";
 import { PASS_CHOICE } from "@/lib/placement/spectrum";
+import AssessmentNameTurn from "./AssessmentNameTurn";
 import "./placement.css";
 
 export type PlacementScreen =
   | { kind: "ready" }
+  | { kind: "name"; ready: boolean; childId: string }
   | { kind: "luna"; caption: string }
   | { kind: "mic"; status: MicState; retry: boolean }
   | {
@@ -24,6 +26,7 @@ export type PlacementScreen =
       band?: number;
       oral?: boolean;
       issue?: "quiet" | "technical";
+      thinking?: boolean;
     }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | {
@@ -33,6 +36,7 @@ export type PlacementScreen =
       reading: boolean;
       reached?: number;
       issue?: "quiet" | "technical";
+      thinking?: boolean;
     }
   | {
       kind: "question";
@@ -412,6 +416,7 @@ export default function PlacementView({
             </div>
           </div>
         )}
+        {screen.kind === "name" && <AssessmentNameTurn childId={screen.childId} name={childName} ready={screen.ready} onDone={() => onTap("continue")} />}
         {screen.kind === "word" && (
           <div className="pa-word-task" data-word={screen.word} data-band={screen.band ?? ""}>
             <h1>
@@ -430,11 +435,13 @@ export default function PlacementView({
             >
               {screen.oral ? "Your turn" : screen.word.toLowerCase()}
             </p>
-            {!screen.practiceCorrect && (screen.issue || !screen.listening) && (
-              <p className="pa-turn-status" role="status">
+            {(
+              <p className={`pa-turn-status ${!screen.issue && !screen.thinking && screen.listening || screen.practiceCorrect ? "is-empty" : ""}`} role="status">
                 {screen.issue === "technical"
                   ? "Let’s try the microphone again. Your word is still here."
-                  : screen.issue === "quiet"
+                  : screen.thinking
+                    ? "Say the word, or tap I don’t know."
+                    : screen.issue === "quiet"
                     ? "I didn’t catch that. Try again, or pass."
                     : screen.listening
                       ? ""
@@ -617,8 +624,8 @@ export default function PlacementView({
               large
               label="Luna is preparing your results"
             />
-            <h1>You’re all done, {childName}.</h1>
-            <p>{screen.error ?? "Your grown-up can join you now."}</p>
+            <h1>Saving your reading</h1>
+            <p>{screen.error ?? "Keep this page open for a moment."}</p>
             {screen.error ? (
               <button className="pa-primary" onClick={onSave}>
                 Save my results again

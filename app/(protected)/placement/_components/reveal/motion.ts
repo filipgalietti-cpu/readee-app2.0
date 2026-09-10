@@ -4,7 +4,7 @@
  * Motion canon for the reveal, copied from CLAUDE.md. Every duration and
  * distance the reveal uses lives here so no card re-derives one.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { useReducedMotion } from "framer-motion";
 
 /** Standard entrance: rise 16 over 0.35 s. */
@@ -20,10 +20,13 @@ export const MARKER_S = 0.8;
 export const NODE_GAP_MS = 300;
 export const POP_GAP_S = 0.35;
 export const CARD_SLIDE = { y: 24, duration: 0.5 } as const;
-export const AUTO_ADVANCE_MS = 1500;
+export const AUTO_ADVANCE_MS = 6000;
 
+const subscribeHydrated = () => () => {};
 export function useReduced(): boolean {
-  return useReducedMotion() ?? false;
+  const reduced = useReducedMotion();
+  const hydrated = useSyncExternalStore(subscribeHydrated, () => true, () => false);
+  return hydrated ? reduced ?? false : false;
 }
 
 export const wait = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));

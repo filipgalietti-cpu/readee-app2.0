@@ -7,7 +7,6 @@ import { PlacementAudioCancelled, playUrlRequired, stopClip, subscribePlayback, 
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
-import SayNameControl from "@/app/_components/SayNameControl";
 import "./placement.css";
 
 export default function AssessmentHandoff({
@@ -15,8 +14,6 @@ export default function AssessmentHandoff({
   gradeLabel,
   startHref,
   exploreHref = "/explore",
-  childId,
-  initialSaidAs = "",
 }: {
   name: string;
   gradeLabel: string;
@@ -25,26 +22,6 @@ export default function AssessmentHandoff({
   childId?: string;
   initialSaidAs?: string;
 }) {
-  const [saidAs, setSaidAs] = useState(initialSaidAs);
-  const [nameStatus, setNameStatus] = useState("");
-  const [savingName, setSavingName] = useState(false);
-  async function savePronunciation() {
-    setSavingName(true);
-    setNameStatus("");
-    try {
-      const response = await fetch("/api/child-name/apply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ childId, saidAs }),
-      });
-      if (!response.ok) throw new Error("Could not save");
-      setNameStatus("Saved. Luna’s greeting is being updated.");
-    } catch {
-      setNameStatus("We couldn’t save that. Please try again.");
-    } finally {
-      setSavingName(false);
-    }
-  }
   const [speaking, setSpeaking] = useState(false);
   const [welcomeError, setWelcomeError] = useState(false);
   const analyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
@@ -94,22 +71,7 @@ export default function AssessmentHandoff({
                 <dd>Let’s find out</dd>
               </div>
             </dl>
-            {childId && (
-              <details className="pa-name-pronunciation">
-                <summary>Help Luna say {name}’s name</summary>
-                <SayNameControl writtenName={name} value={saidAs} onChange={setSaidAs} />
-                <button
-                  className="pa-secondary"
-                  disabled={savingName}
-                  onClick={() => void savePronunciation()}
-                >
-                  {savingName ? "Saving…" : "Save pronunciation"}
-                </button>
-                <p role="status" className="pa-small">
-                  {nameStatus}
-                </p>
-              </details>
-            )}
+            <p className="pa-small">Luna will ask your reader to say hello and their name before reading.</p>
             <p className="pa-small">
               School grade guides the first questions. What {name} can read and understand
               determines where their journey begins, even if that’s a different grade.

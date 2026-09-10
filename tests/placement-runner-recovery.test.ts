@@ -62,7 +62,7 @@ function runner(
     AbortSignal,
     sessionStorage: storage,
     require: (s: string) =>
-      s === "react"
+      s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
         ? hooks
         : s === "next/navigation"
           ? { useRouter: () => ({ push }) }
@@ -136,58 +136,52 @@ function runner(
 
 describe("placement runner recovery", () => {
   afterEach(() => vi.useRealTimers());
-  it("keeps fifteen quiet seconds unmeasured, and clears the skip callback", async () => {
+  it("keeps thinking unmeasured and listening active after thirty quiet seconds", async () => {
     vi.useFakeTimers();
     const stop = vi.fn(async () => {});
     const r = runner(async () => ({ stop }));
-    const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow("No speech captured");
-    await vi.advanceTimersByTimeAsync(15000);
-    await outcome;
+    let settled = false;
+    const outcome = r.listenWordOnce("cat").then((value: boolean) => { settled = true; return value; });
+    await vi.advanceTimersByTimeAsync(30000);
+    expect(settled).toBe(false);
+    expect(stop).not.toHaveBeenCalled();
+    expect(r.states).toContainEqual(expect.objectContaining({ kind: "word", thinking: true, listening: true }));
+    r.skip();
+    expect(await outcome).toBe(false);
     expect(stop).toHaveBeenCalledOnce();
-    expect(() => r.skip()).not.toThrow();
   });
-  it("offers a child-facing retry on first silence without scoring it", async () => {
+  it("accepts a word after a twenty-second thinking pause without a retry tap", async () => {
     vi.useFakeTimers();
-    let attempt = 0;
-    const r = runner(async (_word, phrase) => {
-      if (++attempt === 2)
-        phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] });
-      return { stop: async () => {} };
-    });
+    let phrase!: (p: unknown) => void;
+    const listen = vi.fn(async (_word, callback) => { phrase = callback; return { stop: async () => {} }; });
+    const r = runner(listen);
     const result = r.listenWord("cat");
-    await vi.advanceTimersByTimeAsync(15000);
-    expect(r.states).toContainEqual(
-      expect.objectContaining({ kind: "word", word: "cat", issue: "quiet" }),
-    );
-    expect(r.states).not.toContainEqual({ kind: "recovery" });
-    r.tap("retry");
+    await vi.advanceTimersByTimeAsync(20000);
+    phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] });
     expect(await result).toBe(true);
-    expect(attempt).toBe(2);
+    expect(listen).toHaveBeenCalledOnce();
+    expect(r.states).not.toContainEqual({ kind: "recovery" });
   });
-  it("allows an explicit I-don't-know from the hesitation screen", async () => {
+  it("allows an explicit pass while thinking", async () => {
     vi.useFakeTimers();
     const r = runner(async () => ({ stop: async () => {} }));
     const result = r.listenWord("cat");
     await vi.advanceTimersByTimeAsync(15000);
-    r.tap("pass");
+    r.skip();
     expect(await result).toBe(false);
   });
-  it("keeps repeated quiet retries on the same word without a technical-error page", async () => {
+  it("keeps an explicit empty Done speaking retry on the same word", async () => {
     vi.useFakeTimers();
     let attempt = 0;
     const r = runner(async (_word, phrase) => {
-      if (++attempt === 3)
-        phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] });
+      if (++attempt === 2) phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] });
       return { stop: async () => {} };
     });
     const result = r.listenWord("cat");
-    await vi.advanceTimersByTimeAsync(15000);
-    r.tap("retry");
-    await vi.advanceTimersByTimeAsync(15000);
-    expect(r.states).not.toContainEqual({ kind: "recovery" });
-    expect(r.states).toContainEqual(
-      expect.objectContaining({ kind: "word", word: "cat", issue: "quiet" }),
-    );
+    await vi.advanceTimersByTimeAsync(1);
+    r.finish();
+    await vi.advanceTimersByTimeAsync(1);
+    expect(r.states).toContainEqual(expect.objectContaining({ kind: "word", word: "cat", issue: "quiet" }));
     r.tap("retry");
     expect(await result).toBe(true);
   });
@@ -254,6 +248,7 @@ describe("placement runner recovery", () => {
     expect(settled).toBe(false);
     expect(r.states).not.toContainEqual({ kind: "recovery" });
     r.finish();
+    await vi.advanceTimersByTimeAsync(1000);
     const read = await result;
     expect(read.ev.wordsTotal).toBe(12);
     expect(read.ev.minuteWordsCorrect).toBe(12);
@@ -267,9 +262,10 @@ describe("placement runner recovery", () => {
     });
     const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
     await vi.advanceTimersByTimeAsync(15000);
+    r.finish();
     await outcome;
   });
-  it("accepts a final phrase delivered while stopping at the timeout", async () => {
+  it("accepts a final phrase delivered after Done speaking", async () => {
     vi.useFakeTimers();
     const stop = vi.fn();
     const r = runner(async (_word, phrase) => {
@@ -280,6 +276,7 @@ describe("placement runner recovery", () => {
     });
     const outcome = r.listenWordOnce("cat");
     await vi.advanceTimersByTimeAsync(15000);
+    r.finish();
     expect(await outcome).toBe(true);
     expect(stop).toHaveBeenCalledOnce();
   });
@@ -287,7 +284,9 @@ describe("placement runner recovery", () => {
     vi.useFakeTimers();
     const r = runner(async () => ({ stop: () => new Promise(() => {}) }));
     const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
-    await vi.advanceTimersByTimeAsync(19000);
+    await vi.advanceTimersByTimeAsync(15000);
+    r.finish();
+    await vi.advanceTimersByTimeAsync(4000);
     await outcome;
   });
   it.each([

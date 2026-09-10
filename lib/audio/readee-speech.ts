@@ -1,7 +1,5 @@
-/** Server speech for parent narration and name previews. Supply only authored
- * speech text: longer delivery prompts leaked into short clips in live QA. */
+/** Server speech uses authored text only; delivery prompts can leak into audio. */
 import { getVertexAccessToken, VERTEX_TTS_PROJECT_ID } from "@/lib/ai/vertex-tts";
-
 
 
 export async function generateReadeeSpeech(text: string, encoding: "MP3" | "LINEAR16" = "MP3"): Promise<Buffer> {

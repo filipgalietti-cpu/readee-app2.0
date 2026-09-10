@@ -1342,3 +1342,11 @@
   .pa-frame[data-screen="word"] .pa-voice-actions .pa-secondary { white-space: normal; }
   .pa-frame[data-screen="word"] .pa-stage { padding-bottom: 16px; }
 }
+
+/* Stable listening geometry; thinking and connection labels never move the word. */
+.pa-frame[data-screen="word"] .pa-turn-status { height: 72px; min-height: 72px; font-size: 18px; line-height: 24px; margin: 0; display: flex; align-items: center; justify-content: center; }
+.pa-frame[data-screen="word"] .pa-turn-status.is-empty { visibility: hidden; }
+.pa-word-bunny, .pa-frame .pa-bunny { left: 0; right: auto; }
+@media (max-width: 767px) {
+  .pa-frame[data-screen="word"] .pa-voice-actions { margin-left: auto; margin-right: 0; }
+}

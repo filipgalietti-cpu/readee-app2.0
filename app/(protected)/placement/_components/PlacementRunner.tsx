@@ -60,7 +60,7 @@ import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 
 /** What a child says to pass on a word (the intro invites "I don't know"). */
 const SKIP_PHRASE = /\b(i\s+)?(don['’]?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
-const WORD_TIMEOUT_MS = 15000; // No recognized response means retry, never an incorrect answer.
+const WORD_THINKING_HINT_MS = 15000; // Silence changes the hint, never stops listening or scores a miss.
 class NoSpeechCaptured extends Error {
   constructor() {
     super("No speech captured.");
@@ -311,7 +311,9 @@ export default function PlacementRunner({
             finishRef.current = drain;
             const t = window.setInterval(() => {
               if (micRef.current.level > 0.12) lastVoiceAt = Date.now();
-              if (Date.now() - lastVoiceAt >= WORD_TIMEOUT_MS) drain();
+              if (Date.now() - lastVoiceAt >= WORD_THINKING_HINT_MS)
+                setScreen(current => current.kind === "word" && !current.thinking
+                  ? { ...current, thinking: true } : current);
             }, 250);
             const cleanup = () => {
               window.clearInterval(t);
@@ -640,7 +642,15 @@ export default function PlacementRunner({
       const g = gradeRead(p.text, phrases);
       if (g.wordsAttempted === 0) throw new Error("No reading was captured.");
       const minute = passageRate(g, elapsed, finishedEarly);
+      setScreen(current => current.kind === "passage" ? { ...current, reading: false } : current);
+      if (!robot) {
+        const { audioManager } = await import("@/lib/audio/audio-manager");
+        audioManager.playCorrectChime();
+        await new Promise(resolve => setTimeout(resolve, 700));
+      }
+      setOrb("speaking");
       await playUrlAsync(spectrumClip("reading-questions"));
+      setOrb("idle");
       const keptGoing = finishedEarly || Date.now() - lastPhraseAt < 15000;
       return {
         ev: {
@@ -764,12 +774,11 @@ export default function PlacementRunner({
       }
     };
     (async () => {
-      // 0. Greeting: the child's own name if the pack clip exists, else the generic line.
+      // 0. Greet without guessing pronunciation; hear the reader’s name after hello.
       setStage("greeting");
       setOrb("speaking");
-      setScreen({ kind: "luna", caption: `Hi, ${childName}!` });
-      const hi = demo ? null : await childAudioUrl(`greetings/${childId}-hi.wav`);
-      await playUrlAsync(hi ?? clipUrl("narr-hi-generic"), 4000);
+      setScreen({ kind: "luna", caption: "Hi there! I’m glad you’re here." });
+      await playUrlAsync(clipUrl("narr-hi-generic"), 8000);
       await say(
         "intro-frame",
         "Let's read some words together. Some will be easy and some will be tricky, and that's exactly how I learn about you.",
@@ -804,6 +813,19 @@ export default function PlacementRunner({
       setOrb("speaking");
       await playUrlAsync(spectrumClip("hello-back"));
       setOrb("idle");
+      if (!robot && !restored) {
+        micRef.current.close();
+        const nameDone = waitTap();
+        setScreen({ kind: "name", ready: false, childId });
+        setOrb("speaking");
+        await playUrlAsync(spectrumClip("ask-name"));
+        setOrb("listening");
+        setScreen({ kind: "name", ready: true, childId });
+        await nameDone;
+        if (cancelled()) return;
+        const reopened = await micRef.current.open();
+        if (reopened !== "open") { setScreen({ kind: "blocked", reason: reopened }); return; }
+      }
       startedRef.current = Date.now();
 
       // The unscored warm-up checks recognition before any reading evidence.
@@ -953,7 +975,7 @@ export default function PlacementRunner({
       setStage("closing");
       setScreen({ kind: "closing", error: null });
       setOrb("speaking");
-      await playNarr("close", 3500);
+      // The completion line belongs to the celebration after the save.
       micRef.current.close();
       const submission: PlacementSubmission = {
         evidenceVersion: 4,

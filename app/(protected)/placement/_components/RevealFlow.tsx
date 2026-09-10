@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
 import Link from "next/link";
 import { reportFailure } from "@/lib/observability/critical";
+import { playUrlRequired, stopClip } from "./audio";
 import { ASK_CLOSE } from "@/lib/placement/narration";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
@@ -98,9 +99,34 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   // The celebration hands off on its own after the clip; the parent then holds.
   useEffect(() => {
     if (phase !== "celebrate") return;
-    const t = window.setTimeout(() => setPhase("hold"), 9000);
-    return () => window.clearTimeout(t);
+    let cancelled = false;
+    void (async () => {
+      await playUrlRequired(spectrumClip("assessment-complete"), 12000).catch(() => {});
+      await new Promise(resolve => setTimeout(resolve, 3500));
+      if (!cancelled) setPhase("hold");
+    })();
+    return () => { cancelled = true; stopClip(); };
   }, [phase]);
+
+  const repairRef = useRef<Promise<void> | null>(null);
+  const retryNarration = useCallback(async () => {
+    if (repairRef.current) return repairRef.current;
+    const request = (async () => {
+      const response = await fetch("/api/placement/narration", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ childId }) });
+      if (!response.ok) throw new Error("Narration unavailable");
+      await load();
+    })();
+    repairRef.current = request;
+    try { await request; } finally { repairRef.current = null; }
+  }, [childId, load]);
+  const attemptedRepair = useRef(false);
+  useEffect(() => {
+    // Give the initial background generation a head start; recover a failed line on older reports.
+    if (result && !attemptedRepair.current && Date.now() - Date.parse(result.createdAt) > 60000 && result.narration.some(line => !line.audioPath)) {
+      attemptedRepair.current = true;
+      void retryNarration().catch(() => {});
+    }
+  }, [result, retryNarration]);
 
   const audioUrlFor = useCallback((line: NarrationLine): string | null => {
     if (line.id === "ask") return spectrumClip("reveal-ask");
@@ -110,7 +136,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   // The reveal owns the whole viewport (no site chrome on /placement routes): one screen, never a page scroll.
   let screen: React.ReactNode;
   if (phase === "celebrate") {
-    screen = <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} onHandoff={() => setPhase("hold")} />;
+    screen = <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} handoffDelayMs={120000} onHandoff={() => setPhase("hold")} />;
   } else if (phase === "hold" || !result) {
     const g = result ? ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"][result.enrolled] : undefined;
     screen = <HoldToBuild childName={childName} enrolledGrade={g} onComplete={() => setHoldDone(true)} />;
@@ -119,6 +145,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
       <RevealWizard
         result={result}
         audioUrlFor={audioUrlFor}
+        onRetryNarration={retryNarration}
         onStartPlan={startPlan}
         outfitId={outfitId}
         onNotNow={() => router.push(`/placement/report?child=${childId}`)}

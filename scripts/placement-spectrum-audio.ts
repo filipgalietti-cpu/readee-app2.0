@@ -34,7 +34,8 @@ async function main() {
   console.log(`${pending.length} missing or changed clips`);
   if (process.argv.includes("--dry")) return;
   let failures = 0;
-  const batchSize = process.argv.includes("--single") ? 1 : 12;
+  // Single clips avoid delivery drift and separators leaking between questions.
+  const batchSize = process.argv.includes("--batch") ? 12 : 1;
   for (let i = 0; i < pending.length; i += batchSize) {
     const batch = pending.slice(i, i + batchSize);
     const tmp = await fs.mkdtemp(join(tmpdir(), "readee-spectrum-tts-"));
@@ -71,6 +72,9 @@ async function main() {
         await fs.writeFile(join(tmp, "batch.mp3"), Buffer.from(result.audioContent, "base64"));
         if (batch.length === 1) {
           const file = `${dir}/${batch[0].id}`;
+          const duration = Number(spawnSync("ffprobe", ["-v", "quiet", "-show_entries", "format=duration", "-of", "csv=p=0", join(tmp, "batch.mp3")], { encoding: "utf8" }).stdout);
+          const pace = batch[0].text.split(/\s+/).length * 60 / duration;
+          const tempo = Number.isFinite(pace) && pace > 165 ? Math.max(0.65, 165 / pace) : 1;
           const encoded = spawnSync(
             "ffmpeg",
             [
@@ -78,7 +82,7 @@ async function main() {
               "-i",
               join(tmp, "batch.mp3"),
               "-af",
-              "loudnorm=I=-18:TP=-2:LRA=7",
+              `${tempo < 1 ? `atempo=${tempo},` : ""}loudnorm=I=-18:TP=-2:LRA=7`,
               "-codec:a",
               "libmp3lame",
               "-qscale:a",

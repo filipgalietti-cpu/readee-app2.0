@@ -34,6 +34,14 @@ export default function Page() {
   const [result, setResult] = useState(() => fixtureSpectrumMaya());
   const [tab, setTab] = useState<Tab>("celebration");
   const [frame, setFrame] = useState<Frame>("desktop");
+  const [audioMode, setAudioMode] = useState("none");
+  const [audioReady, setAudioReady] = useState(false);
+  useEffect(() => {
+    setAudioReady(audioMode === "ready");
+    if (audioMode !== "delayed") return;
+    const timer = setTimeout(() => setAudioReady(true), 5000);
+    return () => clearTimeout(timer);
+  }, [audioMode]);
   const [note, setNote] = useState<string>("");
   const [run, setRun] = useState(0);
 
@@ -59,6 +67,9 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-zinc-100 px-4 py-6">
       <div className="mx-auto mb-4 flex max-w-3xl flex-wrap items-center justify-center gap-2">
+        <select aria-label="Narration playback test" value={audioMode} onChange={e => setAudioMode(e.target.value)} className="rounded-xl border p-2">
+          <option value="none">Text only</option><option value="ready">Test clip ready</option><option value="delayed">Test clip delayed</option><option value="failed">Test clip failure</option>
+        </select>
         <select
           aria-label="Report scenario"
           className="rounded-xl border p-2"
@@ -134,7 +145,7 @@ export default function Page() {
             <RevealWizard
               result={result}
               outfitId="bunny_astronaut"
-              audioUrlFor={() => null}
+              audioUrlFor={() => audioMode === "failed" ? "/audio/placement-spectrum/qa-missing.mp3" : audioReady ? "/audio/placement-spectrum/ask-name.mp3" : null}
               onStartPlan={() =>
                 setNote("Start plan pressed. The first assigned free lesson would open here.")
               }

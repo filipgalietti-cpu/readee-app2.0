@@ -6,7 +6,7 @@ import { NextResponse, after } from "next/server";
 import { PlacementSubmissionSchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { generateReadeeSpeech } from "@/lib/audio/readee-speech";
+import { generatePlacementNarration } from "@/lib/placement/generate-narration";
 import { decidePlacement } from "@/lib/placement/decide";
 import { buildPlan } from "@/lib/placement/plan";
 import { narrate } from "@/lib/placement/narration";
@@ -217,7 +217,7 @@ async function complete(req: Request, requestId: string) {
       version: decision.spectrum ? "v4" : "v2",
     });
 
-  // Narration clips: sequential Vertex synthesis after the response is sent
+  // Narration clips: bounded synthesis after the response is sent
   // (next/server `after` keeps the serverless function alive for it); the
   // reveal polls for the paths. Each line says the child's name -> private bucket.
   if (!replayed)
@@ -228,30 +228,12 @@ async function complete(req: Request, requestId: string) {
       } catch {
         /* the reveal still works without the email */
       }
-      const paths: Record<string, string> = {};
-      for (const line of narration) {
-        try {
-          const spokenText = withSpokenName(
-            line.text,
-            childName,
-            (child as { name_said_as?: string | null }).name_said_as,
-          ).slice(0, 700);
-          const audio = await generateReadeeSpeech(spokenText);
-          const path = `placement/${sub.childId}/narr-${placementId.slice(0, 8)}-${line.id}.mp3`;
-          const { error } = await admin.storage
-            .from("child-audio")
-            .upload(path, audio, { contentType: "audio/mpeg", upsert: true });
-          if (error) throw error;
-          paths[line.id] = path;
-          const withAudio = narration.map((l) => ({
-            ...l,
-            audioPath: paths[l.id] ?? l.audioPath ?? null,
-          }));
-          await admin.from("placements").update({ narration: withAudio }).eq("id", placementId);
-        } catch (error) {
-          reportFailure("placement.narration", error, { route: "/api/placement/complete", requestId, eventType: line.id });
-        }
+      try {
+        await generatePlacementNarration(placementId, childName, (child as { name_said_as?: string | null }).name_said_as);
+      } catch (error) {
+        reportFailure("placement.narration", error, { route: "/api/placement/complete", requestId });
       }
+
     });
 
   return NextResponse.json({

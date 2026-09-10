@@ -26,6 +26,7 @@ export async function startPronAssessment(opts: {
   referenceText: string;
   language?: string;
   segmentationSilenceMs?: number;
+  initialSilenceMs?: number;
   enableMiscue?: boolean;
   onRecognizing?: (partialText: string) => void;
   onPhrase?: (phrase: PAPhrase) => void;
@@ -43,6 +44,8 @@ export async function startPronAssessment(opts: {
   // and chops the read into a fragment. Widen the in-phrase silence tolerance so
   // a slow, word-by-word read is still captured as one continuous phrase.
   try { speechConfig.setProperty(SDK.PropertyId.Speech_SegmentationSilenceTimeoutMs, String(opts.segmentationSilenceMs ?? 2500)); } catch { /* older SDK */ }
+
+  if (opts.initialSilenceMs !== undefined) speechConfig.setProperty(SDK.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, String(opts.initialSilenceMs));
 
   const format = SDK.AudioStreamFormat.getWaveFormatPCM(16000, 16, 1);
   const pushStream = SDK.AudioInputStream.createPushStream(format);

@@ -44,7 +44,7 @@ function downsample(chunks: Float32Array[], inRate: number, outRate: number): Fl
   return out;
 }
 
-export default function SayNameControl({ writtenName, value, onChange, mode = "grownup" }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup" }) {
+export default function SayNameControl({ writtenName, value, onChange, mode = "grownup", autoStart = false }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup"; autoStart?: boolean }) {
   const [status, setStatus] = useState<Status>("idle");
   const [hearing, setHearing] = useState(false);
   const stopRef = useRef<(() => void) | null>(null);
@@ -57,6 +57,12 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
     mounted.current = true;
     return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); };
   }, []);
+
+  const autoStarted = useRef(false);
+  const recordLatest = useRef<() => Promise<void>>(async () => {});
+  useEffect(() => {
+    if (autoStart && !autoStarted.current) { autoStarted.current = true; void recordLatest.current(); }
+  }, [autoStart]);
 
   async function record() {
     if (status === "recording") { stopRef.current?.(); return; }
@@ -73,12 +79,21 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       const src = ctx.createMediaStreamSource(stream);
       const proc = ctx.createScriptProcessor(4096, 1, 1);
       const chunks: Float32Array[] = [];
-      proc.onaudioprocess = (e) => chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+      let voicedAt = 0, lastVoice = 0;
+      proc.onaudioprocess = (e) => {
+        const frame = new Float32Array(e.inputBuffer.getChannelData(0));
+        chunks.push(frame);
+        if (mode !== "child") return;
+        const rms = Math.sqrt(frame.reduce((sum, value) => sum + value * value, 0) / frame.length);
+        const now = Date.now();
+        if (rms > 0.015) { voicedAt ||= now; lastVoice = now; }
+        if (voicedAt && now - voicedAt > 2000 && now - lastVoice > 1500) stopRef.current?.();
+      };
       const sink = ctx.createGain(); sink.gain.value = 0;
       src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
       setStatus("recording");
       await new Promise<void>((res) => {
-        const timer = window.setTimeout(res, MAX_SECONDS * 1000);
+        const timer = window.setTimeout(res, (mode === "child" ? 30 : MAX_SECONDS) * 1000);
         stopRef.current = () => { window.clearTimeout(timer); res(); };
       });
       stopRef.current = null;
@@ -105,6 +120,8 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       if (ctx) { try { await ctx.close(); } catch { /* ignore */ } }
     }
   }
+
+  recordLatest.current = record;
 
   async function hear(saidAs: string = value) {
     if (hearing) return;
@@ -135,7 +152,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
 
   const child = mode === "child";
   const note = playbackError ?? (status === "opening" ? "Allow the microphone to say the name." : child
-    ? status === "recording" ? "Say your name, then tap Stop." :
+    ? status === "recording" ? "Say your name. Tap Stop when you’re done." :
       status === "thinking" ? "Luna is listening..." :
       status === "heard" ? "Tap Hear Luna say it. You can record it again if you want." :
       status === "unclear" ? "Luna did not catch it. Try once more, a little closer." :
@@ -176,7 +193,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
             </button>
           )}
         </div>
-        <p className="text-sm font-semibold text-zinc-600">{note}</p>
+        <p className="text-xl font-semibold text-zinc-600">{note}</p>
         {value && <p className="text-xs text-zinc-400">Luna heard it as &ldquo;{value}&rdquo;. A grown-up can fix the spelling in Settings.</p>}
       </div>
     );
