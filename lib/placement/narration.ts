@@ -392,12 +392,17 @@ export function narrate(input: NarrateInput): NarrationLine[] {
       name = input.childName.trim() || "Your child";
     const g = (band: number) => (band === 0 ? "kindergarten" : `${ordinal(band)} grade`);
     const text: Record<NarrationId, string> = {
-      strengths: `${name} showed us ${d.strengths.length ? d.strengths.slice(0, 2).join(" and ") : "where to begin practicing"}.`,
+      strengths: `${profile.readingBand !== null ? `${name} read two texts and answered questions about both.` : profile.wordStep === null ? `${name} worked through the reading activities with Luna.` : profile.wordStep === 0 ? `${name} matched letters to their sounds.` : `${name} read words from the ${profile.wordLabel.toLowerCase()} set.`}${profile.languageBand !== null ? ` With read-aloud support, ${name} also answered ${g(profile.languageBand)} meaning questions.` : ""}`,
       number: d.fluency
         ? `${name} read this passage at ${d.fluency.wcpm} correct words per minute. This describes today's sample, not a national percentile.`
         : "We are starting with guided practice in letters, sounds and short words. We need more reading evidence before confirming a level.",
       placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? "The first lessons will help us check the foundational starting point." : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
-      "skill-decoding": `The word reading set showed ${profile.wordLabel.toLowerCase()}. We will keep practicing the next word patterns.`,
+      "skill-decoding":
+        profile.wordStep === null
+          ? "Word reading needs follow-up. We will begin with guided practice in letters and sounds."
+          : profile.wordStep === 0
+            ? "Some letters were matched to their sounds. Next we will practice connecting sounds to short words."
+            : `${name} read words from the ${profile.wordLabel.toLowerCase()} set. We will keep practicing the next word patterns.`,
       "skill-fluency": d.fluency
         ? `Accuracy on the reading sample was ${Math.round(d.fluency.accuracy * 100)} percent. We build accuracy and understanding before speed.`
         : "We will collect connected reading samples during lessons.",

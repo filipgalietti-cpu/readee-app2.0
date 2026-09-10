@@ -72,6 +72,11 @@ describe("K–4 adaptive instructional spectrum", () => {
       expect(d.decoding.emergent).toBe(false);
       expect(d.flags).not.toContain("emergent");
       expect(d.spectrum?.languageBand).toBe(4);
+      const today = new Date("2026-09-09T12:00:00Z");
+      const plan = buildPlan({ decision: d, moments: [], today });
+      const lines = narrate({ childName: "Maya", decision: d, plan, moments: [], today });
+      if (ceiling < 0)
+        expect(lines.find((l) => l.id === "skill-decoding")?.text).toContain("needs follow-up");
     }
   });
   it("does not turn one short accurate fragment into a comfortable passage", () => {
