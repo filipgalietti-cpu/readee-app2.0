@@ -22,6 +22,8 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
 export interface LessonShellDesktopProps {
+  /** Optional context/navigation row inside the fullscreen lesson frame. */
+  headerNote?: ReactNode;
   slideNum: number;
   totalSlides: number;
   lessonTitle: string;
@@ -49,6 +51,7 @@ export interface LessonShellDesktopProps {
 }
 
 export function LessonShellDesktop({
+  headerNote,
   slideNum,
   totalSlides,
   lessonTitle,
@@ -88,6 +91,8 @@ export function LessonShellDesktop({
           <Glyph name="x" size={18} />
         </button>
       </header>
+
+      {headerNote && <div className="shrink-0">{headerNote}</div>}
 
       {/* ── Body — 45/55 split (or full-width when no left content) ── */}
       <main ref={bodyRef} className="relative flex min-h-0 flex-1 flex-col overflow-y-auto md:flex-row">

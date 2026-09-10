@@ -31,7 +31,7 @@ import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
-import KidWelcomeFlow from "./_components/KidWelcomeFlow";
+import ParentReaderSetup from "./_components/ParentReaderSetup";
 import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel, hasCustomName } from "@/lib/levels/levels";
@@ -227,6 +227,7 @@ export default function Dashboard() {
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
   const [loading, setLoading] = useState(true);
+  const [parentId, setParentId] = useState<string | null>(null);
   const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
@@ -284,6 +285,7 @@ export default function Dashboard() {
       }
 
       // Fetch user plan
+      setParentId(user.id);
       fetchPlan();
 
       const { data, error } = await supabase
@@ -324,7 +326,7 @@ export default function Dashboard() {
 
   // DB blip while resolving children — show a retry card instead of
   // pushing a real parent into onboarding by accident (which is what
-  // happens if we fall through to KidWelcomeFlow with children=[]).
+  // happens if we fall through to reader setup with children=[]).
   if (childrenLoadError && children.length === 0) {
     return (
       <div className="mx-auto flex max-w-md flex-col items-center px-6 py-16 text-center">
@@ -354,10 +356,7 @@ export default function Dashboard() {
   }
 
   if (children.length === 0) {
-    return <KidWelcomeFlow onDone={(kids) => {
-      setChildren(kids);
-      if (kids.length === 1) setSelectedChild(kids[0]);
-    }} />;
+    return parentId ? <ParentReaderSetup parentId={parentId} /> : <SkeletonPage cards={1} />;
   }
 
   if (selectedChild) {

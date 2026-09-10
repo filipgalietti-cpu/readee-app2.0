@@ -2,6 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
+type AuthMode = "signin" | "signup";
+
+function AuthTabLinks({ mode, search = "" }: { mode: AuthMode; search?: string }) {
+  const tab = (active: boolean) =>
+    `rounded-full py-2.5 text-sm font-extrabold transition-all ${
+      active ? "bg-white text-indigo-950 shadow-[0_1px_4px_rgba(24,24,27,0.12)]" : "bg-transparent text-zinc-500"
+    }`;
+
+  return (
+    <div className="grid grid-cols-2 gap-1 rounded-full bg-zinc-100 p-1 mb-6">
+      <Link href={`/login${search}`} className={`text-center ${tab(mode === "signin")}`}>
+        Sign in
+      </Link>
+      <Link href={`/signup${search}`} className={`text-center ${tab(mode === "signup")}`}>
+        Create account
+      </Link>
+    </div>
+  );
+}
+
+function AuthTabs({ mode }: { mode: AuthMode }) {
+  // Next's URL state is consistent during hydration and updates on navigation.
+  const params = useSearchParams();
+  const query = params.toString();
+  return <AuthTabLinks mode={mode} search={query ? `?${query}` : ""} />;
+}
 
 /**
  * Two-column auth shell (from the Claude Design "Readee Auth"): the form
@@ -16,18 +45,11 @@ export default function AuthLayout({
   children,
 }: {
   /** Which tab is active — also which route this page is. */
-  mode: "signin" | "signup";
+  mode: AuthMode;
   /** Hide the tab toggle for sub-views (forgot password, check-your-email). */
   showTabs?: boolean;
   children: React.ReactNode;
 }) {
-  // Carry any query params (?redirect=, ?as=teacher, ?next=) across the toggle.
-  const search = typeof window !== "undefined" ? window.location.search : "";
-  const tab = (active: boolean) =>
-    `rounded-full py-2.5 text-sm font-extrabold transition-all ${
-      active ? "bg-white text-indigo-950 shadow-[0_1px_4px_rgba(24,24,27,0.12)]" : "bg-transparent text-zinc-500"
-    }`;
-
   return (
     <div className="fixed inset-0 flex bg-white overflow-hidden">
       {/* ── Form column ── */}
@@ -43,14 +65,9 @@ export default function AuthLayout({
           />
 
           {showTabs && (
-            <div className="grid grid-cols-2 gap-1 rounded-full bg-zinc-100 p-1 mb-6">
-              <Link href={`/login${search}`} className={`text-center ${tab(mode === "signin")}`}>
-                Sign in
-              </Link>
-              <Link href={`/signup${search}`} className={`text-center ${tab(mode === "signup")}`}>
-                Create account
-              </Link>
-            </div>
+            <Suspense fallback={<AuthTabLinks mode={mode} />}>
+              <AuthTabs mode={mode} />
+            </Suspense>
           )}
 
           {children}

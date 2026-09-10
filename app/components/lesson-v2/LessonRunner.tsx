@@ -40,6 +40,8 @@ export default function LessonRunner({
   onFinish,
   finishLabel = "Start the questions →",
   finishPrompt = "Now let’s try some questions.",
+  headerNote,
+  onExit,
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
@@ -50,6 +52,8 @@ export default function LessonRunner({
   onFinish?: () => void;
   finishLabel?: string;
   finishPrompt?: string;
+  headerNote?: ReactNode;
+  onExit?: () => void;
   /** Fires on every scene change, including the first. Lets a host follow along
    *  without reaching into the runner's state - the founder review tool pins its
    *  thumbs to whatever is actually on screen. Not used in the child's path. */
@@ -479,10 +483,12 @@ export default function LessonRunner({
         />
       )}
       <LessonShellDesktop
+        headerNote={headerNote}
         slideNum={idx + 1}
         totalSlides={lesson.scenes.length}
         lessonTitle={lesson.title}
         onClose={() => {
+          if (onExit) { onExit(); return; }
           if (typeof window !== "undefined") window.history.back();
         }}
         onNext={goNext}
