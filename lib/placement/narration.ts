@@ -30,15 +30,40 @@ export type NarrateInput = {
 };
 
 export const NARRATION_ORDER: readonly NarrationId[] = [
-  "strengths", "number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension", "path", "path-crafted", "plan", "ask",
+  "strengths",
+  "number",
+  "placement",
+  "skill-decoding",
+  "skill-fluency",
+  "skill-comprehension",
+  "path",
+  "path-crafted",
+  "plan",
+  "ask",
 ] as const;
 
 export const NARRATION_MAX_CHARS = 340;
-export const REASSURANCE = "Below grade level does not mean failing. It means the practice needs to be aimed.";
+export const REASSURANCE =
+  "Below grade level does not mean failing. It means the practice needs to be aimed.";
 export const ASK_CLOSE = "The first reading unit is free. Let’s start with the first lesson.";
 /** On top of bank.FORBIDDEN_CHILD_WORDS. */
-export const FORBIDDEN_NARRATION_WORDS = ["typical", "behind", "kid", "kids", "test", "quiz", "exam", "guaranteed"];
-const NO_EXCLAMATION: ReadonlySet<NarrationId> = new Set<NarrationId>(["number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension"]);
+export const FORBIDDEN_NARRATION_WORDS = [
+  "typical",
+  "behind",
+  "kid",
+  "kids",
+  "test",
+  "quiz",
+  "exam",
+  "guaranteed",
+];
+const NO_EXCLAMATION: ReadonlySet<NarrationId> = new Set<NarrationId>([
+  "number",
+  "placement",
+  "skill-decoding",
+  "skill-fluency",
+  "skill-comprehension",
+]);
 
 /** Every house-rule violation in one line; empty means clean. Shared by the tests and any QC script. */
 export function narrationProblems(line: NarrationLine): string[] {
@@ -46,8 +71,10 @@ export function narrationProblems(line: NarrationLine): string[] {
   for (const w of FORBIDDEN_NARRATION_WORDS) {
     if (new RegExp(`\\b${w}\\b`, "i").test(line.text)) problems.add(`forbidden word "${w}"`);
   }
-  if (/\bfailing\b/i.test(line.text.split(REASSURANCE).join(""))) problems.add('"failing" outside the reassurance sentence');
-  if (line.text.length > NARRATION_MAX_CHARS) problems.add(`over ${NARRATION_MAX_CHARS} characters (${line.text.length})`);
+  if (/\bfailing\b/i.test(line.text.split(REASSURANCE).join("")))
+    problems.add('"failing" outside the reassurance sentence');
+  if (line.text.length > NARRATION_MAX_CHARS)
+    problems.add(`over ${NARRATION_MAX_CHARS} characters (${line.text.length})`);
   if (NO_EXCLAMATION.has(line.id) && line.text.includes("!")) problems.add("exclamation mark");
   return [...problems];
 }
@@ -61,8 +88,21 @@ const PRONOUNS: Record<Pronoun, P> = {
   they: { subj: "they", obj: "them", poss: "their", plural: true },
 };
 
-const SMALL = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
-const num = (n: number): string => (Number.isInteger(n) && n >= 0 && n <= 10 ? SMALL[n] : String(n));
+const SMALL = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+];
+const num = (n: number): string =>
+  Number.isInteger(n) && n >= 0 && n <= 10 ? SMALL[n] : String(n);
 const cap = (s: string): string => (s.length ? s[0].toUpperCase() + s.slice(1) : s);
 const lower = (s: string): string => (s.length ? s[0].toLowerCase() + s.slice(1) : s);
 const pct = (x: number): number => Math.round(x * 100);
@@ -84,7 +124,8 @@ function pctOrdinal(n: number): string {
 }
 
 /** "kindergarten" / "4th grade" (noun) */
-const gradeNoun = (band: PlacedBand): string => (band === 0 ? "kindergarten" : `${ordinal(band)} grade`);
+const gradeNoun = (band: PlacedBand): string =>
+  band === 0 ? "kindergarten" : `${ordinal(band)} grade`;
 
 const PHASE: Record<GradePhase, string> = {
   early: "at the start of the year",
@@ -123,18 +164,26 @@ function strengthsLine(c: Ctx): string {
         clauses.push(`the ${gradeAdjective(m.band)} list was easy for ${p.obj}`);
         break;
       case "passage-accurate":
-        clauses.push(`${p.subj} read the ${gradeAdjective(m.band)} story with ${pct(m.accuracy)} percent accuracy`);
+        clauses.push(
+          `${p.subj} read the ${gradeAdjective(m.band)} story with ${pct(m.accuracy)} percent accuracy`,
+        );
         break;
       case "passage-expressive":
         clauses.push(`${p.subj} read the ${gradeAdjective(m.band)} story with expression`);
         break;
       case "comprehension":
-        if (m.total > 0 && m.correct === m.total) clauses.push(`${p.subj} understood everything ${p.subj} read`);
+        if (m.total > 0 && m.correct === m.total)
+          clauses.push(`${p.subj} understood everything ${p.subj} read`);
         break;
       case "foundation": {
         const bar = m.skill === "nonsenseWords" ? 0.7 : 0.8;
         if (m.total > 0 && m.correct / m.total >= bar) {
-          const what = m.skill === "letterSounds" ? "letter sounds" : m.skill === "blending" ? "blends" : "new words";
+          const what =
+            m.skill === "letterSounds"
+              ? "letter sounds"
+              : m.skill === "blending"
+                ? "blends"
+                : "new words";
           clauses.push(`${p.subj} got ${num(m.correct)} of ${num(m.total)} ${what}`);
         }
         break;
@@ -147,10 +196,13 @@ function strengthsLine(c: Ctx): string {
     // Fall back to the decision's strengths, re-pointing its "they" at the child.
     for (const s of decision.strengths.slice(0, 2)) {
       const fixed = s.replace(/\bthey read\b/g, `${p.subj} ${v("reads", "read")}`);
-      clauses.push(p.plural ? `${p.subj} ${fixed.replace(/^(\w+)s\b/, "$1")}` : `${p.subj} ${fixed}`);
+      clauses.push(
+        p.plural ? `${p.subj} ${fixed.replace(/^(\w+)s\b/, "$1")}` : `${p.subj} ${fixed}`,
+      );
     }
   }
-  if (clauses.length === 0) clauses.push(`${p.subj} gave every word a try, and that is exactly where reading starts`);
+  if (clauses.length === 0)
+    clauses.push(`${p.subj} gave every word a try, and that is exactly where reading starts`);
   const opener = `${name} did a great job today. Here is where ${p.subj} ${v("is", "are")}.`;
   return `${opener} ${cap(joinAnd(clauses))}.`;
 }
@@ -163,15 +215,21 @@ function numberLine(c: Ctx): string {
     const parts: string[] = [];
     let unit = "";
     if (f.typicalForEnrolled !== null) {
-      parts.push(`The ${season} benchmark for ${gradeNoun(enrolled)} is ${f.typicalForEnrolled} words per minute.`);
+      parts.push(
+        `The ${season} benchmark for ${gradeNoun(enrolled)} is ${f.typicalForEnrolled} words per minute.`,
+      );
     } else {
-      parts.push(`There is no ${season} benchmark for ${gradeNoun(enrolled)} yet, since timed reading is measured from winter on.`);
+      parts.push(
+        `There is no ${season} benchmark for ${gradeNoun(enrolled)} yet, since timed reading is measured from winter on.`,
+      );
       unit = " words per minute";
     }
     let s = `${name} read ${f.wcpm}${unit}`;
     if (!f.onEnrolledPassage) s += ` on the ${gradeAdjective(f.band)} story`;
-    if (f.percentile) s += `, about the ${pctOrdinal(f.percentile.percentile)} percentile${f.onEnrolledPassage ? "" : " for that grade"}`;
-    if (f.gradeEquivalent) s += `, similar to the average ${ordinal(f.gradeEquivalent.grade)} grader ${PHASE[f.gradeEquivalent.phase]}`;
+    if (f.percentile)
+      s += `, about the ${pctOrdinal(f.percentile.percentile)} percentile${f.onEnrolledPassage ? "" : " for that grade"}`;
+    if (f.gradeEquivalent)
+      s += `, similar to the average ${ordinal(f.gradeEquivalent.grade)} grader ${PHASE[f.gradeEquivalent.phase]}`;
     parts.push(`${s}.`);
     return parts.join(" ");
   }
@@ -179,9 +237,10 @@ function numberLine(c: Ctx): string {
   let s = `${who} are not measured on timed passages yet, so there is no benchmark number today.`;
   const fo = decision.foundations;
   if (fo) {
-    s += ` Instead we looked at the building blocks: ${name} knew ${num(fo.letterSounds.correct)} of ${num(fo.letterSounds.total)} letter sounds,`
-      + ` blended ${num(fo.blending.correct)} of ${num(fo.blending.total)} words from their sounds,`
-      + ` and sounded out ${num(fo.nonsenseWords.correct)} of ${num(fo.nonsenseWords.total)} new words.`;
+    s +=
+      ` Instead we looked at the building blocks: ${name} knew ${num(fo.letterSounds.correct)} of ${num(fo.letterSounds.total)} letter sounds,` +
+      ` blended ${num(fo.blending.correct)} of ${num(fo.blending.total)} words from their sounds,` +
+      ` and sounded out ${num(fo.nonsenseWords.correct)} of ${num(fo.nonsenseWords.total)} new words.`;
   } else {
     s += ` Instead we looked at letter sounds, blending, and first words.`;
   }
@@ -203,19 +262,25 @@ function decodingLine(c: Ctx): string {
   if (d.level === null) {
     return `Decoding: ${p.subj} ${v("is", "are")} not reading words on ${p.poss} own yet, so letter sounds and blending come first.`;
   }
-  const level = d.ceilingPassed ? "every list we had, up through 5th-grade words" : `${gradeAdjective(d.level)} words`;
+  const level = d.ceilingPassed
+    ? "every list we had, up through 5th-grade words"
+    : `${gradeAdjective(d.level)} words`;
   let s = `Decoding: ${p.subj} ${v("reads", "read")} ${level}.`;
   const next = d.nextTarget;
   if (next !== null) {
-    const hard = moments.find((m): m is Extract<Moment, { kind: "list-hard" }> => m.kind === "list-hard" && m.band === next)
-      ?? moments.find((m): m is Extract<Moment, { kind: "list-hard" }> => m.kind === "list-hard");
+    const hard =
+      moments.find(
+        (m): m is Extract<Moment, { kind: "list-hard" }> =>
+          m.kind === "list-hard" && m.band === next,
+      ) ?? moments.find((m): m is Extract<Moment, { kind: "list-hard" }> => m.kind === "list-hard");
     const words = hard ? hard.words.slice(0, 3) : [];
     const nt = gradeAdjective(next);
     const where = words.length
       ? `${cap(joinAnd(words))} ${words.length === 1 ? "is" : "are"} where the ${nt} list got hard`
       : `The ${nt} list is where the words got hard`;
     const top = Math.max(c.entry, c.enrolled);
-    if (next > 4) s += ` ${where}, and that is above the 4th-grade path, so word reading is a strength to build on.`;
+    if (next > 4)
+      s += ` ${where}, and that is above the 4th-grade path, so word reading is a strength to build on.`;
     else if (next > top) s += ` ${where}, so ${nt} words are the step after this path.`;
     else s += ` ${where}, so ${nt} words come next.`;
   } else if (d.ceilingPassed) {
@@ -241,10 +306,12 @@ function fluencyLine(c: Ctx): string {
   else if (slow) s += ` ${cap(p.subj)} read carefully but slowly.`;
   const needSpeed = decision.needs.includes("reading speed and smoothness");
   const needAccuracy = decision.needs.includes("accurate reading");
-  if (needSpeed && needAccuracy) s += ` Speed and accuracy both grow with daily reading at the right level.`;
+  if (needSpeed && needAccuracy)
+    s += ` Speed and accuracy both grow with daily reading at the right level.`;
   else if (needSpeed) s += ` Speed is the skill to build.`;
   else if (needAccuracy) s += ` Accuracy is the skill to build.`;
-  else s += ` Pace and accuracy are both solid, so the path stretches ${p.obj} with harder stories.`;
+  else
+    s += ` Pace and accuracy are both solid, so the path stretches ${p.obj} with harder stories.`;
   return s;
 }
 
@@ -254,10 +321,14 @@ function comprehensionLine(c: Ctx): string {
   if (!comp) {
     return `Comprehension: no story questions yet at this stage. The ${gradeAdjective(entry)} story lessons build understanding by listening first.`;
   }
-  const cited = moments.find((m): m is Extract<Moment, { kind: "comprehension" }> => m.kind === "comprehension");
+  const cited = moments.find(
+    (m): m is Extract<Moment, { kind: "comprehension" }> => m.kind === "comprehension",
+  );
   let s = `Comprehension: ${num(comp.correct)} of ${num(comp.total)}${cited ? ` on the ${gradeAdjective(cited.band)} story` : ""}.`;
-  if (comp.pct >= 0.99) s += ` ${cap(p.subj)} ${v("understands", "understand")} what ${p.subj} ${v("reads", "read")}.`;
-  else if (comp.pct <= 0.5) s += ` Understanding what ${p.subj} ${v("reads", "read")} is the skill to build, and the ${gradeAdjective(entry)} stories on the path are aimed at it.`;
+  if (comp.pct >= 0.99)
+    s += ` ${cap(p.subj)} ${v("understands", "understand")} what ${p.subj} ${v("reads", "read")}.`;
+  else if (comp.pct <= 0.5)
+    s += ` Understanding what ${p.subj} ${v("reads", "read")} is the skill to build, and the ${gradeAdjective(entry)} stories on the path are aimed at it.`;
   else s += ` That is a solid base, and the stories on the path build on it.`;
   return s;
 }
@@ -270,7 +341,9 @@ function pathLine(c: Ctx): string {
   const targets = steps.filter((s) => s.kind === "target");
   const luna = steps.find((s) => s.kind === "luna");
   const end = steps.find((s) => s.kind === "end");
-  let s = start ? `${name}'s Custom Reading Journey starts with ${start.title}` : `${name}'s Custom Reading Journey starts today`;
+  let s = start
+    ? `${name}'s Custom Reading Journey starts with ${start.title}`
+    : `${name}'s Custom Reading Journey starts today`;
   if (skipped.length) {
     const reasons = [...new Set(skipped.map((k) => k.reason))];
     s += `, skips ${joinAnd(skipped.map((k) => k.title))} since ${joinAnd(reasons)}`;
@@ -282,11 +355,13 @@ function pathLine(c: Ctx): string {
 }
 
 /** Said once on the path card and printed under the path: who made the lessons and against what. */
-export const CRAFTED_LINE = "Every lesson on it is hand-crafted and reviewed by Jennifer Klingerman, our reading specialist, against the science of reading and Common Core.";
+export const CRAFTED_LINE =
+  "Every lesson on it is hand-crafted and reviewed by Jennifer Klingerman, our reading specialist, against the science of reading and Common Core.";
 
 function milestoneFragment(label: string, month: string): string {
   const by = month === "this month" ? "this month" : `by ${month}`;
-  if (label.startsWith("Reads like ")) return `to read like ${label.slice("Reads like ".length)} ${by}`;
+  if (label.startsWith("Reads like "))
+    return `to read like ${label.slice("Reads like ".length)} ${by}`;
   if (label.startsWith("Reaches ")) return `to reach ${label.slice("Reaches ".length)} ${by}`;
   if (label.startsWith("Reads ")) return `to read ${label.slice("Reads ".length)} ${by}`;
   return `for ${lower(label)} ${by}`;
@@ -295,7 +370,8 @@ function milestoneFragment(label: string, month: string): string {
 function planLine(c: Ctx): string {
   const { name, p, v, plan } = c;
   const dose = `With ${plan.minutesPerDay} minutes a day, ${plan.daysPerWeek} days a week,`;
-  if (!plan.milestones.length) return `${dose} ${name} keeps climbing, and Luna adjusts the pace as ${p.subj} ${v("goes", "go")}.`;
+  if (!plan.milestones.length)
+    return `${dose} ${name} keeps climbing, and Luna adjusts the pace as ${p.subj} ${v("goes", "go")}.`;
   const frags = plan.milestones.map((m) => milestoneFragment(m.label, m.month));
   return `${dose} ${name} is on track ${frags.join(", and ")}.`;
 }
@@ -310,6 +386,41 @@ function askLine(c: Ctx): string {
 }
 
 export function narrate(input: NarrateInput): NarrationLine[] {
+  if (input.decision.spectrum) {
+    const d = input.decision,
+      profile = d.spectrum!,
+      name = input.childName.trim() || "Your child";
+    const g = (band: number) => (band === 0 ? "kindergarten" : `${ordinal(band)} grade`);
+    const text: Record<NarrationId, string> = {
+      strengths: `${profile.readingBand !== null ? `${name} read two texts and answered questions about both.` : profile.wordStep === null ? `${name} worked through the reading activities with Luna.` : profile.wordStep === 0 ? `${name} matched letters to their sounds.` : `${name} read words from the ${profile.wordLabel.toLowerCase()} set.`}${profile.languageBand !== null ? ` With read-aloud support, ${name} also answered ${g(profile.languageBand)} meaning questions.` : ""}`,
+      number: d.fluency
+        ? `${name} read this passage at ${d.fluency.wcpm} correct words per minute. This describes today's sample, not a national percentile.`
+        : (profile.wordStep ?? 0) >= 2
+          ? "We will start with guided reading and discussion using the word reading evidence. Independent reading still needs follow-up."
+          : "We are starting with guided practice in letters, sounds and short words. We need more reading evidence before confirming a level.",
+      placement: `${name} is enrolled in ${g(d.placedBand + d.relative.delta)}. ${profile.readingBand === null ? "The first lessons will help us check this provisional starting point." : `Two reading samples support starting independent reading lessons in ${g(profile.readingBand)}.`} Enrollment stays the same.`,
+      "skill-decoding":
+        profile.wordStep === null
+          ? "Word reading needs follow-up. We will begin with guided practice in letters and sounds."
+          : profile.wordStep === 0
+            ? "Some letters were matched to their sounds. Next we will practice connecting sounds to short words."
+            : `${name} read words from the ${profile.wordLabel.toLowerCase()} set. We will keep practicing the next word patterns.`,
+      "skill-fluency": d.fluency
+        ? `Accuracy on the reading sample was ${Math.round(d.fluency.accuracy * 100)} percent. We build accuracy and understanding before speed.`
+        : "We will collect connected reading samples during lessons.",
+      "skill-comprehension":
+        profile.languageBand === null
+          ? "We measured understanding separately from word reading. The listening answers need more follow-up before we name a starting level."
+          : `With read-aloud support, ${name} answered questions drawn from ${g(profile.languageBand)}. We can explore those ideas together while independent reading develops.`,
+      path: "The journey starts with today's reading evidence and builds word reading and understanding together. A short assessment does not skip whole units.",
+      "path-crafted":
+        "The lesson sequence develops foundational reading, vocabulary and comprehension. Today's placement is an instructional starting point.",
+      plan: `Aim for ${input.plan.minutesPerDay} minutes of practice, ${input.plan.daysPerWeek} days a week. Review the lesson evidence to see what should come next. There is no promised catch-up date.`,
+      ask: ASK_CLOSE,
+    };
+    return NARRATION_ORDER.map((id) => ({ id, text: text[id] }));
+  }
+
   const p = PRONOUNS[input.pronoun ?? "they"];
   const entry = input.decision.placedBand;
   const enrolled = Math.max(0, Math.min(4, entry + input.decision.relative.delta)) as PlacedBand;
@@ -324,17 +435,16 @@ export function narrate(input: NarrateInput): NarrationLine[] {
     enrolled,
   };
   const text: Record<NarrationId, string> = {
-    "strengths": strengthsLine(c),
-    "number": numberLine(c),
-    "placement": placementLine(c),
+    strengths: strengthsLine(c),
+    number: numberLine(c),
+    placement: placementLine(c),
     "skill-decoding": decodingLine(c),
     "skill-fluency": fluencyLine(c),
     "skill-comprehension": comprehensionLine(c),
-    "path": pathLine(c),
+    path: pathLine(c),
     "path-crafted": CRAFTED_LINE,
-    "plan": planLine(c),
-    "ask": askLine(c),
+    plan: planLine(c),
+    ask: askLine(c),
   };
   return NARRATION_ORDER.map((id) => ({ id, text: text[id] }));
 }
-

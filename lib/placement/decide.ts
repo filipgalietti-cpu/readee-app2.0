@@ -1,3 +1,5 @@
+import { decideSpectrum, type SpectrumProfile } from "./spectrum-decision";
+import type { SpectrumEvidence } from "./spectrum";
 /**
  * PLACEMENT DECISION - evidence in, placement out. Pure.
  *
@@ -15,14 +17,33 @@
 import { classifyAccuracy, type ReadingLevel } from "@/lib/orion/reading/text-level";
 import { wcpm as computeWcpm } from "@/lib/luna/grading-decision";
 import { grades, type GradeKey } from "@/lib/assessment/questions";
-import { BAND_LABEL, CEILING_BAND, decodingLevel, type Band, type LadderState, type PlacedBand } from "./ladder";
+import {
+  BAND_LABEL,
+  CEILING_BAND,
+  decodingLevel,
+  type Band,
+  type LadderState,
+  type PlacedBand,
+} from "./ladder";
 import { passageIsComfortable, type ComprehensionCheck } from "./passage-search";
 import {
-  estimatePercentile, gradeEquivalent, seasonFor, typicalWcpm,
-  type GradeEquivalent, type NormGrade, type PercentileEstimate, type Season,
+  estimatePercentile,
+  gradeEquivalent,
+  seasonFor,
+  typicalWcpm,
+  type GradeEquivalent,
+  type NormGrade,
+  type PercentileEstimate,
+  type Season,
 } from "./norms";
 
-export const BAND_GRADE_KEY: Record<PlacedBand, GradeKey> = { 0: "kindergarten", 1: "1st", 2: "2nd", 3: "3rd", 4: "4th" };
+export const BAND_GRADE_KEY: Record<PlacedBand, GradeKey> = {
+  0: "kindergarten",
+  1: "1st",
+  2: "2nd",
+  3: "3rd",
+  4: "4th",
+};
 
 /** children.grade is free text in places ("2nd", "2", "Grade 2", "second"). Same
  *  tolerance as Luna's gradeToken. */
@@ -53,7 +74,8 @@ export type FoundationsEvidence = {
   nonsenseWords: CountEvidence;
 };
 export type PlacementEvidence = {
-  evidenceVersion?: 3;
+  evidenceVersion?: 3 | 4;
+  spectrum?: SpectrumEvidence;
   comprehensionChecks?: ComprehensionCheck[];
   enrolled: PlacedBand;
   ladder: LadderState;
@@ -83,12 +105,19 @@ export type FluencyResult = {
 export type SkillSeed = { standard_id: string; pass: boolean; note: string };
 
 export type PlacementDecision = {
+  spectrum?: SpectrumProfile;
   placedBand: PlacedBand;
   gradeKey: GradeKey;
   readingLevelName: string;
   season: Season;
   relative: RelativePlacement;
-  decoding: { level: Band | null; emergent: boolean; ceilingPassed: boolean; listsPassed: Band[]; nextTarget: Band | null };
+  decoding: {
+    level: Band | null;
+    emergent: boolean;
+    ceilingPassed: boolean;
+    listsPassed: Band[];
+    nextTarget: Band | null;
+  };
   fluency: FluencyResult | null;
   comprehension: (CountEvidence & { pct: number }) | null;
   foundations: (FoundationsEvidence & { pct: number }) | null;
@@ -113,9 +142,10 @@ const ccssGrade = (band: PlacedBand): string => (band === 0 ? "K" : String(band)
 
 function fluencyFor(p: PassageEvidence, enrolled: PlacedBand, season: Season): FluencyResult {
   // Rate from the one-minute window when the runner marked it; accuracy always from the whole read.
-  const rate = p.minuteSeconds && p.minuteWordsCorrect !== undefined
-    ? computeWcpm(p.minuteWordsCorrect, p.minuteSeconds)
-    : computeWcpm(p.wordsCorrect, p.durationSeconds);
+  const rate =
+    p.minuteSeconds && p.minuteWordsCorrect !== undefined
+      ? computeWcpm(p.minuteWordsCorrect, p.minuteSeconds)
+      : computeWcpm(p.wordsCorrect, p.durationSeconds);
   const accuracy = p.wordsTotal > 0 ? p.wordsCorrect / p.wordsTotal : 0;
   const normGrade = p.band >= 1 ? (Math.min(6, p.band) as NormGrade) : null;
   return {
@@ -132,6 +162,10 @@ function fluencyFor(p: PassageEvidence, enrolled: PlacedBand, season: Season): F
 }
 
 export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
+  if (ev.evidenceVersion === 4) {
+    if (!ev.spectrum) throw new Error("Missing spectrum evidence.");
+    return decideSpectrum(ev.enrolled, ev.spectrum, ev.date);
+  }
   const flags: string[] = [];
   const season = seasonFor(ev.date ?? new Date());
   const dec = decodingLevel(ev.ladder);
@@ -158,11 +192,11 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
   } else {
     // 2. Legacy evidence has no lower-passage follow-ups. Preserve its original rules.
     //    Frustration-level accuracy on it steps the placement down one band.
-    const instructional = ev.passages
-      .filter((p) => p.band <= candidate)
-      .sort((a, b) => b.band - a.band)[0] ?? null;
+    const instructional =
+      ev.passages.filter((p) => p.band <= candidate).sort((a, b) => b.band - a.band)[0] ?? null;
     if (instructional && instructional.band === candidate && candidate > 0) {
-      const acc = instructional.wordsTotal > 0 ? instructional.wordsCorrect / instructional.wordsTotal : 0;
+      const acc =
+        instructional.wordsTotal > 0 ? instructional.wordsCorrect / instructional.wordsTotal : 0;
       if (classifyAccuracy(acc) === "frustration") {
         candidate = (candidate - 1) as PlacedBand;
         flags.push("passage-frustration-stepdown");
@@ -173,8 +207,12 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
     //    questions). Half or fewer right on the placed band's passage steps down
     //    one band, unless accuracy already did.
     if (
-      ev.comprehension && ev.comprehension.total >= 3 && pct(ev.comprehension) <= 0.5 &&
-      candidate > 0 && ev.comprehension.band >= candidate && !flags.includes("passage-frustration-stepdown")
+      ev.comprehension &&
+      ev.comprehension.total >= 3 &&
+      pct(ev.comprehension) <= 0.5 &&
+      candidate > 0 &&
+      ev.comprehension.band >= candidate &&
+      !flags.includes("passage-frustration-stepdown")
     ) {
       candidate = (candidate - 1) as PlacedBand;
       flags.push("comprehension-stepdown");
@@ -184,20 +222,35 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
   // 4. New assessments report the confirmed instructional passage. Legacy reads
   // keep the enrolled-grade (or highest available) norm passage.
   const enrolledPassage = ev.passages.find((p) => p.band === ev.enrolled) ?? null;
-  const normPassage = ev.evidenceVersion === 3
-    ? (candidate === 0 ? null : ev.passages.at(-1) ?? null)
-    : enrolledPassage ?? ev.passages.slice().sort((a, b) => b.band - a.band)[0] ?? null;
+  const normPassage =
+    ev.evidenceVersion === 3
+      ? candidate === 0
+        ? null
+        : (ev.passages.at(-1) ?? null)
+      : (enrolledPassage ?? ev.passages.slice().sort((a, b) => b.band - a.band)[0] ?? null);
   const fluency = normPassage ? fluencyFor(normPassage, ev.enrolled, season) : null;
-  if (fluency && !fluency.onEnrolledPassage && ev.enrolled >= 1) flags.push("norm-passage-not-at-enrolled-grade");
+  if (fluency && !fluency.onEnrolledPassage && ev.enrolled >= 1)
+    flags.push("norm-passage-not-at-enrolled-grade");
 
-  const comprehension = ev.comprehension ? { ...ev.comprehension, pct: Math.round(pct(ev.comprehension) * 100) / 100 } : null;
+  const comprehension = ev.comprehension
+    ? { ...ev.comprehension, pct: Math.round(pct(ev.comprehension) * 100) / 100 }
+    : null;
   const foundations = ev.foundations
     ? {
         ...ev.foundations,
-        pct: Math.round(
-          ((ev.foundations.letterSounds.correct + ev.foundations.blending.correct + ev.foundations.nonsenseWords.correct) /
-            Math.max(1, ev.foundations.letterSounds.total + ev.foundations.blending.total + ev.foundations.nonsenseWords.total)) * 100,
-        ) / 100,
+        pct:
+          Math.round(
+            ((ev.foundations.letterSounds.correct +
+              ev.foundations.blending.correct +
+              ev.foundations.nonsenseWords.correct) /
+              Math.max(
+                1,
+                ev.foundations.letterSounds.total +
+                  ev.foundations.blending.total +
+                  ev.foundations.nonsenseWords.total,
+              )) *
+              100,
+          ) / 100,
       }
     : null;
 
@@ -208,9 +261,12 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
   const strengths: string[] = [];
   const needs: string[] = [];
   if (foundations) {
-    if (pct(foundations.letterSounds) >= 0.8) strengths.push("knows letter sounds"); else needs.push("letter sounds");
-    if (pct(foundations.blending) >= 0.8) strengths.push("blends sounds into words"); else needs.push("blending sounds into words");
-    if (pct(foundations.nonsenseWords) >= 0.7) strengths.push("sounds out new words"); else needs.push("sounding out new words");
+    if (pct(foundations.letterSounds) >= 0.8) strengths.push("knows letter sounds");
+    else needs.push("letter sounds");
+    if (pct(foundations.blending) >= 0.8) strengths.push("blends sounds into words");
+    else needs.push("blending sounds into words");
+    if (pct(foundations.nonsenseWords) >= 0.7) strengths.push("sounds out new words");
+    else needs.push("sounding out new words");
   }
   if (dec.band !== null) {
     if (dec.band >= ev.enrolled) strengths.push("reads grade-level words");
@@ -221,8 +277,10 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
   }
   if (fluency) {
     if (fluency.accuracy >= 0.95) strengths.push("reads accurately");
-    if (fluency.percentile && fluency.percentile.percentile >= 50) strengths.push("reads at a good pace");
-    if (fluency.percentile && fluency.percentile.percentile < 25) needs.push("reading speed and smoothness");
+    if (fluency.percentile && fluency.percentile.percentile >= 50)
+      strengths.push("reads at a good pace");
+    if (fluency.percentile && fluency.percentile.percentile < 25)
+      needs.push("reading speed and smoothness");
     if (fluency.prosody !== null && fluency.prosody >= 80) strengths.push("reads with expression");
     if (fluency.accuracy < 0.9) needs.push("accurate reading");
   }
@@ -234,7 +292,11 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
   // 6. Seeds for child_skill_memory, scoped to the placed grade.
   const g = ccssGrade(candidate);
   const seeds: SkillSeed[] = [];
-  seeds.push({ standard_id: `RF.${g}.3`, pass: dec.band !== null && dec.band >= candidate, note: "word lists" });
+  seeds.push({
+    standard_id: `RF.${g}.3`,
+    pass: dec.band !== null && dec.band >= candidate,
+    note: "word lists",
+  });
   if (fluency) {
     seeds.push({
       standard_id: `RF.${g}.4`,
@@ -242,14 +304,35 @@ export function decidePlacement(ev: PlacementEvidence): PlacementDecision {
       note: "passage read",
     });
   }
-  if (comprehension) seeds.push({ standard_id: `RL.${g}.1`, pass: comprehension.pct >= 0.66, note: "comprehension questions" });
+  if (comprehension)
+    seeds.push({
+      standard_id: `RL.${g}.1`,
+      pass: comprehension.pct >= 0.66,
+      note: "comprehension questions",
+    });
   if (foundations) {
-    seeds.push({ standard_id: "RF.K.3a", pass: pct(foundations.letterSounds) >= 0.8, note: "letter sounds" });
-    seeds.push({ standard_id: "RF.K.2c", pass: pct(foundations.blending) >= 0.8, note: "blending" });
-    seeds.push({ standard_id: "RF.1.3b", pass: pct(foundations.nonsenseWords) >= 0.7, note: "nonsense words" });
+    seeds.push({
+      standard_id: "RF.K.3a",
+      pass: pct(foundations.letterSounds) >= 0.8,
+      note: "letter sounds",
+    });
+    seeds.push({
+      standard_id: "RF.K.2c",
+      pass: pct(foundations.blending) >= 0.8,
+      note: "blending",
+    });
+    seeds.push({
+      standard_id: "RF.1.3b",
+      pass: pct(foundations.nonsenseWords) >= 0.7,
+      note: "nonsense words",
+    });
   }
   if (dec.lowestFailedAboveLevel !== null && dec.lowestFailedAboveLevel <= 4) {
-    seeds.push({ standard_id: `RF.${ccssGrade(dec.lowestFailedAboveLevel as PlacedBand)}.3`, pass: false, note: "next word-list target" });
+    seeds.push({
+      standard_id: `RF.${ccssGrade(dec.lowestFailedAboveLevel as PlacedBand)}.3`,
+      pass: false,
+      note: "next word-list target",
+    });
   }
 
   return {

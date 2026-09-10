@@ -83,7 +83,7 @@ export async function buildConferenceNotes(input: {
         .limit(10),
       admin
         .from("assessments")
-        .select("grade_tested, score_percent, reading_level_placed, completed_at")
+        .select("grade_tested, score_percent, reading_level_placed, completed_at, dimension_profile")
         .eq("child_id", input.childId)
         .order("completed_at", { ascending: false })
         .limit(1)
@@ -143,7 +143,9 @@ Reading level: ${c.reading_level ?? "(not set)"}
 
 ${
   placement
-    ? `Placement test (${new Date(placement.completed_at).toLocaleDateString()}): ${placement.score_percent}%, placed at "${placement.reading_level_placed}".`
+    ? placement.dimension_profile?.source === "placement-v4"
+      ? `Instructional reading starting point: "${placement.reading_level_placed}". Domain evidence: ${JSON.stringify(placement.dimension_profile.spectrum)}. This placement has no overall percentage score; distinguish independent reading from read-aloud support.`
+      : `Placement test (${new Date(placement.completed_at).toLocaleDateString()}): ${placement.score_percent}%, placed at "${placement.reading_level_placed}".`
     : "No placement test on file."
 }
 

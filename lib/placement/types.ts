@@ -8,7 +8,12 @@
  * lines, and the saved result. Everything here is JSON-serializable.
  */
 import type { Band, PlacedBand, LadderState } from "./ladder";
-import type { PlacementDecision, PassageEvidence, CountEvidence, FoundationsEvidence } from "./decide";
+import type {
+  PlacementDecision,
+  PassageEvidence,
+  CountEvidence,
+  FoundationsEvidence,
+} from "./decide";
 
 /** A thing that happened during the exam that the parent narration can cite. */
 export type Moment =
@@ -20,11 +25,17 @@ export type Moment =
   | { kind: "passage-slow"; band: Band }
   | { kind: "passage-expressive"; band: Band }
   | { kind: "comprehension"; band: Band; correct: number; total: number }
-  | { kind: "foundation"; skill: "letterSounds" | "blending" | "nonsenseWords"; correct: number; total: number };
+  | {
+      kind: "foundation";
+      skill: "letterSounds" | "blending" | "nonsenseWords";
+      correct: number;
+      total: number;
+    };
 
 /** Everything the runner hands to the complete route. */
 export type PlacementSubmission = {
-  evidenceVersion?: 3;
+  evidenceVersion?: 3 | 4;
+  spectrum?: import("./spectrum").SpectrumEvidence;
   comprehensionChecks?: import("./passage-search").ComprehensionCheck[];
   childId: string;
   sessionId?: string;
@@ -54,10 +65,15 @@ export type PlanStep = {
   unit?: { grade: string; domain: string; lessons: number };
 };
 
-export type PlanMilestone = { label: string; month: string; date: string; /** Words a minute the milestone reaches, when the plan has a timed passage. */ wcpm?: number };
+export type PlanMilestone = {
+  label: string;
+  month: string;
+  date: string;
+  /** Words a minute the milestone reaches, when the plan has a timed passage. */ wcpm?: number;
+};
 
 export type PlacementPlan = {
-  version?: 2;
+  version?: 2 | 3;
   entryBand: PlacedBand;
   steps: PlanStep[];
   /** Lessons the child will actually do (skips excluded). */

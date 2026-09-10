@@ -9,7 +9,7 @@ import PageTransition from "./PageTransition";
  * except the immersive ones, which own the whole viewport: the reading
  * placement and its reveal/report are a child + parent ceremony, not a page.
  */
-const IMMERSIVE_PREFIXES = ["/placement", "/demo/placement-run", "/demo/placement-reveal"];
+const IMMERSIVE_PREFIXES = ["/placement", "/demo/placement-run", "/demo/placement-reveal", "/demo/placement-studio"];
 
 export function isImmersivePath(pathname: string): boolean {
   return IMMERSIVE_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/"));

@@ -59,6 +59,7 @@ export default function SidebarShell({
     return () => setDesktopSidebarVisible(false);
   }, [sidebarShown, setDesktopSidebarVisible]);
 
+  if (pathname === "/placement" || pathname.startsWith("/placement/")) return <>{children}</>;
   if (hiddenPage) {
     return (
       <>

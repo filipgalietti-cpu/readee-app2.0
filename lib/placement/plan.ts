@@ -24,15 +24,28 @@ type CatalogLesson = { standardId: string; grade: string; domain: string; title:
 export type DomKey = "RL" | "RI" | "RF" | "L";
 
 /** One journey unit: a (grade, domain) group of catalogue lessons. */
-export type PlanUnit = { band: PlacedBand; grade: string; domain: string; domKey: DomKey; lessons: number };
+export type PlanUnit = {
+  band: PlacedBand;
+  grade: string;
+  domain: string;
+  domKey: DomKey;
+  lessons: number;
+};
 
 export const CATALOG_GRADE: Record<PlacedBand, string> = {
-  0: "Kindergarten", 1: "1st Grade", 2: "2nd Grade", 3: "3rd Grade", 4: "4th Grade",
+  0: "Kindergarten",
+  1: "1st Grade",
+  2: "2nd Grade",
+  3: "3rd Grade",
+  4: "4th Grade",
 };
 
 /** The journey's unit banner names (JourneyMap FUN_NAME, not exported there). */
 export const UNIT_FUN_NAME: Record<DomKey, string> = {
-  RL: "Story Treasures", RI: "Fact Finders", RF: "Sound Workshop", L: "Word Magic",
+  RL: "Story Treasures",
+  RI: "Fact Finders",
+  RF: "Sound Workshop",
+  L: "Word Magic",
 };
 
 /** Same rule as journey/page.tsx domKeyOf (file-private there, copied verbatim). */
@@ -64,7 +77,10 @@ export function catalogUnits(): PlanUnit[] {
   const byGrade = new Map<string, CatalogLesson[]>();
   const gradeOrder: string[] = [];
   for (const l of lessons) {
-    if (!byGrade.has(l.grade)) { byGrade.set(l.grade, []); gradeOrder.push(l.grade); }
+    if (!byGrade.has(l.grade)) {
+      byGrade.set(l.grade, []);
+      gradeOrder.push(l.grade);
+    }
     byGrade.get(l.grade)!.push(l);
   }
   const out: PlanUnit[] = [];
@@ -74,12 +90,21 @@ export function catalogUnits(): PlanUnit[] {
     const byDomain = new Map<string, CatalogLesson[]>();
     const domainOrder: string[] = [];
     for (const l of byGrade.get(grade)!) {
-      if (!byDomain.has(l.domain)) { byDomain.set(l.domain, []); domainOrder.push(l.domain); }
+      if (!byDomain.has(l.domain)) {
+        byDomain.set(l.domain, []);
+        domainOrder.push(l.domain);
+      }
       byDomain.get(l.domain)!.push(l);
     }
     for (const domain of domainOrder) {
       const group = byDomain.get(domain)!;
-      out.push({ band, grade, domain, domKey: domKeyOf(group[0].standardId, domain), lessons: group.length });
+      out.push({
+        band,
+        grade,
+        domain,
+        domKey: domKeyOf(group[0].standardId, domain),
+        lessons: group.length,
+      });
     }
   }
   unitCache = out;
@@ -95,10 +120,14 @@ export function gradeAdjective(band: Band): string {
 export function unitPhrase(band: PlacedBand, domKey: DomKey): string {
   const g = gradeAdjective(band);
   switch (domKey) {
-    case "RF": return band === 0 ? "kindergarten letters and sounds" : `${g} words and sounds`;
-    case "RL": return `${g} stories`;
-    case "RI": return `${g} nonfiction`;
-    case "L": return `${g} vocabulary and language`;
+    case "RF":
+      return band === 0 ? "kindergarten letters and sounds" : `${g} words and sounds`;
+    case "RL":
+      return `${g} stories`;
+    case "RI":
+      return `${g} nonfiction`;
+    case "L":
+      return `${g} vocabulary and language`;
   }
 }
 
@@ -115,7 +144,20 @@ export function unitTitle(u: PlanUnit): string {
 
 /* -------------------------------------------------------------- the dates */
 
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 /** Calendar arithmetic at local noon, so a daylight-saving change never moves a date by a day. */
 export function addWeeks(d: Date, weeks: number): Date {
@@ -132,7 +174,8 @@ export function isoDate(d: Date): string {
 
 /** "late April", "early March", "mid-January"; "next fall" when more than 10 months out. */
 export function monthWording(date: Date, today: Date): string {
-  const monthsOut = (date.getFullYear() - today.getFullYear()) * 12 + (date.getMonth() - today.getMonth());
+  const monthsOut =
+    (date.getFullYear() - today.getFullYear()) * 12 + (date.getMonth() - today.getMonth());
   if (monthsOut > 10) return "next fall";
   const day = date.getDate();
   const month = MONTHS[date.getMonth()];
@@ -161,7 +204,11 @@ export const DEFAULT_MINUTES_PER_DAY = 10;
 export const DEFAULT_DAYS_PER_WEEK = 5;
 export const REVIEWED_BY = "Jennifer Klingerman, Certified Reading Specialist";
 
-export const LUNA_STEP: PlanStep = { kind: "luna", title: "Reading speed with Luna", reason: "Luna listens every day and adjusts" };
+export const LUNA_STEP: PlanStep = {
+  kind: "luna",
+  title: "Reading speed with Luna",
+  reason: "Luna listens every day and adjusts",
+};
 export const WORDS_TARGET_REASON = "that is where the word list got hard";
 export const START_REASON = "where reading is comfortable today";
 
@@ -173,7 +220,8 @@ const FOUNDATION_LABEL: Record<string, string> = {
 };
 
 const clampBand = (n: number): PlacedBand => Math.max(0, Math.min(4, n)) as PlacedBand;
-const sameUnit = (a: PlanUnit, b: PlanUnit): boolean => a.grade === b.grade && a.domain === b.domain;
+const sameUnit = (a: PlanUnit, b: PlanUnit): boolean =>
+  a.grade === b.grade && a.domain === b.domain;
 
 function bandFromLabel(label: string): PlacedBand | null {
   for (const b of [0, 1, 2, 3, 4] as PlacedBand[]) if (BAND_LABEL[b] === label) return b;
@@ -188,7 +236,11 @@ function accuracyAt(decision: PlacementDecision, moments: Moment[], band: Band):
 }
 
 /** Bands where every comprehension question was answered right. */
-function perfectComprehensionBands(decision: PlacementDecision, moments: Moment[], entry: PlacedBand): Set<Band> {
+function perfectComprehensionBands(
+  decision: PlacementDecision,
+  moments: Moment[],
+  entry: PlacedBand,
+): Set<Band> {
   const bands = new Set<Band>();
   let cited = false;
   for (const m of moments) {
@@ -196,13 +248,29 @@ function perfectComprehensionBands(decision: PlacementDecision, moments: Moment[
     cited = true;
     if (m.total > 0 && m.correct === m.total) bands.add(m.band);
   }
-  if (!cited && decision.comprehension && decision.comprehension.total > 0 && decision.comprehension.pct >= 0.99) bands.add(entry);
+  if (
+    !cited &&
+    decision.comprehension &&
+    decision.comprehension.total > 0 &&
+    decision.comprehension.pct >= 0.99
+  )
+    bands.add(entry);
   return bands;
 }
 
-function skipReason(u: PlanUnit, entry: PlacedBand, decision: PlacementDecision, moments: Moment[], perfect: Set<Band>): string | null {
+function skipReason(
+  u: PlanUnit,
+  entry: PlacedBand,
+  decision: PlacementDecision,
+  moments: Moment[],
+  perfect: Set<Band>,
+): string | null {
   const g = gradeAdjective(u.band);
-  if (u.domKey === "RF" && decision.needs.some((n) => FOUNDATION_NEEDS.includes(n) || n === "accurate reading")) return null;
+  if (
+    u.domKey === "RF" &&
+    decision.needs.some((n) => FOUNDATION_NEEDS.includes(n) || n === "accurate reading")
+  )
+    return null;
   if (u.domKey === "RF" && u.band === entry) {
     const acc = accuracyAt(decision, moments, u.band);
     if (decision.decoding.listsPassed.includes(u.band) && acc !== null && acc >= 0.95) {
@@ -210,7 +278,11 @@ function skipReason(u: PlanUnit, entry: PlacedBand, decision: PlacementDecision,
     }
     return null;
   }
-  if (u.domKey === "RL" && !decision.needs.includes("understanding what they read") && perfect.has(u.band)) {
+  if (
+    u.domKey === "RL" &&
+    !decision.needs.includes("understanding what they read") &&
+    perfect.has(u.band)
+  ) {
     return `every ${g} story question was right`;
   }
   // Language: no evidence is collected for it, so it is never skipped.
@@ -221,28 +293,49 @@ type Target = { unit: PlanUnit; title: string; reason: string };
 
 function targetsFor(decision: PlacementDecision, entry: PlacedBand, path: PlanUnit[]): Target[] {
   const out: Target[] = [];
-  const push = (t: Target | null) => { if (t && !out.some((o) => sameUnit(o.unit, t.unit))) out.push(t); };
-  const unitAt = (band: PlacedBand, domKey: DomKey) => path.find((u) => u.band === band && u.domKey === domKey) ?? null;
+  const push = (t: Target | null) => {
+    if (t && !out.some((o) => sameUnit(o.unit, t.unit))) out.push(t);
+  };
+  const unitAt = (band: PlacedBand, domKey: DomKey) =>
+    path.find((u) => u.band === band && u.domKey === domKey) ?? null;
 
   for (const need of decision.needs) {
     const words = need.match(/^(\S+)-grade words$/);
     if (words) {
       const named = bandFromLabel(words[1]);
-      const unit = (named !== null ? unitAt(named, "RF") : null) ?? unitAt(clampBand(entry + 1), "RF");
-      if (unit) push({ unit, title: `${gradeAdjective(unit.band)} words`, reason: WORDS_TARGET_REASON });
+      const unit =
+        (named !== null ? unitAt(named, "RF") : null) ?? unitAt(clampBand(entry + 1), "RF");
+      if (unit)
+        push({ unit, title: `${gradeAdjective(unit.band)} words`, reason: WORDS_TARGET_REASON });
     } else if (need === "understanding what they read") {
       const unit = unitAt(entry, "RL");
-      if (unit) push({ unit, title: unitPhrase(unit.band, unit.domKey), reason: "the story questions were the hard part" });
+      if (unit)
+        push({
+          unit,
+          title: unitPhrase(unit.band, unit.domKey),
+          reason: "the story questions were the hard part",
+        });
     } else if (FOUNDATION_NEEDS.includes(need)) {
       const unit = unitAt(0, "RF") ?? unitAt(entry, "RF");
-      if (unit) push({ unit, title: unitPhrase(unit.band, unit.domKey), reason: "letter sounds and blending come first" });
+      if (unit)
+        push({
+          unit,
+          title: unitPhrase(unit.band, unit.domKey),
+          reason: "letter sounds and blending come first",
+        });
     }
     // "reading speed and smoothness" and "accurate reading" are Luna's job: the luna node.
   }
   return out;
 }
 
-function normMilestones(decision: PlacementDecision, entry: PlacedBand, enrolled: PlacedBand, today: Date, minutesPerDay: number): PlanMilestone[] {
+function normMilestones(
+  decision: PlacementDecision,
+  entry: PlacedBand,
+  enrolled: PlacedBand,
+  today: Date,
+  minutesPerDay: number,
+): PlanMilestone[] {
   const fluency = decision.fluency!;
   const instructionGrade = Math.max(1, entry) as NormGrade;
   // Dates are re-derived from the projection's week counts with calendar
@@ -251,15 +344,34 @@ function normMilestones(decision: PlacementDecision, entry: PlacedBand, enrolled
     const date = addWeeks(today, weeks);
     return { label, month: monthWording(date, today), date: isoDate(date), wcpm };
   };
-  const proj = projectPlan({ currentWcpm: fluency.wcpm, enrolledGrade: enrolled as NormGrade, instructionGrade, today, minutesPerDay });
+  const proj = projectPlan({
+    currentWcpm: fluency.wcpm,
+    enrolledGrade: enrolled as NormGrade,
+    instructionGrade,
+    today,
+    minutesPerDay,
+  });
   const out: PlanMilestone[] = [];
-  if (proj.milestone) out.push(at(`Reads like a ${ordinal(proj.milestone.grade)} grader`, proj.milestone.weeks, proj.milestone.wcpm));
+  if (proj.milestone)
+    out.push(
+      at(
+        `Reads like a ${ordinal(proj.milestone.grade)} grader`,
+        proj.milestone.weeks,
+        proj.milestone.wcpm,
+      ),
+    );
   if (!proj.alreadyOnLevel) {
     out.push(at(`Reaches the ${ordinal(enrolled)}-grade bar`, proj.weeks, proj.targetWcpm));
   } else {
     // Already past this year's bar: the first higher grade's bar not yet reached is the thing to climb toward.
     for (let g = enrolled + 1; g <= 6; g++) {
-      const next = projectPlan({ currentWcpm: fluency.wcpm, enrolledGrade: g as NormGrade, instructionGrade, today, minutesPerDay });
+      const next = projectPlan({
+        currentWcpm: fluency.wcpm,
+        enrolledGrade: g as NormGrade,
+        instructionGrade,
+        today,
+        minutesPerDay,
+      });
       if (next.alreadyOnLevel) continue;
       out.push(at(`Reaches the ${ordinal(g)}-grade bar`, next.weeks, next.targetWcpm));
       break;
@@ -269,11 +381,21 @@ function normMilestones(decision: PlacementDecision, entry: PlacedBand, enrolled
 }
 
 /** No timed passage (K, or an emergent older reader): two qualitative milestones from the needs. */
-function qualitativeMilestones(decision: PlacementDecision, entry: PlacedBand, top: PlacedBand, today: Date): PlanMilestone[] {
+function qualitativeMilestones(
+  decision: PlacementDecision,
+  entry: PlacedBand,
+  top: PlacedBand,
+  today: Date,
+): PlanMilestone[] {
   const at = (label: string, weeks: number): PlanMilestone => {
     const date = addWeeks(today, weeks);
-    const sameMonth = date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth();
-    return { label, month: sameMonth ? "this month" : monthWording(date, today), date: isoDate(date) };
+    const sameMonth =
+      date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth();
+    return {
+      label,
+      month: sameMonth ? "this month" : monthWording(date, today),
+      date: isoDate(date),
+    };
   };
   if (entry >= 1) {
     return [
@@ -281,7 +403,9 @@ function qualitativeMilestones(decision: PlacementDecision, entry: PlacedBand, t
       at(`Reaches the ${ordinal(top)}-grade bar`, 20),
     ];
   }
-  const needLabels = decision.needs.filter((n) => n in FOUNDATION_LABEL).map((n) => FOUNDATION_LABEL[n]);
+  const needLabels = decision.needs
+    .filter((n) => n in FOUNDATION_LABEL)
+    .map((n) => FOUNDATION_LABEL[n]);
   const first = needLabels[0] ?? "First words";
   const second = first === "First words" ? "Short sentences" : "First words";
   return [at(first, 3), at(second, 12)];
@@ -289,6 +413,7 @@ function qualitativeMilestones(decision: PlacementDecision, entry: PlacedBand, t
 
 export function buildPlan(input: BuildPlanInput): PlacementPlan {
   const { decision, moments, today } = input;
+  if (decision.spectrum) return buildSpectrumPlan(input);
   const minutesPerDay = input.minutesPerDay ?? DEFAULT_MINUTES_PER_DAY;
   const daysPerWeek = input.daysPerWeek ?? DEFAULT_DAYS_PER_WEEK;
 
@@ -296,7 +421,10 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   const enrolled = clampBand(entry + decision.relative.delta);
   const top = Math.max(entry, enrolled) as PlacedBand;
   const foundationGap = decision.needs.some((n) => FOUNDATION_NEEDS.includes(n));
-  const path = catalogUnits().filter((u) => (u.band >= entry && u.band <= top) || (foundationGap && u.band === 0 && u.domKey === "RF"));
+  const path = catalogUnits().filter(
+    (u) =>
+      (u.band >= entry && u.band <= top) || (foundationGap && u.band === 0 && u.domKey === "RF"),
+  );
 
   // 1. What the evidence already covers.
   const perfect = perfectComprehensionBands(decision, moments, entry);
@@ -307,8 +435,10 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   }
 
   // 2. Where the walk starts: the first unit the child actually does.
-  const startUnit = (foundationGap ? path.find((u) => u.band === 0 && u.domKey === "RF") : undefined)
-    ?? path.find((u) => !skips.has(u)) ?? null;
+  const startUnit =
+    (foundationGap ? path.find((u) => u.band === 0 && u.domKey === "RF") : undefined) ??
+    path.find((u) => !skips.has(u)) ??
+    null;
 
   // 3. What answers the needs.
   const targets = targetsFor(decision, entry, path).filter((t) => !skips.has(t.unit));
@@ -317,7 +447,12 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   const unitOf = (u: PlanUnit) => ({ grade: u.grade, domain: u.domain, lessons: u.lessons });
   if (startUnit) {
     const onStart = targets.find((t) => sameUnit(t.unit, startUnit));
-    steps.push({ kind: "start", title: unitPhrase(startUnit.band, startUnit.domKey), reason: onStart ? onStart.reason : START_REASON, unit: unitOf(startUnit) });
+    steps.push({
+      kind: "start",
+      title: unitPhrase(startUnit.band, startUnit.domKey),
+      reason: onStart ? onStart.reason : START_REASON,
+      unit: unitOf(startUnit),
+    });
   }
   const seenSkipTitles = new Set<string>();
   for (const [u, reason] of skips) {
@@ -328,7 +463,12 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   }
   const targetSteps: PlanStep[] = targets
     .filter((t) => !startUnit || !sameUnit(t.unit, startUnit))
-    .map((t) => ({ kind: "target" as const, title: t.title, reason: t.reason, unit: unitOf(t.unit) }));
+    .map((t) => ({
+      kind: "target" as const,
+      title: t.title,
+      reason: t.reason,
+      unit: unitOf(t.unit),
+    }));
   if (targetSteps.length) {
     steps.push(targetSteps[0], LUNA_STEP, ...targetSteps.slice(1));
   } else {
@@ -338,7 +478,10 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   steps.push({
     kind: "end",
     title: top === 0 ? "The kindergarten bar" : `The ${BAND_LABEL[top]}-grade bar`,
-    reason: bar !== null ? `${bar} words per minute by spring` : "letter sounds, blending, and first words by spring",
+    reason:
+      bar !== null
+        ? `${bar} words per minute by spring`
+        : "letter sounds, blending, and first words by spring",
   });
 
   // 4. The dose. Lessons are the non-skipped units on the path, capped so the
@@ -350,9 +493,10 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
   const weeksAt10Min = Math.ceil((lessons * LESSON_MINUTES) / minutesPerWeek);
 
   // 5. The dates.
-  const milestones = decision.fluency && enrolled >= 1
-    ? normMilestones(decision, entry, enrolled, today, minutesPerDay)
-    : qualitativeMilestones(decision, entry, top, today);
+  const milestones =
+    decision.fluency && enrolled >= 1
+      ? normMilestones(decision, entry, enrolled, today, minutesPerDay)
+      : qualitativeMilestones(decision, entry, top, today);
 
   return {
     version: 2,
@@ -364,8 +508,83 @@ export function buildPlan(input: BuildPlanInput): PlacementPlan {
     daysPerWeek,
     milestones,
     firstUnit: startUnit
-      ? { grade: startUnit.grade, domain: startUnit.domain, title: unitTitle(startUnit), lessons: startUnit.lessons }
+      ? {
+          grade: startUnit.grade,
+          domain: startUnit.domain,
+          title: unitTitle(startUnit),
+          lessons: startUnit.lessons,
+        }
       : null,
+    reviewedBy: REVIEWED_BY,
+  };
+}
+
+/** New evidence selects instruction, never certifies unit mastery or predicts a
+ * date when a child will catch up. Reading and supported language stay separate. */
+function buildSpectrumPlan(input: BuildPlanInput): PlacementPlan {
+  const d = input.decision;
+  const profile = d.spectrum!;
+  const entry = d.placedBand;
+  const enrolled = clampBand(entry + d.relative.delta);
+  const top = Math.max(entry, enrolled) as PlacedBand;
+  const units = catalogUnits().filter((u) => u.band >= entry && u.band <= top);
+  const comprehensionFollowup = profile.readingBand === null && (profile.wordStep ?? 0) >= 2;
+  const firstDomain = comprehensionFollowup || profile.wordBand > entry ? "RL" : "RF";
+  const first = units.find((u) => u.band === entry && u.domKey === firstDomain) ?? units[0];
+  const steps: PlanStep[] = [];
+  const unit = (u: PlanUnit) => ({ grade: u.grade, domain: u.domain, lessons: u.lessons });
+  if (first)
+    steps.push({
+      kind: "start",
+      title: unitPhrase(first.band, first.domKey),
+      unit: unit(first),
+      reason:
+        profile.readingBand === null
+          ? "begin with guided practice and check the starting point in lessons"
+          : "practice from the reading samples collected today",
+    });
+  const target = units.find(
+    (u) => u.band === entry && u.domKey === (firstDomain === "RF" ? "RL" : "RF"),
+  );
+  if (target)
+    steps.push({
+      kind: "target",
+      title: unitPhrase(target.band, target.domKey),
+      unit: unit(target),
+      reason: "build word reading and understanding together",
+    });
+  steps.push({
+    kind: "luna",
+    title: "Read and talk with Luna",
+    reason: "practice accurate reading, vocabulary and meaning",
+  });
+  if (profile.languageBand !== null && profile.languageBand > entry)
+    steps.push({
+      kind: "target",
+      title: `Explore ${gradeAdjective(profile.languageBand)} ideas together`,
+      reason: "read aloud and discuss richer texts while independent reading develops",
+    });
+  steps.push({
+    kind: "end",
+    title: `Keep building toward ${gradeAdjective(top)} reading`,
+    reason: "review lesson evidence before changing the starting level",
+  });
+  const minutesPerDay = input.minutesPerDay ?? DEFAULT_MINUTES_PER_DAY;
+  const daysPerWeek = input.daysPerWeek ?? DEFAULT_DAYS_PER_WEEK;
+  const lessons = Math.min(
+    units.reduce((n, u) => n + u.lessons, 0),
+    Math.floor((MAX_PLAN_WEEKS * minutesPerDay * daysPerWeek) / LESSON_MINUTES),
+  );
+  return {
+    version: 3,
+    entryBand: entry,
+    steps,
+    lessons,
+    weeksAt10Min: Math.ceil((lessons * LESSON_MINUTES) / (minutesPerDay * daysPerWeek)),
+    minutesPerDay,
+    daysPerWeek,
+    milestones: [],
+    firstUnit: first ? { ...unit(first), title: unitTitle(first) } : null,
     reviewedBy: REVIEWED_BY,
   };
 }

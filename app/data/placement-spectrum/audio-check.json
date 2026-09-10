@@ -1,0 +1,2370 @@
+{
+  "language-intro": {
+    "model": "small",
+    "script": "Now I will read some short texts to you. Listen, then choose an answer. You can hear each one again.",
+    "transcript": "Now, I will read some short texts to you. Listen, then choose an answer. You can hear each one again.",
+    "audioSha256": "e507e2fca507d759d1d75ca170e59c1b4b0316be79b03278c702d4c3151e131f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "blend-intro": {
+    "script": "Listen to the sounds. Put them together and say the word. You will not see the word this time.",
+    "transcript": "Listen to the sounds. Put them together and say the word. You will not see the word this time.",
+    "audioSha256": "92d46004da50369a312cefbabc2c81b16a6ec8cee7b62241443ec5d0fe552708",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "reading-intro": {
+    "script": "Read this text out loud. Take your time. If a word is tricky, try it and keep going.",
+    "transcript": "Read this text out loud. Take your time. If a word is tricky, try it and keep going.",
+    "audioSha256": "5d9aad5071af787a42bb866f0723aa23b4ff52748b1fb37ddcf88853017efdb0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-0-a": {
+    "script": "This text is called A Cat.",
+    "transcript": "This text is called a cat.",
+    "audioSha256": "de171779cea62aa38f2365ab9af0c877c289a8f9dd9122ca599d53665fab338a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0a1": {
+    "script": "Who sat on the mat?",
+    "transcript": "Who sat on the mat?",
+    "audioSha256": "4e292e49f78f8744c7f10ad0a6a71e09373fdcbfd7ae9ed5e10dc5fb8f75fbe8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a1-a": {
+    "model": "small",
+    "script": "A bug",
+    "transcript": "A bug.",
+    "audioSha256": "9f254b0967ab073ba1afcbfd6db85c82cdbc202c73edf4a13b740602b5ecdce1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a1-b": {
+    "script": "A cat",
+    "transcript": "A cat.",
+    "audioSha256": "d7ca1c01e891b6dc3376ee8c5602f08df03c0944990042b44d45920e6e8d41e9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a1-c": {
+    "script": "A dog",
+    "transcript": "A? Dog.",
+    "audioSha256": "11eba5cbdebced5195fe377e12a81e1fbc95ccdfc907b76aa5e15ec2212cd0a0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0a2": {
+    "script": "Where did the bug hide?",
+    "transcript": "Where did the bug hide?",
+    "audioSha256": "e9e8ea525d99aa2883b7286289c957552593dd3d599756b92030c7fdab1ad681",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a2-a": {
+    "script": "In a log",
+    "transcript": "in a log",
+    "audioSha256": "84b606ae9029f92075a9e19989d35d5b801e4333e51491aec6e93d2c2c4ea3b9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a2-b": {
+    "script": "On the mat",
+    "transcript": "on the mat.",
+    "audioSha256": "5a25d98ac4df7e2728feace3c26c0f8d29fdc0c3854b4d97129edc939e185a79",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a2-c": {
+    "script": "In a cup",
+    "transcript": "in a cup.",
+    "audioSha256": "0b10db1ca9c987603306f236c93276deeb7d4ceefb2157a4f18dc32ba0fd7c24",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0a3": {
+    "script": "Who got up?",
+    "transcript": "Who got up?",
+    "audioSha256": "0a94e926c36835220354ad16e387da2e7a3c2306fc4f6887a8fc1b6ae854a031",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a3-a": {
+    "script": "A dog",
+    "transcript": "A DOG!",
+    "audioSha256": "33dc2480db25e72e1b02d60ff7c00e41b133c9a9cefbc9ee665591c110bc4b1f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a3-b": {
+    "script": "A bug",
+    "transcript": "A bug",
+    "audioSha256": "8c1dc514cda7ff8ffe2c3d39160d0e7bc8b725164b9706926ba2da8a7f1a3728",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0a3-c": {
+    "script": "The cat",
+    "transcript": "the cat",
+    "audioSha256": "f1f9ee28ddad2414a5eef8727b065eb030b071637c48dd8330c3600bb076c3da",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-4-a": {
+    "model": "small",
+    "script": "This text is called Nia and the Bean Plants.",
+    "transcript": "This text is called Nia and the Bean Plants.",
+    "audioSha256": "775d72a20689b94d8b8ef292b0029c963ad212c2ccd137528b766f7ab0eafc3f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4a1": {
+    "script": "Which theme is best supported by Nia's actions?",
+    "transcript": "which theme is best supported by Nia's actions?",
+    "audioSha256": "80ac47b42971d62e4c7df939092820dec4652f320b82cd5ec9da79042f85ef6c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a1-a": {
+    "script": "A prize is the only sign of success",
+    "transcript": "A prize is the only sign of success.",
+    "audioSha256": "f2d8a1bce72bcddf564738b530fb1307f5f26d5482f63f783974d45d1b3df95b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a1-b": {
+    "script": "A surprising result can help us learn",
+    "transcript": "A surprising result can help us learn.",
+    "audioSha256": "3ea84ea3b3d36de35faa3b02583f67f7a8e8e8ee89f5004e23748070492b2a21",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a1-c": {
+    "script": "Predictions should always be correct",
+    "transcript": "Predictions should always be correct.",
+    "audioSha256": "6687939ed07657247811fac75a8dd9dce077842deda57c767fa351ee31179b56",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a1-d": {
+    "script": "Working alone prevents mistakes",
+    "transcript": "Working alone prevents mistakes.",
+    "audioSha256": "1ddcb68c7c390d8ea2156eecc5d47b708107cb7a3ec8022c10cf553b865e4543",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4a2": {
+    "script": "Which detail best shows that Nia values learning more than winning?",
+    "transcript": "Which detail best shows that Nia values learning more than winning?",
+    "audioSha256": "56fafbc8e12fb07e91df728a457606422f781e50237e4e23b307e7d8b6e9270d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a2-a": {
+    "script": "She used six identical cups",
+    "transcript": "She used six identical cups.",
+    "audioSha256": "5d8fc716eb914be3444b18831ec16405c65cfc361d1b7421336633ce08ec6958",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a2-b": {
+    "script": "Ben helped her make a chart",
+    "transcript": "Ben helped her make a chart.",
+    "audioSha256": "8f4d296501b3297c7219339e1c6ea40f3c11e697741a8e76e8e26a2f386f5306",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a2-c": {
+    "script": "She planned another experiment after she did not win",
+    "transcript": "She planned another experiment after she did not win.",
+    "audioSha256": "c6c02a525a2b8956909506df2a249ce04ad417c600df95ee833e65bd54ed342b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a2-d": {
+    "script": "The judge wrote on a clipboard",
+    "transcript": "The judge wrote on a clipboard.",
+    "audioSha256": "18057f9b6635ca6441b0bcfafa85873b29b321b8c98c09257e58e095c618ec02",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4a3": {
+    "script": "How did Nia's interpretation of the taller plants change?",
+    "transcript": "How did Nia's interpretation of the taller plants change?",
+    "audioSha256": "2137f01147c4547e82824e21b3c1abdf550e33498b284d7338a31537f91b5508",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a3-a": {
+    "script": "She realized that being taller did not mean being healthier",
+    "transcript": "She realized that being taller did not mean being healthier.",
+    "audioSha256": "9a65748f290a9dd5f9b43d8c50f346cd86f02caf387ed28c261eadb6e94194bb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a3-b": {
+    "script": "She decided that the lamp plants needed less water",
+    "transcript": "She decided that the lamp plants needed less water.",
+    "audioSha256": "3a2663106c5fac97d5d612406e704d04369c5eeed2a0a85a0b639fc8a3f652bb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a3-c": {
+    "script": "She learned that her original prediction was correct",
+    "transcript": "She learned that her original prediction was correct.",
+    "audioSha256": "fc63e5ace06b188041713c526d2dc66c32ee8eaefeb77079fcc1852aebc14c63",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4a3-d": {
+    "script": "She concluded that measurements were not useful",
+    "transcript": "She concluded that measurements were not useful.",
+    "audioSha256": "16c852883858188ddb2e0902bda9c43f401ca4ef97ed7dddd6fc140b08f9b07e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-0-b": {
+    "script": "This text is called A Hen.",
+    "transcript": "This text is called a hen.",
+    "audioSha256": "2b8a6c64e7facdcecf0659347836a62bd758c4ecbf3592d8b7258d66f2668ddf",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0b1": {
+    "script": "What is a hen?",
+    "transcript": "What is a hen?",
+    "audioSha256": "fcc0f185a31c9b559058e74a4e3137c4dbfd09af67ad0027975e780b3064296c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b1-a": {
+    "script": "A fish",
+    "transcript": "A fish.",
+    "audioSha256": "c77277f7acd6b311b47d5b190283063c8b1e0e84816f4b92b64b1e96054eea37",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b1-b": {
+    "script": "A bird",
+    "transcript": "a bird.",
+    "audioSha256": "183cbf3d46bbe79f9cda397bb6040b83e9614f72a4605307c95e6b1cc72e1637",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b1-c": {
+    "script": "A bug",
+    "transcript": "A bug!",
+    "audioSha256": "c42da5cbb7d032ec77d80a987a1fdc2ba7bac21b04c08b3c4b114c7d8f8c2613",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0b2": {
+    "script": "What does the hen have?",
+    "transcript": "What does the hen have?",
+    "audioSha256": "7742abcde1ce8f5e3d92ccbbb6aca389b3ba40f6f56e17c2752d5c029ed1f7eb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b2-a": {
+    "model": "small",
+    "script": "An egg",
+    "transcript": "An egg.",
+    "audioSha256": "6edffb0b8982d3e1957a1b231fd966df4c45b6e921f4c22ec08e5fc8df8c1d36",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b2-b": {
+    "script": "A cup",
+    "transcript": "a cup.",
+    "audioSha256": "f1588e94fd8c3bba8315a2026b042f6e1575015235fdc87a36fb7d7f00b37a6c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b2-c": {
+    "model": "small",
+    "script": "A mat",
+    "transcript": "A mat.",
+    "audioSha256": "d01130f4c8e2830ed08dc19b01d3053d7a4b459600c3d53ace8aeb3db6682b18",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r0b3": {
+    "script": "What can the hen do?",
+    "transcript": "What can the hen do?",
+    "audioSha256": "f906c8868a7aa4ba8466429385bedb0e13d07a8ec174c51b9f17de5c09c1fe99",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b3-a": {
+    "script": "Dig a pit",
+    "transcript": "Dig a pit.",
+    "audioSha256": "06ad5c12d54043918ab26563dd9e64218d98dbacc69ad31b6dfc7fe5a179dc74",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b3-b": {
+    "script": "Run in a log",
+    "transcript": "Run in a log.",
+    "audioSha256": "8e99e97a83d11ea48f7dc63d096eb50ae354d2c1ee074873f95de4d72214bbb3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r0b3-c": {
+    "script": "Sit on the egg",
+    "transcript": "Sit on the egg.",
+    "audioSha256": "c15f21dcfbade95a9f266e9d459a2aa6f8eb68c5818c28d02bdc7cf4685f19eb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-1-b": {
+    "script": "This text is called Seeds on the Move.",
+    "transcript": "This text is called Seeds on the Move.",
+    "audioSha256": "1f460f18117ef40322a56013038cab6f72f3eac70a64410a6b30d6a86b2ea50e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r1b1": {
+    "script": "What is this text mostly about?",
+    "transcript": "What is this text mostly about?",
+    "audioSha256": "1e56832b065d2edb753a38b3853addb7e9d2cba2cb5c784bf3aa263f2c6b159a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b1-a": {
+    "model": "small",
+    "script": "How seeds move",
+    "transcript": "How seeds move.",
+    "audioSha256": "417f828ef389c44579b7697e6e7a9c3fe3d99dfada6839aac7efcb713eaea31c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b1-b": {
+    "script": "How animals sleep",
+    "transcript": "How animals sleep",
+    "audioSha256": "d71d31518d7f9a7e0bde1173b369fd5efbc461fab69fc63fef295dc2f37ceaea",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b1-c": {
+    "script": "How leaves change",
+    "transcript": "How leaves change?",
+    "audioSha256": "7d9669f5e145edd5b36f8cff6e52a1b1d94fdddcb724c9aaa9f0ba6c929510b0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r1b2": {
+    "script": "What can carry a seed through the air?",
+    "transcript": "What can carry a seed through the air?",
+    "audioSha256": "f96b0fa9e14572dee6b16e122e3bf2bce53bea44342e0d1bac66a42c00264b02",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b2-a": {
+    "model": "small",
+    "script": "A root",
+    "transcript": "a root.",
+    "audioSha256": "00baa1ac23042d55dc9224e46458f75f2a7742af73d5bfb6a6e8e9417c4ba9a7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b2-b": {
+    "script": "The wind",
+    "transcript": "The Wind",
+    "audioSha256": "13472f33c851c23edf1acb6fab38455e0ff7f6ad3a5869be4dabcfa8394155b9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b2-c": {
+    "script": "A rock",
+    "transcript": "A rock.",
+    "audioSha256": "783681645c6246d625ac77b652e665858e8396fc523a0d69e39652b1cd4eed71",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r1b3": {
+    "script": "Why might a seed stick to an animal?",
+    "transcript": "Why might a seed stick to an animal?",
+    "audioSha256": "cea647e3463c1346947e2afadb43a47af3bc52c398bb2afcd09749499d2dc1c5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b3-a": {
+    "script": "To feed the animal",
+    "transcript": "to feed the animal.",
+    "audioSha256": "f24f22a538b04537ecb5fd4c2e2ee21f16ab60a1b5c37a796e09f683e83097eb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b3-b": {
+    "script": "To keep the animal warm",
+    "transcript": "to keep the animal warm.",
+    "audioSha256": "f571aa432f3a6e439e8ca0f728b4a114b54a4f335019da74ff567f3313197f9b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r1b3-c": {
+    "script": "So it can travel to a new place",
+    "transcript": "So it can travel to a new place.",
+    "audioSha256": "663a15d229e9767ac24bf9931a0a2e0a4f5bc357febe55fae23a23763431480d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-2-b": {
+    "script": "This text is called A Place for Rain.",
+    "transcript": "This text is called a place for rain.",
+    "audioSha256": "0d72e088eda5555d42b1873ce7b9af0b5a749da4df131f1672adc0bb457871c8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r2b1": {
+    "script": "How does a rain garden help?",
+    "transcript": "How does a rain garden help?",
+    "audioSha256": "2c9df1aa6e1eaa107ea3b2b0f68a91b5c5d4d2a00a7e57144c8f2eb629af4d39",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b1-a": {
+    "script": "It makes rain stop",
+    "transcript": "It makes rain stop.",
+    "audioSha256": "6d669066d3aca0b8d6b8ff06ca0c1533ed8c5c8d43123f61bba9e750f83ada95",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b1-b": {
+    "script": "It slows water before it reaches a stream",
+    "transcript": "It slows water before it reaches a stream.",
+    "audioSha256": "08c48725bb4ba2d2b1344da54b843e17b4820eea08ac696739c4757895be6ae7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b1-c": {
+    "script": "It keeps every plant dry",
+    "transcript": "It keeps every plant dry.",
+    "audioSha256": "e8c378d1331f3505f86c44aa84893dd3666ae63486ae89bcab92aad5080a676f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r2b2": {
+    "script": "What does shallow mean here?",
+    "transcript": "What does shallow mean here?",
+    "audioSha256": "5cd7eeb754a57cd97116afef4ec8f3ae76ab86a808193b32912de1ef8c1b380f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b2-a": {
+    "script": "Not very deep",
+    "transcript": "Not very deep.",
+    "audioSha256": "d4d2d9e25bd032157b16189463592759aed8013872e96d243793bebe7289a2e3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b2-b": {
+    "script": "Full of rocks",
+    "transcript": "Full of rocks.",
+    "audioSha256": "9ab989525486f9d825897735c5d306ef1660d14333472f53f3446902e550b31a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b2-c": {
+    "model": "small",
+    "script": "Far from a street",
+    "transcript": "Far from a street.",
+    "audioSha256": "ddcb25f4fcf2ff55f39c0f6445732aad8237eaa3bbe841ee1d3df5d901ad32d7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r2b3": {
+    "script": "Why does the garden need plants that handle dry days?",
+    "transcript": "Why does the garden need plants that handle dry days?",
+    "audioSha256": "4e9a1bfcf47321ddef119dda5c51fef738f5d9465a75c5d2dbe3a91fa980e4d0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b3-a": {
+    "script": "The plants never use water",
+    "transcript": "The plants never use water.",
+    "audioSha256": "ef3e4816bf96d43af7fa181d0ab260fb33f54cfaae1d85a804487d065289a469",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b3-b": {
+    "script": "The garden is always a pond",
+    "transcript": "The garden is always a pond.",
+    "audioSha256": "8b12dfe8f4de0a6cb0c523fd193a0053f27ab2b995281e70773dd3b8fdc73233",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r2b3-c": {
+    "script": "Its surface is not always wet",
+    "transcript": "Its surface is not always wet.",
+    "audioSha256": "eb4bbd056eeb73bdd6aa6f11b64d7af4983e1f55c973d15dbcfa0b09eb37a358",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-3-b": {
+    "script": "This text is called Night Visitors.",
+    "transcript": "This text is called Night Visitors.",
+    "audioSha256": "7909f84d87f1b5e8fed6a1228950d718f3b20e4e4e452b1947924f427f50b250",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r3b1": {
+    "script": "What is the main idea?",
+    "transcript": "What is the main idea?",
+    "audioSha256": "3096d18e21ecf93a92326d85606a5aa9f9092b650e9b0dd8911a26075bfac8e4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b1-a": {
+    "script": "Moths never visit flowers",
+    "transcript": "Moths never visit flowers.",
+    "audioSha256": "c4dd7231fd2b3b34f70f9f425e5142667528ab0c6641ee32a07e760665d2d24f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b1-b": {
+    "script": "Covering lights makes plants grow faster",
+    "transcript": "Covering lights makes plants grow faster.",
+    "audioSha256": "083aeb1e7d9a1bad942ca47573510439742cf9fe467ab6cd7c9330223149ecc1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b1-c": {
+    "model": "small",
+    "script": "Students investigated how lights affected moth visits",
+    "transcript": "Students investigated how lights affected moth visits.",
+    "audioSha256": "865bbe57bec4826d3eb5dd8bf0e40341dd93f57434e70a188ec3dcc827889c90",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b1-d": {
+    "script": "All garden lights should be removed",
+    "transcript": "All garden lights should be removed.",
+    "audioSha256": "21c54d98609fcd2b4676eab90587b81201b4310bfe62beca34a97dde58814f11",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r3b2": {
+    "script": "Why did they leave some lights unchanged?",
+    "transcript": "Why did they leave some lights unchanged?",
+    "audioSha256": "8df2baaf4a2eb9abcaa5e7b1d3824e6befacfed944d533c41f7c8a9b127e97f7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b2-a": {
+    "script": "To compare the two areas",
+    "transcript": "to compare the two areas.",
+    "audioSha256": "b34caf29d31d8d5655160df07a0636029983300279aba40bf8c2a34351af420f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b2-b": {
+    "model": "small",
+    "script": "To attract every moth",
+    "transcript": "to attract every moth.",
+    "audioSha256": "fa9fcb913da0ecbb5f2ecda90a40fb9bfd91f893378d0075abb4e08b2988ae4d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b2-c": {
+    "script": "To avoid counting flowers",
+    "transcript": "to avoid counting flowers.",
+    "audioSha256": "3b07486cb679c5eda87b08b52b4d98ecff174fb7ba7fc8bb2e1264a666f5eae5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b2-d": {
+    "script": "To keep the garden dry",
+    "transcript": "to keep the garden dry.",
+    "audioSha256": "b0c1db8bb3dddce7efa1c42ec70f636f3c80817f63c79d6c494ebf524da18c7e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r3b3": {
+    "script": "Why did they plan to repeat their counts?",
+    "transcript": "Why did they plan to repeat their counts?",
+    "audioSha256": "3331f4dacdcac4f1544bc2c0b906bc0e17c24bc17ce168d9ebe3b6557853d0fb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b3-a": {
+    "script": "Their first counts proved nothing could change",
+    "transcript": "Their first counts proved nothing could change.",
+    "audioSha256": "fa773f47acaa56aab463c11a61b37a116513fb207e08885862e5ba4737fd5550",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b3-b": {
+    "script": "They wanted more evidence before deciding",
+    "transcript": "They wanted more evidence before deciding.",
+    "audioSha256": "36add09f9b328e575d6a2ec11b55f2b2c842125a5bfde6a03c1b4949eaab24a4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b3-c": {
+    "script": "They had counted only during daylight",
+    "transcript": "They had counted only during daylight.",
+    "audioSha256": "331bd58111d45ccf69cf9f2e0eb37e41c9ffa3cc21ba8aade4ce467d9a1d8fcb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r3b3-d": {
+    "model": "small",
+    "script": "They already knew every insect behaved the same way",
+    "transcript": "They already knew every insect behaved the same way.",
+    "audioSha256": "c658059e8b66045e7919758a5eb7453b6d9835837566ef226d25f38056487501",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-4-b": {
+    "script": "This text is called Keeping a Town Cool.",
+    "transcript": "This text is called Keeping a Town Cool.",
+    "audioSha256": "8b48b0a8719afbe746c6db3fc148e3f7eae5b0ef77e19b44c22e75d1648aa6c1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4b1": {
+    "script": "Which statement best summarizes the council's decision?",
+    "transcript": "which statement best summarizes the Council's decision?",
+    "audioSha256": "7a8e62db7e0e8b45f5f007366da4fa137e9b2262f66901a10086a4d9cd0eb65a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b1-a": {
+    "script": "It rejected trees because they need water",
+    "transcript": "It rejected trees because they need water.",
+    "audioSha256": "10108c970613c8625c399cfadbf59b0f06980cb0ca3c7370e8450a51884663af",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b1-b": {
+    "script": "It combined immediate shelter with longer-term cooling",
+    "transcript": "It combined immediate shelter with longer term cooling.",
+    "audioSha256": "10b9a9b98f073566b979c211b0a34987c1aa38c554025cca0f96b64ab430c97e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b1-c": {
+    "script": "It chose the cheapest proposal without measuring results",
+    "transcript": "It chose the cheapest proposal without measuring results.",
+    "audioSha256": "3bc7af22dfc26e32fa2228f7394b9c5b2f5d188081aa3f5f7135d3e9dad62ff2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b1-d": {
+    "script": "It decided that the park needed a canopy",
+    "transcript": "It decided that the park needed a canopy.",
+    "audioSha256": "317946f1c4efee6db5c27146b0a3d6ccf2e535f5ed2286f7753871782cddeb71",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4b2": {
+    "script": "Which detail best supports the need for an immediate solution?",
+    "transcript": "Which detail best supports the need for an immediate solution?",
+    "audioSha256": "a2a93fb70ce37b32efdb516f42c8d168611d2a3d840b33253805041c766fa98a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b2-a": {
+    "script": "Leaves can release water",
+    "transcript": "Leaves can release water.",
+    "audioSha256": "95c9f757ac2a7ce25deb960e6a09ce784bc53f25e6605f6c1a1cf2576fd1203b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b2-b": {
+    "script": "Measurements would be taken each summer",
+    "transcript": "Measurements would be taken each summer.",
+    "audioSha256": "e325a04ad70f677f781e29c79059e27178d976e3d17b4d9b864eb0bd41a893db",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b2-c": {
+    "script": "The town had a nearby park",
+    "transcript": "The town had a nearby park.",
+    "audioSha256": "4deaba5f15a29cc2b49541e5d60bf0483fbf550669e3b1f7c3ce2d1a75c9499a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b2-d": {
+    "script": "Young trees provide little shade",
+    "transcript": "Young trees provide little shade.",
+    "audioSha256": "97de2fcd13bf529f0f9607758813c63063301d36bcb89a3214898e57536e1bf6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-r4b3": {
+    "script": "What does exposed mean in the second paragraph?",
+    "transcript": "What does exposed mean in the second paragraph?",
+    "audioSha256": "60198cd0e14eea0cb1ad682cce1f244c294c55510a1e8fcc3a049643810ace27",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b3-a": {
+    "script": "Left uncovered by shade",
+    "transcript": "Left uncovered by shade",
+    "audioSha256": "165c3e1011289666afeb7f274884eaf413e31fcd618cf2d5d716f0044b557edf",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b3-b": {
+    "script": "Made easier to measure",
+    "transcript": "Made easier to measure.",
+    "audioSha256": "533920cc7dc7c8cde4d149e781ea0ca0134e4a9155c689f69635894e5f589eab",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b3-c": {
+    "script": "Hidden beneath a canopy",
+    "transcript": "Hidden beneath a canopy.",
+    "audioSha256": "de56dc54538c84dac1bb18f4e0c7e38ab1c7739898c1cacb55c79fae2accc93f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-r4b3-d": {
+    "model": "small",
+    "script": "Removed from the square",
+    "transcript": "Removed from the square.",
+    "audioSha256": "8aebeaf278aa2a6018682ef9820f2cbe5f1f869abfd34022519808737b7b0532",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.1-Q1-a": {
+    "script": "A stick",
+    "transcript": "A stick.",
+    "audioSha256": "125a44fa139b3645002ce07db7b78a57c61a3784122dfeb3866569dbeba39b1c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.1-Q1-b": {
+    "script": "A toy car",
+    "transcript": "A toy car.",
+    "audioSha256": "6efd683b4738fbc0d8125c0a1a0f46f38b6c72c0db7f36569bc3afdafe738d67",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.1-Q1-c": {
+    "script": "A red ball",
+    "transcript": "A red ball.",
+    "audioSha256": "61430d0b78c9f3a1d9d4eb57ad54037b0ae399d36e1e5dc804eb0aaeb0689249",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.1-Q1-d": {
+    "script": "A bone",
+    "transcript": "A bone.",
+    "audioSha256": "00f2a7584aa2e41e18cb727353ab9de0da94ea8edd7605381bd8c887e8f26ef9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-Q2-a": {
+    "script": "Sleep is boring",
+    "transcript": "Sleep is boring.",
+    "audioSha256": "d751bd40559f8ea33ce94bce618099a4cddb46c12a7e3d63d65d77a5b65bd36c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-Q2-b": {
+    "script": "You need sleep to watch TV.",
+    "transcript": "You need sleep to watch TV.",
+    "audioSha256": "66df2136844960ef241c0693ea196bd14b637b2b16ca0d9b04b59161af139430",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-Q2-c": {
+    "script": "Sleep makes you hungry.",
+    "transcript": "Sleep makes you hungry.",
+    "audioSha256": "e22d00a93def7ff3a195d687b300229c3e53cd15ee66dd6dd646ce00914adf2d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-Q2-d": {
+    "script": "It helps your body grow and your brain learn.",
+    "transcript": "It helps your body grow and your brain learn.",
+    "audioSha256": "48a3bbe5029f79cc4a3bb603f1e8ddcb10f2090b32d74c0f87cc20ff0a41ef9b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q5-a": {
+    "script": "Sleepy",
+    "transcript": "Sleepy",
+    "audioSha256": "7414641cbf0c2ef55fe7df8b623329b7b9c0b5193a7fee737cd9b5ac4e86afce",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q5-b": {
+    "script": "Hungry",
+    "transcript": "Hungry.",
+    "audioSha256": "02e23d2ca314e747f480a3b23a76ba02f51038eac1a8a28cc17687c318f23682",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q5-c": {
+    "script": "Scared",
+    "transcript": "Scared.",
+    "audioSha256": "5b3ebb8a4ef006569d919d6577d79acdb30b3d5e95286fe1b30150ca20fac048",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q5-d": {
+    "script": "Happy",
+    "transcript": "Happy!",
+    "audioSha256": "c8dd5e739c7bfe3f7d1af056409def237527cde1efbc798d91ec75ec2bfb8d36",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-Q4-a": {
+    "script": "Firefighters like cats",
+    "transcript": "Firefighters like cats.",
+    "audioSha256": "ebbbfe4bfbf9b6194b2ba9bd194e6789b5613130ed0962d80b3d4efb9418efd2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-Q4-b": {
+    "script": "Firefighters eat lunch",
+    "transcript": "Firefighters eat lunch.",
+    "audioSha256": "05ec1e69eeaa25153ccc1ba314bc85b5510533906f03331a4673e424726241f3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-Q4-d": {
+    "script": "Firefighters rescue people",
+    "transcript": "Firefighters rescue people.",
+    "audioSha256": "3c6f4ddbdb1101357e242be16721946d106b0ad491d194c1fd7e98fdd35e99c6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q2-c": {
+    "script": "Sad",
+    "transcript": "sad",
+    "audioSha256": "5fae865e8a7dd22b6ae3b57bc03fa60fca455255f947ff5859bd3a6b4fb1c358",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.9-Q5-a": {
+    "script": "They both talk about caterpillars.",
+    "transcript": "They both talk about caterpillars.",
+    "audioSha256": "4d3ff0b3df09fe65af8fcb24b9c21829b4150f5ee3152e6a30d364095c5861e7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.9-Q5-c": {
+    "script": "They both talk about wings.",
+    "transcript": "They both talk about wings.",
+    "audioSha256": "880ffb47b6e6e009d5f90d03fac29f1307e5b4ef5cfee8e4133284feaf891ed1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H4-a": {
+    "script": "Loud",
+    "transcript": "Loud!",
+    "audioSha256": "7e23b78226d8dc2dcf99a9b3ceaabfe15a67ae7db1d5d4ae29c13d8807d17415",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H4-c": {
+    "script": "Angry",
+    "transcript": "Angry",
+    "audioSha256": "f9a02178e4d8d4611ab66368b3ca31b12f9373894718b402824d3b662558c4a4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-H5-b": {
+    "script": "They are big",
+    "transcript": "They are big.",
+    "audioSha256": "cb7c3defe4596c295b2c0347713666d55b8467940b5011310d49e562c3d4e9ed",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.2-Q1-b": {
+    "script": "Practice helps you get better",
+    "transcript": "Practice helps you get better.",
+    "audioSha256": "d694c88e01f3f7c2a0e5f353f810080aac905271fbd29cb2c5433d0f2bb15f15",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.2-Q1-d": {
+    "script": "Tom is the fastest kid",
+    "transcript": "Tom is the fastest kid.",
+    "audioSha256": "d13b558e92c73e91a5e7ab078716ec65999bb3866ad99026071ebb4b03440a7e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q4-a": {
+    "script": "Water, food, and exercise",
+    "transcript": "water, food, and exercise.",
+    "audioSha256": "152642eb57daa9a1abda51d143ab76b86d3c1b98aa9700bc7696afc00c4ff09e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q4-b": {
+    "script": "Only exercise",
+    "transcript": "only exercise.",
+    "audioSha256": "cb06e8604f55c31a4c486ba41282c6756097d200c25bea742ac6c997205c368b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q4-c": {
+    "script": "Just food",
+    "transcript": "just food.",
+    "audioSha256": "61f77133d136543ab1f1bb04926be5ecd4d5fc155dd05e6746fcefdab6211ae1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q4-d": {
+    "script": "Just water",
+    "transcript": "Just water.",
+    "audioSha256": "2515f900c657a9c7c33bfabf43beb42853f998552707bd7b2e37997d2f68bbc7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q4-b": {
+    "model": "small",
+    "script": "Syrup",
+    "transcript": "syrup",
+    "audioSha256": "f9c672d407de933460b1e03502dcb2b1c5302e844ef0910ef5647388088ce69c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q4-c": {
+    "script": "Bananas",
+    "transcript": "bananas",
+    "audioSha256": "cd2b28eb844e79493a810e4ec4c694a80044858d5eae5516177cdca2c35ee8b3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.8-Q5-b": {
+    "script": "Is only for school",
+    "transcript": "is only for school.",
+    "audioSha256": "babf3d874fe8a3cd8b228e03b961d29ec8b5bb929ea21d6ad1e2d3f0656e6efa",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.8-Q5-c": {
+    "script": "Is boring",
+    "transcript": "is boring.",
+    "audioSha256": "0610e16c16047baf9ff1598f0b451ff712241bacd5d4b169c9f54ff9dc1586c5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-H3-b": {
+    "script": "He does not like the park.",
+    "transcript": "He does not like the park.",
+    "audioSha256": "d9beb64b1976a15a3dc54ff97d9ddc3c6bc3d4936fcbd671b30e6446edc9a9b3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.2-H2-a": {
+    "script": "A ride",
+    "transcript": "A ride.",
+    "audioSha256": "074d40d71ac70afaacd57f44570317c89ce9d2d1316baff2036ee2521f0087d6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.2-H2-d": {
+    "script": "A field",
+    "transcript": "a field.",
+    "audioSha256": "3edb41c94ed66526ab6e827dd02b65f1f7ce5c5fea3a16ecdb716cec22eb280f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.3-H3-a": {
+    "script": "Because the dirt got wet one time",
+    "transcript": "because the dirt got wet one time.",
+    "audioSha256": "5480a4b152da32dfa9e65c3ce4df27bbf2e82c7ec9fb1f1e8df52bf3e3e8da68",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.3-H3-b": {
+    "model": "small",
+    "script": "Because Rosa poked the leaf",
+    "transcript": "because Rosa poked the leaf.",
+    "audioSha256": "e3ebc3e19cc9efa6f9202f57bce9549a24af8e000d5c7570e0126ba6072e089a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-Q1-d": {
+    "model": "small",
+    "script": "Build the hive",
+    "transcript": "Build the Hive.",
+    "audioSha256": "2c41a47ae88158ed63e8278df603bcd2cb9592f79fb655f1c2268e8e37d42d62",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q4-a": {
+    "script": "Wet and cold",
+    "transcript": "wet and cold.",
+    "audioSha256": "2e5bddf5e01ffdb32f71d8c1048f1cfa9fc17aec96c54db92a292f1a3418bc65",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q4-c": {
+    "script": "Lively and playful",
+    "transcript": "lively and playful.",
+    "audioSha256": "b57a7051b66d35bc9e1e279c04256de05d486f3fb8bec170c9c45af76b35f9f2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q4-d": {
+    "script": "Scary and dark",
+    "transcript": "Scary and Dark",
+    "audioSha256": "b1ebd83e4c7b43cb01baf3e89d07f315e7c41bc1381078f7a87b0a2701b7e477",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-Q4-c": {
+    "model": "base",
+    "script": "Firefighters go to school.",
+    "transcript": "Firefighters, go to school.",
+    "audioSha256": "2b568eb1eb294598409bf906c16c577989a1aaccd5a777068e1bc93c5cb3fa0b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q2-a": {
+    "model": "base",
+    "script": "Tired",
+    "transcript": "Tired.",
+    "audioSha256": "b1c79d8877e9e6d98089756f5b632c3cc4efdda647360fd00ab90a4db6cf8ac5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q2-b": {
+    "model": "base",
+    "script": "Very happy",
+    "transcript": "Very happy.",
+    "audioSha256": "81261b1aa28ef2f1bbb7f3c1365a602d39eca6833caabf12e5b01a19c26542fd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-Q2-d": {
+    "model": "base",
+    "script": "Scared",
+    "transcript": "Scared.",
+    "audioSha256": "d13888e364cf6982416acbe709958bba096be92d279f8e74f15df48ae14b0f36",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.9-Q5-b": {
+    "model": "base",
+    "script": "They are about different insects.",
+    "transcript": "They are about different insects.",
+    "audioSha256": "96359904d7d71c303e935d52f2dd34bc58f6f5c9da7e40639bc937cf7c28edd3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.9-Q5-d": {
+    "model": "base",
+    "script": "They are both about butterflies.",
+    "transcript": "They are both about butterflies.",
+    "audioSha256": "5b187829f3ce01ac830a5f84c153bc98cd85f8c153810a36519084405826e38f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H4-b": {
+    "model": "base",
+    "script": "Strong",
+    "transcript": "Strong!",
+    "audioSha256": "3d136e930dd3bbce0126d907bc6a9531301bbcd820fdea6238f8ac9ba64c8a35",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H4-d": {
+    "model": "small",
+    "script": "Weak",
+    "transcript": "Weak.",
+    "audioSha256": "3ce40675f60328187148acdadd5f477d0aef2f533205d8ea8a288180f06678b9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-H5-a": {
+    "model": "base",
+    "script": "They can see well in the dark",
+    "transcript": "They can see well in the dark.",
+    "audioSha256": "12815f03c7f931516dce40523870a0e8cc860e07040556202ddec0cf2bb361cc",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-H5-c": {
+    "model": "base",
+    "script": "They sleep all day",
+    "transcript": "They sleep all day.",
+    "audioSha256": "72e0a4f4746595840e254ea66f2ad87f1f116a3d64fe5d90021fed0038695c24",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.2-H5-d": {
+    "model": "base",
+    "script": "They like the moon",
+    "transcript": "They like the moon.",
+    "audioSha256": "d4bcdd90b995479fcdf6f085f13d7d7a974a8987560034b7cbd6a8ddaec05550",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H5-a": {
+    "model": "base",
+    "script": "Very funny",
+    "transcript": "Very funny.",
+    "audioSha256": "e54606382624a43226e0ae0ba95c9b424ebd756382af7d3d880a061e98614c4b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H5-b": {
+    "model": "base",
+    "script": "Very sad",
+    "transcript": "Very sad.",
+    "audioSha256": "ed0154f48fade679707a3323cf2ae0b8852a12399a7b15374f0c0c020d513056",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H5-c": {
+    "model": "base",
+    "script": "Very scary",
+    "transcript": "Very scary.",
+    "audioSha256": "d4927283f01f5cdc6e394b123ae139a3971ca7329ff9e9ed97821d8d97658c6c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.K.4-H5-d": {
+    "model": "base",
+    "script": "Very boring",
+    "transcript": "Very boring.",
+    "audioSha256": "88df0434d7a3904b2190c2102853119ca9f6f1da8d6eb39311e6c78564734651",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-H4-a": {
+    "model": "base",
+    "script": "They save only cats from trees.",
+    "transcript": "They save only cats from trees.",
+    "audioSha256": "9e30bb5cb6cbbb3793453d5780736b32a88c75d937456b220b9ae067eb2d6fd1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-H4-b": {
+    "model": "base",
+    "script": "Because they are helpers.",
+    "transcript": "because they are helpers.",
+    "audioSha256": "6f85c6f857ae2de3da2c1126771bd6c2c851174667b53ee9e448dc3629ae5379",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-H4-c": {
+    "model": "base",
+    "script": "Because fires are very hot.",
+    "transcript": "because fires are very hot.",
+    "audioSha256": "a0a8d68d1b73211bcac0e2b469877f24e8da0015cdc89cac3e3571975a9fe5c9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.K.8-H4-d": {
+    "model": "base",
+    "script": "They save people and pets from fires.",
+    "transcript": "They save people and pets from fires.",
+    "audioSha256": "71dd59ff3bd52e8f9b4755fa169685fac720e4ff0ed556cee11b7cda0e8b4382",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q2-a": {
+    "model": "base",
+    "script": "On a rock",
+    "transcript": "on a rock.",
+    "audioSha256": "81108fc2b89e33ecb281cae230642ac1f54f9f2f21ef3da37b355ddcb24c4894",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q2-b": {
+    "model": "base",
+    "script": "On a lily pad",
+    "transcript": "on a lily pad.",
+    "audioSha256": "9577e595e8aad7bb0eeb35371e970b2385c4ff588bcd4791bd8b7a6945cc248a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q2-c": {
+    "model": "base",
+    "script": "In the mud",
+    "transcript": "In the mud.",
+    "audioSha256": "4eff65fdee895d502011039adae44fbd523f0b4b68b97c6860d199425d20e8b6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q2-d": {
+    "model": "base",
+    "script": "On the grass",
+    "transcript": "on the grass",
+    "audioSha256": "8fddc1c35296b3531a2d66eaa3a9f4c821ef1c97f7487e111fa01e58307f18ee",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q3-a": {
+    "model": "base",
+    "script": "Snow and ice",
+    "transcript": "Snow and ice.",
+    "audioSha256": "48f72523e2ab51d05eb4a4e09cc9e7f0a3db06ebc4068eab4bb1e114d7bb6623",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q3-b": {
+    "model": "base",
+    "script": "Wind and rain",
+    "transcript": "Wind and rain.",
+    "audioSha256": "14fbe4c40c0f2aefbb4046aebef23332cfe01d0efcdcd92f2ad91e949d4f38c6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q3-c": {
+    "model": "base",
+    "script": "Water and food",
+    "transcript": "water and food",
+    "audioSha256": "f8b5ef66fba0905223d55054a370a2790504dbcaefadc55200b620421e597575",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-Q3-d": {
+    "model": "base",
+    "script": "Light and heat",
+    "transcript": "light and heat.",
+    "audioSha256": "6bfb9708a352213c0b0e52c5f42b97329f1bee18a4f65ea11eb7f7c189cf81e9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.2-Q1-a": {
+    "model": "base",
+    "script": "Running is boring",
+    "transcript": "Running is boring.",
+    "audioSha256": "1768e50cf53950eca50ef2f586aeb777fcea753f250647650dda36db803a7c38",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.2-Q1-c": {
+    "model": "base",
+    "script": "Races are scary",
+    "transcript": "Races are scary.",
+    "audioSha256": "6e98f5049fb8b347bddbaa3575fe043db38126097a0f642c2120d1d3d6614023",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q4-a": {
+    "model": "base",
+    "script": "Chocolate chips",
+    "transcript": "Chocolate chips.",
+    "audioSha256": "64673f5f056d8a4d705f29b297eeace52916ba8bc9d4ceacfa6751d4916c1bff",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-Q4-d": {
+    "model": "small",
+    "script": "Blueberries",
+    "transcript": "Blueberries",
+    "audioSha256": "877d9ce97b267fd3a7589339f4a68fef7f3578f8face70d92983054c5610481a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.8-Q5-a": {
+    "model": "base",
+    "script": "Helps you learn words and understand stories",
+    "transcript": "helps you learn words and understand stories.",
+    "audioSha256": "c763f1458bc1650b480c6a5d402f3cf02c063c0bd8be27c57c9596b9d884a0c8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.8-Q5-d": {
+    "model": "base",
+    "script": "Takes too long",
+    "transcript": "Takes too long.",
+    "audioSha256": "9aef095d4adc7f61d200d4f0929ac5bbf8bd53bcd0a8bd38088af378cadfc84a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-H3-a": {
+    "model": "base",
+    "script": "He is tired and wants a nap.",
+    "transcript": "He is tired and wants a nap.",
+    "audioSha256": "0a609db667dece6a9f73dae2b94f202ea9486bf28b92257808c91e4cb9c92905",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-H3-c": {
+    "model": "base",
+    "script": "His balloon floated away.",
+    "transcript": "His balloon floated away.",
+    "audioSha256": "b4050e259edceff92878beff9ddcfaa71abdd2eed9bb235004443b49010717e7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.1-H3-d": {
+    "model": "base",
+    "script": "He fell down and got hurt.",
+    "transcript": "He fell down and got hurt.",
+    "audioSha256": "80c50ed66f94ecfeccc2035b79450ed5338e95c64e979587f2880b68b85d6c81",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.2-H2-b": {
+    "model": "base",
+    "script": "A horse",
+    "transcript": "A horse.",
+    "audioSha256": "d061345edbad6e1f0bc25b590ff79bd73051aa4bbc7d6b09305c75a27e8e1378",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.2-H2-c": {
+    "model": "small",
+    "script": "A dog",
+    "transcript": "A dog.",
+    "audioSha256": "d412f18b81e3c89777938975728a160994881ed0792ff6295067b1a4501315cb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.3-H3-c": {
+    "model": "base",
+    "script": "Because Rosa watered it and gave it light",
+    "transcript": "Because Rosa watered it and gave it light.",
+    "audioSha256": "af7496d91425ccc5488aac4eea2aa3127cdc5cd8ae6c6518cc98d9eb04e01e47",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.1.3-H3-d": {
+    "model": "base",
+    "script": "Because Rosa put the seeds in a cup",
+    "transcript": "Because Rosa put the seeds in a cup.",
+    "audioSha256": "a0ca2a37762d87e1b1bb8cb9d25519a53dc5602326f6ca4348d3dd2ff28002ee",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-H5-a": {
+    "model": "base",
+    "script": "To keep safe when they are close to fire",
+    "transcript": "To keep safe when they are close to fire.",
+    "audioSha256": "3cc745076f36e77e84d619bd00553adb7e31e8fbcb15f3b06ae14179574287ea",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-H5-b": {
+    "model": "base",
+    "script": "To look the same as each other",
+    "transcript": "to look the same as each other.",
+    "audioSha256": "b0393a62c75d0e4d93365e54901dca5dae0a6d95c7003894036e9989dc51c239",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-H5-c": {
+    "model": "small",
+    "script": "To stay warm on cold days",
+    "transcript": "to stay warm on cold days.",
+    "audioSha256": "2aa46349f2d1dfa2242d6f75b75bf50f8d4de3ef8602ebfdae377a1127f76710",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.1.1-H5-d": {
+    "model": "base",
+    "script": "To run faster to the fire truck",
+    "transcript": "to run faster to the fire truck.",
+    "audioSha256": "43316497c85b278a94270087518814e5f55294bf07df61709c9d398ef42b3d15",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q5-a": {
+    "model": "base",
+    "script": "To make it scary",
+    "transcript": "to make it scary.",
+    "audioSha256": "99985e7a956d119782c3aa07e79ffe2a1d3de17152b6e4a994443c6357e005a4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q5-b": {
+    "model": "base",
+    "script": "Because they forgot what to write",
+    "transcript": "Because they forgot what to write.",
+    "audioSha256": "5f9627b8ac6b0bb05e5f720a413b690179a98eb5cd16c94773a3fc998f1cba73",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q5-c": {
+    "model": "base",
+    "script": "To make the poem longer",
+    "transcript": "to make the poem longer.",
+    "audioSha256": "ebf5289090b2ece03af3f17adb7dab0e10c8d808926f260aa89d9db3765a3515",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q5-d": {
+    "model": "base",
+    "script": "To copy the sound and rhythm of a clock",
+    "transcript": "to copy the sound and rhythm of a clock.",
+    "audioSha256": "62c2aad7644ea24762e7736252b529efc8a3992b703a1f8e1da7d0ecc8521a5c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.9-Q3-a": {
+    "model": "small",
+    "script": "Bats are mammals",
+    "transcript": "Bats are mammals.",
+    "audioSha256": "3e9089aab889909a286b849427fa1d0e380a53902dc38f7b5fbc87da1465fd92",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.9-Q3-b": {
+    "model": "small",
+    "script": "Bats help farmers",
+    "transcript": "Bats help farmers.",
+    "audioSha256": "a820e3dc52bd13d8f64d73bb5992d733bf091d9cd5eeec9140e1b98296a9a89b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.9-Q3-c": {
+    "model": "small",
+    "script": "Bats use sound",
+    "transcript": "Bats use sound.",
+    "audioSha256": "642389920ef3b556c0bf2bdfc846dc0229f9f49e6fb4795c09d396b6fabf1628",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.9-Q3-d": {
+    "model": "base",
+    "script": "Bats fly at night",
+    "transcript": "Bats fly at night.",
+    "audioSha256": "d336e18d3f6f8d56cde393dfab8525af6bfe5923ebc73f3e9312fb85c242a131",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-Q3-a": {
+    "model": "base",
+    "script": "She was late",
+    "transcript": "She was late.",
+    "audioSha256": "c88f2e7dbf2fc2ba231f355a122b73962267f69e2b348016e916e812bbac957d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-Q3-b": {
+    "model": "base",
+    "script": "She lost her backpack",
+    "transcript": "She lost her backpack.",
+    "audioSha256": "f236c9a61e17860812bd36996d1974462cc34c2cd94fdbab6f7840b4e666a66e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-Q3-c": {
+    "model": "base",
+    "script": "She didn't know anyone",
+    "transcript": "She didn't know anyone.",
+    "audioSha256": "a88230e6f2fc7017c8e5377cee0b4f47b91c6e3c42a5649b8c761d2172b5d389",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-Q3-d": {
+    "model": "base",
+    "script": "She forgot her lunch",
+    "transcript": "She forgot her lunch.",
+    "audioSha256": "4adfb11f53364acbb73a8db4afcb354be3d3feba1ae1ee75a0a17dba2b87b040",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-Q1-a": {
+    "model": "base",
+    "script": "Guards the hive",
+    "transcript": "Guards the hive.",
+    "audioSha256": "1505eb0b96e93be53703db67f11a7ef919fd40872350bac03562727940642de0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-Q1-b": {
+    "model": "base",
+    "script": "Lays all the eggs",
+    "transcript": "Lays all the eggs.",
+    "audioSha256": "932c791004afa69e69d5ef6b2a2f5cf876c7402f9b6044024db8d563cb77bc69",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-Q1-c": {
+    "model": "small",
+    "script": "Collects nectar",
+    "transcript": "Collects nectar.",
+    "audioSha256": "6191ab1261dc3a059586d22af8fb2ebe9b2c2be3bbb0f8f39c7cd288b8000ac8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-Q4-b": {
+    "model": "base",
+    "script": "Heavy and slow",
+    "transcript": "Heavy and slow.",
+    "audioSha256": "ea91b3b22e6fa553fcbe0db75092aeb30f4de24c47ba7199b75e92baa8305bef",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.3-Q1-a": {
+    "model": "base",
+    "script": "It makes another chrysalis",
+    "transcript": "It makes another chrysalis.",
+    "audioSha256": "8f931453f19aa5e19871f8371e39d2017ee63b5b1c545d9c965289cdab40750d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.3-Q1-b": {
+    "model": "base",
+    "script": "It eats more leaves",
+    "transcript": "It eats more leaves.",
+    "audioSha256": "ae26fd6aa847f6b18312a1d6da5ffbb98776b929a480cde7c8217e0dc5844b3d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.3-Q1-c": {
+    "model": "base",
+    "script": "It goes to sleep forever",
+    "transcript": "It goes to sleep forever.",
+    "audioSha256": "cf12faabed5d128519c404a98ee2e6dc2adabf49a9d9939c641e1c1060cadd5e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.3-Q1-d": {
+    "model": "base",
+    "script": "It becomes a butterfly",
+    "transcript": "It becomes a butterfly.",
+    "audioSha256": "2452940d4482bf1d03a0f171c8cc328b82e4da9acf301f4828328c0701278fd3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-H1-a": {
+    "model": "base",
+    "script": "To make the reading feel slow, like the turtle moving",
+    "transcript": "To make the reading feel slow, like the turtle moving.",
+    "audioSha256": "ded7b5b82e132b2c9c183495e4cac34a53610d2e486956bbe9aed5e00fd512a0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-H1-b": {
+    "model": "base",
+    "script": "To show the turtle is lost and can't find his way",
+    "transcript": "To show the turtle is lost and can't find his way.",
+    "audioSha256": "b6c1f77d9f05e0b39f4b1246d7beff5a6f2989b676cd1767f16c62a70a2cb998",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-H1-c": {
+    "model": "base",
+    "script": "To show the turtle is quietly sleeping",
+    "transcript": "To show the turtle is quietly sleeping.",
+    "audioSha256": "60e187173e84d43209ca7f9b37a4fe4b223374df8867d90c683757a7aa2f211b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.4-H1-d": {
+    "model": "base",
+    "script": "To count how many steps the turtle took",
+    "transcript": "To count how many steps the turtle took.",
+    "audioSha256": "1bfe4cb341a4639ff304bbe11d5852fb0d8bc7b351b82b220b35f416a1704595",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-H1-a": {
+    "model": "base",
+    "script": "So the birds are not scared away",
+    "transcript": "So the birds are not scared away.",
+    "audioSha256": "987a6dad14b3df9d8b74dead11a699dadc43b0c1cbb320143cc969270d1524ad",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-H1-b": {
+    "model": "base",
+    "script": "So the porch stays nice and clean",
+    "transcript": "So the porch stays nice and clean.",
+    "audioSha256": "53564c63e3dffb904642e411062a3aa9dfa0b3216743ae06f7afd9611f2d6d18",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-H1-c": {
+    "model": "base",
+    "script": "So the cat can sleep a little longer",
+    "transcript": "So the cat can sleep a little longer.",
+    "audioSha256": "686e5033bb9bf6efbb6f89930f8271dc5fcf3319a44beaf11e459572d61a49c7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.1-H1-d": {
+    "model": "base",
+    "script": "So the cat will not eat the seeds",
+    "transcript": "So the cat will not eat the seeds.",
+    "audioSha256": "eea40b32739753adc717fd33c6959b5c79f4bcc98836d6ea58f3ddfd9e03d511",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-H4-a": {
+    "model": "base",
+    "script": "He wanted Tomas to share his lunch with friends",
+    "transcript": "He wanted Tomas to share his lunch with friends.",
+    "audioSha256": "e59c1fe8831fadcbad94b667a40ea06659bff40abcfeb233702163bb25ab6e03",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-H4-b": {
+    "model": "base",
+    "script": "He always makes star-shaped food for everyone",
+    "transcript": "He always makes star-shaped food for everyone.",
+    "audioSha256": "7d98009fa80c3b663be99d8fce67a64210da67575a6ad88d2ccedecaa1f43994",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-H4-c": {
+    "model": "base",
+    "script": "He forgot to pack a real lunch that day",
+    "transcript": "He forgot to pack a real lunch that day.",
+    "audioSha256": "6f063d5e98cfc34c84f7809eebd35472f17ae13fb5c8579c6b01cd8af3d87cb8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.2.1-H4-d": {
+    "model": "base",
+    "script": "He listened to what Tomas said and tried to make him happy",
+    "transcript": "He listened to what Tomas said and tried to make him happy.",
+    "audioSha256": "4c738020d8a94394ebbbd385f74dfe2aebb1741986175ffe0314e43758ac8654",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.2-H5-a": {
+    "model": "base",
+    "script": "The different ways a librarian helps at the library",
+    "transcript": "The different ways a librarian helps at the library.",
+    "audioSha256": "7caa8b8d9ef2fa9de049cd7f6c3bf7fedc288af9e1138a3cb61bc23adb38668f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.2-H5-b": {
+    "model": "base",
+    "script": "Why kids love to check out library books",
+    "transcript": "Why kids love to check out library books?",
+    "audioSha256": "485c30ff7682c15c24b1dcdc84a72a36bd153f66e1a1ffa02d705b1988aaa11c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.2-H5-c": {
+    "model": "base",
+    "script": "How a librarian opens the library in the morning",
+    "transcript": "How a librarian opens the library in the morning.",
+    "audioSha256": "69d63883b5aed741182b61c7d539d5de1dd6a92311d51b3dfdd828dd40dc9a67",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.2.2-H5-d": {
+    "model": "base",
+    "script": "How to find a good book on the shelf",
+    "transcript": "How to find a good book on the shelf",
+    "audioSha256": "89ccbd28d61de6dc868fd428929f66edc68f3136884dad5f62b7a19f04d57443",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q1-a": {
+    "model": "base",
+    "script": "Don't trust flattery from someone who wants something",
+    "transcript": "Don't trust flattery from someone who wants something.",
+    "audioSha256": "f6ab24028d44efdfed4ea3ae819e8aa424e3634e2aaa430b8b69881968d6bb28",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q1-b": {
+    "model": "base",
+    "script": "Foxes are faster than crows",
+    "transcript": "Foxes are faster than crows.",
+    "audioSha256": "017e31134dae4cd6c0863547728b4643c2801a1827bed9b4677c6741b8f4c830",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q1-c": {
+    "model": "base",
+    "script": "Crows can't sing",
+    "transcript": "Crows can't sing.",
+    "audioSha256": "bddd722667d2b0df7180640ac782b69a86a4624ce1793acd5274a39a35101ac7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q1-d": {
+    "model": "base",
+    "script": "Cheese is delicious",
+    "transcript": "Cheese is delicious.",
+    "audioSha256": "17a697475fc1996e5c8ec18719f23e055b8b4db394ad9ff605b2a940a0b71acf",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E1-a": {
+    "model": "base",
+    "script": "The ground got very cold",
+    "transcript": "The ground got very cold.",
+    "audioSha256": "321ea7703c9967dd4f243b87eac2caeeec10525af205dd42b32420042ceb530c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E1-b": {
+    "model": "base",
+    "script": "Someone stirred the water",
+    "transcript": "Someone stirred the water.",
+    "audioSha256": "f9e347ad1dc4a4e31b574f2c92ece40d910bd4823f434a7c4c1918d8e5274da0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E1-c": {
+    "model": "base",
+    "script": "A duck landed on the pond",
+    "transcript": "A duck landed on the pond.",
+    "audioSha256": "c527f98fd9716352deb8a328a47092bbe765887fdc33e16683ce8df3b299c407",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E1-d": {
+    "model": "base",
+    "script": "The sun came out",
+    "transcript": "The sun came out.",
+    "audioSha256": "3fa6f6bbb8c15a838ee65dd5cb5c647cb5a3649a7fbd5de39856322a8ceb936f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q2-a": {
+    "model": "base",
+    "script": "Wolves are dangerous",
+    "transcript": "Wolves are dangerous.",
+    "audioSha256": "cad8dd3d5b19e38d74328670cdfeb9e637bd6c0b7eed3e2934e2f965d42669a4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q2-b": {
+    "model": "base",
+    "script": "Boys shouldn't be shepherds",
+    "transcript": "Boys shouldn't be shepherds.",
+    "audioSha256": "83009829555409be4de9469ae767863225ef07f9c72dfe3813a7c58c02a625e0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q2-c": {
+    "model": "base",
+    "script": "Lying destroys trust",
+    "transcript": "Lying destroys trust.",
+    "audioSha256": "487b7f569bbc45afb36d1666e1139f6ef733b951edeba3360fe920cf20b37c97",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.2-Q2-d": {
+    "model": "base",
+    "script": "Villagers are mean",
+    "transcript": "Villagers are mean.",
+    "audioSha256": "2bf148581af74f2e3c8e60c03d23520e2e34b8c3cc0199c8b6016e2f422417d9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E4-a": {
+    "model": "base",
+    "script": "People planted trees",
+    "transcript": "People planted trees.",
+    "audioSha256": "861f27295216c6b56973efff5c053612119452a97b7845603d5a66b4ee863d2e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E4-b": {
+    "model": "base",
+    "script": "The volcano was built",
+    "transcript": "The volcano was built.",
+    "audioSha256": "94cdd91cb5535dcf81d7377c3cf3995c3c95129f9206a10c70881534b66c09cf",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E4-c": {
+    "model": "base",
+    "script": "Snow fell on the town",
+    "transcript": "Snow fell on the town.",
+    "audioSha256": "231902d98d1309898d0c44d884e21ed365b814406f7d3e7df9c661c71e64c611",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.3.3-Q8": {
+    "model": "base",
+    "script": "Mangrove trees grow along tropical coastlines. Their roots extend into the water and slow down waves. Due to this, mangroves prevent erosion and protect the shore during storms. What is the EFFECT of mangrove roots slowing down waves?",
+    "transcript": "Mangrove trees grow along tropical coastlines. Their roots extend into the water and slow down waves. Due to this, Mangroves prevent erosion and protect the shore during storms. What is the effect of Mangrove roots slowing down waves?",
+    "audioSha256": "58effe96a01178ced38a3c1ce43a92f3ae14289fd13981e0e48719039ccf583c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-E4-d": {
+    "model": "small",
+    "script": "Hot lava flowed down the mountain",
+    "transcript": "Hot lava flowed down the mountain.",
+    "audioSha256": "6407a9ddcf009a00c5da5f0ba10d8899ca34a6ffad162c079c8b0ece9be7e3dd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.4-Q4-a": {
+    "model": "small",
+    "script": "They went on a field trip to the zoo",
+    "transcript": "They went on a field trip to the zoo.",
+    "audioSha256": "22148577bf8df5520e1c822f5bd77f299d6524e5681fcc237b905aacb7219ee7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.4-Q4-b": {
+    "model": "small",
+    "script": "The teacher likes animals",
+    "transcript": "The teacher likes animals.",
+    "audioSha256": "c2554e89978387348cfeac435ee129763338374bc3c528e5d3df2c49c62e4ec9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.4-Q4-c": {
+    "model": "small",
+    "script": "There were animals in the classroom",
+    "transcript": "There were animals in the classroom.",
+    "audioSha256": "be8ed53eff10dccbcc82d17139215facf8136d60cd5868a39b9f27aa3841a7fd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.4-Q4-d": {
+    "model": "small",
+    "script": "The classroom was very loud and chaotic",
+    "transcript": "The classroom was very loud and chaotic.",
+    "audioSha256": "8b873e683b19a9199468a583bf77ed586ae25141c63c08dbac28adf580abdadd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-Q8-a": {
+    "model": "small",
+    "script": "The trees grow taller",
+    "transcript": "The trees grow taller.",
+    "audioSha256": "ec642bf32cc9b9b205c14d56bf6cd639c92e842b10c5f03b67530ace817bb3c7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-Q8-b": {
+    "model": "small",
+    "script": "Fish cannot swim",
+    "transcript": "Fish cannot swim.",
+    "audioSha256": "5562b386fea84b3f7d2c89ae3cb066a3c9b2aa2b284b830f4cfb3a507e7cd159",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-Q8-c": {
+    "model": "small",
+    "script": "The shore is protected from erosion",
+    "transcript": "The shore is protected from erosion.",
+    "audioSha256": "91e79a616ae8de8f9235c1ffda30e6d960886042193eec0e9598da054dadc19e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.3-Q8-d": {
+    "model": "small",
+    "script": "The water gets warmer",
+    "transcript": "The water gets warmer.",
+    "audioSha256": "5c0aab0b53f63612a94fedd28d0bdf513f62a824423decd5b79547e33633ae15",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H3-a": {
+    "model": "small",
+    "script": "Forgetful",
+    "transcript": "forgetful",
+    "audioSha256": "f77747e7750978eb23467eaab34c517228af372435480da1912c2fcd488dd7b4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H3-b": {
+    "model": "small",
+    "script": "Cheerful",
+    "transcript": "Cheerful!",
+    "audioSha256": "1bb766f4d1c2e52e1fbdd3fb9eec6fdfb66f401f236f3444bee864b1e749678c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H3-c": {
+    "model": "small",
+    "script": "Careful",
+    "transcript": "Careful!",
+    "audioSha256": "7ac1dd435f1b5c416c850e8eddbd69c1e242ba9b4ee89a28e16a821a3a15ed66",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H3-d": {
+    "model": "small",
+    "script": "Fearful",
+    "transcript": "Fearful!",
+    "audioSha256": "3d4457bf13ceb274441ef5510a75ba0919d4b768c68a5cb371e3c40d2603e017",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.9-H2-a": {
+    "model": "small",
+    "script": "\"I agree, deserts are always warm places.\"",
+    "transcript": "I agree. Deserts are always warm places.",
+    "audioSha256": "482891f3f8fd3b9635698223e5d36b6255d6a2ebdd12475516241ab2b5048e39",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.9-H2-b": {
+    "model": "small",
+    "script": "\"That is true in the daytime, but the Sahara is not hot all the time.\"",
+    "transcript": "That is true in the daytime, but the Sahara is not hot all the time.",
+    "audioSha256": "db7f4b6ad6c76973af8c7c86c5ce3d97e6a5169b84410bb4e63755d4d4b47619",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.9-H2-c": {
+    "model": "small",
+    "script": "\"You are wrong, the Sahara is never hot.\"",
+    "transcript": "You are wrong. The Sahara is never hot.",
+    "audioSha256": "c4375ba8a1b8798b5a5f930bad6017f3eefbfb5f70462bc69a7229ac818f28d3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.9-H2-d": {
+    "model": "small",
+    "script": "\"Deserts are hot because they get almost no rain.\"",
+    "transcript": "Deserts are hot because they get almost no rain.",
+    "audioSha256": "64e76097c5da20f570dff61e234c06eac2f97fa1b6625213c6726760048f5be4",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H2-a": {
+    "model": "small",
+    "script": "She is not telling the truth about what she saw",
+    "transcript": "She is not telling the truth about what she saw.",
+    "audioSha256": "f5ec21c721ca0a88b8a77640d4d1e25f32afe262d500d236277879f30a9e15af",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H2-b": {
+    "model": "small",
+    "script": "She notices and pays attention to what happens around her",
+    "transcript": "She notices and pays attention to what happens around her.",
+    "audioSha256": "100e46d029349d8e3d14ba4c0295a5c1c6f6d9caa6329263fc7d41e04a224fb5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H2-c": {
+    "model": "small",
+    "script": "She is too shy to make any friends at recess",
+    "transcript": "She is too shy to make any friends at recess.",
+    "audioSha256": "93e70deee89d2a336efb66c3f17c81db18ae150042df12771e66dd4715ca6c09",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.3.1-H2-d": {
+    "model": "small",
+    "script": "She would rather read than play with the other kids",
+    "transcript": "She would rather read than play with the other kids.",
+    "audioSha256": "4698a048f6af87c4860f3244e9965010d9835dfbd683a366551a0d74bff9f1e0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.2-H4-a": {
+    "model": "small",
+    "script": "Baby penguins are covered in soft gray fluff",
+    "transcript": "Baby penguins are covered in soft gray fluff.",
+    "audioSha256": "1bb41d8b0a43e90606a42178abd256eb1ae791177e2ec8578e7d93a600c0098d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.2-H4-b": {
+    "model": "small",
+    "script": "Penguins cannot fly up into the air like other birds",
+    "transcript": "Penguins cannot fly up into the air like other birds.",
+    "audioSha256": "ab314d32111fe66ff081c1daeb3eba672e2f87a11d1b17bbe81c816857d57af3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.2-H4-c": {
+    "model": "small",
+    "script": "Penguins dive into the sea to catch fish to eat",
+    "transcript": "Penguins dive into the sea to catch fish to eat.",
+    "audioSha256": "80953baa6e0825c8917dd7e14a4058a571fdae680d209ee0c3cd5c6fe476f29f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.3.2-H4-d": {
+    "model": "small",
+    "script": "Their feathers are packed tightly together to trap warm air against their skin",
+    "transcript": "Their feathers are packed tightly together to trap warm air against their skin.",
+    "audioSha256": "208a1c811dea5b933a2fbfbfcb75b9b715155d6b480c42f002510898d48bc980",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E3-a": {
+    "model": "small",
+    "script": "hungry",
+    "transcript": "Hungry.",
+    "audioSha256": "004306cadb6b6a4fc2d58183a5b0e0716ca2c63e3c2b080806c0abf56948a864",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E3-b": {
+    "model": "small",
+    "script": "curious",
+    "transcript": "curious",
+    "audioSha256": "afa4cd27ea729ca056087aa2a8762e6f85533dc677635f87ead7b7dcea988fa8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E3-c": {
+    "model": "small",
+    "script": "sad",
+    "transcript": "Sad.",
+    "audioSha256": "ab9eab6f80e09045fd91634a2e5619835712e2116a1651ab8de798303219344e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E3-d": {
+    "model": "small",
+    "script": "excited",
+    "transcript": "Excited!",
+    "audioSha256": "c2b6601f91e00085c63d5b8683ee997568ec5d60919bf2ae4da17347f859d384",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.2-E2-a": {
+    "model": "small",
+    "script": "People sleep at night",
+    "transcript": "People sleep at night.",
+    "audioSha256": "367ec12d13825dd5bfe6dc259de7c0941ae981a981d3e46e674193ed23c42136",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.2-E2-b": {
+    "model": "small",
+    "script": "The heart pumps blood through your body",
+    "transcript": "The heart pumps blood through your body.",
+    "audioSha256": "2eeb5151d040501df4e58bd8daded8b7f7385d127b4cd936a6b398ac7f7ca131",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.2-E2-c": {
+    "model": "small",
+    "script": "Muscles get tired",
+    "transcript": "Muscles get tired.",
+    "audioSha256": "1ebb07019e417410add78e56951f3889fdebe04475992826295fa807cb31b9f8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.2-E2-d": {
+    "model": "small",
+    "script": "Blood is the color red",
+    "transcript": "Blood is the color red.",
+    "audioSha256": "6aa7a95fde04cfd85b540348d51142eef1511b18817444a4844a908868638e41",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E1-a": {
+    "model": "small",
+    "script": "very brave",
+    "transcript": "Very brave.",
+    "audioSha256": "d93a9cbbcfea2ed3fb46646c75e8212729190b2ba456981cac508b9622b1fffe",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E1-b": {
+    "model": "small",
+    "script": "very short",
+    "transcript": "Very short.",
+    "audioSha256": "a57040e68645d78aa1b8d2ec628a6b4f92c70cb78c1892ab7e27b2561505fcd0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E1-c": {
+    "model": "small",
+    "script": "very hungry",
+    "transcript": "Very hungry.",
+    "audioSha256": "8a77e0769786cb9cc397f25aea77036a394fc48fc43aa63094d5178a6bd736e7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-E1-d": {
+    "model": "small",
+    "script": "very sleepy",
+    "transcript": "Very sleepy.",
+    "audioSha256": "be5a52c66e6829c4599f9689b9ad479e5b0a4ef5b5057b7467df44b5d087d2a6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.9-E4-a": {
+    "model": "small",
+    "script": "It makes the sun brighter",
+    "transcript": "It makes the sun brighter.",
+    "audioSha256": "290bbfc1e12e7c5eb95052e99ee2d4b73337b72e777955b2d8eaea4d4211d199",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.9-E4-b": {
+    "model": "small",
+    "script": "It only waters plants",
+    "transcript": "It only waters plants.",
+    "audioSha256": "1db52a90adf826db1b8401a8c556169e95d9aec0177cc5bac191259df720dde8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.9-E4-c": {
+    "model": "small",
+    "script": "It paints the sky orange",
+    "transcript": "It paints the sky orange.",
+    "audioSha256": "dd02fb6991d015366f8f8905af238a470a41efbb0155557a25d7578fa65675fb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.9-E4-d": {
+    "model": "small",
+    "script": "It waters plants and fills rivers and lakes",
+    "transcript": "It waters plants and fills rivers and lakes.",
+    "audioSha256": "edbf5196a61a081cc5bdf54c7a1633a9b9494647945f542ad75d73cae7e1aaf7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.2-Q1-a": {
+    "model": "small",
+    "script": "Working alone is always best",
+    "transcript": "Working alone is always best.",
+    "audioSha256": "519cd4547edb894e8a9512d6da51550d23b19b37ac9342bcaabe617ee4f93c77",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.2-Q1-b": {
+    "model": "small",
+    "script": "Collaboration leads to better results than working alone",
+    "transcript": "Collaboration leads to better results than working alone.",
+    "audioSha256": "78e26082c6bfc02933aa8a64906e70f9c32c37cf6672d4ac1ffdce4ebba33b2f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.2-Q1-c": {
+    "model": "small",
+    "script": "Science fairs are unfair",
+    "transcript": "Science fairs are unfair.",
+    "audioSha256": "855b0a5077e0cc96298bf347b46edf376483dfd3a886ca50a65d35e858171755",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.2-Q1-d": {
+    "model": "small",
+    "script": "Winning is everything",
+    "transcript": "Winning is everything.",
+    "audioSha256": "c5a7a228ea12b35559b9464835a043687023bc23d37428f1df66c170d1c65a49",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.3-Q1-a": {
+    "model": "small",
+    "script": "The ships were blocking the harbor",
+    "transcript": "The ships were blocking the harbor.",
+    "audioSha256": "a5a71786a113eb61efb31f00eea842b91912a7dd7ab79d4b0744715856eb5daa",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.3-Q1-b": {
+    "model": "small",
+    "script": "Anger over taxation without representation",
+    "transcript": "Anger over taxation without representation.",
+    "audioSha256": "c16dd221355a8634a896a94ec92c5206283b5f62ff11a7bffd54cfc6189ab372",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.3-Q1-c": {
+    "model": "small",
+    "script": "The colonists wanted free tea",
+    "transcript": "The colonists wanted free tea.",
+    "audioSha256": "76d7108ce809744a04eb3767da06fd911f7c5e4c98ffa550361a6cc3e3caa50a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.3-Q1-d": {
+    "model": "small",
+    "script": "Britain declared war",
+    "transcript": "Britain declared war.",
+    "audioSha256": "434ce19a3526a4fa927a6007f14641cf9ebc1ebb187512cefca8a64c756d615a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q5-a": {
+    "model": "small",
+    "script": "People were cooking in the library",
+    "transcript": "People were cooking in the library.",
+    "audioSha256": "db44c969db34ede27298a63f9ca237e16a3257033ff9aa3e5ef5cd79eab4857c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q5-b": {
+    "model": "small",
+    "script": "Someone had a knife in the library",
+    "transcript": "Someone had a knife in the library.",
+    "audioSha256": "57a8460e79decaca06cb792129a41d6767976b3d953df17ed98a47448e494f02",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q5-c": {
+    "model": "small",
+    "script": "The library was noisy",
+    "transcript": "The library was noisy.",
+    "audioSha256": "54bf87f338baec9c91d529e1328e39e5058dfb0f6dbaa04786c769ea490ba9d8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q5-d": {
+    "model": "small",
+    "script": "The silence was intense and heavy",
+    "transcript": "The silence was intense and heavy.",
+    "audioSha256": "08c71d65b2583733b32b47bdaa1ed3ed5537217f99872b45e467b29c3d25c9d2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q1-a": {
+    "model": "small",
+    "script": "Astronauts sleep less",
+    "transcript": "Astronauts sleep less.",
+    "audioSha256": "61db401e6da1b1b77e6ba75b37831e177eb172695a11b6e325452460d62f076e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q1-b": {
+    "model": "small",
+    "script": "The sun moves faster in space",
+    "transcript": "The sun moves faster in space.",
+    "audioSha256": "5b26b106a3e9794934893126fc718e5ef45ab42389dfffa0f81f0f777fb71bdb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q1-c": {
+    "model": "small",
+    "script": "The station is large",
+    "transcript": "The station is large.",
+    "audioSha256": "406d8b93eeb30d10cb7d79fa36253dbb837084829ca164f729260c51010d5b87",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q1-d": {
+    "model": "small",
+    "script": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
+    "transcript": "It orbits at 17,500 miles per hour, completing an orbit roughly every 90 minutes.",
+    "audioSha256": "08336a949c2f957e52da2d762988e0c98ed5dc11abe72ccfa11ec4b83457ea95",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q4-a": {
+    "model": "small",
+    "script": "A type of shoe",
+    "transcript": "A type of shoe...",
+    "audioSha256": "66478e36d618c003b506a4d023ffedc325ff90f2c3f6810a7d46cc3a61697dfb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q4-b": {
+    "model": "small",
+    "script": "A battle strategy",
+    "transcript": "A battle strategy.",
+    "audioSha256": "222f163ddddb2283e84042aac5ff97a509cef0fc86b57ac3580bcff026ebb7d5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q4-c": {
+    "model": "small",
+    "script": "A person's greatest weakness or vulnerability",
+    "transcript": "A person's greatest weakness or vulnerability.",
+    "audioSha256": "ea70e20a92e904184d17f5c236249139f5534ac024c786083cc1908f047966d0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RL.4.4-Q4-d": {
+    "model": "small",
+    "script": "A foot injury",
+    "transcript": "A foot injury.",
+    "audioSha256": "56be6cd8f34670087529dfea125ce065074d8275082550289c7e24b828123649",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q2-a": {
+    "model": "small",
+    "script": "Scientists previously believed only humans used tools",
+    "transcript": "Scientists previously believed only humans used tools.",
+    "audioSha256": "61fea678fff780c182c95f4b36d8dcc157f84412916228d8ccf5bbaecdafdb34",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q2-b": {
+    "model": "small",
+    "script": "Tanzania is a new country",
+    "transcript": "Tanzania is a new country.",
+    "audioSha256": "4448ef22b3f979d1e06000f9607e0aa2070c012a91d7f168ee1c3d5a32d218b7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q2-c": {
+    "model": "small",
+    "script": "People didn't know about termites before",
+    "transcript": "People didn't know about termites before.",
+    "audioSha256": "0a61e82631965c388e477927f081e00870be93498c2968e6c33528f594d58687",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-sp-RI.4.1-Q2-d": {
+    "model": "small",
+    "script": "Chimpanzees are smarter than humans",
+    "transcript": "Chimpanzees are smarter than humans.",
+    "audioSha256": "66332de316f905643301b2918cac2115116cf97a675306be388ae1f529b64d64",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.3.9-H2": {
+    "model": "small",
+    "script": "How would the AUTHOR of Text B most likely respond to Text A?",
+    "transcript": "How would the author of text B most likely respond to text A?",
+    "audioSha256": "59e4477950e59660ed114a5b14ffd6badbd28750fe26861a00dde257be81f258",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.4.4-Q4": {
+    "model": "small",
+    "script": "His Achilles\u2019 heel was his temper \u2014 it always got him into trouble. An Achilles\u2019 heel refers to \u2014",
+    "transcript": "His Achilles' heel was his temper. It always got him into trouble. An Achilles' heel refers to...",
+    "audioSha256": "26add0d9b8d9604e9f9b887ef87906bdf0730790a4e55777748a5906bdc982e6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "word-try-again": {
+    "model": "small",
+    "script": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
+    "transcript": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
+    "audioSha256": "052d3fec7520385c222c8eb30b666455584b64acd83d23963bfc4826fb027676",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "hello-back": {
+    "model": "small",
+    "script": "Hello! I heard you. I'm glad you're here.",
+    "transcript": "Hello! I heard you. I'm glad you're here.",
+    "audioSha256": "78c060d7709102beaeb829accbc73a5e6ebd18d9a7ff70d195564ee77c251907",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-0": {
+    "model": "small",
+    "script": "Which letter makes this sound?",
+    "transcript": "Which letter makes this sound?",
+    "audioSha256": "24eecead342dd7f39cbd355e6fdf78ce7f873410265907c33d61dd428aef77c1",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-1": {
+    "model": "small",
+    "script": "And what about this sound?",
+    "transcript": "And what about this sound?",
+    "audioSha256": "c14518ba6fa538358ee81f2db325321179357645683372177b62edcb6cd129ab",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-2": {
+    "model": "small",
+    "script": "Which letter goes with this one?",
+    "transcript": "Which letter goes with this one?",
+    "audioSha256": "44f078a629d2cec20d1acbc6e7b3f39d6e3efa15e48f358439384b33d5881868",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "sound-prompt-3": {
+    "model": "small",
+    "script": "And this sound?",
+    "transcript": "And this sound...",
+    "audioSha256": "d313caafc691bdf240cca58e4d67f727af28e933b9cdad98be05e25bc4b37e78",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  }
+}

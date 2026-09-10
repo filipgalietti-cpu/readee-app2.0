@@ -10,9 +10,25 @@ import { getAudioUrl } from "@/lib/audio";
 import type { NarrationKey } from "@/app/data/placement-bank/narration";
 
 let current: HTMLAudioElement | null = null;
+let interrupt: (() => void) | null = null;
+
+export class PlacementAudioError extends Error {
+  constructor() {
+    super("Luna’s audio could not play.");
+    this.name = "PlacementAudioError";
+  }
+}
+export class PlacementAudioCancelled extends Error {
+  constructor() {
+    super("Audio playback was interrupted.");
+    this.name = "PlacementAudioCancelled";
+  }
+}
 let fast = false;
 /** Robot mode: clips resolve almost immediately so a QA run takes seconds, not minutes. */
-export function setFastAudio(on: boolean): void { fast = on; }
+export function setFastAudio(on: boolean): void {
+  fast = on;
+}
 
 let tickCtx: AudioContext | null = null;
 /** Soft two-note tick (C6 -> E6, C-major like the shop chimes) after each word; silent in fast mode. */
@@ -22,7 +38,10 @@ export function softTick(): void {
     tickCtx ??= new AudioContext();
     const ctx = tickCtx;
     const t0 = ctx.currentTime;
-    [[1046.5, 0], [1318.5, 0.07]].forEach(([freq, at]) => {
+    [
+      [1046.5, 0],
+      [1318.5, 0.07],
+    ].forEach(([freq, at]) => {
       const o = ctx.createOscillator();
       const g = ctx.createGain();
       o.type = "sine";
@@ -34,38 +53,77 @@ export function softTick(): void {
       o.start(t0 + at);
       o.stop(t0 + at + 0.14);
     });
-  } catch { /* no audio context: silent */ }
+  } catch {
+    /* no audio context: silent */
+  }
 }
 
 export function stopClip(): void {
-  if (current) { try { current.pause(); } catch { /* ignore */ } current = null; }
+  interrupt?.();
+  interrupt = null;
+  if (current) {
+    try {
+      current.pause();
+    } catch {
+      /* ignore */
+    }
+    current = null;
+  }
 }
 
-export function playUrlAsync(url: string, fallbackMs = 6000): Promise<void> {
+export function playUrlAsync(url: string, fallbackMs = 6000, required = false): Promise<void> {
   if (fast) return new Promise((resolve) => setTimeout(resolve, 60));
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     stopClip();
     let done = false;
-    // Whatever ends the wait (ended, error, or the fallback timer), the clip stops: the fallback used to leave a
-    // slow-loading clip playing under the next one (the overlap heard at the passage in the first real run).
-    const finish = () => { if (done) return; done = true; try { a.pause(); } catch { /* ignore */ } if (current === a) current = null; resolve(); };
+    let guard: ReturnType<typeof setTimeout> | undefined;
     const a = new Audio(url);
+    const finish = (failed = false, cancelled = false) => {
+      if (done) return;
+      done = true;
+      clearTimeout(guard);
+      try {
+        a.pause();
+      } catch {
+        /* ignore */
+      }
+      if (current === a) {
+        current = null;
+        interrupt = null;
+      }
+      if (failed && required)
+        reject(cancelled ? new PlacementAudioCancelled() : new PlacementAudioError());
+      else resolve();
+    };
     current = a;
-    a.addEventListener("ended", finish, { once: true });
-    a.addEventListener("error", finish, { once: true });
-    // Progression never gates on `ended` alone (engine law): a blocked device still moves on.
-    // But a clip that IS playing gets its whole length: `fallbackMs` only covers "never started";
-    // once audio is flowing the guard becomes the clip's own duration plus a margin (a stalled
-    // stream still moves on). Luna used to be cut off mid-sentence on every line longer than the fallback.
-    let guard = window.setTimeout(finish, fallbackMs);
-    a.addEventListener("playing", () => {
-      window.clearTimeout(guard);
-      const secs = Number.isFinite(a.duration) && a.duration > 0 ? a.duration : 45;
-      guard = window.setTimeout(finish, secs * 1000 + 3000);
-    }, { once: true });
-    a.addEventListener("ended", () => window.clearTimeout(guard), { once: true });
-    a.play().catch(finish);
+    interrupt = () => finish(true, true);
+    a.addEventListener("ended", () => finish(), { once: true });
+    a.addEventListener("error", () => finish(true), { once: true });
+    guard = setTimeout(() => finish(true), fallbackMs);
+    a.addEventListener(
+      "playing",
+      () => {
+        if (done) return;
+        clearTimeout(guard);
+        const secs = Number.isFinite(a.duration) && a.duration > 0 ? a.duration : 45;
+        guard = setTimeout(() => finish(true), secs * 1000 + 3000);
+      },
+      { once: true },
+    );
+    a.play().catch(() => finish(true));
   });
+}
+
+/** A scored listening task must never proceed after a missing instruction clip. */
+export const playUrlRequired = (url: string, fallbackMs = 6000) =>
+  playUrlAsync(url, fallbackMs, true);
+export const playNarrRequired = (key: NarrationKey, fallbackMs = 8000) =>
+  playUrlRequired(narrUrl(key), fallbackMs);
+export async function playSeqRequired(urls: string[], gapMs = 250): Promise<void> {
+  for (const url of urls) {
+    await playUrlRequired(url);
+    await new Promise((resolve) => setTimeout(resolve, gapMs));
+  }
 }
 
 export const narrUrl = (key: NarrationKey): string => getAudioUrl("placement", `narr-${key}`);
@@ -93,5 +151,7 @@ export async function childAudioUrl(path: string): Promise<string | null> {
     // 302 -> exists (opaque redirect shows as status 0 / type "opaqueredirect")
     if (r.type === "opaqueredirect" || (r.status >= 300 && r.status < 400)) return url;
     return null;
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
