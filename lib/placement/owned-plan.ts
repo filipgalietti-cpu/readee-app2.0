@@ -1,5 +1,8 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import { decideSpectrum } from "./spectrum-decision";
+import type { SpectrumEvidence } from "./spectrum";
+import type { PlacedBand } from "./ladder";
 import { buildPlan } from "./plan";
 import type { PlacementDecision } from "./decide";
 import type { Moment, PlacementPlan } from "./types";
@@ -22,7 +25,7 @@ export async function loadOwnedPlacementPlan(childId: string): Promise<Placement
   if (!child.data) return null;
   const saved = await db
     .from("placements")
-    .select("plan, decision, moments, created_at")
+    .select("plan, decision, evidence, enrolled, moments, created_at")
     .eq("child_id", childId)
     .order("created_at", { ascending: false })
     .limit(1)
@@ -30,6 +33,18 @@ export async function loadOwnedPlacementPlan(childId: string): Promise<Placement
   if (saved.error) throw new Error("Could not load the reading plan. Please retry.");
   if (!saved.data) return null;
   const plan = saved.data.plan as PlacementPlan;
+  const decision = saved.data.decision as PlacementDecision;
+  if (decision?.spectrum?.version === 1 && saved.data.evidence?.spectrum) {
+    return buildPlan({
+      decision: decideSpectrum(
+        Number(saved.data.enrolled) as PlacedBand,
+        saved.data.evidence.spectrum as SpectrumEvidence,
+        new Date(saved.data.created_at),
+      ),
+      moments: (saved.data.moments ?? []) as Moment[],
+      today: new Date(saved.data.created_at),
+    });
+  }
   return plan.version === 2 || plan.version === 3
     ? plan
     : buildPlan({

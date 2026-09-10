@@ -27,7 +27,8 @@ export async function POST(req: Request) {
   const firstName = String(child.first_name ?? "");
   const before = spokenNameOf(firstName, child.name_said_as as string | null);
   const spoken = spokenNameOf(firstName, saidAs);
-  await admin.from("children").update({ name_said_as: saidAs || null }).eq("id", childId);
+  const { error: saveError } = await admin.from("children").update({ name_said_as: saidAs || null }).eq("id", childId).eq("parent_id", user.id);
+  if (saveError) return NextResponse.json({ ok: false, error: "Could not save the pronunciation. Please retry." }, { status: 503 });
   if (spoken !== before) {
     after(async () => {
       await synthesizeChildGreeting(childId, firstName, spoken);

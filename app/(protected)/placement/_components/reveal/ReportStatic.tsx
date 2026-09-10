@@ -22,6 +22,7 @@ export type ReportStaticProps = {
 const PRINT_CSS = `
 @media print {
   .reveal-print-hide { display: none !important; }
+  .reveal-report section { break-inside: avoid; }
   .reveal-report { box-shadow: none !important; border: 0 !important; }
 }
 `;
@@ -59,6 +60,13 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
       placed_band: result.decision.placedBand,
     });
   }, [result.childId, result.id, result.decision.placedBand]);
+  useEffect(() => {
+    const previous = document.title;
+    document.title = `${result.childName} - Reading Report - Readee`;
+    return () => {
+      document.title = previous;
+    };
+  }, [result.childName]);
   const copy = useMemo(() => buildRevealCopy(result), [result]);
   const n = copy.number;
   const p = copy.placement;
@@ -261,6 +269,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           )}
           <div className="mt-5">
             <GradeLadder
+              provisional={p.provisional}
               enrolled={p.enrolled}
               placed={p.placed}
               childName={copy.childName}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { fixtureSpectrumMaya } from "@/lib/placement/spectrum-fixtures";
+import { fixtureSpectrumMaya, fixtureUnconfirmedReader } from "@/lib/placement/spectrum-fixtures";
 import {
   CelebrationScreen,
   HoldToBuild,
@@ -31,7 +31,7 @@ const FRAMES: { id: Frame; label: string }[] = [
 ];
 
 export default function Page() {
-  const [result] = useState(() => fixtureSpectrumMaya());
+  const [result, setResult] = useState(() => fixtureSpectrumMaya());
   const [tab, setTab] = useState<Tab>("celebration");
   const [frame, setFrame] = useState<Frame>("desktop");
   const [note, setNote] = useState<string>("");
@@ -59,6 +59,19 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-zinc-100 px-4 py-6">
       <div className="mx-auto mb-4 flex max-w-3xl flex-wrap items-center justify-center gap-2">
+        <select
+          aria-label="Report scenario"
+          className="rounded-xl border p-2"
+          onChange={(e) => {
+            setResult(
+              e.target.value === "unconfirmed" ? fixtureUnconfirmedReader() : fixtureSpectrumMaya(),
+            );
+            setRun((r) => r + 1);
+          }}
+        >
+          <option value="confirmed">Confirmed reading</option>
+          <option value="unconfirmed">Unconfirmed reading</option>
+        </select>
         <div className="flex items-center gap-1 rounded-xl bg-white p-1 shadow-sm">
           {TABS.map((t) => (
             <button

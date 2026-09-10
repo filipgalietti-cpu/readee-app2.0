@@ -122,9 +122,10 @@
     "status": "matched"
   },
   "q-sp-r4a1": {
+    "model": "small",
     "script": "Which theme is best supported by Nia's actions?",
-    "transcript": "which theme is best supported by Nia's actions?",
-    "audioSha256": "80ac47b42971d62e4c7df939092820dec4652f320b82cd5ec9da79042f85ef6c",
+    "transcript": "Which theme is best supported by Nia's actions?",
+    "audioSha256": "4bcbe531e263525574097e25ab00d67deb2c1836037f6e5a9780139ff836ceb4",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -157,9 +158,10 @@
     "status": "matched"
   },
   "q-sp-r4a2": {
+    "model": "small",
     "script": "Which detail best shows that Nia values learning more than winning?",
-    "transcript": "Which detail best shows that Nia values learning more than winning?",
-    "audioSha256": "56fafbc8e12fb07e91df728a457606422f781e50237e4e23b307e7d8b6e9270d",
+    "transcript": "Which detail best shows that NIA values learning more than winning?",
+    "audioSha256": "865810e590d0198ac4e4a6f7ff54c0299bdced7d65d9358d2ac997989a5a9741",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -192,9 +194,10 @@
     "status": "matched"
   },
   "q-sp-r4a3": {
+    "model": "small",
     "script": "How did Nia's interpretation of the taller plants change?",
-    "transcript": "How did Nia's interpretation of the taller plants change?",
-    "audioSha256": "2137f01147c4547e82824e21b3c1abdf550e33498b284d7338a31537f91b5508",
+    "transcript": "How did NIA's interpretation of the taller plants change?",
+    "audioSha256": "8e021805c89f670f60605898972fb2fd16c327711ebc8017612b2c75bf785a1a",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2329,9 +2332,9 @@
   },
   "hello-back": {
     "model": "small",
-    "script": "Hello! I heard you. I'm glad you're here.",
-    "transcript": "Hello! I heard you. I'm glad you're here.",
-    "audioSha256": "78c060d7709102beaeb829accbc73a5e6ebd18d9a7ff70d195564ee77c251907",
+    "script": "Hello there! Let's read together.",
+    "transcript": "Hello there! Let's read together!",
+    "audioSha256": "97b2fabb1aaafdf856995db6a5ef97d4478b6f618f4da14a882b0907b6b71156",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2364,6 +2367,22 @@
     "script": "And this sound?",
     "transcript": "And this sound...",
     "audioSha256": "d313caafc691bdf240cca58e4d67f727af28e933b9cdad98be05e25bc4b37e78",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "reading-break": {
+    "model": "small",
+    "script": "You have read two texts. Ready to finish this part? You can finish reading now, or try another text.",
+    "transcript": "You have read two texts. Ready to finish this part? You can finish reading now or try another text.",
+    "audioSha256": "64a6131f56eb12223599da116e26b2fa5c3941d0748fe241b87d746e0a858a1e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "parent-welcome": {
+    "model": "small",
+    "script": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own, and stay nearby to help with the microphone. The results and first lesson are free. When you are ready, hand the device to your reader.",
+    "transcript": "Welcome to Readee! This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own and stay nearby to help with the microphone. The results and first lesson are free. When you are ready, hand the device to your reader.",
+    "audioSha256": "8e9db4b72c6608da3d7b37cb8839ac6eec8d385b9542178253faea26759afb72",
     "wordErrorRate": 0.0,
     "status": "matched"
   }

@@ -21,6 +21,7 @@ async function main() {
     if (only && id !== only) continue;
     const hash = createHash("sha256").update(`Autonoe:${text}`).digest("hex");
     if (
+      !process.argv.includes("--force") &&
       (await fs.readFile(`${dir}/${id}.sha256`, "utf8").catch(() => "")) === hash &&
       (await fs
         .stat(`${dir}/${id}.mp3`)
@@ -59,7 +60,7 @@ async function main() {
                   : batch.map((c) => `${c.text.replace(/\s+/g, " ")}. Next recording.`).join("\n"),
               prompt:
                 batch.length === 1
-                  ? "Read only the supplied text in a calm, warm reading-teacher voice. Do not add an introduction or explanation."
+                  ? "Read only the supplied text in a calm, warm reading-teacher voice. Do not add an introduction or explanation. Pronounce the character name Nia as NEE-ah consistently. Pronounce the brand Readee as REE-dee, rhyming with seedy, not ready."
                   : "Read exactly the supplied text in a calm, warm reading-teacher voice. Pause one second before and after each phrase Next recording. Speak the phrase Next recording every time. Do not add numbers, explanations, or introductions.",
             },
             voice: { languageCode: "en-US", name: "Autonoe", model_name: "gemini-2.5-flash-tts" },

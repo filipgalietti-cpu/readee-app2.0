@@ -1049,3 +1049,277 @@
     font-size: 28px;
   }
 }
+
+/* Reading turns: one close activity cluster; controls stay inside the frame. */
+.pa-frame[data-screen="word"] {
+  grid-template-rows: 48px minmax(0, 1fr) auto;
+}
+.pa-frame[data-screen="word"] .pa-stage {
+  align-items: end;
+  padding-bottom: 8px;
+}
+.pa-frame[data-screen="word"] .pa-word-task {
+  margin: 0 auto;
+  gap: 16px;
+}
+.pa-frame[data-screen="word"] .pa-voice-dock {
+  padding: 8px 0 clamp(16px, 8vh, 80px);
+}
+.pa-frame .pa-reading-word {
+  background: white;
+  border: 2px solid var(--pa-border);
+  border-radius: 24px;
+  box-shadow: 0 4px 0 var(--pa-border);
+  padding: 24px 32px;
+  min-width: min(100%, 320px);
+  max-width: 100%;
+  text-transform: none;
+}
+.pa-frame .pa-voice-actions {
+  flex-wrap: wrap;
+}
+.pa-frame .pa-voice-actions button {
+  white-space: normal;
+  max-width: 100%;
+}
+.pa-frame.pa-book-frame {
+  grid-template-rows: 48px minmax(0, 1fr) 184px;
+}
+.pa-frame.pa-book-frame .pa-voice-dock {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 440px);
+  grid-template-rows: 1fr auto;
+  column-gap: 16px;
+  row-gap: 8px;
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 8px 0;
+}
+.pa-book-frame .pa-page-dock {
+  grid-column: 2;
+  grid-row: 1;
+}
+.pa-book-frame .pa-mic-row {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  flex-direction: column;
+  gap: 8px;
+}
+.pa-book-frame .pa-voice-actions {
+  grid-column: 2;
+  grid-row: 2;
+}
+.pa-frame .pa-page-controls {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 8px;
+}
+.pa-page-controls span {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  text-align: center;
+  font-size: 18px;
+}
+.pa-frame .pa-page-controls button {
+  grid-row: 2;
+  min-width: 0;
+  padding: 8px;
+  font-size: 20px;
+}
+.pa-frame .pa-page-controls button:last-child {
+  grid-column: 2;
+}
+.pa-frame .pa-book-page {
+  padding: 16px 24px;
+}
+.pa-frame .pa-book-page p {
+  font-size: clamp(25px, 2.4vw, 32px);
+  line-height: 1.5;
+}
+.pa-frame .pa-reading-page {
+  gap: 16px;
+}
+.pa-frame .pa-reading-page .pa-prompt h1 {
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+/* The text stays open. Answers are rows, never narrow word-wrapping pills. */
+.pa-frame[data-screen="question"] .pa-stage {
+  align-items: stretch;
+  overflow: auto;
+}
+.pa-frame .pa-question-task {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 32px;
+  width: min(100%, 1100px);
+  max-width: none;
+  margin: auto;
+  align-items: start;
+}
+.pa-frame .pa-question-task:not(:has(.pa-look-back)) {
+  grid-template-columns: minmax(0, 720px);
+  justify-content: center;
+}
+.pa-question-answers {
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+}
+.pa-frame .pa-question-task .pa-prompt {
+  text-align: left;
+}
+.pa-frame .pa-question-task .pa-prompt h1 {
+  font-size: clamp(26px, 2.5vw, 36px);
+}
+.pa-frame .pa-question-task .pa-options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+.pa-frame .pa-question-task .pa-option {
+  flex-direction: row;
+  width: 100%;
+  max-width: none;
+  border-radius: 16px;
+}
+.pa-frame .pa-question-task .pa-tile {
+  min-height: 64px;
+  padding: 16px;
+  font-size: 24px;
+  line-height: 1.35;
+  text-align: left;
+  overflow-wrap: normal;
+  word-break: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pa-selected-mark {
+  flex-shrink: 0;
+  color: #7c3aed;
+}
+.pa-frame .pa-question-task .pa-listen {
+  align-self: center;
+  flex: 0 0 48px;
+}
+.pa-frame .pa-look-back {
+  padding: 16px;
+  margin: 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+.pa-frame .pa-story-label {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.pa-frame .pa-look-back-scroll {
+  max-height: min(48dvh, 480px);
+  overflow: auto;
+}
+.pa-frame .pa-look-back-scroll p {
+  font-size: 24px;
+  line-height: 1.6;
+}
+.pa-frame .pa-answer-action {
+  margin-top: 0;
+}
+.pa-frame .pa-answer-action > span {
+  font-size: 18px;
+}
+.pa-frame[data-screen="question"] .pa-bunny {
+  display: none;
+}
+.pa-frame[data-screen="question"] .pa-dock {
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+}
+@media (max-width: 767px) {
+  .pa-frame.pa-book-frame {
+    grid-template-rows: 44px minmax(0, 1fr) 168px;
+  }
+  .pa-frame.pa-book-frame .pa-voice-dock {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .pa-book-frame .pa-mic-row .pa-reading-orb {
+    zoom: 0.6;
+  }
+  .pa-frame .pa-book-page {
+    padding: 16px;
+  }
+  .pa-frame .pa-book-page p {
+    font-size: 25px;
+  }
+  .pa-frame .pa-reading-page {
+    gap: 8px;
+  }
+  .pa-frame .pa-question-task {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .pa-frame .pa-look-back {
+    position: static;
+  }
+  .pa-frame .pa-look-back-scroll {
+    max-height: 180px;
+  }
+  .pa-frame .pa-look-back-scroll p {
+    font-size: 23px;
+  }
+  .pa-frame .pa-question-task .pa-tile {
+    font-size: 23px;
+    padding: 12px 16px;
+  }
+  .pa-frame .pa-answer-action {
+    gap: 8px;
+  }
+  .pa-frame .pa-answer-action > span {
+    font-size: 16px;
+  }
+  .pa-frame .pa-reading-word {
+    padding: 16px;
+  }
+  .pa-frame[data-screen="word"] .pa-voice-dock {
+    padding-bottom: 16px;
+  }
+}
+.pa-name-pronunciation {
+  margin: 16px 0;
+  font-size: 18px;
+}
+.pa-name-pronunciation summary {
+  cursor: pointer;
+  color: #655179;
+  text-decoration: underline;
+}
+.pa-name-pronunciation label {
+  display: block;
+  margin-top: 16px;
+}
+.pa-name-pronunciation input {
+  width: 100%;
+  font-size: 20px;
+  padding: 12px;
+  border: 2px solid var(--pa-border);
+  border-radius: 16px;
+  margin: 8px 0;
+  background: white;
+}
+.pa-frame .pa-reading-word {
+  font-size: clamp(40px, 8vw, 88px);
+}
+.pa-frame .pa-reading-word.pa-long-word {
+  font-size: clamp(32px, 6vw, 64px);
+}
+.pa-frame[data-screen="question"] { grid-template-rows: 48px minmax(0, 1fr) 88px; }
+.pa-frame[data-screen="question"] .pa-dock-action { display: flex !important; gap: 8px; align-items: center; }
+@media (max-width: 767px) {
+  .pa-frame[data-screen="question"] { grid-template-rows: 44px minmax(0, 1fr) 76px; }
+  .pa-frame[data-screen="question"] .pa-answer-action > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .pa-frame[data-screen="question"] .pa-dock { gap: 8px; }
+  .pa-frame[data-screen="question"] .pa-look-back-scroll { max-height: 144px; }
+}

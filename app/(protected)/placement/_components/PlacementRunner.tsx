@@ -796,7 +796,7 @@ export default function PlacementRunner({
         setScreen({ kind: "blocked", reason: status });
         return;
       }
-      setScreen({ kind: "luna", caption: "Hello! I’m glad you’re here." });
+      setScreen({ kind: "luna", caption: "Hello there! Let’s read together." });
       setOrb("speaking");
       await playUrlAsync(spectrumClip("hello-back"));
       setOrb("idle");
@@ -862,6 +862,30 @@ export default function PlacementRunner({
       while (readingState.next) {
         if (cancelled()) return;
         const passage = readingState.next;
+        if (!activeReading && spectrum.reading.length === 2 && !robot) {
+          setScreen({ kind: "reading-break" });
+          setOrb("speaking");
+          const choice = waitTap();
+          await Promise.race([
+            playUrlAsync(spectrumClip("reading-break")).catch((error: unknown) => {
+              if (!(error instanceof PlacementAudioCancelled)) throw error;
+            }),
+            choice,
+          ]);
+          const picked = await choice;
+          stopClip();
+          if (picked === "finish-reading") {
+            spectrum.readingStopped = { passageId: passage.id, reason: "child-pass" };
+            checkpoint();
+            readingState = readingSearch(
+              enrolled,
+              spectrum.words,
+              spectrum.reading,
+              spectrum.readingStopped,
+            );
+            break;
+          }
+        }
         if (!activeReading) {
           setStage("passage");
           setScreen({ kind: "luna", caption: "Read this text out loud. Take your time." });

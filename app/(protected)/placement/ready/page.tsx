@@ -15,7 +15,7 @@ export default async function ReaderHandoff({
   const supabase = await createClient();
   const { data: child, error } = await supabase
     .from("children")
-    .select("id, first_name, grade")
+    .select("id, first_name, grade, name_said_as")
     .eq("id", childId)
     .eq("parent_id", parent.id)
     .maybeSingle();
@@ -24,6 +24,8 @@ export default async function ReaderHandoff({
   const band = bandFromGrade(child.grade);
   return (
     <AssessmentHandoff
+      childId={child.id}
+      initialSaidAs={child.name_said_as ?? ""}
       name={child.first_name?.trim() || "Reader"}
       gradeLabel={band === 0 ? "Kindergarten" : `Grade ${band}`}
       startHref={`/placement?child=${encodeURIComponent(child.id)}`}

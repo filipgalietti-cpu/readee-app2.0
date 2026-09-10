@@ -3,7 +3,9 @@ import language from "./language.json";
 /** Fixed author scripts only; no child's name, voice or other personal data. */
 export function spectrumAudioScripts(): Record<string, string> {
   const clips: Record<string, string> = {
-    "hello-back": "Hello! I heard you. I'm glad you're here.",
+    "reading-break": "You have read two texts. Ready to finish this part? You can finish reading now, or try another text.",
+    "parent-welcome": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own, and stay nearby to help with the microphone. The results and first lesson are free. When you are ready, hand the device to your reader.",
+    "hello-back": "Hello there! Let's read together.",
     "sound-prompt-0": "Which letter makes this sound?",
     "sound-prompt-1": "And what about this sound?",
     "sound-prompt-2": "Which letter goes with this one?",

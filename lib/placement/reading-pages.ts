@@ -12,6 +12,11 @@ export function readingPages(text: string, wordsPerPage = 24) {
         break;
       }
     }
+    // Balance the final two pages so an orphan word never becomes a page.
+    const remaining = words.length - end;
+    if (remaining > 0 && remaining < Math.ceil(wordsPerPage / 3)) {
+      end = start + Math.ceil((words.length - start) / 2);
+    }
     pages.push({ text: words.slice(start, end).join(" "), endWord: end });
     start = end;
   }

@@ -6,6 +6,7 @@ import { BandChip } from "./BandChip";
 import { MARKER_S, useReduced } from "./motion";
 
 export type GradeLadderProps = {
+  provisional?: boolean;
   enrolled: PlacedBand;
   placed: PlacedBand;
   childName: string;
@@ -37,8 +38,17 @@ function stepClass(b: PlacedBand, enrolled: PlacedBand, placed: PlacedBand): str
  * carries the child's name and band, the steps between are tinted, and the
  * gap is bracketed with the category text. Never red.
  */
-export function GradeLadder({ enrolled, placed, childName, bandName, categoryText, animate, instant = false }: GradeLadderProps) {
+export function GradeLadder({ provisional = false, enrolled, placed, childName, bandName, categoryText, animate, instant = false }: GradeLadderProps) {
   const reduced = useReduced();
+  if (provisional) return (
+    <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6">
+      <dl className="grid grid-cols-2 gap-6">
+        <div><dt className="text-sm text-zinc-600">Enrolled grade</dt><dd className="mt-2 text-2xl font-semibold text-zinc-900">{gradeLabel(enrolled)}</dd></div>
+        <div><dt className="text-sm text-zinc-600">Guided lesson start</dt><dd className="mt-2 text-2xl font-semibold text-violet-800">{gradeLabel(placed)}</dd></div>
+      </dl>
+      <p className="mt-5 text-base leading-6 text-zinc-700">Independent reading is not yet confirmed. This is a starting point for guided practice, not a measured reading grade.</p>
+    </div>
+  );
   const jump = instant || reduced;
   const t = { duration: jump ? 0 : MARKER_S, ease: "easeOut" as const };
   const target = animate ? placed : enrolled;

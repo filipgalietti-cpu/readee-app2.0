@@ -39,9 +39,9 @@ for key, script in scripts.items():
         prior.update(script=script,wordErrorRate=round(error,3),status="matched" if error==0 else "review")
         out.write_text(json.dumps(results,indent=2)+"\n")
         if prior.get("status") == "matched" or prior.get("model", "base") == model_name: continue
-    transcript = model.transcribe(str(path),fp16=False,language="en")["text"].strip()
+    transcript = model.transcribe(str(path),fp16=False,language="en",initial_prompt="Names: Readee, Luna, Nia.")["text"].strip()
     error = wer(script,transcript)
-    results[key] = {"model":model_name,"script":script,"transcript":transcript,"audioSha256":digest,"wordErrorRate":round(error,3),"status":"matched" if error == 0 else "review"}
+    results[key] = {"model":model_name,"vocabularyPrompt":"Names: Readee, Luna, Nia.","script":script,"transcript":transcript,"audioSha256":digest,"wordErrorRate":round(error,3),"status":"matched" if error == 0 else "review"}
     out.write_text(json.dumps(results,indent=2)+"\n")
     print(key, results[key]["status"], transcript, flush=True)
 print(f"Checked {len(results)} clips",flush=True)
