@@ -405,9 +405,10 @@ export function narrate(input: NarrateInput): NarrationLine[] {
           : profile.wordStep === 0
             ? "Some letters were matched to their sounds. Next we will practice connecting sounds to short words."
             : `${name} read words from the ${profile.wordLabel.toLowerCase()} set. We will keep practicing the next word patterns.`,
-      "skill-fluency": d.fluency
-        ? `Accuracy on the reading sample was ${Math.round(d.fluency.accuracy * 100)} percent. We build accuracy and understanding before speed.`
-        : "We will collect connected reading samples during lessons.",
+      "skill-fluency":
+        profile.readingBand === null
+          ? "Independent reading is not yet confirmed. We will begin with guided reading and check understanding in lessons."
+          : `Two texts supported independent reading at ${g(profile.readingBand)}. We build accuracy and understanding before speed.`,
       "skill-comprehension":
         profile.languageBand === null
           ? "We measured understanding separately from word reading. The listening answers need more follow-up before we name a starting level."

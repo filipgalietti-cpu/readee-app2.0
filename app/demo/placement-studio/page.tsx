@@ -116,6 +116,35 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
       issue: "technical",
     },
   },
+  { label: "Reading break", stage: "passage", screen: { kind: "reading-break" } },
+  {
+    label: "Long answer words",
+    stage: "listening",
+    screen: {
+      kind: "question",
+      qid: "layout-long-words",
+      prompt: "Which word means finding the size of something?",
+      options: [
+        { id: "a", label: "measurement" },
+        { id: "b", label: "transportation" },
+        { id: "c", label: "information" },
+        { id: "d", label: "temperature" },
+      ],
+      picked: null,
+      readingIdx: -1,
+      speakers: false,
+    },
+  },
+  {
+    label: "Fourth-grade story",
+    stage: "passage",
+    screen: { kind: "passage", title: stretch.title, text: stretch.text, reading: true },
+  },
+  {
+    label: "Long spoken word",
+    stage: "words",
+    screen: { kind: "word", word: "thermometer", listening: true, band: 4 },
+  },
 ];
 
 export default function PlacementStudio() {

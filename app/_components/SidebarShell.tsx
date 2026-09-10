@@ -14,6 +14,7 @@ import AppSidebar from "./AppSidebar";
  * pages.
  */
 const HIDDEN_PAGES = new Set([
+  "/explore",
   "/practice",
   "/assessment",
   "/placement",
@@ -59,7 +60,7 @@ export default function SidebarShell({
     return () => setDesktopSidebarVisible(false);
   }, [sidebarShown, setDesktopSidebarVisible]);
 
-  if (pathname === "/placement" || pathname.startsWith("/placement/")) return <>{children}</>;
+  if (pathname === "/explore" || pathname.startsWith("/explore/") || pathname === "/placement" || pathname.startsWith("/placement/")) return <>{children}</>;
   if (hiddenPage) {
     return (
       <>

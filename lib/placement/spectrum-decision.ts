@@ -7,7 +7,7 @@ import { seasonFor } from "./norms";
 import { grades } from "@/lib/assessment/questions";
 
 export type SpectrumProfile = {
-  version: 1;
+  version: 1 | 2;
   wordStep: number | null;
   wordLabel: string;
   wordBand: PlacedBand;
@@ -26,16 +26,17 @@ export function decideSpectrum(
   date = new Date(),
 ): PlacementDecision {
   const { words: w, reading: r, language: l } = validateSpectrum(enrolled, ev);
-  // Unconfirmed comprehension is not evidence of absent decoding. A word-based
-  // lesson recommendation stays explicitly provisional until connected reading confirms.
-  const entry = r.confirmed ?? w.grade;
+  // Word probes alone cannot promote an unconfirmed reader above enrollment.
+  // Preserve stronger word reading separately and begin guided reading at an
+  // enrollment-appropriate level, or lower when decoding evidence calls for it.
+  const entry = r.confirmed ?? (Math.min(enrolled, w.grade) as PlacedBand);
   const wordLabel = WORD_STEPS[w.highest ?? 0].label;
   const nextStep = w.failed.length ? Math.min(...w.failed) : null;
   const oralBlending = ev.blending.length
     ? { correct: ev.blending.filter((b) => b.correct).length, total: ev.blending.length }
     : null;
   const profile: SpectrumProfile = {
-    version: 1,
+    version: 2,
     wordStep: w.highest,
     wordLabel,
     wordBand: w.grade,
@@ -74,9 +75,10 @@ export function decideSpectrum(
   if (oralBlending && oralBlending.correct < 2) needs.push("blending spoken sounds into words");
   const pair =
     r.confirmed === null ? [] : ev.reading.filter((t) => t.speech.band === r.confirmed).slice(-2);
-  const total = pair.reduce((n, t) => n + readingScore(t).total, 0);
-  const correct = pair.reduce((n, t) => n + readingScore(t).correct, 0);
-  const p = pair[0]?.speech;
+  const measured = pair.length ? pair : ev.reading;
+  const total = measured.reduce((n, t) => n + readingScore(t).total, 0);
+  const correct = measured.reduce((n, t) => n + readingScore(t).correct, 0);
+  const p = (pair[0] ?? ev.reading.at(-1))?.speech;
   const accuracy = p ? p.wordsCorrect / p.wordsTotal : 0;
   const delta = enrolled - entry;
   const comparison =

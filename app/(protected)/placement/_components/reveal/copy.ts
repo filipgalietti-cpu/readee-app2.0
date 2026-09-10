@@ -69,6 +69,7 @@ export type RevealCopy = {
   measured: MeasuredItem[];
   number: NumberCopy | null;
   placement: {
+    provisional?: boolean;
     band: string;
     category: string;
     /** "two grade levels below", for the ladder bracket. */
@@ -391,7 +392,11 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
   // Placement
   const delta = decision.relative.delta;
   const placement = {
-    band: decision.readingLevelName,
+    provisional: decision.spectrum?.readingBand === null,
+    band:
+      decision.spectrum?.readingBand === null
+        ? "Provisional starting point"
+        : decision.readingLevelName,
     category: `${capitalize(decision.relative.label)}.`,
     categoryText: decision.relative.label,
     enrolled: result.enrolled,
@@ -463,16 +468,48 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
   // Strengths with their evidence, and what Luna measured
   if (decision.spectrum) {
     const profile = decision.spectrum;
-    skills[0].value = profile.wordStep === null ? "Needs follow-up" : profile.wordLabel;
-    skills[0].meaning =
-      "Word patterns sampled today; this does not certify mastery of a whole standard.";
-    skills[0].fillPct = null;
-    const fluencySkill = skills.find((s) => s.id === "fluency");
-    if (fluencySkill && f) fluencySkill.fillPct = Math.round(f.accuracy * 100);
-    const compSkill = skills.find((s) => s.id === "comprehension");
-    if (compSkill)
-      compSkill.meaning =
-        "Questions about two texts read independently. Listening understanding was measured separately.";
+    skills.splice(
+      0,
+      skills.length,
+      {
+        id: "decoding",
+        narrationId: "skill-decoding",
+        icon: "text",
+        label: "Word reading",
+        value: profile.wordStep === null ? "Needs follow-up" : profile.wordLabel,
+        fillPct: null,
+        meaning:
+          "Words read in isolation. This does not establish independent reading at the same grade.",
+      },
+      {
+        id: "fluency",
+        narrationId: "skill-fluency",
+        icon: "book-open",
+        label: "Independent reading",
+        value:
+          profile.readingBand === null
+            ? "Not yet confirmed"
+            : `${gradeWord(profile.readingBand)} texts`,
+        fillPct: null,
+        meaning:
+          profile.readingBand === null
+            ? "Reading and meaning did not yet confirm a band together. Begin with guided reading and check understanding in lessons."
+            : "Reading accuracy and answers about two texts supported this starting point.",
+      },
+      {
+        id: "comprehension",
+        narrationId: "skill-comprehension",
+        icon: "brain",
+        label: "Listening understanding",
+        value:
+          profile.languageBand === null
+            ? "Needs follow-up"
+            : `${gradeWord(profile.languageBand)} questions`,
+        fillPct: null,
+        meaning:
+          "Understanding with text read aloud. This is separate from reading the text independently.",
+      },
+    );
     placement.support +=
       profile.languageBand === null
         ? " Listening answers need more follow-up before a supported language level is named."

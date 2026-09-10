@@ -99,3 +99,56 @@ export function fixtureSpectrumMaya(): PlacementResult {
     createdAt: today.toISOString(),
   };
 }
+
+/** Regression profile: strong isolated words, two timed reads, no confirmed
+ * connected-reading band. Contains no family's identifiers or recordings. */
+export function fixtureUnconfirmedReader(): PlacementResult {
+  const sub = spectrumSubmission(1, 9, 3, 1);
+  const ev = sub.spectrum!;
+  ev.reading = ev.reading.slice(0, 2);
+  ev.reading[0].speech = {
+    band: 4,
+    wordsTotal: 86,
+    wordsCorrect: 81,
+    durationSeconds: 122,
+    minuteWordsCorrect: 81,
+    minuteSeconds: 60,
+  };
+  ev.reading[1].speech = {
+    band: 3,
+    wordsTotal: 110,
+    wordsCorrect: 106,
+    durationSeconds: 107,
+    minuteWordsCorrect: 61,
+    minuteSeconds: 60,
+  };
+  ev.readingStopped = {
+    passageId: readingSearch(1, ev.words, ev.reading).next!.id,
+    reason: "child-pass",
+  };
+  ev.language = [];
+  let l = languageSearch(1, ev.language);
+  while (l.next) {
+    ev.language.push({
+      itemId: l.next.id,
+      choiceId: l.next.options.find((o) => o.id !== l.next!.correctId)!.id,
+    });
+    l = languageSearch(1, ev.language);
+  }
+  const today = new Date("2026-09-10T16:00:00Z");
+  const decision = decidePlacement({ ...sub, date: today });
+  const plan = buildPlan({ decision, moments: [], today });
+  return {
+    id: "unconfirmed-demo",
+    childId: sub.childId,
+    childName: "Maya",
+    enrolled: 1,
+    decision,
+    plan,
+    moments: [],
+    narration: narrate({ childName: "Maya", decision, plan, moments: [], today }),
+    passageRecordingPath: null,
+    durationSeconds: 793,
+    createdAt: today.toISOString(),
+  };
+}

@@ -187,7 +187,7 @@ describe("placement spectrum audit regressions", () => {
       narrate({ childName: "Maya", decision: d, plan, moments: [], today }).find(
         (n) => n.id === "number",
       )?.text,
-    ).toContain("guided reading and discussion");
+    ).toContain("correct words per minute");
     expect(d.seeds).toEqual([]);
     expect(d.flags).toContain("placement-needs-followup");
   });

@@ -10,30 +10,48 @@ import type { PlacementResult } from "@/lib/placement/types";
  */
 export async function GET(req: Request) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ ok: false, error: "Not signed in." }, { status: 401 });
   const childId = new URL(req.url).searchParams.get("child") ?? "";
-  if (!/^[0-9a-f-]{36}$/.test(childId)) return NextResponse.json({ ok: false, error: "bad child" }, { status: 400 });
+  if (!/^[0-9a-f-]{36}$/.test(childId))
+    return NextResponse.json({ ok: false, error: "bad child" }, { status: 400 });
 
-  const { data: child, error: childError } = await supabase.from("children").select("id, first_name, parent_id").eq("id", childId).maybeSingle();
-  if (childError) return NextResponse.json({ ok: false, error: "Could not load the reading plan. Please retry." }, { status: 503 });
-  if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
+  const { data: child, error: childError } = await supabase
+    .from("children")
+    .select("id, first_name, parent_id")
+    .eq("id", childId)
+    .maybeSingle();
+  if (childError)
+    return NextResponse.json(
+      { ok: false, error: "Could not load the reading plan. Please retry." },
+      { status: 503 },
+    );
+  if (!child || (child as { parent_id: string }).parent_id !== user.id)
+    return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
 
   const { data: row, error: placementError } = await supabase
     .from("placements")
-    .select("id, child_id, enrolled, decision, moments, plan, narration, passage_recording_path, duration_seconds, created_at")
+    .select(
+      "id, child_id, enrolled, decision, evidence, moments, plan, narration, passage_recording_path, duration_seconds, created_at",
+    )
     .eq("child_id", childId)
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
-  if (placementError) return NextResponse.json({ ok: false, error: "Could not load the reading plan. Please retry." }, { status: 503 });
+  if (placementError)
+    return NextResponse.json(
+      { ok: false, error: "Could not load the reading plan. Please retry." },
+      { status: 503 },
+    );
   if (!row) return NextResponse.json({ ok: true, result: null });
 
   const r = row as Record<string, unknown>;
   const result: PlacementResult = {
     id: String(r.id),
     childId: String(r.child_id),
-    childName: (((child as { first_name?: string }).first_name ?? "").split(" ")[0] || "Reader"),
+    childName: ((child as { first_name?: string }).first_name ?? "").split(" ")[0] || "Reader",
     enrolled: Number(r.enrolled) as PlacementResult["enrolled"],
     decision: r.decision as PlacementResult["decision"],
     moments: (r.moments ?? []) as PlacementResult["moments"],
@@ -43,5 +61,8 @@ export async function GET(req: Request) {
     durationSeconds: Number(r.duration_seconds ?? 0),
     createdAt: String(r.created_at),
   };
-  return NextResponse.json({ ok: true, result: withCurrentPlan(result) });
+  return NextResponse.json({
+    ok: true,
+    result: withCurrentPlan(result, r.evidence as Parameters<typeof withCurrentPlan>[1]),
+  });
 }

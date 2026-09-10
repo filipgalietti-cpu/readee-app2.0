@@ -33,17 +33,22 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
       [320, 568],
     ]) {
       await page.setViewportSize({ width, height });
-      for (let i = 0; i < 17; i++) {
+      for (let i = 0; i < 21; i++) {
         await page.getByRole("combobox").selectOption(String(i));
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
           true,
         );
-        if ([2, 4, 12, 13, 15, 16].includes(i)) {
+        if ([2, 12, 13, 15, 16, 20].includes(i)) {
           await expect(page.locator("[data-finish-speaking]")).toBeInViewport();
           await expect(page.locator("[data-skip-word], [data-skip-story]")).toBeInViewport();
         }
-        if (i === 4 || i === 16) {
+        if (i === 4 || i === 16 || i === 19) {
           await expect(page.getByRole("navigation", { name: "Story pages" })).toBeInViewport();
+          await expect(page.locator("[data-skip-story]")).toBeInViewport();
+          if (i === 4 || i === 19)
+            await expect(
+              page.getByRole("button", { name: "Next page", exact: true }),
+            ).toBeInViewport();
           const fits = await page.evaluate(() => {
             const stage = document.querySelector(".pa-stage").getBoundingClientRect();
             const text = document.querySelector("[data-story-page]").getBoundingClientRect();
@@ -55,7 +60,7 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
           await expect(
             page.getByRole("button", { name: /Hear (the prompt|the sounds) again/ }),
           ).toBeInViewport();
-        if ([3, 5, 10, 11].includes(i)) {
+        if ([3, 5, 10, 11, 18].includes(i)) {
           const action = page.locator("[data-confirm-answer]");
           await expect(
             action,
@@ -73,6 +78,18 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
         }
       }
     }
+    // Manual paging reaches the final page without ending the story early.
+    await page.getByRole("combobox").selectOption("19");
+    let turns = 0;
+    while (await page.getByRole("button", { name: "Next page", exact: true }).count()) {
+      await page.getByRole("button", { name: "Next page", exact: true }).click();
+      await expect(page.locator("[data-passage-reading]")).toBeVisible();
+      if (++turns > 60) throw Error("Story paging did not finish");
+    }
+    await expect(page.getByRole("button", { name: "Finish story", exact: true })).toBeInViewport();
+    await expect(page.locator("[data-story-page]")).not.toHaveText("again");
+    await page.getByRole("button", { name: "Finish story", exact: true }).click();
+    await expect(page.locator("[data-word=thermometer]")).toBeVisible();
     // A spoken choice highlights only that card, and cannot answer the question.
     await page.getByRole("combobox").selectOption("5");
     await page.getByRole("button", { name: "Hear Excited", exact: true }).click();
@@ -83,7 +100,7 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
     expect(errors).toEqual([]);
     expect(writes).toEqual([]);
     console.log(
-      "102 viewport states; selection, confirmation and spoken-choice isolation passed. No writes.",
+      "126 viewport states; selection, confirmation and spoken-choice isolation passed. No writes.",
     );
   } finally {
     await browser.close();

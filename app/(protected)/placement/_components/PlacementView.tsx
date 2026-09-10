@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore, useRef } from "react";
 import { createPortal } from "react-dom";
-import { ArrowLeft, ArrowRight, Volume2, Mic } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
+import { subscribePlayback, getPlaybackAnalyser } from "./audio";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import type { MicState } from "./mic";
@@ -23,6 +24,7 @@ export type PlacementScreen =
       oral?: boolean;
       issue?: "quiet" | "technical";
     }
+  | { kind: "reading-break" }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | {
       kind: "passage";
@@ -110,6 +112,9 @@ function AnswerCards({
               onClick={() => setSelected(option.id)}
             >
               <span>{option.label}</span>
+              {selected === option.id && (
+                <Glyph name="check" size={24} className="pa-selected-mark" />
+              )}
             </button>
             {onRead && (
               <button
@@ -119,7 +124,7 @@ function AnswerCards({
                 disabled={locked || readDisabled}
                 onClick={() => onRead(option.id)}
               >
-                <Volume2 size={21} />
+                <Glyph name="volume2" size={21} />
               </button>
             )}
           </div>
@@ -132,7 +137,7 @@ function AnswerCards({
               {locked
                 ? "Answer saved for this activity"
                 : selected
-                  ? "You can change your answer."
+                  ? "Selected. Tap Next."
                   : "Choose an answer."}
             </span>
             <button
@@ -146,7 +151,7 @@ function AnswerCards({
                 }
               }}
             >
-              Next <ArrowRight size={20} />
+              Next <Glyph name="arrow-right" size={20} />
             </button>
           </div>,
           actionHost,
@@ -168,11 +173,14 @@ function ReadingOrb({
   onTap?: () => void;
   label: string;
 }) {
+  const playbackAnalyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   return (
     <div className={`pa-reading-orb ${large ? "pa-orb-large" : ""}`}>
       <LunaOrb
         mode={mode}
-        analyser={analyser}
+        analyser={mode === "speaking" ? playbackAnalyser : analyser}
+        voiceDriven
+        responsive
         size={large ? 156 : 104}
         onTap={onTap}
         label={label}
@@ -185,25 +193,75 @@ function StoryPages({
   text,
   reached = 0,
   controls,
+  onFinish,
+  disabled,
 }: {
   text: string;
   reached?: number;
   controls: HTMLElement | null;
+  onFinish?: () => void;
+  disabled: boolean;
 }) {
+  const pageRef = useRef<HTMLDivElement>(null);
   const [capacity, setCapacity] = useState(12);
   useEffect(() => {
-    const resize = () =>
-      setCapacity(
-        window.innerWidth >= 900 && window.innerHeight >= 850
-          ? 40
-          : window.innerHeight >= 760
-            ? 24
-            : 12,
+    const card = pageRef.current;
+    const stage = card?.closest<HTMLElement>(".pa-stage");
+    const article = card?.parentElement;
+    if (!card || !stage || !article) return;
+    let frame = 0;
+    const fit = () => {
+      const stageStyle = getComputedStyle(stage);
+      const articleStyle = getComputedStyle(article);
+      const siblings = [...article.children].filter(
+        (el) => el !== card && !el.classList.contains("pa-robot"),
       );
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  }, []);
+      const available =
+        stage.clientHeight -
+        parseFloat(stageStyle.paddingTop) -
+        parseFloat(stageStyle.paddingBottom) -
+        siblings.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0) -
+        siblings.length * parseFloat(articleStyle.rowGap || "0") -
+        4;
+      const measure = card.cloneNode(true) as HTMLDivElement;
+      measure.removeAttribute("data-story-page");
+      Object.assign(measure.style, {
+        position: "absolute",
+        visibility: "hidden",
+        width: `${card.getBoundingClientRect().width}px`,
+        pointerEvents: "none",
+      });
+      article.appendChild(measure);
+      try {
+        let limit = window.innerWidth >= 900 ? 48 : 32;
+        for (; limit > 6; limit--) {
+          if (
+            readingPages(text, limit).every((p) => {
+              measure.querySelector("p")!.textContent = p.text;
+              return measure.getBoundingClientRect().height <= available;
+            })
+          )
+            break;
+        }
+        setCapacity(limit);
+      } finally {
+        measure.remove();
+      }
+    };
+    const schedule = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(fit);
+    };
+    schedule();
+    const observer = new ResizeObserver(schedule);
+    observer.observe(stage);
+    window.addEventListener("resize", schedule);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, [text, disabled]);
   const pages = useMemo(() => readingPages(text, capacity), [text, capacity]);
   const [navigation, setNavigation] = useState({ pages, reached, page: 0 });
   let page = navigation.page;
@@ -218,7 +276,7 @@ function StoryPages({
   const setPage = (next: number) => setNavigation({ pages, reached, page: next });
   return (
     <>
-      <div className="pa-book-page" data-story-page>
+      <div className="pa-book-page" data-story-page ref={pageRef}>
         <p>{pages[Math.min(page, pages.length - 1)]?.text}</p>
       </div>
       {controls &&
@@ -230,18 +288,20 @@ function StoryPages({
               onClick={() => setPage(page - 1)}
               aria-label="Previous page"
             >
-              <ArrowLeft size={24} />
+              <Glyph name="arrow-left" size={24} />
             </button>
             <span>
               Page {page + 1} of {pages.length}
             </span>
             <button
               className="pa-primary"
-              disabled={page >= pages.length - 1}
-              onClick={() => setPage(page + 1)}
-              aria-label="Next page"
+              disabled={disabled}
+              onClick={() => (page >= pages.length - 1 ? onFinish?.() : setPage(page + 1))}
+              data-finish-speaking={page >= pages.length - 1 ? "" : undefined}
+              aria-label={page >= pages.length - 1 ? "Finish story" : "Next page"}
             >
-              <ArrowRight size={24} />
+              {page >= pages.length - 1 ? "Finish story" : "Next page"}
+              <Glyph name="arrow-right" size={24} />
             </button>
           </nav>,
           controls,
@@ -267,8 +327,9 @@ export default function PlacementView({
   onSave,
   onReplay,
   onReadOption,
-  exitHref = "/dashboard",
+  exitHref = "/explore",
 }: Props) {
+  const playbackAnalyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   const [actionHost, setActionHost] = useState<HTMLDivElement | null>(null);
   const [pageHost, setPageHost] = useState<HTMLDivElement | null>(null);
   const listening =
@@ -296,9 +357,9 @@ export default function PlacementView({
           : stage === "passage"
             ? "Read a story"
             : stage === "comprehension"
-              ? "Think about the story"
+              ? "Read and think"
               : stage === "listening"
-                ? "Listen to a story"
+                ? "Listen and answer"
                 : "Reading with Luna";
   const mode = listening ? "listening" : orb;
   return (
@@ -309,7 +370,7 @@ export default function PlacementView({
     >
       <header className="pa-top" data-runner-header>
         <a href={exitHref} className="pa-exit" aria-label="Leave assessment">
-          <ArrowLeft size={18} /> <span>Back</span>
+          <Glyph name="arrow-left" size={18} /> <span>Back</span>
         </a>
         <span>{label}</span>
         <span className="pa-reader">{childName}</span>
@@ -321,7 +382,7 @@ export default function PlacementView({
             <ReadingOrb mode="idle" large onTap={onBegin} label="Begin reading with Luna" />
             <p className="pa-intro-line">Let’s read a little together.</p>
             <button className="pa-primary" onClick={onBegin} data-begin>
-              Start with Luna <ArrowRight size={20} />
+              Start with Luna <Glyph name="arrow-right" size={20} />
             </button>
             <p className="pa-small">Your grown-up can stay nearby.</p>
           </div>
@@ -361,18 +422,26 @@ export default function PlacementView({
                   ? "Try this make-believe word."
                   : "Read this word to Luna."}
             </h1>
-            <p className={screen.oral ? "pa-oral-prompt" : "pa-reading-word"}>
-              {screen.oral ? "Your turn" : screen.word}
+            <p
+              className={
+                screen.oral
+                  ? "pa-oral-prompt"
+                  : `pa-reading-word ${screen.word.length > 9 ? "pa-long-word" : ""}`
+              }
+            >
+              {screen.oral ? "Your turn" : screen.word.toLowerCase()}
             </p>
-            <p className="pa-turn-status" role="status">
-              {screen.issue === "technical"
-                ? "Let’s try the microphone again. Your word is still here."
-                : screen.issue === "quiet"
-                  ? "Take your time. Try again, or pass this word."
-                  : screen.listening
-                    ? "Take your time. I’m listening."
-                    : "Opening the microphone…"}
-            </p>
+            {(screen.issue || !screen.listening) && (
+              <p className="pa-turn-status" role="status">
+                {screen.issue === "technical"
+                  ? "Let’s try the microphone again. Your word is still here."
+                  : screen.issue === "quiet"
+                    ? "Take your time. Try again, or pass this word."
+                    : screen.listening
+                      ? ""
+                      : "Opening the microphone…"}
+              </p>
+            )}
             {robot && screen.listening && (
               <div className="pa-robot" data-robot-controls>
                 <button data-robot="correct" onClick={() => onTap("correct")}>
@@ -422,6 +491,8 @@ export default function PlacementView({
               text={screen.text}
               reached={screen.reached}
               controls={pageHost}
+              onFinish={onFinish}
+              disabled={!screen.reading || !!screen.issue}
             />
             {screen.issue && (
               <p className="pa-turn-status" role="status">
@@ -450,16 +521,14 @@ export default function PlacementView({
         )}
         {screen.kind === "question" && (
           <div className="pa-question-task" data-question>
-            <div className="pa-prompt">
-              <p className="pa-eyebrow">Think about the story</p>
-              <h1>{screen.prompt}</h1>
-            </div>
             {screen.passage && (
-              <details className="pa-look-back" data-look-back key={screen.qid}>
-                <summary className="pa-story-label">
-                  <h2>{screen.passage.title}</h2>
-                  <span>Look back ▾</span>
-                </summary>
+              <section
+                className="pa-look-back"
+                data-look-back
+                key={screen.qid}
+                aria-label="Story text"
+              >
+                <h2 className="pa-story-label">{screen.passage.title}</h2>
                 <div
                   className="pa-look-back-scroll"
                   tabIndex={0}
@@ -467,24 +536,38 @@ export default function PlacementView({
                 >
                   <p>{screen.passage.text}</p>
                 </div>
-              </details>
+              </section>
             )}
-            <AnswerCards
-              actionHost={actionHost}
-              key={(screen.qid ?? screen.prompt) + (screen.picked === null ? "open" : "answered")}
-              options={screen.options}
-              picked={screen.picked}
-              readingIdx={screen.readingIdx}
-              onAnswer={onTap}
-              robotKeys={screen.correctId}
-              readDisabled={orb === "speaking"}
-              onRead={screen.qid ? (id) => onReadOption(screen.qid!, id) : undefined}
-            />
-            {screen.picked === null && (
-              <button className="pa-text-pass" onClick={() => onTap(PASS_CHOICE)}>
-                I don’t know yet
-              </button>
-            )}
+            <div className="pa-question-answers">
+              <div className="pa-prompt">
+                <h1>{screen.prompt}</h1>
+              </div>
+              <AnswerCards
+                actionHost={actionHost}
+                key={(screen.qid ?? screen.prompt) + (screen.picked === null ? "open" : "answered")}
+                options={screen.options}
+                picked={screen.picked}
+                readingIdx={screen.readingIdx}
+                onAnswer={onTap}
+                robotKeys={screen.correctId}
+                readDisabled={orb === "speaking"}
+                onRead={screen.qid ? (id) => onReadOption(screen.qid!, id) : undefined}
+              />
+
+            </div>
+          </div>
+        )}
+        {screen.kind === "reading-break" && (
+          <div className="pa-intro">
+            <h1>You’ve read two texts.</h1>
+            <ReadingOrb mode={orb} analyser={analyser} label="Luna is speaking" />
+            <p className="pa-intro-line">Ready to finish this part?</p>
+            <button className="pa-primary" onClick={() => onTap("finish-reading")}>
+              Finish reading
+            </button>
+            <button className="pa-secondary" onClick={() => onTap("more-reading")}>
+              Try another text
+            </button>
           </div>
         )}
         {screen.kind === "hesitation" && (
@@ -495,7 +578,7 @@ export default function PlacementView({
               You can try this word again. If you don’t know it, choose “I don’t know this word.”
             </p>
             <button className="pa-primary" onClick={() => onTap("retry")}>
-              Try again <ArrowRight size={20} />
+              Try again <Glyph name="arrow-right" size={20} />
             </button>
             <button className="pa-secondary" onClick={() => onTap("pass")}>
               I don’t know this word
@@ -534,7 +617,7 @@ export default function PlacementView({
                 : screen.reason === "audio"
                   ? "Try sound again"
                   : "Check microphone again"}
-              <ArrowRight size={20} />
+              <Glyph name="arrow-right" size={20} />
             </button>
             <a className="pa-text-link" href={exitHref}>
               Come back later
@@ -570,27 +653,41 @@ export default function PlacementView({
               <ReadingOrb
                 mode={listening ? "listening" : orb}
                 analyser={analyser}
-                onTap={screen.issue ? () => onTap("retry") : onFinish}
-                label={screen.issue ? "Try the microphone again" : "Done speaking to Luna"}
+                onTap={
+                  screen.issue
+                    ? () => onTap("retry")
+                    : screen.kind === "word"
+                      ? onFinish
+                      : undefined
+                }
+                label={
+                  screen.issue
+                    ? "Try the microphone again"
+                    : screen.kind === "passage"
+                      ? "Luna is listening to the story"
+                      : "Done speaking to Luna"
+                }
               />
-              <button
-                className="pa-primary"
-                onClick={screen.issue ? () => onTap("retry") : onFinish}
-                disabled={!listening && !screen.issue}
-                data-finish-speaking
-              >
-                <Mic size={24} />{" "}
-                {screen.issue
-                  ? "Try again"
-                  : screen.kind === "passage"
-                    ? "Done reading"
-                    : "Done speaking"}
-              </button>
+              {(screen.kind === "word" || screen.issue) && (
+                <button
+                  className="pa-primary"
+                  onClick={screen.issue ? () => onTap("retry") : onFinish}
+                  disabled={!listening && !screen.issue}
+                  data-finish-speaking
+                >
+                  <Glyph name="mic" size={24} />{" "}
+                  {screen.issue
+                    ? "Try again"
+                    : screen.kind === "passage"
+                      ? "Try again"
+                      : "Done speaking"}
+                </button>
+              )}
             </div>
             <div className="pa-voice-actions">
               {onReplay && (
                 <button className="pa-replay" onClick={onReplay} aria-label="Hear the sounds again">
-                  <Volume2 size={24} /> Hear again
+                  <Glyph name="volume2" size={24} /> Hear again
                 </button>
               )}
               <button
@@ -621,7 +718,9 @@ export default function PlacementView({
               <div className="pa-narrator">
                 <LunaOrb
                   mode={orb}
-                  analyser={analyser}
+                  analyser={orb === "speaking" ? playbackAnalyser : analyser}
+                  voiceDriven
+                  responsive
                   size={64}
                   onTap={onReplay && orb !== "speaking" ? onReplay : undefined}
                   label="Hear the question again"
@@ -629,6 +728,7 @@ export default function PlacementView({
               </div>
             )}
             <div className="pa-dock-action">
+              {screen.kind === "question" && <button className="pa-replay" disabled={screen.picked !== null} onClick={() => onTap(PASS_CHOICE)}>Pass</button>}
               {onReplay && !listening && (
                 <button
                   className="pa-replay"
@@ -636,7 +736,7 @@ export default function PlacementView({
                   disabled={orb === "speaking"}
                   aria-label="Hear the prompt again"
                 >
-                  <Volume2 size={21} /> Hear again
+                  <Glyph name="volume2" size={21} /> Hear again
                 </button>
               )}
             </div>

@@ -24,6 +24,44 @@ export class PlacementAudioCancelled extends Error {
     this.name = "PlacementAudioCancelled";
   }
 }
+
+let playbackContext: AudioContext | null = null;
+let playbackAnalyser: AnalyserNode | null = null;
+const playbackListeners = new Set<() => void>();
+export const getPlaybackAnalyser = () => playbackAnalyser;
+export function subscribePlayback(listener: () => void) {
+  playbackListeners.add(listener);
+  return () => {
+    playbackListeners.delete(listener);
+  };
+}
+function publishPlayback(analyser: AnalyserNode | null) {
+  playbackAnalyser = analyser;
+  playbackListeners.forEach((listener) => listener());
+}
+function connectPlayback(audio: HTMLAudioElement): () => void {
+  let source: MediaElementAudioSourceNode | null = null;
+  let analyser: AnalyserNode | null = null;
+  try {
+    playbackContext ??= new AudioContext();
+    void playbackContext.resume().catch(() => {});
+    source = playbackContext.createMediaElementSource(audio);
+    analyser = playbackContext.createAnalyser();
+    analyser.fftSize = 256;
+    source.connect(analyser);
+    analyser.connect(playbackContext.destination);
+    publishPlayback(analyser);
+  } catch {
+    // Audio still plays normally where Web Audio is unavailable.
+    if (source && playbackContext) source.connect(playbackContext.destination);
+  }
+  return () => {
+    source?.disconnect();
+    analyser?.disconnect();
+    if (playbackAnalyser === analyser) publishPlayback(null);
+  };
+}
+
 let fast = false;
 /** Robot mode: clips resolve almost immediately so a QA run takes seconds, not minutes. */
 export function setFastAudio(on: boolean): void {
@@ -77,11 +115,15 @@ export function playUrlAsync(url: string, fallbackMs = 6000, required = false): 
     stopClip();
     let done = false;
     let guard: ReturnType<typeof setTimeout> | undefined;
-    const a = new Audio(url);
+    const a = new Audio();
+    a.crossOrigin = "anonymous";
+    a.src = url;
+    const disconnectPlayback = connectPlayback(a);
     const finish = (failed = false, cancelled = false) => {
       if (done) return;
       done = true;
       clearTimeout(guard);
+      disconnectPlayback();
       try {
         a.pause();
       } catch {
