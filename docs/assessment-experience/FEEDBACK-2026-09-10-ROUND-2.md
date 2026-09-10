@@ -39,8 +39,12 @@ Every reported item is tracked below. No private child IDs, recordings, or raw a
 | F33 | No-card copy | Remove “No card needed” from the final reveal and report sales surface. | Removed from report/reveal sales copy. |
 | F34 | Journey destination | Change the final CTA to “Go to custom reading journey” and route to the actual child-specific journey. | Implemented: “Go to custom reading journey” opens the child-specific journey. |
 | F35 | Card-required Readee+ flow | Wire journey → parent-only Readee+ trial checkout with a credit card; exact first-lesson timing question sent. | Implemented per latest instruction: journey preview → parent Readee+ offer → existing card-required checkout. Ownership-checked return to the journey; billing amounts and trial length unchanged. Stripe calls verified with mocks, no charge attempted. |
-| F36 | Complete feedback record | Maintain this itemized log with implementation and verification status; explicitly record unresolved items. | All 37 items recorded here with outcomes and remaining verification limits. |
+| F36 | Complete feedback record | Maintain this itemized log with implementation and verification status; explicitly record unresolved items. | All feedback items recorded here with outcomes and remaining verification limits. |
 | F37 | Visual preservation | Keep Claude’s graph, report/reveal visual structure, colors, and journey components; change wiring and requested spacing only. | Original ladder, cards, journey, gradients and chart retained; responsive browser checks completed. |
+
+| F38 | Live tester email has fractional WPM | Round reading speed in HTML and plain-text email, including old saved measurements. | Fixed; 8.268448976779439 renders as 8. Shared reveal/report/narration rounding already included. |
+| F39 | Placement email claims a trial already started | Do not invent reminder or billing dates before checkout. | Fixed: conditional trial invitation for eligible accounts; actual dates confirmed at checkout. No replacement emails sent. |
+| F40 | Reconfigure assessment email | Match corrected report evidence, actual guided starting grade, and child-specific journey destination. | Fixed: rebuild outdated decisions from saved evidence when sending; include skill evidence and strengths; journey CTA. Existing delivery idempotency retained. |
 
 ## Decisions and evidence
 
