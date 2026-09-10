@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { NarrationId, NarrationLine, PlacementResult } from "@/lib/placement/types";
-import { playAudioUrl, stopAudio } from "@/lib/audio";
+import { playUrlRequired, stopClip, PlacementAudioCancelled } from "../audio";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { PercentileBar } from "./PercentileBar";
@@ -20,6 +20,7 @@ export type RevealWizardProps = {
   result: PlacementResult;
   /** Where a narration line's audio lives, or null when there is none (the card then runs its motion on mount). */
   audioUrlFor: (line: NarrationLine) => string | null;
+  onRetryNarration?: () => Promise<void>;
   onStartPlan: () => void;
   onNotNow: () => void;
   onSkipToReport: () => void;
@@ -31,17 +32,6 @@ export type RevealWizardProps = {
 
 const CARD_IDS = ["strengths", "number", "placement", "skills", "path", "plan", "ask"] as const;
 type CardId = (typeof CARD_IDS)[number];
-
-/** How long a segment holds when there is no audio to time it. */
-const SEGMENT_MS: Record<CardId, number> = {
-  strengths: 1400,
-  number: 2400,
-  placement: 1600,
-  skills: 1200,
-  path: 1800,
-  plan: 1400,
-  ask: 1400,
-};
 
 const SURFACE = "rounded-2xl border border-zinc-200 bg-white shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]";
 /** The same surface, applied only at desktop width. Written out in full so Tailwind can see every class. */
@@ -57,17 +47,18 @@ function linesFor(result: PlacementResult, id: CardId): NarrationLine[] {
  * layout, at or above it every card spreads into its desktop layout, so the
  * same component serves a phone, a tablet and a 1000 px frame.
  */
-export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSkipToReport, recordingUrl = null, outfitId = null }: RevealWizardProps) {
+export function RevealWizard({ result, audioUrlFor, onRetryNarration, onStartPlan, onNotNow, onSkipToReport, recordingUrl = null, outfitId = null }: RevealWizardProps) {
   const reduced = useReduced();
   const copy = useMemo(() => buildRevealCopy(result), [result]);
   const [index, setIndex] = useState(0);
   const [voiceOn, setVoiceOn] = useState(true);
   const [stage, setStage] = useState(0);
   const [caption, setCaption] = useState("");
+  const [audioStatus, setAudioStatus] = useState<"ready" | "waiting" | "error">("ready");
+  const [replay, setReplay] = useState(0);
   const [hoverSkill, setHoverSkill] = useState<string | null>(null);
   const voiceRef = useRef(true);
-  const runRef = useRef(0);
-  const cancelRef = useRef<() => void>(() => {});
+
   const touchX = useRef<number | null>(null);
   const last = CARD_IDS.length - 1;
   const cardId = CARD_IDS[index];
@@ -79,66 +70,59 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
     [last],
   );
 
-  const playLine = useCallback(
-    (url: string) =>
-      new Promise<"ended" | "cancelled">((resolve) => {
-        cancelRef.current = () => {
-          stopAudio();
-          resolve("cancelled");
-        };
-        playAudioUrl(url).then(() => resolve("ended"));
-      }),
-    [],
-  );
-
-  // One run per card: narrate each line (when the voice is on and audio
-  // exists) and start that line's motion as it begins. Manual Next remains available.
+  // Only a current card's audio changes restart it. Unrelated polling must not interrupt speech.
+  const cardLines = useMemo(() => linesFor(result, cardId), [result, cardId]);
+  const audioKey = JSON.stringify(cardLines.map(line => [line.id, line.text, audioUrlFor(line)]));
+  const linesRef = useRef(cardLines);
+  const urlRef = useRef(audioUrlFor);
+  useEffect(() => { linesRef.current = cardLines; urlRef.current = audioUrlFor; }, [cardLines, audioUrlFor]);
   useEffect(() => {
-    const token = ++runRef.current;
-    const alive = () => runRef.current === token;
-    const lines = linesFor(result, cardId);
-
-    setStage(0);
-    setCaption(lines[0]?.text ?? "");
-    (async () => {
-      const count = Math.max(1, lines.length);
-      for (let i = 0; i < count; i++) {
-        if (!alive()) return;
-        setStage(i);
-        const line = lines[i] ?? null;
-        if (line) setCaption(line.text);
-        const url = voiceRef.current && line ? audioUrlFor(line) : null;
-        if (url) {
-
-          await playLine(url);
-        } else {
-          await wait(SEGMENT_MS[cardId]);
+    let cancelled = false;
+    const lines = linesRef.current;
+    void (async () => {
+      await Promise.resolve();
+      if (cancelled) return;
+      setStage(0);
+      setCaption(lines[0]?.text ?? "");
+      setAudioStatus("ready");
+      if (!voiceOn) { setStage(lines.length); return; }
+      if (!lines.length || lines.some(line => !urlRef.current(line))) {
+        setAudioStatus("waiting");
+        setStage(lines.length);
+        return;
+      }
+      try {
+        for (let i = 0; i < lines.length; i++) {
+          if (cancelled) return;
+          setStage(i);
+          setCaption(lines[i].text);
+          await playUrlRequired(urlRef.current(lines[i])!, 15000);
+        }
+        if (cancelled) return;
+        setStage(lines.length);
+        await wait(AUTO_ADVANCE_MS);
+        if (!cancelled && voiceRef.current && index < last) go(1);
+      } catch (error) {
+        if (!cancelled && !(error instanceof PlacementAudioCancelled)) {
+          setAudioStatus("error");
+          setStage(lines.length);
         }
       }
-      if (!alive()) return;
-      setStage(count);
-      if (voiceRef.current && index < last) {
-        await wait(AUTO_ADVANCE_MS);
-        if (alive() && voiceRef.current) go(1);
-      }
-
     })();
-    return () => {
-      runRef.current++;
-      cancelRef.current();
-      stopAudio();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index]);
+    return () => { cancelled = true; stopClip(); };
+  }, [index, audioKey, replay, voiceOn, go, last]);
 
   const toggleVoice = useCallback(() => {
-    setVoiceOn((v) => {
-      const next = !v;
-      voiceRef.current = next;
-      if (!next) cancelRef.current();
-      return next;
-    });
+    voiceRef.current = !voiceRef.current;
+    setVoiceOn(voiceRef.current);
+    stopClip();
   }, []);
+  const retryNarration = async () => {
+    if (linesRef.current.every(line => urlRef.current(line))) { setReplay(value => value + 1); return; }
+    setAudioStatus("waiting");
+    try { await onRetryNarration?.(); setReplay(value => value + 1); }
+    catch { setAudioStatus("error"); }
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -150,7 +134,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
   }, [go]);
 
   const hearRecording = useCallback(() => {
-    if (recordingUrl) void playAudioUrl(recordingUrl);
+    if (recordingUrl) void playUrlRequired(recordingUrl).catch(() => setAudioStatus("error"));
   }, [recordingUrl]);
 
   let card: React.ReactNode;
@@ -272,6 +256,10 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
         </AnimatePresence>
       </div>
 
+      {voiceOn && audioStatus !== "ready" && <div role="status" className="flex flex-wrap items-center justify-center gap-3 px-5 py-3 text-sm text-violet-800">
+        <span>{audioStatus === "waiting" ? "Luna’s narration is getting ready. This slide will stay here." : "The narration couldn’t play. This slide will stay here."}</span>
+        <button type="button" className="font-semibold underline underline-offset-4" onClick={() => void retryNarration()}>Try narration again</button>
+      </div>}
       {/* Pinned chrome. Phone: caption line, then back / dots / next. Desktop: one row, caption beside the arrow. */}
       <div className="relative z-10 border-t border-violet-100 bg-zinc-50 px-5 pb-5 pt-3 @2xl:px-8 @2xl:pb-6 @2xl:pt-4">
         <p className="min-h-10 text-sm leading-5 text-zinc-500 @2xl:hidden" aria-live="polite">
@@ -303,7 +291,6 @@ const rise = (reduced: boolean, delay = 0) => ({
 const H2 = "text-2xl font-semibold text-zinc-900 @2xl:text-4xl";
 
 function StrengthsCard({ copy, reduced, sentence }: CardProps & { outfitId: string | null; sentence: string }) {
-  const n = copy.strengthTiles.length;
   return (
     <div className="my-auto">
       {/* The reward moment: the celebrating bunny on a soft scene, the spoken line as the hero copy. */}

@@ -1266,7 +1266,7 @@
     "standard": "RL.4.4",
     "difficulty": 426,
     "text": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.",
-    "prompt": "In this sentence, \"as brave as a lion\" means the knight was —",
+    "prompt": "What does “as brave as a lion” tell you about the knight?",
     "options": [
       {
         "id": "a",
@@ -1334,7 +1334,7 @@
       },
       {
         "id": "b",
-        "label": "Collaboration leads to better results than working alone"
+        "label": "Working together can help people solve problems"
       },
       {
         "id": "c",
@@ -1386,7 +1386,7 @@
     "standard": "RL.4.4",
     "difficulty": 475,
     "text": "The silence in the library was so thick you could cut it with a knife.",
-    "prompt": "This phrase means —",
+    "prompt": "What does this sentence tell you about the library?",
     "options": [
       {
         "id": "a",
@@ -1402,7 +1402,7 @@
       },
       {
         "id": "d",
-        "label": "The silence was intense and heavy"
+        "label": "It was extremely quiet"
       }
     ],
     "correctId": "d",
@@ -1432,7 +1432,7 @@
       },
       {
         "id": "d",
-        "label": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
+        "label": "The station travels around Earth at 17,500 miles per hour"
       }
     ],
     "correctId": "d",
@@ -1446,7 +1446,7 @@
     "standard": "RL.4.4",
     "difficulty": 484,
     "text": "His Achilles’ heel was his temper — it always got him into trouble.",
-    "prompt": "An Achilles’ heel refers to —",
+    "prompt": "What does “Achilles’ heel” mean in this sentence?",
     "options": [
       {
         "id": "a",
@@ -1458,7 +1458,7 @@
       },
       {
         "id": "c",
-        "label": "A person's greatest weakness or vulnerability"
+        "label": "A person’s greatest weakness"
       },
       {
         "id": "d",
@@ -1475,8 +1475,8 @@
     "grade": 4,
     "standard": "RI.4.1",
     "difficulty": 478,
-    "text": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.",
-    "prompt": "What inference can you make about why this discovery was so important?",
+    "text": "At that time, tool use was thought to be a skill that only humans had. Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.",
+    "prompt": "Why did seeing chimpanzees use tools change what scientists believed?",
     "options": [
       {
         "id": "a",

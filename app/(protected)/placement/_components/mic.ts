@@ -212,6 +212,7 @@ export function usePlacementMic() {
         // decoding pauses. Alignment is done by Readee, not unsupported miscue mode.
         segmentationSilenceMs: referenceText.trim().split(/\s+/).length === 1 ? 500 : 900,
         enableMiscue: false,
+        initialSilenceMs: 60000,
         onRecognizing,
         onPhrase: (p) => {
           phrases.push(p.words);

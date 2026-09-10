@@ -136,7 +136,7 @@ describe("assessment audit: recognition timing", () => {
         clearTimeout,
         window: { setTimeout, clearTimeout, setInterval, clearInterval },
         require: (s: string) =>
-          s === "react"
+          s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
             ? hooks
             : s === "next/navigation"
               ? { useRouter: () => ({}) }
@@ -193,6 +193,7 @@ describe("assessment audit: recognition timing", () => {
       }
       await vi.advanceTimersByTimeAsync(80000);
       box.finishReading();
+      await vi.advanceTimersByTimeAsync(1000);
       const { ev } = await result;
       expect(ev.wordsCorrect).toBe(70);
       expect(ev.minuteWordsCorrect).toBe(70);

@@ -145,6 +145,9 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
     stage: "words",
     screen: { kind: "word", word: "thermometer", listening: true, band: 4 },
   },
+  { label: "Word connecting", stage: "words", screen: { kind: "word", word: "garden", listening: false } },
+  { label: "Word thinking", stage: "words", screen: { kind: "word", word: "garden", listening: true, thinking: true } },
+  { label: "Child name", stage: "mic", screen: { kind: "name", ready: true, childId: "00000000-0000-4000-8000-000000000001" } },
 ];
 
 export default function PlacementStudio() {
