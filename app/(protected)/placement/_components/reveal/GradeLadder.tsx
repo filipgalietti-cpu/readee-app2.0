@@ -40,21 +40,19 @@ function stepClass(b: PlacedBand, enrolled: PlacedBand, placed: PlacedBand): str
  */
 export function GradeLadder({ provisional = false, enrolled, placed, childName, bandName, categoryText, animate, instant = false }: GradeLadderProps) {
   const reduced = useReduced();
-  if (provisional) return (
-    <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6">
-      <dl className="grid grid-cols-2 gap-6">
-        <div><dt className="text-sm text-zinc-600">Enrolled grade</dt><dd className="mt-2 text-2xl font-semibold text-zinc-900">{gradeLabel(enrolled)}</dd></div>
-        <div><dt className="text-sm text-zinc-600">Guided lesson start</dt><dd className="mt-2 text-2xl font-semibold text-violet-800">{gradeLabel(placed)}</dd></div>
-      </dl>
-      <p className="mt-5 text-base leading-6 text-zinc-700">Independent reading is not yet confirmed. This is a starting point for guided practice, not a measured reading grade.</p>
-    </div>
-  );
   const jump = instant || reduced;
   const t = { duration: jump ? 0 : MARKER_S, ease: "easeOut" as const };
   const target = animate ? placed : enrolled;
   const lo = Math.min(enrolled, placed);
   const hi = Math.max(enrolled, placed);
   const gap = hi - lo;
+  // Keep the original chart for every result. Unconfirmed evidence labels a
+  // lesson start, not a measured reading grade or a measured grade gap.
+  const comparison = provisional
+    ? "Guided lesson start"
+    : gap === 0
+      ? "At enrolled grade"
+      : `${gap} ${gap === 1 ? "grade" : "grades"} ${placed < enrolled ? "below" : "above"} enrollment`;
 
   // Phone: rows run 4th (top) to K (bottom); row index = 4 - band, each row 56 px (h-14).
   const rowTop = (b: PlacedBand) => `${(4 - b) * 20}%`;
@@ -65,12 +63,13 @@ export function GradeLadder({ provisional = false, enrolled, placed, childName, 
   const marker = (
     <>
       <span className="text-sm font-semibold text-violet-700 @2xl:text-base">{childName}</span>
-      <BandChip band={bandName} />
+      <BandChip band={provisional ? "Provisional" : bandName} />
+      {placed === enrolled && <span className="text-xs font-semibold text-violet-600 @2xl:hidden">enrolled</span>}
     </>
   );
 
   return (
-    <div>
+    <div role="figure" aria-label={`${childName}’s reading placement compared with enrollment: ${categoryText}`} data-grade-ladder>
       {/* Phone: vertical ladder */}
       <div className="relative h-70 @2xl:hidden">
         <span aria-hidden className="absolute left-5 top-7 bottom-7 w-0.5 -translate-x-1/2 bg-zinc-200" />
@@ -98,7 +97,7 @@ export function GradeLadder({ provisional = false, enrolled, placed, childName, 
         >
           {marker}
         </motion.div>
-        <div
+        {gap > 0 && <div
           className="absolute right-0 flex w-28 items-center gap-2"
           style={gap > 0 ? { top: rowCenter(hi as PlacedBand), height: `${gap * 20}%` } : { top: rowTop(placed), height: "20%" }}
         >
@@ -109,8 +108,8 @@ export function GradeLadder({ provisional = false, enrolled, placed, childName, 
               <span className="absolute bottom-0 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-b-2 border-r-2 border-violet-400" />
             </span>
           )}
-          <p className="text-xs font-semibold leading-4 text-violet-700">{categoryText}</p>
-        </div>
+          <p className="text-xs font-semibold leading-4 text-violet-700">{comparison}</p>
+        </div>}
       </div>
 
       {/* Desktop: horizontal ladder */}
@@ -144,9 +143,16 @@ export function GradeLadder({ provisional = false, enrolled, placed, childName, 
               <span className="absolute right-0 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rotate-45 border-r-2 border-t-2 border-violet-400" />
             </div>
           )}
-          <p className="mt-2 text-center text-base font-semibold text-violet-700">{categoryText}</p>
+          <p className="mt-2 text-center text-base font-semibold text-violet-700">{comparison}</p>
         </div>
       </div>
+      {gap === 0 && <p className="mt-3 text-sm font-semibold text-violet-700 @2xl:hidden">{comparison}</p>}
+      {provisional && (
+        <p className="mt-4 text-sm leading-6 text-zinc-500">
+          The marker shows the provisional lesson start at {gradeLabel(placed)}.
+          Independent reading is not yet confirmed, so a measured gap from enrollment is not available.
+        </p>
+      )}
     </div>
   );
 }

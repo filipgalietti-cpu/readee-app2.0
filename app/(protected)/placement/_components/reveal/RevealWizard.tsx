@@ -64,6 +64,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
   const [voiceOn, setVoiceOn] = useState(true);
   const [stage, setStage] = useState(0);
   const [caption, setCaption] = useState("");
+  const [hoverSkill, setHoverSkill] = useState<string | null>(null);
   const voiceRef = useRef(true);
   const runRef = useRef(0);
   const cancelRef = useRef<() => void>(() => {});
@@ -168,7 +169,7 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
       card = <PlacementCard copy={copy} reduced={reduced} />;
       break;
     case "skills":
-      card = <SkillsCard copy={copy} stage={stage} />;
+      card = <SkillsCard copy={copy} stage={stage} hovered={hoverSkill} onHover={setHoverSkill} />;
       break;
     case "path":
       card = <PathCard copy={copy} reduced={reduced} />;
@@ -219,7 +220,9 @@ export function RevealWizard({ result, audioUrlFor, onStartPlan, onNotNow, onSki
       <span className="h-12 w-12 shrink-0 @2xl:h-14 @2xl:w-14" />
     );
 
-  const shownCaption = caption;
+  const shownCaption = cardId === "skills" && hoverSkill
+    ? copy.skills.find((skill) => skill.id === hoverSkill)?.meaning ?? caption
+    : caption;
   return (
     <div
       className="flex h-full flex-col bg-zinc-50 text-zinc-900 @container"
@@ -456,21 +459,34 @@ function PlacementCard({ copy, reduced }: CardProps) {
   );
 }
 
-function SkillsCard({ copy, stage }: { copy: RevealCopy; stage: number }) {
+function SkillsCard({ copy, stage, hovered, onHover }: { copy: RevealCopy; stage: number; hovered: string | null; onHover: (id: string | null) => void }) {
   return (
     <div className="flex flex-1 flex-col @2xl:my-auto @2xl:block @2xl:flex-none">
       <div className="flex items-baseline justify-between gap-4">
         <h2 className={H2}>Three skills</h2>
         <p className="text-xs text-zinc-400 @2xl:text-sm">
-          <span className="hidden @2xl:inline">Each skill tells us something different</span>
-          <span className="@2xl:hidden">Each skill tells us something different</span>
+          <span className="hidden @2xl:inline">Hover a skill for the detail</span>
+          <span className="@2xl:hidden">Tap a skill for the detail</span>
         </p>
       </div>
       <div className="mt-4 flex flex-1 flex-col justify-evenly gap-4 @2xl:mt-8 @2xl:grid @2xl:grid-cols-3 @2xl:gap-6">
         {copy.skills.map((s, i) => (
           <div
             key={s.id}
-            className={`rounded-2xl @2xl:p-6 ${SURFACE_2XL}`}
+            role="button"
+            tabIndex={0}
+            onMouseEnter={() => onHover(s.id)}
+            onMouseLeave={() => onHover(null)}
+            onFocus={() => onHover(s.id)}
+            onBlur={() => onHover(null)}
+            onClick={() => onHover(s.id)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onHover(s.id);
+              }
+            }}
+            className={`cursor-pointer rounded-2xl transition @2xl:p-6 ${SURFACE_2XL} ${hovered === s.id ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""}`}
           >
             <SkillBar icon={s.icon} label={s.label} value={s.value} fillPct={s.fillPct} meaning={s.meaning} animate={stage >= i} />
           </div>
