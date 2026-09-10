@@ -161,7 +161,7 @@ export default function ParentReaderSetup({
             className="mt-2 w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-xl text-zinc-900 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-100 disabled:bg-zinc-50"
           />
           <p className="mt-3 text-base text-zinc-600">
-            A first name or nickname is fine. Leave it blank to use “Reader.”
+            A first name or nickname is fine. You can change it later.
           </p>
           <fieldset className="mt-6" disabled={!ready || !!pending}>
             <legend className="text-xl font-bold text-zinc-800">

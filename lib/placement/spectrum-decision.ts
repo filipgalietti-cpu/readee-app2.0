@@ -1,3 +1,4 @@
+import { SPECTRUM_PASSAGES } from "@/app/data/placement-spectrum/reading";
 import { WORD_STEPS } from "@/app/data/placement-spectrum/words";
 import { readingScore, validateSpectrum, type SpectrumEvidence } from "./spectrum";
 import { BAND_GRADE_KEY, type PlacementDecision } from "./decide";
@@ -7,7 +8,10 @@ import { seasonFor } from "./norms";
 import { grades } from "@/lib/assessment/questions";
 
 export type SpectrumProfile = {
-  version: 1 | 2;
+  version: 1 | 2 | 3;
+  supportedReadingBand?: PlacedBand | null;
+  wordSample?: { correct: number; total: number };
+  readingSamples?: { band: PlacedBand; wordsCorrect: number; wordsAttempted: number; referenceWords: number; accuracy: number; coverage: number; correct: number; total: number }[];
   wordStep: number | null;
   wordLabel: string;
   wordBand: PlacedBand;
@@ -26,17 +30,27 @@ export function decideSpectrum(
   date = new Date(),
 ): PlacementDecision {
   const { words: w, reading: r, language: l } = validateSpectrum(enrolled, ev);
-  // Word probes alone cannot promote an unconfirmed reader above enrollment.
-  // Preserve stronger word reading separately and begin guided reading at an
-  // enrollment-appropriate level, or lower when decoding evidence calls for it.
-  const entry = r.confirmed ?? (Math.min(enrolled, w.grade) as PlacedBand);
+  const samples = ev.reading.map((trial) => {
+    const score = readingScore(trial);
+    return { band: trial.speech.band as PlacedBand, wordsCorrect: trial.speech.wordsCorrect,
+      wordsAttempted: trial.speech.wordsTotal, referenceWords: SPECTRUM_PASSAGES.find(p => p.id === trial.passageId)!.text.split(/\s+/).length,
+      accuracy: score.accuracy, coverage: score.coverage, correct: score.correct, total: score.total };
+  });
+  // A complete, comfortable passage supports a provisional start even when
+  // the second confirmation text was not completed. Enrollment is no ceiling.
+  const supportedReadingBand = ev.reading.filter(trial => readingScore(trial).comfortable)
+    .reduce<PlacedBand | null>((highest, trial) => Math.max(highest ?? 0, trial.speech.band) as PlacedBand, null);
+  const entry = r.confirmed ?? supportedReadingBand ?? (Math.min(enrolled, w.grade) as PlacedBand);
   const wordLabel = WORD_STEPS[w.highest ?? 0].label;
   const nextStep = w.failed.length ? Math.min(...w.failed) : null;
   const oralBlending = ev.blending.length
     ? { correct: ev.blending.filter((b) => b.correct).length, total: ev.blending.length }
     : null;
   const profile: SpectrumProfile = {
-    version: 2,
+    version: 3,
+    supportedReadingBand,
+    wordSample: { correct: ev.words.filter(w => w.correct).length, total: ev.words.length },
+    readingSamples: samples,
     wordStep: w.highest,
     wordLabel,
     wordBand: w.grade,
@@ -54,6 +68,16 @@ export function decideSpectrum(
         ? "matches some letters to their sounds"
         : `reads words in the ${wordLabel.toLowerCase()} set`,
     );
+  if (r.confirmed === null && supportedReadingBand !== null)
+    strengths.push(`read a ${label(supportedReadingBand)} text accurately and understood its meaning`);
+  const readingQuestions = samples.reduce((sum, sample) => sum + sample.total, 0);
+  const readingCorrect = samples.reduce((sum, sample) => sum + sample.correct, 0);
+  if (readingQuestions && readingCorrect / readingQuestions >= 2 / 3)
+    strengths.push(`answered ${readingCorrect} of ${readingQuestions} questions about the texts`);
+  const listeningTotal = l.counts.reduce((sum, band) => sum + band.total, 0);
+  const listeningCorrect = l.counts.reduce((sum, band) => sum + band.correct, 0);
+  if (listeningTotal >= 4 && listeningCorrect / listeningTotal >= 0.75)
+    strengths.push(`answered ${listeningCorrect} of ${listeningTotal} listening questions`);
   if (r.confirmed !== null)
     strengths.push(`read and answered questions about two ${label(r.confirmed)} texts`);
   if (l.supported)
@@ -109,8 +133,8 @@ export function decideSpectrum(
           band: p.band,
           wcpm:
             p.minuteSeconds && p.minuteWordsCorrect !== undefined
-              ? computeWcpm(p.minuteWordsCorrect, p.minuteSeconds)
-              : computeWcpm(p.wordsCorrect, p.durationSeconds),
+              ? Math.round(computeWcpm(p.minuteWordsCorrect, p.minuteSeconds))
+              : Math.round(computeWcpm(p.wordsCorrect, p.durationSeconds)),
           accuracy,
           textLevel: accuracy >= 0.95 ? "independent" : "instructional",
           prosody: null,

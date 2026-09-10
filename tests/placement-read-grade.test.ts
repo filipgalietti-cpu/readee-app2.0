@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { gradeRead, gradeWord, passageRate, WORD_ACCURACY_MIN } from "@/lib/placement/read-grade";
+import { gradeRead, gradeWord, passageRate, WORD_ACCURACY_MIN, previewReadingReached } from "@/lib/placement/read-grade";
 import type { PAWord } from "@/app/(protected)/luna/_components/azure-stream";
 
 const w = (word: string, accuracy = 90, errorType = "None"): PAWord => ({ word, accuracy, errorType, phonemeMin: accuracy, worst: "" });
@@ -59,5 +59,23 @@ describe("gradeWord", () => {
   it("reports unheard when the word never appears or was omitted", () => {
     expect(gradeWord("ship", [[w("chip")]]).heard).toBe(false);
     expect(gradeWord("ship", [[w("ship", 0, "Omission")]]).heard).toBe(false);
+  });
+});
+
+describe("reading capture recovery", () => {
+  it("reanchors after a long missing phrase without counting missing words as correct", () => {
+    const g = gradeRead("one two three four five six seven eight nine ten", [[w("one")], [w("eight"), w("nine"), w("ten")]]);
+    expect(g.wordsAttempted).toBe(10);
+    expect(g.wordsCorrect).toBe(4);
+    expect(g.missed).toEqual(["two", "three", "four", "five", "six", "seven"]);
+  });
+  it("does not let an omission hide a later actually spoken word", () => {
+    expect(gradeWord("predict", [[w("predict", 100, "Omission")], [w("predict", 90)]]).correct).toBe(true);
+  });
+  it("uses interim multiword text only for page progress", () => {
+    const reference = "The cat sat on a mat. A dog ran home.";
+    expect(previewReadingReached(reference, "The cat sat on a mat", 0)).toBe(6);
+    expect(previewReadingReached(reference, "home", 0)).toBe(0);
+    expect(gradeRead(reference, []).wordsCorrect).toBe(0);
   });
 });

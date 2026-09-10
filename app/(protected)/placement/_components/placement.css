@@ -1323,3 +1323,22 @@
   .pa-frame[data-screen="question"] .pa-dock { gap: 8px; }
   .pa-frame[data-screen="question"] .pa-look-back-scroll { max-height: 144px; }
 }
+
+/* Live reader feedback: retain the lesson components, tune their spacing. */
+.pa-selection-slot { width: 24px; height: 24px; flex: 0 0 24px; }
+.pa-frame[data-screen="word"] .pa-stage { padding-bottom: 24px; }
+.pa-frame[data-screen="word"] .pa-voice-dock { position: relative; }
+.pa-word-bunny { position: absolute; right: 0; bottom: 0; width: 180px; height: 190px; pointer-events: none; }
+.pa-word-bunny > * { width: 100%; height: 100%; }
+.pa-frame .pa-reading-word.is-practice-correct { color: #15803d; border-color: #86efac; background: #f0fdf4; box-shadow: 0 4px 0 #86efac; }
+@media (min-width: 768px) {
+  .pa-frame .pa-question-task { align-items: stretch; }
+  .pa-frame .pa-look-back { position: relative; display: flex; flex-direction: column; min-height: 0; contain: size; }
+  .pa-frame .pa-question-task .pa-look-back-scroll { flex: 1 1 0px; min-height: 0; max-height: none; height: 0; }
+}
+@media (max-width: 767px) {
+  .pa-word-bunny { width: 72px; height: 80px; right: 0; bottom: 0; }
+  .pa-frame[data-screen="word"] .pa-voice-actions { width: calc(100% - 80px); margin-right: auto; }
+  .pa-frame[data-screen="word"] .pa-voice-actions .pa-secondary { white-space: normal; }
+  .pa-frame[data-screen="word"] .pa-stage { padding-bottom: 16px; }
+}

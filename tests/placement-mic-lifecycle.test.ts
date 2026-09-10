@@ -94,3 +94,38 @@ describe("microphone acquisition cleanup", () => {
     expect(await usePlacementMic().open()).toBe("denied");
   });
 });
+
+describe("speech while the recognizer connects", () => {
+  it("preserves an early spoken word until the recognizer is ready", async () => {
+    const { startPronAssessment } = await import("@/app/(protected)/luna/_components/azure-stream");
+    const acquired = stream();
+    vi.stubGlobal("navigator", { mediaDevices: { getUserMedia: async () => acquired.value } });
+    let processor: any;
+    const node = () => ({ connect: vi.fn(), disconnect: vi.fn() });
+    vi.stubGlobal("AudioContext", class {
+      state = "running"; sampleRate = 16000; destination = {};
+      createMediaStreamSource = node;
+      createAnalyser = node;
+      createScriptProcessor() { processor = { ...node(), onaudioprocess: null }; return processor; }
+      createGain() { return { ...node(), gain: { value: 0 } }; }
+      close = async () => {};
+    });
+    let ready!: (controller: any) => void;
+    vi.mocked(startPronAssessment).mockImplementationOnce(() => new Promise(resolve => { ready = resolve; }));
+    const mic = usePlacementMic();
+    expect(await mic.open()).toBe("open");
+    const pending = mic.listen("predict");
+    await vi.advanceTimersByTimeAsync(0);
+    const frame = new Float32Array([0.1, 0.2, -0.1]);
+    processor.onaudioprocess({ inputBuffer: { getChannelData: () => frame } });
+    const ctrl = { pushSamples: vi.fn(), stop: vi.fn(async () => {}) };
+    expect(ctrl.pushSamples).not.toHaveBeenCalled();
+    ready(ctrl);
+    const listener = await pending;
+    expect(ctrl.pushSamples).toHaveBeenCalledWith(frame, 16000);
+    expect(startPronAssessment).toHaveBeenLastCalledWith(expect.objectContaining({ segmentationSilenceMs: 500, enableMiscue: false }));
+    await listener!.stop();
+    mic.close();
+    expect(acquired.stop).toHaveBeenCalled();
+  });
+});

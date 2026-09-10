@@ -42,20 +42,33 @@ function publishPlayback(analyser: AnalyserNode | null) {
 function connectPlayback(audio: HTMLAudioElement): () => void {
   let source: MediaElementAudioSourceNode | null = null;
   let analyser: AnalyserNode | null = null;
+  let cancelled = false;
   try {
-    playbackContext ??= new AudioContext();
-    void playbackContext.resume().catch(() => {});
-    source = playbackContext.createMediaElementSource(audio);
-    analyser = playbackContext.createAnalyser();
-    analyser.fftSize = 256;
-    source.connect(analyser);
-    analyser.connect(playbackContext.destination);
-    publishPlayback(analyser);
+    if (!playbackContext || playbackContext.state === "closed") playbackContext = new AudioContext();
+    const context = playbackContext;
+    const connect = () => {
+      if (cancelled || context.state !== "running") return;
+      try {
+        source = context.createMediaElementSource(audio);
+        analyser = context.createAnalyser();
+        analyser.fftSize = 1024;
+        source.connect(analyser);
+        analyser.connect(context.destination);
+        publishPlayback(analyser);
+      } catch {
+        // If attaching the analyser fails, preserve the audible output.
+        source?.connect(context.destination);
+      }
+    };
+    // Resume on the caller's gesture, but do not route an element into a
+    // suspended context: that can make a successfully playing clip silent.
+    if (context.state === "running") connect();
+    else void context.resume().then(connect, () => {});
   } catch {
-    // Audio still plays normally where Web Audio is unavailable.
-    if (source && playbackContext) source.connect(playbackContext.destination);
+    // Plain element playback works even when Web Audio is unavailable.
   }
   return () => {
+    cancelled = true;
     source?.disconnect();
     analyser?.disconnect();
     if (playbackAnalyser === analyser) publishPlayback(null);

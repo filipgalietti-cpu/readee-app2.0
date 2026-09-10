@@ -6,7 +6,7 @@ import { NextResponse, after } from "next/server";
 import { PlacementSubmissionSchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
+import { generateReadeeSpeech } from "@/lib/audio/readee-speech";
 import { decidePlacement } from "@/lib/placement/decide";
 import { buildPlan } from "@/lib/placement/plan";
 import { narrate } from "@/lib/placement/narration";
@@ -28,6 +28,8 @@ import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement
  * and writes their private-bucket paths back onto the row. The reveal polls
  * /api/placement/result until the clips it needs exist.
  */
+
+export const maxDuration = 300;
 
 function seedRow(childId: string, standardId: string, pass: boolean, now: Date) {
   const ease = pass ? 2.55 : 2.3;
@@ -234,26 +236,20 @@ async function complete(req: Request, requestId: string) {
             childName,
             (child as { name_said_as?: string | null }).name_said_as,
           ).slice(0, 700);
-          let res = await generateSpeechVertex({ text: spokenText, voice: "Autonoe" });
-          if (!res.ok) {
-            await new Promise((r) => setTimeout(r, 3000));
-            res = await generateSpeechVertex({ text: spokenText, voice: "Autonoe" });
-          }
-          if (!res.ok) continue;
-          const wav = pcmToWav(Buffer.from(res.pcmBase64, "base64"), 24000);
-          const path = `placement/${sub.childId}/narr-${placementId.slice(0, 8)}-${line.id}.wav`;
+          const audio = await generateReadeeSpeech(spokenText);
+          const path = `placement/${sub.childId}/narr-${placementId.slice(0, 8)}-${line.id}.mp3`;
           const { error } = await admin.storage
             .from("child-audio")
-            .upload(path, wav, { contentType: "audio/wav", upsert: true });
-          if (error) continue;
+            .upload(path, audio, { contentType: "audio/mpeg", upsert: true });
+          if (error) throw error;
           paths[line.id] = path;
           const withAudio = narration.map((l) => ({
             ...l,
             audioPath: paths[l.id] ?? l.audioPath ?? null,
           }));
           await admin.from("placements").update({ narration: withAudio }).eq("id", placementId);
-        } catch {
-          /* a missing clip only costs the parent a caption */
+        } catch (error) {
+          reportFailure("placement.narration", error, { route: "/api/placement/complete", requestId, eventType: line.id });
         }
       }
     });
@@ -263,25 +259,6 @@ async function complete(req: Request, requestId: string) {
     placementId,
     decision: { placedBand: decision.placedBand, readingLevelName: decision.readingLevelName },
   });
-}
-
-/** PCM s16le 24 kHz mono -> WAV container (same as lib/audio/child-greeting.ts). */
-function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
-  const header = Buffer.alloc(44);
-  header.write("RIFF", 0);
-  header.writeUInt32LE(36 + pcm.length, 4);
-  header.write("WAVE", 8);
-  header.write("fmt ", 12);
-  header.writeUInt32LE(16, 16);
-  header.writeUInt16LE(1, 20);
-  header.writeUInt16LE(1, 22);
-  header.writeUInt32LE(sampleRate, 24);
-  header.writeUInt32LE(sampleRate * 2, 28);
-  header.writeUInt16LE(2, 32);
-  header.writeUInt16LE(16, 34);
-  header.write("data", 36);
-  header.writeUInt32LE(pcm.length, 40);
-  return Buffer.concat([header, pcm]);
 }
 
 export async function POST(req: Request) {

@@ -99,13 +99,13 @@ export default function LunaOrb({
         an.getByteTimeDomainData(td);
         let sum = 0;
         for (let i = 0; i < td.length; i++) { const v = (td[i] - 128) / 128; sum += v * v; }
-        target = Math.min(1, Math.max(0, Math.sqrt(sum / td.length) - 0.006) * (response.responsive ? 10 : 4.5));
+        target = Math.min(1, Math.max(0, Math.sqrt(sum / td.length) - 0.006) * (response.responsive ? 6 : 4.5));
       } else if (m === "listening" || m === "thinking") {
         target = Math.min(1, 0.3 + 0.2 * Math.abs(Math.sin(t * 2) + 0.5 * Math.sin(t * 3.3)));
       } else if (m === "speaking" && !response.voiceDriven) {
         target = Math.min(1, 0.22 + 0.2 * Math.abs(Math.sin(t * 2.1) + 0.5 * Math.sin(t * 3.6)));
       }
-      amp += (target - amp) * (response.responsive ? (target > amp ? 0.24 : 0.1) : (target > amp ? 0.05 : 0.03));
+      amp += (target - amp) * (response.responsive ? (target > amp ? 0.075 : 0.045) : (target > amp ? 0.05 : 0.03));
       const a = amp;
 
       // --- engagement (state), eased apart from loudness ---
@@ -179,7 +179,7 @@ export default function LunaOrb({
       // --- shell (breathing scale, rim, glow) ---
       const blob = blobRef.current;
       if (blob) {
-        const bs = 1 + (1 - e) * (breathe - 0.5) * 0.024 + e * 0.03 + a * (response.responsive && !reduce ? 0.12 : 0.06);
+        const bs = 1 + (1 - e) * (breathe - 0.5) * 0.024 + e * 0.03 + a * (response.responsive && !reduce ? 0.025 : 0.06);
         blob.style.transform = `scale(${bs})`;
         blob.style.borderColor = rgb(mix("#c4b5fd", "#5b21b6", e));
         blob.style.borderWidth = `${2 + e}px`;

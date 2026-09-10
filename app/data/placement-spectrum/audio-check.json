@@ -114,18 +114,20 @@
     "status": "matched"
   },
   "title-sp-read-4-a": {
-    "model": "small",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "This text is called Nia and the Bean Plants.",
     "transcript": "This text is called Nia and the Bean Plants.",
-    "audioSha256": "775d72a20689b94d8b8ef292b0029c963ad212c2ccd137528b766f7ab0eafc3f",
+    "audioSha256": "0b2b716c4a37d3e42a65cd8364485559f79a48f1247ca6db46ab34ca009f9d33",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
   "q-sp-r4a1": {
-    "model": "small",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "Which theme is best supported by Nia's actions?",
     "transcript": "Which theme is best supported by Nia's actions?",
-    "audioSha256": "4bcbe531e263525574097e25ab00d67deb2c1836037f6e5a9780139ff836ceb4",
+    "audioSha256": "13814d0c7b2c9a163a688d42cd7ac045ccb029d1ee91109c7144abc573b3d6ad",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -158,10 +160,11 @@
     "status": "matched"
   },
   "q-sp-r4a2": {
-    "model": "small",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "Which detail best shows that Nia values learning more than winning?",
-    "transcript": "Which detail best shows that NIA values learning more than winning?",
-    "audioSha256": "865810e590d0198ac4e4a6f7ff54c0299bdced7d65d9358d2ac997989a5a9741",
+    "transcript": "Which detail best shows that Nia values learning more than winning?",
+    "audioSha256": "d45d3527572dcbab9ee6fbdad018258e844190c8dea470ada2c64c7fa576e880",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -194,10 +197,11 @@
     "status": "matched"
   },
   "q-sp-r4a3": {
-    "model": "small",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
     "script": "How did Nia's interpretation of the taller plants change?",
-    "transcript": "How did NIA's interpretation of the taller plants change?",
-    "audioSha256": "8e021805c89f670f60605898972fb2fd16c327711ebc8017612b2c75bf785a1a",
+    "transcript": "How did Nia's interpretation of the taller plants change?",
+    "audioSha256": "dec1c2a21a753bf21f63496dc278001dbca03d125a430bdc00f7e93549910156",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2307,10 +2311,11 @@
     "status": "matched"
   },
   "q-sp-RI.3.9-H2": {
-    "model": "small",
-    "script": "How would the AUTHOR of Text B most likely respond to Text A?",
-    "transcript": "How would the author of text B most likely respond to text A?",
-    "audioSha256": "59e4477950e59660ed114a5b14ffd6badbd28750fe26861a00dde257be81f258",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Text A: \"The Sahara Desert is one of the hottest places on Earth. In the daytime the sand can get hot enough to burn your feet.\"\n\nText B: \"People think deserts are always warm, but that is not true. A desert is any place that gets almost no rain. At night the Sahara can get cold enough to freeze water.\" How would the AUTHOR of Text B most likely respond to Text A?",
+    "transcript": "Text A. The Sahara Desert is one of the hottest places on Earth. In the daytime, the sand can get hot enough to burn your feet. Text B. People think deserts are always warm, but that is not true. A desert is any place that gets almost no rain. At night, the Sahara can get cold enough to freeze water. How would the author of Text B most likely respond to Text A?",
+    "audioSha256": "cd6659eed176191f61a48253628631922858db73f88ba1fff22dc27c11bce70d",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2323,10 +2328,11 @@
     "status": "matched"
   },
   "word-try-again": {
-    "model": "small",
-    "script": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
-    "transcript": "Take your time. You can try this word again. If you do not know it, choose I don't know this word.",
-    "audioSha256": "052d3fec7520385c222c8eb30b666455584b64acd83d23963bfc4826fb027676",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "I didn\u2019t catch that. Try the word again, or tap I don\u2019t know this word.",
+    "transcript": "I didn't catch that. Try the word again or tap I don't know this word.",
+    "audioSha256": "56f6b49a1af6fc34f53093beb22b35bdc5ade2118b8176cb98c12b6306db3880",
     "wordErrorRate": 0.0,
     "status": "matched"
   },
@@ -2379,10 +2385,830 @@
     "status": "matched"
   },
   "parent-welcome": {
-    "model": "small",
-    "script": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own, and stay nearby to help with the microphone. The results and first lesson are free. When you are ready, hand the device to your reader.",
-    "transcript": "Welcome to Readee! This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own and stay nearby to help with the microphone. The results and first lesson are free. When you are ready, hand the device to your reader.",
-    "audioSha256": "8e9db4b72c6608da3d7b37cb8839ac6eec8d385b9542178253faea26759afb72",
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own, and stay nearby to help with the microphone. Your report will explain what we learned and where to begin. When you are ready, hand the device to your reader.",
+    "transcript": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school-grade guides where we begin. Let them answer on their own and stay nearby to help with the microphone. Your report will explain what we learned and where to begin. When you are ready, hand the device to your reader.",
+    "audioSha256": "365af5d8b4220a33ed4bde9aa919caf5d17bd29f7ed2ebf9d4a5eb46c18a9f75",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "reading-questions": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Now let\u2019s answer a few questions about what you read.",
+    "transcript": "Now let's answer a few questions about what you read.",
+    "audioSha256": "f674d3dfd8e63fe3f34431f700c7de664103f75732002d9997996dc39984b958",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "reveal-ask": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Your custom reading journey is ready. Let\u2019s explore the lessons chosen for your reader.",
+    "transcript": "Your custom reading journey is ready. Let's explore the lessons chosen for your reader.",
+    "audioSha256": "a34f96eadfdea433a2eb25978c0267f70dca0bb81aa3e471132c4657ddc60e14",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-1-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "This text is called Max and the Rain.",
+    "transcript": "This text is called Max and the Rain.",
+    "audioSha256": "c482e9570ccc4366cbeefdf7f2359fd2b95ba4a8677e3998ffdcde9f258bdf08",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g1-q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "What color is the spot on Max?",
+    "transcript": "What color is the spot on Max?",
+    "audioSha256": "ecc3ed289544a3fe674fe9affc36a8fbe3a6132dbc571d7f1cb03dd3a2e9fe0e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q1-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Black",
+    "transcript": "Black.",
+    "audioSha256": "8c5978f87f0fd11eca8083568d9893dda2948a00e923fc967d3311c72d35b582",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q1-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "White",
+    "transcript": "White.",
+    "audioSha256": "bcc098f61ac625de71147e374280df050d726bbba60dda677a46c79b7f868027",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q1-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Red",
+    "transcript": "Red.",
+    "audioSha256": "7ac8432e27e095e167cf796378d4b8e55dddd3660e60cd17f3e3028c327693fd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g1-q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Where did Sam hide the ball first?",
+    "transcript": "Where did Sam hide the ball first?",
+    "audioSha256": "efaea8f590f4efedc4058d1dff81ac6dd46ad2d36c3f4e9a449aacad0aa574c6",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q2-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "In a box",
+    "transcript": "In a box.",
+    "audioSha256": "f67b258f11c055b1f0b5e3dd7cc1785822a6b677a50220aed35deb93f2831e52",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q2-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "In his hat",
+    "transcript": "In his hat.",
+    "audioSha256": "573ad681b27e2f6d3e8c36f599fe7dcea3d06b69dadb57a3e2375cc40f56b1b7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q2-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "On the shelf",
+    "transcript": "On the shelf.",
+    "audioSha256": "54fd356d0cdb1a19d28221dc84cb04fc399982738b8226ed783646c5e3d1f1b8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g1-q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Why did Max sniff at the box?",
+    "transcript": "Why did Max sniff at the box?",
+    "audioSha256": "621c94525721942e6aeca30911f4dd51fb1b132278b0ee8171f827d565e03827",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q3-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "To take a nap",
+    "transcript": "To take a nap.",
+    "audioSha256": "5a4729d5ec053e4de7be38cdde44682f5ec715ce9cff1911b2c9496466694361",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q3-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "To eat a snack",
+    "transcript": "To eat a snack.",
+    "audioSha256": "770c9c0089d0c72b68724fda5fa8b9298dc9d9f363f7ccbe9d344134095daa97",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g1-q3-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "To find the ball",
+    "transcript": "To find the ball.",
+    "audioSha256": "4b0ff570c9f46c6882ee5cd519b432f23f2102cd09c8060a4118f441f963ec64",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-2-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "This text is called Rosa's Seeds.",
+    "transcript": "This text is called Rosa's Seeds.",
+    "audioSha256": "31007fcbb1346760dfc39dabc17bf2345215408625c2b2cc22d718386cb8ec33",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g2-q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "How many seeds did Rosa plant?",
+    "transcript": "How many seeds did Rosa plant?",
+    "audioSha256": "3120c3a1a662235e617d497bd8c055285021d7aa9ee18c161678e019a8807190",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q1-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Two",
+    "transcript": "Two.",
+    "audioSha256": "716a5cc6f282c89a5b273efc737637d52af0dff0b67f0cdc7b3a8ca9181fc386",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q1-b": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Ten",
+    "transcript": "Ten.",
+    "audioSha256": "bcd73b9e5484e7116c76d128f33de5c98725201f4635323fa007807841ad44ed",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q1-c": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Six",
+    "transcript": "Six.",
+    "audioSha256": "d471b456d13cf04f8db943a5190cf1e1931fb912e8b13a13473027d1ef20d470",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g2-q2": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Who gave Rosa the seeds?",
+    "transcript": "Who gave Rosa the seeds?",
+    "audioSha256": "049917ba0cb59a060f174b21c0806d90c6d8c29f5e91457b7529cfb2ba7200f9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q2-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Her grandpa",
+    "transcript": "Her grandpa...",
+    "audioSha256": "b2cce017db84de4266e4ee5cdeefae4e74bc719a3471aae8b1102ad24f1724a8",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q2-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "A brown bird",
+    "transcript": "A brown bird.",
+    "audioSha256": "977cbe619c07a6d486d0a940eab339edf70838efacc561f4f5665bfe6c733b5c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q2-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Her teacher",
+    "transcript": "Her teacher...",
+    "audioSha256": "7b276bbcbe1166970d5330dfbb708b1e51eefb3e3864a163db908a84bf8d1ab3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g2-q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "How did Rosa feel when she saw the first sprout?",
+    "transcript": "How did Rosa feel when she saw the first sprout?",
+    "audioSha256": "b2f32098e9d53cbb82fa7bda6775271feea938f0fe80d9685daeb46e22d0b3b3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q3-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Sleepy",
+    "transcript": "Sleepy.",
+    "audioSha256": "883060f2e27507769ad01a5e50d20c1c0d550be03b91f4de1f5db032e2a29bf3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q3-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Excited",
+    "transcript": "Excited!",
+    "audioSha256": "3999fde51116bcabf15635bc0dfacb1a57453b44818c4adc73fbc7454f8c8563",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g2-q3-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Sad",
+    "transcript": "Sad.",
+    "audioSha256": "e16a0df5e534de22000a442878e67a04cee6ba7a66102ab100f30692f6b8ce04",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "title-sp-read-3-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "This text is called The Lost Mitten.",
+    "transcript": "This text is called The Lost Mitten.",
+    "audioSha256": "d17f2df880a2d0ff4b83b915ffb112a570ea2fb3a8147ceb4e41377009632f0b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g3-q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Who knitted Omar's mittens?",
+    "transcript": "Who knitted Omar's mittens?",
+    "audioSha256": "47c03a3096f1c4a6b5c6097c684a05ab072a137f422cc86093857137d38c7a92",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q1-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "His grandmother",
+    "transcript": "His grandmother.",
+    "audioSha256": "919abf4029e354ad30b32c3e199b8a1e5dd3f87a6fbaa1ceac331e2109371364",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q1-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "His sister Kim",
+    "transcript": "His sister, Kim.",
+    "audioSha256": "3b2661767d3ff0f3cb0f56957d2aebf65bb2df04fef82c98b79cf90c35615025",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q1-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "His friend Lee",
+    "transcript": "His friend Lee.",
+    "audioSha256": "30b3f79796abe537ec37fa954f909949718c74afa405759a1cc893b1d13fffac",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q1-d": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "His mother",
+    "transcript": "His mother...",
+    "audioSha256": "47cff462007c50c60bf55f6cd2ab4d799699900db0ea42d19be58035fba705f3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g3-q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Where did Omar find the missing mitten?",
+    "transcript": "Where did Omar find the missing mitten?",
+    "audioSha256": "62f3684eb5203a1a6dd23443ee24df7fe5cc12416a7b88bafa39686c452ef0fb",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q2-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "In his backpack",
+    "transcript": "In his backpack...",
+    "audioSha256": "a921cb20e3fb1846e255c51b6f6c3f3bc87de323218c9d2d05f7f87c6741fab9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q2-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Under the couch",
+    "transcript": "Under the couch.",
+    "audioSha256": "1738a910bc1ad08fef7cd2ef40f9dc700ea258677c4582b2203b342c465171c9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q2-c": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "In the puppy's basket",
+    "transcript": "In the puppy's basket...",
+    "audioSha256": "3ceb83f6778d1fbb028f9d27d80583cf54ea1fff3bd8053419d5b23c054b8b37",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q2-d": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "On the bus",
+    "transcript": "On the bus.",
+    "audioSha256": "ac2b2d861c2badf6bfb2f2f63de19ce542e2048390cb0e31cb3b8d4c91bd344a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-g3-q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Why did Omar start checking for both mittens before taking off his coat?",
+    "transcript": "Why did Omar start checking for both mittens before taking off his coat?",
+    "audioSha256": "8dd189331f320af576dfb4bd7a7687a020c9125ad1ac223cb63ffcd07928fa9d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q3-a": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Because Kim told him to",
+    "transcript": "Because Kim told him to.",
+    "audioSha256": "2ba87d3d8d56c2152507483687ec9c5d9103fd8c974cec75fbb228a7c869010e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q3-b": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Because the puppy said so",
+    "transcript": "Because the puppy said so.",
+    "audioSha256": "0b96de4af632fe70eb6bf59f7f87f491543a3356b75e6e357917325f72573333",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q3-c": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "To dry them faster",
+    "transcript": "To dry them faster...",
+    "audioSha256": "2424d488a63a8aa2cc24c29a192c6ec20b3ff4b4c76e12f209f921a316955dab",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "opt-g3-q3-d": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "To avoid losing one again",
+    "transcript": "To avoid losing one again.",
+    "audioSha256": "64d7d72518820d12083ba7166bf0230d31cae29e3465fc1f85012870e509d986",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.K.1-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Max the dog ran to the park. He played fetch with a red ball. What did Max PLAY with?",
+    "transcript": "Max the dog ran to the park. He played fetch with a red ball. What did Max play with?",
+    "audioSha256": "de3c38046ff268a347ad0e68b52d12ec890f24e19868cf01788bd9f38b145e5f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.K.8-Q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Kids need lots of sleep. Sleep helps your body grow and helps your brain learn new things. What REASONS does the author give for why kids need sleep?",
+    "transcript": "Kids need lots of sleep. Sleep helps your body grow and helps your brain learn new things. What reasons does the author give for why kids need sleep?",
+    "audioSha256": "d6f115ece79266b67f67ca17ff03fb60b4fc8c310f1ef54767a97df4da0aaca5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.K.4-Q5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The lion let out a mighty ROAR. All the animals ran away because they were FRIGHTENED. What does FRIGHTENED mean?",
+    "transcript": "The lion let out a mighty roar. All the animals ran away because they were frightened. What does frightened mean?",
+    "audioSha256": "94c51c3eeece920c012539dcacdc87562c92c66196934d9581bde9ab185dad6b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.K.2-Q4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Firefighters help keep us safe. They put out fires and rescue people. They drive big red trucks. Which is a KEY DETAIL from this passage?",
+    "transcript": "Firefighters help keep us safe. They put out fires and rescue people. They drive big red trucks. Which is a key detail from this passage.",
+    "audioSha256": "1732be6310be04578809a2202c857b4a280fd39d90b4955b6fbb8dc2fd527cc9",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.K.4-Q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "After winning the game, Kai was DELIGHTED. He smiled and jumped up and down. What does DELIGHTED mean?",
+    "transcript": "After winning the game, Kai was delighted. He smiled and jumped up and down. What does delighted mean?",
+    "audioSha256": "f87af33e3bb80c177da599bfd1fe1d298e42a5a975d87a7bc163267aaeb2be0b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.K.9-Q5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Book 1: \"Butterflies have colorful wings and drink nectar from flowers.\"\nBook 2: \"Butterflies start as caterpillars and go through metamorphosis.\" What is SIMILAR about both books?",
+    "transcript": "Book 1 Butterflies have colorful wings and drink nectar from flowers. Book 2 Butterflies start as caterpillars and go through metamorphosis. What is similar about both books?",
+    "audioSha256": "ef7b8e746eee8fee7c48f4b438f96b4160f4b1fbb719f896890aed7bc335d665",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.K.4-H4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "After being sick in bed all week, Grandpa felt FEEBLE. He could not lift his own cup. He needed Mom to help him stand up. What does FEEBLE mean?",
+    "transcript": "After being sick in bed all week, Grandpa felt feeble. He could not lift his own cup. He needed mom to help him stand up. What does feeble mean?",
+    "audioSha256": "8971f516cb6b58e0da919bbddf8c84694afc6f3841ced2d0483e489301e95eea",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.K.2-H5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Owls sleep all day. At night, they wake up. They hunt for food in the dark. Owls can see very well at night. Why can owls hunt at night?",
+    "transcript": "Owls sleep all day. At night they wake up. They hunt for food in the dark. Owls can see very well at night. Why can owls hunt at night?",
+    "audioSha256": "4a6966698f72ce43995f7ac9bd6cd1d348286a610dc306909d1501802c3550f5",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.K.4-H5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "When the puppet bonked its head and fell off the stage, the crowd thought it was HILARIOUS. Every single kid was laughing so hard they could barely breathe. What does HILARIOUS mean?",
+    "transcript": "When the puppet bonked its head and fell off the stage, the crowd thought it was hilarious. Every single kid was laughing so hard they could barely breathe. What does hilarious mean?",
+    "audioSha256": "e9785ea6b60a26342570d8fd1ebdf9eea8c7cb089351bd9361589ba55a432247",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.K.8-H4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Firefighters are helpers. They rush into fires to save people. They carry pets out to keep them safe. WHY does the author say firefighters are helpers?",
+    "transcript": "Firefighters are helpers. They rush into fires to save people. They carry pets out to keep them safe. Why does the author say firefighters are helpers?",
+    "audioSha256": "0abc6c9b260c12c1f4cb4fa8fcb0ede507d5ab88908703270efa6485b196cb4a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.1.1-Q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The frog sat on a lily pad in the pond. He was waiting for a fly. Where was the frog sitting?",
+    "transcript": "The frog sat on a lily pad in the pond. He was waiting for a fly. Where was the frog sitting?",
+    "audioSha256": "4cfbe031f391184083b26e16eb2c7e67894bc148808cbb729890ff5125c5b068",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.1.1-Q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The sun is a star. It gives Earth light and heat. Without the sun, Earth would be very cold. What does the sun give Earth?",
+    "transcript": "The Sun is a star. It gives Earth light and heat. Without the Sun, Earth would be very cold. What does the Sun give Earth?",
+    "audioSha256": "5622b06816ad88705ec2342c0c1c65465239baff2d4b03e0d2b9ce46e3660ec2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.1.2-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Tom wanted to win the race. He practiced running every day. On race day, he came in first! What is the lesson of this story?",
+    "transcript": "Tom wanted to win the race. He practiced running every day. On race day he came in first. What is the lesson of this story?",
+    "audioSha256": "4d4492aeb2823683766d99cddcac5ffcdf33bff9b8589d6b601f83f56c82fdd3",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.1.1-Q4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Dogs need fresh water every day. They also need food and exercise to stay healthy. What do dogs need to stay healthy?",
+    "transcript": "Dogs need fresh water every day. They also need food and exercise to stay healthy. What do dogs need to stay healthy?",
+    "audioSha256": "d473b4133a5b63e21e49035f39962edd5eb4cfcc5dea08214cf7165f9565098c",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.1.1-Q4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Dad made pancakes for breakfast. He put blueberries on top. What did Dad put on the pancakes?",
+    "transcript": "Dad made pancakes for breakfast. He put blueberries on top. What did dad put on the pancakes?",
+    "audioSha256": "34c2c03b89743bbe962d9cdb41d8748e80b3eb8d5f4df44f7faf5f442c839d2a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.1.8-Q5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Reading every day makes you smarter. It helps you learn new words and understand more stories. The author supports the point by saying reading:",
+    "transcript": "Reading every day makes you smarter. It helps you learn new words and understand more stories. The author supports the point by saying, reading.",
+    "audioSha256": "200c6da78cdfb700d30416647bb80e69f2ab87f01562490b8f66a7294a4fc560",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.1.1-H3": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "At the park, Ben's balloon was not in his hand anymore. He looked up at the sky. His face was sad and he began to cry. Why is Ben crying?",
+    "transcript": "At the park, Ben's balloon was not in his hand anymore. He looked up at the sky. His face was sad and he began to cry. Why is Ben crying?",
+    "audioSha256": "bb90bd0f740f34d6873ec5f8c1fffcf49a4d966ac96cfac600d9fedc9ff5d42b",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.1.2-H2": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "It has a soft mane. It runs fast across the grass. Children love to ride on its back. It says 'neigh, neigh!' What is this text MOSTLY about?",
+    "transcript": "It has a soft mane. It runs fast across the grass. Children love to ride on its back. It says, Nay, Nay. What is this text mostly about?",
+    "audioSha256": "ecd787a49e0204c4efb463022ea35a6f64119cee04e04ef20f3c47b2724fbe5a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.1.3-H3": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Rosa put some seeds in a cup of dirt. She set the cup on the sunny windowsill. Every single day, she gave it a little water. One morning, a tiny green leaf poked out of the dirt. Why did the leaf most likely grow?",
+    "transcript": "Rosa put some seeds in a cup of dirt. She set the cup on the sunny windowsill. Every single day she gave it a little water. One morning a tiny green leaf poked out of the dirt. Why did the leaf most likely grow?",
+    "audioSha256": "ea296efc293337ecd86946b1a0fb48cfacbe8ab8006fb8aa1f3cf7c0947ea623",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.1.1-H5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Firefighters wear thick coats to their job. Their coats are made so they do not burn easily. Firefighters get very close to fire when they work. Why do firefighters wear coats that do not burn easily?",
+    "transcript": "Firefighters wear thick coats to their job. Their coats are made so they do not burn easily. Firefighters get very close to fire when they work. Why do firefighters wear coats that do not burn easily?",
+    "audioSha256": "6f391306a20ee75001a780b9b2eee214205439fcc442d448aaa6b149a4147821",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.2.4-Q5": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Tick-tock, tick-tock, the clock on the wall. Tick-tock, tick-tock, it counts for us all. Why does the author repeat tick-tock?",
+    "transcript": "TikTok, TikTok, the clock on the wall. TikTok, TikTok, it counts for us all. Why does the author repeat TikTok?",
+    "audioSha256": "166c9979868e84ebbc6876a805e9298a82e57d1f90b85520ddfc79f74548ad3e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.2.9-Q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Text A: \"Bats use sound to find food in the dark.\" Text B: \"Bats eat insects and help farmers by keeping pests away.\" What does Text B tell you that Text A does not?",
+    "transcript": "Text A. Bats use sound to find food in the dark. Text B. Bats eat insects and help farmers by keeping pests away. What does text B tell you that text A does not?",
+    "audioSha256": "1e4c92e842848f98896f6c7d0afdc51a25d528a1b912aada81219918171ee8aa",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.2.1-Q3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "On the first day of second grade, Emma felt nervous. She didn't know anyone in her new class. At lunch, a girl named Priya sat next to her and said, \"Want to share my crackers?\" Why was Emma nervous?",
+    "transcript": "On the first day of second grade, Emma felt nervous. She didn't know anyone in her new class. At lunch, a girl named Priya sat next to her and said, Want to share my crackers? Why was Emma nervous?",
+    "audioSha256": "f2ca6cb35a7fdf46293033f14f2e83d26ecd975ff37edfc26a1e15a676bd6027",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.2.1-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Honeybees live in hives. A hive can have up to 60,000 bees! The queen bee lays all the eggs, and worker bees collect nectar from flowers. What does the queen bee do?",
+    "transcript": "Honeybees live in hives. A hive can have up to 60,000 bees. The queen bee lays all the eggs and worker bees collect nectar from flowers. What does the queen bee do?",
+    "audioSha256": "7e849bb3f7a9c789c76d28ce0c08ad063cb3da2f87db5bf36838d1ceba77b5c0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.2.4-Q4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The leaves danced in the wind, twirling and spinning to the ground. What does the word \"danced\" suggest about the leaves?",
+    "transcript": "The leaves danced in the wind, twirling and spinning to the ground. What does the word danced suggest about the leaves?",
+    "audioSha256": "0f06632569ea6689776f77c10b821498ce6b2c751437204a830b84f098d828f2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.2.3-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "First, the caterpillar eats lots of leaves. Then, it makes a chrysalis. Finally, it comes out as a butterfly. What happens AFTER the caterpillar makes a chrysalis?",
+    "transcript": "First, the caterpillar eats lots of leaves. Then it makes a chrysalis. Finally, it comes out as a butterfly. What happens after the caterpillar makes a chrysalis?",
+    "audioSha256": "e905b48ff2b3bb65145a14500114474acbe56d7ea125a94fa2c0265087e6fdd0",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.2.4-H1": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The turtle plods. He plods and plods. Slow . . . slow . . . slow he goes.\nThe rabbit zips! Zip-zip! He's gone before your nose. Why did the poet write slow . . . slow . . . slow with long dots between the words?",
+    "transcript": "The turtle plods. He plods and plods. Slow, slow, slow he goes. The rabbit zips. Zip, zip! He's gone before your nose. Why did the poet write slow, slow, slow with long dots between the words?",
+    "audioSha256": "530f329e4694414df123b80649109f3a584e6fa77cf961f2a5870496848bd686",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.2.1-H1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Every morning, Mrs. Lee puts a dish of seeds on her back porch. Soon little birds fly down to eat. But when her cat sits by the door, no birds come at all. So Mrs. Lee keeps the cat inside during breakfast time. Why does Mrs. Lee keep the cat inside in the morning?",
+    "transcript": "Every morning Mrs. Lee puts a dish of seeds on her back porch. Soon little birds fly down to eat. But when her cat sits by the door, no birds come at all. So Mrs. Lee keeps the cat inside during breakfast time. Why does Mrs. Lee keep the cat inside in the morning?",
+    "audioSha256": "a7d53f502929a3eb55655070269c0650b3cb983e35df9c39060e46734038e5ce",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.2.1-H4": {
+    "model": "medium",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "When Tomas opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week Tomas had told Dad that plain square sandwiches were boring. What does this tell us about Tomas's dad?",
+    "transcript": "When Tom\u00e1s opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week, Tom\u00e1s had told Dad that plain square sandwiches were boring. What does this tell us about Tom\u00e1s's dad?",
+    "audioSha256": "b26f0c09e549c7987d22096e4c632b08d40fe590dcb9c6af9af4edbf78e72054",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.2.2-H5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "A librarian's day begins early. She turns on the lights and unlocks the big doors. All morning and afternoon she helps kids find books they will love. Before the library closes, she reads a story out loud so everyone can listen together. What is this text MOSTLY about?",
+    "transcript": "A librarian's day begins early. She turns on the lights and unlocks the big doors. All morning and afternoon, she helps kids find books they will love. Before the library closes, she reads a story out loud so everyone can listen together. What is this text mostly about?",
+    "audioSha256": "e599a545aaff5c2ef7966527e76ec6cceb0f6eb397bcf168c580731015675a40",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.3.2-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The crow found a piece of cheese. A fox said, \"What a beautiful voice you must have! Please sing for me.\" The crow opened its beak to sing, and the cheese fell right into the fox's mouth. What is the moral of this fable?",
+    "transcript": "The crow found a piece of cheese. A fox said, What a beautiful voice you must have! Please sing for me! The crow opened its beak to sing, and the cheese fell right into the fox's mouth. What is the moral of this fable?",
+    "audioSha256": "69006cc73a82dd34a5c225f2f84956c08528db7f18873a7f9713b663a3b51a4d",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.3.3-E1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The ground got very cold. Because of the cold, the water in the pond turned to ice. What caused the water to turn to ice?",
+    "transcript": "The ground got very cold because of the cold, the water in the pond turned to ice. What caused the water to turn to ice?",
+    "audioSha256": "0d4f7f15ae964297c968dd7e486093955fcc45e8fc417fea51901ea238b57f6a",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.3.2-Q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "A boy cried \"Wolf!\" when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him. What is the central message?",
+    "transcript": "A boy cried wolf when there was no wolf just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him. What is the central message?",
+    "audioSha256": "0606f82fb02d310f6282ef644c8455afb7bdd480728181086074af699cde5207",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.3.3-E4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The volcano erupted. After the eruption, hot lava flowed down the mountain. What happened AFTER the volcano erupted?",
+    "transcript": "The volcano erupted. After the eruption, hot lava flowed down the mountain. What happened after the volcano erupted?",
+    "audioSha256": "91bbf9820e1d7257b5fd1d05235a20461407ad28faeddc68b1ab3fe374f8410e",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.3.4-Q4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The classroom was a zoo today! This means \u2014",
+    "transcript": "The classroom was a zoo today. This means...",
+    "audioSha256": "360a76251ee10bf052f4e3c37424e4660e13f55bb91b392371820dc53acd6ace",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.3.1-H3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The morning of the trip, Leo checked the sky three times before breakfast. He packed his raincoat even though the forecast said sunny. He added an extra pair of dry socks, a flashlight, and a whistle to his bag. His mom laughed and said, 'It's just a walk in the park.' Leo zipped the bag anyway. Which word BEST describes Leo, based on the text?",
+    "transcript": "The morning of the trip, Leo checked the sky three times before breakfast. He packed his raincoat even though the forecast said sunny. He added an extra pair of dry socks, a flashlight, and a whistle to his bag. His mom laughed and said, it's just a walk in the park. Leo zipped the bag anyway. Which word best describes Leo based on the text?",
+    "audioSha256": "2c840fb19e0f67092124c952f8d79710d8277847193d541e9bdf3d2e165946ae",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.3.1-H2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Every recess, Priya sat alone on the bench and read her book. The other kids thought she was shy. But Priya always sat where she could see the whole playground, and she kept a small notebook tucked inside her book. When Coach asked who had seen who knocked over the equipment shed, only Priya raised her hand. What does the text suggest about Priya?",
+    "transcript": "Every recess, Priya sat alone on the bench and read her book. The other kids thought she was shy, but Priya always sat where she could see the whole playground, and she kept a small notebook tucked inside her book. When Coach asked who had seen who knocked over the equipment shed, only Priya raised her hand. What does the text suggest about Priya?",
+    "audioSha256": "75b59101335a94e2bb2b3a1b1cb7ae562dc1d6239b429c674f2c22de917655b7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.3.2-H4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Penguins have clever ways to stay warm in the freezing cold. They huddle together in huge groups so their bodies block the icy wind. They also have a thick layer of fat under their skin that holds in heat. Which NEW sentence would best support the main idea of this passage?",
+    "transcript": "Penguins have clever ways to stay warm in the freezing cold. They huddle together in huge groups so their bodies block the icy wind. They also have a thick layer of fat under their skin that holds in heat. Which, new, sentence would best support the main idea of this passage.",
+    "audioSha256": "cb8f54d9b01293b8833450cca1abeceff5ea571fde3d0ebc31ccdfc4e9db40da",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.4.4-E3": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Maya felt gloomy all day. She frowned and did not want to play or smile. How does Maya feel when she is gloomy?",
+    "transcript": "Maya felt gloomy all day. She frowned and did not want to play or smile. How does Maya feel when she is gloomy?",
+    "audioSha256": "aadcf892a314b1242f6015e41489d32138d09fc92a0bb390c91341bf494237a2",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.4.2-E2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body. What is this paragraph mostly about?",
+    "transcript": "The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body. What is this paragraph mostly about?",
+    "audioSha256": "31cbdadb519fb2201547bdca35c133bfb90b2a43e5a2368bd5cdfca9bebba1d7",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.4.4-E1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The knight was as brave as a lion, so he was not scared at all when the dragon roared. In this sentence, \"as brave as a lion\" means the knight was \u2014",
+    "transcript": "The Knight was as brave as a lion, so he was not scared at all when the dragon roared. In this sentence, as brave as a lion, means the Knight was...",
+    "audioSha256": "ad02a145f1f37e15b85c1dca8d6a405303943b506052643bad7a1853c70add2f",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.4.9-E4": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Two texts are about rain.\n\nText A says: \"Rain gives water to plants.\"\nText B says: \"Rain fills up rivers and lakes.\" Using information from BOTH texts, name two things rain does.",
+    "transcript": "Two texts are about rain. Text A says rain gives water to plants. Text B says rain fills up rivers and lakes. Using information from both texts, name two things rain does.",
+    "audioSha256": "e9a08f463db6f051f638427a5cb3cfdb3545c58205b1cd0133dadeb9098bb952",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.4.2-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him \u2014 who had shared ideas and caught each other's mistakes \u2014 won first place. What is the theme?",
+    "transcript": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive, but had a major flaw he hadn't noticed. Meanwhile, the team next to him, who had shared ideas and caught each other's mistakes, won first place. What is the theme?",
+    "audioSha256": "58d3cb5215cbd26376e7d5a15ddbdcaa1357a011aaa2bafd79c209a9041f0b08",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.4.3-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor. What caused the Boston Tea Party?",
+    "transcript": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans, boarded British ships, and dumped 342 chests of tea into Boston Harbor. What caused the Boston Tea Party?",
+    "audioSha256": "0c0341f966d7cb2a55815e683c8c32df4bb09cb5bfdb9dfe1c57c736ee142813",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RL.4.4-Q5": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The silence in the library was so thick you could cut it with a knife. This phrase means \u2014",
+    "transcript": "The silence in the library was so thick, you could cut it with a knife. This phrase means...",
+    "audioSha256": "6f79cfce1900ec1d314278d477ec05f5cc28162f0449b699f3ca2938f4128926",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.4.1-Q1": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours. What detail explains why astronauts see so many sunrises?",
+    "transcript": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours. What detail explains why astronauts see so many sunrises?",
+    "audioSha256": "3b3cbfbdeabd6ed84eb2fe44a42eb0d768b306cbfce4159a1032b3191d16b9cd",
+    "wordErrorRate": 0.0,
+    "status": "matched"
+  },
+  "q-sp-RI.4.1-Q2": {
+    "model": "base",
+    "vocabularyPrompt": "Names: Readee, Luna, Nia.",
+    "script": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites \u2014 a discovery that changed our understanding of what makes humans unique. What inference can you make about why this discovery was so important?",
+    "transcript": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites, a discovery that changed our understanding of what makes humans unique. What inference can you make about why this discovery was so important?",
+    "audioSha256": "1d9513b7a1c9c55f9d0466cdf7b2eb7743b56bb36cd43ce09f6857bc4c48af4b",
     "wordErrorRate": 0.0,
     "status": "matched"
   }

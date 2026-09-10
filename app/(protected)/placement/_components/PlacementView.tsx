@@ -20,11 +20,11 @@ export type PlacementScreen =
       word: string;
       listening: boolean;
       nonsense?: boolean;
+      practiceCorrect?: boolean;
       band?: number;
       oral?: boolean;
       issue?: "quiet" | "technical";
     }
-  | { kind: "reading-break" }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | {
       kind: "passage";
@@ -112,9 +112,9 @@ function AnswerCards({
               onClick={() => setSelected(option.id)}
             >
               <span>{option.label}</span>
-              {selected === option.id && (
-                <Glyph name="check" size={24} className="pa-selected-mark" />
-              )}
+              <span className="pa-selection-slot" aria-hidden="true">
+                {selected === option.id && <Glyph name="check" size={24} className="pa-selected-mark" />}
+              </span>
             </button>
             {onRead && (
               <button
@@ -380,11 +380,10 @@ export default function PlacementView({
           <div className="pa-intro">
             <h1>Hi, {childName}.</h1>
             <ReadingOrb mode="idle" large onTap={onBegin} label="Begin reading with Luna" />
-            <p className="pa-intro-line">Let’s read a little together.</p>
+            <p className="pa-intro-line">Ready to read with Luna?</p>
             <button className="pa-primary" onClick={onBegin} data-begin>
               Start with Luna <Glyph name="arrow-right" size={20} />
             </button>
-            <p className="pa-small">Your grown-up can stay nearby.</p>
           </div>
         )}
         {screen.kind === "luna" && (
@@ -426,17 +425,17 @@ export default function PlacementView({
               className={
                 screen.oral
                   ? "pa-oral-prompt"
-                  : `pa-reading-word ${screen.word.length > 9 ? "pa-long-word" : ""}`
+                  : `pa-reading-word ${screen.word.length > 9 ? "pa-long-word" : ""} ${screen.practiceCorrect ? "is-practice-correct" : ""}`
               }
             >
               {screen.oral ? "Your turn" : screen.word.toLowerCase()}
             </p>
-            {(screen.issue || !screen.listening) && (
+            {!screen.practiceCorrect && (screen.issue || !screen.listening) && (
               <p className="pa-turn-status" role="status">
                 {screen.issue === "technical"
                   ? "Let’s try the microphone again. Your word is still here."
                   : screen.issue === "quiet"
-                    ? "Take your time. Try again, or pass this word."
+                    ? "I didn’t catch that. Try again, or pass."
                     : screen.listening
                       ? ""
                       : "Opening the microphone…"}
@@ -557,19 +556,6 @@ export default function PlacementView({
             </div>
           </div>
         )}
-        {screen.kind === "reading-break" && (
-          <div className="pa-intro">
-            <h1>You’ve read two texts.</h1>
-            <ReadingOrb mode={orb} analyser={analyser} label="Luna is speaking" />
-            <p className="pa-intro-line">Ready to finish this part?</p>
-            <button className="pa-primary" onClick={() => onTap("finish-reading")}>
-              Finish reading
-            </button>
-            <button className="pa-secondary" onClick={() => onTap("more-reading")}>
-              Try another text
-            </button>
-          </div>
-        )}
         {screen.kind === "hesitation" && (
           <div className="pa-intro pa-help" role="status">
             <ReadingOrb mode={orb} large label="Luna is waiting" />
@@ -648,6 +634,7 @@ export default function PlacementView({
       <footer className={`pa-dock ${voiceTask ? "pa-voice-dock" : ""}`}>
         {voiceTask ? (
           <>
+            {screen.kind === "word" && <div className="pa-word-bunny" data-bunny aria-hidden="true"><Bunny outfitId={outfitId ?? "bunny_classic"} /></div>}
             {screen.kind === "passage" && <div className="pa-page-dock" ref={setPageHost} />}
             <div className="pa-mic-row">
               <ReadingOrb

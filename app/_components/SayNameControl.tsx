@@ -10,10 +10,10 @@
 import { useEffect, useRef, useState } from "react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 
-const MAX_SECONDS = 3;
+const MAX_SECONDS = 8;
 const OUT_RATE = 16000;
 
-type Status = "idle" | "recording" | "thinking" | "heard" | "unclear" | "error";
+type Status = "idle" | "opening" | "recording" | "thinking" | "heard" | "unclear" | "error";
 
 function encodeWav(samples: Float32Array, rate: number): Blob {
   const buf = new ArrayBuffer(44 + samples.length * 2);
@@ -49,15 +49,25 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
   const [hearing, setHearing] = useState(false);
   const stopRef = useRef<(() => void) | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  useEffect(() => () => { stopRef.current?.(); audioRef.current?.pause(); }, []);
+  const mounted = useRef(true);
+  const requestRef = useRef<AbortController | null>(null);
+  const previewRef = useRef<{ key: string; url: string } | null>(null);
+  const [playbackError, setPlaybackError] = useState<string | null>(null);
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); };
+  }, []);
 
   async function record() {
     if (status === "recording") { stopRef.current?.(); return; }
-    setStatus("recording");
+    if (status === "opening" || status === "thinking") return;
+    setPlaybackError(null);
+    setStatus("opening");
     let ctx: AudioContext | null = null;
     let stream: MediaStream | null = null;
     try {
       stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+      if (!mounted.current) return;
       ctx = new AudioContext();
       if (ctx.state === "suspended") await ctx.resume();
       const src = ctx.createMediaStreamSource(stream);
@@ -66,11 +76,16 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       proc.onaudioprocess = (e) => chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
       const sink = ctx.createGain(); sink.gain.value = 0;
       src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
-      await new Promise<void>((res) => { stopRef.current = res; window.setTimeout(res, MAX_SECONDS * 1000); });
+      setStatus("recording");
+      await new Promise<void>((res) => {
+        const timer = window.setTimeout(res, MAX_SECONDS * 1000);
+        stopRef.current = () => { window.clearTimeout(timer); res(); };
+      });
       stopRef.current = null;
       proc.disconnect(); src.disconnect();
       const rate = ctx.sampleRate;
       stream.getTracks().forEach((t) => t.stop()); await ctx.close(); ctx = null; stream = null;
+      if (!mounted.current) return;
       setStatus("thinking");
       const wav = encodeWav(downsample(chunks, rate, OUT_RATE), OUT_RATE);
       // Chunked: a 100 KB spread into String.fromCharCode overflows the call stack on Safari.
@@ -78,11 +93,13 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       let bin = "";
       for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode(...bytes.subarray(i, i + 8192));
       const b64 = btoa(bin);
-      const r = await fetch("/api/child-name/respell", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ audioBase64: b64, mimeType: "audio/wav", name: writtenName }) });
+      requestRef.current = new AbortController();
+      const r = await fetch("/api/child-name/respell", { signal: requestRef.current.signal, method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ audioBase64: b64, mimeType: "audio/wav", name: writtenName }) });
       const j = (await r.json()) as { ok?: boolean; saidAs?: string };
-      if (j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); if (mode === "child") void hear(j.saidAs); } else setStatus("unclear");
+      if (!mounted.current) return;
+      if (r.ok && j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); } else setStatus("unclear");
     } catch {
-      setStatus("error");
+      if (mounted.current) setStatus("error");
     } finally {
       stream?.getTracks().forEach((t) => t.stop());
       if (ctx) { try { await ctx.close(); } catch { /* ignore */ } }
@@ -92,23 +109,35 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
   async function hear(saidAs: string = value) {
     if (hearing) return;
     setHearing(true);
+    setPlaybackError(null);
     try {
-      const r = await fetch("/api/child-name/preview", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: writtenName, saidAs }) });
-      const j = (await r.json()) as { ok?: boolean; audioUrl?: string };
-      if (j.ok && j.audioUrl) {
-        audioRef.current?.pause();
-        const a = new Audio(j.audioUrl);
-        audioRef.current = a;
-        await new Promise<void>((res) => { a.addEventListener("ended", () => res(), { once: true }); a.addEventListener("error", () => res(), { once: true }); a.play().catch(() => res()); });
+      const key = `${writtenName}:${saidAs}`;
+      if (previewRef.current?.key !== key) {
+        requestRef.current = new AbortController();
+        const r = await fetch("/api/child-name/preview", { signal: requestRef.current.signal, method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: writtenName, saidAs }) });
+        const j = await r.json() as { ok?: boolean; audioUrl?: string };
+        if (!r.ok || !j.ok || !j.audioUrl) throw new Error("preview");
+        previewRef.current = { key, url: j.audioUrl };
       }
-    } finally { setHearing(false); }
+      if (!mounted.current) return;
+      audioRef.current?.pause();
+      const a = new Audio(previewRef.current.url);
+      audioRef.current = a;
+      await new Promise<void>((resolve, reject) => {
+        a.onended = () => resolve();
+        a.onerror = () => reject(new Error("playback"));
+        void a.play().catch(reject);
+      });
+    } catch {
+      if (mounted.current) setPlaybackError(previewRef.current ? "Tap Hear it again to play the pronunciation." : "Luna could not make the preview. Tap Hear it to retry.");
+    } finally { if (mounted.current) setHearing(false); }
   }
 
   const child = mode === "child";
-  const note = child
-    ? status === "recording" ? "Say your name, nice and clear!" :
+  const note = playbackError ?? (status === "opening" ? "Allow the microphone to say the name." : child
+    ? status === "recording" ? "Say your name, then tap Stop." :
       status === "thinking" ? "Luna is listening..." :
-      status === "heard" ? "Did Luna say it right? Tap again to try once more." :
+      status === "heard" ? "Tap Hear Luna say it. You can record it again if you want." :
       status === "unclear" ? "Luna did not catch it. Try once more, a little closer." :
       status === "error" ? "Luna cannot hear right now. That is okay, keep going!" :
       "Tap and say your name so Luna knows how to say it."
@@ -117,7 +146,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       status === "heard" ? "Here is how Luna heard it. Tap Hear it, and fix the spelling if it is off." :
       status === "unclear" ? "Luna could not make it out. Try once more, a little closer to the microphone." :
       status === "error" ? "The microphone is not available right now. You can type how it sounds instead." :
-      "Optional: say the name so Luna says it right, or type how it sounds.";
+      "Optional: say the name so Luna says it right, or type how it sounds.");
 
   if (child) {
     return (
@@ -126,7 +155,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
           <button
             type="button"
             onClick={() => { void record(); }}
-            disabled={status === "thinking" || hearing}
+            disabled={status === "opening" || status === "thinking" || hearing}
             className={`inline-flex min-h-14 items-center gap-3 rounded-2xl px-7 text-lg font-bold shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] ring-1 transition active:scale-[0.97] ${status === "recording" ? "bg-rose-50 text-rose-700 ring-rose-200" : "bg-white text-violet-700 ring-violet-200"}`}
             data-say-name-record
           >
@@ -138,7 +167,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
             <button
               type="button"
               onClick={() => { void hear(); }}
-              disabled={hearing}
+              disabled={hearing || status === "recording" || status === "opening"}
               className="inline-flex min-h-14 items-center gap-2 rounded-2xl bg-violet-600 px-6 text-lg font-bold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition active:scale-[0.97] disabled:opacity-60"
               data-say-name-hear
             >
@@ -159,7 +188,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
         <button
           type="button"
           onClick={() => { void record(); }}
-          disabled={status === "thinking"}
+          disabled={status === "opening" || status === "thinking" || hearing}
           className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-4 text-sm font-semibold shadow-sm ring-1 transition active:scale-[0.97] ${status === "recording" ? "bg-rose-50 text-rose-700 ring-rose-200" : "bg-white text-violet-700 ring-zinc-200"}`}
           data-say-name-record
         >
@@ -179,7 +208,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
         <button
           type="button"
           onClick={() => { void hear(); }}
-          disabled={hearing || !(value.trim() || writtenName.trim())}
+          disabled={hearing || status === "recording" || status === "opening" || !(value.trim() || writtenName.trim())}
           className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-violet-700 shadow-sm ring-1 ring-zinc-200 transition active:scale-[0.97] disabled:opacity-50"
           data-say-name-hear
         >

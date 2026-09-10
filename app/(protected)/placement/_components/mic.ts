@@ -62,6 +62,7 @@ export function usePlacementMic() {
   const ctrlRef = useRef<StreamController | null>(null);
   const recRef = useRef<{ chunks: Float32Array[]; rate: number } | null>(null);
   const levelRef = useRef(0);
+  const preRollRef = useRef<{ frames: { samples: Float32Array; rate: number }[]; count: number } | null>(null);
   const generation = useRef(0);
   const errorRef = useRef<((message: string) => void) | undefined>(undefined);
 
@@ -143,7 +144,14 @@ export function usePlacementMic() {
         for (let i = 0; i < frame.length; i += 16) sum += frame[i] * frame[i];
         const rms = Math.sqrt(sum / (frame.length / 16));
         levelRef.current = Math.min(1, rms * 8);
-        ctrlRef.current?.pushSamples(new Float32Array(frame), ctx.sampleRate);
+        if (ctrlRef.current) ctrlRef.current.pushSamples(new Float32Array(frame), ctx.sampleRate);
+        else if (preRollRef.current) {
+          const pending = preRollRef.current;
+          pending.frames.push({ samples: new Float32Array(frame), rate: ctx.sampleRate });
+          pending.count += frame.length;
+          while (pending.count > ctx.sampleRate * 5 && pending.frames.length > 1)
+            pending.count -= pending.frames.shift()!.samples.length;
+        }
         if (recRef.current) recRef.current.chunks.push(new Float32Array(frame));
       };
       const sink = ctx.createGain();
@@ -191,11 +199,19 @@ export function usePlacementMic() {
         await old.stop();
       }
       const phrases: PAWord[][] = [];
+      // Children may start as soon as a word appears. Preserve that speech
+      // while its recognizer connects, rather than silently dropping it.
+      const preRoll = referenceText.trim().split(/\s+/).length === 1 ? { frames: [] as { samples: Float32Array; rate: number }[], count: 0 } : null;
+      preRollRef.current = preRoll;
       errorRef.current = onError;
       const pending = startPronAssessment({
         token: tok.token,
         region: tok.region,
         referenceText,
+        // Short finalized turns; continuous recognition keeps listening through
+        // decoding pauses. Alignment is done by Readee, not unsupported miscue mode.
+        segmentationSilenceMs: referenceText.trim().split(/\s+/).length === 1 ? 500 : 900,
+        enableMiscue: false,
         onRecognizing,
         onPhrase: (p) => {
           phrases.push(p.words);
@@ -213,6 +229,7 @@ export function usePlacementMic() {
           }),
         ]);
       } catch (e) {
+        if (preRollRef.current === preRoll) preRollRef.current = null;
         void pending.then(
           (late) => late.stop(),
           () => {},
@@ -226,6 +243,10 @@ export function usePlacementMic() {
         throw new Error("Microphone session changed.");
       }
       ctrlRef.current = ctrl;
+      if (preRollRef.current === preRoll) {
+        preRollRef.current = null;
+        for (const frame of preRoll?.frames ?? []) ctrl.pushSamples(frame.samples, frame.rate);
+      }
       return {
         phrases,
         stop: async () => {
@@ -254,6 +275,7 @@ export function usePlacementMic() {
     setLevel(0);
     setAnalyser(null);
     errorRef.current = undefined;
+    preRollRef.current = null;
     const c = ctrlRef.current;
     ctrlRef.current = null;
     if (c) void c.stop().catch(() => {});

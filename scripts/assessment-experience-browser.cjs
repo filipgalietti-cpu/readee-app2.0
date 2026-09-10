@@ -42,6 +42,7 @@ if (!["localhost", "127.0.0.1"].includes(new URL(base).hostname))
           await expect(page.locator("[data-finish-speaking]")).toBeInViewport();
           await expect(page.locator("[data-skip-word], [data-skip-story]")).toBeInViewport();
         }
+        if (i === 17) await expect(page.locator(".pa-reading-word.is-practice-correct")).toBeVisible();
         if (i === 4 || i === 16 || i === 19) {
           await expect(page.getByRole("navigation", { name: "Story pages" })).toBeInViewport();
           await expect(page.locator("[data-skip-story]")).toBeInViewport();

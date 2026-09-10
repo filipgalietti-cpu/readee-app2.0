@@ -18,7 +18,7 @@ async function main() {
   const pending = [];
   const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7);
   for (const [id, text] of Object.entries(spectrumAudioScripts())) {
-    if (only && id !== only) continue;
+    if (only && !only.split(",").some(prefix => id.startsWith(prefix))) continue;
     const hash = createHash("sha256").update(`Autonoe:${text}`).digest("hex");
     if (
       !process.argv.includes("--force") &&
@@ -56,12 +56,11 @@ async function main() {
             input: {
               text:
                 batch.length === 1
-                  ? batch[0].text
+                  ? batch[0].text.replace(/\bNia\b/g, "NEE-ah").replace(/\bMOSTLY\b/g, "mostly")
                   : batch.map((c) => `${c.text.replace(/\s+/g, " ")}. Next recording.`).join("\n"),
-              prompt:
-                batch.length === 1
-                  ? "Read only the supplied text in a calm, warm reading-teacher voice. Do not add an introduction or explanation. Pronounce the character name Nia as NEE-ah consistently. Pronounce the brand Readee as REE-dee, rhyming with seedy, not ready."
-                  : "Read exactly the supplied text in a calm, warm reading-teacher voice. Pause one second before and after each phrase Next recording. Speak the phrase Next recording every time. Do not add numbers, explanations, or introductions.",
+              // Short clips must be text-only: delivery/pronunciation prompts
+              // can be spoken or repeated by this endpoint. Respelling stays in text.
+              ...(batch.length === 1 ? {} : { prompt: "Read exactly the supplied text in a calm, warm reading-teacher voice. Pause one second before and after each phrase Next recording. Speak the phrase Next recording every time. Do not add numbers, explanations, or introductions." }),
             },
             voice: { languageCode: "en-US", name: "Autonoe", model_name: "gemini-2.5-flash-tts" },
             audioConfig: { audioEncoding: "MP3" },

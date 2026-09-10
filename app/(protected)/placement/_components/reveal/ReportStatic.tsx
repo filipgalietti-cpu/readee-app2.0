@@ -15,7 +15,7 @@ import { buildRevealCopy } from "./copy";
 
 export type ReportStaticProps = {
   result: PlacementResult;
-  /** When absent the button opens the first free lesson in the saved plan. */
+  /** When absent the button opens the saved custom journey. */
   onStartPlan?: () => void;
 };
 
@@ -51,7 +51,7 @@ function Section({
 const PRIMARY =
   "inline-flex rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-3 text-base font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] hover:from-violet-700 hover:to-violet-600";
 
-/** The same content as the reveal, in one printable column (720 px wide at desktop). */
+/** The same content as the reveal, in a wider printable report. */
 export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
   useEffect(() => {
     trackFunnelClient("funnel.report_view", {
@@ -74,7 +74,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
   return (
     <div className="reveal-report bg-white text-zinc-900 @container">
       <style dangerouslySetInnerHTML={{ __html: PRINT_CSS }} />
-      <div className="mx-auto max-w-3xl space-y-6 px-6 py-8 @2xl:space-y-8 @2xl:py-12">
+      <div className="mx-auto max-w-6xl space-y-6 px-6 py-8 @2xl:space-y-8 @2xl:py-12">
         <header className="flex items-start justify-between gap-4">
           <div>
             <h1 className="text-2xl font-semibold text-zinc-900 @2xl:text-3xl">
@@ -110,34 +110,13 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           >
             <h2 className="text-lg font-semibold">Different skills, different starting points</h2>
             <dl className="mt-4 grid gap-4 sm:grid-cols-3">
-              <div>
-                <dt className="text-sm text-zinc-600">Word reading</dt>
-                <dd className="mt-1 font-semibold">
-                  {result.decision.spectrum.wordStep === null
-                    ? "Needs follow-up"
-                    : result.decision.spectrum.wordLabel}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-zinc-600">Independent reading</dt>
-                <dd className="mt-1 font-semibold">
-                  {result.decision.spectrum.readingBand === null
-                    ? "Not yet confirmed; follow-up needed"
-                    : `${result.decision.spectrum.readingBand === 0 ? "Kindergarten" : `Grade ${result.decision.spectrum.readingBand}`} texts, checked twice`}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-zinc-600">Understanding with read-aloud support</dt>
-                <dd className="mt-1 font-semibold">
-                  {result.decision.spectrum.languageBand === null
-                    ? "More evidence needed"
-                    : `${result.decision.spectrum.languageBand === 0 ? "Kindergarten" : `Grade ${result.decision.spectrum.languageBand}`} question set`}
-                </dd>
-              </div>
+              {copy.skills.map(skill => <div key={skill.id}>
+                <dt className="text-sm text-zinc-600">{skill.label}</dt>
+                <dd className="mt-1 font-semibold">{skill.value}</dd>
+              </div>)}
             </dl>
             <p className="mt-4 text-sm text-zinc-600">
-              These are instructional samples, not a diagnosis or a standardized grade-equivalent
-              score. Listening support does not establish independent reading at that grade.
+              Word reading, reading connected text and understanding a read-aloud each help shape the lessons ahead.
             </p>
             {result.decision.spectrum.ceilingReached && (
               <p className="mt-3 text-sm font-semibold text-violet-800">
@@ -173,14 +152,14 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           <div className="reveal-print-hide mt-5 flex flex-wrap items-center gap-4">
             {onStartPlan ? (
               <button type="button" onClick={onStartPlan} className={PRIMARY}>
-                Start the first free lesson
+                Go to custom reading journey
               </button>
             ) : (
               <Link
-                href={`/placement/start?child=${encodeURIComponent(result.childId)}`}
+                href={`/journey?child=${encodeURIComponent(result.childId)}&from=placement`}
                 className={PRIMARY}
               >
-                Start the first free lesson
+                Go to custom reading journey
               </Link>
             )}
             <a
@@ -349,23 +328,23 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
 
         <Section title="Your next step: read together" centered>
           <p className="text-center text-base font-semibold text-zinc-800">
-            Start with the first lesson in your child’s reading plan.
+            Your child’s reading plan is ready to explore.
           </p>
           <p className="mt-1 text-center text-base text-zinc-600">
-            The first reading unit is free. No card needed.
+            Explore the lessons chosen for your reader, then start Readee+.
           </p>
           <div className="reveal-print-hide mt-4 flex flex-col items-center text-center">
             <div className="mt-4">
               {onStartPlan ? (
                 <button type="button" onClick={onStartPlan} className={PRIMARY}>
-                  Start the first lesson
+                  Go to custom reading journey
                 </button>
               ) : (
                 <Link
-                  href={`/placement/start?child=${encodeURIComponent(result.childId)}`}
+                  href={`/journey?child=${encodeURIComponent(result.childId)}&from=placement`}
                   className={PRIMARY}
                 >
-                  Start the first lesson
+                  Go to custom reading journey
                 </Link>
               )}
             </div>

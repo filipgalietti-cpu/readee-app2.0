@@ -119,7 +119,7 @@ describe("narrate: Maya, below level", () => {
     expect(plan).toContain("reach the 4th-grade bar by next fall");
     const ask = byId(lines, "ask");
     expect(ask).toContain("Her Custom Reading Journey starts with 2nd Grade Fact Finders");
-    expect(ask.endsWith("The first reading unit is free. Let’s start with the first lesson.")).toBe(true);
+    expect(ask.endsWith("Your custom reading journey is ready. Let’s explore the lessons chosen for your reader.")).toBe(true);
   });
 
   it("uses her pronouns throughout", () => {

@@ -3,7 +3,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
 import RevealFlow from "../_components/RevealFlow";
 
-/** Saved assessment → first free lesson, with the full report available to the parent. */
+/** Saved assessment → custom reading journey, with the full report available to the parent. */
 export default async function PlacementRevealPage({ searchParams }: { searchParams: Promise<{ child?: string }> }) {
   const profile = await requireProfile();
   const { child: childId } = await searchParams;

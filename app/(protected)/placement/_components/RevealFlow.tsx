@@ -12,6 +12,7 @@ import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
 import Link from "next/link";
 import { reportFailure } from "@/lib/observability/critical";
 import { ASK_CLOSE } from "@/lib/placement/narration";
+import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { CelebrationScreen, HoldToBuild, RevealWizard } from "./reveal";
 
@@ -40,7 +41,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
 
   const startPlan = useCallback(() => {
     trackFunnelClient("funnel.placement_lesson_clicked", { child_id: childId });
-    router.push(`/placement/start?child=${encodeURIComponent(childId)}`);
+    router.push(`/journey?child=${encodeURIComponent(childId)}&from=placement`);
   }, [childId, router]);
 
   const [loadError, setLoadError] = useState(false);
@@ -63,7 +64,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
       if (!alive.current) return;
       setLoadError(false);
       // Historical recordings may describe a trial. Keep every report card,
-      // but do not play a billing invitation over the new free-lesson action.
+      // and keep the final invitation aligned with the custom-journey action.
       j.result.narration = j.result.narration.map((line: NarrationLine) => line.id === "ask" && !line.text.endsWith(ASK_CLOSE)
         ? { ...line, text: ASK_CLOSE, audioPath: null } : line);
       const payload = JSON.stringify(j.result);
@@ -76,13 +77,13 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     } finally { loadingRef.current = false; }
   }, [childId]);
 
-  // Load immediately; keep polling every 4 s until every narration line has audio (or 2 minutes pass).
+  // Load immediately; poll while the bounded narration job is still running.
   useEffect(() => {
     alive.current = true;
     void load();
     const started = Date.now();
     pollRef.current = window.setInterval(() => {
-      if (Date.now() - started > 120000) { if (pollRef.current) window.clearInterval(pollRef.current); return; }
+      if (Date.now() - started > 300000) { if (pollRef.current) window.clearInterval(pollRef.current); return; }
       void load();
     }, 4000);
     return () => { alive.current = false; if (pollRef.current) window.clearInterval(pollRef.current); };
@@ -102,6 +103,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   }, [phase]);
 
   const audioUrlFor = useCallback((line: NarrationLine): string | null => {
+    if (line.id === "ask") return spectrumClip("reveal-ask");
     return line.audioPath ? `/api/child-audio?path=${encodeURIComponent(line.audioPath)}` : null;
   }, []);
 

@@ -149,8 +149,7 @@ export function GradeLadder({ provisional = false, enrolled, placed, childName, 
       {gap === 0 && <p className="mt-3 text-sm font-semibold text-violet-700 @2xl:hidden">{comparison}</p>}
       {provisional && (
         <p className="mt-4 text-sm leading-6 text-zinc-500">
-          The marker shows the provisional lesson start at {gradeLabel(placed)}.
-          Independent reading is not yet confirmed, so a measured gap from enrollment is not available.
+          Start here with guided reading. Lesson responses will help check and refine this starting point.
         </p>
       )}
     </div>
