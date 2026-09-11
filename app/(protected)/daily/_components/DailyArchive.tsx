@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
@@ -16,9 +16,9 @@ type Entry = {
 
 /**
  * In-app Daily Readee archive — the newspaper calendar, sized to fill the
- * content area with NO page scroll (the parent page pins it with `fixed`).
+ * content area, with internal scrolling on short screens.
  * The day grid uses `grid-auto-rows: 1fr` so the weeks share the remaining
- * height and every cell shrinks to fit one screen. Month-jump pills + prev/
+ * height, with a minimum height to keep short screens usable. Month-jump pills + prev/
  * next step through months that actually have entries.
  */
 export default function DailyArchive({
@@ -50,6 +50,16 @@ export default function DailyArchive({
     : monthsWithEntries[0] ?? todayMonth;
   const [activeMonth, setActiveMonth] = useState(initialMonth);
 
+  const monthStrip = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const strip = monthStrip.current;
+    const active = strip?.querySelector('[aria-pressed="true"]');
+    if (!strip || !active) return;
+    const outer = strip.getBoundingClientRect();
+    const tab = active.getBoundingClientRect();
+    strip.scrollLeft += Math.max(0, tab.right - outer.right) + Math.min(0, tab.left - outer.left);
+  }, [activeMonth]);
+
   const monthTabs = useMemo(() => [...monthsWithEntries].reverse(), [monthsWithEntries]);
   const idx = monthsWithEntries.indexOf(activeMonth);
   const hasPrev = idx >= 0 && idx < monthsWithEntries.length - 1;
@@ -59,11 +69,12 @@ export default function DailyArchive({
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       {/* Month nav */}
-      <div className="mt-3 flex flex-none items-center justify-between gap-3">
+      <div className="mt-3 flex flex-none flex-wrap items-center justify-between gap-3">
         <h2 className="font-display text-xl font-extrabold tracking-tight text-zinc-900 sm:text-[22px]">
           {monthLabel(activeMonth)}
         </h2>
-        <div className="flex items-center gap-1.5">
+        <div className="flex min-w-0 w-full items-center gap-1.5 sm:w-auto">
+          <div ref={monthStrip} className="flex min-w-0 flex-1 gap-1.5 overflow-x-auto" aria-label="Available months">
           {monthTabs.map((mm) => {
             const active = mm === activeMonth;
             return (
@@ -71,7 +82,8 @@ export default function DailyArchive({
                 key={mm}
                 type="button"
                 onClick={() => setActiveMonth(mm)}
-                className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition ${
+                aria-pressed={active}
+                className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-bold transition ${
                   active
                     ? "border-violet-600 bg-violet-600 text-white"
                     : "border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50"
@@ -81,12 +93,13 @@ export default function DailyArchive({
               </button>
             );
           })}
+          </div>
           <button
             type="button"
             onClick={() => hasPrev && setActiveMonth(monthsWithEntries[idx + 1])}
             disabled={!hasPrev}
             aria-label="Previous month"
-            className="ml-0.5 grid h-[34px] w-[34px] place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
+            className="ml-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
             <Glyph name="chevron-left" size={16} />
           </button>
@@ -95,7 +108,7 @@ export default function DailyArchive({
             onClick={() => hasNext && setActiveMonth(monthsWithEntries[idx - 1])}
             disabled={!hasNext}
             aria-label="Next month"
-            className="grid h-[34px] w-[34px] place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
             <Glyph name="chevron-right" size={16} />
           </button>
@@ -103,7 +116,7 @@ export default function DailyArchive({
       </div>
 
       {/* Weekday header */}
-      <div className="mt-3 grid flex-none grid-cols-7 gap-2 text-center">
+      <div className="mt-3 grid flex-none grid-cols-7 gap-1 sm:gap-2 text-center">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d} className="pb-1 text-[10px] font-bold uppercase tracking-widest text-zinc-400">
             {d}
@@ -113,7 +126,7 @@ export default function DailyArchive({
 
       {/* Day grid — fills the remaining height; rows share it via 1fr. */}
       <div
-        className="grid min-h-0 flex-1 grid-cols-7 gap-2 pb-1"
+        className="grid min-h-[360px] flex-1 grid-cols-7 gap-1 sm:gap-2 pb-1"
         style={{ gridAutoRows: "minmax(0, 1fr)" }}
       >
         {grid.map((cell, i) => {
@@ -176,6 +189,7 @@ function DayCell({
     <Link
       href={`/today/${entry.slug}`}
       title={entry.passage_title}
+      aria-label={`${entry.passage_title}${completed ? ", completed" : ""}`}
       className={`group relative block h-full overflow-hidden rounded-xl border bg-zinc-100 transition hover:-translate-y-0.5 hover:shadow-md ${
         completed
           ? "border-emerald-500 ring-2 ring-emerald-300"
