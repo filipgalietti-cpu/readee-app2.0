@@ -63,7 +63,7 @@ function runner(
     AbortSignal,
     sessionStorage: storage,
     require: (s: string) =>
-      s === "@/lib/placement/spoken-pass" ? spokenPass : s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
+      s === "@/lib/audio/background-name" ? { settleNamePronunciation: async () => {} } : s === "@/lib/placement/spoken-pass" ? spokenPass : s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
         ? hooks
         : s === "next/navigation"
           ? { useRouter: () => ({ push }) }

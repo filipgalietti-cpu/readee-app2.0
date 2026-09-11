@@ -5,6 +5,7 @@ export function spectrumAudioScripts(): Record<string, string> {
   const clips: Record<string, string> = {
     "assessment-complete": "That’s everything. You did it. Let’s show your grown-up what you read.",
     "ask-name": "What is your name?",
+    "nice-to-meet-you": "It’s so nice to meet you!",
     "reading-questions": "Now let’s answer a few questions about what you read.",
     "reveal-ask": "Your custom reading journey is ready. Let’s explore the lessons chosen for your reader.",
     "parent-welcome": "Welcome to Readee. This first activity helps us find a reading starting point for your child. Their school grade guides where we begin. Let them answer on their own, and stay nearby to help with the microphone. Your report will explain what we learned and where to begin. When you are ready, hand the device to your reader.",

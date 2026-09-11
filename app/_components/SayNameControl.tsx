@@ -9,6 +9,8 @@
  */
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { namePreviewBlobUrl } from "@/lib/audio/preview-url";
+import type { NameRecording } from "@/lib/audio/background-name";
 
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { playUrlRequired, stopClip, subscribePlayback, getPlaybackAnalyser } from "@/app/(protected)/placement/_components/audio";
@@ -47,7 +49,7 @@ function downsample(chunks: Float32Array[], inRate: number, outRate: number): Fl
   return out;
 }
 
-export default function SayNameControl({ writtenName, value, onChange, mode = "grownup", autoStart = false, showLuna = false }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup"; autoStart?: boolean; showLuna?: boolean }) {
+export default function SayNameControl({ writtenName, value, onChange, mode = "grownup", autoStart = false, showLuna = false, onRecording }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup"; autoStart?: boolean; showLuna?: boolean; onRecording?: (recording: NameRecording) => void }) {
   const [inputAnalyser, setInputAnalyser] = useState<AnalyserNode | null>(null);
   const playbackAnalyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   const [status, setStatus] = useState<Status>("idle");
@@ -61,7 +63,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
   const [playbackError, setPlaybackError] = useState<string | null>(null);
   useEffect(() => {
     mounted.current = true;
-    return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); if (showLuna) stopClip(); };
+    return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); if (previewRef.current) URL.revokeObjectURL(previewRef.current.url); previewRef.current = null; if (showLuna) stopClip(); };
   }, [showLuna]);
 
   const autoStarted = useRef(false);
@@ -120,6 +122,11 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       let bin = "";
       for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode(...bytes.subarray(i, i + 8192));
       const b64 = btoa(bin);
+      if (!mounted.current) return;
+      if (onRecording) {
+        onRecording({ audioBase64: b64, mimeType: "audio/wav", name: writtenName });
+        return;
+      }
       requestRef.current = new AbortController();
       const r = await fetch("/api/child-name/respell", { signal: requestRef.current.signal, method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ audioBase64: b64, mimeType: "audio/wav", name: writtenName }) });
       const j = (await r.json()) as { ok?: boolean; saidAs?: string };
@@ -146,7 +153,9 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
         const r = await fetch("/api/child-name/preview", { signal: requestRef.current.signal, method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: writtenName, saidAs }) });
         const j = await r.json() as { ok?: boolean; audioUrl?: string };
         if (!r.ok || !j.ok || !j.audioUrl) throw new Error("preview");
-        previewRef.current = { key, url: j.audioUrl };
+        if (!mounted.current) return;
+        if (previewRef.current) URL.revokeObjectURL(previewRef.current.url);
+        previewRef.current = { key, url: namePreviewBlobUrl(j.audioUrl) };
       }
       if (!mounted.current) return;
       if (showLuna) { setPreviewPlaying(true); await playUrlRequired(previewRef.current.url, 15000); return; }

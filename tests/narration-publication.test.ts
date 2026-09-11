@@ -76,3 +76,11 @@ it("leaves rejected legacy audio unverified when replacement generation fails", 
   expect(s.row.narration[0].audioVerified).toBeUndefined();
   expect(s.files.size).toBe(1);
 });
+it("uses the saved pronunciation for report speech and keeps the written report name", async () => {
+  s.row.narration = [{ id: "number", text: "Filus read 61 words per minute.", audioPath: "" }];
+  s.generate.mockResolvedValue(Buffer.from("verified pronunciation"));
+  await generatePlacementNarration("named-placement", "Filus", "fee-LOOSH");
+  expect(s.generate).toHaveBeenCalledWith("Feeloosh read 61 words per minute.", ["Filus", "Feeloosh"]);
+  expect(s.row.narration[0].text).toBe("Filus read 61 words per minute.");
+  expect(s.row.narration[0].audioVerified).toBe("script-v1");
+});
