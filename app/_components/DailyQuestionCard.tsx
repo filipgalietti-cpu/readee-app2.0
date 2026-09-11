@@ -133,18 +133,20 @@ export default function DailyQuestionCard({
         </Link>
       </div>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-[150px_1fr] sm:items-stretch">
+      <div className="mt-4 grid gap-4 sm:grid-cols-[150px_minmax(0,1fr)] sm:items-stretch">
         {data.image_url && (
-          <figure className="m-0">
-            <img
-              src={data.image_url}
-              alt=""
-              className="h-40 w-full rounded-2xl border border-zinc-200 object-cover sm:h-full sm:min-h-[128px]"
-            />
+          <figure className="m-0 flex min-w-0 flex-col">
+            <div className="relative h-40 sm:min-h-[128px] sm:flex-1">
+              <img
+                src={data.image_url}
+                alt=""
+                className="absolute inset-0 h-full w-full rounded-2xl border border-zinc-200 object-cover"
+              />
+            </div>
             {/* Wikimedia photos arrive CC BY / CC BY-SA, which require credit.
                 Null for AI art, so nothing renders there. */}
             {data.image_attribution && (
-              <figcaption className="mt-1 text-[10px] leading-tight text-zinc-400">
+              <figcaption className="mt-1 shrink-0 break-words text-[10px] leading-tight text-zinc-400">
                 {data.image_attribution}
               </figcaption>
             )}
@@ -183,13 +185,13 @@ export default function DailyQuestionCard({
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between">
+      <div className="mt-3 flex items-center justify-between gap-3">
         <div className="text-[11px] text-zinc-500">
           {variant === "teacher"
             ? "Push this to your class as a 5-minute warm-up."
             : "60-second reading boost - try it with your child."}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           {variant === "teacher" && (
             <Link
               href={`/today/${data.slug}`}
