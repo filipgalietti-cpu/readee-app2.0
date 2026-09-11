@@ -4,7 +4,7 @@ import { useEffect, useState, ReactNode } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
-import { SkeletonPage } from "@/app/_components/Skeleton";
+import ReaderLoading from "@/app/_components/ReaderLoading";
 
 type Status = "loading" | "accepted" | "needs-consent";
 const TOS_LOCAL_STORAGE_KEY = "readee-tos-consent";
@@ -133,7 +133,7 @@ export default function TosGate({ children }: { children: ReactNode }) {
   }, []);
 
   if (status === "loading") {
-    return <SkeletonPage cards={3} />;
+    return <ReaderLoading />;
   }
 
   if (status === "accepted") {

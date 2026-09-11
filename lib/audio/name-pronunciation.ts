@@ -28,11 +28,10 @@ import { cleanSaidAs } from "./name-spoken";
  */
 export async function respellNameFromAudio(input: { audioBase64: string; mimeType: string; writtenName: string }): Promise<{ saidAs: string; heard: string }> {
   const ai = client();
-  const written = (input.writtenName ?? "").trim().slice(0, 40);
   const prompt =
-    `You will hear a child or a parent say the child's first name, once or twice. The name is written "${written}", but the ` +
-    `written spelling is only a hint: transcribe the SOUNDS you actually hear, even when they differ from how that spelling is ` +
-    `usually said (family names, nicknames and other languages often do). ` +
+    `Listen only to the pronunciation in this recording. The speaker may say a name alone or in a sentence such as My name is. ` +
+    `Extract only the name. Preserve the vowel sounds, final consonants and stress exactly, including non-English sounds. ` +
+    `Do not translate the name into an English name or infer pronunciation from a written spelling. ` +
     `Reply with JSON only: {"heard": "<the name as you heard it, plain letters>", "saidAs": "<a respelling for an English text-to-speech voice: ` +
     `lowercase syllables joined by hyphens, the stressed syllable in CAPITALS, plain English sound spellings, for example fee-LOOSH or ma-REE-ah>"}. ` +
     `If the audio is silent, is not a name, or you are not sure, set both fields to "".`;

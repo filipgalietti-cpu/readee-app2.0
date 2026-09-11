@@ -22,6 +22,7 @@ export type SpectrumEvidence = {
   language: ChoiceResponse[];
   blending: WordResponse[];
   readingStopped?: ReadingStop;
+  readingEntry?: "school-first";
 };
 export type LanguageItem = (typeof languageBank)[number];
 export const LANGUAGE_ITEMS: readonly LanguageItem[] = languageBank;
@@ -143,16 +144,19 @@ export function readingSearch(
   words: WordResponse[],
   trials: ReadingTrial[],
   stopped?: ReadingStop,
+  entry?: "school-first",
 ) {
   const w = wordSearch(enrolled, words);
   if (!w.done) fail();
-  let grade = w.grade;
+  let grade = (entry === "school-first" ? Math.min(enrolled, w.grade) : w.grade) as PlacedBand;
+  const firstGrade = grade;
+  let triedStretch = false;
   let form: "a" | "b" = "a";
   let firstCorrect = 0;
   let failedBands = 0;
   let done = w.highest === null || w.highest === 0;
   let confirmed: PlacedBand | null = null;
-  for (const trial of trials) {
+  for (const [trialIndex, trial] of trials.entries()) {
     if (done || trial.passageId !== spectrumPassage(grade, form).id) fail();
     const score = readingScore(trial);
     if (
@@ -161,19 +165,25 @@ export function readingSearch(
     ) {
       if (form === "b") {
         confirmed = grade;
-        done = true;
+        if (entry === "school-first" && !triedStretch && grade === firstGrade && w.grade > grade) {
+          triedStretch = true;
+          grade = w.grade;
+          form = "a";
+          firstCorrect = 0;
+        } else done = true;
       } else {
         firstCorrect = score.correct;
         form = "b";
       }
     } else {
       failedBands++;
-      if (grade === 0 || failedBands >= READING_BAND_LIMIT) done = true;
+      if (grade === 0 || failedBands >= READING_BAND_LIMIT || (confirmed !== null && grade <= confirmed + 1)) done = true;
       else {
         grade = (grade - 1) as PlacedBand;
         form = "a";
       }
     }
+    if (entry === "school-first" && trialIndex >= 5) done = true;
   }
   if (stopped) {
     if (
@@ -236,7 +246,7 @@ export function languageSearch(start: PlacedBand, responses: ChoiceResponse[]) {
 
 export function validateSpectrum(enrolled: PlacedBand, ev: SpectrumEvidence) {
   const w = wordSearch(enrolled, ev.words);
-  const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped);
+  const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped, ev.readingEntry);
   const l = languageSearch(Math.max(enrolled, r.confirmed ?? 0) as PlacedBand, ev.language);
   if (!w.done || !r.done || l.next) fail();
   const blends = w.grade <= 1 ? ORAL_BLENDS : [];

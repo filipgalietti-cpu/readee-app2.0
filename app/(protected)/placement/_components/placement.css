@@ -1350,3 +1350,32 @@
 @media (max-width: 767px) {
   .pa-frame[data-screen="word"] .pa-voice-actions { margin-left: auto; margin-right: 0; }
 }
+
+/* Readee is a visible companion, with a reserved lane clear of controls. */
+.pa-word-bunny { width: 260px; height: 270px; }
+.pa-frame .pa-bunny { width: 220px; height: 230px; }
+.pa-name-turn { gap: 18px; }
+@media (max-width: 600px) {
+  .pa-word-bunny { width: 124px; height: 136px; bottom: 0; }
+  .pa-frame .pa-bunny { width: 132px; height: 144px; }
+  .pa-frame[data-screen="word"] .pa-voice-actions { max-width: calc(100% - 116px); }
+  .pa-frame[data-screen="word"] .pa-voice-actions .pa-secondary { white-space: normal; text-align: center; font-size: 17px; padding-inline: 10px; }
+}
+@media (max-height: 650px) {
+  .pa-frame .pa-bunny { width: 108px; height: 118px; }
+}
+@media (max-width: 600px) {
+  .pa-frame[data-screen="word"] .pa-mic-row { margin-left: 112px; width: calc(100% - 112px); gap: 8px; justify-content: flex-end; }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-reading-orb { width: 64px; flex: 0 0 64px; }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-primary { min-width: 0; padding-inline: 12px; font-size: 16px; }
+}
+@media (max-width: 350px) {
+  .pa-frame[data-screen="word"] .pa-mic-row { margin-left: 100px; width: calc(100% - 100px); }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-primary { padding-inline: 8px; font-size: 15px; }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-primary > span { display: none; }
+}
+@media (max-width: 600px) {
+  .pa-frame[data-screen="word"] .pa-mic-row { margin-left: 132px; width: calc(100% - 132px); }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-reading-orb { width: 128px; flex: 0 0 128px; zoom: 0.5; }
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-primary { flex: 1; width: 0; white-space: normal; line-height: 1.2; }
+}

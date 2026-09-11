@@ -16,6 +16,7 @@ export const PlacementSubmissionSchema = z.object({
   evidenceVersion: z.union([z.literal(3), z.literal(4)]).optional(),
   spectrum: z
     .object({
+      readingEntry: z.literal("school-first").optional(),
       readingStopped: z
         .object({ passageId: z.string().max(80), reason: z.literal("child-pass") })
         .optional(),

@@ -90,7 +90,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     return () => { alive.current = false; if (pollRef.current) window.clearInterval(pollRef.current); };
   }, [load]);
   useEffect(() => {
-    if (result && result.narration.length > 0 && result.narration.every((l) => l.audioPath) && pollRef.current) {
+    if (result && result.narration.length > 0 && result.narration.every((l) => l.id === "ask" || (l.audioPath && l.audioVerified === "script-v1")) && pollRef.current) {
       window.clearInterval(pollRef.current);
       pollRef.current = null;
     }
@@ -119,18 +119,23 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     repairRef.current = request;
     try { await request; } finally { repairRef.current = null; }
   }, [childId, load]);
-  const attemptedRepair = useRef(false);
+  const [repairRound, setRepairRound] = useState(0);
   useEffect(() => {
-    // Give the initial background generation a head start; recover a failed line on older reports.
-    if (result && !attemptedRepair.current && Date.now() - Date.parse(result.createdAt) > 60000 && result.narration.some(line => !line.audioPath)) {
-      attemptedRepair.current = true;
-      void retryNarration().catch(() => {});
-    }
-  }, [result, retryNarration]);
+    const incomplete = result?.narration.some(line => line.id !== "ask" && (!line.audioPath || line.audioVerified !== "script-v1"));
+    if (!result || !incomplete || repairRound >= 4) return;
+    let cancelled = false;
+    const delay = Math.max(5000, 60000 - (Date.now() - Date.parse(result.createdAt)));
+    const timer = window.setTimeout(() => {
+      void retryNarration().catch(() => {}).finally(() => {
+        if (!cancelled) setRepairRound(round => round + 1);
+      });
+    }, delay);
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [result, retryNarration, repairRound]);
 
   const audioUrlFor = useCallback((line: NarrationLine): string | null => {
     if (line.id === "ask") return spectrumClip("reveal-ask");
-    return line.audioPath ? `/api/child-audio?path=${encodeURIComponent(line.audioPath)}` : null;
+    return line.audioPath && line.audioVerified === "script-v1" ? `/api/child-audio?path=${encodeURIComponent(line.audioPath)}` : null;
   }, []);
 
   // The reveal owns the whole viewport (no site chrome on /placement routes): one screen, never a page scroll.

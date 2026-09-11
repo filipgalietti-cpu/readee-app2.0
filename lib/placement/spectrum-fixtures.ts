@@ -14,8 +14,9 @@ export function spectrumSubmission(
   wordCeiling = 5,
   readingCeiling: PlacedBand = 2,
   languageCeiling: PlacedBand = 4,
+  readingEntry?: "school-first",
 ): PlacementSubmission {
-  const ev: SpectrumEvidence = { words: [], reading: [], language: [], blending: [] };
+  const ev: SpectrumEvidence = { ...(readingEntry ? { readingEntry } : {}), words: [], reading: [], language: [], blending: [] };
   let w = wordSearch(enrolled, ev.words);
   while (w.next) {
     ev.words.push({ itemId: w.next.id, correct: w.next.step <= wordCeiling });
@@ -23,7 +24,7 @@ export function spectrumSubmission(
   }
   if (w.grade <= 1)
     ev.blending = ORAL_BLENDS.map((b) => ({ itemId: b.id, correct: wordCeiling >= 1 }));
-  let r = readingSearch(enrolled, ev.words, ev.reading);
+  let r = readingSearch(enrolled, ev.words, ev.reading, undefined, ev.readingEntry);
   while (r.next) {
     const p = r.next,
       total = countWords(p.text),
@@ -43,7 +44,7 @@ export function spectrumSubmission(
         choiceId: correct ? q.correctId : q.options.find((o) => o.id !== q.correctId)!.id,
       })),
     });
-    r = readingSearch(enrolled, ev.words, ev.reading);
+    r = readingSearch(enrolled, ev.words, ev.reading, undefined, ev.readingEntry);
   }
   const start = Math.max(enrolled, r.confirmed ?? 0) as PlacedBand;
   let l = languageSearch(start, ev.language);

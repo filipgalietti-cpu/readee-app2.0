@@ -58,8 +58,7 @@ import {
 import { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 
-/** What a child says to pass on a word (the intro invites "I don't know"). */
-const SKIP_PHRASE = /\b(i\s+)?(don['’]?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
+import { isSpokenPass } from "@/lib/placement/spoken-pass";
 const WORD_THINKING_HINT_MS = 15000; // Silence changes the hint, never stops listening or scores a miss.
 class NoSpeechCaptured extends Error {
   constructor() {
@@ -266,7 +265,7 @@ export default function PlacementRunner({
             (p) => {
               // "I don't know" (or a skip word) ends the item now instead of waiting out the hesitation timeout:
               // the reference word comes back as an omission, which never counts as heard.
-              if (SKIP_PHRASE.test(p.text)) {
+              if (isSpokenPass(p.text)) {
                 finish(false);
                 return;
               }
@@ -277,7 +276,7 @@ export default function PlacementRunner({
             () => fail(),
             (text) => {
               lastVoiceAt = Date.now();
-              if (SKIP_PHRASE.test(text)) finish(false);
+              if (isSpokenPass(text)) finish(false);
             },
           )
           .then((l) => {
@@ -745,6 +744,7 @@ export default function PlacementRunner({
     const sessionId = restored?.sessionId ?? crypto.randomUUID();
     const previousSeconds = restored?.elapsedSeconds ?? 0;
     const spectrum: SpectrumEvidence = restored?.spectrum ?? {
+      readingEntry: "school-first",
       words: [],
       reading: [],
       language: [],
@@ -891,6 +891,7 @@ export default function PlacementRunner({
         spectrum.words,
         spectrum.reading,
         spectrum.readingStopped,
+          spectrum.readingEntry,
       );
       let recordingPath: string | null = null;
       while (readingState.next) {
@@ -915,6 +916,7 @@ export default function PlacementRunner({
             spectrum.words,
             spectrum.reading,
             spectrum.readingStopped,
+          spectrum.readingEntry,
           );
           break;
         }
@@ -941,6 +943,7 @@ export default function PlacementRunner({
           spectrum.words,
           spectrum.reading,
           spectrum.readingStopped,
+          spectrum.readingEntry,
         );
         if (readingState.confirmed !== null && read?.blob && !demo)
           recordingPath = await uploadRecording(read.blob, passage.grade);

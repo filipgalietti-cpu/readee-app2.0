@@ -7,8 +7,11 @@
  * from. `mode="child"` (Kid Welcome) is one big button and Luna answering;
  * `mode="grownup"` (Settings) adds the editable spelling.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+
+import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
+import { playUrlRequired, stopClip, subscribePlayback, getPlaybackAnalyser } from "@/app/(protected)/placement/_components/audio";
 
 const MAX_SECONDS = 8;
 const OUT_RATE = 16000;
@@ -44,9 +47,12 @@ function downsample(chunks: Float32Array[], inRate: number, outRate: number): Fl
   return out;
 }
 
-export default function SayNameControl({ writtenName, value, onChange, mode = "grownup", autoStart = false }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup"; autoStart?: boolean }) {
+export default function SayNameControl({ writtenName, value, onChange, mode = "grownup", autoStart = false, showLuna = false }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup"; autoStart?: boolean; showLuna?: boolean }) {
+  const [inputAnalyser, setInputAnalyser] = useState<AnalyserNode | null>(null);
+  const playbackAnalyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   const [status, setStatus] = useState<Status>("idle");
   const [hearing, setHearing] = useState(false);
+  const [previewPlaying, setPreviewPlaying] = useState(false);
   const stopRef = useRef<(() => void) | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const mounted = useRef(true);
@@ -55,13 +61,17 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
   const [playbackError, setPlaybackError] = useState<string | null>(null);
   useEffect(() => {
     mounted.current = true;
-    return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); };
-  }, []);
+    return () => { mounted.current = false; stopRef.current?.(); audioRef.current?.pause(); requestRef.current?.abort(); if (showLuna) stopClip(); };
+  }, [showLuna]);
 
   const autoStarted = useRef(false);
   const recordLatest = useRef<() => Promise<void>>(async () => {});
   useEffect(() => {
-    if (autoStart && !autoStarted.current) { autoStarted.current = true; void recordLatest.current(); }
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (!cancelled && autoStart && !autoStarted.current) { autoStarted.current = true; void recordLatest.current(); }
+    });
+    return () => { cancelled = true; };
   }, [autoStart]);
 
   async function record() {
@@ -90,14 +100,16 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
         if (voicedAt && now - voicedAt > 2000 && now - lastVoice > 1500) stopRef.current?.();
       };
       const sink = ctx.createGain(); sink.gain.value = 0;
-      src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
+      const analyser = ctx.createAnalyser(); analyser.fftSize = 1024;
+      src.connect(analyser); analyser.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
+      setInputAnalyser(analyser);
       setStatus("recording");
       await new Promise<void>((res) => {
         const timer = window.setTimeout(res, (mode === "child" ? 30 : MAX_SECONDS) * 1000);
         stopRef.current = () => { window.clearTimeout(timer); res(); };
       });
       stopRef.current = null;
-      proc.disconnect(); src.disconnect();
+      proc.disconnect(); src.disconnect(); analyser.disconnect(); setInputAnalyser(null);
       const rate = ctx.sampleRate;
       stream.getTracks().forEach((t) => t.stop()); await ctx.close(); ctx = null; stream = null;
       if (!mounted.current) return;
@@ -112,7 +124,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       const r = await fetch("/api/child-name/respell", { signal: requestRef.current.signal, method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ audioBase64: b64, mimeType: "audio/wav", name: writtenName }) });
       const j = (await r.json()) as { ok?: boolean; saidAs?: string };
       if (!mounted.current) return;
-      if (r.ok && j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); } else setStatus("unclear");
+      if (r.ok && j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); if (showLuna) void hear(j.saidAs); } else setStatus("unclear");
     } catch {
       if (mounted.current) setStatus("error");
     } finally {
@@ -137,6 +149,7 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
         previewRef.current = { key, url: j.audioUrl };
       }
       if (!mounted.current) return;
+      if (showLuna) { setPreviewPlaying(true); await playUrlRequired(previewRef.current.url, 15000); return; }
       audioRef.current?.pause();
       const a = new Audio(previewRef.current.url);
       audioRef.current = a;
@@ -147,14 +160,14 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
       });
     } catch {
       if (mounted.current) setPlaybackError(previewRef.current ? "Tap Hear it again to play the pronunciation." : "Luna could not make the preview. Tap Hear it to retry.");
-    } finally { if (mounted.current) setHearing(false); }
+    } finally { if (mounted.current) { setHearing(false); setPreviewPlaying(false); } }
   }
 
   const child = mode === "child";
   const note = playbackError ?? (status === "opening" ? "Allow the microphone to say the name." : child
     ? status === "recording" ? "Say your name. Tap Stop when you’re done." :
       status === "thinking" ? "Luna is listening..." :
-      status === "heard" ? "Tap Hear Luna say it. You can record it again if you want." :
+      status === "heard" ? hearing ? previewPlaying ? "Luna is saying your name." : "Luna is learning your name." : "Did Luna say it right? You can say it again." :
       status === "unclear" ? "Luna did not catch it. Try once more, a little closer." :
       status === "error" ? "Luna cannot hear right now. That is okay, keep going!" :
       "Tap and say your name so Luna knows how to say it."
@@ -167,7 +180,8 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
 
   if (child) {
     return (
-      <div className="flex w-full flex-col items-center gap-2 text-center" data-say-name>
+      <div className="flex w-full flex-col items-center gap-4 text-center" data-say-name>
+        {showLuna && <div data-name-luna><LunaOrb mode={previewPlaying ? "speaking" : hearing ? "thinking" : status === "recording" ? "listening" : status === "thinking" || status === "opening" ? "thinking" : "idle"} analyser={hearing ? playbackAnalyser : inputAnalyser} voiceDriven responsive size={144} label="Luna is learning your name" /></div>}
         <div className="flex flex-wrap items-center justify-center gap-2">
           <button
             type="button"
@@ -194,7 +208,6 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
           )}
         </div>
         <p className="text-xl font-semibold text-zinc-600">{note}</p>
-        {value && <p className="text-xs text-zinc-400">Luna heard it as &ldquo;{value}&rdquo;. A grown-up can fix the spelling in Settings.</p>}
       </div>
     );
   }

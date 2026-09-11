@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { generateReadeeSpeech } from "@/lib/audio/readee-speech";
+import { generateVerifiedSpeech, verifySpeech } from "@/lib/audio/verified-speech";
+import { spokenNameOf } from "@/lib/audio/name-spoken";
 import { withSpokenName } from "@/lib/audio/name-spoken";
 import { reportFailure } from "@/lib/observability/critical";
 import type { NarrationLine } from "./types";
@@ -18,9 +19,9 @@ async function generate(placementId: string, childName: string, saidAs?: string 
   const { data: row, error } = await admin.from("placements").select("child_id,narration").eq("id", placementId).single();
   if (error || !row) throw new Error("Narration unavailable");
   const childId = String(row.child_id);
-  const deadline = Date.now() + 180000;
+  const deadline = Date.now() + 60000;
   const lines = row.narration as NarrationLine[];
-  const missing = lines.filter(line => !line.audioPath);
+  const missing = lines.filter(line => !line.audioPath || line.audioVerified !== "script-v1");
   const generated = new Map<string, { text: string; path: string }>();
   let next = 0;
   let saves = Promise.resolve();
@@ -28,7 +29,18 @@ async function generate(placementId: string, childName: string, saidAs?: string 
     while (next < missing.length && Date.now() < deadline) {
       const line = missing[next++];
       try {
-        const audio = await generateReadeeSpeech(withSpokenName(line.text, childName, saidAs));
+        const script = withSpokenName(line.text, childName, saidAs);
+        const names = [childName, spokenNameOf(childName, saidAs)];
+        if (line.audioPath) {
+          const { data: existing } = await admin.storage.from("child-audio").download(line.audioPath);
+          if (existing && await verifySpeech(Buffer.from(await existing.arrayBuffer()), script, names)) {
+            generated.set(line.id, { text: line.text, path: line.audioPath });
+            saves = saves.catch(() => {}).then(persist);
+            await saves;
+            continue;
+          }
+        }
+        const audio = await generateVerifiedSpeech(script, names);
         const path = `placement/${childId}/narr-${placementId.slice(0, 8)}-${line.id}.mp3`;
         const { error } = await admin.storage.from("child-audio").upload(path, audio, { contentType: "audio/mpeg", upsert: true });
         if (error) throw error;
@@ -46,7 +58,7 @@ async function generate(placementId: string, childName: string, saidAs?: string 
       if (readError || !latest) throw new Error("Narration unavailable");
       const narration = (latest.narration as NarrationLine[]).map(line => {
         const fresh = generated.get(line.id);
-        return !line.audioPath && fresh?.text === line.text ? { ...line, audioPath: fresh.path } : line;
+        return line.audioVerified !== "script-v1" && fresh?.text === line.text ? { ...line, audioPath: fresh.path, audioVerified: "script-v1" as const } : line;
       });
       // Compare-and-swap protects clips supplied by another server instance.
       const { data: saved, error: saveError } = await admin.from("placements").update({ narration }).eq("id", placementId).eq("narration", JSON.stringify(latest.narration)).select("id");

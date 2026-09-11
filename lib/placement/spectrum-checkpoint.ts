@@ -67,7 +67,7 @@ export function restoreSpectrumCheckpoint(
         return null;
       return draft;
     }
-    const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped);
+    const r = readingSearch(enrolled, ev.words, ev.reading, ev.readingStopped, ev.readingEntry);
     if (draft.activeReading) {
       const active = draft.activeReading;
       if (!r.next || active.passageId !== r.next.id || ev.language.length) return null;

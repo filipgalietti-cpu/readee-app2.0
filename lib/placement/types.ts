@@ -106,6 +106,7 @@ export type NarrationLine = {
   text: string;
   /** Object path in the child-audio bucket once synthesized (it says the child's name). */
   audioPath?: string | null;
+  audioVerified?: "script-v1";
 };
 
 /** The saved result: one row in `placements`, what the reveal and report render. */
