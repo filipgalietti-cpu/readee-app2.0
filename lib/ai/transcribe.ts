@@ -35,6 +35,7 @@ export async function transcribeAudio(input: {
   audioBase64: string;
   mimeType: string;
   provider?: TranscribeProvider;
+  timeoutMs?: number;
 }): Promise<{ ok: true; transcript: string; provider: TranscribeProvider } | { ok: false; error: string }> {
   const provider = input.provider ?? "gemini";
 
@@ -51,6 +52,7 @@ export async function transcribeAudio(input: {
       form.append("model", "whisper-1");
       const res = await fetch("https://api.openai.com/v1/audio/transcriptions", {
         method: "POST",
+        signal: AbortSignal.timeout(input.timeoutMs ?? 45000),
         headers: { Authorization: `Bearer ${apiKey}` },
         body: form,
       });
@@ -80,7 +82,7 @@ export async function transcribeAudio(input: {
           ],
         },
       ],
-      config: { temperature: 0.1 },
+      config: { temperature: 0.1, httpOptions: { timeout: input.timeoutMs ?? 45000 } },
     });
     const transcript = (response.text ?? "").trim();
     return { ok: true, transcript, provider: "gemini" };

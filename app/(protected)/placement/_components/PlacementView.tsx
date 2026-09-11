@@ -343,6 +343,7 @@ export default function PlacementView({
   const voiceTask = screen.kind === "word" || screen.kind === "passage";
   const inTaskOrb = [
     "ready",
+    "name",
     "luna",
     "mic",
     "word",

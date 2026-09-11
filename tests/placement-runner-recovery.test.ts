@@ -3,6 +3,7 @@ import vm from "node:vm";
 import ts from "typescript";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+import * as spokenPass from "@/lib/placement/spoken-pass";
 import * as checkpoints from "@/lib/placement/spectrum-checkpoint";
 import { checkpointKey, CHECKPOINT_REVISION } from "@/lib/placement/spectrum-checkpoint";
 import * as spectrumEngine from "@/lib/placement/spectrum";
@@ -62,7 +63,7 @@ function runner(
     AbortSignal,
     sessionStorage: storage,
     require: (s: string) =>
-      s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
+      s === "@/lib/placement/spoken-pass" ? spokenPass : s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
         ? hooks
         : s === "next/navigation"
           ? { useRouter: () => ({ push }) }

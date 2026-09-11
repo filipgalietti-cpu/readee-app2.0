@@ -214,6 +214,7 @@ export function usePlacementMic() {
         enableMiscue: false,
         initialSilenceMs: 60000,
         onRecognizing,
+        onCommandText: referenceText.trim().split(/\s+/).length === 1 ? onRecognizing : undefined,
         onPhrase: (p) => {
           phrases.push(p.words);
           onPhrase?.(p);

@@ -8,6 +8,7 @@ import pathlib
 import re
 import sys
 import unicodedata
+import subprocess
 import whisper
 import torch
 
@@ -40,6 +41,12 @@ for key, script in scripts.items():
     path = root / f"{key}.mp3"
     if not path.exists(): continue
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    duration = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(path)], text=True))
+    if duration > 4 + len(tokens(script)) * 0.8:
+        results[key] = {"audioSha256":digest,"script":script,"status":"review","reason":"Audio too long for script","durationSeconds":round(duration,3)}
+        out.write_text(json.dumps(results,indent=2)+"\n")
+        print(key, "review: excessive duration", flush=True)
+        continue
     prior = results.get(key,{})
     if prior.get("audioSha256") == digest:
         error = wer(script, prior.get("transcript", ""))

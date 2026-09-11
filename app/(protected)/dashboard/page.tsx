@@ -28,7 +28,7 @@ import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
-import { SkeletonPage } from "@/app/_components/Skeleton";
+import ReaderLoading from "@/app/_components/ReaderLoading";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import ReaderSetupRedirect from "./_components/ReaderSetupRedirect";
@@ -321,7 +321,7 @@ export default function Dashboard() {
   }, [router, setStoreChildData, setStoreChildren]);
 
   if (loading) {
-    return <SkeletonPage cards={4} />;
+    return <ReaderLoading />;
   }
 
   // DB blip while resolving children — show a retry card instead of
@@ -356,7 +356,7 @@ export default function Dashboard() {
   }
 
   if (children.length === 0) {
-    return parentId ? <ReaderSetupRedirect /> : <SkeletonPage cards={1} />;
+    return parentId ? <ReaderSetupRedirect /> : <ReaderLoading />;
   }
 
   if (selectedChild) {

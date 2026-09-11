@@ -29,6 +29,8 @@ export async function startPronAssessment(opts: {
   initialSilenceMs?: number;
   enableMiscue?: boolean;
   onRecognizing?: (partialText: string) => void;
+  /** Optional plain-speech channel for commands that pronunciation alignment omits. */
+  onCommandText?: (text: string) => void;
   onPhrase?: (phrase: PAPhrase) => void;
   onError?: (msg: string) => void;
   log?: (msg: string) => void;
@@ -97,10 +99,28 @@ export async function startPronAssessment(opts: {
     if (e.reason === SDK.CancellationReason.Error) opts.onError?.(e.errorDetails || "canceled");
   };
 
+  // Pronunciation assessment can return an empty phrase for "I don't know".
+  // A separate, unscored recognizer hears explicit commands on the same PCM.
+  const commandStream = opts.onCommandText ? SDK.AudioInputStream.createPushStream(format) : null;
+  const commandConfig = opts.onCommandText ? SDK.SpeechConfig.fromAuthorizationToken(opts.token, opts.region) : null;
+  if (commandConfig) {
+    commandConfig.speechRecognitionLanguage = opts.language || "en-US";
+    commandConfig.setProperty(SDK.PropertyId.Speech_SegmentationSilenceTimeoutMs, "500");
+    commandConfig.setProperty(SDK.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, String(opts.initialSilenceMs ?? 60000));
+  }
+  const commands = commandStream && commandConfig ? new SDK.SpeechRecognizer(commandConfig, SDK.AudioConfig.fromStreamInput(commandStream)) : null;
+  if (commands) {
+    commands.recognizing = (_s, e) => { if (e.result?.text) opts.onCommandText?.(e.result.text); };
+    commands.recognized = (_s, e) => { if (e.result.reason === SDK.ResultReason.RecognizedSpeech && e.result.text) opts.onCommandText?.(e.result.text); };
+    commands.canceled = (_s, e) => { if (e.reason === SDK.CancellationReason.Error) opts.onError?.("Speech commands unavailable."); };
+  }
   log("starting recognition…");
-  await new Promise<void>((resolve, reject) =>
-    recognizer.startContinuousRecognitionAsync(() => { log("recognition started cb"); resolve(); }, (err) => reject(new Error(String(err)))),
-  );
+  const start = (r: InstanceType<typeof SDK.SpeechRecognizer>) => new Promise<void>((resolve, reject) => r.startContinuousRecognitionAsync(resolve, err => reject(new Error(String(err)))));
+  try { await Promise.all([start(recognizer), ...(commands ? [start(commands)] : [])]); }
+  catch (error) {
+    try { pushStream.close(); recognizer.close(); commandStream?.close(); commands?.close(); } catch { /* released as far as possible */ }
+    throw error;
+  }
 
   // Continuous linear resampler (native rate → 16 kHz) with phase carried across
   // frames so there's no drift over a long read.
@@ -122,20 +142,19 @@ export async function startPronAssessment(opts: {
     const buf = new ArrayBuffer(out.length * 2);
     const view = new DataView(buf);
     for (let i = 0; i < out.length; i++) { const s = Math.max(-1, Math.min(1, out[i])); view.setInt16(i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true); }
-    try { pushStream.write(buf); } catch { /* stream closed */ }
+    try { pushStream.write(buf); commandStream?.write(buf); } catch { /* stream closed */ }
   };
 
+  let stopping: Promise<void> | undefined;
+  const stopRecognizer = (r: InstanceType<typeof SDK.SpeechRecognizer>) => new Promise<void>(resolve => {
+    const done = () => { try { r.close(); } catch { /* already closed */ } resolve(); };
+    try { r.stopContinuousRecognitionAsync(done, done); } catch { done(); }
+  });
   return {
     pushSamples,
-    stop: () =>
-      new Promise<void>((resolve) => {
-        try { pushStream.close(); } catch { /* ignore */ }
-        try {
-          recognizer.stopContinuousRecognitionAsync(
-            () => { try { recognizer.close(); } catch { /* ignore */ } resolve(); },
-            () => { try { recognizer.close(); } catch { /* ignore */ } resolve(); },
-          );
-        } catch { resolve(); }
-      }),
+    stop: () => stopping ??= (async () => {
+      try { pushStream.close(); commandStream?.close(); } catch { /* already closed */ }
+      await Promise.all([stopRecognizer(recognizer), ...(commands ? [stopRecognizer(commands)] : [])]);
+    })(),
   };
 }

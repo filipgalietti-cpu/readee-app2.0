@@ -2,7 +2,7 @@
 import { getVertexAccessToken, VERTEX_TTS_PROJECT_ID } from "@/lib/ai/vertex-tts";
 
 
-export async function generateReadeeSpeech(text: string, encoding: "MP3" | "LINEAR16" = "MP3"): Promise<Buffer> {
+export async function generateReadeeSpeech(text: string, encoding: "MP3" | "LINEAR16" = "MP3", model: "gemini-2.5-flash-tts" | "gemini-2.5-pro-tts" = "gemini-2.5-flash-tts"): Promise<Buffer> {
   for (let attempt = 0; attempt < 2; attempt++) {
     const response = await fetch("https://texttospeech.googleapis.com/v1/text:synthesize", {
       method: "POST",
@@ -14,7 +14,7 @@ export async function generateReadeeSpeech(text: string, encoding: "MP3" | "LINE
       },
       body: JSON.stringify({
         input: { text },
-        voice: { languageCode: "en-US", name: "Autonoe", model_name: "gemini-2.5-flash-tts" },
+        voice: { languageCode: "en-US", name: "Autonoe", model_name: model },
         audioConfig: { audioEncoding: encoding },
       }),
     });
