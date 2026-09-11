@@ -6,13 +6,13 @@ import { reportFailure } from '@/lib/observability/critical';
 afterEach(() => { vi.unstubAllGlobals(); vi.clearAllMocks(); });
 it('keeps a name request alive across the screen handoff and holds report submission until saving finishes', async () => {
  let finish!: (r: Response) => void;
- const fetcher = vi.fn(() => new Promise<Response>(r => { finish = r; }));
+ const fetcher = vi.fn((_url: string, _init: RequestInit) => new Promise<Response>(r => { finish = r; }));
  vi.stubGlobal('fetch', fetcher);
  const recording = { audioBase64: 'AAAA', mimeType: 'audio/wav', name: 'Filus' };
  startNamePronunciation('reader-a', recording);
  startNamePronunciation('reader-a', recording);
  expect(fetcher).toHaveBeenCalledTimes(1);
- expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({ ...recording, childId: 'reader-a' });
+ expect(JSON.parse(fetcher.mock.calls[0][1].body as string)).toEqual({ ...recording, childId: 'reader-a' });
  let canSubmit = false;
  const settled = settleNamePronunciation('reader-a').then(() => { canSubmit = true; });
  await Promise.resolve(); expect(canSubmit).toBe(false);
