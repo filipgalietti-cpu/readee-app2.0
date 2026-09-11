@@ -9,14 +9,13 @@ import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaO
 import type { MicState } from "./mic";
 import { readingPages } from "@/lib/placement/reading-pages";
 import { PASS_CHOICE } from "@/lib/placement/spectrum";
-import AssessmentNameTurn from "./AssessmentNameTurn";
 import "./placement.css";
 
 export type PlacementScreen =
   | { kind: "ready" }
-  | { kind: "name"; ready: boolean; childId: string }
+  | { kind: "name"; phase: "prompt" | "listening" | "quiet" | "received" }
   | { kind: "luna"; caption: string }
-  | { kind: "mic"; status: MicState; retry: boolean }
+  | { kind: "mic"; status: MicState; retry: boolean; received?: boolean }
   | {
       kind: "word";
       word: string;
@@ -366,7 +365,6 @@ export default function PlacementView({
               : stage === "listening"
                 ? "Listen and answer"
                 : "Reading with Luna";
-  const mode = listening ? "listening" : orb;
   return (
     <main
       className={`pa-frame ${voiceTask ? "pa-voice-frame" : ""} ${screen.kind === "passage" ? "pa-book-frame" : ""}`}
@@ -397,27 +395,32 @@ export default function PlacementView({
             <h1 className="pa-spoken">{screen.caption}</h1>
           </div>
         )}
-        {screen.kind === "mic" && (
-          <div className="pa-intro" data-mic-check>
+        {(screen.kind === "mic" || screen.kind === "name") && (
+          <div className="pa-intro pa-greeting-turn" data-mic-check={screen.kind === "mic" ? true : undefined} data-name-turn={screen.kind === "name" ? screen.phase : undefined}>
             <p className="pa-eyebrow">Before we read</p>
-            <h1>Say “hello, Luna.”</h1>
-            <ReadingOrb mode={mode} analyser={analyser} large label="Microphone check with Luna" />
-            <p className="pa-intro-line">
-              {screen.retry
-                ? "I didn’t hear you yet. Try once more."
-                : "Use your normal reading voice."}
-            </p>
-            <div className="pa-sound-state" role="status">
-              <span className={level > 0.12 ? "is-hearing" : ""} />
-              {orb === "speaking"
-                ? "Listen to Luna first"
-                : level > 0.12
-                  ? "Luna can hear sound"
-                  : "Listening for your hello…"}
+            <h1>{screen.kind === "name"
+              ? screen.phase === "received" ? "It’s so nice to meet you!" : "What is your name?"
+              : screen.received ? "Hello there!" : "Say “hello, Luna.”"}</h1>
+            <div className="pa-greeting-orb"><ReadingOrb mode={orb} analyser={analyser} large label="Luna" /></div>
+            <div className="pa-greeting-status" role="status">
+              <p className="pa-intro-line">{screen.kind === "name" && screen.phase === "quiet"
+                ? "I didn’t catch your name. Try again, or skip for now."
+                : orb === "speaking" ? "Listen to Luna."
+                : screen.kind === "mic" && screen.retry ? "Say hello once more."
+                : level > 0.12 ? "Luna can hear you."
+                : screen.kind === "name" ? "Say your name out loud." : "Use your normal reading voice."}</p>
+            </div>
+            <div className="pa-greeting-actions">
+              {screen.kind === "name" && <>
+                <button className="pa-primary" disabled={screen.phase === "prompt" || screen.phase === "received"}
+                  onClick={() => onTap(screen.phase === "quiet" ? "retry" : "done")} data-name-done>
+                  {screen.phase === "quiet" ? "Try again" : "Done speaking"}
+                </button>
+                <button className="pa-text-link" disabled={screen.phase === "prompt" || screen.phase === "received"} onClick={() => onTap("skip")} data-name-skip>Skip for now</button>
+              </>}
             </div>
           </div>
         )}
-        {screen.kind === "name" && <AssessmentNameTurn childId={screen.childId} name={childName} ready={screen.ready} onDone={() => onTap("continue")} />}
         {screen.kind === "word" && (
           <div className="pa-word-task" data-word={screen.word} data-band={screen.band ?? ""}>
             <h1>

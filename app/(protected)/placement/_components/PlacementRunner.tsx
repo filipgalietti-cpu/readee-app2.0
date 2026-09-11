@@ -1,5 +1,6 @@
 "use client";
-import { settleNamePronunciation } from "@/lib/audio/background-name";
+import { settleNamePronunciation, startNamePronunciation } from "@/lib/audio/background-name";
+import { captureNameTurn } from "@/lib/placement/name-turn";
 
 /**
  * PLACEMENT RUNNER — the exam the child takes, run by Luna in examiner mode.
@@ -811,23 +812,49 @@ export default function PlacementRunner({
         setScreen({ kind: "blocked", reason: status });
         return;
       }
-      setScreen({ kind: "luna", caption: "Hello there! Let’s read together." });
+      setScreen({ kind: "mic", status, retry: false, received: true });
       setOrb("speaking");
       await playUrlAsync(spectrumClip("hello-back"));
       setOrb("idle");
       if (!robot && !restored) {
-        micRef.current.close();
-        const nameDone = waitTap();
-        setScreen({ kind: "name", ready: false, childId });
+        // One owner for microphone and playback through hello, name and reading.
+        // Unmounting a name recorder used to cancel the next required narration.
+        setScreen({ kind: "name", phase: "prompt" });
         setOrb("speaking");
         await playUrlAsync(spectrumClip("ask-name"));
-        setOrb("listening");
-        setScreen({ kind: "name", ready: true, childId });
-        await nameDone;
-        if (cancelled()) return;
-        const reopened = await micRef.current.open();
-        if (reopened !== "open") { setScreen({ kind: "blocked", reason: reopened }); return; }
+        while (!cancelled()) {
+          let action: string | null = null;
+          tapRef.current = (choice) => { action = choice; };
+          setOrb("listening");
+          setScreen({ kind: "name", phase: "listening" });
+          const result = await captureNameTurn({
+            level: () => micRef.current.level,
+            startRecording: () => micRef.current.startRecording(),
+            stopRecording: () => micRef.current.stopRecording(),
+          }, () => action, cancelled);
+          tapRef.current = null;
+          if (cancelled() || result.kind === "cancelled") return;
+          setOrb("idle");
+          if (result.kind === "skip") break;
+          if (result.kind === "quiet") {
+            const choice = waitTap();
+            setScreen({ kind: "name", phase: "quiet" });
+            if (await choice === "skip") break;
+            continue;
+          }
+          const bytes = new Uint8Array(await result.recording.arrayBuffer());
+          let binary = "";
+          for (let i = 0; i < bytes.length; i += 8192) binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
+          if (cancelled()) return;
+          startNamePronunciation(childId, { audioBase64: btoa(binary), mimeType: "audio/wav", name: childName });
+          setScreen({ kind: "name", phase: "received" });
+          setOrb("speaking");
+          await playUrlAsync(spectrumClip("nice-to-meet-you"));
+          setOrb("idle");
+          break;
+        }
       }
+      if (cancelled()) return;
       startedRef.current = Date.now();
 
       // The unscored warm-up checks recognition before any reading evidence.

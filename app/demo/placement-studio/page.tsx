@@ -147,7 +147,10 @@ const examples: { label: string; stage: string; screen: PlacementScreen }[] = [
   },
   { label: "Word connecting", stage: "words", screen: { kind: "word", word: "garden", listening: false } },
   { label: "Word thinking", stage: "words", screen: { kind: "word", word: "garden", listening: true, thinking: true } },
-  { label: "Child name", stage: "mic", screen: { kind: "name", ready: true, childId: "00000000-0000-4000-8000-000000000001" } },
+  { label: "Child name", stage: "mic", screen: { kind: "name", phase: "listening" } },
+  { label: "Name prompt", stage: "mic", screen: { kind: "name", phase: "prompt" } },
+  { label: "Name retry", stage: "mic", screen: { kind: "name", phase: "quiet" } },
+  { label: "Name received", stage: "mic", screen: { kind: "name", phase: "received" } },
 ];
 
 export default function PlacementStudio() {
