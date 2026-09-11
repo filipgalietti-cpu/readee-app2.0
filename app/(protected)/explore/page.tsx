@@ -1,12 +1,9 @@
 import Link from "next/link";
-import sampleLessons from "@/app/data/sample-lessons.json";
-import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
-import { v2LessonForStandard } from "@/lib/lessons/v2-lookup";
+import { previewLessons } from "@/lib/lessons/preview-catalog";
 import { Glyph } from "@/app/_components/Glyph";
 
 export default function ExplorePage() {
-  const freeUnits = firstUnitDomainByGrade(sampleLessons);
-  const samples = [...freeUnits.keys()].map((grade) => sampleLessons.find((lesson) => lesson.grade === grade && isLessonInFreeUnit(lesson, freeUnits) && v2LessonForStandard(lesson.standardId))).filter((lesson) => lesson !== undefined);
+  const samples = previewLessons;
   return <main className="container-page py-8 sm:py-12"><div className="mx-auto max-w-4xl">
     <div className="flex items-center gap-6"><img src="/images/ui/bunny-reading.png" alt="" width={128} height={128} className="h-24 w-24 shrink-0 object-contain sm:h-32 sm:w-32" /><div><h1 className="text-3xl font-semibold text-zinc-900 sm:text-4xl">Take a look around.</h1><p className="mt-3 max-w-xl text-base leading-relaxed text-zinc-600">Try a free lesson sample from our K–4 reading curriculum. Choose any starting point to see how lessons work.</p></div></div>
     <div className="mt-8 divide-y divide-violet-100 overflow-hidden rounded-3xl border border-violet-100 bg-white shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]">

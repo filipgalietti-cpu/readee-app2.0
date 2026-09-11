@@ -1,149 +1,82 @@
 "use client";
+import { useEffect, useRef } from "react";
+import { Glyph } from "./Glyph";
+import TrialOffer from "./TrialOffer";
+import { usePlanStore } from "@/lib/stores/plan-store";
 
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { Bunny } from "./Bunny/Bunny";
-import { PRICING } from "@/lib/billing-copy";
-import { Glyph } from "@/app/_components/Glyph";
-
-interface PaywallModalProps {
+type Props = {
   open: boolean;
   onClose: () => void;
   childId?: string | null;
   childName?: string | null;
-  /** What triggered the paywall */
   trigger?: "lesson" | "story" | "analytics" | "child";
-}
-
-const TRIGGERS: Record<string, { title: string; subtitle: string }> = {
-  lesson: {
-    title: "Want to keep learning?",
-    subtitle: "Your child just finished all the free lessons. Upgrade to unlock the full curriculum!",
-  },
-  story: {
-    title: "More stories are waiting!",
-    subtitle: "Unlock all 25 stories across every grade level with Readee+.",
-  },
-  analytics: {
-    title: "See how your child is doing",
-    subtitle: "Detailed progress reports and analytics are available with Readee+.",
-  },
-  child: {
-    title: "Unlock more features",
-    subtitle: "Get full access to all lessons, stories, and progress reports with Readee+.",
-  },
+  eligibleForTrial?: boolean;
 };
-
-const FEATURES = [
-  { Icon: "book-open", text: "All lessons across K–4th grade" },
-  { Icon: "headphones", text: "Every story with audio narration" },
-  { Icon: "bar-chart3", text: "Detailed progress reports" },
-  { Icon: "users", text: "Full parent analytics dashboard" },
-] as const;
-
-export function PaywallModal({ open, onClose, childId, childName, trigger = "lesson" }: PaywallModalProps) {
-  const t = TRIGGERS[trigger] || TRIGGERS.lesson;
-
+/** Native modal provides focus containment, Escape, and focus restoration. */
+export function PaywallModal({
+  open,
+  onClose,
+  childId,
+  childName,
+  trigger = "lesson",
+  eligibleForTrial,
+}: Props) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const loaded = usePlanStore((s) => s.loaded);
+  const everSubscribed = usePlanStore((s) => s.everSubscribed);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => {
+    const element = dialog.current;
+    if (!open) {
+      element?.close();
+      return;
+    }
+    if (eligibleForTrial === undefined) void fetchPlan();
+    element?.showModal();
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+      element?.close();
+    };
+  }, [open, eligibleForTrial, fetchPlan]);
+  const canOffer = eligibleForTrial !== undefined || loaded;
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-50"
-            onClick={onClose}
+    <dialog
+      ref={dialog}
+      aria-label="Readee+ for your family"
+      onCancel={onClose}
+      onClick={(event) => {
+        if (event.target === dialog.current) onClose();
+      }}
+      className="fixed inset-0 m-auto max-h-[calc(100dvh-32px)] w-[calc(100%-32px)] max-w-md overflow-y-auto rounded-2xl bg-white p-0 text-zinc-900 shadow-2xl backdrop:bg-zinc-900/45"
+      data-paywall-modal
+    >
+      <div className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-white px-6 py-2">
+        <p className="text-sm font-semibold text-zinc-600">
+          For {childName ? `${childName}’s` : "your reader’s"} grown-up
+        </p>
+        <button
+          aria-label="Close membership options"
+          className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-zinc-100"
+          onClick={onClose}
+        >
+          <Glyph name="x" size={20} />
+        </button>
+      </div>
+      {open &&
+        (canOffer ? (
+          <TrialOffer
+            childId={childId}
+            childName={childName}
+            eligibleForTrial={eligibleForTrial ?? !everSubscribed}
+            source={`paywall-${trigger}`}
           />
-
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 16 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-x-4 top-[15%] sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-[420px] z-50 rounded-2xl bg-white shadow-2xl overflow-hidden"
-          >
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-zinc-100 transition-colors"
-            >
-              <Glyph name="x" size={16} className="text-zinc-500" />
-            </button>
-
-            {/* Header */}
-            <div
-              className="px-6 pt-8 pb-6 text-center"
-              style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.1, type: "spring", bounce: 0.5 }}
-              >
-                <div className="mx-auto mb-3 h-[84px] w-[70px] drop-shadow-lg">
-                  <Bunny />
-                </div>
-              </motion.div>
-              <h2 className="text-xl font-extrabold text-white">{t.title}</h2>
-              <p className="text-sm text-white/80 mt-1.5 max-w-[280px] mx-auto">{t.subtitle}</p>
-            </div>
-
-            {/* Features */}
-            <div className="px-6 py-5 space-y-3">
-              {FEATURES.map((f, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.15 + i * 0.05 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                    <Glyph name={f.Icon} size={16} className="text-indigo-600" />
-                  </div>
-                  <p className="text-sm text-zinc-700 font-medium">{f.text}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Pricing */}
-            <div className="px-6 pb-2">
-              <div className="rounded-xl bg-indigo-50 p-4 text-center">
-                <p className="text-xs text-indigo-600 font-semibold">Starting at</p>
-                <p className="text-2xl font-extrabold text-zinc-900">
-                  ${PRICING.annual.perMonth.toFixed(2)}<span className="text-sm font-medium text-zinc-500">/month</span>
-                </p>
-                <p className="text-xs text-zinc-500 mt-0.5">Billed annually at ${PRICING.annual.perYear.toFixed(2)}/year</p>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="px-6 pt-3 pb-6 space-y-2">
-              <Link
-                href={childId ? `/upgrade?child=${childId}` : "/upgrade"}
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
-                style={{
-                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                  boxShadow: "0 4px 0 0 #4f46e5",
-                }}
-                onClick={onClose}
-              >
-                <Glyph name="sparkles" size={16} />
-                Start 14-Day Free Trial
-              </Link>
-              <button
-                onClick={onClose}
-                className="w-full py-2.5 text-sm text-zinc-400 hover:text-zinc-600 transition-colors font-medium"
-              >
-                Maybe later
-              </button>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+        ) : (
+          <p role="status" className="p-6">
+            Loading your membership options…
+          </p>
+        ))}
+    </dialog>
   );
 }

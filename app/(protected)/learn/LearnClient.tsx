@@ -33,12 +33,7 @@ import { LessonSlideshow } from "@/app/components/lesson/LessonSlideshow";
 import { McqStage, BunnyBubble, QuestionDock, NextCta } from "@/app/components/practice/McqStage";
 import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
 import sampleLessons from "@/app/data/sample-lessons.json";
-// Free tier unlocks each grade's first unit (its first-appearance domain).
-const FREE_UNIT_DOMAIN = firstUnitDomainByGrade(
-  sampleLessons as { grade: string; domain: string }[],
-);
 import { usePlanStore } from "@/lib/stores/plan-store";
-import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -199,11 +194,8 @@ function LearnLoader({ placementStartUnlocked }: { placementStartUnlocked: boole
     return (sampleLessons as SampleLesson[]).find((l) => l.standardId === standardId) ?? null;
   }, [standardId]);
 
-  // Plan gating — free tier unlocks each grade's first unit.
-  const isFreeUnit = useMemo(
-    () => placementStartUnlocked || (lesson ? isLessonInFreeUnit(lesson, FREE_UNIT_DOMAIN) : true),
-    [lesson, placementStartUnlocked],
-  );
+  // The server authorizes this reader’s included lesson.
+  const isFreeUnit = placementStartUnlocked;
 
   useEffect(() => {
     if (plan !== null && plan !== "premium" && lesson && !isFreeUnit) {
@@ -776,75 +768,7 @@ function LearnSession({
  *     standard so they keep going on the skill they just learned.
  */
 function NextStepCta({ child, lesson }: { child: Child; lesson: SampleLesson }) {
-  const plan = usePlanStore((s) => s.plan);
-
-  const allInGrade = useMemo(
-    () =>
-      (sampleLessons as SampleLesson[]).filter((l) => l.grade === lesson.grade),
-    [lesson.grade],
-  );
-  const currentIdx = useMemo(
-    () => allInGrade.findIndex((l) => l.standardId === lesson.standardId),
-    [allInGrade, lesson.standardId],
-  );
-  const nextLesson =
-    currentIdx >= 0 && currentIdx < allInGrade.length - 1
-      ? allInGrade[currentIdx + 1]
-      : null;
-  const isPaid = plan === "premium";
-  const nextLocked =
-    !!nextLesson && !isPaid && plan !== null && !isLessonInFreeUnit(nextLesson, FREE_UNIT_DOMAIN);
-
-  const primaryStyle =
-    "block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]";
-
-  if (nextLesson && !nextLocked) {
-    // Return to the journey (not straight into the next lesson) so the kid
-    // sees the bunny hop to the node they just cleared, watch it turn gold,
-    // and unlock the next stop. The journey is the progression spine.
-    return (
-      <Link
-        href={`/journey?child=${child.id}&completed=${lesson.standardId}`}
-        className={primaryStyle}
-        style={{
-          background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-          boxShadow: "0 4px 0 0 #4f46e5",
-        }}
-      >
-        Back to your journey →
-      </Link>
-    );
-  }
-
-  if (nextLesson && nextLocked) {
-    return (
-      <Link
-        href={`/upgrade?reason=lesson`}
-        className={primaryStyle}
-        style={{
-          background: "linear-gradient(135deg, #f59e0b, #ec4899)",
-          boxShadow: "0 4px 0 0 #db2777",
-        }}
-      >
-        Unlock more lessons with Readee+
-      </Link>
-    );
-  }
-
-  // End of grade — pivot to practicing the same standard so the kid
-  // keeps reinforcing what they just learned instead of bouncing out.
-  return (
-    <Link
-      href={`/practice?child=${child.id}&standard=${lesson.standardId}`}
-      className={primaryStyle}
-      style={{
-        background: "linear-gradient(135deg, #10b981, #059669)",
-        boxShadow: "0 4px 0 0 #047857",
-      }}
-    >
-      Practice this skill →
-    </Link>
-  );
+  return <Link href={`/journey?child=${child.id}&completed=${lesson.standardId}`} className="block w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-center text-base font-extrabold text-white hover:from-violet-700 hover:to-violet-600">Back to your journey</Link>;
 }
 
 function CompletionScreen({

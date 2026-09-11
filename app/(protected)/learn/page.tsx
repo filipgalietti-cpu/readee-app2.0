@@ -1,14 +1,13 @@
 import { redirect, notFound } from "next/navigation";
 import sampleLessons from "@/app/data/sample-lessons.json";
-import { getUserPlan } from "@/lib/plan/check-access";
-import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
-import { loadOwnedPlacementPlan } from "@/lib/placement/owned-plan";
+import { loadJourneySnapshot } from "@/lib/journey/load.server";
+import { freeJourneyLesson } from "@/lib/journey/lesson-access";
+import { previewLessons } from "@/lib/lessons/preview-catalog";
 import LearnClient from "./LearnClient";
 import LessonV2Client from "./LessonV2Client";
 import { v2LessonForStandard } from "@/lib/lessons/v2-lookup";
 import PreviewLesson from "./PreviewLesson";
 
-type SL = { standardId: string; grade: string; domain: string };
 
 /**
  * Server-side paywall gate, and the choice of lesson engine.
@@ -23,8 +22,7 @@ type SL = { standardId: string; grade: string; domain: string };
  * as a prop. The V2 registry imports all 184 lessons - 7.9 MB - so a client-side
  * lookup would ship the whole catalogue to render one lesson.
  *
- * Free access includes the first catalogue unit in each grade and this child's
- * first placement unit. Ownership and the saved plan are checked on the server.
+ * Free access uses the shared journey allowance for this parent's account. Ownership and the saved plan are checked on the server.
  * The legacy runner receives that authorization to keep its client gate aligned.
  */
 export default async function LearnPage({
@@ -36,31 +34,23 @@ export default async function LearnPage({
   const standardId = sp.standard ?? null;
   let placementStartUnlocked = false;
 
-  // Browsing does not require a child. Only existing free catalogue units
+  // Browsing does not require a child. Only the five Explore samples
   // can be previewed; ?preview=1 never bypasses a paid or owned-plan gate.
   if (sp.preview === "1") {
-    const lesson = sampleLessons.find((item) => item.standardId === standardId);
-    if (!lesson || !isLessonInFreeUnit(lesson, firstUnitDomainByGrade(sampleLessons))) notFound();
+    const lesson = previewLessons.find((item) => item.standardId === standardId);
+    if (!lesson) notFound();
     const v2 = v2LessonForStandard(lesson.standardId);
     if (!v2) notFound();
     return <PreviewLesson lesson={v2} />;
   }
 
-  if (standardId) {
-    const lessons = sampleLessons as SL[];
-    const lesson = lessons.find((l) => l.standardId === standardId);
-    if (lesson) {
-      const freeUnit = firstUnitDomainByGrade(lessons);
-      if (!isLessonInFreeUnit(lesson, freeUnit)) {
-        const placement = sp.child ? await loadOwnedPlacementPlan(sp.child) : null;
-        placementStartUnlocked = isLessonInFreeUnit(lesson, freeUnit, placement?.firstUnit);
-        const plan = await getUserPlan(); // effective: trial/paid -> "premium"
-        if (!placementStartUnlocked && plan !== "premium") {
-          redirect("/upgrade?reason=lesson");
-        }
-      }
-    }
-  }
+  if (!standardId || !sampleLessons.some(lesson => lesson.standardId === standardId)) notFound();
+  const snapshot = await loadJourneySnapshot(sp.child);
+  if (!snapshot) redirect("/placement/setup");
+  if (!sp.child) redirect(`/learn?child=${snapshot.child.id}&standard=${encodeURIComponent(standardId)}`);
+  const lesson = sampleLessons.find(item => item.standardId === standardId)!;
+  placementStartUnlocked = freeJourneyLesson({ lesson, signupAt: snapshot.billing.signupAt, readingLevel: snapshot.child.reading_level ?? null, placement: snapshot.result?.plan });
+  if (!snapshot.billing.fullAccess && !placementStartUnlocked) redirect(`/journey?child=${snapshot.child.id}&locked=${encodeURIComponent(standardId)}`);
 
   // V2 when the standard has an authored lesson; legacy otherwise.
   if (standardId) {
