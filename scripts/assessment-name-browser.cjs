@@ -128,6 +128,13 @@ const { readFileSync } = require("node:fs");
         }
         await page.screenshot({ path: `/private/tmp/assessment-${width}-${label.replaceAll(" ", "-")}.png` });
       }
+      let wordBox;
+      for (const label of ["A word", "Word connecting", "Word thinking", "Word microphone retry"]) {
+        await page.getByRole("combobox").selectOption({ label });
+        const box = await page.locator(".pa-mic-row .pa-reading-orb").boundingBox();
+        if (wordBox) expect(box).toEqual(wordBox);
+        wordBox = box;
+      }
       await page.getByRole("combobox").selectOption("2");
       const rabbit = await page.locator(".pa-word-bunny").boundingBox(), orb = await page.locator(".pa-mic-row .pa-reading-orb").boundingBox();
       expect(rabbit.width).toBeGreaterThanOrEqual(width < 600 ? 124 : 260);

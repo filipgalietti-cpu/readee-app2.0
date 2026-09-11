@@ -1367,6 +1367,10 @@
 .pa-greeting-status .pa-intro-line { font-size: clamp(20px, 2.5vw, 24px); line-height: 1.35; }
 .pa-greeting-actions { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .pa-greeting-actions .pa-text-link { min-height: 44px; }
+@media (min-width: 768px) {
+  /* The shorter retry label must not recenter the orb/button pair. */
+  .pa-frame[data-screen="word"] .pa-mic-row .pa-primary { width: 224px; }
+}
 @media (max-height: 700px) {
   .pa-intro.pa-greeting-turn { grid-template-rows: 20px 64px 112px 64px 96px; gap: 4px; }
   .pa-greeting-orb .pa-orb-large { zoom: 0.72; }
