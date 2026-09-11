@@ -16,6 +16,9 @@ function SharedControls({ children }: { children: React.ReactNode }) {
       <Link prefetch={false} href="/demo/navigation/library?wait=900">Library preview</Link>
       <Link prefetch={false} href="/demo/navigation/settings?wait=600">Settings preview</Link>
       <Link prefetch={false} href="/demo/placement-run?grade=1">Reading preview</Link>
+      <Link prefetch={false} href="/demo/navigation/shop?child=reader-a">Shop preview</Link>
+      <Link prefetch={false} href="/demo/navigation/shop?child=reader-b">Second reader shop</Link>
+      <Link prefetch={false} href="/demo/navigation/daily">Daily preview</Link>
     </nav>
     <label className="mb-6 block text-sm text-zinc-600">Shared-layout test note
       <input aria-label="Shared-layout test note" className="ml-3 rounded-lg border border-violet-200 p-2" value={note} onChange={e => setNote(e.target.value)} />

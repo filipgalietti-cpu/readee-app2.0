@@ -4,6 +4,9 @@ import "./_components/ceremony.css";
 import { useEffect, useRef, useState, useCallback, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { useChildStore } from "@/lib/stores/child-store";
+import ShopLoading, { ShopFrame } from "./_components/ShopLoading";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { savedOk } from "@/lib/db/checked-write";
 import { Child, ShopPurchase, EquippedItems } from "@/lib/db/types";
@@ -26,7 +29,6 @@ import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
-import { SkeletonPage } from "@/app/_components/Skeleton";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { getOutfit, type Outfit } from "@/app/_components/Bunny/outfits";
 import { UnlockToast } from "@/app/_components/UnlockToast";
@@ -74,39 +76,69 @@ function ShopIcon({ name, size, className }: { name: string; size: number; class
 }
 
 export default function ShopPage() {
-  return (
-    <Suspense fallback={<SkeletonPage cards={4} />}>
-      <ShopLoader />
-    </Suspense>
-  );
+  return <Suspense fallback={<ShopLoading />}><ShopSelection /></Suspense>;
 }
 
-function ShopLoader() {
+function ShopSelection() {
   const searchParams = useSearchParams();
-  const childId = searchParams.get("child");
+  const selectedId = useChildStore(s => s.currentChildId);
+  const childId = searchParams.get("child") || selectedId;
+  // Changing readers must discard the old balance, preview and pending requests.
+  return <ShopLoader key={childId ?? "default"} childId={childId} />;
+}
+
+function ShopLoader({ childId }: { childId: string | null }) {
   const [child, setChild] = useState<Child | null>(null);
   const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState<"loading" | "ready" | "empty" | "error">("loading");
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => {
+      controller.abort();
+      if (!cancelled) setStatus("error");
+    }, 15000);
     async function load() {
-      if (!childId) return;
-      const supabase = supabaseBrowser();
-      const [childRes, purchasesRes] = await Promise.all([
-        supabase.from("children").select("*").eq("id", childId).single(),
-        supabase.from("shop_purchases").select("*").eq("child_id", childId),
-      ]);
-      if (childRes.data) setChild(childRes.data as Child);
-      if (purchasesRes.data) setPurchases(purchasesRes.data as ShopPurchase[]);
-      setLoading(false);
+      try {
+        const supabase = supabaseBrowser();
+        let query = supabase.from("children").select("*");
+        if (childId) query = query.eq("id", childId);
+        else {
+          const { data: { user }, error } = await supabase.auth.getUser();
+          if (error || !user) throw new Error("Session unavailable");
+          query = query.eq("parent_id", user.id).order("created_at", { ascending: true }).limit(1);
+        }
+        const result = await query.abortSignal(controller.signal).maybeSingle();
+        if (result.error) throw result.error;
+        if (cancelled || controller.signal.aborted) return;
+        if (!result.data) { setStatus("empty"); return; }
+        const reader = result.data as Child;
+        const owned = await supabase.from("shop_purchases").select("*").eq("child_id", reader.id).abortSignal(controller.signal);
+        if (owned.error) throw owned.error;
+        if (cancelled || controller.signal.aborted) return;
+        setChild(reader);
+        setPurchases((owned.data ?? []) as ShopPurchase[]);
+        setStatus("ready");
+      } catch {
+        if (!cancelled) setStatus("error");
+      } finally { window.clearTimeout(timeout); }
     }
-    load();
-  }, [childId]);
+    void load();
+    return () => { cancelled = true; controller.abort(); window.clearTimeout(timeout); };
+  }, [childId, attempt]);
 
-  if (loading || !child) {
-    return <SkeletonPage cards={4} />;
-  }
-
+  if (status === "loading") return <ShopLoading />;
+  if (status !== "ready" || !child) return <ShopFrame>
+    <div role={status === "error" ? "alert" : undefined} className="mx-auto max-w-xl px-6 py-12">
+      <div aria-hidden className="relative mb-6 h-36 w-32"><Bunny outfitId="bunny_classic" /></div>
+      <h1 className="text-3xl font-bold text-violet-900">{status === "error" ? "The shop couldn’t load." : "Choose a reader for the shop."}</h1>
+      <p className="mt-3 text-zinc-600">{status === "error" ? "Please try again. Your carrots and items haven’t changed." : "Open your dashboard to choose or add your reader."}</p>
+      {status === "error" && <button className="mt-6 rounded-xl bg-violet-600 px-5 py-3 font-semibold text-white" onClick={() => { setStatus("loading"); setAttempt(n => n + 1); }}>Try again</button>}
+      <Link className="mt-6 block font-semibold text-violet-700 underline" href="/dashboard">Go to dashboard</Link>
+    </div>
+  </ShopFrame>;
   return <ShopContent child={child} setChild={setChild} purchases={purchases} setPurchases={setPurchases} />;
 }
 
@@ -482,7 +514,7 @@ function ShopContent({
   const equipLabel = wonItem?.category === "outfits" ? "Wear it now" : "Use it now";
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
+    <ShopFrame>
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
       <style>{`@media (max-width:560px){.shop-wrap{padding:20px 16px 60px !important}.shop-hero{flex-direction:column !important;align-items:flex-start !important;gap:16px !important;padding:20px !important}.shop-hero-title{font-size:40px !important}}`}</style>
@@ -914,7 +946,7 @@ function ShopContent({
           onClose={() => setShowGetMore(null)}
         />
       )}
-    </div>
+    </ShopFrame>
   );
 }
 
