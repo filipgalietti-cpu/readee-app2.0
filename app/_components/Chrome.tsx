@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import PageTransition from "./PageTransition";
 
 /**
  * Site chrome (header + centered content column + footer) for every page
@@ -18,25 +16,17 @@ export function isImmersivePath(pathname: string): boolean {
 export default function Chrome({ nav, footer, children }: { nav: React.ReactNode; footer: React.ReactNode; children: React.ReactNode }) {
   const pathname = usePathname() ?? "";
   const immersive = isImmersivePath(pathname);
-  // The body carries the fixed-header offset (globals.css); drop it here.
-  useEffect(() => {
-    document.body.classList.toggle("immersive-route", immersive);
-    document.body.style.paddingTop = immersive ? "env(safe-area-inset-top)" : "";
-    return () => {
-      document.body.classList.remove("immersive-route");
-      document.body.style.paddingTop = "";
-    };
-  }, [immersive]);
-  if (immersive) {
-    return <main className="flex min-h-dvh w-full flex-col">{children}</main>;
-  }
+  // Keep the same React tree across routes. A pathname-keyed wrapper here
+  // remounts even shared layouts, restarting consent, sidebar and page effects.
   return (
     <>
-      {nav}
-      <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 pt-2 pb-4 sm:pb-8">
-        <PageTransition>{children}</PageTransition>
+      <div hidden={immersive} data-site-header>{nav}</div>
+      <main data-app-chrome={immersive ? "immersive" : "standard"} className={immersive
+        ? "flex min-h-dvh w-full flex-col"
+        : "flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 pt-2 pb-4 sm:pb-8"}>
+        {children}
       </main>
-      {footer}
+      <div hidden={immersive} data-site-footer>{footer}</div>
     </>
   );
 }

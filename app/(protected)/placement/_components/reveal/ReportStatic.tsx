@@ -162,12 +162,12 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
                 Go to custom reading journey
               </Link>
             )}
-            <a
+            <Link
               href="#reading-journey"
               className="text-sm font-semibold text-violet-700 underline underline-offset-4"
             >
               See the reading journey
-            </a>
+            </Link>
           </div>
         </section>
 
