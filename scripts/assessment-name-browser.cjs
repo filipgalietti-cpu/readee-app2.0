@@ -9,6 +9,16 @@ const { readFileSync } = require("node:fs");
     page.on("requestfailed", r => { if (r.url().includes("child-name/respell")) aborted.push(r.failure()); });
     await page.addInitScript(() => {
       window.audioPlayed = [];
+      window.turns = [];
+      document.addEventListener("DOMContentLoaded", () => {
+        new MutationObserver(() => {
+          const frame = document.querySelector("[data-screen]");
+          const phase = document.querySelector("[data-name-turn]")?.getAttribute("data-name-turn") || frame?.getAttribute("data-screen");
+          if (!phase || window.turns.at(-1)?.phase === phase) return;
+          const rect = document.querySelector(".pa-greeting-orb")?.getBoundingClientRect();
+          window.turns.push({ phase, box: rect && { x: rect.x, y: rect.y, width: rect.width, height: rect.height }, opens: window.micOpens, stops: window.micStops });
+        }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["data-screen", "data-name-turn"] });
+      });
       window.micOpens = 0;
       window.micStops = 0;
       // Real PCM through the production hook; only the input device is synthetic.
@@ -84,19 +94,24 @@ const { readFileSync } = require("node:fs");
     await expect(page.locator('[data-name-turn="listening"]')).toBeVisible();
     await page.waitForTimeout(2000); // A child can think before answering.
     await voice();
-    await expect(page.locator('[data-name-turn="received"]')).toBeVisible({ timeout: 10000 });
-    expect(await page.locator(".pa-greeting-orb").boundingBox()).toEqual(nameBox);
+    // The acknowledgement can be shorter than a polling interval at 3x audio.
+    // Observe the transition itself rather than waiting for that transient slide.
     await expect(page.locator('[data-word="sun"]')).toBeVisible({ timeout: 15000 });
+    const turns = await page.evaluate(() => window.turns);
+    expect(turns.find(t => t.phase === "received").box).toEqual(nameBox);
+    expect(turns.find(t => t.phase === "word")).toMatchObject({ opens: 1, stops: 0 });
     expect(nameFinished).toBe(false); // Reading starts while pronunciation is pending.
     expect(nameBody.childId).toBe("00000000-0000-0000-0000-000000000000");
     expect(Buffer.from(nameBody.audioBase64, "base64").subarray(0, 4).toString()).toBe("RIFF");
-    expect(await page.evaluate(() => ({ opens: window.micOpens, stops: window.micStops }))).toEqual({ opens: 1, stops: 0 });
     expect(await page.evaluate(() => window.audioEnded.some(u => u.endsWith("nice-to-meet-you.mp3")))).toBe(true);
     releaseName();
     await expect.poll(() => nameFinished).toBe(true);
     expect(aborted).toEqual([]);
     console.log("Passed real hello/name/warmup with one microphone and no orb movement.");
     await page.goto(base + "/demo/placement-studio", { waitUntil: "domcontentloaded" });
+    // The studio is server-rendered. Wait for Luna's first painted frame before
+    // changing its native select so an action cannot precede hydration.
+    await expect.poll(() => page.locator(".pa-reading-orb button").first().evaluate(el => el.style.transform)).toContain("scale(");
     await page.getByRole("combobox").selectOption("2");
     for (const [width, height] of [[390,844],[320,568],[1280,800]]) {
       await page.setViewportSize({ width, height });
@@ -119,7 +134,7 @@ const { readFileSync } = require("node:fs");
       expect(rabbit.x + rabbit.width <= orb.x || rabbit.y >= orb.y + orb.height).toBe(true);
       await expect(page.locator("[data-skip-word]")).toBeInViewport();
     }
-    await page.goto(base + "/demo/name-pronunciation", { waitUntil: "domcontentloaded" });
+    await page.goto(base + "/demo/name-pronunciation", { waitUntil: "load" });
     // First prove that the old data URL really is blocked under this policy.
     expect(await page.evaluate(async url => { try { await new Audio(url).play(); return false; } catch { return true; } }, previewUrl)).toBe(true);
     await page.locator("[data-say-name-hear]").click();
