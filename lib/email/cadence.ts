@@ -87,7 +87,7 @@ export function renderTrialEnding(parentName: string | null, ctx: ChildJourneyCo
     : `${name} has not started a lesson yet. Ten minutes tonight is enough to see how Luna works.`;
   const next = ctx?.nextLesson ? `Next up: ${ctx.nextLesson.title}.` : "";
   const flag = ctx?.placement?.nextMilestone ? `The plan has ${name} ${milestonePhrase(ctx.placement.nextMilestone.label)} by ${ctx.placement.nextMilestone.month}.` : "";
-  const money = end ? `Nothing to do to keep going: ${priceLine} starts on ${end}. To stop, cancel in one tap from Settings before then and ${name} keeps the free first unit.` : `Nothing to do to keep going: ${priceLine} starts when the trial ends. To stop, cancel in one tap from Settings and ${name} keeps the free first unit.`;
+  const money = end ? `Nothing to do to keep going: ${priceLine} starts on ${end}. To stop, cancel in one tap from Settings before then and ${name} keeps access to the saved report and an included starter lesson.` : `Nothing to do to keep going: ${priceLine} starts when the trial ends. To stop, cancel in one tap from Settings and ${name} keeps access to the saved report and an included starter lesson.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", did, next, flag, "", money, "", `Settings: ${BASE_URL}/settings`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(did))}${next ? P(escapeHtml(next)) : ""}${flag ? P(escapeHtml(flag)) : ""}${SMALL(escapeHtml(money))}`;
   const heroStats = progress.lessons > 0 ? [{ value: String(progress.lessons), label: progress.lessons === 1 ? "lesson finished" : "lessons finished" }, { value: String(progress.days), label: progress.days === 1 ? "day of reading" : "days of reading" }, ...(ctx?.streak ? [{ value: String(ctx.streak), label: "day streak" }] : [])] : [];
@@ -116,7 +116,7 @@ export function renderWinBack(parentName: string | null, ctx: ChildJourneyContex
   const heading = `We saved ${name}'s Reading Journey`;
   const where = ctx?.placement ? `${name} was placed at ${ctx.placement.levelLabel} (${ctx.placement.readingLevelName})${ctx.placement.topNeed ? `, working on ${ctx.placement.topNeed}` : ""}.` : `${name}'s progress is saved exactly where it was.`;
   const next = ctx?.nextLesson ? `The next lesson is still waiting: ${ctx.nextLesson.title}.` : "";
-  const free = `The free first unit stays open, and everything on the journey comes back the moment you restart. No new placement needed.`;
+  const free = `Your saved report and an included starter lesson stay open. The full journey becomes available when you restart Readee+. No new placement needed.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", where, next, free, "", `Restart Readee+: ${BASE_URL}/upgrade?reason=winback`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(where))}${next ? P(escapeHtml(next)) : ""}${P(escapeHtml(free))}`;
   const html = shell({ preheader: where, parentName, bodyHtml, ctaHref: `${BASE_URL}/upgrade?reason=winback`, ctaLabel: `Restart ${name}'s journey`, unsubscribeUrl, heading, eyebrow: "Whenever you are ready", banner: "banner-winback" });

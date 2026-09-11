@@ -46,7 +46,7 @@ export const PREMIUM_FEATURES = [
 
 export const FREE_FEATURES = [
   "Adaptive K–4 placement test",
-  "First unit (5 lessons) per grade",
+  "A starter lesson and K–4 lesson samples",
   "10 practice questions per standard",
   "2 stories per grade",
   "Daily Readee - a fresh reading passage every day",
@@ -81,9 +81,9 @@ export const SUPPORT = {
 /* ─── Paywall reason copy (used by /upgrade?reason=…) ────── */
 export const REASON_COPY: Record<string, { title: string; subtitle: string }> = {
   lesson: {
-    title: "Keep the streak going.",
+    title: "Continue your reader’s plan.",
     subtitle:
-      "Your reader finished the free lesson. Readee+ unlocks the full 162-lesson library - every CCSS standard, K–4.",
+      "Readee+ unlocks the full reading journey, with guided lessons and practice across K–4.",
   },
   practice: {
     title: "Practice without a wall.",

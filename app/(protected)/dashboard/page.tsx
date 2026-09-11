@@ -13,7 +13,7 @@ import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 import { computeJourneyProgress } from "@/lib/journey/next-lesson";
-import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
+import { freeJourneyLesson, hasLegacyLessonAllowance } from "@/lib/journey/lesson-access";
 import { TRIAL_DAYS } from "@/lib/plan/access";
 import { LESSON_META, getStandardMetaForGrade } from "@/lib/data/curriculum-manifest";
 import LevelProgressBar from "@/app/_components/LevelProgressBar";
@@ -555,7 +555,7 @@ function ChildDashboard({
   // Next lesson, computed the SAME way the Journey does (single source of
   // truth) so the CTA, Today's plan, and the journey card all mirror the path.
   const journeyCatalog = LESSON_META as { standardId: string; grade: string; domain: string; title: string }[];
-  const freeUnitDomain = firstUnitDomainByGrade(journeyCatalog);
+  const signupAt = usePlanStore(s => s.signupAt);
   const jp = computeJourneyProgress({
     practice: practiceRows,
     lessonProgress: lessonProgress.map((p) => ({ lesson_id: p.lesson_id, section: p.section, score: p.score })),
@@ -818,12 +818,10 @@ function ChildDashboard({
   const lapsed = previewMode === "locked";
   const accessFull = isPaid || inTrial; // full access → no locks
   const trialLeft = previewMode === "trial" ? 5 : realTrialLeft;
-  const upgradeHref = `/upgrade?reason=${lapsed ? "winback" : "momentum"}&child=${child.id}`;
-  // Post-trial free = 1 lesson/grade; lock the next lesson so the free/paid line
-  // is honest + visible. Full-access readers (paid or in-trial) never see it.
-  // Locked when the next lesson is beyond the free first unit (matches the real
-  // /learn gate) — not a "done >= 1" heuristic.
-  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain, placement?.firstUnit));
+  const upgradeHref = `/journey?child=${child.id}`;
+  // Use the same account allowance as /journey and the server /learn gate.
+  // Existing families retain their units; new accounts keep the starter lesson.
+  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !freeJourneyLesson({ lesson: nextLesson, signupAt, readingLevel, placement }));
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [
@@ -1549,8 +1547,10 @@ function LessonPath({
   const file = lessonsData as unknown as LessonsFile;
   const level = file.levels[gradeKey];
   const lessons = level?.lessons || [];
-  const freeLessons = lessons.filter((l) => isLessonFree(l.id));
-  const lockedLessonsCount = lessons.filter((l) => !isLessonFree(l.id)).length;
+  const signupAt = usePlanStore(s => s.signupAt);
+  const legacyAllowance = hasLegacyLessonAllowance(signupAt);
+  const freeLessons = lessons.filter((l) => legacyAllowance && isLessonFree(l.id));
+  const lockedLessonsCount = lessons.length - freeLessons.length;
 
   const isLessonComplete = (lessonId: string) => {
     return lessonProgress.some(
@@ -1606,7 +1606,7 @@ function LessonPath({
             const complete = isLessonComplete(lesson.id);
             const isNext = i === firstIncomplete;
             const isFuture = !complete && !isNext;
-            const isFree = isLessonFree(lesson.id);
+            const isFree = legacyAllowance && isLessonFree(lesson.id);
             const isLocked = !isFree && userPlan !== "premium";
             const isLast = i === lessons.length - 1;
             const learnStd = lessonToLearnStandard(lesson);

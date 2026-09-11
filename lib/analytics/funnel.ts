@@ -35,6 +35,11 @@ export type FunnelEvent =
   | "funnel.report_view"
   /** The parent explicitly chose a subscription and we handed off to Stripe. */
   | "funnel.checkout_started"
+  | "funnel.journey_viewed"
+  | "funnel.journey_trial_clicked"
+  | "funnel.journey_sample_clicked"
+  | "funnel.journey_paywall_viewed"
+  | "funnel.checkout_return_confirmed"
   /** The child chose the free lesson after placement (navigation, not completion). */
   | "funnel.placement_lesson_clicked"
   | "funnel.first_lesson_complete"

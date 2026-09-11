@@ -21,6 +21,8 @@ export interface JGrade { grade: string; badge: string; units: JUnit[] }
 
 export interface JourneyMapProps {
   grades: JGrade[];
+  /** Parent introduction must not be scrolled away during its first paint. */
+  autoFocusCurrent?: boolean;
   kidName: string;
   streak: number;
   carrots: number;
@@ -75,7 +77,7 @@ interface JState {
   justCompleted: string | null; justUnlocked: string | null; justChest: string | null;
   chestFlash: string | null; justGate: string | null; nudged: string | null;
   hoveredNode: string | null;
-  jumpVisible: boolean; jumpBelow: boolean;
+  jumpVisible: boolean; jumpBelow: boolean; layoutReady: boolean;
 }
 interface Particle { key: string; x: number; y: number; w: number; h: number; r: number; c: string; dx: number; dy: number; rot: number; dur: number; go: boolean }
 interface Flyer { key: string; x: number; y: number; dx: number; dy: number; dur: number; delay: number; go: boolean }
@@ -174,6 +176,10 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       const chestId = "chest" + this.unitNoOf(u);
       opened[chestId] = openedList.includes(chestId);
     }));
+    if (!Object.values(statuses).includes("current")) {
+      const next = this.lessonsL.find(lesson => statuses[lesson.id] !== "completed");
+      if (next) statuses[next.id] = "current";
+    }
     // Return trigger: rewind to the pre-unlock frame so playUnlock() can
     // animate it. The just-finished lesson starts as the green "current"
     // node (where the bunny stands), and the next lesson is re-locked so the
@@ -195,7 +201,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       chestChar: false, chestRewardText: "", chestHint: false, chestHintText: "",
       gradeOverlay: false, gradeOverlayIn: false, gradeOverlayTitle: "", gradeOverlayBadge: "", gradeCta: false,
       justCompleted: null, justUnlocked: null, justChest: null, chestFlash: null, justGate: null, nudged: null,
-      hoveredNode: null, jumpVisible: false, jumpBelow: false,
+      hoveredNode: null, jumpVisible: false, jumpBelow: false, layoutReady: false,
     };
   }
   // unit index helper (chests keyed by absolute unit number, matching buildLayout)
@@ -229,7 +235,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         // Just finished a lesson → jump straight to the node for the unlock
         // animation.
         window.scrollTo(0, Math.max(0, this.canvasTop() + cur.y - window.innerHeight * 0.45));
-      } else if (cur) {
+      } else if (cur && this.props.autoFocusCurrent !== false) {
         // Normal visit: land at the top, then after a short beat, if the
         // current lesson sits below the fold, smoothly scroll down to it so
         // the kid sees where they are. If it's already on screen (or the kid
@@ -254,8 +260,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     const cum = [0];
     for (let i = 1; i < this.pts.length; i++) {
       const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      p.setAttribute("d", this.bez(this.pts.slice(0, i + 1)));
-      svg.appendChild(p); cum.push((p as SVGPathElement).getTotalLength()); svg.removeChild(p);
+      p.setAttribute("d", this.bez([this.pts[i - 1], this.pts[i]]));
+      svg.appendChild(p); cum.push(cum[i - 1] + (p as SVGPathElement).getTotalLength()); svg.removeChild(p);
     }
     this.cumLen = cum; this.total = cum[cum.length - 1];
   }
@@ -263,13 +269,12 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     const c = this.canvasRef.current; if (!c) return;
     const w = Math.min(c.offsetWidth || 420, 1320);
     if (w && w !== this.colW) { this.colW = w; this.buildLayout(w); }
-    this.forceUpdate();
-    this.after(30, () => {
+    this.forceUpdate(() => {
       this.measureRoad();
       if (!this.cumLen) return;
       const cur = this.curLesson();
       const L = cur ? this.cumLen[cur.ptIndex] : this.total;
-      this.setState({ doneDash: this.total + " " + this.total, doneOff: this.total - L, doneTrans: "none" });
+      this.setState({ doneDash: this.total + " " + this.total, doneOff: this.total - L, doneTrans: "none", layoutReady: true });
       if (cur) { this.bunnyPos = this.idlePosFor(cur.x, cur.y); this.placeBunny(this.bunnyPos.x, this.bunnyPos.y, 1, 1, 0); }
     });
   }
@@ -558,7 +563,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
         {/* Stats banner — pinned top-right, OUTSIDE the z-index:1 map
             wrapper so it paints above the app chrome. */}
-            <div style={{ position: "fixed", top: 86, right: 16, zIndex: 70, display: "flex", gap: 8, alignItems: "center" }}>
+            <div style={{ position: "relative", zIndex: 2, display: "flex", justifyContent: "flex-end", padding: "18px 20px 0", gap: 8, alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" strokeWidth="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#3f3f46" }}>{this.props.streak} days</span>
@@ -575,26 +580,13 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
             </div>
 
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          {/* Header — grand centered title (laurels + crown + gradient text +
-              tagline). streak/carrots/sound are pinned top-right (above). */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "40px 24px 14px", textAlign: "center" }}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round"><path d="M2 20 C 14 20, 22 14, 26 4" /><path d="M44 20 C 32 20, 24 14, 20 4" opacity=".5" /></svg>
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="#f59e0b" stroke="#b45309" strokeWidth="1" strokeLinejoin="round"><path d="M2 18 L5 8 L9 13 L12 4 L15 13 L19 8 L22 18 Z" /><path d="M2 18 h20 v2 h-20 z" fill="#b45309" stroke="none" /></svg>
-                <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" style={{ transform: "scaleX(-1)" }}><path d="M2 20 C 14 20, 22 14, 26 4" /><path d="M44 20 C 32 20, 24 14, 20 4" opacity=".5" /></svg>
-              </div>
-              <div style={{ fontSize: 44, fontWeight: 800, fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.05, background: "linear-gradient(180deg,#4338ca,#8b5cf6)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", filter: "drop-shadow(0 2px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 18px rgba(67,56,202,.25))" }}>{this.props.kidName}&apos;s Reading Journey</div>
-              <div style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#7c3aed", display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ display: "inline-block", width: 36, height: 2, background: "linear-gradient(90deg,transparent,#8b5cf6)" }} />
-                Every step is a story
-                <span style={{ display: "inline-block", width: 36, height: 2, background: "linear-gradient(90deg,#8b5cf6,transparent)" }} />
-              </div>
-            </div>
-          </div>
+          <header style={{ padding: "24px 24px 16px", textAlign: "center" }}>
+            <h2 style={{ margin: 0, fontSize: 30, fontWeight: 800, fontFamily: "var(--font-baloo), sans-serif", color: "#312e81" }}>Your lesson path</h2>
+            <p style={{ margin: "8px 0 0", fontSize: 15, color: "#52525b" }}>Read with Readee, one stop at a time.</p>
+          </header>
 
           {/* Canvas */}
-          <div ref={this.canvasRef} style={{ position: "relative", width: "100%", maxWidth: 1320, margin: "0 auto", height: H }}>
+          <div ref={this.canvasRef} style={{ position: "relative", width: "100%", maxWidth: 1320, margin: "0 auto", height: H, visibility: s.layoutReady ? "visible" : "hidden" }} data-journey-map>
             <svg ref={this.svgRef} width={this.colW} height={H} style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none", overflow: "visible" }}>
               <defs><linearGradient id="rj-done" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8b5cf6" /><stop offset="100%" stopColor="#6366f1" /></linearGradient></defs>
               <path d={this.roadD} fill="none" stroke="rgba(30,27,75,.16)" strokeWidth="58" strokeLinecap="round" transform="translate(0,5)" />
@@ -630,7 +622,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               const prem = lessonObj?.status === "premium";
               let bg = "linear-gradient(180deg,#f4f4f5,#e4e4e7)", shadow = "0 4px 0 0 #d4d4d8", ring = "#f4f4f5", dim = 0.9;
               if (done) { bg = "linear-gradient(180deg,#fbbf24,#f59e0b)"; shadow = "0 5px 0 0 #b45309,0 14px 22px -10px rgba(180,83,9,.55)"; ring = "#fde68a"; dim = 1; }
-              else if (cur) { bg = "linear-gradient(180deg,#10b981,#059669)"; shadow = "0 5px 0 0 #047857,0 16px 26px -10px rgba(30,27,75,.5)"; ring = "#fff"; dim = 1; }
+              else if (cur) { bg = "linear-gradient(180deg,#8b5cf6,#7c3aed)"; shadow = "0 5px 0 0 #6d28d9,0 16px 26px -10px rgba(30,27,75,.5)"; ring = "#fff"; dim = 1; }
               let anim = "none";
               if (s.justCompleted === l.id || s.justUnlocked === l.id) anim = "rj-goldpop .6s cubic-bezier(0.34,1.56,0.64,1) both";
               else if (s.nudged === l.id) anim = "rj-nudge .45s ease-in-out both";
@@ -645,7 +637,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               // Hover tooltip ("what's up next") — Claude Design a205aaa2 update.
               const tipRing = done ? "#fde68a" : cur ? "#d1fae5" : "#f4f4f5";
               const tipAccent = done ? "#b45309" : cur ? "#059669" : "#a1a1aa";
-              const tipStatus = done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked - finish the path to get here";
+              const tipStatus = prem ? "Continue this lesson with Readee+" : done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked - finish the path to get here";
               const tipPos: React.CSSProperties = cur ? { top: "calc(100% + 14px)" } : { bottom: "calc(100% + 14px)" };
               const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
               const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";
@@ -667,11 +659,10 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                       </div>
                     )}
                     {cur && <>
-                      <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "4px solid #10b981", animation: "rj-halo 1.9s ease-out infinite", pointerEvents: "none" }} />
-                      <div onClick={onClick} style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", animation: startAnim, background: "#fff", color: "#059669", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: ".06em", padding: "6px 16px", borderRadius: 999, boxShadow: "0 6px 16px -4px rgba(30,27,75,.35),inset 0 0 0 2px #d1fae5", whiteSpace: "nowrap", transform: "translate(-50%,0)", cursor: "pointer" }}>START</div>
+                      <div onClick={onClick} style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", animation: startAnim, background: "#fff", color: "#6d28d9", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: ".06em", padding: "6px 16px", borderRadius: 999, boxShadow: "0 6px 16px -4px rgba(30,27,75,.35),inset 0 0 0 2px #ddd6fe", whiteSpace: "nowrap", transform: "translate(-50%,0)", cursor: "pointer" }}>{prem ? "READEE+" : "START"}</div>
                     </>}
                     {s.justUnlocked === l.id && <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "5px solid #34d399", animation: "rj-shock .75s ease-out both", pointerEvents: "none" }} />}
-                    <button onClick={onClick} style={{ width: "100%", height: "100%", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", background: bg, boxShadow: shadow, border: `3px solid ${ring}`, opacity: dim, cursor: "pointer", padding: 0, animation: anim }}>
+                    <button aria-label={`${l.title}${prem ? ", Readee+" : done ? ", completed" : cur ? ", start lesson" : ", upcoming"}`} data-journey-lesson={l.id} data-journey-state={st} onFocus={() => this.setState({ hoveredNode: l.id })} onBlur={() => this.setState({ hoveredNode: null })} onClick={onClick} style={{ width: "100%", height: "100%", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", background: bg, boxShadow: shadow, border: `3px solid ${ring}`, opacity: dim, cursor: "pointer", padding: 0, animation: anim }}>
                       {done && <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>}
                       {cur && <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" stroke="none" style={{ marginLeft: 3 }}><polygon points="6 3 20 12 6 21 6 3" /></svg>}
                       {!done && !cur && (prem
@@ -683,6 +674,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                       <span style={{ fontSize: 11.5, fontWeight: 800, color: "#b45309" }}>x{nStars}</span>
                     </div>}
                   </div>
+                  <p style={{ position: "absolute", ...(cur ? { top: "calc(100% + 12px)", left: "50%", transform: "translateX(-50%)", textAlign: "center" as const, opacity: s.hoveredNode === l.id ? 0 : 1 } : { top: 4, ...(l.x < CX ? { left: "calc(100% + 14px)", textAlign: "left" as const } : { right: "calc(100% + 14px)", textAlign: "right" as const }) }), width: cur ? 160 : Math.min(185, this.colW / 2 - 72), margin: 0, fontSize: 13, lineHeight: 1.35, fontWeight: 650, color: done || cur ? "#312e81" : "#52525b", pointerEvents: "none" }}>{l.title}</p>
                 </div>
               );
             })}
@@ -731,7 +723,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
             </div>
 
             {/* Walking bunny */}
-            <div ref={this.bunnyRef} style={{ position: "absolute", left: -300, top: -300, width: 96, height: 105, zIndex: 21, pointerEvents: "none", willChange: "transform" }}>
+            <div ref={this.bunnyRef} data-journey-bunny style={{ position: "absolute", left: -300, top: -300, width: 96, height: 105, zIndex: 21, pointerEvents: "none", willChange: "transform" }}>
               <Bunny outfitId={this.props.equippedOutfitId} />
             </div>
 
@@ -799,7 +791,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         {s.jumpVisible && !s.busy && !s.chestOverlay && !s.gradeOverlay && (
           <button
             onClick={() => this.scrollToCurrent()}
-            style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 55, cursor: "pointer", border: "none", background: "#fff", color: "#059669", borderRadius: 999, padding: "11px 20px", boxShadow: "0 6px 20px -6px rgba(30,27,75,.4),inset 0 0 0 2px #d1fae5", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", gap: 8, animation: "rj-startdrop .4s cubic-bezier(0.34,1.56,0.64,1) both" }}
+            style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 55, cursor: "pointer", border: "none", background: "#fff", color: "#6d28d9", borderRadius: 999, padding: "11px 20px", boxShadow: "0 6px 20px -6px rgba(30,27,75,.4),inset 0 0 0 2px #ddd6fe", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", gap: 8, animation: "rj-startdrop .4s cubic-bezier(0.34,1.56,0.64,1) both" }}
           >
             <svg style={{ transform: `rotate(${s.jumpBelow ? 0 : 180}deg)`, transition: "transform .2s ease" }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
             Back to your lesson
