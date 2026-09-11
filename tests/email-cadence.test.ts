@@ -23,7 +23,7 @@ describe("email cadence", () => {
   it("trial ending: what she did, what is next, the date, the amount, the exit", () => {
     const e = renderTrialEnding("Sam", ctx, { lessons: 6, days: 4 }, end, "$9.99 a month", u);
     expect(e.subject).toBe("Maya's Readee+ trial ends in 3 days");
-    for (const s of ["finished 6 lessons on 4 days", "3-day streak", "Next up: Long vowel teams", "$9.99 a month starts on September 16", "keeps the free first unit"]) expect(plain(e.html)).toContain(s.toLowerCase());
+    for (const s of ["finished 6 lessons on 4 days", "3-day streak", "Next up: Long vowel teams", "$9.99 a month starts on September 16", "keeps access to the saved report and an included starter lesson"]) expect(plain(e.html)).toContain(s.toLowerCase());
   });
   it("trial ending with no lessons yet says so plainly", () => {
     const e = renderTrialEnding(null, ctx, { lessons: 0, days: 0 }, end, "$9.99 a month", u);
@@ -31,7 +31,7 @@ describe("email cadence", () => {
   });
   it("win-back: where she was, the waiting lesson, the way back", () => {
     const e = renderWinBack("Sam", ctx, u);
-    for (const s of ["placed at 2nd grade (growing reader), working on 3rd-grade words", "Long vowel teams", "free first unit stays open", "/upgrade?reason=winback"]) expect(plain(e.html)).toContain(s.toLowerCase());
+    for (const s of ["placed at 2nd grade (growing reader), working on 3rd-grade words", "Long vowel teams", "saved report and an included starter lesson stay open", "/upgrade?reason=winback"]) expect(plain(e.html)).toContain(s.toLowerCase());
   });
   it("quiet nudge: the next lesson by name and the placement's reason", () => {
     const e = renderQuietNudge("Sam", ctx, 4, u);

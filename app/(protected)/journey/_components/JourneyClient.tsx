@@ -15,6 +15,7 @@ import TrialOffer from "@/app/_components/TrialOffer";
 import { PaywallModal } from "@/app/_components/PaywallModal";
 import { Glyph } from "@/app/_components/Glyph";
 import { audioManager } from "@/lib/audio/audio-manager";
+import { PRICING } from "@/lib/billing-copy";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -279,7 +280,7 @@ export default function JourneyClient({
             {!fullAccess && checkout !== "success" && (
               <a href="#readee-trial" className={`${PRIMARY} mt-6 lg:hidden`}>
                 {snapshot.billing.eligibleForTrial
-                  ? "Start a 14-day free trial"
+                  ? `Start a ${PRICING.trialDays}-day free trial`
                   : "Continue with Readee+"}
                 <Glyph name="arrow-right" size={18} className="ml-2" />
               </a>
