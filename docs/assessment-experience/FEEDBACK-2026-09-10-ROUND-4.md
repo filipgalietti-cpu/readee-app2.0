@@ -12,4 +12,6 @@
 
 The deleted assessment and cloud audio are gone; no deleted record was recreated. The local copy established the audio defect. No family email was sent. Automated verification does not replace live microphone/device tests or specialist review of reading difficulty.
 
-Validation: 602 tests, TypeScript and targeted lint pass; 126 viewport states pass. Name capture, automatic preview, no technical spelling, larger non-overlapping rabbit and full-screen loading pass in browser checks. Report/name previews explicitly use Pro TTS with Autonoe, without an unchecked Flash fallback.
+Validation: 604 tests, TypeScript and targeted lint pass; 126 viewport states pass. Name capture, automatic preview, no technical spelling, larger non-overlapping rabbit and full-screen loading pass in browser checks. Report/name previews explicitly use Pro TTS with Autonoe, without an unchecked Flash fallback.
+
+Verified files use content-addressed private paths. Regression tests prove that a late legacy job cannot overwrite the audio referenced by the verified report, and rejected audio remains unverified when regeneration fails.

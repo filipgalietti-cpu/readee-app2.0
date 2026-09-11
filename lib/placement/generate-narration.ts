@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateVerifiedSpeech, verifySpeech } from "@/lib/audio/verified-speech";
 import { spokenNameOf } from "@/lib/audio/name-spoken";
@@ -33,24 +34,30 @@ async function generate(placementId: string, childName: string, saidAs?: string 
         const names = [childName, spokenNameOf(childName, saidAs)];
         if (line.audioPath) {
           const { data: existing } = await admin.storage.from("child-audio").download(line.audioPath);
-          if (existing && await verifySpeech(Buffer.from(await existing.arrayBuffer()), script, names)) {
-            generated.set(line.id, { text: line.text, path: line.audioPath });
-            saves = saves.catch(() => {}).then(persist);
-            await saves;
-            continue;
+          if (existing) {
+            const audio = Buffer.from(await existing.arrayBuffer());
+            if (await verifySpeech(audio, script, names)) {
+              await publish(line, audio);
+              continue;
+            }
           }
         }
         const audio = await generateVerifiedSpeech(script, names);
-        const path = `placement/${childId}/narr-${placementId.slice(0, 8)}-${line.id}.mp3`;
-        const { error } = await admin.storage.from("child-audio").upload(path, audio, { contentType: "audio/mpeg", upsert: true });
-        if (error) throw error;
-        generated.set(line.id, { text: line.text, path });
-        saves = saves.catch(() => {}).then(persist);
-        await saves;
+        await publish(line, audio);
       } catch (error) {
         reportFailure("placement.narration", error, { route: "/api/placement/narration", eventType: line.id });
       }
     }
+  }
+  async function publish(line: NarrationLine, audio: Buffer) {
+    // Content-addressed paths prevent an older in-flight job overwriting verified audio.
+    const hash = createHash("sha256").update(audio).digest("hex");
+    const path = `placement/${childId}/verified-${placementId}-${line.id}-${hash}.mp3`;
+    const { error } = await admin.storage.from("child-audio").upload(path, audio, { contentType: "audio/mpeg", upsert: true });
+    if (error) throw error;
+    generated.set(line.id, { text: line.text, path });
+    saves = saves.catch(() => {}).then(persist);
+    await saves;
   }
   async function persist() {
     for (let attempt = 0; attempt < 3; attempt++) {
