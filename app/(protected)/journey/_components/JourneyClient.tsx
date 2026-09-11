@@ -278,12 +278,12 @@ export default function JourneyClient({
                 : "A clear next step for reading, with practice and support along the way."}
             </p>
             {!fullAccess && checkout !== "success" && (
-              <a href="#readee-trial" className={`${PRIMARY} mt-6 lg:hidden`}>
+              <Link href="#readee-trial" className={`${PRIMARY} mt-6 lg:hidden`}>
                 {snapshot.billing.eligibleForTrial
                   ? `Start a ${PRICING.trialDays}-day free trial`
                   : "Continue with Readee+"}
                 <Glyph name="arrow-right" size={18} className="ml-2" />
-              </a>
+              </Link>
             )}
             {fullAccess && current && (
               <div
@@ -376,13 +376,13 @@ export default function JourneyClient({
               </section>
             )}
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-              <a
+              <Link
                 href="#lesson-path"
                 className="inline-flex min-h-11 items-center gap-2 font-semibold text-violet-700"
               >
                 Explore the lesson path
                 <Glyph name="chevron-down" size={17} />
-              </a>
+              </Link>
               <span className="text-zinc-500">
                 About {placement?.minutesPerDay ?? 10} minutes a day
               </span>

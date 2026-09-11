@@ -28,6 +28,7 @@ import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
+import PageLoading from "@/app/_components/PageLoading";
 import ReaderLoading from "@/app/_components/ReaderLoading";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
@@ -321,7 +322,7 @@ export default function Dashboard() {
   }, [router, setStoreChildData, setStoreChildren]);
 
   if (loading) {
-    return <ReaderLoading />;
+    return <PageLoading />;
   }
 
   // DB blip while resolving children — show a retry card instead of

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function DemoShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   useEffect(() => {
-    if (pathname.startsWith("/demo/placement-")) return;
+    if (pathname.startsWith("/demo/placement-") || pathname.startsWith("/demo/navigation/")) return;
     // Hide nav, footer, and remove main padding for full-screen demo
     const nav = document.querySelector("nav, [data-nav]") as HTMLElement;
     const footer = document.querySelector("footer") as HTMLElement;

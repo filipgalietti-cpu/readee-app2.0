@@ -39,7 +39,7 @@ body {
 }
 
 /* Immersive routes (the reading placement and its reveal) have no fixed header, so no offset. */
-body.immersive-route {
+body:has([data-app-chrome="immersive"]) {
   padding-top: env(safe-area-inset-top);
 }
 
