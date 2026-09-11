@@ -1,4 +1,5 @@
 "use client";
+import { settleNamePronunciation } from "@/lib/audio/background-name";
 
 /**
  * PLACEMENT RUNNER — the exam the child takes, run by Luna in examiner mode.
@@ -187,6 +188,7 @@ export default function PlacementRunner({
     savingRef.current = true;
     setScreen({ kind: "closing", error: null });
     try {
+      await settleNamePronunciation(childId);
       const r = await fetch("/api/placement/complete", {
         method: "POST",
         signal: AbortSignal.timeout(30000),

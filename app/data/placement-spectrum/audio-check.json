@@ -3234,5 +3234,14 @@
     "audioSha256": "5fff5a77ffe7eb861e4c8210baa76cbf20931d94a027f70ad769307e5340945f",
     "wordErrorRate": 0.0,
     "status": "matched"
+  },
+  "nice-to-meet-you": {
+    "script": "It’s so nice to meet you!",
+    "transcript": "It's so nice to meet you!",
+    "audioSha256": "ea6ac0eba13a692e32bc68bb9574f3e89d07084222f3c8a1224706d3e5e5bfac",
+    "wordErrorRate": 0,
+    "status": "matched",
+    "verifier": "openai-whisper-1",
+    "durationSeconds": 2.1840000000000015
   }
 }
