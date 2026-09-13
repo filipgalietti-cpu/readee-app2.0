@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "astra-g1-u1-pilot-v1-9d8a3d0b845a",
+  "catalogVersion": "sha256:9fb2bff3ce754995cbb9baaf0b60a10aad1075eb5f862afca0d87f704dd5f326",
+  "registryVersion": "sha256:9f4301051d7fecc8d4a35195db5e6cffcfb415b4b18427d80ce1c4592c061001",
+  "units": [
+    {
+      "id": "G1.U1",
+      "title": "Grade 1 · Unit 1",
+      "grade": 1,
+      "domains": [
+        "RF",
+        "RL",
+        "RI",
+        "L"
+      ],
+      "version": "sha256:6ee7049ada4e4715de528f8567025e4e4a932505ebf8bb0c28e7347acb0f9f75",
+      "source": {
+        "source": "docs/UNIT_ROADMAP.md",
+        "locator": "G1·U1",
+        "version": "sha256:6ee7049ada4e4715de528f8567025e4e4a932505ebf8bb0c28e7347acb0f9f75"
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:6ee7049ada4e4715de528f8567025e4e4a932505ebf8bb0c28e7347acb0f9f75"
+      },
+      "checkpointIds": [
+        "g1-unit-1-exam"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "lessonId": "sentence-shapes",
+      "slug": "sentence-shapes",
+      "contentVersion": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 1,
+      "objective": "I can spot what makes a sentence just right!",
+      "coverage": {
+        "version": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5",
+        "standardIds": [
+          "RF.1.1a"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/sentence-shapes.ts",
+          "locator": "standard",
+          "version": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:7007308b621dbdea8ad8d9e655afafdfc487fa6b3ff54e54f36a6c5bc715a4a5"
+      }
+    },
+    {
+      "lessonId": "blend-builders",
+      "slug": "blend-builders",
+      "contentVersion": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 2,
+      "objective": "I can blend sounds into whole words, even words with tricky blends!",
+      "coverage": {
+        "version": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1",
+        "standardIds": [
+          "RF.1.2b"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/blend-builders.ts",
+          "locator": "standard",
+          "version": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:04dcbc38e36ff7d241a9a602578d9663aa3c0b4222a6325cad2d50270a2db6a1"
+      }
+    },
+    {
+      "lessonId": "sound-spotters",
+      "slug": "sound-spotters",
+      "contentVersion": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 3,
+      "objective": "I can find the first, middle vowel, and last sounds in words, even words with blends!",
+      "coverage": {
+        "version": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a",
+        "standardIds": [
+          "RF.1.2c"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/sound-spotters.ts",
+          "locator": "standard",
+          "version": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:719f66c5ebbe1dc385196095155b23c040883a52bda79f08e54253a86ae6c23a"
+      }
+    },
+    {
+      "lessonId": "ask-it-find-it",
+      "slug": "ask-it-find-it",
+      "contentVersion": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 4,
+      "objective": "I can ask a question about a story and find the answer in its words.",
+      "coverage": {
+        "version": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68",
+        "standardIds": [
+          "RL.1.1"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/ask-it-find-it.ts",
+          "locator": "standard",
+          "version": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:fa6701daad3eea1f3de0ef1f290c77018b3b97174dd01192363788f74f78cb68"
+      }
+    },
+    {
+      "lessonId": "story-message",
+      "slug": "story-message",
+      "contentVersion": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 5,
+      "objective": "I can retell a story in order and find its central message.",
+      "coverage": {
+        "version": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405",
+        "standardIds": [
+          "RL.1.2"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/story-message.ts",
+          "locator": "standard",
+          "version": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:d511c733e560e10083579c3c4fcab55ec46b27e41d3ac7bdabc807e92d7b0405"
+      }
+    },
+    {
+      "lessonId": "fact-questions",
+      "slug": "fact-questions",
+      "contentVersion": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 6,
+      "objective": "I can ask and answer questions about facts in a book.",
+      "coverage": {
+        "version": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1",
+        "standardIds": [
+          "RI.1.1"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/fact-questions.ts",
+          "locator": "standard",
+          "version": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:c01dd50ab4df9d810ba4f9cafd76daf78b29faa3a001e18706c645e1b9d92ac1"
+      }
+    },
+    {
+      "lessonId": "topic-spotter",
+      "slug": "topic-spotter",
+      "contentVersion": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 7,
+      "objective": "I can name the main topic of a fact book and retell its key details in order.",
+      "coverage": {
+        "version": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c",
+        "standardIds": [
+          "RI.1.2"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/topic-spotter.ts",
+          "locator": "standard",
+          "version": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:4fdd98a86c0be381d147332e8426f9220b1ff8500e1288a37fc807ed7b42c72c"
+      }
+    },
+    {
+      "lessonId": "word-toolbox",
+      "slug": "word-toolbox",
+      "contentVersion": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 8,
+      "objective": "I can use tools to figure out what a tricky word means.",
+      "coverage": {
+        "version": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2",
+        "standardIds": [
+          "L.1.4"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/word-toolbox.ts",
+          "locator": "standard",
+          "version": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2"
+        }
+      },
+      "technicalQa": {
+        "status": "unknown",
+        "contentVersion": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:de2665b872da03774809414899959bcd4220c1eab2cda619de1e5a30138111f2"
+      }
+    },
+    {
+      "lessonId": "sentence-clues",
+      "slug": "sentence-clues",
+      "contentVersion": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 9,
+      "objective": "I can use the other words in a sentence to figure out what a tricky word means.",
+      "coverage": {
+        "version": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d",
+        "standardIds": [
+          "L.1.4a"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/sentence-clues.ts",
+          "locator": "standard",
+          "version": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:a8c4685591d09ba95c95c06b738c73df80f2c9c0c0387942bc6c9250d41ae08d"
+      }
+    },
+    {
+      "lessonId": "prefix-power",
+      "slug": "prefix-power",
+      "contentVersion": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470",
+      "grade": 1,
+      "unitId": "G1.U1",
+      "position": 10,
+      "objective": "I can use word parts like un-, re-, and -ful to help me understand new words.",
+      "coverage": {
+        "version": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470",
+        "standardIds": [
+          "L.1.4b"
+        ],
+        "kind": "single-standard",
+        "source": {
+          "source": "app/data/lessons-v2/prefix-power.ts",
+          "locator": "standard",
+          "version": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470"
+        },
+        "curriculumReview": {
+          "status": "pending",
+          "version": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470"
+        }
+      },
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:d4fc5d1c792e14f9f3f97083bc83d666b409d3fae77f87ae1308185d46d29470"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "g1-unit-1-exam",
+      "quizId": "g1-unit-1-exam",
+      "contentVersion": "sha256:3c84dc95bfa5da1a9280c298af9c78b48365925173c9a8b93d54fdd983140a57",
+      "unitIds": [
+        "G1.U1"
+      ],
+      "technicalQa": {
+        "status": "failed",
+        "contentVersion": "sha256:3c84dc95bfa5da1a9280c298af9c78b48365925173c9a8b93d54fdd983140a57",
+        "reference": {
+          "source": "docs/curriculum-pilot/g1-u1/package.json",
+          "locator": "technicalReview (local snapshot only)",
+          "version": "sha256:3c84dc95bfa5da1a9280c298af9c78b48365925173c9a8b93d54fdd983140a57"
+        }
+      },
+      "curriculumReview": {
+        "status": "pending",
+        "version": "sha256:3c84dc95bfa5da1a9280c298af9c78b48365925173c9a8b93d54fdd983140a57"
+      },
+      "publication": {
+        "status": "draft",
+        "contentVersion": "sha256:3c84dc95bfa5da1a9280c298af9c78b48365925173c9a8b93d54fdd983140a57"
+      }
+    }
+  ]
+}
