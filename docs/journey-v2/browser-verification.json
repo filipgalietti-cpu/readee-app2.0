@@ -1,0 +1,112 @@
+{
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "layout": "wide",
+      "passed": true
+    },
+    {
+      "name": "tablet",
+      "width": 820,
+      "height": 1180,
+      "layout": "wide",
+      "passed": true
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "layout": "wide",
+      "passed": true
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "foundations",
+      "title": "Filus’s reading journey",
+      "lessons": 3,
+      "current": "sentence-shapes"
+    },
+    {
+      "id": "farther",
+      "title": "Nora’s reading journey",
+      "lessons": 3,
+      "current": "sound-stretchers"
+    },
+    {
+      "id": "meaning",
+      "title": "Maya’s reading journey",
+      "lessons": 3,
+      "current": "ask-it-find-it"
+    },
+    {
+      "id": "above",
+      "title": "Leo’s reading journey",
+      "lessons": 4,
+      "current": "fable-tellers"
+    },
+    {
+      "id": "provisional",
+      "title": "Amelia-Rose Alexandra’s reading journey",
+      "lessons": 1,
+      "current": "sentence-shapes"
+    },
+    {
+      "id": "progress",
+      "title": "Oliver’s reading journey",
+      "lessons": 3,
+      "current": "smooth-reader"
+    },
+    {
+      "id": "subscriber",
+      "title": "Filus’s reading journey",
+      "lessons": 3,
+      "current": "sentence-shapes"
+    },
+    {
+      "id": "free",
+      "title": "Filus’s reading journey",
+      "lessons": 3,
+      "current": "sentence-shapes"
+    },
+    {
+      "id": "garden-later",
+      "title": "Zoe’s reading journey",
+      "lessons": 3,
+      "current": "blend-builders"
+    },
+    {
+      "id": "woods",
+      "title": "Theo’s reading journey",
+      "lessons": 3,
+      "current": "digraph-detectives"
+    }
+  ],
+  "interactions": [
+    "Build my journey staged reveal",
+    "Completion audio: C5-E5-G5, suppressed when muted",
+    "Early provisional checkpoint and later entry fixtures",
+    "Measured-path bunny travel",
+    "User scroll cancels camera follow",
+    "Return to bunny",
+    "Completion credit",
+    "Fixture paywall and trial access",
+    "Checkpoint and chapter keepsake",
+    "Chapter progression through the completion keepsake",
+    "Evidence provenance",
+    "Escape and focus restoration",
+    "Reduced motion"
+  ],
+  "browserErrors": [],
+  "consoleNotes": [
+    "Loading the script 'https://us-assets.i.posthog.com/array/phc_yei5EePlPfzifoqRlcNLPWSnRZaynbP4eyYvecZcncT/config.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inli",
+    "Loading the script 'https://va.vercel-scripts.com/v1/script.debug.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inline'\". Note that 'script-src-elem' was not expli",
+    "Loading the script 'https://va.vercel-scripts.com/v1/speed-insights/script.debug.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inline'\". Note that 'script-src-elem",
+    "Loading the script 'https://us-assets.i.posthog.com/static/surveys.js?v=1.358.0' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inline'\". Note that 'script-src-elem' wa",
+    "Loading the script 'https://us-assets.i.posthog.com/static/dead-clicks-autocapture.js?v=1.358.0' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inline'\". Note that 'scr",
+    "Loading the script 'https://us-assets.i.posthog.com/static/web-vitals.js?v=1.358.0' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-eval' 'unsafe-inline'\". Note that 'script-src-elem'"
+  ],
+  "writes": []
+}

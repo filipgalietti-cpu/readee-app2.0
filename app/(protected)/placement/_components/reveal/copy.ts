@@ -139,7 +139,8 @@ const capitalize = (s: string): string => (s.length ? s[0].toUpperCase() + s.sli
 
 /** "4th grade" / "kindergarten" */
 export function gradeWord(band: PlacedBand): string {
-  return band === 0 ? "kindergarten" : `${ordinal(band)} grade`;
+  const numericBand = Number(band); // Legacy database rows can carry "0" as text.
+  return numericBand === 0 ? "kindergarten" : `${ordinal(numericBand)} grade`;
 }
 
 /** "4th-grade" / "kindergarten" (attributive) */

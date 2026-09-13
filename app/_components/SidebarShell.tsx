@@ -15,6 +15,8 @@ import AppSidebar from "./AppSidebar";
  */
 const HIDDEN_PAGES = new Set([
   "/explore",
+  "/journey",
+  "/demo/journey",
   "/practice",
   "/assessment",
   "/placement",
@@ -25,9 +27,11 @@ const HIDDEN_PAGES = new Set([
 export default function SidebarShell({
   initialOpen,
   children,
+  reader,
 }: {
   initialOpen: boolean;
   children: React.ReactNode;
+  reader?: import("@/lib/db/types").Child;
 }) {
   const pathname = usePathname();
   const hydrateFromServer = useSidebarStore((s) => s.hydrateFromServer);
@@ -46,11 +50,11 @@ export default function SidebarShell({
     return () => setDesktopSidebarVisible(false);
   }, [sidebarShown, setDesktopSidebarVisible]);
 
-  const hideAll = pathname === "/explore" || pathname.startsWith("/explore/") || pathname === "/placement" || pathname.startsWith("/placement/");
+  const hideAll = pathname === "/journey" || pathname === "/demo/journey" || pathname === "/explore" || pathname.startsWith("/explore/") || pathname === "/placement" || pathname.startsWith("/placement/");
 
   return (
     <>
-      {!hideAll && <AppSidebar mobileOnly={hiddenPage} />}
+      {!hideAll && <AppSidebar mobileOnly={hiddenPage} reader={reader} />}
       {/* Desktop: break out of the root <main>'s centered max-w-6xl so the
           fixed sidebar doesn't eat into the content column. The content
           then spans the full viewport minus the sidebar, instead of being

@@ -5,7 +5,7 @@ import JourneyClient from "./_components/JourneyClient";
 export default async function JourneyPage({
   searchParams,
 }: {
-  searchParams: Promise<{ child?: string; completed?: string; checkout?: string }>;
+  searchParams: Promise<{ child?: string; completed?: string; checkout?: string; from?: string }>;
 }) {
   const params = await searchParams;
   if (params.child && !/^[0-9a-f-]{36}$/i.test(params.child)) notFound();
@@ -20,6 +20,7 @@ export default async function JourneyPage({
       snapshot={snapshot}
       completed={params.completed}
       checkout={params.checkout}
+      introduce={params.from === "placement"}
     />
   );
 }

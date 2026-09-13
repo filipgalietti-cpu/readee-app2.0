@@ -2,6 +2,7 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { withCurrentPlan } from "@/lib/placement/current-plan";
+import type { PlacedBand } from "@/lib/placement/ladder";
 import type { PlacementResult } from "@/lib/placement/types";
 import type { JourneySnapshot } from "./types";
 
@@ -36,13 +37,15 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
   if (practice.error || progress.error || placement.error)
     throw new Error("Could not load your reading journey.");
   const row = placement.data;
+  const enrolled = row ? Number(row.enrolled) : null;
+  if (row && (row.enrolled == null || !Number.isInteger(enrolled) || enrolled! < 0 || enrolled! > 4)) throw new Error("Could not load the enrollment grade.");
   const result: PlacementResult | null = row
     ? withCurrentPlan(
         {
           id: row.id,
           childId: child.id,
           childName: child.first_name || "Reader",
-          enrolled: row.enrolled,
+          enrolled: enrolled as PlacedBand,
           decision: row.decision,
           moments: row.moments ?? [],
           plan: row.plan,

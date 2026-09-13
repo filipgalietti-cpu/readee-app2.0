@@ -6,7 +6,7 @@ const { chromium, expect } = require("@playwright/test");
     page.setDefaultNavigationTimeout(120000);
     const errors = [],
       checkoutBodies = [];
-    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("pageerror", (error) => { errors.push(error.message); console.error(error.stack); });
     let confirmCount = 0;
     await page.route("**/*", async (route) => {
       if (route.request().method() !== "POST" && route.request().method() !== "PATCH")
@@ -21,11 +21,13 @@ const { chromium, expect } = require("@playwright/test");
       // Demo effects and analytics must never write to real services.
       return route.fulfill({ json: { ok: true } });
     });
-    await page.goto("http://127.0.0.1:3431/demo/journey");
-    await expect(page.locator("[data-trial-offer]")).toBeVisible();
+    await page.goto(`${process.env.PLACEMENT_BASE_URL || "http://127.0.0.1:3443"}/demo/journey`);
+    await expect(page.locator("[data-journey-map]")).toBeVisible({ timeout: 30000 });
+    await expect(page.locator("[data-map-building=true]")).toBeVisible();
+    await page.getByRole("button", {name:"Finish tour", exact:true}).click();
     await expect(page.locator("[data-journey-map]")).toBeVisible();
     await page.waitForTimeout(1300);
-    expect(await page.evaluate(() => window.scrollY)).toBe(0);
+    await expect.poll(() => page.evaluate(() => Math.abs(scrollY - Math.max(0, document.getElementById("journey-introduction").getBoundingClientRect().top + scrollY - 88)))).toBeLessThan(3);
     for (const [width, height] of [
       [1440, 1000],
       [1024, 768],
@@ -41,6 +43,8 @@ const { chromium, expect } = require("@playwright/test");
       await page.screenshot({ path: `/private/tmp/journey-new-${width}.png` });
     }
     await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.getByRole("button", {name:"Plan & report",exact:true}).click();
+    await page.getByRole("dialog").getByRole("button", { name: "Start 14-day free trial", exact: true }).click();
     await page.getByLabel("Annual", { exact: false }).check();
     await expect(page.locator("[data-trial-terms]")).toContainText("$83.88 a year");
     await page.locator("[data-trial-start]").click();
@@ -52,6 +56,7 @@ const { chromium, expect } = require("@playwright/test");
     await page.locator("[data-trial-start]").click();
     await expect.poll(() => checkoutBodies.length).toBe(2);
     expect(checkoutBodies[0].attemptId).toBe(checkoutBodies[1].attemptId);
+    await page.keyboard.press("Escape");
     await page.locator("[data-journey-lesson]").nth(1).click();
     await expect(page.locator("[data-paywall-modal]")).toBeVisible();
     await expect(page.locator("[data-paywall-modal]")).not.toContainText(
@@ -62,15 +67,23 @@ const { chromium, expect } = require("@playwright/test");
     for (const scenario of ["paid", "legacy", "lapsed", "unconfirmed", "canceled", "loading"]) {
       await page.locator("#scenario").selectOption(scenario);
       if (scenario === "paid") {
+        await page.getByRole("button",{name:"Plan & report",exact:true}).click();
         await expect(page.locator("[data-trial-offer]")).toHaveCount(0);
         await expect(page.locator("[data-next-lesson]")).toBeVisible();
+        await page.getByRole("button",{name:"Close reading plan"}).click();
       }
       if (scenario === "lapsed") {
+        await page.getByRole("button",{name:"Plan & report",exact:true}).click();
+        await page.getByRole("button", {name:"See membership options",exact:true}).click();
         await expect(page.locator("[data-trial-terms]")).toContainText("starting today");
         await expect(page.locator("[data-trial-start]")).toHaveText("Continue with Readee+");
+        await page.keyboard.press("Escape");
       }
-      if (scenario === "unconfirmed")
+      if (scenario === "unconfirmed") {
+        await page.getByRole("button",{name:"Plan & report",exact:true}).click();
         await expect(page.locator("[data-grade-ladder]")).toContainText("Guided lesson start");
+        await page.getByRole("button",{name:"Close reading plan"}).click();
+      }
       if (scenario === "loading")
         await expect(page.locator("[data-journey-loading]")).toBeVisible();
       await page.evaluate(() => window.scrollTo(0, 0));
@@ -100,6 +113,7 @@ const { chromium, expect } = require("@playwright/test");
       timeout: 20000,
     });
     await expect(page.locator("[data-trial-offer]")).toHaveCount(0);
+    await page.getByRole("button",{name:"Plan & report",exact:true}).click();
     await expect(page.locator("[data-next-lesson]")).toBeVisible();
     expect(errors).toEqual([]);
     console.log(

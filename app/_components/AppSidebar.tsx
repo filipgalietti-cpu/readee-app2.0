@@ -270,7 +270,7 @@ function navIconClass(pathname: string, href: string, kidSize?: boolean) {
 /*  AppSidebar                                         */
 /* ═══════════════════════════════════════════════════ */
 
-export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolean }) {
+export default function AppSidebar({ mobileOnly = false, reader }: { mobileOnly?: boolean; reader?: import("@/lib/db/types").Child }) {
   const pathname = usePathname();
   // Collapse removed — the desktop sidebar is always open. Kids need the
   // labels, and the collapse toggle caused more layout pain than value.
@@ -280,7 +280,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
 
   const childData = useChildStore((s) => s.childData);
   const storeChildren = useChildStore((s) => s.children);
-  const activeChild = childData || storeChildren[0] || null;
+  const activeChild = reader || childData || storeChildren[0] || null;
   const childIndex = activeChild ? storeChildren.indexOf(activeChild) : 0;
   const avatarSrc = activeChild ? getChildAvatarImage(activeChild, childIndex === -1 ? 0 : childIndex) : null;
 
@@ -295,7 +295,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
 
   // children may live in the dedicated store; also fall back to the plan
   // store flag for first-render (when child list hasn't loaded yet).
-  const hasChildren = storeChildren.length > 0 || planHasChildren;
+  const hasChildren = !!reader || !!childData || storeChildren.length > 0 || planHasChildren;
 
   // Platform admin routes ALWAYS render with the owner's actual
   // identity, ignoring whatever child/parent persona happens to be

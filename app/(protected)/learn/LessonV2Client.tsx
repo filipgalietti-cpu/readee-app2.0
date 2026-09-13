@@ -6,6 +6,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import type { Child } from "@/lib/db/types";
 import type { LessonDef, LearningEvent } from "@/lib/lesson-engine/types";
 import LessonRunner from "@/app/components/lesson-v2/LessonRunner";
+import { savedJourneyHref } from "@/lib/journey/lesson-return";
 import { recordLessonCompletion } from "@/lib/lessons/record-completion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
@@ -39,16 +40,15 @@ export default function LessonV2Client({ lesson }: { lesson: LessonDef }) {
   const [child, setChild] = useState<Child | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
+  const [returning, setReturning] = useState(false);
+  const completionSave = useRef<ReturnType<typeof recordLessonCompletion> | null>(null);
 
   // Scored from the event stream rather than component state, so a re-render
   // can never double-count an answer.
   const tally = useRef({ attempted: 0, correct: 0, carrots: 0, streak: 0 });
 
   useEffect(() => {
-    if (!childId) {
-      setError("We couldn't tell which reader this is. Pick again from the dashboard.");
-      return;
-    }
+    if (!childId) return;
     let cancelled = false;
     (async () => {
       const supabase = supabaseBrowser();
@@ -90,10 +90,10 @@ export default function LessonV2Client({ lesson }: { lesson: LessonDef }) {
   );
 
   const onComplete = useCallback(async () => {
-    if (!child) return;
+    if (!child || completionSave.current) return;
     const t = tally.current;
     const settled = finalizeSessionCarrots(t.carrots, child);
-    const { saved } = await recordLessonCompletion(supabaseBrowser(), {
+    completionSave.current = recordLessonCompletion(supabaseBrowser(), {
       childId: child.id,
       standardId: lesson.standard,
       attempted: t.attempted,
@@ -101,13 +101,18 @@ export default function LessonV2Client({ lesson }: { lesson: LessonDef }) {
       carrots: settled.final,
       boost: getActiveMultiplier(child),
     });
-    if (!saved) setSaveFailed(true);
+    try {
+      const { saved } = await completionSave.current;
+      if (!saved) setSaveFailed(true);
+    } catch {
+      setSaveFailed(true);
+    }
   }, [child, lesson.standard]);
 
-  if (error) {
+  if (error || !childId) {
     return (
       <div className="flex min-h-[100dvh] items-center justify-center bg-gray-50 px-6">
-        <p className="max-w-sm text-center text-lg text-zinc-600">{error}</p>
+        <p className="max-w-sm text-center text-lg text-zinc-600">{error ?? "We couldn’t tell which reader this is. Pick again from the dashboard."}</p>
       </div>
     );
   }
@@ -125,8 +130,13 @@ export default function LessonV2Client({ lesson }: { lesson: LessonDef }) {
   return (
     <>
       <LessonRunner lesson={lesson} onEvent={onEvent} onComplete={onComplete}
-        onFinish={() => router.push(`/journey?child=${encodeURIComponent(child.id)}`)}
-        finishLabel="Continue my reading journey →"
+        onFinish={async () => {
+          if (returning) return;
+          setReturning(true);
+          const href = await savedJourneyHref(child.id, lesson.standard, completionSave.current);
+          router.push(href);
+        }}
+        finishLabel={returning ? "Opening your journey…" : "Continue my reading journey →"}
         finishPrompt="Your reading journey is ready whenever you are." />
       {saveFailed && (
         <div className="fixed inset-x-0 bottom-0 z-50 bg-amber-50 px-4 py-3 text-center text-sm font-semibold text-amber-800">

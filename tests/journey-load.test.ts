@@ -65,3 +65,10 @@ it.each(["profiles", "placements", "practice_results", "lessons_progress"])(
     await expect(loadJourneySnapshot("reader")).rejects.toThrow("reading journey");
   },
 );
+
+it("normalizes legacy string enrollment before rendering grade comparisons", async () => {
+  state.rows.placements = { data: { enrolled: "0", decision: {}, plan: { version: 3 }, created_at: "2026-09-11" } };
+  expect((await loadJourneySnapshot("reader"))?.result?.enrolled).toBe(0);
+  state.rows.placements.data.enrolled = "unknown";
+  await expect(loadJourneySnapshot("reader")).rejects.toThrow("enrollment grade");
+});

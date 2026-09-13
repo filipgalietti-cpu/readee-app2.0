@@ -1,3 +1,4 @@
+import { scheduleJourneyMagic } from "./journey-magic";
 import { Howl, Howler } from "howler";
 import { useAudioStore } from "@/lib/stores/audio-store";
 
@@ -142,6 +143,12 @@ class AudioManager {
   /** Set global mute via Howler */
   setMuted(muted: boolean): void {
     Howler.mute(muted);
+  }
+
+  /** Cancellable accents for the Journey magician; only plays in an unlocked context. */
+  playJourneyMagic(): () => void {
+    if (useAudioStore.getState().isMuted) return () => {};
+    try { return scheduleJourneyMagic(this.getAudioCtx()); } catch { return () => {}; }
   }
 
   /** Play correct answer chime: C5 → E5 */

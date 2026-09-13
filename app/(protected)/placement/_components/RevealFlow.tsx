@@ -6,6 +6,7 @@
  * the narration clips are still being synthesized, and resolves each line's
  * audio to a playable URL through /api/child-audio.
  */
+import { audioManager } from "@/lib/audio/audio-manager";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
@@ -41,6 +42,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   }, [phase, result, childId]);
 
   const startPlan = useCallback(() => {
+    audioManager?.resumeContextSync();
     trackFunnelClient("funnel.placement_lesson_clicked", { child_id: childId });
     router.push(`/journey?child=${encodeURIComponent(childId)}&from=placement`);
   }, [childId, router]);

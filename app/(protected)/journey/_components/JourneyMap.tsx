@@ -12,15 +12,25 @@
  */
 
 import React from "react";
+import { Glyph } from "@/app/_components/Glyph";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 
 export type JStatus = "completed" | "started" | "current" | "locked" | "premium";
-export interface JLesson { id: string; title: string; status: JStatus }
+export interface JLesson { id: string; title: string; purpose?: string; status: JStatus }
 export interface JUnit { domKey: string; domainName: string; lessons: JLesson[] }
 export interface JGrade { grade: string; badge: string; units: JUnit[] }
 
 export interface JourneyMapProps {
   grades: JGrade[];
+  /** Filter the view only; full catalog preserves reward IDs and progress. */
+  visibleGrade?: string;
+  visibleUnit?: string;
+  revealSequence?: number;
+  onRevealEnd?: () => void;
+  pauseTour?: boolean;
+  quietStats?: boolean;
+  assessmentComplete?: boolean;
+  onAssessment?: () => void;
   /** Parent introduction must not be scrolled away during its first paint. */
   autoFocusCurrent?: boolean;
   kidName: string;
@@ -42,11 +52,9 @@ export interface JourneyMapProps {
   openedChests?: string[];
 }
 
+const UNIT_ACCENT = { grad: "linear-gradient(90deg,#7c3aed,#8b5cf6)", dark: "#6d28d9" };
 const ACC: Record<string, { grad: string; dark: string }> = {
-  RF: { grad: "linear-gradient(135deg,#10b981,#059669)", dark: "#065f46" },
-  RL: { grad: "linear-gradient(135deg,#6366f1,#4338ca)", dark: "#312e81" },
-  RI: { grad: "linear-gradient(135deg,#38bdf8,#0284c7)", dark: "#075985" },
-  L: { grad: "linear-gradient(135deg,#8b5cf6,#7c3aed)", dark: "#5b21b6" },
+  RF: UNIT_ACCENT, RL: UNIT_ACCENT, RI: UNIT_ACCENT, L: UNIT_ACCENT,
 };
 const FALLBACK_ACC = ACC.RL;
 const FUN_NAME: Record<string, string> = { RL: "Story Treasures", RI: "Fact Finders", RF: "Sound Workshop", L: "Word Magic" };
@@ -78,6 +86,7 @@ interface JState {
   chestFlash: string | null; justGate: string | null; nudged: string | null;
   hoveredNode: string | null;
   jumpVisible: boolean; jumpBelow: boolean; layoutReady: boolean;
+  revealThrough: number | null;
 }
 interface Particle { key: string; x: number; y: number; w: number; h: number; r: number; c: string; dx: number; dy: number; rot: number; dur: number; go: boolean }
 interface Flyer { key: string; x: number; y: number; dx: number; dy: number; dur: number; delay: number; go: boolean }
@@ -92,6 +101,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   trophy: TrophyN = { kind: "trophy", x: 210, y: 0, ptIndex: 0 };
   roadD = ""; cumLen: number[] | null = null;
   bunnyPos: { x: number; y: number } | null = null;
+  _cameraFrame: number | null = null;
   camOn = false; camCur = 0; camTarget = 0;
   canvasRef = React.createRef<HTMLDivElement>();
   svgRef = React.createRef<SVGSVGElement>();
@@ -107,7 +117,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   // scrolled off-screen; jumpBelow tracks whether it's below (arrow points down)
   // or above (arrow points up).
   _onScroll = () => {
-    if (this.state.busy) { if (this.state.jumpVisible) this.setState({ jumpVisible: false }); return; }
+    if (this.state.busy || this.state.revealThrough !== null || window.scrollY < this.canvasTop() - 100) { if (this.state.jumpVisible) this.setState({ jumpVisible: false }); return; }
     const cur = this.curLesson();
     if (!cur) { if (this.state.jumpVisible) this.setState({ jumpVisible: false }); return; }
     const yAbs = this.canvasTop() + cur.y, vTop = window.scrollY, vBot = vTop + window.innerHeight;
@@ -116,6 +126,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     if (out !== this.state.jumpVisible || below !== this.state.jumpBelow) this.setState({ jumpVisible: out, jumpBelow: below });
   };
   _timers: number[] = [];
+  _revealTimers: number[] = [];
+  _resizeObserver: ResizeObserver | null = null;
 
   constructor(props: JourneyMapProps) {
     super(props);
@@ -125,39 +137,48 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 
   buildLayout(colW: number) {
     const CX = Math.round(colW / 2);
-    const AMP = Math.max(96, Math.min(420, Math.round(colW / 2) - 140));
+    const AMP = Math.max(96, Math.min(340, Math.round(colW / 2) - 140));
     const pts: Pt[] = []; const nodeAtPt: AnyNode[] = [];
     const banners: BannerN[] = [], lessons: LessonN[] = [], chests: ChestN[] = [], gates: GateN[] = [];
-    let y = 96, ph = 0, unitNo = 0, totalUnits = 0;
-    this.props.grades.forEach((g) => { totalUnits += g.units.length; });
+    let y = this.props.visibleUnit === "u1" ? 110 : this.props.visibleUnit ? 40 : 96, ph = 0, unitNo = 0, visibleUnitNo = 0, totalUnits = 0;
+    this.props.grades.forEach((g) => { if (!this.props.visibleGrade || g.grade === this.props.visibleGrade) totalUnits += g.units.length; });
     this.props.grades.forEach((g, gi) => {
+      if (this.props.visibleGrade && g.grade !== this.props.visibleGrade) { unitNo += g.units.length; return; }
       g.units.forEach((u) => {
-        unitNo++;
+        unitNo++; visibleUnitNo++;
+        if (this.props.visibleUnit && this.props.visibleUnit !== `u${unitNo}`) return;
         const a = ACC[u.domKey] ?? FALLBACK_ACC;
-        const b: BannerN = { kind: "banner", id: "u" + unitNo, x: CX, y, grad: a.grad, dark: a.dark, eyebrow: "Unit " + unitNo + " of " + totalUnits + " · " + u.domainName, title: FUN_NAME[u.domKey] ?? u.domainName, lessonIds: u.lessons.map((l) => l.id), ptIndex: pts.length };
-        banners.push(b); nodeAtPt[pts.length] = b; pts.push([CX, y]); y += 118;
+        const b: BannerN = { kind: "banner", id: "u" + unitNo, x: CX, y, grad: a.grad, dark: a.dark, eyebrow: "Unit " + visibleUnitNo + " of " + totalUnits + " · " + u.domainName, title: FUN_NAME[u.domKey] ?? u.domainName, lessonIds: u.lessons.map((l) => l.id), ptIndex: pts.length };
+        banners.push(b); nodeAtPt[pts.length] = b; pts.push([CX, y]); y += this.props.visibleUnit === "u1" ? 190 : this.props.visibleUnit ? 140 : 200;
         u.lessons.forEach((lesson, k) => {
           ph++;
-          const x = CX + Math.round(Math.sin(ph * 1.25) * AMP);
+          const wave = Math.sin(ph * 1.25);
+          // Keep enough room beside each stop for its permanent title on phones.
+          const x = Math.max(128, Math.min(colW - 128, CX + Math.round(Math.sign(wave) * Math.max(colW < 400 ? 60 : 0, Math.abs(wave) * AMP))));
           const node: LessonN = { kind: "lesson", id: lesson.id, title: lesson.title, x, y, num: k + 1, cnt: u.lessons.length, unit: b.title, ptIndex: pts.length };
-          lessons.push(node); nodeAtPt[pts.length] = node; pts.push([x, y]); y += 106;
+          lessons.push(node); nodeAtPt[pts.length] = node; pts.push([x, y]); y += colW < 400 ? 240 : 180;
         });
         ph++;
         const cxx = CX + Math.round(Math.sin(ph * 1.25) * AMP);
         const ch: ChestN = { kind: "chest", id: "chest" + unitNo, x: cxx, y, unit: b.title, ptIndex: pts.length };
         chests.push(ch); nodeAtPt[pts.length] = ch; pts.push([cxx, y]); y += 114;
       });
-      if (gi < this.props.grades.length - 1) {
+      if (!this.props.visibleGrade && gi < this.props.grades.length - 1) {
         const ng = this.props.grades[gi + 1];
         const gt: GateN = { kind: "gate", id: "gate" + gi, x: CX, y: y + 6, badge: ng.badge, title: ng.grade, ptIndex: pts.length };
         gates.push(gt); nodeAtPt[pts.length] = gt; pts.push([CX, y + 6]); y += 196;
       }
     });
     const trophy: TrophyN = { kind: "trophy", x: CX, y: y + 50, ptIndex: pts.length };
-    nodeAtPt[pts.length] = trophy; pts.push([CX, y + 50]); y += 260;
+    if (this.showFinalTrophy()) { nodeAtPt[pts.length] = trophy; pts.push([CX, y + 50]); y += 260; } else y += 100;
     this.CX = CX; this.pts = pts; this.nodeAtPt = nodeAtPt;
     this.bannersL = banners; this.lessonsL = lessons; this.chestsL = chests; this.gatesL = gates;
     this.trophy = trophy; this.H = y; this.roadD = this.bez(pts);
+  }
+
+  showFinalTrophy() {
+    const lastUnit = this.props.grades.reduce((n, grade) => n + grade.units.length, 0);
+    return (!this.props.visibleGrade || this.props.visibleGrade === this.props.grades.at(-1)?.grade) && (!this.props.visibleUnit || this.props.visibleUnit === `u${lastUnit}`);
   }
 
   initialState(): JState {
@@ -177,7 +198,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       opened[chestId] = openedList.includes(chestId);
     }));
     if (!Object.values(statuses).includes("current")) {
-      const next = this.lessonsL.find(lesson => statuses[lesson.id] !== "completed");
+      const next = this.props.grades.flatMap(g => g.units.flatMap(u => u.lessons)).find(lesson => statuses[lesson.id] !== "completed");
       if (next) statuses[next.id] = "current";
     }
     // Return trigger: rewind to the pre-unlock frame so playUnlock() can
@@ -189,7 +210,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     if (jc && statuses[jc] !== undefined) {
       statuses[jc] = "current";
       const idx = this.lessonsL.findIndex((l) => l.id === jc);
-      const nextLesson = this.lessonsL[idx + 1];
+      const nextLesson = idx >= 0 ? this.lessonsL[idx + 1] : undefined;
       if (nextLesson) statuses[nextLesson.id] = "locked";
     }
     return {
@@ -201,7 +222,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       chestChar: false, chestRewardText: "", chestHint: false, chestHintText: "",
       gradeOverlay: false, gradeOverlayIn: false, gradeOverlayTitle: "", gradeOverlayBadge: "", gradeCta: false,
       justCompleted: null, justUnlocked: null, justChest: null, chestFlash: null, justGate: null, nudged: null,
-      hoveredNode: null, jumpVisible: false, jumpBelow: false, layoutReady: false,
+      hoveredNode: null, jumpVisible: false, jumpBelow: false, layoutReady: false, revealThrough: null,
     };
   }
   // unit index helper (chests keyed by absolute unit number, matching buildLayout)
@@ -226,6 +247,17 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   }
 
   componentDidMount() {
+    // The shell and fonts can settle after mount without a window resize.
+    // Measure the actual map width so its cards stay within the content area.
+    this._resizeObserver = new ResizeObserver(() => {
+      const width = this.canvasRef.current?.offsetWidth;
+      if (width && Math.min(width, 1080) !== this.colW && !this.state.busy) this.syncLayout();
+    });
+    if (this.canvasRef.current) this._resizeObserver.observe(this.canvasRef.current);
+    window.addEventListener("wheel", this.interruptReveal, { passive: true });
+    window.addEventListener("touchstart", this.interruptReveal, { passive: true });
+    window.addEventListener("touchmove", this.interruptReveal, { passive: true });
+    window.addEventListener("keydown", this.interruptRevealKey);
     window.addEventListener("resize", this._onResize);
     window.addEventListener("scroll", this._onScroll, { passive: true });
     this.after(60, () => {
@@ -246,12 +278,52 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
           if (outOfView && vTop < 40) this.scrollToCurrent();
         });
       }
+      if (this.props.revealSequence && !this.props.justCompletedId) this.beginReveal();
       this.camCur = window.scrollY;
       // Real trigger: the kid just finished a lesson → play the unlock sequence.
       if (this.props.justCompletedId) this.after(700, () => this.playUnlock(this.props.justCompletedId!));
     });
   }
-  componentWillUnmount() { window.removeEventListener("resize", this._onResize); window.removeEventListener("scroll", this._onScroll); this.camOn = false; this._timers.forEach(clearTimeout); }
+  componentWillUnmount() { this._revealTimers.forEach(clearTimeout); this._resizeObserver?.disconnect(); window.removeEventListener("resize", this._onResize); window.removeEventListener("scroll", this._onScroll); this.camStop(); window.removeEventListener("wheel", this.interruptReveal); window.removeEventListener("touchstart", this.interruptReveal); window.removeEventListener("touchmove", this.interruptReveal); window.removeEventListener("keydown", this.interruptRevealKey); this._timers.forEach(clearTimeout); }
+  componentDidUpdate(previous: JourneyMapProps) {
+    if (previous.revealSequence && !this.props.revealSequence && this.state.revealThrough !== null) this.finishReveal(false);
+    if (!previous.pauseTour && this.props.pauseTour && this.state.revealThrough !== null) this.finishReveal(false);
+    if (previous.revealSequence !== this.props.revealSequence && this.props.revealSequence && this.state.layoutReady) this.beginReveal();
+  }
+  revealTop(returnToPlan = false) { return Math.max(0, (document.getElementById(returnToPlan ? "journey-introduction" : "lesson-path")?.getBoundingClientRect().top ?? 0) + window.scrollY - 88); }
+  interruptReveal = (event?: Event) => {
+    if (event?.type === "touchstart" && event.target instanceof Element && event.target.closest("button,a,select,input")) return;
+    if (this.state.revealThrough !== null) this.finishReveal(false);
+  };
+  interruptRevealKey = (event: KeyboardEvent) => { if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", "Escape", "Tab"].includes(event.key)) this.interruptReveal(); };
+  finishReveal = (returnToTop = true) => {
+    this._revealTimers.forEach(clearTimeout);
+    this._revealTimers = [];
+    this.setState({ revealThrough: null }, () => this.syncLayout());
+    if (returnToTop && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.camTarget = this.revealTop(true);
+      this.camStart();
+      this._revealTimers.push(window.setTimeout(() => { this.camStop(); window.scrollTo(0, this.revealTop(true)); }, 1000));
+    } else this.camStop();
+    this.props.onRevealEnd?.();
+  };
+  beginReveal() {
+    this._revealTimers.forEach(clearTimeout);
+    if (this.state.busy || this.props.justCompletedId || this.props.pauseTour) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { this.finishReveal(false); return; }
+    const stops = this.nodeAtPt.filter(node => node.kind !== "banner");
+    this.setState({ revealThrough: 0 });
+    this.camTarget = this.revealTop(); this.camStart();
+    const interval = Math.min(650, 6500 / Math.max(1, stops.length));
+    this._revealTimers = stops.map((node, i) => window.setTimeout(() => {
+      this.setState({ revealThrough: node.ptIndex });
+      this.camTo(node.y);
+      const pose = this.idlePosFor(node.x, node.y);
+      this.bunnyPos = pose; this.placeBunny(pose.x, pose.y, 1, 1, 0);
+    }, 800 + i * interval));
+    this._revealTimers.push(window.setTimeout(() => this.finishReveal(), 1500 + stops.length * interval));
+  }
+  revealed(index: number) { return this.state.revealThrough === null || index <= this.state.revealThrough; }
   after(ms: number, fn: () => void) { this._timers.push(window.setTimeout(fn, ms)); }
   sleep(ms: number) { return new Promise<void>((r) => this.after(ms, r)); }
 
@@ -267,19 +339,20 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   }
   syncLayout() {
     const c = this.canvasRef.current; if (!c) return;
-    const w = Math.min(c.offsetWidth || 420, 1320);
+    const w = Math.min(c.offsetWidth || 420, 1080);
     if (w && w !== this.colW) { this.colW = w; this.buildLayout(w); }
     this.forceUpdate(() => {
       this.measureRoad();
       if (!this.cumLen) return;
       const cur = this.curLesson();
-      const L = cur ? this.cumLen[cur.ptIndex] : this.total;
+      const lastDone = [...this.lessonsL].reverse().find(l => this.state.statuses[l.id] === "completed");
+      const L = cur ? this.cumLen[cur.ptIndex] : lastDone ? this.cumLen[lastDone.ptIndex] : 0;
       this.setState({ doneDash: this.total + " " + this.total, doneOff: this.total - L, doneTrans: "none", layoutReady: true });
       if (cur) { this.bunnyPos = this.idlePosFor(cur.x, cur.y); this.placeBunny(this.bunnyPos.x, this.bunnyPos.y, 1, 1, 0); }
     });
   }
   curLesson(): LessonN | undefined { return this.lessonsL.find((l) => this.state.statuses[l.id] === "current"); }
-  idlePosFor(x: number, y: number) { return { x: x < this.CX ? x + 44 : x - 140, y: y - 66 }; }
+  idlePosFor(x: number, y: number) { return { x: x < this.CX ? x - 122 : x + 26, y: y - 66 }; }
   canvasTop() { const c = this.canvasRef.current; return c ? c.getBoundingClientRect().top + window.scrollY : 0; }
   // Smooth-scroll the current lesson node into view (the "jump to my lesson" button).
   scrollToCurrent() {
@@ -339,9 +412,20 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   }
 
   /* ── Camera ── */
-  camStart() { if (this.camOn) return; this.camOn = true; this.camCur = window.scrollY; const loop = () => { if (!this.camOn) return; this.camCur += (this.camTarget - this.camCur) * 0.085; if (Math.abs(this.camTarget - this.camCur) > 1) window.scrollTo(0, this.camCur); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  camStart() {
+    if (this.camOn) return;
+    this.camOn = true; this.camCur = window.scrollY;
+    const loop = () => {
+      if (!this.camOn) return;
+      this.camCur += (this.camTarget - this.camCur) * 0.085;
+      if (Math.abs(this.camTarget - this.camCur) > 1) window.scrollTo(0, this.camCur);
+      this._cameraFrame = requestAnimationFrame(loop);
+    };
+    this._cameraFrame = requestAnimationFrame(loop);
+  }
   camTo(canvasY: number) { this.camTarget = Math.max(0, this.canvasTop() + canvasY - window.innerHeight * 0.45); }
-  camStop() { this.camOn = false; }
+  camStop() { this.camOn = false; if (this._cameraFrame !== null) cancelAnimationFrame(this._cameraFrame); this._cameraFrame = null; }
+
 
   /* ── Particles / flyers ── */
   burst(x: number, y: number, n: number, palette: "gold" | "green" | "mix") {
@@ -548,6 +632,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   render() {
     const s = this.state;
     const H = this.H, CX = this.CX;
+    const revealBottom = s.revealThrough === null ? 0 : Math.max(0, H - (this.pts[s.revealThrough]?.[1] ?? 0) - 38);
     const carrotSvg = (size: number, stroke = "#ea580c") => (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
         <path d={CARROT_PATH_1} /><path d="M8.64 14l-2.05-2.04" /><path d="M15.34 15l-2.46-2.46" />
@@ -558,17 +643,19 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     // gradient fills that strip, then pad the content back down so it still
     // clears the nav — removes the white gap above the map.
     return (
-      <div style={{ position: "relative", minHeight: "100vh", overflowX: "clip", fontFamily: "var(--font-nunito), sans-serif", marginTop: -8, paddingTop: 8 }}>
+      <div data-map-building={s.revealThrough !== null} style={{ position: "relative", minHeight: "60vh", overflowX: "clip", fontFamily: "var(--font-nunito), sans-serif", marginTop: -8, paddingTop: 8 }}>
         <style>{KEYFRAMES}</style>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "#f5f3ff" }} />
+        <div style={{position:"relative",zIndex:2,padding:"12px 22px 0",minHeight:56,display:"flex",justifyContent:"space-between",alignItems:"center",gap:12}}><p role="status" style={{fontSize:14,color:"#6d28d9"}}>{s.revealThrough !== null ? "Your lesson path is taking shape." : ""}</p><button type="button" onClick={() => this.finishReveal()} disabled={s.revealThrough === null} style={{visibility:s.revealThrough === null ? "hidden" : "visible",minHeight:44,color:"#6d28d9",fontWeight:700}}>Show all stops</button></div>
+        {s.revealThrough !== null && <div style={{position:"fixed",bottom:20,left:"50%",transform:"translateX(-50%)",zIndex:70,display:"flex",alignItems:"center",gap:20,padding:"10px 18px",border:"1px solid #ddd6fe",borderRadius:18,background:"white",boxShadow:"0 8px 28px -10px #a78bfa",whiteSpace:"nowrap"}}><span style={{fontSize:13,color:"#6d28d9"}}>Revealing your unit</span><button type="button" onClick={() => this.finishReveal()} style={{minHeight:44,fontWeight:750,color:"#6d28d9"}}>Finish tour</button></div>}
         {/* Stats banner — pinned top-right, OUTSIDE the z-index:1 map
             wrapper so it paints above the app chrome. */}
             <div style={{ position: "relative", zIndex: 2, display: "flex", justifyContent: "flex-end", padding: "18px 20px 0", gap: 8, alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
+              <div style={{ display: this.props.quietStats ? "none" : "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" strokeWidth="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#3f3f46" }}>{this.props.streak} days</span>
               </div>
-              <div ref={this.carrotChipRef} style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
+              <div ref={this.carrotChipRef} style={{ display: this.props.quietStats ? "none" : "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 {carrotSvg(15)}
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#3f3f46", display: "inline-block", animation: s.counterPulse ? (s.counterPulse % 2 ? "rj-countpop .45s ease-out both" : "rj-countpop2 .45s ease-out both") : "none" }}>{s.carrots} carrots</span>
               </div>
@@ -579,31 +666,33 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               </button>
             </div>
 
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          <header style={{ padding: "24px 24px 16px", textAlign: "center" }}>
-            <h2 style={{ margin: 0, fontSize: 30, fontWeight: 800, fontFamily: "var(--font-baloo), sans-serif", color: "#312e81" }}>Your lesson path</h2>
-            <p style={{ margin: "8px 0 0", fontSize: 15, color: "#52525b" }}>Read with Readee, one stop at a time.</p>
-          </header>
-
+        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1080, margin: "0 auto", padding: "0 0 20px" }}>
           {/* Canvas */}
-          <div ref={this.canvasRef} style={{ position: "relative", width: "100%", maxWidth: 1320, margin: "0 auto", height: H, visibility: s.layoutReady ? "visible" : "hidden" }} data-journey-map>
-            <svg ref={this.svgRef} width={this.colW} height={H} style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none", overflow: "visible" }}>
-              <defs><linearGradient id="rj-done" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8b5cf6" /><stop offset="100%" stopColor="#6366f1" /></linearGradient></defs>
-              <path d={this.roadD} fill="none" stroke="rgba(30,27,75,.16)" strokeWidth="58" strokeLinecap="round" transform="translate(0,5)" />
-              <path d={this.roadD} fill="none" stroke="rgba(255,255,255,.72)" strokeWidth="52" strokeLinecap="round" />
-              <path d={this.roadD} fill="none" stroke="#fff" strokeWidth="44" strokeLinecap="round" opacity=".8" />
+          <div ref={this.canvasRef} style={{ position: "relative", width: "100%", maxWidth: 1080, margin: "0 auto", height: H, visibility: s.layoutReady ? "visible" : "hidden" }} data-journey-map data-journey-unit={this.props.visibleUnit}>
+            <svg ref={this.svgRef} width={this.colW} height={H} style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none", overflow: "visible", clipPath: `inset(0 0 ${revealBottom}px 0)`, transition: "clip-path 450ms ease" }}>
+              <defs><linearGradient id="rj-done" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#7c3aed" /><stop offset="100%" stopColor="#8b5cf6" /></linearGradient></defs>
+              <path d={this.roadD} fill="none" stroke="#c4b5fd" strokeWidth="58" strokeLinecap="round" transform="translate(0,5)" />
+              <path d={this.roadD} fill="none" stroke="#ede9fe" strokeWidth="52" strokeLinecap="round" />
+              <path d={this.roadD} fill="none" stroke="#ddd6fe" strokeWidth="44" strokeLinecap="round" opacity=".8" />
               <path d={this.roadD} fill="none" stroke="url(#rj-done)" strokeWidth="44" strokeLinecap="round" opacity=".92" style={{ strokeDasharray: s.doneDash, strokeDashoffset: s.doneOff, transition: s.doneTrans }} />
-              <path d={this.roadD} fill="none" stroke="rgba(30,27,75,.28)" strokeWidth="3" strokeDasharray="1 14" strokeLinecap="round" />
+              <path d={this.roadD} fill="none" stroke="#c4b5fd" strokeWidth="3" strokeDasharray="1 12" strokeLinecap="round" />
             </svg>
 
+            {this.props.visibleUnit === "u1" && <div data-assessment-start style={{position:"absolute",left:CX,top:110,transform:"translate(-50%,-50%)",zIndex:12}}>
+              <button type="button" onClick={this.props.onAssessment} style={{display:"flex",alignItems:"center",gap:14,width:252,padding:"16px 20px",borderRadius:22,border:"2px solid #c4b5fd",background:"white",boxShadow:"0 5px 0 #ddd6fe",color:"#312e81",textAlign:"left"}}>
+                <Glyph name={this.props.assessmentComplete ? "check" : "book-open"} size={28} />
+                <span><strong style={{display:"block",fontSize:16}}>Reading assessment</strong><span style={{display:"block",marginTop:4,fontSize:12,color:"#7c3aed"}}>{this.props.assessmentComplete ? "Completed · See the report" : "Find your starting point"}</span></span>
+              </button>
+            </div>}
+
             {/* Banners */}
-            {this.bannersL.map((b) => {
+            {this.bannersL.filter(() => !this.props.visibleUnit).map((b) => {
               const doneN = b.lessonIds.filter((id) => s.statuses[id] === "completed").length;
               const p = s.bannerPulse[b.id] || 0;
               const anim = p ? (p % 2 ? "rj-pop .5s ease-out both" : "rj-pop2 .5s ease-out both") : "none";
               return (
-                <div key={b.id} style={{ position: "absolute", left: b.x, top: b.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
-                  <div style={{ width: 312, borderRadius: 20, padding: "13px 18px", display: "flex", alignItems: "center", gap: 12, background: b.grad, boxShadow: `0 6px 0 0 ${b.dark},0 16px 30px -12px rgba(30,27,75,.4)`, animation: anim }}>
+                <div key={b.id} data-journey-unit={b.id} style={{ scrollMarginTop: 150, position: "absolute", left: b.x, top: b.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
+                  <div style={{ width: Math.min(312, this.colW - 36), borderRadius: 20, padding: "13px 18px", display: "flex", alignItems: "center", gap: 12, background: b.grad, boxShadow: `0 6px 0 0 ${b.dark},0 16px 30px -12px rgba(30,27,75,.4)`, animation: anim }}>
                     <div style={{ flex: 1, minWidth: 0, textAlign: "left" }}>
                       <div style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: 1.4, color: "rgba(255,255,255,.75)", textTransform: "uppercase" }}>{b.eyebrow}</div>
                       <div style={{ fontSize: 19, fontWeight: 700, color: "#fff", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.15 }}>{b.title}</div>
@@ -620,7 +709,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               const done = st === "completed", cur = st === "current";
               const lessonObj = this.findLesson(l.id);
               const prem = lessonObj?.status === "premium";
-              let bg = "linear-gradient(180deg,#f4f4f5,#e4e4e7)", shadow = "0 4px 0 0 #d4d4d8", ring = "#f4f4f5", dim = 0.9;
+              let bg = "#ede9fe", shadow = "0 4px 0 0 #c4b5fd", ring = "#fff", dim = 1;
               if (done) { bg = "linear-gradient(180deg,#fbbf24,#f59e0b)"; shadow = "0 5px 0 0 #b45309,0 14px 22px -10px rgba(180,83,9,.55)"; ring = "#fde68a"; dim = 1; }
               else if (cur) { bg = "linear-gradient(180deg,#8b5cf6,#7c3aed)"; shadow = "0 5px 0 0 #6d28d9,0 16px 26px -10px rgba(30,27,75,.5)"; ring = "#fff"; dim = 1; }
               let anim = "none";
@@ -633,48 +722,33 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               const onClick = (cur || done) ? () => this.props.onStart({ id: l.id, title: l.title, status: cur ? "current" : "completed" })
                 : prem ? () => this.props.onPremium()
                 : () => this.nudge(l.id);
-              const startAnim = s.justUnlocked === l.id ? "rj-startdrop .5s cubic-bezier(0.34,1.56,0.64,1) both,rj-bob 1.6s ease-in-out .55s infinite" : "rj-bob 1.6s ease-in-out infinite";
-              // Hover tooltip ("what's up next") — Claude Design a205aaa2 update.
-              const tipRing = done ? "#fde68a" : cur ? "#d1fae5" : "#f4f4f5";
-              const tipAccent = done ? "#b45309" : cur ? "#059669" : "#a1a1aa";
-              const tipStatus = prem ? "Continue this lesson with Readee+" : done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked - finish the path to get here";
-              const tipPos: React.CSSProperties = cur ? { top: "calc(100% + 14px)" } : { bottom: "calc(100% + 14px)" };
-              const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
-              const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";
               return (
-                <div key={l.id} style={{ position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: s.hoveredNode === l.id ? 50 : z }}>
+                <div key={l.id} data-stop-visible={this.revealed(l.ptIndex)} inert={!this.revealed(l.ptIndex)} style={{ opacity: this.revealed(l.ptIndex) ? 1 : 0, transition: "opacity 350ms ease", position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: s.hoveredNode === l.id ? 50 : z }}>
                   <div
                     style={{ position: "relative", width: size, height: size }}
                     onMouseEnter={() => this.setState({ hoveredNode: l.id })}
                     onMouseLeave={() => this.setState({ hoveredNode: null })}
                   >
-                    {s.hoveredNode === l.id && (
-                      <div style={{ position: "absolute", left: "50%", ...tipPos, transform: "translateX(-50%)", zIndex: 40, width: 200, pointerEvents: "none" }}>
-                        <div style={{ background: "#fff", borderRadius: 16, padding: "11px 14px", boxShadow: `0 10px 28px -8px rgba(30,27,75,.35),inset 0 0 0 2px ${tipRing}`, textAlign: "left" }}>
-                          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 1.2, textTransform: "uppercase", color: tipAccent }}>{`Lesson ${l.num} of ${l.cnt} · ${l.unit}`}</div>
-                          <div style={{ fontSize: 15, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.2, marginTop: 1 }}>{l.title}</div>
-                          <div style={{ fontSize: 11.5, fontWeight: 700, color: "#71717a", marginTop: 3 }}>{tipStatus}</div>
-                        </div>
-                        <div style={{ position: "absolute", left: "50%", ...tipArrowPos, width: 12, height: 12, background: "#fff", transform: "translateX(-50%) rotate(45deg)", boxShadow: `inset 0 0 0 2px ${tipRing}`, clipPath: tipArrowClip }} />
-                      </div>
-                    )}
-                    {cur && <>
-                      <div onClick={onClick} style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", animation: startAnim, background: "#fff", color: "#6d28d9", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: ".06em", padding: "6px 16px", borderRadius: 999, boxShadow: "0 6px 16px -4px rgba(30,27,75,.35),inset 0 0 0 2px #ddd6fe", whiteSpace: "nowrap", transform: "translate(-50%,0)", cursor: "pointer" }}>{prem ? "READEE+" : "START"}</div>
-                    </>}
+                    {s.revealThrough === l.ptIndex && <svg aria-hidden="true" width="120" height="120" viewBox="0 0 120 120" style={{position:"absolute",left:"50%",top:"50%",marginLeft:-60,marginTop:-60,pointerEvents:"none",animation:"rj-arrival-sparks 900ms ease-out both"}}><path d="m18 20 3-8 3 8 8 3-8 3-3 8-3-8-8-3z M94 80l3-7 3 7 7 3-7 3-3 7-3-7-7-3z" fill="#a78bfa"/><path d="m94 23 2-5 2 5 5 2-5 2-2 5-2-5-5-2z" fill="#fbbf24"/></svg>}
                     {s.justUnlocked === l.id && <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "5px solid #34d399", animation: "rj-shock .75s ease-out both", pointerEvents: "none" }} />}
                     <button aria-label={`${l.title}${prem ? ", Readee+" : done ? ", completed" : cur ? ", start lesson" : ", upcoming"}`} data-journey-lesson={l.id} data-journey-state={st} onFocus={() => this.setState({ hoveredNode: l.id })} onBlur={() => this.setState({ hoveredNode: null })} onClick={onClick} style={{ width: "100%", height: "100%", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", background: bg, boxShadow: shadow, border: `3px solid ${ring}`, opacity: dim, cursor: "pointer", padding: 0, animation: anim }}>
                       {done && <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>}
                       {cur && <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" stroke="none" style={{ marginLeft: 3 }}><polygon points="6 3 20 12 6 21 6 3" /></svg>}
                       {!done && !cur && (prem
-                        ? <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                        : <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>)}
+                        ? <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                        : <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>)}
                     </button>
                     {done && <div style={{ position: "absolute", left: "50%", top: "calc(100% + 5px)", transform: "translate(-50%,0)", display: "flex", alignItems: "center", gap: 3, background: "#fff", borderRadius: 999, padding: "2.5px 9px", boxShadow: "0 2px 8px -2px rgba(180,83,9,.4)" }}>
                       <svg width="11" height="11" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                       <span style={{ fontSize: 11.5, fontWeight: 800, color: "#b45309" }}>x{nStars}</span>
                     </div>}
                   </div>
-                  <p style={{ position: "absolute", ...(cur ? { top: "calc(100% + 12px)", left: "50%", transform: "translateX(-50%)", textAlign: "center" as const, opacity: s.hoveredNode === l.id ? 0 : 1 } : { top: 4, ...(l.x < CX ? { left: "calc(100% + 14px)", textAlign: "left" as const } : { right: "calc(100% + 14px)", textAlign: "right" as const }) }), width: cur ? 160 : Math.min(185, this.colW / 2 - 72), margin: 0, fontSize: 13, lineHeight: 1.35, fontWeight: 650, color: done || cur ? "#312e81" : "#52525b", pointerEvents: "none" }}>{l.title}</p>
+                  <button data-lesson-card={l.id} onClick={onClick} style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", ...(l.x < CX ? { left: "calc(100% + 14px)" } : { right: "calc(100% + 14px)" }), textAlign: "left", width: Math.max(112, Math.min(240, (l.x < CX ? this.colW - l.x : l.x) - size / 2 - 30)), margin: 0, padding: "12px 14px", borderRadius: 16, border: `1px solid ${cur ? "#a78bfa" : "#e4e4e7"}`, background: "#fff", boxShadow: "0 3px 12px -7px rgba(49,46,129,.2)", cursor: "pointer" }}>
+                    <span style={{ display: "block", fontSize: 11, fontWeight: 600, color: "#71717a" }}>Lesson {l.num} of {l.cnt}</span>
+                    <span style={{ display: "block", marginTop: 4, fontSize: 14, lineHeight: 1.4, fontWeight: 750, color: "#312e81" }}>{l.title}</span>
+                    <span data-lesson-purpose style={{ display: "block", marginTop: 5, fontSize: 12, lineHeight: 1.45, color: "#62616f" }}>{lessonObj?.purpose}</span>
+                    <span style={{ display: "block", marginTop: 7, fontSize: 12, fontWeight: 700, color: "#7c3aed" }}>{done ? "Completed · Read again" : prem ? "Readee+" : cur ? "Start lesson →" : "Coming up"}</span>
+                  </button>
                 </div>
               );
             })}
@@ -685,7 +759,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               const anim = s.justChest === c.id ? "rj-chestshake .5s ease-in-out both" : (s.chestFlash === c.id ? "rj-goldpop .6s cubic-bezier(0.34,1.56,0.64,1) both" : "none");
               const iconColor = opened ? "#92400e" : "#a1a1aa", iconFill = opened ? "#fde68a" : "#fafafa";
               return (
-                <div key={c.id} style={{ position: "absolute", left: c.x, top: c.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
+                <div key={c.id} inert={!this.revealed(c.ptIndex)} style={{ opacity: this.revealed(c.ptIndex) ? 1 : 0, transition: "opacity 350ms ease", position: "absolute", left: c.x, top: c.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
                   {s.chestFlash === c.id && <div style={{ position: "absolute", left: "50%", top: "50%", width: 70, height: 70, borderRadius: 999, background: "radial-gradient(circle,rgba(253,230,138,.95),rgba(251,191,36,0) 70%)", animation: "rj-flash .8s ease-out both", pointerEvents: "none" }} />}
                   <div style={{ width: 58, height: 58, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", border: `3px solid ${opened ? "#fde68a" : "#f4f4f5"}`, background: opened ? "linear-gradient(180deg,#fbbf24,#f59e0b)" : "linear-gradient(180deg,#f4f4f5,#e4e4e7)", boxShadow: opened ? "0 5px 0 0 #b45309,0 14px 22px -10px rgba(180,83,9,.55)" : "0 4px 0 0 #d4d4d8", opacity: opened ? 1 : 0.9, animation: anim }}>
                     <svg width="30" height="30" viewBox="0 0 28 28" fill="none" stroke={iconColor} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 13 h20 v9 a2 2 0 0 1 -2 2 h-16 a2 2 0 0 1 -2 -2 z" fill={iconFill} /><path d="M4 13 v-2.5 a5 5 0 0 1 5 -5 h10 a5 5 0 0 1 5 5 v2.5" fill={iconFill} /><rect x="12" y="11.5" width="4" height="5.5" rx="1" fill={iconColor} stroke="none" /></svg>
@@ -711,8 +785,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               );
             })}
 
-            {/* Trophy */}
-            <div style={{ position: "absolute", left: this.trophy.x, top: this.trophy.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
+            {/* Only the last grade carries the journey-wide trophy. */}
+            {this.showFinalTrophy() && <div style={{ opacity: this.revealed(this.trophy.ptIndex) ? 1 : 0, position: "absolute", left: this.trophy.x, top: this.trophy.y, transform: "translate(-50%,-50%)", zIndex: 10 }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
                 <div style={{ width: 96, height: 96, borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(180deg,#fde68a,#f59e0b)", border: "4px solid #fef3c7", animation: "rj-glow 2.6s ease-in-out infinite" }}>
                   <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#92400e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2z" /></svg>
@@ -720,11 +794,11 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                 <div style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", textShadow: "0 2px 10px rgba(255,255,255,.7)", whiteSpace: "nowrap" }}>The Grand Story Treasure</div>
                 <div style={{ fontSize: 13, color: "#52525b", marginTop: -8 }}>Finish the journey to claim it</div>
               </div>
-            </div>
+            </div>}
 
             {/* Walking bunny */}
-            <div ref={this.bunnyRef} data-journey-bunny style={{ position: "absolute", left: -300, top: -300, width: 96, height: 105, zIndex: 21, pointerEvents: "none", willChange: "transform" }}>
-              <Bunny outfitId={this.props.equippedOutfitId} />
+            <div ref={this.bunnyRef} data-journey-bunny style={{ opacity: this.revealed(this.curLesson()?.ptIndex ?? 0) ? 1 : 0, transition: s.revealThrough !== null ? "left 380ms ease, top 380ms ease, opacity 350ms ease" : "opacity 350ms ease", position: "absolute", left: -300, top: -300, width: 96, height: 105, zIndex: 21, pointerEvents: "none", willChange: "transform" }}>
+              <div key={s.revealThrough ?? "idle"} style={{width:"100%",height:"100%",animation:s.revealThrough !== null ? "rj-tour-hop 380ms ease both" : "none"}}><Bunny outfitId={this.props.equippedOutfitId} /></div>
             </div>
 
             {/* Particles */}
@@ -812,6 +886,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 }
 
 const KEYFRAMES = `
+@keyframes rj-tour-hop{0%,100%{transform:translateY(0)}45%{transform:translateY(-24px)}}
+@keyframes rj-arrival-sparks{0%{opacity:0;transform:scale(.65)}25%{opacity:1}100%{opacity:0;transform:scale(1.3)}}
 @keyframes rj-bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-7px)}}
 @keyframes rj-halo{0%{transform:translate(-50%,-50%) scale(.9);opacity:.7}70%,100%{transform:translate(-50%,-50%) scale(1.45);opacity:0}}
 @keyframes rj-glow{0%,100%{box-shadow:0 0 30px 6px rgba(251,191,36,.55)}50%{box-shadow:0 0 55px 16px rgba(251,191,36,.8)}}

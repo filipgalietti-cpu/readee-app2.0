@@ -1,22 +1,11 @@
-/** Reserve the real introduction's layout; no second loader or timed reveal. */
+import JourneyLandscape from '@/app/_components/journey/JourneyLandscape';
+import { mapGeometry } from '@/app/_components/journey/geometry';
+import styles from '@/app/_components/journey/journey-v2.module.css';
+
+/** Reserves the same map frame while ownership, progress and billing resolve together. */
 export default function JourneySkeleton() {
-  return (
-    <div
-      className="mx-auto max-w-6xl px-5 py-10 sm:px-8"
-      role="status"
-      aria-label="Opening your reading journey"
-      data-journey-loading
-    >
-      <p className="text-sm font-medium text-violet-700">Opening your reading journey…</p>
-      <div aria-hidden className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <div>
-          <div className="h-12 max-w-md rounded-lg bg-violet-100/70" />
-          <div className="mt-5 h-5 max-w-lg rounded bg-zinc-100" />
-          <div className="mt-3 h-5 max-w-sm rounded bg-zinc-100" />
-          <div className="mt-9 h-64 rounded-2xl border border-violet-100 bg-white" />
-        </div>
-        <div className="h-[440px] rounded-2xl border border-violet-100 bg-violet-50/50" />
-      </div>
-    </div>
-  );
+  return <div className={`${styles.experience} ${styles.liveExperience}`} role="status" aria-label="Opening your reading journey" data-journey-loading>
+    <header className={styles.header}><div className={styles.readerHeading}><h1>Your reading journey</h1><span>Opening your saved lesson path…</span></div></header>
+    <div className={styles.main} aria-hidden="true"><div className={styles.adventure}><div className={styles.worldShell}><div className={styles.loadingLandscape}><JourneyLandscape geometry={mapGeometry(3, false)} theme="garden" /></div></div></div></div>
+  </div>;
 }

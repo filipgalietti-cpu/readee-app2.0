@@ -63,7 +63,7 @@ describe("the placement start unit is free only for its reader", () => {
     mock.user = { id: "parent" };
     mock.child = { data: { id: childId }, error: null };
     mock.saved = {
-      data: { plan: { version: 2, entryBand: 2, firstUnit, steps: [] } },
+      data: { enrolled: 2, plan: { version: 2, entryBand: 2, firstUnit, steps: [] } },
       error: null,
     };
     mock.filters = [];

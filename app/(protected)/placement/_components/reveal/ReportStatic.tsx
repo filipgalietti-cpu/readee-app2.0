@@ -1,5 +1,6 @@
 "use client";
 
+import { audioManager } from "@/lib/audio/audio-manager";
 import { useEffect, useMemo } from "react";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import Link from "next/link";
@@ -156,6 +157,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
               </button>
             ) : (
               <Link
+                onClick={() => audioManager?.resumeContextSync()}
                 href={`/journey?child=${encodeURIComponent(result.childId)}&from=placement`}
                 className={PRIMARY}
               >
@@ -341,7 +343,8 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
                 </button>
               ) : (
                 <Link
-                  href={`/journey?child=${encodeURIComponent(result.childId)}&from=placement`}
+                  onClick={() => audioManager?.resumeContextSync()}
+                href={`/journey?child=${encodeURIComponent(result.childId)}&from=placement`}
                   className={PRIMARY}
                 >
                   Go to custom reading journey

@@ -1,0 +1,158 @@
+{
+  "sentence-shapes": {
+    "title": "Sentence Shapes",
+    "standard": "RF.1.1a",
+    "unit": "G1.U1",
+    "objective": "I can spot what makes a sentence just right!"
+  },
+  "blend-builders": {
+    "title": "Blend Builders",
+    "standard": "RF.1.2b",
+    "unit": "G1.U1",
+    "objective": "I can blend sounds into whole words, even words with tricky blends!"
+  },
+  "sound-spotters": {
+    "title": "Sound Spotters",
+    "standard": "RF.1.2c",
+    "unit": "G1.U1",
+    "objective": "I can find the first, middle vowel, and last sounds in words, even words with blends!"
+  },
+  "ask-it-find-it": {
+    "title": "Ask It, Find It",
+    "standard": "RL.1.1",
+    "unit": "G1.U1",
+    "objective": "I can ask a question about a story and find the answer in its words."
+  },
+  "story-message": {
+    "title": "Story Message",
+    "standard": "RL.1.2",
+    "unit": "G1.U1",
+    "objective": "I can retell a story in order and find its central message."
+  },
+  "fact-questions": {
+    "title": "Fact Questions",
+    "standard": "RI.1.1",
+    "unit": "G1.U1",
+    "objective": "I can ask and answer questions about facts in a book."
+  },
+  "sound-stretchers": {
+    "title": "Sound Stretchers",
+    "standard": "RF.1.2d",
+    "unit": "G1.U2",
+    "objective": "I can stretch a word and say every sound in order!"
+  },
+  "smooth-reader": {
+    "title": "Smooth Reader",
+    "standard": "RF.1.4b",
+    "unit": "G1.U2",
+    "objective": "I can read a story out loud with a good pace and expression."
+  },
+  "check-and-fix": {
+    "title": "Check and Fix",
+    "standard": "RF.1.4c",
+    "unit": "G1.U2",
+    "objective": "I can stop, check, and fix a word that does not make sense."
+  },
+  "story-parts": {
+    "title": "Story Parts",
+    "standard": "RL.1.3",
+    "unit": "G1.U2",
+    "objective": "I can describe a story's characters, setting, and major events using key details."
+  },
+  "word-pictures": {
+    "title": "Word Pictures",
+    "standard": "RL.1.4",
+    "unit": "G1.U2",
+    "objective": "I can find words in poems and stories that appeal to the senses or show feelings."
+  },
+  "fact-links": {
+    "title": "Fact Links",
+    "standard": "RI.1.3",
+    "unit": "G1.U2",
+    "objective": "I can tell how two facts in a book link together."
+  },
+  "digraph-detectives": {
+    "title": "Digraph Detectives",
+    "standard": "RF.1.3a",
+    "unit": "G1.U3",
+    "objective": "I can read words with two-letter teams like the ones in ship, chat, thin, and whale!"
+  },
+  "sound-it-out": {
+    "title": "Sound It Out",
+    "standard": "RF.1.3b",
+    "unit": "G1.U3",
+    "objective": "I can read a brand new word by saying each sound in order and blending them together!"
+  },
+  "magic-teams": {
+    "title": "Magic Teams",
+    "standard": "RF.1.3c",
+    "unit": "G1.U3",
+    "objective": "Silent e and vowel teams make a vowel say its name."
+  },
+  "two-kinds-of-books": {
+    "title": "Two Kinds of Books",
+    "standard": "RL.1.5",
+    "unit": "G1.U3",
+    "objective": "I can explain how books that tell stories and books that give information are different."
+  },
+  "whos-telling-it": {
+    "title": "Who's Telling It",
+    "standard": "RL.1.6",
+    "unit": "G1.U3",
+    "objective": "I can find out who is telling the story at each part."
+  },
+  "decoding-champions": {
+    "title": "Decoding Champions",
+    "standard": "RF.2.3",
+    "unit": "G2.U1",
+    "objective": "I can pick the right phonics tool and use it to decode long words."
+  },
+  "long-or-short": {
+    "title": "Long or Short?",
+    "standard": "RF.2.3a",
+    "unit": "G2.U1",
+    "objective": "I can hear and see whether a vowel is long or short and read look-alike words correctly."
+  },
+  "team-players": {
+    "title": "Team Players",
+    "standard": "RF.2.3b",
+    "unit": "G2.U1",
+    "objective": "I can read words with the vowel teams oo, ow, oi, oy, and aw, even when a team makes two different sounds."
+  },
+  "fable-tellers": {
+    "title": "Fable Tellers",
+    "standard": "RL.2.2",
+    "unit": "G2.U1",
+    "objective": "I can read a whole fable, retell it in order, and find the moral it teaches."
+  },
+  "character-challenges": {
+    "title": "Character Challenges",
+    "standard": "RL.2.3",
+    "unit": "G2.U1",
+    "objective": "I can describe how a character responds to major events and challenges in a story."
+  },
+  "paragraph-power": {
+    "title": "Paragraph Power",
+    "standard": "RI.2.2",
+    "unit": "G2.U1",
+    "objective": "I can find the main topic of a whole text and the job of each of its paragraphs."
+  },
+  "word-music": {
+    "title": "Word Music",
+    "standard": "RL.2.4",
+    "unit": "G2.U2",
+    "objective": "I can describe how words and phrases give a poem rhythm and meaning."
+  },
+  "story-shape": {
+    "title": "Story Shape",
+    "standard": "RL.2.5",
+    "unit": "G2.U2",
+    "objective": "I can describe how a story's beginning introduces it and its ending concludes the action."
+  },
+  "two-ways-to-see": {
+    "title": "Two Ways to See It",
+    "standard": "RL.2.6",
+    "unit": "G2.U2",
+    "objective": "I can notice when two characters feel differently about the same thing and tell who feels what."
+  }
+}

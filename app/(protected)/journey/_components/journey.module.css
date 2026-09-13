@@ -1,0 +1,525 @@
+.page {
+  --journey-ink: #312e81;
+  padding: 28px 24px 64px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 24px;
+}
+.header h1 {
+  font-family: var(--font-baloo), sans-serif;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #272442;
+  margin: 0;
+}
+.header p {
+  color: #71717a;
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 0;
+  color: #6d28d9;
+  font-size: 14px;
+  font-weight: 750;
+  flex-shrink: 0;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 296px;
+  gap: 24px;
+  align-items: start;
+}
+.path {
+  min-width: 0;
+  border: 1px solid #e8e4f0;
+  border-radius: 24px;
+  background: #faf9fe;
+  overflow: clip;
+  scroll-margin-top: 90px;
+}
+.gradeBar {
+  padding: 20px 22px;
+  background: #fff;
+  border-bottom: 1px solid #e8e4f0;
+}
+.gradeTabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.gradeTabs button {
+  min-height: 40px;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 750;
+  font-size: 13px;
+  color: #71717a;
+}
+.gradeTabs button[aria-selected="true"] {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: white;
+  box-shadow: 0 3px 0 #5b21b6;
+}
+.gradeSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.gradeSummary h2 {
+  margin: 0;
+  font-family: var(--font-baloo), sans-serif;
+  color: #312e81;
+  font-weight: 700;
+  font-size: 25px;
+}
+.gradeSummary p {
+  font-size: 13px;
+  color: #71717a;
+  margin: 3px 0 0;
+}
+.gradeProgress {
+  width: 76px;
+  height: 7px;
+  border-radius: 10px;
+  background: #ede9fe;
+  overflow: hidden;
+  margin: 8px 0 0 auto;
+}
+.gradeProgress span {
+  display: block;
+  height: 100%;
+  background: #8b5cf6;
+  border-radius: 10px;
+}
+.unitJump {
+  margin-top: 18px;
+  border-top: 1px solid #f0edf5;
+  padding-top: 12px;
+  font-size: 13px;
+  color: #52525b;
+}
+.unitJump summary {
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 30px;
+}
+.unitJump button {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #f0edf5;
+  padding: 14px 0;
+  text-align: left;
+}
+.unitJump strong {
+  display: block;
+  color: #312e81;
+}
+.unitJump span {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+.rail {
+  display: grid;
+  gap: 20px;
+  position: sticky;
+  top: 96px;
+}
+.evidence {
+  border: 1px solid #e8e4f0;
+  border-radius: 20px;
+  background: #fff;
+  padding: 22px;
+}
+.evidence h2 {
+  font-size: 20px;
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 700;
+  color: #272442;
+  margin: 0;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin: 0 0 9px;
+}
+.evidence > p {
+  line-height: 1.6;
+  font-size: 13px;
+  color: #71717a;
+  margin: 8px 0 18px;
+}
+.gradePair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 18px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #ede9fe;
+}
+.gradePair dt {
+  font-size: 12px;
+  color: #71717a;
+}
+.gradePair dd {
+  margin: 5px 0 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #312e81;
+  text-transform: capitalize;
+}
+.skill {
+  padding: 14px 0;
+  border-bottom: 1px solid #f0edf5;
+}
+.skill summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #52525b;
+}
+.skill summary strong {
+  display: block;
+  font-size: 15px;
+  color: #312e81;
+  margin-top: 5px;
+}
+.skill p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #52525b;
+  margin: 12px 0 0;
+}
+.reason {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f5f3ff;
+  margin-top: 18px;
+}
+.reason strong {
+  font-size: 13px;
+  color: #5b21b6;
+}
+.reason p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #52525b;
+}
+.today {
+  border: 1px solid #ddd6fe;
+  border-radius: 20px;
+  padding: 22px;
+  background: #f5f3ff;
+}
+.today h2 {
+  font-size: 20px;
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 700;
+  color: #312e81;
+  margin: 6px 0;
+}
+.today p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #71717a;
+}
+.primary {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+  box-shadow: 0 4px 0 #5b21b6;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+}
+.primary:hover {
+  background: #6d28d9;
+}
+.primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #5b21b6;
+}
+.membership {
+  border: 1px solid #e8e4f0;
+  border-radius: 20px;
+  padding: 22px;
+  background: white;
+}
+.membership h2 {
+  margin: 0 0 8px;
+  color: #312e81;
+  font-family: var(--font-baloo), sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.membership p {
+  font-size: 14px;
+  color: #52525b;
+  line-height: 1.65;
+}
+.membership small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #71717a;
+  margin-top: 14px;
+}
+.membership button {
+  margin-top: 16px;
+  width: 100%;
+}
+.endGrade {
+  text-align: center;
+  padding: 24px 20px 32px;
+  background: #faf9fe;
+}
+.endGrade p {
+  font-size: 14px;
+  color: #71717a;
+}
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rail {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+  }
+  .evidence {
+    grid-row: span 2;
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    padding: 22px 0 40px;
+  }
+  .header {
+    padding: 0 20px 22px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .header h1 {
+    font-size: 30px;
+  }
+  .layout {
+    gap: 22px;
+  }
+  .path {
+    border-radius: 20px;
+  }
+  .rail {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+  .gradeBar {
+    padding: 18px 16px;
+  }
+  .gradeTabs button {
+    padding: 8px 10px;
+  }
+}
+
+/* Keep the path-building scene in the first mobile screenful. */
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+.mobilePlanButton {
+  display: none;
+}
+.planDialog {
+  width: min(560px, 100vw);
+  max-width: 100vw;
+  max-height: 100dvh;
+  height: 100dvh;
+  padding: 0;
+  border: 0;
+  background: #faf9fe;
+  margin: 0 0 0 auto;
+}
+.planDialog::backdrop {
+  background: rgba(39, 36, 66, 0.28);
+}
+.planDialog > header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 2;
+  border-bottom: 1px solid #e8e4f0;
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.planDialog > header h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #312e81;
+}
+.planDialog > header button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: #6d28d9;
+}
+.planDialog > div {
+  padding: 20px;
+  display: grid;
+  gap: 18px;
+}
+@media (max-width: 1100px) {
+  .mobilePlanButton {
+    display: inline-flex;
+  }
+  .rail {
+    display: none;
+  }
+}
+
+/* One unit fills the journey surface; parent details open on demand. */
+.layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+.mobilePlanButton {
+  display: inline-flex;
+}
+.unitControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.unitControls button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #ddd6fe;
+  border-radius: 12px;
+  color: #6d28d9;
+}
+.unitControls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.unitControls select {
+  max-width: 260px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #ddd6fe;
+  border-radius: 12px;
+  color: #312e81;
+  background: white;
+  font-size: 14px;
+}
+.unitReason {
+  color: #71717a;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+@media (max-width: 640px) {
+  .gradeSummary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .unitControls {
+    width: 100%;
+  }
+  .unitControls select {
+    min-width: 0;
+    flex: 1;
+    max-width: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .path :global([data-stop-visible]),
+  .path svg {
+    transition: none !important;
+  }
+}
+
+@media(max-width:640px) { .unitReason,.assessmentContext { display:none; } }
+
+.assessmentContext { display:inline-flex; }
+
+/* Connect the saved assessment to a concrete practice decision before the map. */
+.overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.9fr);
+  gap: 0;
+  margin-bottom: 28px;
+  border: 1px solid #ddd6fe;
+  border-radius: 24px;
+  background: #fff;
+  overflow: hidden;
+  scroll-margin-top: 88px;
+}
+.planReason, .planOffer { padding: 26px 30px; min-width: 0; }
+.overview h2 { margin: 0; font: 700 27px/1.2 var(--font-baloo), sans-serif; color: #312e81; }
+.overview p { font-size: 14px; line-height: 1.65; color: #62616f; }
+.overview .eyebrow { font-size: 11px; color: #7c3aed; }
+.observations { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 22px 0; }
+.observations dt { font-size: 12px; color: #71717a; }
+.observations dd { font-size: 16px; color: #312e81; font-weight: 750; margin: 5px 0 0; line-height: 1.4; }
+.nextFocus { display: flex; align-items: flex-start; gap: 12px; border-top: 1px solid #ede9fe; padding-top: 18px; }
+.nextFocus > span { margin-top: 3px; color: #7c3aed; }
+.nextFocus h3 { font-size: 17px; font-weight: 750; color: #312e81; margin: 0; }
+.nextFocus p { margin: 4px 0; }
+.nextFocus small { color: #71717a; font-size: 12px; }
+.planOffer { background: #f5f3ff; border-left: 1px solid #e8e0ff; }
+.planOffer > p { margin: 10px 0; }
+.planOffer ul { list-style: none; margin: 18px 0; padding: 0; display: grid; gap: 9px; }
+.planOffer li { display: flex; gap: 9px; align-items: flex-start; color: #514976; font-size: 13px; line-height: 1.5; }
+.planOffer li > span { margin-top: 2px; color: #7c3aed; }
+.planOffer .primary { width: 100%; }
+.planOffer small { display: block; font-size: 12px; line-height: 1.6; color: #62616f; margin-top: 14px; }
+.previewLesson { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 700; color: #6d28d9; min-height: 44px; width: 100%; margin-top: 8px; }
+.unitControls[hidden] { display: none; }
+.gradeBar > .textButton { margin-bottom: 8px; }
+@media (max-width: 760px) {
+  .overview { grid-template-columns: 1fr; }
+  .planReason, .planOffer { padding: 22px; }
+  .planOffer { border-left: 0; border-top: 1px solid #e8e0ff; }
+  .overview h2 { font-size: 25px; }
+}
+@media (max-width: 640px) {
+  .overview { margin: 0 0 22px; border-radius: 20px; }
+  .planReason, .planOffer { padding: 20px; }
+  .observations { gap: 14px; }
+  .observations dd { font-size: 15px; }
+}
+.connectedBilling { margin: 0 18px 10px; padding: 10px 18px; background: #efe8f7; color: #594168; border-radius: 12px; font-size: 14px; }
+.connectedBilling button { margin-left: 12px; text-decoration: underline; min-height: 44px; }
