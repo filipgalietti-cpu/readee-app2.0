@@ -7,6 +7,22 @@ const failure = (code: string) => Object.assign(new Error(code), { code });
 
 /** Reconcile current Stripe state, never the stale snapshot carried by a retried event. */
 export async function syncCustomerSubscription(customerId: string, expectedSubscriptionId?: string) {
+  // checkout.session.completed and customer.subscription.created arrive within
+  // the same second and both reconcile this profile. The compare-and-swap in
+  // syncOnce makes the loser re-read rather than overwrite; settling it here
+  // beats answering 503 and waiting for Stripe to redeliver (Sep 13 2026).
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await syncOnce(customerId, expectedSubscriptionId);
+    } catch (error) {
+      const code = (error as { code?: unknown } | null)?.code;
+      if (attempt >= 3 || code !== "stripe_profile_changed") throw error;
+      await new Promise((resolve) => setTimeout(resolve, 200 * attempt));
+    }
+  }
+}
+
+async function syncOnce(customerId: string, expectedSubscriptionId?: string) {
   const admin = supabaseAdmin();
   const profile = await admin.from("profiles").select("id, email, stripe_subscription_id")
     .eq("stripe_customer_id", customerId).maybeSingle();

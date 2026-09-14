@@ -3,6 +3,7 @@ import { createServerClient } from "@supabase/ssr";
 import { decodePlayCookie, PLAY_COOKIE_NAME } from "@/lib/auth/play-mode";
 import { effectivePlan } from "@/lib/plan/access";
 import { b2bBlocked } from "@/lib/plan/classroom-gate";
+import { carryCookies } from "@/lib/auth/carry-cookies";
 
 /**
  * Proxy (Next.js 16 middleware).
@@ -136,26 +137,31 @@ export async function proxy(request: NextRequest) {
     "form-action 'self'",
   ].join("; ");
 
-  response.headers.set("Content-Security-Policy", csp);
-  response.headers.set("X-Frame-Options", "DENY");
-  response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  // Allow mic on our own origin so /fluency, /buddy, and /classroom/tools/coach
-  // can capture audio. Camera + geolocation stay locked because we don't use them.
-  response.headers.set(
-    "Permissions-Policy",
-    'camera=(), microphone=(self "https://learn.readee.app"), geolocation=()',
-  );
-  response.headers.set(
-    "Strict-Transport-Security",
-    "max-age=63072000; includeSubDomains; preload",
-  );
+  // Applied to whatever leaves this function: the pass-through response (which
+  // the session refresh below may rebuild) and every redirect.
+  const secure = <T extends NextResponse>(res: T): T => {
+    res.headers.set("Content-Security-Policy", csp);
+    res.headers.set("X-Frame-Options", "DENY");
+    res.headers.set("X-Content-Type-Options", "nosniff");
+    res.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    // Allow mic on our own origin so /fluency, /buddy, and /classroom/tools/coach
+    // can capture audio. Camera + geolocation stay locked because we don't use them.
+    res.headers.set(
+      "Permissions-Policy",
+      'camera=(), microphone=(self "https://learn.readee.app"), geolocation=()',
+    );
+    res.headers.set(
+      "Strict-Transport-Security",
+      "max-age=63072000; includeSubDomains; preload",
+    );
+    return res;
+  };
 
   // ── Supabase session refresh ──────────────────────────────────────
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!supabaseUrl || !supabaseAnonKey) return response;
+  if (!supabaseUrl || !supabaseAnonKey) return secure(response);
 
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
@@ -163,12 +169,23 @@ export async function proxy(request: NextRequest) {
         return request.cookies.getAll();
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => {
-          response.cookies.set(name, value, options);
-        });
+        // A refresh rotates the tokens, and Supabase revokes the old refresh
+        // token ten seconds later. The request is updated first so the page
+        // rendering behind this proxy reads the new session instead of
+        // refreshing again; the response then carries the rotated cookies.
+        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+        response = NextResponse.next({ request });
+        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
       },
     },
   });
+
+  // Every early return below used to build a fresh response, which dropped the
+  // cookies the refresh had just set. The browser kept sending a refresh token
+  // Supabase had already revoked, the next refresh failed with "Invalid Refresh
+  // Token: Already Used", and the family was signed out (Sep 11 and 12, 2026).
+  const redirect = (url: Parameters<typeof NextResponse.redirect>[0]) =>
+    carryCookies(response, secure(NextResponse.redirect(url)));
 
   const {
     data: { user },
@@ -191,12 +208,12 @@ export async function proxy(request: NextRequest) {
   // for you. Set CLASSROOM_ENABLED=true to bring it back.
   if (b2bBlocked(pathname)) {
     if (pathname.startsWith("/api/")) {
-      return NextResponse.json({ error: "Not found" }, { status: 404 });
+      return carryCookies(response, secure(NextResponse.json({ error: "Not found" }, { status: 404 })));
     }
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     url.search = "";
-    return NextResponse.redirect(url);
+    return redirect(url);
   }
 
   // ── Old placement quiz → Luna's reading placement (Sep 2026) ─────
@@ -204,7 +221,7 @@ export async function proxy(request: NextRequest) {
   if (pathname === "/assessment" && process.env.NEXT_PUBLIC_PLACEMENT_V2 !== "0") {
     const url = request.nextUrl.clone();
     url.pathname = "/placement";
-    return NextResponse.redirect(url);
+    return redirect(url);
   }
 
   // ── Auth gating ───────────────────────────────────────────────────
@@ -216,7 +233,7 @@ export async function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(url);
+    return redirect(url);
   }
 
   // ── Play-mode gating (per-device lock to a kid) ───────────────────
@@ -241,7 +258,7 @@ export async function proxy(request: NextRequest) {
       const url = request.nextUrl.clone();
       url.pathname = `/play/${playLock.childId}`;
       url.search = "";
-      return NextResponse.redirect(url);
+      return redirect(url);
     }
   }
 
@@ -261,7 +278,7 @@ export async function proxy(request: NextRequest) {
         const url = request.nextUrl.clone();
         url.pathname = "/upgrade";
         url.searchParams.set("reason", reason);
-        return NextResponse.redirect(url);
+        return redirect(url);
       }
     }
   }
@@ -305,13 +322,13 @@ export async function proxy(request: NextRequest) {
           const url = request.nextUrl.clone();
           url.pathname = "/classroom";
           url.search = "";
-          return NextResponse.redirect(url);
+          return redirect(url);
         }
         if (isParentRoute) {
           const url = request.nextUrl.clone();
           url.pathname = "/classroom";
           url.search = "";
-          return NextResponse.redirect(url);
+          return redirect(url);
         }
       } else if (role === "parent") {
         // Parents can't enter classroom or owner.
@@ -319,7 +336,7 @@ export async function proxy(request: NextRequest) {
           const url = request.nextUrl.clone();
           url.pathname = "/dashboard";
           url.search = "";
-          return NextResponse.redirect(url);
+          return redirect(url);
         }
       } else if (role === "student") {
         // Students should be in play mode; if they aren't, send them home.
@@ -327,13 +344,13 @@ export async function proxy(request: NextRequest) {
           const url = request.nextUrl.clone();
           url.pathname = "/dashboard";
           url.search = "";
-          return NextResponse.redirect(url);
+          return redirect(url);
         }
       }
     }
   }
 
-  return response;
+  return secure(response);
 }
 
 /** Owner-only routes (platform admins / Readee Inc back-office).

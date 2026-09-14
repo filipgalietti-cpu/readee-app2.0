@@ -6,11 +6,20 @@ import {
   buildDailyQuestion,
   autoHealDaily,
 } from "@/lib/daily/build-daily";
+import { timeBudget } from "@/lib/daily/time-budget";
 
 export const dynamic = "force-dynamic";
-// Image gen + TTS + 5 LLM calls + QC ≈ 60-90s end-to-end on a slow day.
-// 5 minutes leaves headroom for retries and Gemini latency spikes.
-export const maxDuration = 300;
+// Image gen + TTS + 5 LLM calls + QC ≈ 60-90s per phase on a slow day, and a
+// bad day runs up to seven phases (build, three heals, three rebuilds). Two
+// runs on Sep 8 2026 hit the old 300-second ceiling mid-heal and Vercel
+// answered 504. 800 s is the Pro + Fluid compute maximum.
+export const maxDuration = 800;
+// Stop starting a new phase once this much is left, so the row is always left
+// in a clean state for the next run to pick up. Sized from the qc_runs table,
+// not the comment above: a single passage heal took 193-223 s four times in
+// early September 2026, and one autoHealDaily call can chain up to four
+// healers (lib/qc/auto-heal.ts), so five minutes is the honest worst case.
+const PHASE_RESERVE_MS = 300_000;
 
 /**
  * Daily question cron. Vercel hits this once a day; auth via
@@ -40,6 +49,7 @@ async function run(req: NextRequest) {
   const force = url.searchParams.get("force") === "1";
   const dateParam = url.searchParams.get("date");
   const date = dateParam ? new Date(dateParam) : new Date();
+  const budget = timeBudget(maxDuration * 1000, PHASE_RESERVE_MS);
 
   let res = await buildDailyQuestion({ date, force });
   const attempts: string[] = ["build"];
@@ -57,6 +67,10 @@ async function run(req: NextRequest) {
   // ?date=YYYY-MM-DD for manual heals.
   if (res.ok && res.qcOverall !== "pass") {
     for (let i = 0; i < 3; i++) {
+      if (budget.exhausted()) {
+        attempts.push("out-of-time:heal");
+        break;
+      }
       const heal = await autoHealDaily({ date });
       if (!heal.ok) {
         attempts.push(`auto-heal-err:${heal.error}`);
@@ -86,6 +100,10 @@ async function run(req: NextRequest) {
       const tried: string[] = [];
       const admin = supabaseAdmin();
       for (let swap = 0; swap < 3 && res.qcOverall === "fail"; swap++) {
+        if (budget.exhausted()) {
+          attempts.push("out-of-time:rebuild");
+          break;
+        }
         const { data: row } = await admin
           .from("daily_questions")
           .select("subject")
@@ -102,7 +120,7 @@ async function run(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ ...res, attempts });
+  return NextResponse.json({ ...res, attempts, elapsedMs: budget.elapsedMs() });
 }
 
 async function handleGET(req: NextRequest) {
