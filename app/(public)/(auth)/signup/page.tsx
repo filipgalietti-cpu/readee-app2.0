@@ -1,5 +1,6 @@
 "use client";
 import { reportFailure } from "@/lib/observability/critical";
+import { signupRejection } from "@/lib/auth/signup-rejection";
 
 import { Suspense, useEffect, useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -95,8 +96,15 @@ function SignupInner() {
       });
 
       if (error) {
-        reportFailure("signup.auth", error, { route: "/signup" });
-        setErrors({ general: error.message });
+        // A weak password or a registered email is the parent's to fix, not an
+        // outage: say so at the field, and keep Sentry for the unexpected.
+        const rejection = signupRejection(error);
+        if (rejection) {
+          setErrors({ [rejection.field]: rejection.message });
+        } else {
+          reportFailure("signup.auth", error, { route: "/signup" });
+          setErrors({ general: error.message });
+        }
         setIsLoading(false);
         return;
       }
