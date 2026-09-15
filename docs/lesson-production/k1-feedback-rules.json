@@ -1,0 +1,90 @@
+{
+  "version": "2026-09-15",
+  "source": "Founder/Jennifer feedback in Readee lesson conversation",
+  "rules": [
+    {
+      "id": "K1-01",
+      "area": "Warm-up",
+      "requirement": "30\u201360 second skill-related full-screen mini-game; narrated invitation, Let\u2019s play, countdown, rewards, bunny celebration. Use proven mechanics with lesson-specific art; no default repetitive memory game.",
+      "verification": "Browser complete/play/timeout/mute/reduced-motion; human checks fun and relevance."
+    },
+    {
+      "id": "K1-02",
+      "area": "Opening and scene art",
+      "requirement": "Approved cinematic scene plus suitable ambience. Inspect anatomy, limbs, object relationships and every crop; preserve cohesive Readee art and characters.",
+      "verification": "Every new/changed asset visually reviewed at full size; URL/hash/dimension checks are insufficient alone."
+    },
+    {
+      "id": "K1-03",
+      "area": "Instruction",
+      "requirement": "Explicit child-friendly explanation, useful demonstration and a meaningful action. Consistent terms, precise scope and human-authored standards/content.",
+      "verification": "Jennifer reviews changed teaching/distractors; semantic answer-key tests, not generic generated content."
+    },
+    {
+      "id": "K1-04",
+      "area": "Pictures",
+      "requirement": "Meaningful K\u20131 picture clues in choices, matches and sorts, sized legibly. For counts, use count representations rather than the same object on every option. Do not give away decoding or letter-name answers.",
+      "verification": "Per-activity applicability and disclosure review; broken/missing asset and actual rendered-size checks."
+    },
+    {
+      "id": "K1-05",
+      "area": "Layout",
+      "requirement": "Even three-choice rows at roomy widths; balanced intentional mobile arrangement. Separate pictures from text. Center key letters; sufficient context prominence; no clipped activity or host/Luna overlap.",
+      "verification": "Measure real bounding boxes and vertical/horizontal fit at390/768/1280 and a short landscape viewport, including wrong/right/listening/result states."
+    },
+    {
+      "id": "K1-06",
+      "area": "Interaction targets",
+      "requirement": "Whole answer tile selects except the separate audio control. Whole destination accepts sort taps/drops. Meaningful drag position, keyboard/tap alternatives. Match order avoids adjacent-answer bias.",
+      "verification": "Click edges/corners; keyboard and touch; wrong drops; final-pair playback and enabled Check button."
+    },
+    {
+      "id": "K1-07",
+      "area": "Narration ownership",
+      "requirement": "Autonoe voices prompts, choices and corrections. Karaoke belongs to the actively narrated element only; prompt speech cannot highlight the answer. Choices spoken in display order; label/source changes invalidate audio.",
+      "verification": "Owner/choice identity assertions, ordered queue tests, hash-pinned timings; listen to anomalous and changed clips."
+    },
+    {
+      "id": "K1-08",
+      "area": "Phonics and syllables",
+      "requirement": "Human phonemes remain pinned. Letter-name activities say names, not phonemes. Natural authored syllable demonstrations align beats to actual audio; do not mechanically splice words into unnatural syllables.",
+      "verification": "Human listening for isolated names/phonemes and syllables; cue timing measurement; ASR is a flag, never sole proof for deleting audio."
+    },
+    {
+      "id": "K1-09",
+      "area": "Feedback and transitions",
+      "requirement": "Register selection, finish relevant feedback and reading, reveal meaningful success art, then hold/fade. Reset builder after wrong answer; two-error teaching support/move-on policy. Let last match finish.",
+      "verification": "Double-click/retry/skip/speech/audio-failure tests; frame-sampled selection acknowledgment, dwell and transitions."
+    },
+    {
+      "id": "K1-10",
+      "area": "Luna",
+      "requirement": "Shared mic lifecycle. Words start grey and become green/yellow as evidence arrives; no checkmarks between words. High-confidence objective answers need no confirmation; low-confidence/unavailable is unscored. Reliable autostop/stream cleanup.",
+      "verification": "Actual Azure plus scripted partial/wrong/alias/low-confidence/disconnected tests; child-device validation remains distinct from synthetic audio."
+    },
+    {
+      "id": "K1-11",
+      "area": "Practice and adaptation",
+      "requirement": "Retain good existing questions. Mix relevant MCQ, sort, sequence, matching, reading and objective comprehension; fresh transfer examples; easy/regular/hard/challenging banks where instruction supports them.",
+      "verification": "Enumerate selector paths and skills, prevent content repetition and exposure leakage, keep first attempt separate from after-help learning."
+    },
+    {
+      "id": "K1-12",
+      "area": "Reflection versus assessment",
+      "requirement": "Spoken feelings/why can support lesson discussion, with inline Luna follow-up and meaningful responses. Subjective feelings are not scored unit-exam mastery. Objective exams defer correctness until results.",
+      "verification": "Rubric coverage/aliases/negations; no technical failure counted as a wrong answer or a pass; unit-exam skill coverage and results checks."
+    },
+    {
+      "id": "K1-13",
+      "area": "Rewards and ending",
+      "requirement": "Correct streak multiplier carries into practice and resets after errors; approved flickering-fire graphic; bunny correct/wrong reactions. Full-screen completed stamp, dancing bunny, counted carrots, explicit included bonus and confetti.",
+      "verification": "Derived evidence and server idempotency; reload/replay/concurrent-save checks, reduced-motion, no duplicate settlement."
+    },
+    {
+      "id": "K1-14",
+      "area": "Release truth",
+      "requirement": "Warm-up\u2192lesson\u2192practice\u2192exam\u2192results\u2192journey on authenticated real routes. Source/version/asset/QA hashes pinned; candidate, human-approved, and live statuses separate.",
+      "verification": "Actual route/API/data roundtrip; ownership/entitlement/offline save checks; no demo-only verification called production-ready."
+    }
+  ]
+}

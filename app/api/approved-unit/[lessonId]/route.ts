@@ -3,34 +3,13 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { unitAccess } from "@/lib/approved-unit/access";
 import { UNIT_VERSION, approvedLesson } from "@/lib/approved-unit/catalogue";
-import { validateState, allowedRubrics, type SessionState } from "@/lib/approved-unit/state";
-import { isResponseRubricId, usableResponseTranscript } from "@/lib/lesson-engine/response/rubrics";
-import { evaluateResponse } from "@/lib/lesson-engine/response/evaluate";
-import { responseReceipt } from "@/lib/approved-unit/receipts";
+import { validateState, type SessionState } from "@/lib/approved-unit/state";
+import { unitRequestBody } from "@/lib/approved-unit/request";
+import { serveUnitSpeech } from "@/lib/approved-unit/speech-service";
 export const runtime = "nodejs";
 const headers = { "Cache-Control": "private, no-store" };
 const json = (value: unknown, status = 200) => NextResponse.json(value, { status, headers });
 type Context = { params: Promise<{ lessonId: string }> };
-async function body(req: Request) {
-  if (req.headers.get("origin") !== new URL(req.url).origin) throw Error("origin");
-  if (!req.headers.get("content-type")?.startsWith("application/json")) throw Error("body");
-  const reader = req.body?.getReader();
-  if (!reader) throw Error("body");
-  let n = 0,
-    text = "";
-  const decoder = new TextDecoder();
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    n += value.length;
-    if (n > 262144) {
-      await reader.cancel();
-      throw Error("size");
-    }
-    text += decoder.decode(value, { stream: true });
-  }
-  return JSON.parse(text + decoder.decode());
-}
 const identity = z.object({ child: z.uuid() });
 export async function GET(req: Request, { params }: Context) {
   const child = new URL(req.url).searchParams.get("child"),
@@ -52,7 +31,7 @@ export async function GET(req: Request, { params }: Context) {
 }
 export async function PUT(req: Request, { params }: Context) {
   try {
-    const raw = await body(req),
+    const raw = await unitRequestBody(req),
       p = z
         .object({ child: z.uuid(), revision: z.number().int().min(0), state: z.unknown() })
         .parse(raw);
@@ -101,7 +80,7 @@ export async function PUT(req: Request, { params }: Context) {
 }
 export async function POST(req: Request, { params }: Context) {
   try {
-    const raw = await body(req),
+    const raw = await unitRequestBody(req),
       p = z
         .object({
           child: z.uuid(),
@@ -114,48 +93,7 @@ export async function POST(req: Request, { params }: Context) {
     const { lessonId } = await params,
       a = await unitAccess(p.child, lessonId);
     if ("error" in a) return json({ error: "Lesson unavailable" }, a.error);
-    if (
-      p.kind === "response" &&
-      (!isResponseRubricId(p.rubricId) ||
-        !allowedRubrics(lessonId).has(p.rubricId) ||
-        p.transcript === undefined)
-    )
-      return json({ error: "Unknown question" }, 400);
-    const { data: reserved, error } = await a.admin.rpc("reserve_unit_service", {
-      p_parent: a.user.id,
-      p_kind: p.kind,
-      p_limit: p.kind === "speech" ? 30 : 120,
-    });
-    if (error) return json({ error: "Luna is temporarily unavailable" }, 503);
-    if (!reserved) return json({ error: "Please try again later" }, 429);
-    if (p.kind === "speech") {
-      const key = process.env.AZURE_SPEECH_KEY,
-        region = process.env.AZURE_SPEECH_REGION;
-      if (!key || !region || !/^[a-z0-9-]+$/.test(region))
-        return json({ error: "Luna is not configured" }, 503);
-      const r = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {
-        method: "POST",
-        headers: { "Ocp-Apim-Subscription-Key": key },
-        signal: AbortSignal.timeout(10000),
-        cache: "no-store",
-      });
-      if (!r.ok) return json({ error: "Luna could not connect" }, 503);
-      return json({ token: await r.text(), region });
-    }
-    if (
-      !isResponseRubricId(p.rubricId) ||
-      !usableResponseTranscript(p.rubricId, p.transcript!, p.confidence, false)
-    )
-      return json({ verdict: "unclear", reason: "unclear" });
-    const result = await evaluateResponse(p.rubricId, p.transcript!, AbortSignal.timeout(12000));
-    return json({
-      ...result,
-      ...(result.verdict === "unclear"
-        ? {}
-        : {
-            receipt: responseReceipt(p.child, lessonId, p.rubricId, result.verdict === "accepted"),
-          }),
-    });
+    return await serveUnitSpeech(a.user.id, lessonId, p, p.child);
   } catch {
     return json({ error: "Luna could not check that answer" }, 503);
   }

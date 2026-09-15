@@ -1,15 +1,137 @@
 import Link from "next/link";
+import Image from "next/image";
 import { previewLessons } from "@/lib/lessons/preview-catalog";
 import { Glyph } from "@/app/_components/Glyph";
-
-export default function ExplorePage() {
-  const samples = previewLessons;
-  return <main className="container-page py-8 sm:py-12"><div className="mx-auto max-w-4xl">
-    <div className="flex items-center gap-6"><img src="/images/ui/bunny-reading.png" alt="" width={128} height={128} className="h-24 w-24 shrink-0 object-contain sm:h-32 sm:w-32" /><div><h1 className="text-3xl font-semibold text-zinc-900 sm:text-4xl">Take a look around.</h1><p className="mt-3 max-w-xl text-base leading-relaxed text-zinc-600">Try a free lesson sample from our K–4 reading curriculum. Choose any starting point to see how lessons work.</p></div></div>
-    <div className="mt-8 divide-y divide-violet-100 overflow-hidden rounded-3xl border border-violet-100 bg-white shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]">
-      {samples.map((lesson) => <Link key={lesson.standardId} href={`/learn?standard=${encodeURIComponent(lesson.standardId)}&preview=1`} className="flex items-center justify-between gap-4 p-6 transition hover:bg-violet-50 focus-visible:outline-2 focus-visible:outline-violet-600"><div><p className="text-sm font-semibold text-violet-700">{lesson.grade}</p><h2 className="mt-1 text-xl font-semibold text-zinc-900">{lesson.title}</h2><p className="mt-1 text-sm text-zinc-500">Try this lesson</p></div><Glyph name="arrow-right" size={24} className="shrink-0 text-violet-600" /></Link>)}
-    </div>
-    <p className="mt-4 text-sm text-zinc-500">Samples don’t set a reading level or save child progress.</p>
-    <div className="mt-8 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6"><div><h2 className="text-xl font-semibold text-zinc-900">Ready for a personal starting point?</h2><p className="mt-2 text-sm text-zinc-600">Set up your reader, then let Luna guide the assessment.</p></div><Link href="/dashboard" className="mt-4 inline-flex shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-3 font-semibold text-white hover:from-violet-700 hover:to-violet-600 sm:mt-0">Set up my reader</Link></div>
-  </div></main>;
+import { UNIT_ONE } from "@/lib/approved-unit/catalogue";
+import { unitOneEnabled } from "@/lib/approved-unit/access";
+import { requireProfile } from "@/lib/auth/helpers";
+import { createClient } from "@/lib/supabase/server";
+const covers: Record<string, string> = {
+  "rhyme-time": "rhyme-time/opening-matching-rory.webp",
+  "key-details": "pips-tree/pip-opening-v3.webp",
+};
+export default async function ExplorePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ child?: string }>;
+}) {
+  const enabled = unitOneEnabled(),
+    parent = await requireProfile(),
+    { child: selected } = await searchParams,
+    db = await createClient();
+  let query = db.from("children").select("id").eq("parent_id", parent.id);
+  if (selected) query = query.eq("id", selected);
+  const { data: reader } = await query.order("created_at").limit(1).maybeSingle();
+  const setup = reader ? `/placement/ready?child=${reader.id}` : "/placement/setup";
+  const samples = previewLessons.filter((l) => !enabled || l.grade !== "Kindergarten");
+  return (
+    <main className="container-page py-8 sm:py-12">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex items-center gap-6">
+          <Image
+            src="/images/ui/bunny-reading.png"
+            alt=""
+            width={128}
+            height={128}
+            className="h-24 w-24 shrink-0 object-contain sm:h-32 sm:w-32"
+          />
+          <div>
+            <h1 className="text-3xl font-semibold text-zinc-900 sm:text-4xl">
+              Take a look around.
+            </h1>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-zinc-600">
+              See the stories, games and reading practice inside Readee. Your child’s assessment
+              will help choose their starting point.
+            </p>
+          </div>
+        </div>
+        {enabled && (
+          <section className="mt-8" aria-labelledby="approved-k-heading">
+            <h2 id="approved-k-heading" className="text-2xl font-semibold">
+              Meet our Kindergarten adventures
+            </h2>
+            <p className="mt-2 text-zinc-600">
+              Try Pip’s Tree as a complete free sample: warm-up, lesson, practice and Luna. Sample
+              carrots and answers stay in this visit; they do not change your child’s progress.
+            </p>
+            <Link
+              href={reader ? `/learn/unit-one/sample?child=${reader.id}` : "/learn/unit-one/sample"}
+              className="mt-4 inline-flex rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
+            >
+              Try Pip’s Tree free <Glyph name="arrow-right" size={20} className="ml-2" />
+            </Link>
+            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {UNIT_ONE.map((l) => (
+                <li
+                  key={l.id}
+                  className="overflow-hidden rounded-3xl border border-violet-100 bg-white"
+                >
+                  <Link
+                    href={reader ? `/learn/unit-one?child=${reader.id}&lesson=${l.id}` : setup}
+                    className="block h-full p-4 focus-visible:outline-2 focus-visible:outline-violet-600"
+                  >
+                    <Image
+                      unoptimized
+                      src={`/lesson-studio/${covers[l.id] ?? `${l.id}/opening.webp`}`}
+                      width={640}
+                      height={400}
+                      alt=""
+                      className="aspect-[8/5] w-full rounded-xl object-contain"
+                    />
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-violet-700">
+                      Kindergarten · Unit 1
+                    </p>
+                    <h3 className="mt-1 text-lg font-semibold">{l.title}</h3>
+                    <p className="mt-2 text-sm text-zinc-600">
+                      {reader ? "Open lesson" : "Set up your reader"} →
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm text-zinc-500">
+              Full lessons follow your family’s plan and save progress for your selected reader. The
+              unit exam opens after all eight lessons are completed.
+            </p>
+          </section>
+        )}
+        <section className="mt-10" aria-labelledby="other-samples">
+          <h2 id="other-samples" className="text-2xl font-semibold">
+            {enabled ? "Explore other grades" : "Try a lesson sample"}
+          </h2>
+          <div className="mt-4 divide-y divide-violet-100 overflow-hidden rounded-3xl border border-violet-100 bg-white">
+            {samples.map((l) => (
+              <Link
+                key={l.standardId}
+                href={`/learn?standard=${encodeURIComponent(l.standardId)}&preview=1`}
+                className="flex items-center justify-between gap-4 p-6 hover:bg-violet-50 focus-visible:outline-2 focus-visible:outline-violet-600"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-violet-700">{l.grade}</p>
+                  <h3 className="mt-1 text-xl font-semibold">{l.title}</h3>
+                  <p className="mt-1 text-sm text-zinc-500">Try this lesson</p>
+                </div>
+                <Glyph name="arrow-right" size={24} />
+              </Link>
+            ))}
+          </div>
+          <p className="mt-3 text-sm text-zinc-500">
+            Samples don’t set a reading level or save child progress.
+          </p>
+        </section>
+        <section className="mt-8 rounded-3xl bg-violet-50 p-6">
+          <h2 className="text-xl font-semibold">Find your child’s starting point</h2>
+          <p className="mt-2 text-zinc-600">
+            Let Luna check their reading skills, then follow a journey built from their results.
+          </p>
+          <Link
+            href={setup}
+            className="mt-4 inline-flex rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white"
+          >
+            {reader ? "Get ready for the assessment" : "Set up my reader"}
+          </Link>
+        </section>
+      </div>
+    </main>
+  );
 }

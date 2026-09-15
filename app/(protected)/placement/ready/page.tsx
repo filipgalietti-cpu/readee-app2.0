@@ -1,3 +1,4 @@
+import { unitOneEnabled } from "@/lib/approved-unit/access";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -24,6 +25,8 @@ export default async function ReaderHandoff({
   const band = bandFromGrade(child.grade);
   return (
     <AssessmentHandoff
+      showKindergartenSample={unitOneEnabled() && band === 0}
+      exploreHref={`/explore?child=${encodeURIComponent(child.id)}`}
       childId={child.id}
       initialSaidAs={child.name_said_as ?? ""}
       name={child.first_name?.trim() || "Reader"}

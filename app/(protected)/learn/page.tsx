@@ -1,5 +1,5 @@
-import {approvedStandard} from "@/lib/approved-unit/catalogue";
-import {unitOneEnabled} from "@/lib/approved-unit/access";
+import { approvedStandard } from "@/lib/approved-unit/catalogue";
+import { unitOneEnabled } from "@/lib/approved-unit/access";
 import { redirect, notFound } from "next/navigation";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import { loadJourneySnapshot } from "@/lib/journey/load.server";
@@ -9,7 +9,6 @@ import LearnClient from "./LearnClient";
 import LessonV2Client from "./LessonV2Client";
 import { v2LessonForStandard } from "@/lib/lessons/v2-lookup";
 import PreviewLesson from "./PreviewLesson";
-
 
 /**
  * Server-side paywall gate, and the choice of lesson engine.
@@ -41,21 +40,30 @@ export default async function LearnPage({
   if (sp.preview === "1") {
     const lesson = previewLessons.find((item) => item.standardId === standardId);
     if (!lesson) notFound();
+    if (unitOneEnabled() && lesson.standardId === "RL.K.1") redirect("/learn/unit-one/sample");
     const v2 = v2LessonForStandard(lesson.standardId);
     if (!v2) notFound();
     return <PreviewLesson lesson={v2} />;
   }
 
-  if (!standardId || !sampleLessons.some(lesson => lesson.standardId === standardId)) notFound();
+  if (!standardId || !sampleLessons.some((lesson) => lesson.standardId === standardId)) notFound();
   const snapshot = await loadJourneySnapshot(sp.child);
   if (!snapshot) redirect("/placement/setup");
-  if (!sp.child) redirect(`/learn?child=${snapshot.child.id}&standard=${encodeURIComponent(standardId)}`);
-  const lesson = sampleLessons.find(item => item.standardId === standardId)!;
-  placementStartUnlocked = freeJourneyLesson({ lesson, signupAt: snapshot.billing.signupAt, readingLevel: snapshot.child.reading_level ?? null, placement: snapshot.result?.plan });
-  if (!snapshot.billing.fullAccess && !placementStartUnlocked) redirect(`/journey?child=${snapshot.child.id}&locked=${encodeURIComponent(standardId)}`);
+  if (!sp.child)
+    redirect(`/learn?child=${snapshot.child.id}&standard=${encodeURIComponent(standardId)}`);
+  const lesson = sampleLessons.find((item) => item.standardId === standardId)!;
+  placementStartUnlocked = freeJourneyLesson({
+    lesson,
+    signupAt: snapshot.billing.signupAt,
+    readingLevel: snapshot.child.reading_level ?? null,
+    placement: snapshot.result?.plan,
+  });
+  if (!snapshot.billing.fullAccess && !placementStartUnlocked)
+    redirect(`/journey?child=${snapshot.child.id}&locked=${encodeURIComponent(standardId)}`);
 
-  const approved=approvedStandard(standardId);
-  if(unitOneEnabled()&&approved)redirect(`/learn/unit-one?child=${snapshot.child.id}&lesson=${approved.id}`);
+  const approved = approvedStandard(standardId);
+  if (unitOneEnabled() && approved)
+    redirect(`/learn/unit-one?child=${snapshot.child.id}&lesson=${approved.id}`);
 
   // V2 when the standard has an authored lesson; legacy otherwise.
   if (standardId) {
