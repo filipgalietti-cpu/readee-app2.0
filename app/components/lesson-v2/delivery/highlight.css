@@ -1,0 +1,77 @@
+.le-highlight-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 8px;
+  width: min(100%, 850px);
+  padding: 22px;
+  background: #fffdf7;
+  border: 2px solid #d7cdb9;
+  border-radius: 20px;
+  box-shadow: 0 4px 0 #d7cdb9;
+}
+.le-frame .le-highlight-word {
+  font: inherit;
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 5px 8px;
+  min-height: 48px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #4f426c;
+  cursor: pointer;
+  transition:
+    background-color 0.18s,
+    color 0.18s;
+}
+.le-frame .le-highlight-word:hover,
+.le-frame .le-highlight-word:focus-visible {
+  background: #f1ebff;
+}
+.le-frame .le-highlight-word:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 2px;
+}
+.le-frame .le-highlight-word.is-found {
+  background: #dff2e1;
+  color: #237145;
+  border-color: #629d79;
+}
+.le-frame .le-highlight-word.is-retry {
+  background: #fff1c7;
+  color: #725314;
+  border-color: #d6b762;
+}
+.le-highlight-result .le-feedback {
+  max-width: 760px;
+  margin: 8px auto;
+  font-size: 18px;
+  line-height: 1.35;
+}
+@media (max-width: 640px) {
+  .le-highlight-page {
+    padding: 15px 9px;
+    gap: 5px 2px;
+  }
+  .le-frame .le-highlight-word {
+    font-size: 27px;
+    padding: 4px 7px;
+  }
+  .le-highlight-result .le-feedback {
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-frame .le-highlight-word {
+    transition: none;
+  }
+}
+
+/* In-content sentence replay remains available when the compact footer hides its duplicate. */
+.le-frame .le-highlight .le-replay,
+.le-frame .le-highlight-result .le-replay {
+  display: inline-flex;
+}

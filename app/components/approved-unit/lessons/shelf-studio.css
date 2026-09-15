@@ -1,0 +1,433 @@
+.shelf-studio {
+  --shelf-green: #466b5d;
+  --shelf-wood: #ad7952;
+}
+.shelf-scene-photo {
+  display: block;
+  width: 100%;
+  max-width: 770px;
+  max-height: 48dvh;
+  object-fit: contain;
+  border-radius: 24px;
+  margin: auto;
+}
+.shelf-open-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(840px, 100%);
+  min-width: 0;
+  margin: 0 auto;
+  border: 2px solid #d9cbb4;
+  border-bottom: 8px solid #cdbb9f;
+  border-radius: 14px 24px 24px 14px;
+  background: #fffdf5;
+  box-shadow: 0 12px 25px #4c3b2012;
+  animation: shelf-page-open 0.5s ease-out;
+}
+.shelf-picture-page {
+  padding: 16px;
+  border-right: 2px solid #e9decb;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.shelf-picture-page img {
+  width: 100%;
+  max-height: 33dvh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.shelf-reading-page {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.shelf-reading-page h2 {
+  font-size: clamp(20px, 2vw, 29px);
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: var(--shelf-green);
+}
+.shelf-reading-page p {
+  font-size: clamp(22px, 2.2vw, 31px);
+  line-height: 1.5;
+  margin: 0;
+  color: #29253c;
+}
+.shelf-display {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 18px 20px 22px;
+  min-height: 210px;
+  width: min(720px, 100%);
+  margin: auto;
+}
+.shelf-standing-book {
+  width: 30%;
+  max-width: 200px;
+  min-height: 185px;
+  padding: 22px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-radius: 7px 15px 15px 7px;
+  border-left: 9px solid #0002;
+  box-shadow: 4px 4px 0 #d2c19e;
+  background: #dce8df;
+  color: #263e34;
+  text-align: center;
+}
+.shelf-standing-book img {
+  width: 78px;
+  height: 66px;
+  object-fit: contain;
+}
+.shelf-standing-book b {
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.2;
+}
+.shelf-book-1 {
+  background: #f2e3bd;
+  color: #594219;
+}
+.shelf-book-2 {
+  background: #e7def2;
+  color: #4d3a67;
+}
+.shelf-wood {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: var(--shelf-wood);
+  border-bottom: 5px solid #885a3b;
+  border-radius: 3px;
+}
+.shelf-studio .le-reference {
+  background: #fffdf5;
+  border-color: #d9cbb4;
+  border-bottom: 5px solid #d9cbb4;
+  max-width: 800px;
+}
+.shelf-studio .le-reference-section h2 {
+  color: var(--shelf-green);
+}
+.shelf-studio .le-options .le-tile {
+  line-height: 1.25;
+}
+.shelf-studio .le-response-photo {
+  object-fit: contain;
+}
+@keyframes shelf-page-open {
+  from {
+    opacity: 0.3;
+    transform: perspective(1100px) rotateY(-9deg) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 640px) {
+  .shelf-open-book {
+    grid-template-columns: 1fr 1.35fr;
+    max-width: 100%;
+  }
+  .shelf-picture-page {
+    padding: 7px;
+  }
+  .shelf-reading-page {
+    padding: 12px 10px;
+  }
+  .shelf-reading-page h2 {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .shelf-reading-page p {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+  .shelf-picture-page img {
+    max-height: 175px;
+  }
+  .shelf-display {
+    gap: 8px;
+    padding: 8px 6px 20px;
+    min-height: 160px;
+  }
+  .shelf-standing-book {
+    padding: 12px 6px;
+    min-height: 145px;
+    gap: 12px;
+    border-left-width: 5px;
+  }
+  .shelf-standing-book img {
+    width: 58px;
+    height: 50px;
+  }
+  .shelf-standing-book b {
+    font-size: 16px;
+  }
+  .shelf-studio .le-reference {
+    padding: 10px 12px;
+  }
+  .shelf-studio .le-reference h2 {
+    font-size: 20px;
+  }
+  .shelf-studio .le-reference p {
+    font-size: 20px;
+    line-height: 1.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shelf-open-book {
+    animation: none;
+  }
+}
+/* The book is the stage. Controls sit below its pages, never beside a tiny book. */
+.shelf-studio .le-stage:has(.shelf-open-book),
+.shelf-studio .le-stage:has(.shelf-display) {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  row-gap: 12px;
+}
+.shelf-studio .le-stage:has(.le-reference) {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+.shelf-studio .le-reference {
+  position: relative;
+  min-height: max-content;
+  flex-shrink: 0;
+  padding: 16px 20px;
+}
+.shelf-studio .le-reference-top {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.shelf-studio .le-reference-section h2 {
+  padding-right: 42px;
+}
+.shelf-studio .le-frame .le-option > .le-tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 14px 16px 46px;
+  justify-content: center;
+  text-align: center;
+}
+.shelf-studio .le-frame .le-option > .le-tile > span {
+  width: 100%;
+}
+.shelf-studio .le-frame {
+  background: #f6f1e5;
+}
+@media (max-width: 640px) {
+  .shelf-studio .le-frame .le-option > .le-tile {
+    min-height: 68px;
+    flex-direction: row;
+    padding: 10px 48px 10px 12px;
+    font-size: 20px;
+    text-align: left;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .shelf-studio .le-frame .le-option > .le-tile:has(.le-choice-art) {
+    min-height: 76px;
+  }
+  .shelf-studio .le-option .le-choice-art {
+    flex: 0 0 65px;
+    width: 65px;
+    height: 55px;
+  }
+  .shelf-studio .le-reference {
+    padding: 12px 14px;
+  }
+  .shelf-studio .le-activity {
+    gap: 10px;
+  }
+  .shelf-studio .le-stage:has(.shelf-open-book) {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+}
+.shelf-book-model,
+.shelf-book-explore {
+  width: 100%;
+  min-width: 0;
+}
+.shelf-studio .le-stage:has(.shelf-book-model) {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.shelf-studio .le-stage:has(.shelf-book-model) > .le-interaction {
+  display: none;
+}
+.shelf-explanation {
+  max-width: 840px;
+  margin: 18px auto 0 !important;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.4 !important;
+  text-align: center;
+  color: #55486b;
+}
+.shelf-studio .le-frame .le-option .le-choice-art {
+  height: 85px;
+  max-width: 150px;
+}
+@media (max-width: 640px) {
+  .shelf-studio .le-frame .le-option .le-choice-art {
+    height: 55px;
+    max-width: 65px;
+  }
+  .shelf-explanation {
+    font-size: 20px;
+    margin-top: 18px !important;
+  }
+}
+.shelf-studio .le-match .le-pair-card > span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+}
+.shelf-studio .le-match-picture {
+  display: block;
+  width: 105px;
+  height: 74px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.shelf-studio .le-match .le-pair-card {
+  font-size: 20px;
+  line-height: 1.2;
+  min-height: 92px;
+  padding: 10px 38px 10px 12px;
+}
+@media (max-width: 640px) {
+  .shelf-studio .le-match .le-pair-card > span {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .shelf-studio .le-match-picture {
+    width: 106px;
+    height: 60px;
+  }
+  .shelf-studio .le-match .le-pair-card {
+    font-size: 17px;
+    min-height: 126px;
+    padding: 8px 22px 8px 7px;
+  }
+  .shelf-studio .le-match .le-pairing > .relative > .grid {
+    column-gap: 22px;
+  }
+}
+.shelf-studio .le-match .le-feedback:empty {
+  display: none;
+}
+.shelf-studio .le-match .le-pairing > .relative > .grid > div {
+  gap: 8px;
+}
+.shelf-studio .le-pair-board > .le-check-matches {
+  margin-top: 8px;
+}
+@media (min-width: 641px) {
+  .shelf-studio .le-match .le-pair-card {
+    min-height: 80px;
+    padding-block: 7px;
+  }
+  .shelf-studio .le-match-picture {
+    height: 62px;
+  }
+}
+@media (min-width: 768px) {
+  .shelf-studio .le-stage:has(.le-reference) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: 28px;
+  }
+  .shelf-studio .le-stage:has(.le-reference) > .le-reference {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: center;
+  }
+  .shelf-studio .le-stage:has(.le-reference) > .le-interaction {
+    grid-row: 2;
+    grid-column: 2;
+  }
+  .shelf-studio .le-stage:has(.le-reference) .le-options[data-choice-count="3"] {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .shelf-studio .le-stage:has(.le-reference) .le-option > .le-tile {
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    min-height: 80px;
+    padding: 12px 50px 12px 16px;
+    font-size: 23px;
+    gap: 14px;
+  }
+  .shelf-studio .le-stage:has(.le-reference) .le-choice-art {
+    width: 76px;
+    flex: 0 0 76px;
+    height: 65px;
+  }
+  .shelf-studio .le-reference-text {
+    font-size: 26px;
+    line-height: 1.45;
+  }
+}
+/* Put the library surface on the game itself as well as the decorative layer,
+   so the welcome/party composite never falls back to a flat beige panel. */
+.shelf-studio .sm-screen{background-image:var(--sm-backdrop);background-size:cover;background-position:center}
+
+/* The actual book covers are the transform controls, not decorative duplicates. */
+.shelf-studio .le-stage:has(.le-book-covers) { grid-template-columns:1fr; grid-template-rows:auto minmax(0,1fr) auto; gap:12px; }
+.shelf-studio .le-stage:has(.shelf-explorer-start) { grid-template-rows:auto minmax(0,1fr); }
+.shelf-studio .le-visual:has(.shelf-explorer-start) { display:none; }
+.shelf-studio .le-book-covers .le-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; width:min(700px,100%); margin:auto; }
+.shelf-studio .le-book-covers .le-tile { display:flex; flex-direction:column; justify-content:center; gap:8px; min-width:0; min-height:0; padding:12px 12px 16px; border:2px solid #b6cbbb; border-left:8px solid #577b67; border-radius:5px 14px 14px 5px; background:#e3eddf; box-shadow:3px 4px 0 #c9b99a; font-size:clamp(16px,1.7vw,22px); line-height:1.2; }
+.shelf-studio .le-book-covers .le-tile:nth-child(2) { background:#f2e6c7; border-color:#c7b984; }
+.shelf-studio .le-book-covers .le-tile:nth-child(3) { background:#ece3f1; border-color:#bcaccb; }
+.shelf-studio .le-book-covers .le-tile.is-selected { outline:3px solid #6e5bff; outline-offset:3px; }
+.shelf-studio .le-book-cover-picture { width:100%; height:80px; object-fit:contain; border-radius:5px; pointer-events:none; }
+.shelf-studio .le-book-covers .le-transform-label { min-height:2.4em; display:flex; align-items:center; justify-content:center; }
+.shelf-studio .le-book-covers .le-explored { top:4px; right:4px; }
+.shelf-studio .le-stage:has(.shelf-explorer-start) .le-book-cover-picture { height:clamp(100px,22dvh,190px); }
+.shelf-studio .le-book-covers .le-small { margin:6px 0 0; }
+.shelf-standing-book img { width:100%; height:100px; }
+@media(max-width:640px) {
+ .shelf-studio .le-stage:has(.le-book-covers) { gap:8px; }
+ .shelf-studio .le-book-covers .le-options { gap:9px; }
+ .shelf-studio .le-book-covers .le-tile { padding:6px 5px 9px; border-left-width:4px; font-size:15px; }
+ .shelf-studio .le-book-cover-picture { height:58px; }
+ .shelf-studio .le-book-covers .le-small { font-size:14px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page p { font-size:18px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page { padding:10px; }
+}
+@media(max-height:760px) and (min-width:641px) {
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-open-book { max-width:690px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-picture-page img { max-height:23dvh; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page { padding:12px 16px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page h2 { margin-bottom:8px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page p { font-size:22px; }
+ .shelf-studio .le-book-cover-picture { height:65px; }
+}
+@media(max-height:760px) and (min-width:641px) {
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-picture-page { padding:10px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-picture-page img { max-height:120px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page h2 { font-size:21px; }
+ .shelf-studio .le-stage:has(.le-book-covers) .shelf-reading-page p { font-size:21px; line-height:1.3; }
+ .shelf-studio .le-book-covers .le-tile { padding-top:8px; padding-bottom:8px; }
+ .shelf-studio .le-book-cover-picture { height:55px; }
+}

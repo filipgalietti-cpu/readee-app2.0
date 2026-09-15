@@ -1,0 +1,242 @@
+.le-reference {
+  width: min(100%, 860px);
+  margin: 0 auto;
+  padding: 12px 18px;
+  border: 2px solid #d8ceba;
+  border-radius: 16px;
+  background: #fffdf6;
+  color: #302c26;
+  box-shadow: 0 3px 0 #ded4c2;
+  flex: 0 1 auto;
+  min-height: 0;
+}
+.le-reference-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+}
+.le-reference-top > p {
+  margin: 0;
+  font-size: 16px;
+  color: #746850;
+  font-weight: 700;
+}
+.le-reference .le-reference-top > button {
+  padding: 0;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3efe4;
+  border: 1px solid #d8ceba;
+  border-radius: 12px;
+  color: #65508e;
+  cursor: pointer;
+}
+.le-reference .le-reference-top > button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.le-reference .le-reference-top > button:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 3px;
+}
+.le-reference-sections {
+  display: grid;
+  gap: 16px;
+}
+.le-reference-sections.has-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.le-reference-section {
+  min-width: 0;
+}
+.le-reference-section h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 2px 0 9px;
+  text-align: left;
+}
+.le-reference-text {
+  font-size: 23px;
+  line-height: 1.4;
+  margin: 8px 0;
+  text-align: left;
+}
+.le-reference-image {
+  display: block;
+  width: 100%;
+  max-height: 19dvh;
+  object-fit: contain;
+  margin: 6px auto;
+  border-radius: 10px;
+}
+.le-reference-entries {
+  margin: 6px 0;
+  display: grid;
+  gap: 7px;
+}
+.le-reference-entries > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  border-bottom: 1px solid #e6ddcc;
+  padding: 5px 0;
+  font-size: 22px;
+  line-height: 1.3;
+}
+.le-reference-entries dt {
+  font-weight: 700;
+}
+.le-reference-entries dd {
+  margin: 0;
+  text-align: left;
+}
+.le-reference-caption {
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 6px 0;
+  text-align: left;
+}
+.le-reference-number {
+  font-size: 14px;
+  text-align: right;
+  margin: 5px 0 0;
+  color: #746850;
+}
+@media (max-width: 640px) {
+  .le-reference {
+    padding: 6px 12px;
+  }
+  .le-reference-top {
+    min-height: 44px;
+  }
+  .le-reference-top > p {
+    font-size: 14px;
+  }
+  .le-reference-section h2 {
+    font-size: 21px;
+    margin: 2px 0 6px;
+  }
+  .le-reference-text {
+    font-size: 21px;
+    line-height: 1.3;
+    margin: 5px 0;
+  }
+  .le-reference-entries {
+    gap: 4px;
+  }
+  .le-reference-entries > div {
+    font-size: 19px;
+    padding: 4px 0;
+    gap: 9px;
+  }
+  .le-reference-caption {
+    font-size: 18px;
+  }
+  .le-reference-image {
+    max-height: 17dvh;
+  }
+  .le-reference-sections.has-two {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .le-reference-sections.has-two .le-reference-section + .le-reference-section {
+    border-top: 1px solid #d8ceba;
+    padding-top: 8px;
+  }
+  .le-reference-sections.has-two .le-reference-text {
+    font-size: 19px;
+  }
+  .le-reference-number {
+    font-size: 13px;
+  }
+  .le-reference-sections.has-two .le-reference-image {
+    max-height: 12dvh;
+  }
+}
+@media (max-height: 500px) and (min-width: 641px) {
+  .le-reference {
+    padding: 4px 12px;
+  }
+  .le-reference-sections.has-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .le-reference-section h2 {
+    font-size: 19px;
+  }
+  .le-reference-text,
+  .le-reference-entries > div {
+    font-size: 18px;
+  }
+  .le-reference-image {
+    max-height: 19dvh;
+  }
+  .le-reference-top > p {
+    font-size: 13px;
+  }
+  .le-reference-entries {
+    gap: 2px;
+  }
+}
+
+.le-reference .le-reference-top > button > svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+/* Optional long-source paging: default simultaneous sources are unchanged. */
+.le-reference.is-tabbed {
+  position: relative;
+  padding-top: 8px;
+}
+.le-reference.is-tabbed .le-reference-top {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+.le-reference.is-tabbed .le-reference-top > span {
+  display: none;
+}
+.le-reference-tabs {
+  display: flex;
+  gap: 7px;
+  padding-right: 48px;
+  min-height: 44px;
+  margin-bottom: 6px;
+}
+.le-reference-tabs button {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px;
+  border: 2px solid #d8ceba;
+  border-radius: 10px;
+  background: #fffdf6;
+  color: #544d60;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 750;
+  cursor: pointer;
+}
+.le-reference-tabs button[aria-selected="true"] {
+  background: #6e5bff;
+  color: white;
+  border-color: #6e5bff;
+}
+.le-reference-tabs button:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 2px;
+}
+.le-reference-tabs button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.le-reference.is-tabbed .le-reference-sections {
+  grid-template-columns: minmax(0, 1fr);
+}

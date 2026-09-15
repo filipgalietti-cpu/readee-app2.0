@@ -29,3 +29,22 @@ export function seededShuffle<T>(arr: T[], seed: string): T[] {
   }
   return a;
 }
+
+/** No correct partner starts directly opposite its source row. */
+export function shuffledPartners<T>(original:T[],seed:string):T[] {
+  if(original.length<2)return [...original];
+  for(let attempt=0;attempt<32;attempt++) {
+    const shuffled=seededShuffle(original,seed+":"+attempt);
+    if(shuffled.every((value,index)=>value!==original[index]))return shuffled;
+  }
+  return [...original.slice(1),original[0]];
+}
+
+/** Spread equal destination groups through the source tray instead of pre-grouping answers. */
+export function interleavedSortOrder(items:readonly {bucket:string}[],seed:string):number[] {
+ const buckets=seededShuffle([...new Set(items.map(item=>item.bucket))],seed);
+ const groups=buckets.map(bucket=>seededShuffle(items.flatMap((item,index)=>item.bucket===bucket?[index]:[]),seed+bucket));
+ const result:number[]=[];
+ for(let row=0;groups.some(group=>row<group.length);row++)for(const group of groups)if(row<group.length)result.push(group[row]);
+ return result;
+}

@@ -1,4 +1,5 @@
 "use client";
+import {useApprovedUnitProgress} from "@/lib/approved-unit/use-progress";
 import { loadJourneyPlacement } from "@/lib/journey/load-placement";
 import type { PlacementPlan } from "@/lib/placement/types";
 
@@ -477,6 +478,7 @@ function ChildDashboard({
   }, [child.id]);
   const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
+  const approvedProgress=useApprovedUnitProgress(child.id);
   const [practiceRows, setPracticeRows] = useState<{ standard_id: string; questions_correct: number }[]>([]);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
@@ -558,6 +560,7 @@ function ChildDashboard({
   const journeyCatalog = LESSON_META as { standardId: string; grade: string; domain: string; title: string }[];
   const signupAt = usePlanStore(s => s.signupAt);
   const jp = computeJourneyProgress({
+    completedStandards:approvedProgress.completed,
     practice: practiceRows,
     lessonProgress: lessonProgress.map((p) => ({ lesson_id: p.lesson_id, section: p.section, score: p.score })),
     readingLevel, placement,

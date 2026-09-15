@@ -1,0 +1,162 @@
+[
+  {
+    "id": "rhyme-time",
+    "scene": "find-fox",
+    "question": "Which word rhymes with fox?",
+    "choice": "box",
+    "evidenceKey": "rhyme-time-coached-v1/find-fox/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "d52e78d1-9672-4135-aa01-b729f62d2d97",
+        "flowId": "rhyme-time-v1",
+        "phase": 0,
+        "scene": 3,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "key-details",
+    "scene": "guided-who",
+    "question": "Who is the main character?",
+    "choice": "Pip the bird",
+    "evidenceKey": "key-details-coached-v2/guided-who/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "01a2b9ae-f7a3-424e-bf75-e826b1ea4249",
+        "flowId": "pips-tree-v3",
+        "phase": 0,
+        "scene": 3,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "syllable-beats",
+    "scene": "cat-guided",
+    "question": "How many syllables are in cat?",
+    "choice": "1",
+    "evidenceKey": "syllable-beats-coached-v1/cat-guided/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "03f66bc8-814d-45e4-8d2d-a6c8d5e37c7b",
+        "flowId": "syllable-beats-v1",
+        "phase": 0,
+        "scene": 2,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "book-makers",
+    "scene": "choose-author",
+    "question": "Who made the words?",
+    "choice": "Author",
+    "evidenceKey": "book-makers-coached-v1/choose-author/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "26abcfb5-5662-4de4-87bf-b56ac6f6df80",
+        "flowId": "book-makers-v1",
+        "phase": 0,
+        "scene": 3,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "letter-pairs",
+    "scene": "guided-b",
+    "question": "Find uppercase B’s lowercase partner.",
+    "choice": "b",
+    "evidenceKey": "letter-pairs-coached-v1/guided-b/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "89c3a9be-04f3-4b5d-9314-aa8f350d4786",
+        "flowId": "letter-pairs-v1",
+        "phase": 0,
+        "scene": 4,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "book-basics",
+    "scene": "find-start",
+    "question": "Tap the word where we start this page.",
+    "choice": "A, line 1, word 1",
+    "evidenceKey": "book-basics-coached-v1/find-start/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "38cf3cf4-100f-49c4-bbbf-5cf334911210",
+        "flowId": "book-basics-v1",
+        "phase": 0,
+        "scene": 2,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "story-kinds",
+    "scene": "story-clue",
+    "question": "What makes this a story?",
+    "choice": "Things happen to Sam",
+    "evidenceKey": "story-kinds-coached-v1/story-clue/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "0b085286-ef3e-45aa-add6-84e5632dd20c",
+        "flowId": "story-kinds-v1",
+        "phase": 0,
+        "scene": 2,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  },
+  {
+    "id": "big-kid-words",
+    "scene": "c-1-choose-on",
+    "question": "Where is the acorn?",
+    "choice": "on",
+    "evidenceKey": "big-kid-words-acorn/c-1-choose-on/answer",
+    "state": {
+      "lesson": {
+        "version": 1,
+        "sessionId": "175f1c7a-786d-4236-b91e-80b6d07f330f",
+        "flowId": "big-kid-words-v1",
+        "phase": 0,
+        "scene": 2,
+        "evidence": {},
+        "finished": false,
+        "warmupDone": true,
+        "warmupAwarded": 5
+      }
+    }
+  }
+]

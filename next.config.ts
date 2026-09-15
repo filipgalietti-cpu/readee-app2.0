@@ -16,6 +16,14 @@ buildCurriculumManifest({ quiet: true });
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Optional, versioned public asset release. Authoring/local QA use public/ unchanged.
+  async rewrites() {
+    const base=process.env.APPROVED_UNIT_ASSET_BASE?.replace(/\/+$/, "");
+    if(!base)return [];
+    const url=new URL(base);
+    if(url.protocol!=="https:" || url.username || url.password || url.search || url.hash) throw new Error("APPROVED_UNIT_ASSET_BASE must be a public HTTPS directory");
+    return {beforeFiles:[{source:"/lesson-studio/:path*",destination:`${base}/lesson-studio/:path*`}],afterFiles:[],fallback:[]};
+  },
   // Several client components (BookWizard, LeveledWizard, LessonWizard,
   // AssignmentWizard, AskReadeeWizard, ParentLetterEditor, etc.)
   // import a credit-estimator helper or a TypeScript type from a

@@ -1,0 +1,10 @@
+/release-assets/
+/release-code/
+/public/lesson-studio/
+/docs/integration/evidence/
+/lesson-shots*/
+/scratch_dl/
+/mcq-audit/
+/ph/
+/*.tsbuildinfo
+/.env*

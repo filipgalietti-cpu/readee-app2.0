@@ -1,0 +1,100 @@
+.le-print-page {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(16px, 2vw, 24px);
+  background: #fffef8;
+  border: 2px solid #d9d4bd;
+  border-left: 8px solid #938663;
+  border-radius: 5px 14px 14px 5px;
+  box-shadow: 0 5px 0 #ddd8c5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(16px, 2vh, 20px);
+}
+.le-print-line {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.le-frame .le-print-position {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(24px, 3.1vw, 32px);
+  line-height: 1.25;
+  font-weight: 650;
+  min-height: 48px;
+  padding: 4px 3px;
+  color: #29252e;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+}
+button.le-print-position {
+  min-width: 44px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.le-print-space {
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+}
+.le-print-position:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 2px;
+}
+.le-print-position.is-marker {
+  border-bottom: 4px solid #6e5bff;
+}
+.le-print-position.is-marker::after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 7px solid #6e5bff;
+}
+.le-print-position.is-correct {
+  color: #196b36;
+  background: #e3f4e8;
+  border-color: #399b59;
+}
+.le-print-position.is-retry {
+  border-color: #ba863b;
+  background: #fff4de;
+}
+.le-frame .le-print-position:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.le-print-page .le-word-active {
+  color: #6e5bff;
+  background: #eee9ff;
+}
+.le-print-tools {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+@media (max-width: 640px) {
+  .le-print-page {
+    padding: 16px 8px;
+    border-left-width: 5px;
+  }
+  .le-print-line {
+    gap: 1px;
+  }
+  .le-frame .le-print-position {
+    font-size: 24px;
+  }
+}
+.le-print-replay {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:2px solid #c4b5e2;border-radius:14px;padding:8px 14px;background:#fffef8;color:#584395;font-size:17px;font-weight:700;cursor:pointer;}
+.le-print-replay:focus-visible {outline:3px solid #6e5bff;outline-offset:3px;}

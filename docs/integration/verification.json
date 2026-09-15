@@ -1,0 +1,52 @@
+{
+  "baseCommit": "c0f77ed8aed5c3a0ae92e65e4b5171885ec8a591",
+  "branch": "codex/k-unit-one-release",
+  "productionBuild": "passed: Node 24.21.0 / Next 16.3.4 / Turbopack / 8 GB heap / 738 static pages",
+  "typecheck": "passed",
+  "eslint": "new integration/security/routing/tests passed scoped lint; broader touched/imported-source lint has inherited React-hook and dashboard errors (see lint-baseline.json); not a clean overall lint claim",
+  "unitTests": 779,
+  "unitTestFiles": 93,
+  "database": "passed: actual local PGlite PostgreSQL engine, not remote Supabase",
+  "browser": {
+    "passed": true,
+    "checks": [
+      "authenticated unit index",
+      "eight lesson links",
+      "exam locked",
+      "existing free and paid entitlements enforced",
+      "cross-family reader rejected",
+      "real player mounted",
+      "real save endpoint to SQL",
+      "reopening retains session",
+      "no preview localStorage",
+      "eight real lesson choices persisted",
+      "visible question images loaded and no lesson asset HTTP errors",
+      "letter choices fit 390px and 768px viewports",
+      "exam unlock after eight completions",
+      "objective letter server verdict and signed receipt",
+      "cross-package rubric rejected",
+      "missing Azure configuration stays unavailable"
+    ],
+    "rpcCalls": [
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "save_approved_unit",
+      "reserve_unit_service",
+      "reserve_unit_service"
+    ]
+  },
+  "liveAzureOnReleaseBranch": "not tested",
+  "remoteSchemaMetadata": "existing dependencies present; new tables absent; no family rows read",
+  "stagingDatabase": "not yet identified; existing Vercel preview shares production Supabase",
+  "featureEnabledInProduction": false,
+  "migrationAppliedRemotely": false,
+  "assetsUploaded": false,
+  "deployed": false,
+  "productionReady": false
+}

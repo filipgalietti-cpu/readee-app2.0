@@ -4,6 +4,8 @@ import type { PracticeRow, LessonProgRow } from "./next-lesson";
 
 export type JourneySnapshot = {
   child: Child;
+  approvedUnitEnabled?: boolean;
+  completedStandards?: string[];
   result: PlacementResult | null;
   practice: PracticeRow[];
   lessonProgress: LessonProgRow[];

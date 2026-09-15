@@ -1,0 +1,276 @@
+.lantern-studio .le-frame {
+  background: #f7f1e3;
+}
+.lantern-studio .le-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.lantern-scene {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 22px;
+}
+.lantern-world {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 4vw, 55px);
+  position: relative;
+}
+.lantern-wire {
+  position: absolute;
+  top: 12%;
+  left: 5%;
+  right: 5%;
+  height: 12%;
+  border-bottom: 3px solid #7b6847;
+  border-radius: 0 0 50% 50%;
+}
+.lantern-hanging {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 0 1 190px;
+  max-width: 30%;
+}
+.lantern-handle {
+  width: 34px;
+  height: 30px;
+  border: 3px solid #7b6847;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+.lantern-paper {
+  background: #fff5ca;
+  border: 3px solid #ac864c;
+  border-radius: 24%;
+  width: 100%;
+  aspect-ratio: 1.12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 10px 0 #ebdca2,
+    inset -10px 0 #ebdca2,
+    0 9px 0 #e8ddc5;
+}
+.lantern-glyph {
+  font-family: Arial, sans-serif;
+  font-size: clamp(60px, 8vw, 108px);
+  line-height: 1;
+  color: #342747;
+}
+.lantern-world[data-print-size="small"] .lantern-glyph {
+  font-size: clamp(40px, 5vw, 60px);
+}
+.lantern-world[data-print-size="large"] .lantern-glyph {
+  font-size: clamp(85px, 10vw, 132px);
+}
+.lantern-tail {
+  width: 10px;
+  height: 30px;
+  border-left: 4px solid #b17b3b;
+  border-right: 4px solid #b17b3b;
+  margin-top: 5px;
+}
+.lantern-studio .le-demonstration .le-swap-sentence {
+  display: none;
+}
+.lantern-studio .le-options {
+  justify-content: center;
+}
+.lantern-studio .le-choose .le-tile {
+  font-family: Arial, sans-serif;
+  font-size: clamp(38px, 5vw, 66px);
+}
+.lantern-studio .le-sort-card {
+  font-family: Arial, sans-serif;
+  font-size: clamp(34px, 4vw, 48px);
+}
+.lantern-studio .le-sort-homes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.lantern-studio .le-match .le-pair-board .grid button > span {
+  font-family: Arial, sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+}
+.lantern-studio .le-response > .le-sentence {
+  display: none;
+}
+.lantern-studio .le-answer-photo,
+.lantern-studio .le-response-photo {
+  object-fit: contain;
+  background: #f7f1e3;
+}
+.lantern-studio .stone-match {
+  background-color: #343e35;
+}
+@media (max-width: 600px) {
+  .lantern-hanging {
+    max-width: 32%;
+  }
+  .lantern-glyph {
+    font-size: 48px;
+  }
+  .lantern-handle {
+    height: 19px;
+  }
+  .lantern-tail {
+    height: 18px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lantern-hanging {
+    animation: lantern-settle 0.5s ease-out;
+  }
+  @keyframes lantern-settle {
+    from {
+      transform: translateY(-8px);
+      opacity: 0.7;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+/* Keep the whole painted scene and the explicit Check control in the frame. */
+.lantern-studio .le-welcome .le-cover.pip-opening-art {
+  object-fit: contain;
+}
+.lantern-studio .le-pair-board .grid button.le-pair-card {
+  height: 56px;
+  min-height: 56px;
+  padding: 5px 30px 5px 12px;
+  line-height: 1;
+}
+.lantern-studio .le-match .le-pair-board .grid button > span {
+  font-size: 36px;
+  line-height: 1;
+}
+.lantern-studio .le-pairing > .relative > .grid > div {
+  gap: 8px;
+}
+.lantern-studio .le-pair-board > .le-check-matches {
+  margin-top: 8px;
+  min-height: 44px;
+}
+.lantern-studio .le-match .le-feedback {
+  font-size: 18px;
+  line-height: 1.3;
+  min-height: 0;
+  margin: 4px 0;
+}
+@media (max-height: 500px) and (min-width: 640px) {
+  .lantern-studio .le-welcome h1 {
+    font-size: 34px;
+    line-height: 1.08;
+  }
+  .lantern-studio .le-welcome .le-primary {
+    margin-top: 12px;
+  }
+}
+.lantern-hanging[data-lit="false"] .lantern-paper {
+  background: #eee9db;
+  box-shadow:
+    inset 8px 0 #e1dbcb,
+    inset -8px 0 #e1dbcb;
+}
+.lantern-hanging[data-lit="true"] .lantern-paper {
+  box-shadow:
+    inset 10px 0 #ebdca2,
+    inset -10px 0 #ebdca2,
+    0 0 24px #e9c56d44;
+}
+.lantern-studio .le-picture-only {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lantern-studio .le-picture-only .le-stimulus-picture {
+  width: 100%;
+  height: 100%;
+  max-height: 260px;
+  margin: 0;
+  object-fit: contain;
+}
+@media (max-width: 640px) {
+  .lantern-studio .le-picture-only .le-stimulus-picture {
+    height: 155px;
+  }
+}
+
+/* Whole lamps, clear letter forms, and a garden that feels lit from within. */
+.lantern-world { min-height:0; padding:10px 16px; isolation:isolate; }
+.lantern-canopy { display:flex; justify-content:center; align-items:center; gap:16px; width:100%; height:100%; min-height:0; }
+.lantern-world .lantern-hanging { flex:0 1 180px; max-width:46%; min-width:0; height:100%; max-height:310px; animation:none; }
+.lantern-lamp { display:block; width:100%; height:calc(100% - 30px); min-height:0; overflow:visible; }
+.lantern-form-label { font-size:clamp(15px,1.7vw,20px); font-weight:800; color:#675138; line-height:1.5; }
+.lantern-hanging[data-lit="false"] .lantern-lamp { opacity:.65; }
+.lantern-letter-stroke { transition:stroke .15s ease; }
+.lantern-celebration { border-radius:24px; padding:16px 20px; min-height:180px; }
+.lantern-celebration-backdrop { position:absolute; inset:0; width:100%;height:100%;object-fit:cover;z-index:-1;border-radius:24px;filter:brightness(.6); }
+.lantern-celebration .lantern-canopy { gap:8px; }
+.lantern-celebration .lantern-hanging { max-width:31%; max-height:270px; }
+.lantern-celebration .lantern-lamp { height:100%; }
+.lantern-studio [data-scene="ready"] .le-visual { overflow:visible; }
+.lantern-studio [data-scene="alphabet-partners"] .le-demonstration .le-options { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:7px; width:100%; }
+.lantern-studio [data-scene="alphabet-partners"] .le-demonstration .le-tile { padding:7px 3px; min-height:48px; font:26px/1.1 Arial,sans-serif; white-space:nowrap; }
+.lantern-studio [data-scene="alphabet-partners"] .le-explored { font-size:11px; }
+.lantern-studio .le-choose .le-option .le-tile { display:flex; align-items:center; justify-content:center; }
+@media(max-width:640px) {
+ .lantern-studio .le-stage.le-with-visual { grid-template-rows:auto minmax(110px, .8fr) minmax(0,1.2fr); }
+ .lantern-world { padding:4px 12px; }
+ .lantern-world .lantern-hanging { max-height:200px; }
+ .lantern-form-label { font-size:15px; }
+ .lantern-studio [data-scene="alphabet-partners"] .le-stage { grid-template-rows:auto minmax(100px,.7fr) minmax(0,2fr); gap:6px; }
+ .lantern-studio [data-scene="alphabet-partners"] .le-demonstration { gap:6px; }
+ .lantern-studio [data-scene="alphabet-partners"] .le-demonstration .le-options { grid-template-columns:repeat(6,minmax(0,1fr)); gap:5px; }
+ .lantern-studio [data-scene="alphabet-partners"] .le-demonstration .le-tile { min-height:44px; font-size:20px; }
+ .lantern-studio .le-choose .le-option .le-tile { min-height:60px; font-size:40px; }
+ .lantern-celebration { min-height:150px; }
+}
+@media(prefers-reduced-motion:no-preference) {
+ .lantern-hanging[data-lit="true"] .lantern-light { animation:lantern-glow 4.7s ease-in-out infinite; animation-delay:var(--lantern-delay); }
+ @keyframes lantern-glow { 0%,100%{opacity:.55} 24%{opacity:.78} 40%{opacity:.64} 66%{opacity:.9} 82%{opacity:.72} }
+}
+
+/* Letter introductions are teaching displays: the forms own the main stage. */
+.lantern-studio [data-scene^="meet-"] .le-stage.le-with-visual {
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto minmax(0,1fr) auto;
+  gap:8px;
+}
+.lantern-studio [data-scene^="meet-"] .le-visual { width:100%; }
+.lantern-studio [data-scene^="meet-"] .lantern-world { padding:0; }
+.lantern-studio [data-scene^="meet-"] .lantern-canopy { gap:clamp(16px,6vw,90px); }
+.lantern-studio [data-scene^="meet-"] .lantern-hanging { flex:0 1 350px; max-width:45%; max-height:none; }
+.lantern-studio [data-scene^="meet-"] .lantern-lamp { height:calc(100% - 32px); }
+.lantern-studio [data-scene^="meet-"] .lantern-form-label { font-size:clamp(18px,2vw,24px); }
+.lantern-studio [data-scene^="meet-"] .le-interaction { overflow:visible; padding:0 6px 6px; }
+.lantern-studio [data-scene^="meet-"] .le-demonstration { max-width:660px; gap:6px; }
+.lantern-studio [data-scene^="meet-"] .le-demonstration .le-tile { min-height:52px; padding:10px 16px; }
+@media(max-width:640px) {
+ .lantern-studio [data-scene^="meet-"] .lantern-hanging { max-width:48%; }
+ .lantern-studio [data-scene^="meet-"] .lantern-canopy { gap:8px; }
+ .lantern-studio [data-scene^="meet-"] .le-demonstration .le-tile { font-size:22px; }
+}
+
+/* Explicit single-target dimensions prevent percentage-height collapse. */
+.lantern-studio [data-scene^="guided-"] .lantern-hanging { flex:0 1 290px; max-width:90%; height:360px; max-height:100%; }
+.lantern-studio [data-scene^="guided-"] .lantern-lamp { flex:1 1 0; width:100%; min-height:0; height:auto; }
+@media(max-width:640px) {
+ .lantern-studio [data-scene^="guided-"] .le-stage.le-with-visual { grid-template-rows:auto minmax(280px,1fr) auto; }
+ .lantern-studio [data-scene^="guided-"] .lantern-hanging { height:280px; }
+ .lantern-studio [data-scene^="guided-"] .le-choose .le-option .le-tile { padding:4px 52px 4px 12px; min-height:64px; }
+}

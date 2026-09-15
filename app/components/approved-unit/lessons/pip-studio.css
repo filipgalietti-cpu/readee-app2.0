@@ -1,0 +1,904 @@
+.pip-studio {
+  height: 100dvh;
+  background: #faf8ff;
+}
+.pip-tree {
+  width: min(100%, 680px);
+  height: auto;
+  max-height: 28dvh;
+  overflow: visible;
+}
+.pip-studio .le-cover,
+.pip-studio .le-welcome > svg {
+  width: min(58vw, 670px);
+  max-height: 50dvh;
+}
+.pip-studio .le-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pip-stage-bird {
+  transform: translate(328px, 270px);
+}
+.pip-fly .pip-stage-bird,
+.pip-find .pip-stage-bird,
+.pip-who .pip-stage-bird,
+.pip-where .pip-stage-bird {
+  transform: translate(416px, 164px);
+}
+.pip-fly .pip-stage-bird {
+  animation: pip-fly 1.3s ease-out both;
+}
+.pip-eat .pip-stage-bird {
+  transform: translate(436px, 166px);
+  animation: pip-peck 900ms ease-in-out both;
+}
+.pip-find .pip-stage-bug {
+  animation: pip-bug 1s ease-in-out 2;
+}
+.pip-place-ring {
+  stroke-dasharray: 500;
+  animation: pip-ring 1.2s ease-out both;
+}
+@keyframes pip-fly {
+  0% {
+    transform: translate(190px, 270px) rotate(-9deg);
+  }
+  50% {
+    transform: translate(302px, 110px) rotate(7deg);
+  }
+  100% {
+    transform: translate(416px, 164px);
+  }
+}
+@keyframes pip-peck {
+  0%,
+  100% {
+    transform: translate(436px, 166px);
+  }
+  50% {
+    transform: translate(440px, 173px) rotate(12deg);
+  }
+}
+@keyframes pip-bug {
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes pip-ring {
+  from {
+    stroke-dashoffset: 500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.le-storybook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 800px);
+}
+.le-story-text {
+  font-size: clamp(23px, 3vw, 36px);
+  line-height: 1.4;
+  text-align: center;
+  color: #57438f;
+  font-weight: 750;
+  max-width: 760px;
+}
+.le-story-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.le-story-controls > button:not(.le-primary) {
+  padding: 12px;
+  border: 2px solid #dfd5ee;
+  border-radius: 50%;
+  background: #fff;
+}
+.le-story-controls button:disabled {
+  opacity: 0.35;
+}
+.le-story-picture {
+  max-height: 20dvh;
+  object-fit: contain;
+}
+.le-sequence-picture {
+  display: block;
+  width: clamp(55px, 8vw, 105px);
+  height: clamp(55px, 8vw, 105px);
+  object-fit: contain;
+  margin: 0 auto 6px;
+}
+.le-practice-story {
+  text-align: center;
+}
+.le-practice-story > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #6b5198;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px;
+}
+.le-practice-story > p {
+  font-size: clamp(17px, 2vw, 23px);
+  line-height: 1.4;
+  max-width: 740px;
+  margin: 10px auto;
+  color: #57438f;
+}
+.pip-studio .le-sequence .le-slot {
+  min-width: 100px;
+}
+.pip-studio .le-option .le-tile img {
+  width: 110px;
+  height: 100px;
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  .pip-tree {
+    max-height: 22dvh;
+  }
+  .pip-studio .le-welcome {
+    flex-direction: column;
+  }
+  .pip-studio .le-welcome > svg {
+    width: 100%;
+    max-height: 30dvh;
+  }
+  .pip-studio .le-sequence .le-slot {
+    min-width: 75px;
+  }
+  .pip-studio .le-option .le-tile img {
+    width: 75px;
+    height: 75px;
+  }
+  .le-storybook {
+    gap: 8px;
+  }
+  .le-story-text {
+    font-size: 23px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pip-tree * {
+    animation: none !important;
+  }
+}
+/* V2: a scene and story cards, rather than small pictures inserted in word pills. */
+.pip-studio .le-frame {
+  --le-purple: #6e5bff;
+  --le-border: #e2dbea;
+  background: #faf8ff;
+}
+.pip-studio .le-footer {
+  grid-template-columns: 140px minmax(70px, 1fr) auto;
+  gap: 28px;
+  min-height: 138px;
+  border: 0;
+  padding-top: 4px;
+}
+.pip-studio .le-bunny {
+  width: 144px;
+  height: 146px;
+  grid-row: auto;
+  position: relative;
+  inset: auto;
+  margin: 0;
+}
+.pip-studio .le-narrator {
+  justify-content: flex-start;
+  min-width: 70px;
+}
+.pip-studio .le-frame:has(.le-reading) .le-narrator {
+  visibility: hidden;
+}
+.pip-studio .le-option {
+  display: grid;
+  grid-template-columns: 1fr 46px;
+  background: white;
+  border: 2px solid #e2dbea;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 5px 0 #e2dbea;
+  max-width: 310px;
+  min-width: 0;
+  flex: 1 1 0;
+}
+.pip-studio .le-option .le-tile {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px 8px;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  font-size: 26px;
+  line-height: 1.18;
+  min-height: 0;
+  border-radius: 0;
+}
+.pip-studio .le-option .le-choice-art {
+  width: 100%;
+  height: 140px;
+  max-width: 250px;
+  object-fit: contain;
+}
+.pip-studio .le-option .le-listen {
+  grid-column: 2;
+  justify-self: stretch;
+  width: 44px;
+  min-height: 42px;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 12px 0 0 0;
+  padding: 6px;
+  margin: 0;
+}
+.pip-studio .le-option .le-listen:hover {
+  background: #f2eefa;
+}
+.pip-studio .le-option:has(.is-correct) {
+  border-color: #8cab91;
+  background: #f0f7ef;
+  box-shadow: 0 5px 0 #8cab91;
+}
+.pip-studio .le-option:has(.is-retry) {
+  border-color: #d0b993;
+  background: #fffaf0;
+  box-shadow: 0 5px 0 #d0b993;
+}
+.pip-studio .le-option.le-option-reading {
+  border-color: #9b8acb;
+  background: #f3effc;
+  box-shadow:
+    0 0 0 2px #e2d9f4,
+    0 5px 0 #9b8acb;
+}
+.pip-studio .le-options {
+  width: 100%;
+  max-width: 940px;
+  gap: 18px;
+  flex-wrap: nowrap;
+}
+.pip-studio .le-demonstration .le-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+.pip-studio .le-demonstration .le-options:has(> .le-tile:nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 620px;
+  margin-inline: auto;
+}
+.pip-studio .le-demonstration .le-tile {
+  min-width: 0;
+  padding: 14px 8px;
+  font-size: clamp(21px, 2.2vw, 28px);
+}
+.pip-studio .le-choose .le-feedback {
+  max-width: 850px;
+  font-size: 19px;
+}
+.pip-studio .le-answer-photo {
+  height: 230px;
+  max-height: 30dvh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+}
+.pip-studio .le-answer-reveal {
+  width: min(100%, 780px);
+  align-items: center;
+}
+.pip-studio .le-answer-card {
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  border-color: #d6e4d3;
+  font-size: 24px;
+}
+.pip-studio .le-story-text {
+  background: #fff;
+  border: 2px solid #e3dcee;
+  border-radius: 22px;
+  padding: 20px 25px;
+  box-shadow: 0 5px 0 #e8e1f0;
+  color: #5a448a;
+}
+.pip-studio .le-picture-sequence {
+  width: 100%;
+  max-width: 980px;
+  gap: 14px;
+  min-height: 0;
+}
+.pip-studio .le-picture-sequence .le-sequence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  gap: 14px;
+}
+.pip-studio .le-picture-sequence .le-slot {
+  width: auto;
+  min-width: 0;
+  min-height: 84px;
+  border-radius: 18px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pip-studio .le-picture-sequence .le-slot > button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 22px;
+  line-height: 1.15;
+  padding: 4px;
+  border: 0;
+  background: none;
+  min-height: 0;
+}
+.pip-studio .le-picture-sequence .le-slot > span:first-child {
+  font-size: 12px;
+  line-height: 1;
+  color: #8e7ca3;
+}
+.pip-studio .le-picture-sequence .le-slot-hint {
+  font-size: 13px;
+}
+.pip-studio .le-picture-sequence .le-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.pip-studio .le-picture-sequence .le-options > .le-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px 7px;
+  font-size: 22px;
+  line-height: 1.2;
+  border-radius: 20px;
+  box-shadow: 0 4px 0 #e2dbea;
+  background: #fff;
+  white-space: normal;
+}
+.pip-studio .le-sequence-picture {
+  width: 100%;
+  height: 105px;
+  max-width: 200px;
+  margin: 0;
+}
+.pip-studio .le-slot .le-sequence-picture {
+  height: 65px;
+}
+.pip-studio .le-story-result {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 810px);
+}
+.pip-studio .le-story-pill {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 12px;
+  background: white;
+  border: 2px solid #e2dbea;
+  border-radius: 22px;
+  font-size: clamp(20px, 2.3vw, 29px);
+  line-height: 1.25;
+  padding: 8px 18px;
+  box-shadow: 0 4px 0 #e8e1f0;
+  color: #594184;
+}
+.pip-studio .le-story-pill img {
+  width: 110px;
+  height: 80px;
+  object-fit: contain;
+}
+.pip-studio .le-part-number {
+  color: #9b8bb5;
+  font-size: 14px;
+}
+.pip-studio .le-story-pill.is-reading,
+.pip-studio .le-passage-pill.is-reading {
+  border-color: #9986cb;
+  background: #f3effc;
+}
+.pip-studio .le-story-result + .le-feedback:empty {
+  display: none;
+}
+.pip-studio .le-reading {
+  gap: 18px;
+  max-width: 790px;
+}
+.pip-studio .le-reading > .le-sentence {
+  background: white;
+  border: 2px solid #e2dbea;
+  border-radius: 24px;
+  padding: 20px 28px;
+  color: #6e5bff;
+  box-shadow: 0 5px 0 #e8e1f0;
+  font-size: clamp(29px, 4vw, 44px);
+}
+.pip-studio .le-mic {
+  gap: 20px;
+}
+.pip-studio .le-stage:has(.le-passage) {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 10px;
+}
+.pip-studio .le-passage {
+  width: min(100%, 920px); margin: auto; padding: 10px 18px 14px;
+  background: #fff; border: 1.5px solid #e2dbea; border-radius: 20px;
+}
+.pip-studio .le-passage-label {
+  display: flex; align-items: center; justify-content: space-between;
+  color: #7b6a91; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+}
+.pip-studio .le-passage-label button { min-height: 36px; min-width: 44px; padding: 4px; border: 0; background: none; }
+.pip-studio .le-passage-text { color: #5a448a; font-size: clamp(18px, 1.9vw, 24px); line-height: 1.5; font-weight: 650; text-align: left; }
+.pip-studio .le-passage-sentence { display: inline; }
+.pip-practice .le-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 920px;
+}
+.pip-practice .le-option {
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  box-shadow: 0 3px 0 #e2dbea;
+  border-radius: 18px;
+  align-items: center;
+}
+.pip-practice .le-option .le-tile {
+  grid-column: 1;
+  font-size: 21px;
+  min-height: 63px;
+  padding: 10px 12px;
+  text-align: left;
+  align-items: flex-start;
+}
+.pip-practice .le-option .le-listen {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 44px;
+  min-width: 44px;
+  width: 44px;
+  margin: 0;
+}
+.pip-practice .le-answer-photo {
+  height: 210px;
+  max-height: 27dvh;
+  object-fit: cover;
+  width: min(100%, 600px);
+}
+.pip-studio .pip-stage-bird {
+  transform: translate(328px, 261px);
+}
+.pip-studio .pip-fly .pip-stage-bird,
+.pip-studio .pip-find .pip-stage-bird,
+.pip-studio .pip-who .pip-stage-bird,
+.pip-studio .pip-where .pip-stage-bird {
+  transform: translate(419px, 151px);
+}
+.pip-studio .pip-eat .pip-stage-bird {
+  transform: translate(431px, 151px);
+}
+@media (max-width: 767px) {
+  .pip-studio .le-footer {
+    grid-template-columns: 96px 64px minmax(0, 1fr);
+    gap: 9px;
+    min-height: 112px;
+    align-items: center;
+  }
+  .pip-studio .le-bunny {
+    width: 96px;
+    height: 112px;
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .pip-studio .le-narrator {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .pip-studio .le-navigation {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .pip-studio .le-navigation button {
+    font-size: 12px;
+    padding: 6px 9px;
+    min-height: 42px;
+  }
+  .pip-studio .le-navigation .le-primary {
+    flex-basis: 100%;
+  }
+  .pip-studio .le-options {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pip-studio .le-option {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 1fr 44px;
+    border-radius: 18px;
+    max-width: 100%;
+    box-shadow: 0 3px 0 #e2dbea;
+  }
+  .pip-studio .le-option .le-tile {
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 95px 1fr;
+    padding: 4px 7px;
+    gap: 8px;
+    font-size: 23px;
+    text-align: left;
+    min-height: 84px;
+  }
+  .pip-studio .le-option .le-choice-art {
+    width: 95px;
+    height: 76px;
+  }
+  .pip-studio .le-option .le-listen {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+  }
+  .pip-studio .le-picture-sequence .le-options {
+    gap: 7px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .pip-studio .le-picture-sequence .le-options > .le-tile {
+    font-size: 18px;
+    padding: 7px 3px;
+    min-height: 150px;
+    justify-content: flex-start;
+  }
+  .pip-studio .le-picture-sequence .le-sequence {
+    gap: 7px;
+  }
+  .pip-studio .le-picture-sequence .le-slot {
+    min-height: 95px;
+  }
+  .pip-studio .le-picture-sequence .le-slot > button {
+    font-size: 17px;
+  }
+  .pip-studio .le-sequence-picture {
+    height: 80px;
+  }
+  .pip-studio .le-slot .le-sequence-picture {
+    height: 53px;
+  }
+  .pip-studio .le-story-text {
+    font-size: 25px;
+    padding: 14px 17px;
+  }
+  .pip-studio .le-story-pill {
+    font-size: 21px;
+    padding: 10px 9px;
+    gap: 7px;
+  }
+  .pip-studio .le-story-pill img {
+    width: 65px;
+    height: 65px;
+  }
+  .pip-studio .le-story-result {
+    gap: 12px;
+  }
+  .pip-studio .le-reading > .le-sentence {
+    font-size: 30px;
+    padding: 18px 16px;
+  }
+  .pip-studio .le-reading .le-feedback {
+    font-size: 16px;
+  }
+  .pip-studio .le-choose .le-feedback {
+    font-size: 17px;
+  }
+  .pip-practice .le-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .pip-practice .le-option .le-tile {
+    display: flex;
+    font-size: 17px;
+    min-height: 84px;
+    padding: 7px 8px;
+    line-height: 1.2;
+  }
+  .pip-practice .le-option {
+    grid-template-columns: minmax(0, 1fr) 44px;
+  }
+  .pip-practice .le-option .le-listen {
+    width: 44px;
+    padding: 4px;
+  }
+  .pip-studio .le-passage-pill {
+    font-size: 17px;
+    line-height: 1.3;
+    padding: 7px 11px;
+  }
+  .pip-studio .le-answer-card {
+    font-size: 23px;
+  }
+  .pip-studio .le-frame:has(.le-party) .le-footer {
+    grid-template-columns: 1fr;
+    min-height: 60px;
+  }
+  .pip-studio .le-frame:has(.le-party) .le-narrator {
+    grid-column: 1;
+    justify-content: center;
+  }
+}
+@keyframes pip-fly {
+  0% {
+    transform: translate(200px, 261px) rotate(-9deg);
+  }
+  45% {
+    transform: translate(305px, 97px) rotate(6deg);
+  }
+  100% {
+    transform: translate(419px, 151px);
+  }
+}
+@keyframes pip-peck {
+  0%,
+  100% {
+    transform: translate(419px, 151px);
+  }
+  50% {
+    transform: translate(415px, 140px) rotate(65deg);
+  }
+}
+.pip-fly .pip-wing {
+  transform-origin: -8px -16px;
+  animation: pip-wingbeat 0.28s ease-in-out 4 alternate;
+}
+.pip-who .pip-bird {
+  filter: drop-shadow(0 0 6px #ad9ad0);
+}
+@keyframes pip-wingbeat {
+  to {
+    transform: rotate(-32deg);
+  }
+}
+/* A cinematic opening at the same scale as the Pond reference. */
+.pip-studio .le-frame:has(.le-welcome) {
+  grid-template-rows: 4px 48px minmax(0, 1fr) 96px;
+}
+.pip-studio .le-welcome {
+  width: 100%;
+  max-width: 1200px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(240px, 1fr);
+  gap: 35px;
+  padding: 0 12px;
+}
+.pip-studio .le-welcome .pip-opening-art {
+  width: 100%;
+  height: min(60dvh, 560px);
+  max-height: 60dvh;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 24px;
+}
+.pip-studio .le-frame:has(.le-welcome) .le-footer {
+  min-height: 90px;
+}
+.pip-studio .le-frame:has(.le-welcome) .le-bunny {
+  height: 94px;
+  width: 94px;
+}
+@media (max-width: 767px) {
+  .pip-studio .le-welcome {
+    grid-template-columns: 1fr;
+    gap: 17px;
+    text-align: center;
+    padding: 0;
+  }
+  .pip-studio .le-welcome .pip-opening-art {
+    height: 34dvh;
+    max-height: 330px;
+    border-radius: 19px;
+  }
+  .pip-studio .le-welcome h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+  .pip-studio .le-welcome-actions {
+    justify-content: center;
+  }
+  .pip-studio .le-welcome .le-primary {
+    margin-top: 12px;
+  }
+  .pip-studio .le-frame:has(.le-welcome) {
+    grid-template-rows: 4px 40px minmax(0, 1fr) 96px;
+  }
+}
+
+.pip-studio .le-option .le-choice-art img { width: 100%; height: 100%; max-width: 100%; object-fit: contain; }
+/* The revealed photo shares the remaining height with the explanation. */
+.pip-practice .le-interaction:has(.le-answer-reveal) { align-items: stretch; }
+.pip-practice .le-choose:has(.le-answer-reveal) { height: 100%; min-height: 0; gap: 8px; }
+.pip-practice .le-answer-reveal { flex: 1; min-height: 0; gap: 8px; }
+.pip-practice .le-answer-photo { flex: 1; min-height: 0; height: 0; max-height: min(42dvh, 340px); object-fit: contain; }
+.pip-practice .le-answer-card { flex-shrink: 0; padding: 8px 12px; }
+.pip-practice .le-answer-card p { font-size: clamp(21px, 2.3vw, 28px); line-height: 1.2; }
+.pip-practice .le-choose .le-feedback { flex-shrink: 0; font-size: 16px; line-height: 1.3; }
+.pip-practice .le-pair-board { width: min(100%, 780px); }
+.pip-practice .le-pair-board button { background: white; color: #57438f; border: 2px solid #e2dbea; border-radius: 16px; font-size: clamp(18px, 2vw, 24px); min-height: 56px; box-shadow: 0 3px 0 #e2dbea; }
+.pip-practice .le-pair-board button:focus-visible { outline: 3px solid #6e5bff; outline-offset: 2px; }
+.pip-practice .le-pair-board button[class*="ring-2"] { background: #ede9fe; border-color: #6e5bff; }
+.pip-practice .le-match:has(.le-answer-reveal) { height: 100%; min-height: 0; gap: 8px; }
+.pip-practice .le-match .le-feedback { flex-shrink: 0; font-size: 16px; line-height: 1.3; }
+.pip-practice .le-sequence { gap: 10px; flex-wrap: nowrap; width: 100%; }
+.pip-practice .le-slot { flex: 1; min-width: 0; }
+.pip-practice .le-slot button { font-size: clamp(17px, 2vw, 23px); }
+.pip-practice .le-activity > .le-options:not(:has(.le-option)) { display: flex; flex-wrap: nowrap; }
+.pip-practice .le-activity > .le-options > .le-tile { flex: 1; font-size: clamp(17px, 2vw, 23px); padding: 10px; }
+@media(max-width: 600px) { .pip-practice .le-pair-board button { font-size: 17px; padding: 8px; min-height: 54px; } .pip-practice .le-sequence { gap: 6px; } .pip-practice .le-slot { min-height: 94px; } }
+
+/* Keep the complete ordering board reachable above the footer. Centering an
+   oversized activity otherwise clips its first drop targets above the scroll area. */
+.pip-practice .le-interaction { align-items: safe center; }
+.pip-practice .le-activity:has(.le-sequence) { gap: 8px; }
+.pip-practice .le-activity > .le-feedback:empty { display: none; }
+.pip-practice .le-sequence .le-slot { min-height: 72px; }
+.pip-practice .le-stage:has(.le-sequence) .le-passage-pill { padding-block: 4px; }
+.pip-practice .le-activity:has(.le-sequence) .le-tile { line-height: 1.2; }
+.pip-practice .le-sequence .le-slot button { line-height: 1.15; padding: 4px; }
+.pip-practice .le-activity:has(> .le-answer-reveal) { height: 100%; min-height: 0; gap: 8px; }
+.pip-practice .le-activity:has(> .le-answer-reveal) > .le-feedback { flex-shrink: 0; font-size: 16px; line-height: 1.3; }
+
+/* A child can hear every connected card and chooses when to reveal the result. */
+.pip-practice .le-check-matches { display: flex; margin: 10px auto 0; background: var(--le-purple); border-color: var(--le-purple); color: white; min-height: 44px; font-size: 17px; box-shadow: none; }
+.pip-practice .le-stage:has(.le-match) .le-passage-pill { padding-block: 4px; }
+.pip-practice .le-pair-board > div button { line-height: 1.2; padding-block: 8px; min-height: 48px; }
+.pip-practice .le-pair-board > .le-check-matches { margin-top: 8px; padding: 8px 16px; background: var(--le-purple); border-color: var(--le-purple); color: white; font-size: 17px; line-height: 1.2; min-height: 44px; box-shadow: none; }
+.pip-practice .le-pair-board > div > .relative > .grid > div { gap: 8px; }
+
+/* Shared reading fit: successful word highlights must leave room for praise.
+   Houses' proven compact layout also applies to Pip's final Luna turns. */
+@media (max-width: 767px) {
+  .pip-studio .le-reading .le-sentence { padding: 14px 18px; }
+  .pip-studio .le-reading .le-feedback { font-size: 14px; line-height: 1.3; min-height: 0; }
+}
+@media (min-width: 768px) {
+  .pip-studio .le-reading .le-sentence { font-size: clamp(28px, 3vw, 36px); padding: 14px 20px; }
+  .pip-studio .le-reading .le-feedback { font-size: 17px; line-height: 1.3; margin: 0; min-height: 0; }
+}
+/* Match cards reach the board edge. Hover feedback must not crop their labels. */
+.pip-practice .le-pair-board button:hover { transform: none; scale: 1; border-color: #a08ccf; }
+/* Long listening passages and answer rows need their own columns on short laptops. */
+@media (min-width: 1024px) and (max-height: 800px) {
+ .pip-practice .le-stage:has(.le-passage-long) { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); grid-template-rows: auto minmax(0,1fr); column-gap: 24px; }
+ .pip-practice .le-stage:has(.le-passage-long) .le-passage { grid-column: 1; grid-row: 2; }
+ .pip-practice .le-stage:has(.le-passage-long) .le-interaction { grid-column: 2; grid-row: 2; }
+}
+
+.pip-practice .le-pair-board > .le-check-matches.is-ready {
+  background: #5b21b6;
+  border-color: #5b21b6;
+  color: #fff;
+  opacity: 1;
+  box-shadow: 0 4px 0 #3b147e;
+}
+
+/* One matching presentation for teaching and practice. Equal rows keep words
+   and longer clues aligned; the gap belongs to the connecting lines. */
+.pip-studio .le-pair-board { width: min(100%, 850px); margin-inline: auto; }
+.pip-studio .le-pairing { padding: 6px; }
+.pip-studio .le-pairing > .relative > .grid { column-gap: clamp(30px, 6vw, 80px); }
+.pip-studio .le-pairing > .relative > .grid > div { display: grid; grid-auto-rows: 1fr; gap: 12px; }
+.pip-studio .le-pairing button {
+  position: relative; min-height: 66px; padding: 12px 32px 12px 14px;
+  background: #fff; color: #57438f; border: 2px solid #ded5eb; border-radius: 16px;
+  font-size: clamp(18px, 2vw, 24px); line-height: 1.25; box-shadow: 0 3px 0 #e2dbea;
+  opacity: 1; transform: none !important; scale: 1;
+}
+.pip-studio .le-pairing button svg { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); color: #8c7baf; }
+.pip-studio .le-pairing button[data-selected] { background: #ede9fe; border-color: #6e5bff; }
+.pip-studio .le-pairing button[data-matched] { background: #f2eefb; border-color: #b4a2db; }
+.pip-studio .le-pair-board > .le-check-matches { display: flex; margin: 18px auto 0; min-height: 48px; }
+.pip-studio .le-pair-board > .le-check-matches.is-ready { background: #5b21b6; border-color: #5b21b6; color: #fff; opacity: 1; box-shadow: 0 4px 0 #3b147e; }
+@media (max-width: 600px) {
+  .pip-studio .le-pairing button { min-height: 62px; padding: 10px 24px 10px 7px; font-size: 18px; }
+  .pip-studio .le-pairing button svg { right: 5px; width: 14px; }
+  .pip-studio .le-passage { padding: 6px 12px 10px; }
+}
+
+/* Teaching reveals use the same bounded picture/card stack as practice. */
+.pip-studio .le-stage:has(.le-revealing) .le-prompt > .le-context { display: none; }
+.pip-studio .le-interaction:has(.le-answer-reveal) { align-items: stretch; }
+.pip-studio .le-activity:has(> .le-answer-reveal) { height: 100%; min-height: 0; gap: 8px; }
+.pip-studio .le-answer-reveal { flex: 1; min-height: 0; gap: 8px; }
+.pip-studio .le-answer-photo { flex: 1; min-height: 0; height: 0; max-height: min(42dvh,340px); object-fit: contain; }
+.pip-studio .le-answer-card { flex-shrink: 0; padding: 10px 14px; }
+.pip-studio .le-activity:has(> .le-answer-reveal) > .le-feedback { flex-shrink: 0; min-height: 0; font-size: 17px; }
+/* Practice shares the lesson-sized photo cap above; flex shrinks it when text needs room. */
+@media(max-width:767px) { .pip-studio .le-activity:has(> .le-answer-reveal) > .le-feedback { font-size: 15px; } }
+
+/* Preserve story paragraph breaks inside one shared reading surface. */
+.pip-studio .le-passage-text + .le-passage-text { margin-top: 10px; }
+
+/* Three destinations must not leave a third bin stranded below the activity. */
+.pip-studio .le-interaction { align-items: safe center; }
+.pip-studio [data-bucket-count="3"] .le-sort-homes { grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.pip-studio [data-bucket-count="3"] .le-sort-home { min-width:0; }
+@media(max-width:640px) {
+ .pip-studio [data-bucket-count="3"] .le-sort-homes { gap:7px; }
+ .pip-studio [data-bucket-count="3"] .le-sort-home { padding:5px; }
+ .pip-studio [data-bucket-count="3"] .le-bucket { font-size:17px; padding:8px 2px; }
+ .pip-studio [data-bucket-count="3"] .le-sorted-cards button { font-size:15px; padding:7px 4px; overflow-wrap:break-word; }
+}
+
+/* Longer three-pair clues need a full-height board on short laptop screens. */
+@media(min-width:1000px) and (max-height:820px) {
+ .pip-practice .le-stage:has(.le-passage):has(.le-match[data-pair-count="3"]) { grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr); grid-template-rows:auto minmax(0,1fr); gap:16px; }
+ .pip-practice .le-stage:has(.le-passage):has(.le-match[data-pair-count="3"]) .le-passage { grid-column:1; grid-row:2; }
+ .pip-practice .le-stage:has(.le-passage):has(.le-match[data-pair-count="3"]) .le-interaction { grid-column:2; grid-row:2; }
+ .pip-practice .le-match[data-pair-count="3"] .le-pairing > .relative > .grid { column-gap:36px; }
+ .pip-practice .le-match[data-pair-count="3"] .le-pairing button { font-size:20px; }
+}
+
+/* Picture/word relationships use the illustration as evidence before answering.
+   Reading-only success pictures still belong to the completion reveal. */
+.pip-studio .le-stimulus-picture { display:block; width:100%; height:180px; object-fit:contain; border-radius:16px; margin:6px auto 10px; }
+@media(min-width:1000px) and (max-height:820px) {
+ .pip-practice .le-stage:has(.le-stimulus-picture) { grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr); grid-template-rows:auto minmax(0,1fr); gap:18px; }
+ .pip-practice .le-stage:has(.le-stimulus-picture) .le-passage { grid-column:1;grid-row:2; }
+ .pip-practice .le-stage:has(.le-stimulus-picture) .le-interaction { grid-column:2;grid-row:2; }
+ .pip-practice .le-stage:has(.le-stimulus-picture) .le-passage-text {font-size:18px;line-height:1.4;}
+}
+@media(max-width:640px) { .pip-studio .le-stimulus-picture { height:145px;margin-block:5px; } }
+
+/* Four picture choices on a short laptop share each card horizontally, leaving
+   room for the passage and the complete second row without shrinking the art. */
+@media (min-width: 1000px) and (max-height: 820px) {
+ .pip-practice .le-options:has(.le-choice-art) { max-width:1050px; }
+ .pip-practice .le-option .le-tile:has(.le-choice-art) {
+   display:grid; grid-template-columns: minmax(100px,.65fr) minmax(0,1fr);
+   gap:12px; align-items:center; min-height:108px; font-size:19px;
+ }
+ .pip-practice .le-option .le-choice-art { width:100%; height:90px; max-width:180px; }
+}
+
+/* Long word builders need readable row-major slots and a matching tile grid.
+   Picture sequences keep their own layout. Never squeeze six words off a phone. */
+@media(max-width:600px){
+ .pip-studio .le-activity:not(.le-picture-sequence):has(> .le-sequence > .le-slot:nth-child(5)) > .le-sequence,
+ .pip-studio .le-activity:not(.le-picture-sequence):has(> .le-sequence > .le-slot:nth-child(5)) > .le-options{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:8px;
+ }
+ .pip-studio .le-activity:not(.le-picture-sequence):has(> .le-sequence > .le-slot:nth-child(5)) .le-slot{min-width:0;min-height:58px;padding:4px}
+ .pip-studio .le-activity:not(.le-picture-sequence):has(> .le-sequence > .le-slot:nth-child(5)) > .le-options > .le-tile{min-width:0;min-height:46px;padding:8px 5px;font-size:18px}
+}
+
+/* Pictured matching must keep its submit button inside shorter lesson stages. */
+@media(min-width:641px) and (max-height:800px) {
+ .pip-studio .le-match-compact-images .le-pairing button { padding-block:8px; line-height:1.2; }
+ .pip-studio .le-match-compact-images .le-pair-card > span { display:flex; align-items:center; justify-content:center; gap:10px; }
+ .pip-studio .le-match-compact-images .le-match-picture { flex-shrink:0; margin:0; }
+ .pip-studio .le-match-compact-images .le-pairing > .relative > .grid > div { gap:8px; }
+ .pip-studio .le-match-compact-images .le-pair-board > .le-check-matches { margin-top:8px; }
+}

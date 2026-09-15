@@ -53,7 +53,9 @@ export type Listener = {
   stop: () => Promise<void>;
 };
 
-export function usePlacementMic() {
+export function usePlacementMic(
+  tokenProvider: () => Promise<{ token: string; region: string } | null> = speechToken,
+) {
   const [state, setState] = useState<MicState>("closed");
   const [level, setLevel] = useState(0); // 0..1 input level for the "I can hear you" check
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null); // the orb breathes with the child's voice
@@ -62,7 +64,10 @@ export function usePlacementMic() {
   const ctrlRef = useRef<StreamController | null>(null);
   const recRef = useRef<{ chunks: Float32Array[]; rate: number } | null>(null);
   const levelRef = useRef(0);
-  const preRollRef = useRef<{ frames: { samples: Float32Array; rate: number }[]; count: number } | null>(null);
+  const preRollRef = useRef<{
+    frames: { samples: Float32Array; rate: number }[];
+    count: number;
+  } | null>(null);
   const generation = useRef(0);
   const errorRef = useRef<((message: string) => void) | undefined>(undefined);
 
@@ -70,7 +75,7 @@ export function usePlacementMic() {
     if (ctxRef.current && streamRef.current) return "open";
     const session = generation.current;
     setState("opening");
-    const tok = await speechToken();
+    const tok = await tokenProvider();
     if (generation.current !== session) return "closed";
     if (!tok) {
       setState("unavailable");
@@ -174,7 +179,7 @@ export function usePlacementMic() {
       setState(state);
       return state;
     }
-  }, []);
+  }, [tokenProvider]);
 
   // Publish the input level at a UI-friendly rate.
   useEffect(() => {
@@ -189,8 +194,12 @@ export function usePlacementMic() {
       onPhrase?: (p: PAPhrase) => void,
       onError?: (message: string) => void,
       onRecognizing?: (text: string) => void,
+      transcribeOnly = false,
+      segmentationSilenceMs?: number,
+      captureMode?: "single-utterance",
+      recognitionVocabulary?: "letter-names",
     ): Promise<Listener> => {
-      const tok = await speechToken();
+      const tok = await tokenProvider();
       if (!tok || !ctxRef.current) throw new Error("Speech recognition is unavailable.");
       const captureContext = ctxRef.current;
       if (ctrlRef.current) {
@@ -201,20 +210,37 @@ export function usePlacementMic() {
       const phrases: PAWord[][] = [];
       // Children may start as soon as a word appears. Preserve that speech
       // while its recognizer connects, rather than silently dropping it.
-      const preRoll = referenceText.trim().split(/\s+/).length === 1 ? { frames: [] as { samples: Float32Array; rate: number }[], count: 0 } : null;
+      const preRoll =
+        referenceText.trim().split(/\s+/).length === 1
+          ? { frames: [] as { samples: Float32Array; rate: number }[], count: 0 }
+          : null;
       preRollRef.current = preRoll;
       errorRef.current = onError;
       const pending = startPronAssessment({
         token: tok.token,
         region: tok.region,
         referenceText,
+        transcribeOnly,
+        captureMode,
+        recognitionVocabulary,
         // Short finalized turns; continuous recognition keeps listening through
         // decoding pauses. Alignment is done by Readee, not unsupported miscue mode.
-        segmentationSilenceMs: referenceText.trim().split(/\s+/).length === 1 ? 500 : 900,
-        enableMiscue: false,
-        initialSilenceMs: 60000,
+        segmentationSilenceMs:
+          segmentationSilenceMs ??
+          (tokenProvider === speechToken
+            ? referenceText.trim().split(/\s+/).length === 1
+              ? 500
+              : 900
+            : transcribeOnly
+              ? 1200
+              : 2500),
+        enableMiscue: tokenProvider === speechToken ? false : true,
+        initialSilenceMs: tokenProvider === speechToken ? 60000 : undefined,
         onRecognizing,
-        onCommandText: referenceText.trim().split(/\s+/).length === 1 ? onRecognizing : undefined,
+        onCommandText:
+          tokenProvider === speechToken && referenceText.trim().split(/\s+/).length === 1
+            ? onRecognizing
+            : undefined,
         onPhrase: (p) => {
           phrases.push(p.words);
           onPhrase?.(p);
@@ -257,7 +283,7 @@ export function usePlacementMic() {
         },
       };
     },
-    [],
+    [tokenProvider],
   );
 
   const startRecording = useCallback(() => {

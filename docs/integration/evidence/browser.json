@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "checks": [
+    "authenticated unit index",
+    "eight lesson links",
+    "exam locked",
+    "existing free and paid entitlements enforced",
+    "cross-family reader rejected",
+    "real player mounted",
+    "real save endpoint to SQL",
+    "reopening retains session",
+    "no preview localStorage",
+    "eight real lesson choices persisted",
+    "visible question images loaded and no lesson asset HTTP errors",
+    "letter choices fit 390px and 768px viewports",
+    "exam unlock after eight completions",
+    "objective letter server verdict and signed receipt",
+    "cross-package rubric rejected",
+    "missing Azure configuration stays unavailable"
+  ],
+  "rpcCalls": [
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "save_approved_unit",
+    "reserve_unit_service",
+    "reserve_unit_service"
+  ]
+}
