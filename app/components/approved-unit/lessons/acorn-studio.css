@@ -1,0 +1,117 @@
+.acorn-studio,
+.acorn-studio .le-frame,
+.acorn-studio .le-stage {
+  --le-world: #f3efe0;
+  --le-ink: #4d503c;
+  --le-accent: #6e5bff;
+  background: #f3efe0;
+}
+.acorn-scene {
+  width: 100%;
+  height: 100%;
+  max-height: 44dvh;
+  object-fit: contain;
+  border-radius: 22px;
+}
+.acorn-position-world {
+  width: 100%;
+  height: 100%;
+  max-height: 45dvh;
+}
+.acorn-moving-object {
+  transition:
+    x 0.55s cubic-bezier(0.22, 0.7, 0.25, 1),
+    y 0.55s cubic-bezier(0.22, 0.7, 0.25, 1);
+}
+.acorn-studio .le-match-picture {
+  display: block;
+  width: 100%;
+  height: clamp(60px, 10dvh, 90px);
+  object-fit: contain;
+  margin: 0 auto 4px;
+}
+.acorn-studio .le-pairing button > span {
+  display: block;
+  width: 100%;
+}
+.acorn-studio .le-match:has(.le-match-picture) .le-pairing button {
+  min-height: 125px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.acorn-studio .le-welcome .le-cover-frame {
+  background: #f3efe0;
+}
+.acorn-studio .le-welcome .le-cover.pip-opening-art {
+  object-fit: contain;
+}
+.acorn-studio .mz-screen {
+  background-color: #f3efe0;
+}
+@media (max-width: 640px) {
+  .acorn-studio .le-stage.le-with-visual:has(.acorn-position-world) {
+    grid-template-rows: auto minmax(190px, 1fr) minmax(110px, 0.4fr);
+  }
+  .acorn-studio .le-match-picture {
+    height: 66px;
+  }
+  .acorn-studio .le-match:has(.le-match-picture) .le-pairing button {
+    min-height: 105px;
+  }
+  .acorn-studio .le-pairing > .relative > .grid {
+    column-gap: 28px;
+  }
+  .acorn-studio .le-pairing button {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .acorn-moving-object {
+    transition: none;
+  }
+}
+/* Center the actual two model controls; picture pairs use wide desktop rows. */
+.acorn-studio .le-demonstration .le-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.acorn-studio .le-demonstration .le-tile {
+  min-width: 125px;
+}
+@media (min-width: 641px) {
+  .acorn-studio .le-match:has(.le-match-picture) .le-pairing button {
+    min-height: 92px;
+  }
+  .acorn-studio .le-pairing button:has(.le-match-picture) > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .acorn-studio .le-match-picture {
+    width: 45%;
+    height: 68px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* Squeaky stays beside the spatial example; never layered over the acorn or controls. */
+.acorn-world-stage { display:flex; align-items:flex-end; justify-content:center; gap:12px; width:100%; height:100%; min-height:0; }
+.acorn-guide { flex:0 0 24%; min-width:0; margin:0 0 20px; text-align:center; }
+.acorn-guide img { width:100%; max-height:180px; object-fit:contain; }
+.acorn-world-stage .acorn-position-world { flex:1; min-width:0; width:72%; }
+.acorn-studio .le-stage:has(.acorn-world-stage) { grid-template-columns:1.1fr 1fr; }
+.acorn-studio [data-scene="squeaky-directions-luna"] .acorn-scene { max-height:220px; }
+@media(max-width:640px) {
+ .acorn-studio .le-stage:has(.acorn-world-stage) { grid-template-columns:1fr; grid-template-rows:auto minmax(160px,1fr) auto; gap:10px; }
+ .acorn-guide { flex-basis:23%; margin-bottom:12px; }
+ .acorn-guide img { max-height:120px; }
+ .acorn-studio [data-scene="squeaky-directions-luna"] .le-stage { grid-template-columns:1fr; grid-template-rows:auto minmax(80px,.5fr) minmax(0,1fr); }
+ .acorn-studio [data-scene="squeaky-directions-luna"] .acorn-scene { max-height:110px; }
+}
+
+/* The response painting belongs to the woodland, without a white photo frame. */
+.acorn-studio [data-scene="squeaky-directions-luna"] .le-response-photo { background: transparent; border: 0; border-radius: 0; box-shadow: none; }

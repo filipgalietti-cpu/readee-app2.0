@@ -81,7 +81,7 @@ export default function JourneyClient({
     () => assignedJourneyCatalog(child.reading_level ?? null, placement),
     [child.reading_level, placement],
   );
-  const done = (id: string) => lessonCompleted(id, snapshot.practice, snapshot.lessonProgress);
+  const done = (id: string) => lessonCompleted(id, snapshot.practice, snapshot.lessonProgress, snapshot.completedStandards);
   const current = catalog.find((lesson) => !done(lesson.standardId));
   const first = catalog[0];
   const justCompleted = completed && done(completed) ? completed : null;
@@ -424,7 +424,7 @@ export default function JourneyClient({
   );
 
   if (presentation === "adventure") return <>
-    <JourneyAdventure model={adventure} childId={child.id} placementId={result?.id ?? null}
+    <JourneyAdventure approvedUnitEnabled={snapshot.approvedUnitEnabled} model={adventure} childId={child.id} placementId={result?.id ?? null}
       introduce={introduce && !!result && !completed && !checkout} justCompleted={justCompleted}
       openedChests={child.opened_chests ?? []} onStart={(id) => start({ id, title: "", status: "current" })}
       onPlan={() => result ? setShowPlan(true) : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)}
@@ -506,6 +506,7 @@ export default function JourneyClient({
         </section>
       )}
 
+      {snapshot.approvedUnitEnabled&&<Link href={`/learn/unit-one?child=${child.id}`}>Kindergarten Unit 1 · Lessons and check-in</Link>}
       <JourneyOverview
         name={name}
         copy={copy}

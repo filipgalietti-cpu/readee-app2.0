@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback, useRef, useEffect, type ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Howl } from "howler";
+import { Volume2 } from "lucide-react";
 
 interface TapToPairProps {
   prompt: string;
@@ -10,7 +11,7 @@ interface TapToPairProps {
   rightItems: string[];
   correctPairs: Record<string, string>;
   answered: boolean;
-  onAnswer: (isCorrect: boolean, userAnswer: string) => void;
+  onAnswer: (isCorrect: boolean, userAnswer: string, pairs?: Record<string,string>) => void;
   onPlayItem?: (word: string) => void;
   /** Fired on each correct individual match (for the per-pair chime) */
   onCorrectMatch?: () => void;
@@ -18,6 +19,14 @@ interface TapToPairProps {
   onIncorrectMatch?: () => void;
   /** In assessment mode, all pairings are accepted (no rejection on wrong match) */
   assessmentMode?: boolean;
+  /** Coached practice keeps connected cards available for spoken replay. */
+  allowMatchedReplay?: boolean;
+  /** Visual recognition tasks must not automatically announce candidate names. */
+  autoPlayOnSelect?: boolean | ((item: string) => boolean);
+  audioLabel?: (word: string) => string;
+  canPlayItem?: (item: string) => boolean;
+  presentation?: "coached";
+  renderLabel?: (text: string) => ReactNode;
 }
 
 const LEFT_COLORS = [
@@ -66,7 +75,15 @@ export function TapToPair({
   onCorrectMatch,
   onIncorrectMatch,
   assessmentMode = false,
+  allowMatchedReplay = false,
+  autoPlayOnSelect = true,
+  audioLabel,
+  canPlayItem,
+  presentation,
+  renderLabel,
 }: TapToPairProps) {
+  const reduceMotion = useReducedMotion();
+  const playsOnSelect = useCallback((item: string) => (canPlayItem?.(item) ?? true) && (typeof autoPlayOnSelect === "function" ? autoPlayOnSelect(item) : autoPlayOnSelect), [autoPlayOnSelect, canPlayItem]);
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
   const [matches, setMatches] = useState<MatchedPair[]>([]);
@@ -109,7 +126,9 @@ export function TapToPair({
   useEffect(() => {
     updateLines();
     window.addEventListener("resize", updateLines);
-    return () => window.removeEventListener("resize", updateLines);
+    const observer = new ResizeObserver(updateLines);
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => { observer.disconnect(); window.removeEventListener("resize", updateLines); };
   }, [updateLines]);
 
   /** Complete a match — shared by both directions */
@@ -137,7 +156,7 @@ export function TapToPair({
             setDone(true);
             const allCorrect = newMatches.every((m) => m.correct);
             const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
-            onAnswer(allCorrect, answer);
+            onAnswer(allCorrect, answer, Object.fromEntries(newMatches.map(m=>[m.left,m.right])));
           }, assessmentMode ? 500 : 2800);
         }
       } else {
@@ -155,8 +174,12 @@ export function TapToPair({
 
   const handleTapLeft = useCallback(
     (item: string) => {
+      if (!answered && allowMatchedReplay && canPlayItem?.(item) !== false && matchedLeftItems.has(item)) {
+        (onPlayItem || playWord)(item);
+        return;
+      }
       if (answered || done || matchedLeftItems.has(item)) return;
-      (onPlayItem || playWord)(item);
+      if (playsOnSelect(item)) (onPlayItem || playWord)(item);
 
       if (selectedRight) {
         // Right already selected — try to match
@@ -167,13 +190,17 @@ export function TapToPair({
         setSelectedRight(null);
       }
     },
-    [answered, done, matchedLeftItems, selectedRight, completeMatch, onPlayItem]
+    [answered, done, matchedLeftItems, selectedRight, completeMatch, onPlayItem, allowMatchedReplay, playsOnSelect, canPlayItem]
   );
 
   const handleTapRight = useCallback(
     (item: string) => {
+      if (!answered && allowMatchedReplay && canPlayItem?.(item) !== false && matchedRightItems.has(item)) {
+        (onPlayItem || playWord)(item);
+        return;
+      }
       if (answered || done || matchedRightItems.has(item)) return;
-      (onPlayItem || playWord)(item);
+      if (playsOnSelect(item)) (onPlayItem || playWord)(item);
 
       if (selectedLeft) {
         // Left already selected — try to match
@@ -184,11 +211,11 @@ export function TapToPair({
         setSelectedLeft(null);
       }
     },
-    [answered, done, matchedRightItems, selectedLeft, completeMatch, onPlayItem]
+    [answered, done, matchedRightItems, selectedLeft, completeMatch, onPlayItem, allowMatchedReplay, playsOnSelect, canPlayItem]
   );
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className={`flex flex-col gap-6 ${presentation === "coached" ? "le-pairing" : ""}`}>
       {prompt ? (
         <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center mb-2">
           {prompt}
@@ -235,20 +262,23 @@ export function TapToPair({
                   "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50";
               }
 
-              return (
+              const card = (
                 <motion.button
                   key={item}
+                  data-selected={isSelected || undefined}
+                  data-matched={isMatched || undefined}
+                  aria-pressed={isSelected}
                   ref={(el) => {
                     leftRefs.current[item] = el;
                   }}
                   onClick={() => handleTapLeft(item)}
-                  disabled={answered || done || isMatched}
-                  className={`px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-all ${
+                  disabled={answered || ((done || isMatched) && !(allowMatchedReplay && isMatched))}
+                  className={`le-pair-card px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-colors ${
                     isMatched || answered || done
                       ? "cursor-default"
                       : "cursor-pointer active:scale-95 hover:scale-105"
                   } ${style}`}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={reduceMotion ? false : { opacity: 0 }}
                   animate={
                     isFlashing
                       ? { opacity: 1, x: 0, scale: [1, 1.15, 1], transition: { duration: 0.5 } }
@@ -256,10 +286,18 @@ export function TapToPair({
                       ? { x: [0, -8, 8, -6, 6, -3, 3, 0] }
                       : { opacity: 1, x: 0 }
                   }
-                  transition={isShaking ? { duration: 0.5 } : { delay: i * 0.05 }}
+                  transition={reduceMotion ? { duration: 0 } : isShaking ? { duration: 0.5 } : { duration: 0.18, delay: i * 0.07 }}
                 >
-                  {item}
+                  {presentation === "coached" ? <><span>{renderLabel ? renderLabel(item) : item}</span>{playsOnSelect(item) && <Volume2 size={17} aria-hidden="true" />}</> : item}
                 </motion.button>
+              );
+              return playsOnSelect(item) || canPlayItem?.(item) === false ? card : (
+                <div key={item} className="le-pair-choice">
+                  {card}
+                  <button type="button" className="le-pair-audio" disabled={answered}
+                    aria-label={`Hear ${audioLabel?.(item) ?? item}`}
+                    onClick={() => (onPlayItem || playWord)(item)}><Volume2 size={17} aria-hidden="true" /></button>
+                </div>
               );
             })}
           </div>
@@ -282,20 +320,23 @@ export function TapToPair({
                   "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50";
               }
 
-              return (
+              const card = (
                 <motion.button
                   key={item}
+                  data-selected={isSelected || undefined}
+                  data-matched={isMatched || undefined}
+                  aria-pressed={isSelected}
                   ref={(el) => {
                     rightRefs.current[item] = el;
                   }}
                   onClick={() => handleTapRight(item)}
-                  disabled={answered || done || isMatched}
-                  className={`px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-all ${
+                  disabled={answered || ((done || isMatched) && !(allowMatchedReplay && isMatched))}
+                  className={`le-pair-card px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-colors ${
                     isMatched || answered || done
                       ? "cursor-default"
                       : "cursor-pointer active:scale-95 hover:scale-105"
                   } ${style}`}
-                  initial={{ opacity: 0, x: 10 }}
+                  initial={reduceMotion ? false : { opacity: 0 }}
                   animate={
                     isFlashing
                       ? { opacity: 1, x: 0, scale: [1, 1.15, 1], transition: { duration: 0.5 } }
@@ -303,10 +344,18 @@ export function TapToPair({
                       ? { x: [0, -8, 8, -6, 6, -3, 3, 0] }
                       : { opacity: 1, x: 0 }
                   }
-                  transition={isShaking ? { duration: 0.5 } : { delay: i * 0.05 }}
+                  transition={reduceMotion ? { duration: 0 } : isShaking ? { duration: 0.5 } : { duration: 0.18, delay: i * 0.07 }}
                 >
-                  {item}
+                  {presentation === "coached" ? <><span>{renderLabel ? renderLabel(item) : item}</span>{playsOnSelect(item) && <Volume2 size={17} aria-hidden="true" />}</> : item}
                 </motion.button>
+              );
+              return playsOnSelect(item) || canPlayItem?.(item) === false ? card : (
+                <div key={item} className="le-pair-choice">
+                  {card}
+                  <button type="button" className="le-pair-audio" disabled={answered}
+                    aria-label={`Hear ${audioLabel?.(item) ?? item}`}
+                    onClick={() => (onPlayItem || playWord)(item)}><Volume2 size={17} aria-hidden="true" /></button>
+                </div>
               );
             })}
           </div>

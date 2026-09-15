@@ -1,0 +1,616 @@
+.sm-screen {
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: 18px clamp(12px, 2.2vw, 36px) 12px;
+  background: #e3d2ac;
+  color: #34392e;
+  font-family: var(--font-nunito), sans-serif;
+}
+.sm-world {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--sm-backdrop);
+  background-size: cover;
+  background-position: center;
+}
+.sm-screen h1,
+.sm-screen h2 {
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 850;
+  line-height: 1.05;
+  margin: 0;
+}
+.sm-screen h1 {
+  font-size: clamp(28px, 3.2vw, 44px);
+}
+.sm-eyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  color: #555c43;
+}
+.sm-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  margin-bottom: 10px;
+}
+.sm-hud > div:first-child {
+  background: #faf8eced;
+  border-radius: 20px;
+  padding: 10px 18px;
+  box-shadow: 0 3px 0 #a89d7e30;
+}
+.sm-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: #faf8ecf5;
+  border: 2px solid #c8b992;
+  border-radius: 50px;
+  font-weight: 800;
+}
+.sm-score > b {
+  color: #6e5bff;
+  font-size: 30px;
+  line-height: 1;
+}
+.sm-score > span:first-child {
+  padding-right: 12px;
+  border-right: 1px solid #cfc5ae;
+  font-size: 18px;
+}
+.sm-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: clamp(5px, 0.8vw, 12px);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 0 3px;
+}
+.sm-stone {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  background: none;
+  perspective: 700px;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  filter: drop-shadow(0 5px 1px #524e3333);
+}
+.sm-stone:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+.sm-flipper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.sm-back,
+.sm-front {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.sm-back > svg {
+  width: 100%;
+  height: 100%;
+}
+.sm-front {
+  transform: rotateY(180deg);
+  background: #f6efd9;
+  border: 3px solid #d6c698;
+  border-radius: 24% 17% 22% 15%;
+  box-shadow: inset 0 -4px 0 #c8b88a40;
+}
+.sm-front > svg,
+.sm-front > img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.sm-stone.is-open .sm-flipper {
+  transform: rotateY(180deg);
+}
+.sm-stone.is-matched {
+  cursor: default;
+  filter: drop-shadow(0 3px 0 #54714030);
+}
+.sm-stone.is-matched .sm-front {
+  background: #e8efd6;
+  border-color: #9cae79;
+}
+.sm-match-spark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #7255d8;
+  font-size: 30px;
+  opacity: 0;
+  pointer-events: none;
+}
+.sm-stone.is-sparkling .sm-match-spark {
+  animation: sm-spark 0.7s ease-out both;
+}
+.sm-stone.is-sparkling {
+  animation: sm-pop 0.5s ease-out;
+}
+.sm-game-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  min-height: 48px;
+  margin-top: 8px;
+}
+.sm-game-footer p {
+  margin: 0;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 850;
+  background: #faf8eced;
+  padding: 8px 14px;
+  border-radius: 16px;
+}
+.sm-screen button:not(.sm-stone) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 16px;
+  border: 2px solid #d9cfb6;
+  background: #fbf8ef;
+  color: #594484;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+.sm-screen button:focus-visible {
+  outline: 3px solid #6e5bff;
+  outline-offset: 3px;
+}
+.sm-screen button.sm-primary {
+  background: #6e5bff;
+  color: white;
+  border-color: #6e5bff;
+  box-shadow: 0 5px 0 #4f3bbb;
+  font-size: 23px;
+  padding: 14px 26px;
+}
+.sm-welcome-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding-bottom: 30px;
+}
+.sm-welcome-content h2 {
+  font-size: clamp(28px, 4vw, 54px);
+  max-width: 680px;
+}
+.sm-welcome-content > p {
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: 750;
+  line-height: 1.4;
+  margin: 0;
+}
+.sm-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 30px);
+  margin-bottom: 12px;
+}
+.sm-demo > div {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  width: clamp(85px, 14vw, 170px);
+  height: clamp(90px, 13vw, 155px);
+  filter: drop-shadow(0 7px 1px #65523633);
+}
+.sm-demo > div:first-child {
+  rotate: -8deg;
+}
+.sm-demo > div:not(:first-child) {
+  background: #f6efd9;
+  border: 3px solid #c6b78f;
+  border-radius: 26% 19% 23% 17%;
+  rotate: 5deg;
+  padding: 8px;
+}
+.sm-demo > div:last-child {
+  rotate: -4deg;
+}
+.sm-demo > div > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.sm-demo svg {
+  width: 100%;
+  height: 100%;
+}
+.sm-listening {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sm-party {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 30px;
+  padding: clamp(24px, 6vw, 80px);
+}
+.sm-party .sm-world {
+  opacity: 0.3;
+}
+.sm-party-bunny {
+  width: 100%;
+  height: min(65dvh, 440px);
+}
+.sm-party-bunny > div,
+.sm-party-bunny svg {
+  width: 100%;
+  height: 100%;
+}
+.sm-party-copy {
+  position: relative;
+}
+.sm-party-copy h1 {
+  font-size: clamp(34px, 4vw, 56px);
+}
+.sm-party-copy > p:not(.sm-eyebrow) {
+  font-size: 20px;
+  margin: 16px 0;
+}
+.sm-prize {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+.sm-prize img {
+  width: 55px;
+  height: 55px;
+}
+.sm-prize strong {
+  font-size: 54px;
+  color: #6e5bff;
+}
+.sm-prize span {
+  font-size: 21px;
+  font-weight: 700;
+}
+.sm-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.sm-confetti i {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  animation: sm-confetti 2.8s ease-out both;
+}
+@keyframes sm-confetti {
+  to {
+    translate: 30px 90dvh;
+    rotate: 470deg;
+    opacity: 0;
+  }
+}
+@keyframes sm-pop {
+  50% {
+    scale: 1.06;
+  }
+}
+@keyframes sm-spark {
+  20% {
+    opacity: 1;
+  }
+  to {
+    translate: 0 -25px;
+    opacity: 0;
+    rotate: 70deg;
+  }
+}
+.sm-small-board {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+.sm-countdown-stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding-bottom: 8dvh;
+}
+.sm-countdown-number {
+  font-family: var(--font-baloo), sans-serif;
+  font-size: clamp(120px, 26vmin, 250px);
+  line-height: 1;
+  color: #6e5bff;
+  text-shadow: 0 5px 0 #fff8e9;
+  animation: sm-countdown-beat 0.45s ease-out both;
+}
+@keyframes sm-countdown-beat {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sm-countdown-number {
+    animation: none;
+  }
+}
+@media (max-width: 600px) {
+  .sm-world {
+    background-position: left center;
+  }
+  .sm-screen {
+    padding: 12px 10px 8px;
+  }
+  .sm-hud {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .sm-hud > div:first-child {
+    padding: 8px 10px;
+  }
+  .sm-hud .sm-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.02em;
+  }
+  .sm-hud h1 {
+    font-size: 27px;
+  }
+  .sm-score {
+    gap: 5px;
+    padding: 10px;
+  }
+  .sm-score > span:first-child {
+    font-size: 14px;
+    padding-right: 6px;
+  }
+  .sm-score > b {
+    font-size: 23px;
+  }
+  .sm-score > span:last-child {
+    font-size: 12px;
+  }
+  .sm-game-footer p {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  .sm-game-footer button {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+  .sm-party {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 20px;
+  }
+  .sm-party-bunny {
+    height: 32dvh;
+    flex: none;
+  }
+  .sm-party-copy h1 {
+    font-size: 34px;
+  }
+  .sm-prize {
+    justify-content: center;
+    margin: 12px 0;
+  }
+}
+@media (max-height: 500px) and (min-width: 601px) {
+  .sm-small-board {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  .sm-screen {
+    padding: 8px 14px;
+  }
+  .sm-hud > div:first-child {
+    padding: 4px 12px;
+  }
+  .sm-hud h1 {
+    font-size: 25px;
+  }
+  .sm-hud .sm-eyebrow {
+    font-size: 8px;
+  }
+  .sm-score {
+    padding: 5px 12px;
+  }
+  .sm-game-footer {
+    min-height: 44px;
+    margin-top: 4px;
+  }
+  .sm-welcome-content {
+    gap: 6px;
+    padding: 0;
+  }
+  .sm-demo {
+    margin: 0;
+  }
+  .sm-demo > div {
+    height: 70px;
+    width: 85px;
+  }
+  .sm-welcome-content h2 {
+    font-size: 28px;
+  }
+  .sm-welcome-content > p {
+    font-size: 16px;
+  }
+  .sm-screen button.sm-primary {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sm-flipper {
+    transition: none;
+  }
+  .sm-stone.is-sparkling,
+  .sm-confetti i,
+  .sm-match-spark {
+    animation: none !important;
+  }
+  .sm-confetti {
+    display: none;
+  }
+}
+
+.sm-carrots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 58px;
+}
+.sm-carrots img {
+  width: 32px;
+  height: 32px;
+}
+.sm-carrots strong {
+  font-size: 30px;
+  line-height: 1;
+  color: #70513e;
+}
+.sm-tally-pop {
+  animation: sm-tally 0.4s ease-out;
+}
+.sm-prize-breakdown {
+  font-size: 16px !important;
+  margin: 0 0 18px !important;
+}
+.sm-reward-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.sm-carrot-flight {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff5d8;
+  border: 2px solid #eac485;
+  border-radius: 40px;
+  padding: 5px 10px;
+  color: #895026;
+  font-size: 24px;
+  font-weight: 900;
+  animation: sm-carrot-flight 1s ease-in-out both;
+}
+.sm-carrot-flight img {
+  width: 30px;
+  height: 30px;
+}
+@keyframes sm-carrot-flight {
+  0% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(-50%, -70%) scale(1.15);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--reward-x) - 50%), calc(var(--reward-y) - 50%)) scale(0.5);
+    opacity: 0;
+  }
+}
+@keyframes sm-tally {
+  45% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 600px) {
+  .sm-carrots {
+    gap: 4px;
+    min-width: 49px;
+  }
+  .sm-carrots img {
+    width: 27px;
+    height: 27px;
+  }
+  .sm-carrots strong {
+    font-size: 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sm-carrot-flight {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+  .sm-tally-pop {
+    animation: none;
+  }
+}
+
+/* Twelve cards need a broad 4×3 field on wide screens, even when both configured
+   board sizes are twelve. Portrait and short landscape keep their existing grids. */
+@media (min-width: 850px) and (min-height: 501px) {
+  .sm-board[data-stone-count="12"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* The configured tile count determines rows, including an eight-card phone board. */
+.sm-board[data-stone-count="8"]{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+@media(min-width:600px) and (max-width:849px) and (min-height:501px){.sm-board[data-stone-count="12"]{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}}
+@media(max-height:500px){.sm-board[data-stone-count="8"]{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}}

@@ -79,3 +79,8 @@ scratch_dl/
 
 # Instagram ad recorder output
 scripts/ad-out/
+
+# Unit release artifacts (immutable media is published separately)
+/release-code/
+/release-assets/
+/public/lesson-studio/

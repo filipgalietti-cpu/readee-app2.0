@@ -1,0 +1,170 @@
+.beat-studio .le-frame {
+  background: #f3f1e5;
+}
+.beat-studio .le-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.beat-scene {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 22px;
+}
+.beat-studio .le-welcome .le-cover.pip-opening-art {
+  object-fit: contain;
+}
+.beat-stage {
+  height: 100%;
+  max-height: 410px;
+  width: min(100%, 620px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 18px;
+  background: #e6ead8;
+  border: 2px solid #b7c4a3;
+  border-radius: 25px;
+}
+.beat-word-picture {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+  border-radius: 18px;
+}
+.beat-instrument {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  height: 76px;
+  flex: none;
+}
+.beat-drum {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  transition: transform 0.08s;
+}
+.beat-drum.is-tapped {
+  transform: scale(0.92) translateY(3px);
+}
+.beat-counts {
+  display: flex;
+  gap: 10px;
+}
+.beat-counts span {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #748b62;
+  border-radius: 50%;
+  background: #fffdf7;
+  color: #405234;
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  font-weight: 800;
+}
+.beat-counts span.is-heard {
+  background: #c8dcae;
+}
+.beat-counts span.is-tapped {
+  background: #6e5bff;
+  color: white;
+  border-color: #5643d8;
+}
+.beat-stage strong {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+}
+.beat-studio .le-demonstration .le-swap-sentence {
+  display: none;
+}
+.beat-studio .le-options {
+  justify-content: center;
+}
+.beat-studio .le-answer-photo,
+.beat-studio .le-response-photo {
+  object-fit: contain;
+  background: #f3f1e5;
+}
+.beat-studio .le-response > .le-sentence {
+  display: none;
+}
+.beat-loading {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f3f1e5;
+  gap: 20px;
+}
+.beat-loading button {
+  padding: 15px 24px;
+  background: #6e5bff;
+  color: white;
+  border: 0;
+  border-radius: 14px;
+  font-size: 18px;
+}
+.beat-studio .garden-maze {
+  background-color: #c3c7aa;
+}
+@media (max-width: 640px) {
+  .beat-stage {
+    padding: 8px 12px;
+    gap: 4px;
+  }
+  .beat-instrument {
+    height: 55px;
+    gap: 12px;
+  }
+  .beat-drum {
+    width: 55px;
+    height: 55px;
+  }
+  .beat-counts span {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .beat-drum {
+    transition: none;
+  }
+  .beat-drum.is-tapped {
+    transform: none;
+  }
+}
+@media (max-height: 500px) and (min-width: 640px) {
+  .beat-studio .le-welcome h1 {
+    font-size: 32px;
+    line-height: 1.08;
+  }
+  .beat-studio .le-welcome .le-primary {
+    margin-top: 10px;
+  }
+}
+/* Keep the demonstration large on phones; its two controls do not need a whole blank row. */
+@media (max-width: 640px) {
+  .beat-studio .le-stage.le-with-visual:has(.beat-stage) {
+    grid-template-rows: auto minmax(160px, 1fr) minmax(120px, .4fr);
+  }
+}
+
+/* The whole printed word and numbered syllable use the same measured speech cue. */
+.beat-word-caption { margin:0; font-size:clamp(14px,2vw,18px); font-weight:700; color:#405234; line-height:1.25; text-align:center; }
+.beat-stage strong { padding:4px 10px; border-radius:10px; }
+
+/* Count choices are quantities, so keep them in one ascending row without repeated item art. */
+.beat-studio .le-options:has([data-choice-id="1"])[data-choice-count="3"] { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
+.beat-studio .le-options:has([data-choice-id="1"]) .le-option { display:flex;align-items:stretch; }
+.beat-studio .le-options:has([data-choice-id="1"]) .le-option > .le-tile { display:flex;align-items:center;justify-content:center;flex:1;min-height:76px;padding:10px;font-size:32px;text-align:center; }
+.beat-studio .le-options:has([data-choice-id="1"]) .le-option > .le-listen { position:static;display:flex;align-items:center;justify-content:center;align-self:stretch;flex:0 0 44px;width:44px;min-width:44px;padding:7px;border-left:1px solid #e8e1f2;border-radius:0;background:#faf7ff; }
+.beat-studio .le-options:has([data-choice-id="1"])[data-choice-count="4"] { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }

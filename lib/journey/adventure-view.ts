@@ -48,7 +48,7 @@ const TITLES: Record<string, string> = { RF: 'Sound Workshop', RL: 'Story Treasu
  */
 export function buildAdventureView(snapshot: JourneySnapshot, fullAccess = snapshot.billing.fullAccess) {
   const catalog = assignedJourneyCatalog(snapshot.child.reading_level ?? null, snapshot.result?.plan);
-  const completed = new Set(catalog.filter((lesson) => lessonCompleted(lesson.standardId, snapshot.practice, snapshot.lessonProgress)).map((lesson) => lesson.standardId));
+  const completed = new Set(catalog.filter((lesson) => lessonCompleted(lesson.standardId, snapshot.practice, snapshot.lessonProgress, snapshot.completedStandards)).map((lesson) => lesson.standardId));
   const lessons: AdventureLesson[] = catalog.map((lesson) => {
     const [domain, , skill] = lesson.standardId.split('.');
     const print = domain === 'RF' && skill?.startsWith('1');

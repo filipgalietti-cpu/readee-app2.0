@@ -1,0 +1,217 @@
+.le-response {
+  gap: clamp(10px, 2vh, 20px);
+}
+.le-response-blank {
+  color: #6e5bff;
+  border-bottom: 3px solid #b8aaf0;
+  padding: 0 12px;
+}
+.le-response-heard {
+  max-width: 680px;
+  width: 100%;
+  min-height: 64px;
+  color: #69616f;
+  text-align: center;
+}
+.le-response-heard > span {
+  font-size: 13px;
+  font-weight: 800;
+}
+.le-response-heard p {
+  margin: 5px 0;
+  font-size: clamp(19px, 2.5vw, 27px);
+  line-height: 1.25;
+}
+.le-response-reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  animation: response-reveal 0.45s ease-out both;
+}
+.le-response-photo {
+  width: min(100%, 680px);
+  height: min(34dvh, 280px);
+  flex: 0 0 auto;
+  max-height: min(39dvh, 340px);
+  min-height: 0;
+  object-fit: contain;
+  border-radius: 28px;
+}
+.le-response-reveal .le-sentence {
+  font-size: clamp(24px, 3vw, 38px);
+  margin: 0;
+  text-align: center;
+}
+.le-response-reveal button {
+  min-height: 44px;
+  border-radius: 20px;
+  border: 2px solid #dcd3ee;
+  padding: 8px 22px;
+  background: white;
+  color: #58417c;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+@keyframes response-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-response-reveal {
+    animation: none;
+  }
+}
+@media (max-height: 650px) {
+  .le-response {
+    gap: 6px;
+  }
+  .le-response .le-sentence {
+    font-size: 25px;
+  }
+  .le-response-heard {
+    min-height: 45px;
+  }
+  .le-response-photo {
+    max-height: 30dvh;
+  }
+}
+.le-feeling-shared { gap: 8px; }
+/* Give the response portrait the same visual weight as the child's words. */
+.le-feeling-copy { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; }
+.le-feeling-shared:has(> .le-response-photo) {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  max-width: 1000px;
+}
+.le-feeling-shared .le-response-photo {
+  width: 100%; height: min(46dvh, 340px); max-height: none;
+  object-fit: contain;
+}
+@media (max-width: 640px) and (min-height: 551px) {
+  .le-feeling-shared:has(> .le-response-photo) {
+    display: flex; gap: 10px;
+  }
+  .le-feeling-shared .le-response-photo { height: min(25dvh, 220px); }
+  .le-feeling-copy { gap: 6px; }
+}
+.le-feeling-shared .le-response-heard { min-height: 0; }
+.le-feeling-shared .le-response-heard p { font-size: clamp(18px, 2.5vw, 24px); }
+.le-feeling-shared .le-feedback { font-size: 16px; }
+.le-feeling-shared .le-sentence { font-size: clamp(22px, 2.5vw, 28px); }
+@media (max-height: 550px) {
+  .le-frame:has(.le-feeling-shared) { grid-template-rows: 4px 38px minmax(0, 1fr) 90px; }
+  .le-frame:has(.le-feeling-shared) .le-footer { min-height: 0; padding-block: 0; }
+  .le-frame:has(.le-feeling-shared) .le-bunny { height: 88px; }
+  .le-feeling-shared .le-response-photo { height: min(34dvh, 180px); }
+  .le-feeling-copy { gap: 4px; }
+  .le-feeling-copy > .le-eyebrow,
+  .le-feeling-copy > .le-feedback,
+  .le-feeling-copy > .le-small,
+  .le-feeling-copy .le-response-heard > span { display: none; }
+}
+
+/* Keep the portrait, question and microphone in place during the optional Why. */
+.le-feeling-original { margin: 0; color: #62586c; font-size: clamp(18px, 2vw, 24px); text-align: center; }
+.le-feeling-conversation .le-mic { flex-direction: row; gap: 12px; align-items: center; }
+.le-feeling-conversation .le-response-heard { min-height: 30px; }
+.le-response-confirmation { text-align: center; }
+.le-response-confirmation p { margin: 0 0 8px; }
+.le-response-confirmation .le-options { display: flex; justify-content: center; gap: 12px; }
+.le-reading-reveal { gap: 12px; }
+.le-reading-reveal .le-response-photo { height: min(34dvh, 300px); animation: response-reveal .45s ease-out both; }
+@media (max-width: 640px) {
+  .le-feeling-conversation .le-response-photo { height: min(22dvh, 190px); }
+  .le-feeling-conversation .le-feeling-copy { gap: 5px; }
+  .le-feeling-conversation .le-sentence { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .le-reading-reveal .le-response-photo { animation: none; } }
+
+.le-feeling-conversation .le-primary { background: #6e5bff; color: white; border-color: #6e5bff; box-shadow: 0 4px 0 #4932cf; }
+.le-feeling-conversation .le-primary:disabled { opacity: .65; }
+/* A single reading result, with equally tall picture and answer panels. */
+.le-reading-content, .le-reading-copy { display: contents; }
+.le-activity.le-reading-reveal { height: 100%; min-height: 0; justify-content: center; }
+.le-reading-reveal .le-reading-content {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: min(100%, 1000px); height: min(46dvh, 360px); max-height: 100%;
+  gap: 16px; align-items: stretch; min-height: 0;
+}
+.le-reading-reveal .le-response-photo {
+  width: 100%; height: 100%; max-height: 100%; min-height: 0;
+  object-fit: contain; background: #fff; border-radius: 24px;
+}
+.le-reading-reveal .le-reading-copy {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding: 20px; background: #fff; border: 2px solid var(--le-border);
+  border-radius: 24px; min-width: 0; min-height: 0;
+}
+.le-reading-reveal .le-reading-copy > .le-sentence { padding: 0; margin: 0; background: none; border: 0; box-shadow: none; }
+.le-reading-reveal .le-feedback { margin: 0; min-height: 0; }
+@media (max-width: 767px) {
+  .le-reading-reveal .le-reading-content {
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto;
+    height: auto; max-height: 100%; gap: 10px;
+  }
+  .le-reading-reveal .le-response-photo { height: auto; max-height: 28dvh; object-fit: contain; }
+  .le-reading-reveal .le-reading-copy { padding: 14px; gap: 8px; }
+}
+/* Keep the oral prompt, captured words and microphone together beneath a passage. */
+.le-practice-stage:has(.le-passage) .le-response:not(.le-response-reveal) { gap: 6px; }
+.le-practice-stage:has(.le-passage) .le-response-heard { min-height: 38px; }
+.le-practice-stage:has(.le-passage) .le-response .le-sentence { padding-block: 10px; margin: 0; }
+.le-practice-stage:has(.le-passage) .le-response .le-sentence { font-size:clamp(24px,3vw,32px); line-height:1.25; }
+.le-practice-stage:has(.le-passage) .le-response > .le-feedback { margin:0; min-height:0; font-size:17px; line-height:1.3; }
+/* The question remains in the stage heading while a short answer is clarified. */
+.le-response[data-response-state="confirm"] > .le-sentence { display:none; }
+
+/* A picture prompt and its oral answer are one bounded activity, not three
+   auto-sized rows that push the mic/feedback below the viewport. */
+.le-frame .le-picture-response-stage.le-practice-stage:has(.le-picture-only) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px 24px;
+}
+.le-frame .le-picture-response-stage > .le-prompt { grid-column: 1 / -1; }
+.le-frame .le-picture-response-stage > .le-picture-only { grid-column: 1; grid-row: 2; min-height: 0; height: 100%; }
+.le-frame .le-picture-response-stage.le-practice-stage:has(.le-picture-only) > .le-interaction { grid-column: 2; grid-row: 2; min-height: 0; }
+.le-frame .le-picture-response-stage .le-response { gap: 8px; min-height: 0; }
+.le-frame .le-picture-response-stage .le-response > .le-feedback { margin: 0; min-height: 0; }
+@media (max-width: 640px) and (min-height: 551px) {
+  .le-frame .le-picture-response-stage.le-practice-stage:has(.le-picture-only) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(120px, 1fr) auto;
+    gap: 8px;
+  }
+  .le-frame .le-picture-response-stage.le-practice-stage:has(.le-picture-only) > .le-interaction { grid-column: 1; grid-row: 3; }
+  .le-frame .le-picture-response-stage .le-response .le-mic { gap: 10px; }
+}
+
+/* Center the picture itself, not only the full-height container around it.
+   Keep both oral-response columns centered at every desktop height. */
+.le-frame .le-picture-response-stage > .le-picture-only {
+  display: flex; align-items: center; justify-content: center;
+  align-self: center; background: transparent; border: 0;
+}
+.le-frame .le-picture-response-stage > .le-picture-only .le-stimulus-picture {
+  width: min(100%, 340px); height: min(32dvh, 280px);
+  object-fit: contain; margin: 0;
+}
+.le-frame .le-picture-response-stage.le-practice-stage:has(.le-picture-only) > .le-interaction {
+  align-self: stretch; align-items: center;
+}
+@media (max-width: 640px) and (min-height: 551px) {
+  .le-frame .le-picture-response-stage > .le-picture-only .le-stimulus-picture { height: min(24dvh, 200px); }
+}

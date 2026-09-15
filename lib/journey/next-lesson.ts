@@ -100,6 +100,8 @@ export function assignedJourneyCatalog(readingLevel: string | null, placement?: 
 }
 
 export function computeJourneyProgress(opts: {
+  /** Server-recorded package completion is distinct from its quiz score/mastery. */
+  completedStandards?: readonly string[];
   practice: PracticeRow[];
   lessonProgress: LessonProgRow[];
   readingLevel: string | null;
@@ -108,6 +110,7 @@ export function computeJourneyProgress(opts: {
   const ordered = assignedJourneyCatalog(opts.readingLevel, opts.placement);
 
   const isCompleted = (sid: string) =>
+    opts.completedStandards?.includes(sid) ||
     opts.practice.some((p) => p.standard_id === sid && p.questions_correct >= 3) ||
     opts.lessonProgress.some((p) => p.lesson_id === sid && p.section === "practice" && p.score >= 60);
 

@@ -1,0 +1,113 @@
+[
+  {
+    "path": "app/(protected)/dashboard/page.tsx",
+    "errors": 5,
+    "baseline": "production main",
+    "baselineErrors": 5,
+    "rules": [
+      "@typescript-eslint/no-explicit-any",
+      "react-hooks/set-state-in-effect",
+      "react/no-children-prop"
+    ]
+  },
+  {
+    "path": "app/components/approved-unit/lessons/BeatStudio.tsx",
+    "errors": 2,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 2,
+    "rules": [
+      "react-hooks/set-state-in-effect"
+    ]
+  },
+  {
+    "path": "app/components/approved-unit/lessons/CheckpointStudio.tsx",
+    "errors": 7,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 7,
+    "rules": [
+      "react-hooks/preserve-manual-memoization",
+      "react-hooks/set-state-in-effect"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/ClueHunt.tsx",
+    "errors": 2,
+    "baseline": "reviewed 3322 QA source",
+    "baselineErrors": 2,
+    "rules": [
+      "react-hooks/purity"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/CoachedChoose.tsx",
+    "errors": 14,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 14,
+    "rules": [
+      "react-hooks/refs"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/CoachedResponse.tsx",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/immutability"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/CoachedSpeak.tsx",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/immutability"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/ControlledTransform.tsx",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/purity"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/GardenMazeGame.tsx",
+    "errors": 3,
+    "baseline": "reviewed 3322 QA source",
+    "baselineErrors": 3,
+    "rules": [
+      "react-hooks/purity"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/Karaoke.tsx",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/immutability"
+    ]
+  },
+  {
+    "path": "app/components/lesson-v2/delivery/LessonMicPreference.tsx",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/refs"
+    ]
+  },
+  {
+    "path": "lib/lesson-engine/delivery/use-slide-transition.ts",
+    "errors": 1,
+    "baseline": "reviewed authoring source",
+    "baselineErrors": 1,
+    "rules": [
+      "react-hooks/refs"
+    ]
+  }
+]

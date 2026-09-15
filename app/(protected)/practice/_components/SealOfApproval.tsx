@@ -15,11 +15,13 @@ export default function SealOfApproval({
   ribbonText = "PERFECT!",
   background = "transparent",
   sound = true,
+  compact = false,
 }: {
   ribbonText?: string;
   background?: "sky" | "transparent";
   /** Play the Web-Audio jingle (thunk + bell arpeggio + ribbon pop). */
   sound?: boolean;
+  compact?: boolean;
 }) {
   const world = useRef<HTMLDivElement>(null);
   const drop = useRef<HTMLDivElement>(null);
@@ -294,7 +296,7 @@ export default function SealOfApproval({
 
   useEffect(() => {
     const t = timers.current;
-    after(420, play);
+    if (reduced()) play(); else after(420, play);
     return () => { t.forEach((id) => clearTimeout(id)); };
   }, [after, play]);
 
@@ -305,7 +307,7 @@ export default function SealOfApproval({
   return (
     <div
       className="relative w-full h-full overflow-hidden select-none"
-      style={{ background: bgCss, fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", minHeight: 320 }}
+      style={{ background: bgCss, fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", minHeight: compact ? 0 : 320 }}
     >
       <style>{`
         @keyframes sealBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
@@ -315,7 +317,7 @@ export default function SealOfApproval({
       <div ref={confetti} style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 6 }} />
 
       <div ref={world} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div ref={drop} style={{ position: "relative", width: "min(58vmin, 300px)", aspectRatio: "1", willChange: "transform", opacity: 0 }}>
+        <div ref={drop} style={{ position: "relative", width: compact ? "min(76%, 185px)" : "min(58vmin, 300px)", aspectRatio: "1", willChange: "transform", opacity: 0 }}>
           <div ref={shadow} style={{ position: "absolute", left: "50%", bottom: "-7%", width: "78%", height: "12%", transform: "translateX(-50%)", borderRadius: "50%", background: "radial-gradient(ellipse, rgba(30,27,75,0.30), transparent 68%)", opacity: 0 }} />
           <div ref={glow} style={{ position: "absolute", inset: "-14%", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,197,66,0.55), rgba(245,158,11,0.18) 55%, transparent 72%)", opacity: 0, pointerEvents: "none" }} />
           <div ref={ring} style={{ position: "absolute", inset: "6%", borderRadius: "50%", border: "6px solid rgba(255,235,170,0.95)", boxShadow: "0 0 24px rgba(245,197,66,0.8), inset 0 0 18px rgba(245,197,66,0.6)", opacity: 0, pointerEvents: "none" }} />

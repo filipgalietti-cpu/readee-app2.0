@@ -1,0 +1,146 @@
+.book-studio .le-frame {
+  background: #faf7ee;
+}
+.book-studio .le-frame .le-stage.le-with-visual {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.book-studio .le-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+}
+.book-scene-photo {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 24px;
+}
+.book-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(100%, 1000px);
+  height: min(100%, 330px);
+  min-height: 120px;
+  padding: 10px;
+  border: 4px solid #598b88;
+  border-radius: 16px 24px 24px 16px;
+  box-shadow: 0 7px 0 #d8caaa;
+  background: #fffdf6;
+}
+.book-page {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.book-page:first-child {
+  border-right: 2px solid #e9dec7;
+}
+.book-page p {
+  font-size: clamp(19px, 2.6vw, 33px);
+  line-height: 1.6;
+  color: #57438f;
+  font-weight: 750;
+}
+.book-page img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.book-studio .le-demonstration {
+  gap: 8px;
+}
+.book-studio .le-demonstration .le-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: auto;
+  max-width: 100%;
+}
+.book-studio .le-demonstration .le-tile {
+  min-width: 110px;
+  font-size: clamp(17px, 2vw, 23px);
+}
+.book-studio .le-demonstration .le-sentence {
+  font-size: clamp(24px, 3vw, 34px);
+}
+.book-studio .le-context {
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 750;
+  line-height: 1.4;
+  margin: 20px auto 0;
+  padding: 14px 20px;
+  width: fit-content;
+  max-width: min(100%, 850px);
+  color: #57438f;
+  background: #fff;
+  border: 2px solid #e2d9ef;
+  border-radius: 18px;
+}
+.book-studio .le-stage:has(.le-reading) {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.book-studio .le-frame:has(.le-reading) .le-narrator {
+  display: none;
+}
+.book-studio .le-sort-home {
+  min-height: 125px;
+}
+@media (max-width: 640px) {
+  .book-page {
+    padding: 8px;
+  }
+  .book-page p {
+    font-size: 18px;
+  }
+  .book-studio .le-demonstration .le-tile {
+    min-width: 0;
+    padding: 9px 10px;
+  }
+  .book-studio .le-demonstration .le-sentence {
+    font-size: 23px;
+  }
+  .book-studio .le-context {
+    font-size: 21px;
+    margin-top: 16px;
+    padding: 12px 16px;
+  }
+}
+/* Give the actual book the full stage width, with its controls just below it. */
+.book-studio .le-frame .le-stage.le-with-visual:has(.book-spread) { grid-template-columns: 1fr; grid-template-rows: auto minmax(0,1fr) auto; gap: 10px; }
+.book-studio .book-spread { max-width: 780px; }
+.book-studio .book-page p { font-size: clamp(19px,2.2vw,28px); }
+.book-studio .book-picture img { animation: book-page-in .3s ease-out; }
+@keyframes book-page-in { from { opacity: .2; transform: scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .book-studio .book-picture img { animation: none; } }
+.book-spread { grid-template-rows: minmax(0,1fr); min-height: 0; }
+.book-page { min-height: 0; }
+.book-page img { max-height: 100%; }
+@media(max-width:767px) { .book-studio .book-spread { max-height: 260px; } }
+
+/* A real front-cover arrangement with legible typeset maker names. */
+.book-studio .le-frame .le-stage:has(.book-front-cover) { grid-template-columns:1fr; grid-template-rows:auto minmax(0,1fr) auto; gap:8px; }
+.book-front-cover { display:flex; flex-direction:column; gap:6px; width:min(100%,350px); height:100%; max-height:440px; min-height:0; padding:12px 20px 14px 24px; border:3px solid #375f61; border-left-width:12px; border-radius:7px 18px 18px 7px; box-shadow:5px 5px 0 #d8caaa; background:#598b88; color:#fffdf6; }
+.book-front-cover h2 { font-size:clamp(26px,3vw,36px); text-align:center; line-height:1.1; margin:0; }
+.book-front-cover > img { flex:1; width:100%; height:0; min-height:0; object-fit:contain; border-radius:6px; }
+.book-cover-names { flex-shrink:0; display:grid; gap:3px; }
+.book-cover-names p { font-size:clamp(18px,2vw,23px); line-height:1.2; font-weight:750; padding:5px 8px; margin:0; border-radius:6px; }
+.book-cover-names p.is-active { background:#fff3cd; color:#443727; }
+.book-front-cover .le-word-active { color:#443727; }
+/* Keep the cover book-shaped on a short laptop; place its controls beside it. */
+.book-front-cover { background:#375f61; border-color:#26484a; }
+.book-studio .book-front-cover h2, .book-studio .book-cover-names p { color:#fffdf6; }
+.book-studio .book-cover-names p.is-active { color:#443727; }
+@media(min-width:900px) and (max-height:800px) {
+ .book-studio .le-frame .le-stage:has(.book-front-cover) { grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); gap:12px 28px; }
+ .book-studio .le-stage:has(.book-front-cover) .le-prompt { grid-column:1 / -1; }
+ .book-studio .le-stage:has(.book-front-cover) .le-visual { grid-column:1; grid-row:2; justify-content:flex-end; }
+ .book-studio .le-stage:has(.book-front-cover) .le-interaction { grid-column:2; grid-row:2; }
+ .book-front-cover { width:min(100%,290px); max-height:360px; }
+}

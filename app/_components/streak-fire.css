@@ -1,0 +1,136 @@
+/* Original PracticeClient flame treatment, with names scoped for shared use. */
+.readee-streak {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  padding: 6px 12px 6px 10px;
+  border-radius: 999px;
+  background: #e4e4e7;
+  border: 1px solid transparent;
+  color: #71717a;
+  white-space: nowrap;
+}
+.readee-streak.is-lit {
+  color: white;
+  background: linear-gradient(135deg, #f97316, #f59e0b);
+  border-color: #fb923c;
+  animation:
+    readee-streak-glow 1.6s ease-in-out infinite,
+    readee-streak-ignite 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.readee-streak-count {
+  font-size: 14px;
+  font-weight: 800;
+}
+.readee-streak-multiplier {
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 1px 6px;
+  color: #9a3412;
+  background: #fef3c7;
+}
+.readee-streak-flame {
+  display: inline-flex;
+  transform-origin: 50% 90%;
+}
+.readee-streak.is-lit .readee-streak-flame {
+  animation: readee-streak-flicker 0.7s ease-in-out infinite;
+}
+.readee-streak-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.readee-streak-embers i {
+  position: absolute;
+  top: -2px;
+  left: 14px;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #fbbf24;
+  animation: readee-streak-ember 1.4s ease-out infinite;
+}
+.readee-streak-embers i:nth-child(2) {
+  left: 24px;
+  width: 3px;
+  height: 3px;
+  background: #fde68a;
+  animation-duration: 1.8s;
+  animation-delay: 0.5s;
+}
+.readee-streak-embers i:nth-child(3) {
+  left: 8px;
+  width: 3px;
+  height: 3px;
+  background: #fdba74;
+  animation-duration: 1.6s;
+  animation-delay: 0.9s;
+}
+@keyframes readee-streak-flicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(-2deg);
+  }
+  25% {
+    transform: scale(1.12) rotate(2deg);
+  }
+  50% {
+    transform: scale(0.95) rotate(-1deg);
+  }
+  75% {
+    transform: scale(1.08) rotate(1.5deg);
+  }
+}
+@keyframes readee-streak-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 6px 1px rgba(249, 115, 22, 0.35),
+      0 0 0 0 rgba(251, 191, 36, 0);
+  }
+  50% {
+    box-shadow:
+      0 0 14px 4px rgba(249, 115, 22, 0.55),
+      0 0 24px 8px rgba(251, 191, 36, 0.25);
+  }
+}
+@keyframes readee-streak-ember {
+  0% {
+    transform: translateY(2px) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-14px) scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes readee-streak-ignite {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .readee-streak,
+  .readee-streak * {
+    animation: none !important;
+  }
+  .readee-streak-embers {
+    display: none;
+  }
+}

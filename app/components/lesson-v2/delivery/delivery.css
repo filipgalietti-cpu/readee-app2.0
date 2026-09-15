@@ -1,0 +1,1595 @@
+/* Readee coached delivery: shared mechanics, existing mascot/orb/icon artwork. */
+.le-frame {
+  --le-purple: var(--brand-purple, #7c3aed);
+  --le-ink: #29223b;
+  --le-border: #e6ddf4;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  display: grid;
+  grid-template-rows: 5px 54px minmax(0, 1fr) auto;
+  background: #faf8ff;
+  color: var(--le-ink);
+  overflow: hidden;
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  padding: 0 clamp(16px, 3vw, 48px) 12px;
+  box-sizing: border-box;
+}
+.le-frame * {
+  box-sizing: border-box;
+}
+.le-frame button {
+  font: inherit;
+  cursor: pointer;
+  border: 2px solid var(--le-border);
+  border-radius: 16px;
+  background: white;
+  color: var(--le-ink);
+  min-height: 44px;
+  padding: 9px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 750;
+  touch-action: manipulation;
+}
+.le-frame button:focus-visible {
+  outline: 3px solid #7c3aed;
+  outline-offset: 4px;
+}
+.le-frame button:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+.le-frame h1 {
+  font-size: clamp(25px, 3vw, 44px);
+  line-height: 1.12;
+  font-weight: 850;
+  margin: 4px 0 12px;
+  letter-spacing: -0.03em;
+}
+.le-frame p {
+  margin: 0;
+  line-height: 1.4;
+}
+.le-frame .le-primary {
+  background: var(--le-purple);
+  border-color: var(--le-purple);
+  color: white;
+  box-shadow: 0 4px 0 #5b21b6;
+}
+.le-progress {
+  margin: 0 calc(-1 * clamp(16px, 3vw, 48px));
+  background: #ede7f6;
+}
+.le-progress > div {
+  height: 5px;
+  background: var(--le-purple);
+  transition: width 0.4s;
+}
+.le-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 750;
+  color: #655874;
+}
+.le-top > span {
+  flex: 1;
+  min-width: 0;
+}
+.le-top > span:not(.le-audio-status) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.le-carrots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  position: relative;
+  background: #fff1dc;
+  padding: 3px 12px;
+  border-radius: 22px;
+  font-size: 22px;
+  animation: le-pop 0.45s ease-out;
+}
+.le-plus {
+  position: absolute;
+  right: 6px;
+  top: calc(100% - 2px);
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 10px;
+  background: #fff1dc;
+  pointer-events: none;
+  color: #a94b0a;
+  animation: le-rise 1s both;
+}
+.le-stage {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0 16px;
+}
+.le-stage.le-with-visual {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+.le-prompt {
+  grid-column: 1/-1;
+  text-align: center;
+}
+.le-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 11px;
+  font-weight: 800;
+  color: #766789;
+  margin-bottom: 7px !important;
+}
+.le-context {
+  font-size: clamp(18px, 2.3vw, 26px);
+  color: #645672;
+  background: #f0eafa;
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+}
+.le-visual {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  overflow: hidden;
+}
+.le-visual > svg {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+}
+.le-interaction {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 6px 10px;
+}
+.le-activity {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.le-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+.le-option {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  flex: 1 1 180px;
+  max-width: 360px;
+}
+.le-option > .le-tile {
+  flex: 1;
+}
+.le-frame .le-tile {
+  font-size: clamp(21px, 2.5vw, 32px);
+  padding: 14px 20px;
+  min-height: 64px;
+  box-shadow: 0 4px 0 var(--le-border);
+  position: relative;
+}
+.le-tile img {
+  max-width: 100%;
+  object-fit: contain;
+}
+.le-frame .le-tile.is-selected,
+.le-frame .is-correct {
+  border-color: #72b887;
+  background: #f0fbf2;
+  box-shadow: 0 4px 0 #72b887;
+}
+.le-frame .is-wrong {
+  border-color: #dab779;
+  background: #fff8eb;
+}
+.le-frame .le-hear {
+  padding: 8px;
+  min-width: 44px;
+}
+.le-sentence {
+  font-size: clamp(26px, 3.5vw, 44px);
+  line-height: 1.45 !important;
+  font-weight: 850;
+  color: var(--le-purple);
+  text-align: center;
+}
+.le-feedback {
+  font-size: clamp(16px, 1.7vw, 21px);
+  text-align: center;
+  max-width: 660px;
+  min-height: 1.4em;
+  color: #5b4a6e;
+}
+.le-small {
+  font-size: 14px;
+  color: #77677f;
+  text-align: center;
+}
+.le-slots,
+.le-pool {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.le-frame .le-slot {
+  min-width: 90px;
+  min-height: 65px;
+  border-style: dashed;
+  font-size: 27px;
+  color: var(--le-purple);
+}
+.le-frame .le-slot:empty {
+  background: #ede8f5;
+}
+.le-sort-card {
+  font-size: clamp(25px, 3vw, 38px) !important;
+  padding: 20px !important;
+}
+.le-buckets {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.le-buckets button {
+  min-width: 150px;
+  min-height: 70px;
+  font-size: 20px;
+}
+.le-model-copy {
+  font-size: clamp(20px, 2.5vw, 29px);
+  line-height: 1.6 !important;
+  max-width: 660px;
+}
+.le-footer {
+  display: grid;
+  grid-template-columns: 94px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 94px;
+  border-top: 1px solid var(--le-border);
+  padding-top: 8px;
+  position: relative;
+}
+.le-bunny {
+  height: 94px;
+  width: 90px;
+  align-self: end;
+  overflow: visible;
+}
+.le-bunny > div,
+.le-bunny svg {
+  width: 100%;
+  height: 100%;
+}
+.le-narrator {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.le-narrator > p {
+  font-size: 13px;
+  color: #645672;
+  max-height: 76px;
+  overflow: auto;
+  max-width: 620px;
+}
+.le-frame .le-replay {
+  min-width: 44px;
+  padding: 8px;
+}
+.le-navigation {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.le-frame .le-skip {
+  font-size: 13px;
+  border: 0;
+  background: transparent;
+  padding: 8px;
+}
+.le-mic {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.le-read-word { background: #e8e7ec; color: #514b60; border-radius: 5px; }
+.le-read-correct {
+  color: #267046;
+  background: #dff3df;
+  border-radius: 5px;
+}
+.le-welcome {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 44px;
+  min-height: 0;
+  max-width: 1100px;
+  margin: auto;
+}
+.le-cover {
+  width: 100%;
+  border-radius: 30px;
+  max-height: 55vh;
+  object-fit: cover;
+}
+.le-welcome h1 {
+  font-size: clamp(44px, 6vw, 78px);
+}
+.le-welcome .le-primary {
+  margin-top: 24px;
+}
+.le-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  gap: 12px;
+  text-align: center;
+  overflow: auto;
+}
+.le-summary > p {
+  max-width: 600px;
+  font-size: 18px;
+}
+.le-seal {
+  width: 260px;
+  height: 215px;
+  flex-shrink: 1;
+  min-height: 100px;
+}
+.le-summary-carrots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 27px;
+  color: #8d470e;
+}
+.le-summary-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  font-size: 13px;
+  color: #655874;
+}
+.le-save-error {
+  position: absolute;
+  top: 55px;
+  left: 12px;
+  background: #fff0cb;
+  padding: 8px;
+  z-index: 20;
+}
+@keyframes le-pop {
+  50% {
+    transform: scale(1.16);
+  }
+}
+@keyframes le-rise {
+  to {
+    transform: translateY(-35px);
+    opacity: 0;
+  }
+}
+@media (max-width: 767px) {
+  .le-frame {
+    grid-template-rows: 4px 40px minmax(0, 1fr) auto;
+    padding: 0 14px 8px;
+  }
+  .le-top {
+    font-size: 12px;
+  }
+  .le-top .le-audio-status {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+  .le-stage {
+    gap: 8px;
+    padding-top: 7px;
+    padding-bottom: 10px;
+  }
+  .le-stage.le-with-visual {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(80px, 0.6fr) minmax(0, 1fr);
+  }
+  .le-visual {
+    justify-content: center;
+  }
+  .le-visual > svg {
+    max-height: 180px;
+    width: auto;
+    max-width: 100%;
+  }
+  .le-prompt h1 {
+    margin-bottom: 6px;
+    font-size: 26px;
+  }
+  .le-activity {
+    gap: 12px;
+  }
+  .le-options {
+    gap: 8px;
+  }
+  .le-option {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .le-frame .le-tile {
+    font-size: 22px;
+    min-height: 52px;
+    padding: 9px 14px;
+  }
+  .le-sentence {
+    font-size: 29px;
+  }
+  .le-context {
+    font-size: 18px;
+    padding: 8px;
+  }
+  .le-feedback {
+    font-size: 16px;
+  }
+  .le-footer {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 5px;
+    min-height: 106px;
+  }
+  .le-bunny {
+    width: 59px;
+    height: 72px;
+    grid-row: 1/3;
+  }
+  .le-narrator {
+    gap: 5px;
+  }
+  .le-narrator > p {
+    font-size: 11px;
+    max-height: 45px;
+  }
+  .le-narrator > button {
+    flex-shrink: 0;
+  }
+  .le-frame .le-replay {
+    display: none;
+  }
+  .le-navigation {
+    grid-column: 2;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  .le-navigation button {
+    padding: 7px 10px;
+    font-size: 14px;
+  }
+  .le-navigation .le-skip {
+    font-size: 12px;
+  }
+  .le-welcome {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .le-cover {
+    max-height: 29vh;
+  }
+  .le-welcome h1 {
+    font-size: 47px;
+  }
+  .le-welcome .le-primary {
+    margin-top: 14px;
+  }
+  .le-summary h1 {
+    font-size: 29px;
+  }
+  .le-summary > p {
+    font-size: 16px;
+  }
+  .le-seal {
+    height: 190px;
+    width: 230px;
+  }
+  .le-summary-carrots {
+    font-size: 23px;
+  }
+  .le-slots,
+  .le-pool {
+    gap: 7px;
+  }
+  .le-frame .le-slot {
+    min-width: 72px;
+    min-height: 55px;
+    font-size: 22px;
+  }
+  .le-buckets button {
+    min-width: 125px;
+    font-size: 17px;
+    min-height: 55px;
+  }
+  .le-small {
+    font-size: 12px;
+  }
+  .le-model-copy {
+    font-size: 20px;
+  }
+}
+@media (max-height: 620px) and (min-width: 768px) {
+  .le-frame {
+    grid-template-rows: 4px 35px minmax(0, 1fr) auto;
+  }
+  .le-footer {
+    min-height: 70px;
+  }
+  .le-bunny {
+    height: 70px;
+  }
+  .le-seal {
+    height: 110px;
+  }
+  .le-summary {
+    gap: 5px;
+  }
+  .le-summary h1 {
+    font-size: 26px;
+  }
+  .le-summary > p {
+    font-size: 14px;
+  }
+  .le-stage {
+    gap: 6px;
+  }
+  .le-prompt h1 {
+    font-size: 28px;
+  }
+  .le-activity {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-frame *,
+  .le-frame *::before,
+  .le-frame *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.le-sequence {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.le-sequence .le-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 88px;
+  min-height: 90px;
+  border: 2px dashed #c9b7e4;
+  border-radius: 16px;
+  background: #f5f0ff;
+  padding: 8px;
+}
+.le-slot > span:first-child {
+  font-size: 12px;
+  font-weight: 800;
+  color: #776386;
+}
+.le-slot .le-slot-hint {
+  font-size: 12px;
+  color: #776386;
+}
+.le-slot button {
+  font-size: 24px;
+}
+.le-frame .le-listen {
+  padding: 8px;
+  min-width: 44px;
+  border-radius: 12px;
+}
+.le-frame .is-retry {
+  border-color: #d4b281;
+  background: #fff8ed;
+}
+@media (max-width: 767px) {
+  .le-sequence {
+    gap: 6px;
+  }
+  .le-sequence .le-slot {
+    min-width: 76px;
+    min-height: 72px;
+    padding: 4px;
+  }
+  .le-slot button {
+    font-size: 21px;
+    padding: 7px;
+  }
+  .le-frame .le-listen {
+    padding: 7px;
+  }
+}
+/* Keep the illustrations expressive; the mechanics remain shared. */
+.le-footer {
+  border-top: 0;
+  grid-template-columns: 154px minmax(0, 1fr) auto;
+  min-height: 136px;
+  padding-top: 0;
+}
+.le-bunny {
+  width: 154px;
+  height: 162px;
+}
+.le-narrator > div {
+  flex-shrink: 0;
+}
+.le-narrator > p {
+  font-size: 14px;
+}
+.le-portrait-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+.le-frame .le-portrait-cards .le-tile {
+  flex-direction: column;
+  padding: 12px;
+  font-size: 22px;
+  gap: 8px;
+}
+.le-portrait-cards img {
+  height: 105px;
+  width: 110px;
+  border-radius: 18px;
+}
+.le-explored {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  font-size: 16px;
+  color: #267046;
+}
+.le-swap-sentence {
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.le-before {
+  color: #84758e;
+  text-align: center;
+  font-size: 18px;
+}
+.le-swap-sentence.is-swapped .le-sentence {
+  animation: le-word-swap 380ms ease both;
+}
+@keyframes le-word-swap {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.le-sort-board {
+  max-width: 960px;
+  gap: 14px;
+}
+.le-card-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+}
+.le-frame .le-sort-card {
+  font-size: 20px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 0 #e6ddf4;
+}
+.le-frame .le-sort-card.is-selected {
+  border-color: #9473d9;
+  background: #f1eaff;
+  transform: translateY(-4px);
+}
+.le-sort-homes {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.le-sort-home {
+  border: 2px dashed #94bbaa;
+  border-radius: 22px;
+  min-height: 210px;
+  padding: 12px;
+  background: #edf6ef;
+}
+.le-sort-home.home-1 {
+  border-color: #ceae7c;
+  background: #fcf3e2;
+}
+.le-frame .le-bucket {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  justify-content: space-between;
+  font-size: 24px;
+}
+.le-bucket span {
+  font-size: inherit;
+}
+.le-sorted-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.le-frame .le-sorted-cards button {
+  padding: 6px 10px;
+  min-height: 42px;
+  font-size: 18px;
+  animation: le-word-swap 280ms ease both;
+}
+.le-stamp-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(ellipse at 50% 35%, #fff5da, #f4ecff 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  padding: 24px;
+}
+.le-stamp-screen h1 {
+  font-size: clamp(44px, 7vw, 80px);
+}
+.le-stamp-screen > div:first-child {
+  width: min(560px, 90vw);
+}
+.le-warmup {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #faf8ff;
+  z-index: 30;
+}
+.le-warmup > div {
+  height: 100dvh;
+  min-height: 0 !important;
+}
+@media (max-width: 767px) {
+  .le-footer {
+    grid-template-columns: 102px minmax(0, 1fr);
+    min-height: 133px;
+    gap: 4px;
+  }
+  .le-bunny {
+    width: 106px;
+    height: 136px;
+  }
+  .le-narrator > p {
+    font-size: 11px;
+    max-height: 56px;
+  }
+  .le-portrait-cards {
+    gap: 7px;
+  }
+  .le-frame .le-portrait-cards .le-tile {
+    padding: 7px 3px;
+    font-size: 15px;
+    gap: 7px;
+    border-radius: 14px;
+  }
+  .le-portrait-cards img {
+    height: 68px;
+    width: 68px;
+  }
+  .le-swap {
+    gap: 16px;
+  }
+  .le-swap .le-context {
+    font-size: 19px;
+  }
+  .le-swap-sentence {
+    min-height: 76px;
+  }
+  .le-card-bank {
+    gap: 8px;
+  }
+  .le-frame .le-sort-card {
+    font-size: 17px !important;
+    padding: 9px !important;
+  }
+  .le-sort-homes {
+    gap: 9px;
+  }
+  .le-sort-home {
+    min-height: 214px;
+    padding: 6px;
+    border-radius: 16px;
+  }
+  .le-frame .le-bucket {
+    font-size: 17px;
+    padding: 6px;
+    gap: 3px;
+  }
+  .le-frame .le-sorted-cards button {
+    font-size: 15px;
+    min-height: 46px;
+  }
+  .le-sort-board {
+    gap: 12px;
+  }
+  .le-reading {
+    gap: 10px;
+  }
+  .le-stamp-screen {
+    gap: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-swap-sentence.is-swapped .le-sentence,
+  .le-frame .le-sorted-cards button {
+    animation: none;
+  }
+}
+.le-portrait-cards .le-tile > div {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1;
+  max-width: 120px;
+}
+.le-portrait-cards .le-tile > div img {
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .le-swap {
+    gap: 10px;
+  }
+  .le-portrait-cards .le-tile > div {
+    max-width: 90px;
+  }
+  .le-swap-sentence {
+    min-height: 72px;
+  }
+}
+@media (min-width: 768px) {
+  .le-footer {
+    min-height: 118px;
+  }
+  .le-bunny {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .le-narrator {
+    grid-column: 2;
+  }
+  .le-navigation {
+    grid-column: 3;
+  }
+}
+@media (min-width: 768px) {
+  .le-swap {
+    gap: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .le-reading {
+    gap: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .le-reading .le-sentence {
+    font-size: clamp(30px, 3vw, 38px);
+  }
+}
+@media (max-width: 767px) {
+  .le-stage.le-with-visual:has(.le-reading) {
+    grid-template-rows: auto minmax(70px, 0.4fr) minmax(0, 1fr);
+  }
+}
+.le-summary-picture .le-cover {
+  width: 250px;
+  height: 130px;
+  max-height: 130px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+.le-summary-examples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+.le-frame .le-summary-examples button {
+  font-size: 20px;
+  color: var(--le-purple);
+}
+@media (max-width: 767px) {
+  .le-summary-picture .le-cover {
+    height: 105px;
+    max-height: 105px;
+    width: 210px;
+  }
+  .le-frame .le-summary-examples button {
+    font-size: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-plus {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .le-warmup .wu-rule {
+    left: 14px !important;
+    transform: none !important;
+    translate: none !important;
+  }
+}
+/* Audio belongs to its answer card; no detached floating speaker buttons. */
+.le-option {
+  gap: 0;
+  border: 2px solid var(--le-border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 4px 0 var(--le-border);
+  overflow: hidden;
+}
+.le-frame .le-option > .le-tile {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  min-width: 0;
+  padding: 14px 12px;
+}
+.le-frame .le-option > .le-listen {
+  border: 0;
+  border-left: 1px solid var(--le-border);
+  border-radius: 0;
+  min-width: 46px;
+  flex-shrink: 0;
+  padding: 10px;
+  background: #f5f0fc;
+}
+.le-option:has(.is-correct) {
+  border-color: #72b887;
+  background: #f0fbf2;
+  box-shadow: 0 4px 0 #72b887;
+}
+.le-option:has(.is-retry) {
+  border-color: #d9b375;
+  background: #fff8ed;
+}
+.le-frame .le-option .is-correct:disabled {
+  opacity: 1;
+}
+.le-revealing .le-fade-choice {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.97);
+  transition:
+    opacity 340ms,
+    transform 340ms;
+  pointer-events: none;
+}
+.le-answer-reveal {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: le-answer-settle 450ms ease both;
+}
+.le-answer-photo {
+  display: block;
+  width: 100%;
+  height: clamp(145px, 29vh, 275px);
+  object-fit: contain;
+  border-radius: 24px;
+}
+.le-answer-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f0fbf2;
+  border: 2px solid #72b887;
+  border-radius: 18px;
+  padding: 14px 16px;
+  width: 100%;
+  box-shadow: 0 4px 0 #72b887;
+}
+.le-answer-card p {
+  flex: 1;
+  text-align: center;
+  font-weight: 850;
+  font-size: clamp(24px, 3vw, 35px);
+  color: var(--le-purple);
+}
+.le-frame .le-answer-card .le-listen {
+  border: 0;
+  border-left: 1px solid #aed5b8;
+  border-radius: 0;
+  background: transparent;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+@keyframes le-answer-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .le-answer-photo {
+    height: clamp(160px, 25vh, 225px);
+  }
+  .le-answer-card {
+    padding: 12px 10px;
+    gap: 5px;
+  }
+  .le-frame .le-option > .le-tile {
+    padding: 10px;
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-answer-reveal {
+    animation: none;
+  }
+  .le-revealing .le-fade-choice {
+    transition: none;
+  }
+}
+.le-welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+.le-welcome .le-welcome-actions .le-primary {
+  margin-top: 0;
+}
+.le-frame .le-ambience {
+  font-size: 14px;
+  padding: 9px 12px;
+  background: transparent;
+}
+.le-frame .le-ambience[aria-pressed="true"] {
+  background: #f0fbf2;
+  border-color: #9ac5a8;
+}
+@media (max-width: 767px) {
+  .le-welcome-actions {
+    justify-content: center;
+    margin-top: 14px;
+    gap: 8px;
+  }
+}
+/* One reading surface: highlight the spoken word where the child is looking. */
+.le-karaoke > span {
+  border-radius: 6px;
+  padding: 2px 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.le-karaoke .le-word-active {
+  background: #e7ddff;
+  color: #5424a4;
+  box-shadow: 0 3px 0 #9c7bd6;
+}
+.le-pronoun-focus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.le-pronoun-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+.le-pronoun-dots {
+  display: flex;
+  gap: 8px;
+}
+.le-frame .le-pronoun-dots button {
+  min-width: 44px;
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+.le-frame .le-pronoun-dots button[aria-pressed="true"] {
+  background: #6e5bff;
+  color: #fff;
+  border-color: #6e5bff;
+}
+.le-swap .le-swap-sentence {
+  min-height: 55px;
+}
+.le-retry-exit {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.le-stamp-screen {
+  background: #faf8ff;
+}
+.le-summary.le-party {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 1060px;
+  margin: auto;
+  overflow: visible;
+  position: relative;
+  text-align: left;
+}
+.le-party-rabbit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.le-party-rabbit > div {
+  width: 100%;
+  max-width: 370px;
+  height: 330px;
+}
+.le-party-rabbit svg {
+  width: 100%;
+  height: 100%;
+}
+.le-party-cheer {
+  background: #fff;
+  border: 2px solid #cbbcf0;
+  border-radius: 24px 24px 24px 4px;
+  padding: 12px 26px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #6e5bff;
+  rotate: -5deg;
+}
+.le-party-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.le-party-details h1 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  margin: 0 0 6px;
+}
+.le-party-details h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 850;
+}
+.le-party-details ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 18px;
+}
+.le-party-details li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.le-party-details li svg {
+  color: #448558;
+  flex-shrink: 0;
+}
+.le-carrot-prize {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border: 2px solid #f0c47a;
+  border-radius: 22px;
+  background: #fff3db;
+  margin-top: 10px;
+}
+.le-carrot-prize strong {
+  display: inline-block;
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 900;
+  color: #99521b;
+  min-width: 2ch;
+  font-variant-numeric: tabular-nums;
+  animation: le-count 0.1s ease-out;
+}
+.le-carrot-prize span {
+  display: block;
+  font-size: 15px;
+  color: #845124;
+  font-weight: 800;
+  margin-top: 4px;
+}
+.le-completion-bonus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  color: #7d5833;
+}
+.le-completion-bonus.is-earned {
+  color: #467344;
+  font-weight: 850;
+}
+.le-party-confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.le-party-confetti i {
+  position: absolute;
+  top: -30px;
+  width: 9px;
+  height: 17px;
+  border-radius: 2px;
+  animation: le-confetti 3.8s ease-in both;
+}
+.le-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+@keyframes le-confetti {
+  to {
+    transform: translate(35px, 105dvh) rotate(500deg);
+    opacity: 0;
+  }
+}
+@keyframes le-count {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@media (max-width: 767px) {
+  .le-summary.le-party {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    align-content: center;
+  }
+  .le-party-rabbit {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+  .le-party-rabbit > div {
+    height: 150px;
+    width: 150px;
+  }
+  .le-party-cheer {
+    font-size: 23px;
+    padding: 9px 16px;
+  }
+  .le-party-details {
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+  }
+  .le-party-details h1 {
+    font-size: 27px;
+    max-width: 340px;
+    margin: 0;
+  }
+  .le-party-details ul {
+    font-size: 16px;
+    text-align: left;
+    gap: 5px;
+  }
+  .le-party-details h2 {
+    font-size: 16px;
+  }
+  .le-carrot-prize {
+    margin: 0;
+    padding: 9px 22px;
+  }
+  .le-carrot-prize strong {
+    font-size: 42px;
+  }
+  .le-carrot-prize > img {
+    width: 45px;
+    height: 45px;
+  }
+  .le-pronoun-focus > div:first-child {
+    width: 155px !important;
+    height: 140px !important;
+  }
+  .le-swap {
+    gap: 10px;
+  }
+  .le-frame:has(.le-party) .le-footer {
+    min-height: 70px;
+    grid-template-columns: 1fr;
+  }
+  .le-frame:has(.le-party) .le-narrator {
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .le-party-confetti {
+    display: none;
+  }
+}
+.le-verb-emphasis {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+  transition: text-decoration-color 0.22s;
+}
+.le-verb-emphasis.is-spoken {
+  text-decoration-color: var(--le-purple);
+}
+.le-answer-card.le-answer-centered {
+  justify-content: center;
+  text-align: center;
+}
+/* Narration focus is purple, distinct from a green correct answer. No layout shift. */
+.le-option.le-option-reading {
+  border-color: #8c68d3;
+  background: #eee5ff;
+  box-shadow:
+    0 0 0 3px #d9c9f6,
+    0 4px 0 #8c68d3;
+}
+.le-frame .le-option.le-option-reading > .le-listen {
+  background: #e2d4fa;
+  border-left-color: #c2a9e9;
+}
+.le-option-reading .le-tile > span {
+  text-decoration: underline;
+  text-decoration-color: #9e7ed2;
+  text-underline-offset: 5px;
+}
+
+/* Reserve the same space that the image actually occupies. */
+.le-choice-art { width: 90px; height: 75px; flex-shrink: 0; }
+.le-choice-art img { width: 100%; height: 100%; object-fit: contain; }
+.le-read-heard { background: #d9efe1; color: #22583b; border-radius: 5px; box-shadow: inset 0 -2px 0 #8abea0; }
+.le-practice-stage:has(.le-practice-story) { grid-template-rows: auto auto minmax(0, 1fr); }
+
+.le-reward-hud { display: flex; flex-shrink: 0; align-items: center; gap: 10px; }
+.le-reward-hud > div { flex-shrink: 0; }
+.le-read-retry { color: #73541b; background: #fff1ad; border-radius: 5px; }
+@media(max-width: 600px) { .le-reward-hud { gap: 6px; } .le-reward-hud > div:first-child { padding: 5px 8px; gap: 4px; } .le-reward-hud > div:first-child span { font-size: 12px; } }
+
+.le-reading .le-karaoke > span { background: #e8e7ec; color: #514b60; border-radius: 5px; }
+.le-reading .le-karaoke > .le-word-active { outline: 2px solid #bcb8c5; }
+/* Enlarge the existing rig together with its reaction overlay, keeping footer slots stable. */
+.le-bunny > .bn-stage { transform: scale(1.16); transform-origin: center bottom; }
+
+/* Subjective choices share the narrated card mechanic, with no accuracy colors. */
+.le-frame .le-reflection .le-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 640px;
+  gap: 12px;
+}
+.le-frame .le-reflection .le-option { display: block; position: relative; width: 100%; max-width: none; }
+.le-frame .le-reflection .le-option > .le-tile {
+  display: flex; flex-direction: column; align-items: stretch; gap: 0;
+  padding: 0; min-height: 0; width: 100%;
+}
+.le-frame .le-reflection .le-option .le-choice-art { width: 100%; max-width: none; height: min(14dvh, 125px); }
+.le-frame .le-reflection .le-option .le-choice-art img { width: 100%; height: 100%; object-fit: contain; }
+.le-frame .le-reflection .le-tile > span {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 46px 0 6px;
+  font-size: clamp(20px, 2.5vw, 26px);
+}
+.le-frame .le-reflection .le-option > .le-listen {
+  position: absolute; bottom: 0; right: 0; height: 44px; width: 44px;
+}
+.le-frame .le-reflection .le-tile.is-selected {
+  background: #ede9fe; color: #58417c; box-shadow: none;
+}
+.le-frame .le-reflection .le-option:has(.is-selected) { border-color: #8b76c5; box-shadow: 0 4px 0 #8b76c5; }
+.le-frame .le-reflection .le-tile:disabled { opacity: 1; }
+.le-frame .le-reflection .le-feedback { margin: 0; max-width: 640px; }
+@media (min-width: 1000px), (max-height: 550px) {
+  .le-frame .le-reflection .le-options { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 900px; }
+}
+@media (min-width: 1000px) and (min-height: 551px) {
+  .le-frame .le-reflection { max-width: 900px; }
+  .le-frame .le-reflection .le-option .le-choice-art { height: min(23dvh, 180px); }
+}
+@media (max-height: 550px) {
+  .le-frame:has(.le-reflection) { grid-template-rows: 4px 38px minmax(0, 1fr) 90px; }
+  .le-frame:has(.le-reflection) .le-footer { min-height: 0; padding-block: 0; }
+  .le-frame:has(.le-reflection) .le-bunny { height: 88px; }
+  .le-frame .le-reflection { gap: 6px; }
+  .le-frame .le-reflection .le-feedback { font-size: 14px; }
+}
+
+/* Keep failed-audio recovery inside the header instead of covering the question. */
+.le-audio-status { max-width: min(65%, 350px); font-size: 12px; line-height: 1.25; color: #705026; }
+
+/* Visual matching: naming help stays attached to its card, without nested buttons. */
+.pip-studio .le-pair-choice {position:relative;min-width:0;}
+.pip-studio .le-pair-choice>.le-pair-card {width:100%;height:100%;padding-right:52px;}
+.pip-studio .le-pair-choice>.le-pair-audio {position:absolute;right:5px;top:calc(50% - 22px);width:44px;height:44px;min-height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;border-radius:10px;}
+.pip-studio .le-pair-choice>.le-pair-audio svg {position:static;transform:none;}
+
+/* Every sort home is a neutral destination with an attached, independent replay. */
+.le-bucket-head { display:grid; grid-template-columns:minmax(0,1fr) 44px; align-items:center; gap:2px; }
+.le-frame .le-bucket-head .le-bucket { min-width:0; padding:6px 2px; justify-content:center; }
+.le-frame .le-bucket-audio { width:44px; height:44px; min-height:44px; padding:0; background:transparent; border:0; border-radius:12px; justify-content:center; }
+.le-frame .le-bucket-audio:hover { background:#ffffffa6; }
+.le-frame .le-bucket-audio:focus-visible { outline:3px solid var(--le-purple); outline-offset:1px; }
+/* Opt-in vocabulary cards: image and word are one target before and after sorting. */
+.le-sort-illustrated .le-sort-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0}
+.le-sort-illustrated .le-sorted-cards>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0}
+.le-sort-illustrated .le-sort-art{display:block;width:72px;height:48px;max-width:100%;object-fit:contain;border-radius:8px;pointer-events:none}
+.le-sort-illustrated .le-sorted-cards .le-sort-art{width:64px;height:38px}
+@media(max-width:600px){.le-sort-illustrated .le-sort-card{padding:7px 8px}.le-sort-illustrated .le-sort-art{width:52px;height:38px}.le-sort-illustrated .le-sorted-cards .le-sort-art{width:45px;height:32px}.le-sort-illustrated .le-sorted-cards>button{padding:5px 4px}}
+
+/* Three choices share equal tracks instead of wrapping into an uneven 2+1. */
+.le-choose .le-options[data-choice-count="3"] { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.le-choose .le-options[data-choice-count="3"] > .le-option { max-width:none; min-width:0; }
+.le-sort-illustrated .le-bucket { display:flex; align-items:center; justify-content:center; gap:8px; }
+@media(max-width:640px) { .le-choose .le-options[data-choice-count="3"] { grid-template-columns:1fr; } }
+
+.le-parent-mic { font-size:14px; margin:8px 0; max-width:460px; }
+.le-parent-mic summary { cursor:pointer; min-height:44px; padding:10px 0; }
+.le-parent-mic p { font-size:14px; line-height:1.45; }
+.le-frame .le-parent-mic button,.le-frame .le-auto-mic-off { font-size:13px; padding:8px 12px; min-height:44px; border:1px solid #9985cf; border-radius:12px; background:#f4efff; color:#4c367d; }
+.le-auto-mic-off { flex-basis:100%; }
+
+.le-mic:has(.le-auto-mic-off) { flex-wrap:wrap; justify-content:center; }
+.le-mic .le-auto-mic-off { order:3; }
+
+/* Catalogue presentation: media and words share a row; audio stays attached. */
+.le-choice-lines { display:flex; flex-direction:column; gap:8px; width:100%; }
+.le-choice-line { display:flex; align-items:center; gap:12px; min-width:0; }
+.le-frame .le-option .le-tile .le-choice-line > img { width:68px; height:60px; object-fit:contain; flex-shrink:0; border-radius:6px; }
+.le-syllable-markers { display:flex; gap:4px; flex-shrink:0; }
+.le-syllable-markers > i { width:9px; height:9px; background:currentColor; border-radius:50%; }
+.le-sort-illustrated .le-bucket { flex-wrap:wrap; }
+.le-sort-illustrated .le-bucket:has(.le-sort-art) { flex-direction:column; }
+@media(max-width:640px) { .le-choice-lines { gap:4px; }.le-choice-line { gap:8px; }.le-frame .le-option .le-tile .le-choice-line > img { width:52px; height:46px; } }
+@media(max-width:640px) { .le-sort-illustrated[data-bucket-count="3"] .le-sorted-cards>button { flex-direction:column; } }
+.le-frame .le-match-compact-images .le-match-picture { display:block; width:72px; height:52px; max-width:100%; object-fit:contain; margin:0 auto 4px; border-radius:6px; }
+@media(max-width:640px) { .le-frame .le-match-compact-images .le-match-picture { width:64px; height:46px; } }
+@media(min-width:641px) and (max-height:800px) {
+ .le-frame .le-match-compact-images .le-match-picture { height:40px; margin-bottom:3px; }
+ .le-frame .le-match-compact-images .le-pair-board > .le-check-matches { margin-top:8px; }
+}
+/* Once every card is placed, reclaim the empty source tray for spoken feedback. */
+.le-sort-illustrated .le-card-bank:empty { display:none; }
+
+/* Sentence and print-label cards retain their larger vertical illustration layout. */
+.le-sort-illustrated.le-sort-word-cards .le-sorted-cards>button { flex-direction:row; }
+@media(max-width:640px) { .le-sort-illustrated.le-sort-word-cards[data-bucket-count="3"] .le-sorted-cards>button { flex-direction:column; } }
+
+/* A word and its vocabulary picture remain one tappable answer. */
+.le-frame .le-option .le-tile.le-word-choice-tile { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:14px; }
+.le-frame .le-option .le-tile .le-word-choice-picture { display:block; flex:0 0 96px; width:96px; height:86px; object-fit:contain; border-radius:9px; }
+.le-sort-home { cursor:pointer; }
+.le-sort-home:has(.le-bucket:focus-visible) { outline:3px solid var(--le-purple); outline-offset:3px; }
+@media(max-width:640px) {
+ .le-frame .le-option .le-tile .le-word-choice-picture { flex-basis:70px; width:70px; height:62px; }
+ .le-frame .le-option .le-tile.le-word-choice-tile { gap:9px; }
+}
+
+.le-frame .le-mic-narration-replay { display:flex; align-items:center; justify-content:center; width:44px; min-width:44px; min-height:44px; padding:8px; }
+
+/* A shared subject image is distinct from the choices it introduces. */
+.le-choice-stimulus { display:block;width:100%;max-width:420px;height:clamp(120px,24dvh,200px);object-fit:contain;margin:0 auto 12px;border-radius:18px; }
+
+/* Sort destinations always keep their authored, spoken label visible.
+   Older lesson themes hid direct spans when those spans were decorative. */
+.le-frame .le-bucket > .le-karaoke { display:inline; }
+
+/* Blank space inside a choice card accepts the same answer as its label button. */
+.le-choose .le-option { cursor:pointer; }
+
+/* One full-size native answer button, with a separate corner replay control.
+   Avoid invisible pseudo-element hit areas: browser hit testing matches the layout. */
+.le-frame .le-choose .le-option { position:relative; display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr); }
+.le-frame .le-choose .le-option > .le-tile { position:relative; grid-area:1/1; width:100%; height:100%; box-sizing:border-box; padding-bottom:46px; }
+.le-frame .le-choose .le-option > .le-listen { position:absolute; right:0; bottom:0; z-index:2; width:44px; min-width:44px; height:44px; min-height:44px; padding:8px; }
+.le-frame .le-choose .le-option:has(> .le-tile:focus-visible) { outline:3px solid #7755cc; outline-offset:3px; }
+
+/* A visible answer receipt, followed by a quiet fade. Purple means selected,
+   not correct: exam correctness stays deferred until the results. */
+.le-frame .le-selection-registered:disabled,
+.le-frame .le-selection-registered {
+  opacity:1; color:#39266d; background:#eee9ff; border-color:#6e5bff;
+  box-shadow:0 0 0 3px #6e5bff, 0 5px 0 #d5cdf1;
+}
+.le-answer-registered .le-pair-board,
+.le-answer-registered .le-sort-board,
+.le-answer-registered .le-sequence {
+  outline:3px solid #b4a4ed; outline-offset:6px; border-radius:20px;
+}
+.le-slide-enter { animation:le-slide-arrive 280ms ease-out; }
+.le-is-leaving > .le-stage {
+  animation:none; opacity:0; transition:opacity 240ms ease-in;
+  pointer-events:none;
+}
+@keyframes le-slide-arrive { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) {
+  .le-slide-enter { animation:none; }
+  .le-is-leaving > .le-stage { transition:none; }
+}
+.le-frame .le-choose .le-option:has(> .le-selection-registered) {
+  background:#eee9ff; border-color:#6e5bff;
+  box-shadow:0 0 0 3px #6e5bff, 0 5px 0 #d5cdf1;
+}
+.le-frame .le-choose .le-option > .le-tile.le-selection-registered {
+  background:#eee9ff; color:#39266d; opacity:1; box-shadow:none;
+}
+/* Spoken exam answers receive the same neutral acknowledgement as tapped cards. */
+.le-answer-registered .le-response-heard { border:2px solid #6e5bff; border-radius:18px; background:#eee9ff; padding:12px 18px; color:#39266d; }

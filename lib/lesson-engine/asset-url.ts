@@ -43,7 +43,7 @@
  * Anything added to app/data later that ships its own asset tree has to be
  * added here too, or it fails exactly the same silent way.
  */
-const AUDIO_PREFIXES = ["/audio/lessons-v2/", "/audio/quizzes-v2/"];
+const AUDIO_PREFIXES = ["/audio/lessons-v2/", "/audio/quizzes-v2/", "/audio/warmups-v2/"];
 const IMAGE_PREFIXES = ["/images/lessons-v2/", "/images/quizzes-v2/"];
 
 /**

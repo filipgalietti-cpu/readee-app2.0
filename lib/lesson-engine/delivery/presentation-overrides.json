@@ -1,0 +1,882 @@
+{
+  "[\"find-fox\",\"Which word rhymes with fox?\",\"practice\",null,\"Which word rhymes with fox? dog. box. sun. Listen to the ending sounds.\",\"choose\",[[[\"dog\",\"dog\",\"dog.\"],[\"box\",\"box\",\"box.\"],[\"sun\",\"sun\",\"sun.\"]],\"box\"]]": {
+    "wordImages": {
+      "dog": "/lesson-studio/syllable-beats/dog.webp",
+      "box": "/lesson-studio/word-machines/box.webp",
+      "sun": "/icons/fluent/sun.svg"
+    }
+  },
+  "[\"find-fan\",\"Which word rhymes with fan?\",\"practice\",null,\"Which word rhymes with fan? pan. cup. dog. Listen to the ending sounds.\",\"choose\",[[[\"pan\",\"pan\",\"pan.\"],[\"cup\",\"cup\",\"cup.\"],[\"dog\",\"dog\",\"dog.\"]],\"pan\"]]": {
+    "wordImages": {
+      "pan": "/lesson-studio/sound-detectives/pan.webp",
+      "cup": "/lesson-studio/sound-detectives/cup.webp",
+      "dog": "/lesson-studio/syllable-beats/dog.webp"
+    }
+  },
+  "[\"cat-pig-homes\",\"Send each word to its rhyme partner.\",\"practice\",null,\"Send each word to its rhyme partner. Tap a word to hear it. Move it to a word with the same ending sound.\",\"sort\",[[\"cat\",\"pig\"],[[\"hat\",\"hat.\",\"cat\"],[\"mat\",\"mat.\",\"cat\"],[\"wig\",\"wig.\",\"pig\"],[\"dig\",\"dig.\",\"pig\"]]]]": {
+    "items": {
+      "hat": "/lesson-studio/word-machines/hat.webp",
+      "mat": "/lesson-studio/letter-sounds/mat.webp",
+      "wig": "/lesson-studio/presentation-vocabulary/wig.webp",
+      "dig": "/lesson-studio/word-machines/dig.webp"
+    },
+    "buckets": {
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "pig": "/lesson-studio/syllable-beats/pig.webp"
+    }
+  },
+  "[\"find-pen\",\"Which word rhymes with pen?\",\"practice\",null,\"Which word rhymes with pen? log. sun. hen. Listen to the ending sounds.\",\"choose\",[[[\"log\",\"log\",\"log.\"],[\"sun\",\"sun\",\"sun.\"],[\"hen\",\"hen\",\"hen.\"]],\"hen\"]]": {
+    "wordImages": {
+      "log": "/lesson-studio/word-machines/log.webp",
+      "sun": "/icons/fluent/sun.svg",
+      "hen": "/lesson-studio/rhyme-time/hen.webp"
+    }
+  },
+  "[\"three-rhyme-homes\",\"Send each word to its rhyme partner.\",\"practice\",null,\"Send each word to its rhyme partner. Tap a word to hear it. Move it to a word with the same ending sound.\",\"sort\",[[\"bug\",\"hen\",\"fan\"],[[\"rug\",\"rug.\",\"bug\"],[\"jug\",\"jug.\",\"bug\"],[\"pen\",\"pen.\",\"hen\"],[\"ten\",\"ten.\",\"hen\"],[\"man\",\"man.\",\"fan\"],[\"can\",\"can.\",\"fan\"]]]]": {
+    "items": {
+      "rug": "/lesson-studio/word-machines/rug.webp",
+      "jug": "/lesson-studio/presentation-vocabulary/jug.webp",
+      "pen": "/lesson-studio/letter-sounds/pen.webp",
+      "ten": "/lesson-studio/sound-detectives/ten.webp",
+      "man": "/lesson-studio/presentation-vocabulary/man.webp",
+      "can": "/lesson-studio/word-machines/can.webp"
+    },
+    "buckets": {
+      "bug": "/icons/fluent/bug.svg",
+      "hen": "/lesson-studio/rhyme-time/hen.webp",
+      "fan": "/lesson-studio/word-machines/fan.webp"
+    }
+  },
+  "[\"find-mouse\",\"Which word rhymes with mouse?\",\"practice\",null,\"Which word rhymes with mouse? car. house. boat. Listen to the ending sounds.\",\"choose\",[[[\"car\",\"car\",\"car.\"],[\"house\",\"house\",\"house.\"],[\"boat\",\"boat\",\"boat.\"]],\"house\"]]": {
+    "wordImages": {
+      "car": "/lesson-studio/rhyme-time/sort-car.webp",
+      "house": "/icons/fluent/house.svg",
+      "boat": "/lesson-studio/syllable-beats/boat.webp"
+    }
+  },
+  "[\"new-pairs\",\"Match the words that rhyme.\",\"assessed\",null,\"Match the words that rhyme. Tap a word on each side. Listen to both words. Connect all three pairs, then check your matches.\",\"match\",[{\"left\":\"bed\",\"right\":\"red\"},{\"left\":\"pot\",\"right\":\"dot\"},{\"left\":\"wall\",\"right\":\"ball\"}]]": {
+    "matchImages": {
+      "bed": {
+        "src": "/lesson-studio/presentation-vocabulary/bed-v2.webp",
+        "alt": ""
+      },
+      "red": {
+        "src": "/lesson-studio/presentation-vocabulary/red.svg",
+        "alt": ""
+      },
+      "pot": {
+        "src": "/lesson-studio/presentation-vocabulary/pot.webp",
+        "alt": ""
+      },
+      "dot": {
+        "src": "/lesson-studio/presentation-vocabulary/dot.svg",
+        "alt": ""
+      },
+      "wall": {
+        "src": "/lesson-studio/presentation-vocabulary/wall-v2.webp",
+        "alt": ""
+      },
+      "ball": {
+        "src": "/lesson-studio/my-first-read/ball.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"source-pair\",\"Which pair of words rhymes?\",\"assessed\",null,\"Which pair of words rhymes? Pig, box. Fan, can. Sun, moon. Tree, flower.\",\"choose\",[[[\"Pig, Box\",\"Pig, Box\",\"Pig, Box.\"],[\"Fan, Can\",\"Fan, Can\",\"Fan, Can.\"],[\"Sun, Moon\",\"Sun, Moon\",\"Sun, Moon.\"],[\"Tree, Flower\",\"Tree, Flower\",\"Tree, Flower.\"]],\"Fan, Can\"]]": {
+    "lines": {
+      "Pig, Box": [
+        "Pig",
+        "Box"
+      ],
+      "Fan, Can": [
+        "Fan",
+        "Can"
+      ],
+      "Sun, Moon": [
+        "Sun",
+        "Moon"
+      ],
+      "Tree, Flower": [
+        "Tree",
+        "Flower"
+      ]
+    },
+    "lineImages": {
+      "Pig, Box": [
+        "/lesson-studio/syllable-beats/pig.webp",
+        "/lesson-studio/word-machines/box.webp"
+      ],
+      "Fan, Can": [
+        "/lesson-studio/word-machines/fan.webp",
+        "/lesson-studio/word-machines/can.webp"
+      ],
+      "Sun, Moon": [
+        "/icons/fluent/sun.svg",
+        "/icons/fluent/moon.svg"
+      ],
+      "Tree, Flower": [
+        "/icons/fluent/deciduous-tree.svg",
+        "/lesson-studio/reading-party/flower.webp"
+      ]
+    }
+  },
+  "[\"two-homes\",\"Send each word to its rhyme partner.\",\"assessed\",null,\"Send each word to its rhyme partner. Tap a word to hear it. Move it to a word with the same ending sound.\",\"sort\",[[\"tree\",\"car\"],[[\"bee\",\"bee.\",\"tree\"],[\"key\",\"key.\",\"tree\"],[\"star\",\"star.\",\"car\"],[\"jar\",\"jar.\",\"car\"]]]]": {
+    "items": {
+      "bee": "/lesson-studio/rhyme-time/sort-bee.webp",
+      "key": "/lesson-studio/rhyme-time/sort-key.webp",
+      "star": "/icons/fluent/star.svg",
+      "jar": "/lesson-studio/rhyme-time/sort-jar.webp"
+    },
+    "buckets": {
+      "tree": "/icons/fluent/deciduous-tree.svg",
+      "car": "/lesson-studio/rhyme-time/sort-car.webp"
+    }
+  },
+  "[\"clock-partner\",\"Which word rhymes with clock?\",\"assessed\",null,\"Which word rhymes with clock? clap. sock. leaf. Listen to the ending sounds.\",\"choose\",[[[\"clap\",\"clap\",\"clap.\"],[\"sock\",\"sock\",\"sock.\"],[\"leaf\",\"leaf\",\"leaf.\"]],\"sock\"]]": {
+    "wordImages": {
+      "clap": "/lesson-studio/blend-builders/clap.webp",
+      "sock": "/lesson-studio/syllable-beats/sock.webp",
+      "leaf": "/lesson-studio/book-basics/leaf.webp"
+    }
+  },
+  "[\"easy-dog\",\"Which word rhymes with dog?\",\"assessed\",null,\"Which word rhymes with dog? log. fish. pan. Listen to the ending sounds.\",\"choose\",[[[\"log\",\"log\",\"log.\"],[\"fish\",\"fish\",\"fish.\"],[\"pan\",\"pan\",\"pan.\"]],\"log\"]]": {
+    "wordImages": {
+      "log": "/lesson-studio/word-machines/log.webp",
+      "fish": "/icons/fluent/fish.svg",
+      "pan": "/lesson-studio/sound-detectives/pan.webp"
+    }
+  },
+  "[\"easy-bell\",\"Which word rhymes with bell?\",\"assessed\",null,\"Which word rhymes with bell? cup. shell. tree. Listen to the ending sounds.\",\"choose\",[[[\"cup\",\"cup\",\"cup.\"],[\"shell\",\"shell\",\"shell.\"],[\"tree\",\"tree\",\"tree.\"]],\"shell\"]]": {
+    "wordImages": {
+      "cup": "/lesson-studio/sound-detectives/cup.webp",
+      "shell": "/lesson-studio/digraph-detectives/shell.webp",
+      "tree": "/icons/fluent/deciduous-tree.svg"
+    }
+  },
+  "[\"easy-tree\",\"Which word rhymes with tree?\",\"assessed\",null,\"Which word rhymes with tree? car. ball. bee. Listen to the ending sounds.\",\"choose\",[[[\"car\",\"car\",\"car.\"],[\"ball\",\"ball\",\"ball.\"],[\"bee\",\"bee\",\"bee.\"]],\"bee\"]]": {
+    "wordImages": {
+      "car": "/lesson-studio/rhyme-time/sort-car.webp",
+      "ball": "/lesson-studio/my-first-read/ball.webp",
+      "bee": "/lesson-studio/rhyme-time/sort-bee.webp"
+    }
+  },
+  "[\"easy-duck\",\"Which word rhymes with duck?\",\"assessed\",null,\"Which word rhymes with duck? truck. bed. fox. Listen to the ending sounds.\",\"choose\",[[[\"truck\",\"truck\",\"truck.\"],[\"bed\",\"bed\",\"bed.\"],[\"fox\",\"fox\",\"fox.\"]],\"truck\"]]": {
+    "wordImages": {
+      "truck": "/lesson-studio/fact-book-makers/truck-art.webp",
+      "bed": "/lesson-studio/presentation-vocabulary/bed-v2.webp",
+      "fox": "/lesson-studio/reading-party/fox.webp"
+    }
+  },
+  "[\"easy-star\",\"Which word rhymes with star?\",\"assessed\",null,\"Which word rhymes with star? hat. car. pig. Listen to the ending sounds.\",\"choose\",[[[\"hat\",\"hat\",\"hat.\"],[\"car\",\"car\",\"car.\"],[\"pig\",\"pig\",\"pig.\"]],\"car\"]]": {
+    "wordImages": {
+      "hat": "/lesson-studio/word-machines/hat.webp",
+      "car": "/lesson-studio/rhyme-time/sort-car.webp",
+      "pig": "/lesson-studio/syllable-beats/pig.webp"
+    }
+  },
+  "[\"easy-king\",\"Which word rhymes with king?\",\"assessed\",null,\"Which word rhymes with king? sun. boat. ring. Listen to the ending sounds.\",\"choose\",[[[\"sun\",\"sun\",\"sun.\"],[\"boat\",\"boat\",\"boat.\"],[\"ring\",\"ring\",\"ring.\"]],\"ring\"]]": {
+    "wordImages": {
+      "sun": "/icons/fluent/sun.svg",
+      "boat": "/lesson-studio/syllable-beats/boat.webp",
+      "ring": "/lesson-studio/presentation-vocabulary/word-ring.svg"
+    }
+  },
+  "[\"source-odd\",\"Which word does not rhyme?\",\"assessed\",null,\"Which word does not rhyme? Hot. Bat. Cat. Hat. Three have the same ending sound. Find the one that is different.\",\"choose\",[[[\"hot\",\"hot\",\"hot.\"],[\"bat\",\"bat\",\"bat.\"],[\"cat\",\"cat\",\"cat.\"],[\"hat\",\"hat\",\"hat.\"]],\"hot\"]]": {
+    "wordImages": {
+      "hot": "/lesson-studio/look-close/hot.webp",
+      "bat": "/lesson-studio/category-captain/bat.webp",
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "hat": "/lesson-studio/word-machines/hat.webp"
+    }
+  },
+  "[\"sun-partner\",\"Which word rhymes with sun?\",\"assessed\",null,\"Which word rhymes with sun? sad. sock. bun. sit. Listen to the ending sounds.\",\"choose\",[[[\"sad\",\"sad\",\"sad.\"],[\"sock\",\"sock\",\"sock.\"],[\"bun\",\"bun\",\"bun.\"],[\"sit\",\"sit\",\"sit.\"]],\"bun\"]]": {
+    "wordImages": {
+      "sad": "/lesson-studio/three-houses/feeling-sad.webp",
+      "sock": "/lesson-studio/syllable-beats/sock.webp",
+      "bun": "/lesson-studio/presentation-vocabulary/word-bun.webp",
+      "sit": "/lesson-studio/look-close/sit.webp"
+    }
+  },
+  "[\"ten-partner\",\"Which word rhymes with ten?\",\"assessed\",null,\"Which word rhymes with ten? hen. tin. tan. top. Listen to the ending sounds.\",\"choose\",[[[\"hen\",\"hen\",\"hen.\"],[\"tin\",\"tin\",\"tin.\"],[\"tan\",\"tan\",\"tan.\"],[\"top\",\"top\",\"top.\"]],\"hen\"]]": {
+    "wordImages": {
+      "hen": "/lesson-studio/rhyme-time/hen.webp",
+      "tin": "/lesson-studio/word-machines/can.webp",
+      "tan": "/lesson-studio/k-unit-2-checkpoint/tan-cloth.webp",
+      "top": "/lesson-studio/word-machines/top.webp"
+    }
+  },
+  "[\"chair-partner\",\"Which word rhymes with chair?\",\"assessed\",null,\"Which word rhymes with chair? chip. bear. chin. cheer. Listen to the ending sounds.\",\"choose\",[[[\"chip\",\"chip\",\"chip.\"],[\"bear\",\"bear\",\"bear.\"],[\"chin\",\"chin\",\"chin.\"],[\"cheer\",\"cheer\",\"cheer.\"]],\"bear\"]]": {
+    "wordImages": {
+      "chip": "/lesson-studio/presentation-vocabulary/word-chip.webp",
+      "bear": "/lesson-studio/same-different-stories/bear.webp",
+      "chin": "/lesson-studio/presentation-vocabulary/word-chin.webp",
+      "cheer": "/lesson-studio/presentation-vocabulary/word-cheer.webp"
+    }
+  },
+  "[\"cake-partner\",\"Which word rhymes with cake?\",\"assessed\",null,\"Which word rhymes with cake? cat. cane. cape. lake. Listen to the ending sounds.\",\"choose\",[[[\"cat\",\"cat\",\"cat.\"],[\"cane\",\"cane\",\"cane.\"],[\"cape\",\"cape\",\"cape.\"],[\"lake\",\"lake\",\"lake.\"]],\"lake\"]]": {
+    "wordImages": {
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "cane": "/lesson-studio/presentation-vocabulary/word-cane.webp",
+      "cape": "/lesson-studio/silent-e/cape.webp",
+      "lake": "/lesson-studio/silent-e/lake.webp"
+    }
+  },
+  "[\"snow-partner\",\"Which word rhymes with snow?\",\"assessed\",null,\"Which word rhymes with snow? snail. go. sun. snap. Listen to the ending sounds.\",\"choose\",[[[\"snail\",\"snail\",\"snail.\"],[\"go\",\"go\",\"go.\"],[\"sun\",\"sun\",\"sun.\"],[\"snap\",\"snap\",\"snap.\"]],\"go\"]]": {
+    "wordImages": {
+      "snail": "/icons/fluent/snail.svg",
+      "go": "/lesson-studio/presentation-vocabulary/word-go.webp",
+      "sun": "/icons/fluent/sun.svg",
+      "snap": "/lesson-studio/blend-builders/snap.webp"
+    }
+  },
+  "[\"light-partner\",\"Which word rhymes with light?\",\"assessed\",null,\"Which word rhymes with light? leaf. lamp. kite. lip. Listen to the ending sounds.\",\"choose\",[[[\"leaf\",\"leaf\",\"leaf.\"],[\"lamp\",\"lamp\",\"lamp.\"],[\"kite\",\"kite\",\"kite.\"],[\"lip\",\"lip\",\"lip.\"]],\"kite\"]]": {
+    "wordImages": {
+      "leaf": "/lesson-studio/book-basics/leaf.webp",
+      "lamp": "/lesson-studio/how-they-connect/lamp.webp",
+      "kite": "/lesson-studio/silent-e/kite.webp",
+      "lip": "/lesson-studio/presentation-vocabulary/word-lip.webp"
+    }
+  },
+  "[\"source-sort\",\"Sort the words by their syllables.\",\"practice\",null,\"Sort the words by their syllables. Hear a word, clap its beats, then move it to a syllable group.\",\"sort\",[[\"One syllable\",\"Two syllables\"],[[\"dog\",\"dog.\",\"One syllable\"],[\"sun\",\"sun.\",\"One syllable\"],[\"fish\",\"fish.\",\"One syllable\"],[\"tiger\",\"tiger.\",\"Two syllables\"],[\"apple\",\"apple.\",\"Two syllables\"],[\"candy\",\"candy.\",\"Two syllables\"]]]]": {
+    "items": {
+      "dog": "/lesson-studio/syllable-beats/dog.webp",
+      "sun": "/icons/fluent/sun.svg",
+      "fish": "/icons/fluent/fish.svg",
+      "tiger": "/lesson-studio/syllable-beats/tiger.webp",
+      "apple": "/emojis/black/red-apple.svg",
+      "candy": "/icons/fluent/candy.svg"
+    },
+    "buckets": {},
+    "markers": {
+      "One syllable": 1,
+      "Two syllables": 2
+    }
+  },
+  "[\"three-groups\",\"Sort the words by their syllables.\",\"practice\",null,\"Sort the words by their syllables. Hear a word, clap its beats, then move it to a syllable group.\",\"sort\",[[\"One syllable\",\"Two syllables\",\"Three syllables\"],[[\"pig\",\"pig.\",\"One syllable\"],[\"fish\",\"fish.\",\"One syllable\"],[\"candy\",\"candy.\",\"Two syllables\"],[\"monkey\",\"monkey.\",\"Two syllables\"],[\"banana\",\"banana.\",\"Three syllables\"],[\"butterfly\",\"butterfly.\",\"Three syllables\"]]]]": {
+    "items": {
+      "pig": "/lesson-studio/syllable-beats/pig.webp",
+      "fish": "/icons/fluent/fish.svg",
+      "candy": "/icons/fluent/candy.svg",
+      "monkey": "/lesson-studio/syllable-beats/monkey.webp",
+      "banana": "/emojis/black/banana.svg",
+      "butterfly": "/lesson-studio/syllable-beats/butterfly.webp"
+    },
+    "buckets": {},
+    "markers": {
+      "One syllable": 1,
+      "Two syllables": 2,
+      "Three syllables": 3
+    }
+  },
+  "[\"same-beat-pairs\",\"Match words with the same number of syllables.\",\"assessed\",null,\"Match words with the same number of syllables. Hear each word and count its beats. Connect all three pairs, then check your matches.\",\"match\",[{\"left\":\"duck\",\"right\":\"shell\"},{\"left\":\"rabbit\",\"right\":\"lemon\"},{\"left\":\"tomato\",\"right\":\"potato\"}]]": {
+    "matchImages": {
+      "duck": {
+        "src": "/lesson-studio/what-is-it/duck.webp",
+        "alt": ""
+      },
+      "shell": {
+        "src": "/lesson-studio/digraph-detectives/shell.webp",
+        "alt": ""
+      },
+      "rabbit": {
+        "src": "/lesson-studio/syllable-beats/rabbit.webp",
+        "alt": ""
+      },
+      "lemon": {
+        "src": "/lesson-studio/presentation-vocabulary/word-lemon.webp",
+        "alt": ""
+      },
+      "tomato": {
+        "src": "/lesson-studio/presentation-vocabulary/word-tomato.webp",
+        "alt": ""
+      },
+      "potato": {
+        "src": "/lesson-studio/syllable-beats/potato.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"RF.K.2b-Q4\",\"Which word has two syllables?\",\"assessed\",null,\"Which word has two syllables? Apple. Dog. Cat. Fish. Listen to each whole word.\",\"choose\",[[[\"Apple\",\"Apple\",\"Apple.\"],[\"Dog\",\"Dog\",\"Dog.\"],[\"Cat\",\"Cat\",\"Cat.\"],[\"Fish\",\"Fish\",\"Fish.\"]],\"Apple\"]]": {
+    "wordImages": {
+      "Apple": "/emojis/black/red-apple.svg",
+      "Dog": "/lesson-studio/syllable-beats/dog.webp",
+      "Cat": "/lesson-studio/syllable-beats/cat.webp",
+      "Fish": "/icons/fluent/fish.svg"
+    }
+  },
+  "[\"RF.K.2b-H5\",\"Which word has two syllables?\",\"assessed\",null,\"Which word has two syllables? pencil. frog. grape. hand. Listen to each whole word.\",\"choose\",[[[\"pencil\",\"pencil\",\"pencil.\"],[\"frog\",\"frog\",\"frog.\"],[\"grape\",\"grape\",\"grape.\"],[\"hand\",\"hand\",\"hand.\"]],\"pencil\"]]": {
+    "wordImages": {
+      "pencil": "/emojis/black/pencil.svg",
+      "frog": "/lesson-studio/word-families-friends/frog.webp",
+      "grape": "/emojis/black/grapes.svg",
+      "hand": "/emojis/black/raised-hand.svg"
+    }
+  },
+  "[\"three-beat-new\",\"Which word has three syllables?\",\"assessed\",null,\"Which word has three syllables? window. hat. basket. dinosaur. Listen to each whole word.\",\"choose\",[[[\"window\",\"window\",\"window.\"],[\"hat\",\"hat\",\"hat.\"],[\"basket\",\"basket\",\"basket.\"],[\"dinosaur\",\"dinosaur\",\"dinosaur.\"]],\"dinosaur\"]]": {
+    "wordImages": {
+      "window": "/lesson-studio/presentation-vocabulary/window-v2.webp",
+      "hat": "/lesson-studio/word-machines/hat.webp",
+      "basket": "/lesson-studio/syllable-splitters/basket.webp",
+      "dinosaur": "/lesson-studio/syllable-beats/dinosaur.webp"
+    }
+  },
+  "[\"new-sort\",\"Sort the words by their syllables.\",\"assessed\",null,\"Sort the words by their syllables. Hear a word, clap its beats, then move it to a syllable group.\",\"sort\",[[\"One syllable\",\"Two syllables\",\"Three syllables\"],[[\"train\",\"train.\",\"One syllable\"],[\"snail\",\"snail.\",\"One syllable\"],[\"window\",\"window.\",\"Two syllables\"],[\"basket\",\"basket.\",\"Two syllables\"],[\"dinosaur\",\"dinosaur.\",\"Three syllables\"],[\"ladybug\",\"ladybug.\",\"Three syllables\"]]]]": {
+    "items": {
+      "train": "/lesson-studio/category-captain/train.webp",
+      "snail": "/icons/fluent/snail.svg",
+      "window": "/lesson-studio/presentation-vocabulary/window-v2.webp",
+      "basket": "/lesson-studio/syllable-splitters/basket.webp",
+      "dinosaur": "/lesson-studio/syllable-beats/dinosaur.webp",
+      "ladybug": "/lesson-studio/picture-or-words/ladybug.webp"
+    },
+    "buckets": {},
+    "markers": {
+      "One syllable": 1,
+      "Two syllables": 2,
+      "Three syllables": 3
+    }
+  },
+  "[\"first-sound-pairs\",\"Match words with the same first sound.\",\"assessed\",null,\"Match words with the same first sound. Listen to both sides. Connect all three pairs, then check your matches.\",\"match\",[{\"left\":\"mouse\",\"right\":\"moon\"},{\"left\":\"sock\",\"right\":\"seal\"},{\"left\":\"top\",\"right\":\"tap\"}]]": {
+    "matchImages": {
+      "mouse": {
+        "src": "/lesson-studio/letter-sounds/mouse.webp",
+        "alt": ""
+      },
+      "moon": {
+        "src": "/icons/fluent/moon.svg",
+        "alt": ""
+      },
+      "sock": {
+        "src": "/lesson-studio/syllable-beats/sock.webp",
+        "alt": ""
+      },
+      "seal": {
+        "src": "/lesson-studio/presentation-vocabulary/word-seal.webp",
+        "alt": ""
+      },
+      "top": {
+        "src": "/lesson-studio/word-machines/top.webp",
+        "alt": ""
+      },
+      "tap": {
+        "src": "/lesson-studio/word-machines/tap.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"RF.K.2d-Q1\",\"Which word has this sound in the middle?\",\"assessed\",null,\"Which word has this sound in the middle? Listen to the sound. /i/. bed. sun. pig. cat.\",\"choose\",[[[\"bed\",\"bed\",\"bed.\"],[\"sun\",\"sun\",\"sun.\"],[\"pig\",\"pig\",\"pig.\"],[\"cat\",\"cat\",\"cat.\"]],\"pig\"]]": {
+    "wordImages": {
+      "bed": "/lesson-studio/presentation-vocabulary/bed-v2.webp",
+      "sun": "/icons/fluent/sun.svg",
+      "pig": "/lesson-studio/syllable-beats/pig.webp",
+      "cat": "/lesson-studio/syllable-beats/cat.webp"
+    }
+  },
+  "[\"RF.K.2d-H1\",\"Which word has the same middle sound as web?\",\"assessed\",null,\"Which word has the same middle sound as web? Hear web in three sounds. /w/. /e/. /b/. ten. top. tan. tin.\",\"choose\",[[[\"ten\",\"ten\",\"ten.\"],[\"top\",\"top\",\"top.\"],[\"tan\",\"tan\",\"tan.\"],[\"tin\",\"tin\",\"tin.\"]],\"ten\"]]": {
+    "wordImages": {
+      "ten": "/lesson-studio/sound-detectives/ten.webp",
+      "top": "/lesson-studio/word-machines/top.webp",
+      "tan": "/lesson-studio/k-unit-2-checkpoint/tan-cloth.webp",
+      "tin": "/lesson-studio/word-machines/can.webp"
+    }
+  },
+  "[\"car-jar\",\"Change the first sound in car.\",\"practice\",null,\"Change the first sound in car. Use this new sound. /j/. What word do you make? car. jar. can.\",\"choose\",[[[\"car\",\"car\",\"car.\"],[\"jar\",\"jar\",\"jar.\"],[\"can\",\"can\",\"can.\"]],\"jar\"]]": {
+    "wordImages": {
+      "car": "/lesson-studio/rhyme-time/sort-car.webp",
+      "jar": "/lesson-studio/rhyme-time/sort-jar.webp",
+      "can": "/lesson-studio/word-machines/can.webp"
+    }
+  },
+  "[\"fox-box\",\"Change the first sound in fox.\",\"practice\",null,\"Change the first sound in fox. Use this new sound. /b/. What word do you make? box. fox. top.\",\"choose\",[[[\"box\",\"box\",\"box.\"],[\"fox\",\"fox\",\"fox.\"],[\"top\",\"top\",\"top.\"]],\"box\"]]": {
+    "wordImages": {
+      "box": "/lesson-studio/word-machines/box.webp",
+      "fox": "/lesson-studio/reading-party/fox.webp",
+      "top": "/lesson-studio/word-machines/top.webp"
+    }
+  },
+  "[\"easy-man\",\"Change the first sound in man.\",\"assessed\",null,\"Change the first sound in man. Use this new sound. /p/. What word do you make? pan. man. can.\",\"choose\",[[[\"pan\",\"pan\",\"pan.\"],[\"man\",\"man\",\"man.\"],[\"can\",\"can\",\"can.\"]],\"pan\"]]": {
+    "wordImages": {
+      "pan": "/lesson-studio/sound-detectives/pan.webp",
+      "man": "/lesson-studio/presentation-vocabulary/man.webp",
+      "can": "/lesson-studio/word-machines/can.webp"
+    }
+  },
+  "[\"easy-ten\",\"Change the first sound in ten.\",\"assessed\",null,\"Change the first sound in ten. Use this new sound. /h/. What word do you make? ten. hen. tin.\",\"choose\",[[[\"ten\",\"ten\",\"ten.\"],[\"hen\",\"hen\",\"hen.\"],[\"tin\",\"tin\",\"tin.\"]],\"hen\"]]": {
+    "wordImages": {
+      "ten": "/lesson-studio/sound-detectives/ten.webp",
+      "hen": "/lesson-studio/rhyme-time/hen.webp",
+      "tin": "/lesson-studio/word-machines/can.webp"
+    }
+  },
+  "[\"change-partners\",\"Match words with one first sound changed.\",\"assessed\",null,\"Match words with one first sound changed. Listen to both sides. Keep the rest of each word the same. Connect three pairs, then check your matches.\",\"match\",[{\"left\":\"cap\",\"right\":\"map\"},{\"left\":\"bug\",\"right\":\"mug\"},{\"left\":\"red\",\"right\":\"bed\"}]]": {
+    "matchImages": {
+      "cap": {
+        "src": "/lesson-studio/look-close/cap.webp",
+        "alt": ""
+      },
+      "map": {
+        "src": "/lesson-studio/letter-sounds/map.webp",
+        "alt": ""
+      },
+      "bug": {
+        "src": "/icons/fluent/bug.svg",
+        "alt": ""
+      },
+      "mug": {
+        "src": "/lesson-studio/word-machines/mug.webp",
+        "alt": ""
+      },
+      "red": {
+        "src": "/lesson-studio/presentation-vocabulary/red.svg",
+        "alt": ""
+      },
+      "bed": {
+        "src": "/lesson-studio/presentation-vocabulary/bed-v2.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"RF.K.2e-Q3\",\"Which pair changes only one sound?\",\"assessed\",null,\"Which pair changes only one sound? Listen to each pair. sun, moon. jump, run. cat, hat. big, small.\",\"choose\",[[[\"sun, moon\",\"sun, moon\",\"sun, moon.\"],[\"jump, run\",\"jump, run\",\"jump, run.\"],[\"cat, hat\",\"cat, hat\",\"cat, hat.\"],[\"big, small\",\"big, small\",\"big, small.\"]],\"cat, hat\"]]": {
+    "lines": {
+      "sun, moon": [
+        "sun",
+        "moon"
+      ],
+      "jump, run": [
+        "jump",
+        "run"
+      ],
+      "cat, hat": [
+        "cat",
+        "hat"
+      ],
+      "big, small": [
+        "big",
+        "small"
+      ]
+    }
+  },
+  "[\"RF.K.2e-H1\",\"Change the middle sound in pin.\",\"assessed\",null,\"Change the middle sound in pin. Use this new sound. /a/. What word do you make? pan. tin. pen. pig.\",\"choose\",[[[\"pan\",\"pan\",\"pan.\"],[\"tin\",\"tin\",\"tin.\"],[\"pen\",\"pen\",\"pen.\"],[\"pig\",\"pig\",\"pig.\"]],\"pan\"]]": {
+    "wordImages": {
+      "pan": "/lesson-studio/sound-detectives/pan.webp",
+      "tin": "/lesson-studio/word-machines/can.webp",
+      "pen": "/lesson-studio/letter-sounds/pen.webp",
+      "pig": "/lesson-studio/syllable-beats/pig.webp"
+    }
+  },
+  "[\"RF.K.2e-H5\",\"Which pair changes only the middle sound?\",\"assessed\",null,\"Which pair changes only the middle sound? Listen to each pair. hop, hip. hop, hot. hop, top. hop, stop.\",\"choose\",[[[\"hop, hip\",\"hop, hip\",\"hop, hip.\"],[\"hop, hot\",\"hop, hot\",\"hop, hot.\"],[\"hop, top\",\"hop, top\",\"hop, top.\"],[\"hop, stop\",\"hop, stop\",\"hop, stop.\"]],\"hop, hip\"]]": {
+    "lines": {
+      "hop, hip": [
+        "hop",
+        "hip"
+      ],
+      "hop, hot": [
+        "hop",
+        "hot"
+      ],
+      "hop, top": [
+        "hop",
+        "top"
+      ],
+      "hop, stop": [
+        "hop",
+        "stop"
+      ]
+    }
+  },
+  "[\"sort-m-s\",\"Send each word to its letter.\",\"practice\",null,\"Send each word to its letter. Listen to the sound for M. /m/. Listen to the sound for S. /s/. Listen to each word. Then choose its letter.\",\"sort\",[[\"M\",\"S\"],[[\"map\",\"Map.\",\"M\"],[\"sun\",\"Sun.\",\"S\"],[\"sock\",\"Sock.\",\"S\"],[\"mat\",\"Mat.\",\"M\"]]]]": {
+    "items": {
+      "map": "/lesson-studio/letter-sounds/map.webp",
+      "sun": "/icons/fluent/sun.svg",
+      "sock": "/lesson-studio/syllable-beats/sock.webp",
+      "mat": "/lesson-studio/letter-sounds/mat.webp"
+    },
+    "buckets": {}
+  },
+  "[\"find-animal-thing\",\"Which pair names the animal and the thing?\",\"assessed\",\"The dog has a ball.\",\"Which pair names the animal and the thing? Listen. The dog has a ball. Listen to the choices, then choose.\",\"choose\",[[[\"dog and has\",\"dog and has\",\"dog and has.\"],[\"has and ball\",\"has and ball\",\"has and ball.\"],[\"dog and ball\",\"dog and ball\",\"dog and ball.\"]],\"dog and ball\"]]": {
+    "lines": {
+      "dog and has": [
+        "dog",
+        "has"
+      ],
+      "has and ball": [
+        "has",
+        "ball"
+      ],
+      "dog and ball": [
+        "dog",
+        "ball"
+      ]
+    }
+  },
+  "[\"find-name-action\",\"Which pair names the animals and tells their action?\",\"assessed\",\"The cats nap by the pond.\",\"Which pair names the animals and tells their action? Listen. The cats nap by the pond. Listen to the choices, then choose.\",\"choose\",[[[\"cats and nap\",\"cats and nap\",\"cats and nap.\"],[\"cats and pond\",\"cats and pond\",\"cats and pond.\"],[\"pond and nap\",\"pond and nap\",\"pond and nap.\"]],\"cats and nap\"]]": {
+    "lines": {
+      "cats and nap": [
+        "cats",
+        "nap"
+      ],
+      "cats and pond": [
+        "cats",
+        "pond"
+      ],
+      "pond and nap": [
+        "pond",
+        "nap"
+      ]
+    }
+  },
+  "[\"guided-groups\",\"Sort the market words.\",\"practice\",null,\"Sort the market words. Listen to each card. Put it in its group.\",\"sort\",[[\"Food and drink\",\"Animals\"],[[\"Milk\",null,\"Food and drink\"],[\"Dog\",null,\"Animals\"],[\"Pear\",null,\"Food and drink\"]]]]": {
+    "items": {
+      "Milk": "/lesson-studio/word-families-friends/milk.webp",
+      "Dog": "/lesson-studio/word-families-friends/dog.webp",
+      "Pear": "/lesson-studio/word-families-friends/pear.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"guided-shapes\",\"Find a group for each word.\",\"practice\",null,\"Find a group for each word. Listen to each card. Put it in its group.\",\"sort\",[[\"Shapes\",\"Animals\"],[[\"Star\",null,\"Shapes\"],[\"Frog\",null,\"Animals\"],[\"Oval\",null,\"Shapes\"]]]]": {
+    "items": {
+      "Star": "/lesson-studio/word-families-friends/star.webp",
+      "Frog": "/lesson-studio/word-families-friends/frog.webp",
+      "Oval": "/lesson-studio/word-families-friends/oval.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"sort-food-animals\",\"Sort these word groups.\",\"assessed\",null,\"Sort these word groups. Listen to each card. Put it in its group.\",\"sort\",[[\"Food and drink\",\"Animals\"],[[\"Pear\",null,\"Food and drink\"],[\"Frog\",null,\"Animals\"],[\"Milk\",null,\"Food and drink\"],[\"Dog\",null,\"Animals\"]]]]": {
+    "items": {
+      "Pear": "/lesson-studio/word-families-friends/pear.webp",
+      "Frog": "/lesson-studio/word-families-friends/frog.webp",
+      "Milk": "/lesson-studio/word-families-friends/milk.webp",
+      "Dog": "/lesson-studio/word-families-friends/dog.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"three-groups\",\"Sort into three groups.\",\"assessed\",null,\"Sort into three groups. Listen to each card. Put it in its group.\",\"sort\",[[\"Food and drink\",\"Animals\",\"Shapes\"],[[\"Star\",null,\"Shapes\"],[\"Dog\",null,\"Animals\"],[\"Apple\",null,\"Food and drink\"],[\"Oval\",null,\"Shapes\"]]]]": {
+    "items": {
+      "Star": "/lesson-studio/word-families-friends/star.webp",
+      "Dog": "/lesson-studio/word-families-friends/dog.webp",
+      "Apple": "/lesson-studio/word-families-friends/apple.webp",
+      "Oval": "/lesson-studio/word-families-friends/oval.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"match-topics\",\"Match each text to its topic.\",\"assessed\",null,\"Match each text to its topic. Listen to both texts. Then make both matches and check them.\",\"match\",[{\"left\":\"It has a cover and pages. We read the words inside.\",\"right\":\"A book\"},{\"left\":\"It opens above your head. It keeps rain off you.\",\"right\":\"An umbrella\"}]]": {
+    "matchImages": {
+      "A book": {
+        "src": "/lesson-studio/my-first-read/book.webp",
+        "alt": ""
+      },
+      "An umbrella": {
+        "src": "/lesson-studio/diagram-detectives/umbrella.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"match-fact-topics\",\"Match each topic to its fact.\",\"assessed\",\"A nest holds eggs. A coat keeps you warm. A kite flies on a string.\",\"Match each topic to its fact. Make three matches. Then check them.\",\"match\",[{\"left\":\"A coat\",\"right\":\"Keeps you warm\"},{\"left\":\"A kite\",\"right\":\"Flies on a string\"},{\"left\":\"A nest\",\"right\":\"Holds eggs\"}]]": {
+    "matchImages": {
+      "A coat": {
+        "src": "/lesson-studio/check-and-fix/coat.webp",
+        "alt": ""
+      },
+      "A kite": {
+        "src": "/lesson-studio/silent-e/kite.webp",
+        "alt": ""
+      },
+      "A nest": {
+        "src": "/lesson-studio/fact-book-makers/nest-eggs.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"stem-vowel-transfer\",\"Which words share a vowel sound?\",\"assessed\",null,\"Which words share a vowel sound? Hear each pair. Listen for the same vowel inside both words.\",\"choose\",[[[\"0\",\"stem and shell\",null],[\"1\",\"stem and swim\",null],[\"2\",\"stem and lunch\",null]],\"0\"]]": {
+    "lines": {
+      "0": [
+        "stem",
+        "shell"
+      ],
+      "1": [
+        "stem",
+        "swim"
+      ],
+      "2": [
+        "stem",
+        "lunch"
+      ]
+    }
+  },
+  "[\"sort-foods-tools\",\"Sort the foods and tools.\",\"practice\",null,\"Sort the foods and tools.\",\"sort\",[[\"Foods\",\"Tools\"],[[\"corn\",null,\"Foods\"],[\"saw\",null,\"Tools\"],[\"milk\",null,\"Foods\"],[\"hammer\",null,\"Tools\"],[\"cheese\",null,\"Foods\"],[\"broom\",null,\"Tools\"]]]]": {
+    "items": {
+      "corn": "/lesson-studio/presentation-vocabulary/corn.webp",
+      "saw": "/lesson-studio/presentation-vocabulary/saw.webp",
+      "milk": "/lesson-studio/word-families-friends/milk.webp",
+      "hammer": "/lesson-studio/what-is-it/hammer.webp",
+      "cheese": "/lesson-studio/presentation-vocabulary/cheese.webp",
+      "broom": "/lesson-studio/presentation-vocabulary/broom-v2.webp"
+    },
+    "buckets": {
+      "Foods": "/lesson-studio/category-captain/foods.webp",
+      "Tools": "/lesson-studio/category-captain/tools.webp"
+    }
+  },
+  "[\"match-groups\",\"Match each group to what it shares.\",\"practice\",null,\"Match each group to what it shares.\",\"match\",[{\"left\":\"Foods\",\"right\":\"We eat or drink them.\"},{\"left\":\"Tools\",\"right\":\"We use them to do jobs.\"},{\"left\":\"Clothes\",\"right\":\"We wear them.\"}]]": {
+    "matchImages": {
+      "Foods": {
+        "src": "/lesson-studio/category-captain/foods.webp",
+        "alt": ""
+      },
+      "Tools": {
+        "src": "/lesson-studio/category-captain/tools.webp",
+        "alt": ""
+      },
+      "Clothes": {
+        "src": "/lesson-studio/category-captain/clothes.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"animals-made\",\"Sort animals and things people make.\",\"practice\",null,\"Sort animals and things people make.\",\"sort\",[[\"Animals\",\"Made by people\"],[[\"bird\",null,\"Animals\"],[\"plane\",null,\"Made by people\"],[\"cat\",null,\"Animals\"],[\"kite\",null,\"Made by people\"]]]]": {
+    "items": {
+      "bird": "/icons/fluent/bird.svg",
+      "plane": "/lesson-studio/prove-it/plane.webp",
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "kite": "/lesson-studio/silent-e/kite.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"fits-both\",\"Which fits animals and can fly?\",\"practice\",null,\"Which fits animals and can fly?\",\"choose\",[[[\"0\",\"kite\",null],[\"1\",\"bat\",null],[\"2\",\"dog\",null]],\"1\"]]": {
+    "wordImages": {
+      "0": "/lesson-studio/silent-e/kite.webp",
+      "1": "/lesson-studio/category-captain/bat.webp",
+      "2": "/lesson-studio/syllable-beats/dog.webp"
+    }
+  },
+  "[\"e-foods-tools\",\"Sort foods and tools.\",\"assessed\",null,\"Sort foods and tools.\",\"sort\",[[\"Foods\",\"Tools\"],[[\"corn\",null,\"Foods\"],[\"saw\",null,\"Tools\"],[\"egg\",null,\"Foods\"],[\"mop\",null,\"Tools\"]]]]": {
+    "items": {
+      "corn": "/lesson-studio/presentation-vocabulary/corn.webp",
+      "saw": "/lesson-studio/presentation-vocabulary/saw.webp",
+      "egg": "/emojis/black/egg.svg",
+      "mop": "/lesson-studio/rhyme-time/mop.webp"
+    },
+    "buckets": {
+      "Foods": "/lesson-studio/category-captain/foods.webp",
+      "Tools": "/lesson-studio/category-captain/tools.webp"
+    }
+  },
+  "[\"e-animal\",\"Which word joins the animal group?\",\"assessed\",\"Dog, cat, and cow are in the animal group.\",\"Which word joins the animal group?\",\"choose\",[[[\"0\",\"bird\",null],[\"1\",\"apple\",null],[\"2\",\"sock\",null]],\"0\"]]": {
+    "wordImages": {
+      "0": "/icons/fluent/bird.svg",
+      "1": "/emojis/black/red-apple.svg",
+      "2": "/lesson-studio/syllable-beats/sock.webp"
+    }
+  },
+  "[\"c-word-groups\",\"Match each word to its group.\",\"assessed\",null,\"Match each word to its group.\",\"match\",[{\"left\":\"apple\",\"right\":\"Food\"},{\"left\":\"hammer\",\"right\":\"Tool\"},{\"left\":\"shirt\",\"right\":\"Clothing\"}]]": {
+    "matchImages": {
+      "apple": {
+        "src": "/emojis/black/red-apple.svg",
+        "alt": ""
+      },
+      "hammer": {
+        "src": "/lesson-studio/what-is-it/hammer.webp",
+        "alt": ""
+      },
+      "shirt": {
+        "src": "/lesson-studio/presentation-vocabulary/shirt.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"c-animal-made\",\"Sort by the stated group rule.\",\"assessed\",null,\"Sort by the stated group rule.\",\"sort\",[[\"Animals\",\"Made by people\"],[[\"bee\",null,\"Animals\"],[\"kite\",null,\"Made by people\"],[\"fish\",null,\"Animals\"],[\"plane\",null,\"Made by people\"],[\"dog\",null,\"Animals\"],[\"spoon\",null,\"Made by people\"]]]]": {
+    "items": {
+      "bee": "/lesson-studio/rhyme-time/sort-bee.webp",
+      "kite": "/lesson-studio/silent-e/kite.webp",
+      "fish": "/icons/fluent/fish.svg",
+      "plane": "/lesson-studio/prove-it/plane.webp",
+      "dog": "/lesson-studio/syllable-beats/dog.webp",
+      "spoon": "/lesson-studio/what-is-it/spoon.webp"
+    },
+    "buckets": {
+      "Animals": "/lesson-studio/category-captain/animals.webp"
+    }
+  },
+  "[\"h-foods-clothes\",\"Sort the mixed word cards.\",\"assessed\",null,\"Sort the mixed word cards.\",\"sort\",[[\"Foods\",\"Clothes\"],[[\"corn\",null,\"Foods\"],[\"shirt\",null,\"Clothes\"],[\"cheese\",null,\"Foods\"],[\"hat\",null,\"Clothes\"],[\"apple\",null,\"Foods\"],[\"sock\",null,\"Clothes\"]]]]": {
+    "items": {
+      "corn": "/lesson-studio/presentation-vocabulary/corn.webp",
+      "shirt": "/lesson-studio/presentation-vocabulary/shirt.webp",
+      "cheese": "/lesson-studio/presentation-vocabulary/cheese.webp",
+      "hat": "/lesson-studio/word-machines/hat.webp",
+      "apple": "/emojis/black/red-apple.svg",
+      "sock": "/lesson-studio/syllable-beats/sock.webp"
+    },
+    "buckets": {
+      "Foods": "/lesson-studio/category-captain/foods.webp",
+      "Clothes": "/lesson-studio/category-captain/clothes.webp"
+    }
+  },
+  "[\"x-overlap\",\"Sort by two features.\",\"assessed\",null,\"Sort by two features. Our groups are animals and things that can fly. Animal only means it fits just our animal group. Can fly only means it fits just our flying group. Both means it fits the two groups.\",\"sort\",[[\"Animal only\",\"Can fly only\",\"Both\"],[[\"dog\",null,\"Animal only\"],[\"kite\",null,\"Can fly only\"],[\"bat\",null,\"Both\"],[\"cat\",null,\"Animal only\"],[\"plane\",null,\"Can fly only\"],[\"robin\",null,\"Both\"]]]]": {
+    "items": {
+      "dog": "/lesson-studio/syllable-beats/dog.webp",
+      "kite": "/lesson-studio/silent-e/kite.webp",
+      "bat": "/lesson-studio/category-captain/bat.webp",
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "plane": "/lesson-studio/prove-it/plane.webp",
+      "robin": "/lesson-studio/fact-finder-basics/robin.webp"
+    },
+    "buckets": {}
+  },
+  "[\"h-match\",\"Match each clue to its word.\",\"assessed\",null,\"Match each clue to its word. Read the word choices. Match every clue, then check your matches.\",\"match\",[{\"left\":\"A small bush\",\"right\":\"shrub\"},{\"left\":\"Something to comb hair\",\"right\":\"brush\"},{\"left\":\"Fabric used for wiping\",\"right\":\"cloth\"}]]": {
+    "matchImages": {
+      "shrub": {
+        "src": "/lesson-studio/digraph-detectives/shrub.webp",
+        "alt": ""
+      },
+      "brush": {
+        "src": "/lesson-studio/digraph-detectives/brush.webp",
+        "alt": ""
+      },
+      "cloth": {
+        "src": "/lesson-studio/g1-unit-5-checkpoint/cloth.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"h-match\",\"Match the word clues.\",\"assessed\",null,\"Match the word clues. Read the words, match every clue, then check your matches.\",\"match\",[{\"left\":\"Hold on tightly\",\"right\":\"grip\"},{\"left\":\"A purple fruit\",\"right\":\"plum\"},{\"left\":\"A small thin stick\",\"right\":\"twig\"}]]": {
+    "matchImages": {
+      "grip": {
+        "src": "/lesson-studio/sound-it-out/grip.webp",
+        "alt": ""
+      },
+      "plum": {
+        "src": "/lesson-studio/sound-it-out/plum.webp",
+        "alt": ""
+      },
+      "twig": {
+        "src": "/lesson-studio/sound-it-out/twig.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"h-match\",\"Match the word clues.\",\"assessed\",null,\"Match the word clues. Match every clue to a word, then check your matches.\",\"match\",[{\"left\":\"A small thing that can grow\",\"right\":\"seed\"},{\"left\":\"Letters sent to someone\",\"right\":\"mail\"},{\"left\":\"A jacket for the rain\",\"right\":\"coat\"}]]": {
+    "matchImages": {
+      "seed": {
+        "src": "/lesson-studio/how-they-connect/seed.webp",
+        "alt": ""
+      },
+      "mail": {
+        "src": "/lesson-studio/magic-teams/mail.webp",
+        "alt": ""
+      },
+      "coat": {
+        "src": "/lesson-studio/check-and-fix/coat.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"match-labels\",\"Match each object to its label.\",\"practice\",null,\"Match each object to its label. Match all three clues. Then check your matches.\",\"match\",[{\"left\":\"Duck\",\"right\":\"A bird that swims\"},{\"left\":\"Tiger\",\"right\":\"A big cat with stripes\"},{\"left\":\"Spoon\",\"right\":\"A tool for scooping food\"}]]": {
+    "matchImages": {
+      "Duck": {
+        "src": "/lesson-studio/what-is-it/duck.webp",
+        "alt": ""
+      },
+      "Tiger": {
+        "src": "/lesson-studio/syllable-beats/tiger.webp",
+        "alt": ""
+      },
+      "Spoon": {
+        "src": "/lesson-studio/what-is-it/spoon.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"c-match\",\"Match each thing to its definition.\",\"assessed\",null,\"Match each thing to its definition. Match all three clues. Then check your matches.\",\"match\",[{\"left\":\"Frog\",\"right\":\"An animal that can hop\"},{\"left\":\"Hammer\",\"right\":\"A tool used for building\"},{\"left\":\"Apple\",\"right\":\"A fruit that grows on a tree\"}]]": {
+    "matchImages": {
+      "Frog": {
+        "src": "/lesson-studio/word-families-friends/frog.webp",
+        "alt": ""
+      },
+      "Hammer": {
+        "src": "/lesson-studio/what-is-it/hammer.webp",
+        "alt": ""
+      },
+      "Apple": {
+        "src": "/emojis/black/red-apple.svg",
+        "alt": ""
+      }
+    }
+  },
+  "[\"h-banana\",\"Which fruit fits these clues?\",\"assessed\",\"It is a fruit that is long and yellow.\",\"Which fruit fits these clues? Listen to each choice. Then choose.\",\"choose\",[[[\"0\",\"Apple.\",null],[\"1\",\"Banana.\",null],[\"2\",\"Grape.\",null]],\"1\"]]": {
+    "wordImages": {
+      "0": "/emojis/black/red-apple.svg",
+      "1": "/emojis/black/banana.svg",
+      "2": "/emojis/black/grapes.svg"
+    }
+  },
+  "[\"camp-sort\",\"Sort by syllables.\",\"practice\",null,\"Sort by syllables. Read each word. Listen for its vowel sounds, then put it with the matching syllable count.\",\"sort\",[[\"One\",\"Two\",\"Three\"],[[\"cake\",null,\"One\"],[\"robot\",null,\"Two\"],[\"banana\",null,\"Three\"],[\"pond\",null,\"One\"],[\"mitten\",null,\"Two\"]]]]": {
+    "items": {
+      "cake": "/lesson-studio/syllable-splitters/cake.webp",
+      "robot": "/icons/fluent/robot.svg",
+      "banana": "/emojis/black/banana.svg",
+      "pond": "/lesson-studio/syllable-splitters/pond.webp",
+      "mitten": "/lesson-studio/syllable-splitters/mitten.webp"
+    },
+    "buckets": {},
+    "markers": {
+      "One": 1,
+      "Two": 2,
+      "Three": 3
+    }
+  },
+  "[\"c-sort\",\"Sort by syllables.\",\"assessed\",null,\"Sort by syllables. Read each word. Listen for its vowel sounds, then put it with the matching syllable count.\",\"sort\",[[\"One\",\"Two\"],[[\"frog\",null,\"One\"],[\"napkin\",null,\"Two\"],[\"milk\",null,\"One\"],[\"picnic\",null,\"Two\"]]]]": {
+    "items": {
+      "frog": "/lesson-studio/word-families-friends/frog.webp",
+      "napkin": "/lesson-studio/word-breakers/napkin.webp",
+      "milk": "/lesson-studio/word-families-friends/milk.webp",
+      "picnic": "/lesson-studio/syllable-splitters/picnic.webp"
+    },
+    "buckets": {},
+    "markers": {
+      "One": 1,
+      "Two": 2
+    }
+  },
+  "[\"h-match\",\"Match words to syllable counts.\",\"assessed\",null,\"Match words to syllable counts. Read each word. Match it with the number of syllables you hear.\",\"match\",[{\"left\":\"cake\",\"right\":\"One syllable\"},{\"left\":\"rabbit\",\"right\":\"Two syllables\"},{\"left\":\"butterfly\",\"right\":\"Three syllables\"}]]": {
+    "matchImages": {
+      "cake": {
+        "src": "/lesson-studio/syllable-splitters/cake.webp",
+        "alt": ""
+      },
+      "rabbit": {
+        "src": "/lesson-studio/syllable-beats/rabbit.webp",
+        "alt": ""
+      },
+      "butterfly": {
+        "src": "/lesson-studio/syllable-beats/butterfly.webp",
+        "alt": ""
+      }
+    }
+  },
+  "[\"x-two\",\"Which word has two syllables?\",\"assessed\",null,\"Which word has two syllables?\",\"choose\",[[[\"0\",\"cake\",null],[\"1\",\"robin\",null],[\"2\",\"rain\",null]],\"1\"]]": {
+    "wordImages": {
+      "0": "/lesson-studio/syllable-splitters/cake.webp",
+      "1": "/lesson-studio/fact-finder-basics/robin.webp",
+      "2": "/emojis/black/cloud-with-rain.svg"
+    }
+  },
+  "[\"sort-parts\",\"Sort by spoken parts.\",\"practice\",null,\"Sort by spoken parts. Read each word and count its syllables.\",\"sort\",[[\"One syllable\",\"Two syllables\"],[[\"muffin\",null,\"Two syllables\"],[\"cat\",null,\"One syllable\"],[\"puppet\",null,\"Two syllables\"],[\"top\",null,\"One syllable\"]]]]": {
+    "items": {
+      "muffin": "/lesson-studio/word-breakers/muffin.webp",
+      "cat": "/lesson-studio/syllable-beats/cat.webp",
+      "puppet": "/lesson-studio/word-breakers/puppet.webp",
+      "top": "/lesson-studio/word-machines/top.webp"
+    },
+    "buckets": {}
+  }
+}

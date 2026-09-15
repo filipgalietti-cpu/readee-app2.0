@@ -101,6 +101,35 @@ export function alignTextToTimings(text: string, words: WordTiming[] | undefined
   const clean = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
   if (!words || words.length === 0) return display.map(() => 0);
 
+  // Offline compositions pin /sound/ markers to the original recording boundary.
+  // Keep those anchors exact: ordinary ASR differences such as 3/three must not
+  // stretch a short phoneme across a preceding sentence or its following silence.
+  const sound = (word: string) => /^\/[^/\s]+\/[.,!?]*$/.test(word)
+    ? word.replace(/[.,!?]+$/, "") : null;
+  const displaySounds = display.flatMap((word, index) => sound(word) ? [{index, label:sound(word)}] : []);
+  const timedSounds = words.flatMap((word, index) => sound(word.word) ? [{index, label:sound(word.word)}] : []);
+  if (displaySounds.length && displaySounds.length === timedSounds.length &&
+      displaySounds.every((marker,index) => marker.label === timedSounds[index].label)) {
+    const starts: number[] = [];
+    let displayStart = 0, timingStart = 0;
+    for (let index = 0; index < displaySounds.length; index++) {
+      const marker = displaySounds[index], timed = timedSounds[index];
+      const prefix = display.slice(displayStart, marker.index);
+      const prefixTimes = words.slice(timingStart, timed.index);
+      starts.push(...(prefixTimes.length
+        ? alignTextToTimings(prefix.join(" "), prefixTimes)
+        : prefix.map(() => words[timed.index].start)));
+      starts.push(words[timed.index].start);
+      displayStart = marker.index + 1;
+      timingStart = timed.index + 1;
+    }
+    const suffix = display.slice(displayStart), suffixTimes = words.slice(timingStart);
+    starts.push(...(suffixTimes.length
+      ? alignTextToTimings(suffix.join(" "), suffixTimes)
+      : suffix.map(() => words[timedSounds.at(-1)!.index].end)));
+    return starts;
+  }
+
   // character timeline from whisper tokens
   const tokens = words
     .map((w) => ({ n: clean(w.word).length, start: w.start, end: w.end }))

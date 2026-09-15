@@ -13,7 +13,7 @@
  * comes back.
  */
 
-const VERSION = "v3";
+const VERSION = "v4-unit-one";
 const STATIC_CACHE = `readee-static-${VERSION}`;
 const ASSET_CACHE = `readee-assets-${VERSION}`;
 const PAGE_CACHE = `readee-pages-${VERSION}`;
@@ -71,6 +71,7 @@ function isSupabaseAsset(url) {
 
 function isApiOrAuth(url) {
   return (
+    url.pathname.startsWith("/learn/unit-one") ||
     url.pathname.startsWith("/api/") ||
     url.pathname.startsWith("/auth/") ||
     url.pathname.includes("/_next/data/")

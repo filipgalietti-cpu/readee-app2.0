@@ -19,8 +19,10 @@ export function lessonCompleted(
   id: string,
   practice: PracticeRow[],
   progress: LessonProgRow[],
+  completedStandards: readonly string[] = [],
 ): boolean {
   return (
+    completedStandards.includes(id) ||
     practice.some((p) => p.standard_id === id && p.questions_correct >= 3) ||
     progress.some((p) => p.lesson_id === id && p.section === "practice" && p.score >= 60)
   );

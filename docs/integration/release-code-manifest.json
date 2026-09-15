@@ -1,0 +1,1333 @@
+{
+  "baseCommit": "c0f77ed8aed5c3a0ae92e65e4b5171885ec8a591",
+  "branch": "codex/k-unit-one-release",
+  "warning": "Clean production-main delta. Verify every before hash before applying. Assets and documentation are separate. Does not deploy or apply SQL.",
+  "files": [
+    {
+      "path": "app/(protected)/dashboard/page.tsx",
+      "beforeSha256": "88b3d3b520f7a4925beafaacb9698f1d9c51d1af55f6a19eea0c88c5c477bed9",
+      "afterSha256": "1df5579ba816c1eb6148f46b8fb8af8fc3d09f86e2e06d81c2613d4e0747f61a",
+      "bytes": 77752
+    },
+    {
+      "path": "app/(protected)/journey/_components/JourneyAdventure.tsx",
+      "beforeSha256": "3cfc92dc34c82040c8ad77d04d8ad89a1c85570a0adeba7ebcd360f7b2ee6a79",
+      "afterSha256": "d9d17f6c13e795f9b13460813adbdda788d7c35d20811db0f14ebd1112824222",
+      "bytes": 10719
+    },
+    {
+      "path": "app/(protected)/journey/_components/JourneyClient.tsx",
+      "beforeSha256": "7a7d54ce09edebce972ae97ab2a286498eafeb467b7541d831d2daf4f1702871",
+      "afterSha256": "e80b9f1d728bf0ff9accbbf98b1b757496664b988220ef44fdc7b1cafa3766bf",
+      "bytes": 28880
+    },
+    {
+      "path": "app/(protected)/learn/page.tsx",
+      "beforeSha256": "072745ef841a0f914ef859de2e2b9590576dd20d259a632e58a13dd788560d8a",
+      "afterSha256": "a35f6ebaed1fbcc4d0def955726410123093de574d367b7c1160207b500c9819",
+      "bytes": 3367
+    },
+    {
+      "path": "app/(protected)/learn/unit-one/page.tsx",
+      "beforeSha256": null,
+      "afterSha256": "6c244c653cf0008546799101f033bd5a5f51e00849e0fbbc7aef3bd72eacaf60",
+      "bytes": 5453
+    },
+    {
+      "path": "app/(protected)/luna/_components/azure-stream.ts",
+      "beforeSha256": "1e4e1aba1674cda49dbe0835762dd5ca7284d14d8404fef453db7e7757da1778",
+      "afterSha256": "4b806c3e27ee8b416e1e66d599cc0e8b03c1512d58ad0d41dd17ebaf8f8ea11d",
+      "bytes": 13862
+    },
+    {
+      "path": "app/(protected)/placement/_components/mic.ts",
+      "beforeSha256": "d3a9dfcd0eb88a171842ef869caae1f9bd7b1d47cf9637f1d77e0f5dbcc11a3a",
+      "afterSha256": "880910e80b8570b584d41a1d917b43e805911566c1a3a7c9bc5206847577d82d",
+      "bytes": 11546
+    },
+    {
+      "path": "app/(protected)/practice/_components/SealOfApproval.tsx",
+      "beforeSha256": "631106f8c95486f83bc5139dfe35c3149e5c4a4d997bba7514b9c59799fd6910",
+      "afterSha256": "f753e8a2e98079e5941c1649dd38af53a80a539d0d6b74a2bf9ddc7ceb703243",
+      "bytes": 19421
+    },
+    {
+      "path": "app/_components/Chrome.tsx",
+      "beforeSha256": "a384b8d8c29c6de64c9ac55cf7ca2046c5943fea1933af8968c9eb88d8ad4e34",
+      "afterSha256": "3ed5bd9c2ff82dc8f852672392aaa5c7b9bff8cf04afb1aa59f29ba8247de477",
+      "bytes": 1394
+    },
+    {
+      "path": "app/_components/StreakFire.tsx",
+      "beforeSha256": "d9ebe56afd1fcee7ef17fd1b026e688bc79db364f7ba08dca3e75014198ae3a8",
+      "afterSha256": "52cf24e3955dc82b25c6f2b512a818dbe34bf7e057c0c05a61469520b2697c07",
+      "bytes": 1407
+    },
+    {
+      "path": "app/_components/streak-fire.css",
+      "beforeSha256": null,
+      "afterSha256": "8f2e3b697eb90ae054feb8d6134cadc9956fc6a9ab6958ae0b101986a7385587",
+      "bytes": 2711
+    },
+    {
+      "path": "app/api/approved-unit/[lessonId]/route.ts",
+      "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "afterSha256": "32d5c67ab980a5eb37d296d1ac9379cd2c093a7eeee1c466a47fa214b8019b76",
+      "bytes": 6645
+    },
+    {
+      "path": "app/api/approved-unit/route.ts",
+      "beforeSha256": null,
+      "afterSha256": "19c0fe40ad5d7766781a96d80d47ef780d1c78c79eea4cff4e9fd460627f1e61",
+      "bytes": 1419
+    },
+    {
+      "path": "app/components/approved-unit/JourneyEntry.tsx",
+      "beforeSha256": null,
+      "afterSha256": "52e44acdb5213cd2f1b9b72d66e8ce83728f14e649795ad0f66ebae0b095f95a",
+      "bytes": 752
+    },
+    {
+      "path": "app/components/approved-unit/Player.tsx",
+      "beforeSha256": null,
+      "afterSha256": "e7d6ed60e425c81709b70878d5e1ca8cd20dee0d8ef9dc5cfd8b0547cf93f461",
+      "bytes": 7129
+    },
+    {
+      "path": "app/components/approved-unit/lessons/AcornStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "1d35c2acbe90e9f5593934af319b1fdff5a380dc28b7d32fd98f93158478f804",
+      "bytes": 4005
+    },
+    {
+      "path": "app/components/approved-unit/lessons/BeatStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "15c2a83f80394b939b9fa1efd91887a5a40b69fe879b4dc230ca48c70ba56fbf",
+      "bytes": 7000
+    },
+    {
+      "path": "app/components/approved-unit/lessons/BookMakersStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "72e7b1e4d72f18d26c9f71fdfef9b1de7ea23f136cef910425242cba47bacad8",
+      "bytes": 2647
+    },
+    {
+      "path": "app/components/approved-unit/lessons/CheckpointStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "7d1a4fbeda95732ace6f04c91b0eaa37ee993269cd01839b5d5af614eb677815",
+      "bytes": 7340
+    },
+    {
+      "path": "app/components/approved-unit/lessons/LanternStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "890cf2e3e51d556a626f748b05e4cb74ef929f28089fe7ff9d8afb7850b8e01c",
+      "bytes": 2788
+    },
+    {
+      "path": "app/components/approved-unit/lessons/LanternWorld.tsx",
+      "beforeSha256": null,
+      "afterSha256": "0219e2a0d10c98b30dd8161a17732e3c8ea7a221c5c3689e5a03144f761b0e46",
+      "bytes": 3957
+    },
+    {
+      "path": "app/components/approved-unit/lessons/PipStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "9d254b6a551083c69a5c2afc7012c44d4c44bfbfda2e17d159a2b069c6472bcc",
+      "bytes": 1796
+    },
+    {
+      "path": "app/components/approved-unit/lessons/RoryRhymeMachine.tsx",
+      "beforeSha256": null,
+      "afterSha256": "1ce593ee7f0f267546b7cf8c813fdaa10fc6f300503b344ea5aace7a086152b7",
+      "bytes": 4955
+    },
+    {
+      "path": "app/components/approved-unit/lessons/RoryStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "f8561bd0abbf157a09308da31637e510ec86a9166084593fbf473021fb59eee2",
+      "bytes": 4530
+    },
+    {
+      "path": "app/components/approved-unit/lessons/ShelfStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "6874a3de3b4ec02e712eaa57b76ceaf2f79802f66cbf0bddda837c68d96b9c97",
+      "bytes": 5092
+    },
+    {
+      "path": "app/components/approved-unit/lessons/StoryGardenStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "6c8737ab7cc9b0eb5e6dfc794a26680454ff5fecacd746c4992485a60be59f87",
+      "bytes": 310
+    },
+    {
+      "path": "app/components/approved-unit/lessons/WormStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "f1d019e7a3728083ec6090b252d4232d97b4c6caa237f68ae7200abbf5e9db6f",
+      "bytes": 3906
+    },
+    {
+      "path": "app/components/approved-unit/lessons/acorn-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "a68cf627e498638f0b6e5717d66a26c9be65d9c885c8020df8f10d1c4c2c6e95",
+      "bytes": 3632
+    },
+    {
+      "path": "app/components/approved-unit/lessons/beat-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "f745f42d46aaf15ac9743e971e2ff09545b2ce49a38b3e100e68ed8a995e8ad5",
+      "bytes": 4304
+    },
+    {
+      "path": "app/components/approved-unit/lessons/book-makers.css",
+      "beforeSha256": null,
+      "afterSha256": "590ce33e5c35e24e0b110ffe276d9ab45695aa7d22fb5c4e002aadab14e52c20",
+      "bytes": 5104
+    },
+    {
+      "path": "app/components/approved-unit/lessons/checkpoint-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "12cdfd1935fd172708ae5d2be1d3715b4293258dcbcc94c8d71814cb36d1b004",
+      "bytes": 16001
+    },
+    {
+      "path": "app/components/approved-unit/lessons/lantern-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "141f7d2d09fa81711404c147670d27d1a893b5033c261794e9dec62b17a08797",
+      "bytes": 9391
+    },
+    {
+      "path": "app/components/approved-unit/lessons/pip-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "c47be7df87dd032b015557797aa34c7b4f0a21c41e5263bbdb54b82dd27758dc",
+      "bytes": 28046
+    },
+    {
+      "path": "app/components/approved-unit/lessons/rory-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "15bc61d54cb79fb8bbe6154f25696533afb178a4035c90b472f472c0ec85f246",
+      "bytes": 8502
+    },
+    {
+      "path": "app/components/approved-unit/lessons/shelf-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "fd0927fee2e7461b1e523086ecc0e05f99ed0bdcd5df0d7445d5a85841c6a8e6",
+      "bytes": 12061
+    },
+    {
+      "path": "app/components/approved-unit/lessons/worm-studio.css",
+      "beforeSha256": null,
+      "afterSha256": "ccfbe54f14859d74d3f1762a5fe9e1fd63db2a3c2788f68b0e4be5dfdc011f5c",
+      "bytes": 2919
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/AdaptivePractice.tsx",
+      "beforeSha256": null,
+      "afterSha256": "deb40f5f7f12bcf0be40f470f15c452ee6a40b9df311425043ba2d6949a5f1d8",
+      "bytes": 27649
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/BookWorkshopScene.tsx",
+      "beforeSha256": null,
+      "afterSha256": "23f47cf383ccb7edc036b52623d692044678b6b979609f59b0b87de53361ebac",
+      "bytes": 2283
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/ClueHunt.tsx",
+      "beforeSha256": null,
+      "afterSha256": "cfe0e0903f26adb6cf39abbf79477c7b41f5c142cbfed0b99ab87eeea4855d2f",
+      "bytes": 18165
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedChoose.tsx",
+      "beforeSha256": null,
+      "afterSha256": "f917672e86fd1002222912390bdc178f3e7299091d82ab5a191e6902155bdf22",
+      "bytes": 9391
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedFlowRunner.tsx",
+      "beforeSha256": null,
+      "afterSha256": "04b68ec67821e44975609365fd22fbe2acc9fd2694335db176e737ba4036d621",
+      "bytes": 24092
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedHighlight.tsx",
+      "beforeSha256": null,
+      "afterSha256": "dd6a143e5b5526c4e62b6d9857d8b197371bcc3472aa60a4640a49c931bde4d3",
+      "bytes": 4474
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedMatch.tsx",
+      "beforeSha256": null,
+      "afterSha256": "01c7d6e867104b653676aaa7009911355182afab43730d1dc761737442788778",
+      "bytes": 5488
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedReadAlong.tsx",
+      "beforeSha256": null,
+      "afterSha256": "c9b081b248c45d472e8897d011fffe59dd974b7896e29394a612bcda7e34bdfa",
+      "bytes": 2315
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedResponse.tsx",
+      "beforeSha256": null,
+      "afterSha256": "a4cb8afff7fbf30815609e7b7845d8f0a85b5f4647882710d5ddc998050eb913",
+      "bytes": 15901
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedSequence.tsx",
+      "beforeSha256": null,
+      "afterSha256": "4b670ebd0f3e263615c1dc35aa525439efa8cb863b26a4f97938d4aff5cb5ee7",
+      "bytes": 6744
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedSort.tsx",
+      "beforeSha256": null,
+      "afterSha256": "16d60d075a18d6f20633a0e871f412f2e11bd45646b31f03d125e04e64848d06",
+      "bytes": 6024
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CoachedSpeak.tsx",
+      "beforeSha256": null,
+      "afterSha256": "8eecfe03b4ec6818b4d5e253e3af359a42bb1aed7d8e81084fe7909b64064762",
+      "bytes": 12141
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/CompletionParty.tsx",
+      "beforeSha256": null,
+      "afterSha256": "b978be7c38b3fec634f846e9f035729ef25487c4370e356ecbd587dda7c6d3fe",
+      "bytes": 5132
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/ControlledTransform.tsx",
+      "beforeSha256": null,
+      "afterSha256": "bdc2ccdb4778ac69dd143ecbe3d7f57add75fafc8a147f9f4023e6bac9327e15",
+      "bytes": 5451
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/ExamResults.tsx",
+      "beforeSha256": null,
+      "afterSha256": "68e88b96aafe762ffe1984ded29fed46fec3808b1b7b26dbdcf2164dd3f6ee44",
+      "bytes": 3518
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/ExamSort.tsx",
+      "beforeSha256": null,
+      "afterSha256": "274184d12440161115d289f76e56e88f7565abbbe8e028cb0c498e47759cdf4f",
+      "bytes": 2638
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/GardenMazeGame.tsx",
+      "beforeSha256": null,
+      "afterSha256": "39a1fae08516d3979f173a5afd07c938f10c70acfd547a6b0294e0e2dbd78d69",
+      "bytes": 18450
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/Karaoke.tsx",
+      "beforeSha256": null,
+      "afterSha256": "aa5883b70d931bfb44dbb0af9069b728e1d15231fd85abd403dfc6bef4a0d907",
+      "bytes": 889
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/LessonMicPreference.tsx",
+      "beforeSha256": null,
+      "afterSha256": "b5e1dffbbdb0fe431a0602a9f09cbcd24b6bd30a06affbccb0077551498feda3",
+      "bytes": 3675
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/OpeningAmbience.tsx",
+      "beforeSha256": null,
+      "afterSha256": "2cb4705ea796e2878ada2ee84ea2c38b60cbbdf322932ad46653782eed988e5f",
+      "bytes": 2121
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/PackageStudio.tsx",
+      "beforeSha256": null,
+      "afterSha256": "34aab53b40496539a12df83a7f3581fba3588906865c2a00097bb65721630243",
+      "bytes": 6243
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/PipArt.tsx",
+      "beforeSha256": null,
+      "afterSha256": "7f15b7866b4481eb4ea9c2ec2aa37386db4fbeaa60ed6f62891ce8c5930af599",
+      "bytes": 5874
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/PipsTree.tsx",
+      "beforeSha256": null,
+      "afterSha256": "a377add963d9fe79e038860aa32e9b9b076f74b4956e3a37f19b1afb3bcd1c32",
+      "bytes": 2636
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/PrintedPage.tsx",
+      "beforeSha256": null,
+      "afterSha256": "133fcd5af15ccd4f9336dfe87a75670371e4d7422d89360cf25a61789ea49cf7",
+      "bytes": 3556
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/ReferencePage.tsx",
+      "beforeSha256": null,
+      "afterSha256": "50ac4f2d7cff869463a00de0bc981f71b196ed74f35977e040bca801c26bce66",
+      "bytes": 4653
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/StoneMatchGame.tsx",
+      "beforeSha256": null,
+      "afterSha256": "e0cfa2ee1b20c15dfdd47f4e41dce09e08c564728a7919ff68342838429ab987",
+      "bytes": 15298
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/clue-hunt.css",
+      "beforeSha256": null,
+      "afterSha256": "52c11564682547c2b00f5ca93f5c95225c54155b5ca820a90eb397b2c87f84be",
+      "bytes": 10705
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/delivery.css",
+      "beforeSha256": null,
+      "afterSha256": "5cd55376409de5009259fb4045fd74f894eadec4378bad146f317d6629885e5c",
+      "bytes": 38037
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/garden-maze.css",
+      "beforeSha256": null,
+      "afterSha256": "d92f7be48de68ac7087ba981738ac929c72923e84d36c5a09c3afb69e1f193a4",
+      "bytes": 9251
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/highlight.css",
+      "beforeSha256": null,
+      "afterSha256": "ed3c64e94c7dacd2d5e9410d334908d69cd8bb8f6cebd91729d560db47f65ea0",
+      "bytes": 1707
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/preview-services.ts",
+      "beforeSha256": null,
+      "afterSha256": "3324c12fe7fd996dcbc6e74ba87abba583c32b873f05673ab0bec044acd6970e",
+      "bytes": 964
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/printed-page.css",
+      "beforeSha256": null,
+      "afterSha256": "b7d6a19dde180686cb023f3d897f4699f612643bafc5bc8a10dfbce49ba0814a",
+      "bytes": 2326
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/reference-page.css",
+      "beforeSha256": null,
+      "afterSha256": "f1bc91ab6b9bc6d4b4152839f47da759c41d3c6b5f4a3b36023fb163ecd5d538",
+      "bytes": 4756
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/response.css",
+      "beforeSha256": null,
+      "afterSha256": "0fcd591c1b4fb241cfe02bc9d9a044ee2e2bcb78a57dc58da5519874a247210f",
+      "bytes": 8723
+    },
+    {
+      "path": "app/components/lesson-v2/delivery/stone-match.css",
+      "beforeSha256": null,
+      "afterSha256": "e274bbc80ab4ac54fa17501b50da21a66f109fe5f008d7568fe4eb316c13e492",
+      "bytes": 11964
+    },
+    {
+      "path": "app/components/practice/TapToPair.tsx",
+      "beforeSha256": "1c291b73e2b599906517e89974e9e7fded506f0bc6cd2d418ebabd48524ead89",
+      "afterSha256": "3d0598ee456af1361c5123989ef577d7fc8d9d8adedd4b0ef992d00d219f2269",
+      "bytes": 15282
+    },
+    {
+      "path": "app/data/checkpoints/k-unit-1-config.ts",
+      "beforeSha256": null,
+      "afterSha256": "ecc37606478ac68baf05cc9330705c3faee51ef057a071eafc3144ee18575efd",
+      "bytes": 905
+    },
+    {
+      "path": "app/data/checkpoints/k-unit-1-media.ts",
+      "beforeSha256": null,
+      "afterSha256": "135651905b764169ef9f7db96aea5fc2f6d218751294c64af1adb9d16da14ce6",
+      "bytes": 3362
+    },
+    {
+      "path": "app/data/checkpoints/k-unit-1-oral.ts",
+      "beforeSha256": null,
+      "afterSha256": "6bb594f1f07c54612208abf54c5994f494914777837aa113ca7221187304dec7",
+      "bytes": 2841
+    },
+    {
+      "path": "app/data/checkpoints/k-unit-1-participation.ts",
+      "beforeSha256": null,
+      "afterSha256": "ac4471a5c94d5b8f17350dce4399f21946b502a46ada023f5591016317baa150",
+      "bytes": 3240
+    },
+    {
+      "path": "app/data/checkpoints/k-unit-1.ts",
+      "beforeSha256": null,
+      "afterSha256": "ffebf7ec6f186fa64294c2871f094bca15ceb427c03f172dac1a75f129cb87af",
+      "bytes": 22043
+    },
+    {
+      "path": "app/data/lesson-packages/big-kid-words-art-ratios.json",
+      "beforeSha256": null,
+      "afterSha256": "0565035abe4e971404fe138a619e42ebc253feb2951cfb2841976bf093107366",
+      "bytes": 644
+    },
+    {
+      "path": "app/data/lesson-packages/big-kid-words-source-questions.json",
+      "beforeSha256": null,
+      "afterSha256": "76e0d75ddc9e2799c64e3d75bdd2604b39899a92611e3b15530a43eafac6be36",
+      "bytes": 17136
+    },
+    {
+      "path": "app/data/lesson-packages/big-kid-words-source-quiz.json",
+      "beforeSha256": null,
+      "afterSha256": "5d069a3a57fa65154b553d1e917c9a97cbccda2e42805d9c0b8d52e371c98539",
+      "bytes": 18297
+    },
+    {
+      "path": "app/data/lesson-packages/big-kid-words.ts",
+      "beforeSha256": null,
+      "afterSha256": "e316f33e9303d23e92ac815e8b29e222f45cf29e1e7c3dbd6fbc10f9b865f50e",
+      "bytes": 25141
+    },
+    {
+      "path": "app/data/lesson-packages/book-basics.ts",
+      "beforeSha256": null,
+      "afterSha256": "379eec52c2aaac294dee4c6bd5492f51224fe5bde17887a5a051c40b6732d244",
+      "bytes": 25811
+    },
+    {
+      "path": "app/data/lesson-packages/book-makers.ts",
+      "beforeSha256": null,
+      "afterSha256": "c65333188ce9f65056c427d528037c0072a4e4a1f76521dd880e788ffa763991",
+      "bytes": 25240
+    },
+    {
+      "path": "app/data/lesson-packages/letter-pairs-source-questions.json",
+      "beforeSha256": null,
+      "afterSha256": "d0ced86cd90a8de57537fc3acc4660420ba36af0f7039a8b4526e0e688f9df82",
+      "bytes": 14597
+    },
+    {
+      "path": "app/data/lesson-packages/letter-pairs.ts",
+      "beforeSha256": null,
+      "afterSha256": "92987ee3d67135796e5a784564522c79ef600872af39e3f5eedff0ad067d871e",
+      "bytes": 22766
+    },
+    {
+      "path": "app/data/lesson-packages/pip-bug-hunt.ts",
+      "beforeSha256": null,
+      "afterSha256": "aec56e54545842642abf1303c61e1fb8bc6cb3d22b203c99bb05429f6d1c3c2e",
+      "bytes": 1320
+    },
+    {
+      "path": "app/data/lesson-packages/pips-tree.ts",
+      "beforeSha256": null,
+      "afterSha256": "61aab611429259f40897531bf2e74de91b7064f0f3bb0dfd3d7fcf9f4b9ff846",
+      "bytes": 22922
+    },
+    {
+      "path": "app/data/lesson-packages/presentation-vocabulary.json",
+      "beforeSha256": null,
+      "afterSha256": "cbbf5a280388edee8d15d39769e4a35c0f15ffab64e327a9c5d13d54d82ae8e8",
+      "bytes": 6182
+    },
+    {
+      "path": "app/data/lesson-packages/rhyme-time-source-questions.json",
+      "beforeSha256": null,
+      "afterSha256": "e38e41f9f47e05287001c6c6e7a976b1e36df80c92bb1e1a82dc11ff1f29592b",
+      "bytes": 9502
+    },
+    {
+      "path": "app/data/lesson-packages/rhyme-time.ts",
+      "beforeSha256": null,
+      "afterSha256": "6d47584c6ed5b443642eb778eb81fd81ecb2be3baa9955f15cec9076f8e858e5",
+      "bytes": 25623
+    },
+    {
+      "path": "app/data/lesson-packages/spoken-story-reflection.ts",
+      "beforeSha256": null,
+      "afterSha256": "a4bbe7111557ddcc18832156631d4c974920e829dfff7f1d41b672265efcb997",
+      "bytes": 2653
+    },
+    {
+      "path": "app/data/lesson-packages/story-kinds.ts",
+      "beforeSha256": null,
+      "afterSha256": "01574c2cd19744119ea817982197c23b349410ca744aec57ff31188259b36c00",
+      "bytes": 29140
+    },
+    {
+      "path": "app/data/lesson-packages/syllable-beats-source-questions.json",
+      "beforeSha256": null,
+      "afterSha256": "53ad6f430e176f7bcb1f0a124dbe188b45663e785aa50eb3d6eab2ed3033825d",
+      "bytes": 16804
+    },
+    {
+      "path": "app/data/lesson-packages/syllable-beats.ts",
+      "beforeSha256": null,
+      "afterSha256": "e818f8e2ad1e8d9cbfde3cd3a17d5f407a85f7fdd862d14c34cb5c845c16d3c8",
+      "bytes": 21885
+    },
+    {
+      "path": "lib/approved-unit/access.ts",
+      "beforeSha256": null,
+      "afterSha256": "0b13f0b03d0c30dbd06c9fbd9717a8ea1e222484621362f51cbeed0dd9232d77",
+      "bytes": 1329
+    },
+    {
+      "path": "lib/approved-unit/catalogue.ts",
+      "beforeSha256": null,
+      "afterSha256": "5152fbcb6108ac81df9a2f469663081c5d703de5d828b83503e565f1039aa67f",
+      "bytes": 1240
+    },
+    {
+      "path": "lib/approved-unit/entitlement.ts",
+      "beforeSha256": null,
+      "afterSha256": "6744722c907e292156d7b2f31b2f5f2eafe809b587cc5b6085726f9ec6213a23",
+      "bytes": 939
+    },
+    {
+      "path": "lib/approved-unit/exam.ts",
+      "beforeSha256": null,
+      "afterSha256": "21552e829196c2c03b9767dae8e9e16ebebc48b106a2190e58e23be66b9324bb",
+      "bytes": 1274
+    },
+    {
+      "path": "lib/approved-unit/grading.ts",
+      "beforeSha256": null,
+      "afterSha256": "7d76fabf5dec736d08798490796ce2791d8132e4e9b90202aa027320b80a9ee7",
+      "bytes": 2573
+    },
+    {
+      "path": "lib/approved-unit/packages.ts",
+      "beforeSha256": null,
+      "afterSha256": "ce2310c844666fbb61a08407176c76cf57f75f259de8ded6fd2941833baf6a2b",
+      "bytes": 2718
+    },
+    {
+      "path": "lib/approved-unit/receipts.ts",
+      "beforeSha256": null,
+      "afterSha256": "88df698425286b8ee46b37279345282c75069f91bfd62f01cd75eec034f1f71b",
+      "bytes": 1311
+    },
+    {
+      "path": "lib/approved-unit/runtime.tsx",
+      "beforeSha256": null,
+      "afterSha256": "cc5f59eedf26eb04d991d1fc1ec29b564bc97f92b31923b89f944ba108d26dca",
+      "bytes": 669
+    },
+    {
+      "path": "lib/approved-unit/save-queue.ts",
+      "beforeSha256": null,
+      "afterSha256": "24d3c8d52693d34475079d7ef369aba70a408b3085e5f4e186568292ca38dc77",
+      "bytes": 1208
+    },
+    {
+      "path": "lib/approved-unit/state.ts",
+      "beforeSha256": null,
+      "afterSha256": "6feb425f551b8f25262d20dd7300f949cc3148b925814c0052358c12463253bc",
+      "bytes": 10281
+    },
+    {
+      "path": "lib/approved-unit/use-progress.ts",
+      "beforeSha256": null,
+      "afterSha256": "bf6286c659cf068a2e87d689ea58d022febd2af6f5b96d0dcfa192f59c9c6eac",
+      "bytes": 925
+    },
+    {
+      "path": "lib/journey/adventure-view.ts",
+      "beforeSha256": "ee9736791a2386f7d94dab303373041bc35496c8adbdab9ef474af8e0a199a68",
+      "afterSha256": "32c9cc57a1ae6676d4b7218c3bd9c6cccb629ad18d48039b797a78a6efce03e6",
+      "bytes": 5528
+    },
+    {
+      "path": "lib/journey/lesson-access.ts",
+      "beforeSha256": "f764257a89cc841f90f6e9611d435d58d4d22cdca765681c8daa0bd50e157073",
+      "afterSha256": "0aa6b017f92f0f54b243e258ad3daec79ce1135d39b0dd8fe0093c551341be2f",
+      "bytes": 1815
+    },
+    {
+      "path": "lib/journey/load.server.ts",
+      "beforeSha256": "3312e193538c4245aaa1aebdd99712464e5349db05cefba6317449f621298f6d",
+      "afterSha256": "31ca659bc6dc185c1f5d06d97b71821a02dfabb44764935ae5cf0fdf237a4e68",
+      "bytes": 3565
+    },
+    {
+      "path": "lib/journey/next-lesson.ts",
+      "beforeSha256": "5c0d59b80fe21510a574da3b1e6320209f4b4343f7807a64df37e13a369abb79",
+      "afterSha256": "069dc6f4ece4da2ddd6bc6e0ede4460cba7be6496c5aaa148aefca2d691ece4b",
+      "bytes": 5886
+    },
+    {
+      "path": "lib/journey/types.ts",
+      "beforeSha256": "4ab228f7defdbdaf856d0df741c8476d35d79a395b23a99e40672639b757032c",
+      "afterSha256": "7706abf6e98d5a79df7fa7fc79371d14064182462975bab92d7092d96b8ed264",
+      "bytes": 474
+    },
+    {
+      "path": "lib/lesson-engine/asset-url.ts",
+      "beforeSha256": "63b4b7f0136559957f088ce1962eb7d092e9e7bc8964ff914c29b2bc7a13fede",
+      "afterSha256": "27d5753d7758b61f909c97c339ac660e0ce997c1699f0be51bc316c5e8497649",
+      "bytes": 4467
+    },
+    {
+      "path": "lib/lesson-engine/cues.ts",
+      "beforeSha256": "c10ef274c02ac41dcd21021e3b0ef4154739764b50b04baf12fa5e9ad1bcb56a",
+      "afterSha256": "f1d000c67ff1c31a52d7a3b131a1f5013f2879024f3ebe1bfd7df41026cd595b",
+      "bytes": 10116
+    },
+    {
+      "path": "lib/lesson-engine/delivery/auto-advance.ts",
+      "beforeSha256": null,
+      "afterSha256": "a282f25188df98ec72c760f8283d8431e983d84efd220086fce1417f9b83820f",
+      "bytes": 1005
+    },
+    {
+      "path": "lib/lesson-engine/delivery/content.ts",
+      "beforeSha256": null,
+      "afterSha256": "25922dc359dcbd66ed7888b6df982ca3dbba1754f201b799a5d84a5213e81618",
+      "bytes": 4176
+    },
+    {
+      "path": "lib/lesson-engine/delivery/crawler-motion.ts",
+      "beforeSha256": null,
+      "afterSha256": "11daba46075761f3befd28307cde928576980ae0f9554321624529a9682e0649",
+      "bytes": 1457
+    },
+    {
+      "path": "lib/lesson-engine/delivery/evidence.ts",
+      "beforeSha256": null,
+      "afterSha256": "803eb653205825384c37f7b3e3e963f26d3358e307b6c6b981bfcaa9860ae142",
+      "bytes": 5382
+    },
+    {
+      "path": "lib/lesson-engine/delivery/garden-maze.ts",
+      "beforeSha256": null,
+      "afterSha256": "62683eba02e7a3ed97285b064e207b406b0259d9332281be4ad00de9104baa45",
+      "bytes": 3633
+    },
+    {
+      "path": "lib/lesson-engine/delivery/highlight.ts",
+      "beforeSha256": null,
+      "afterSha256": "e8a3807fc568bb70b870c48fc91ed9b98a4cba7d88f09ffd6cef463a0f497075",
+      "bytes": 2193
+    },
+    {
+      "path": "lib/lesson-engine/delivery/model-cues.ts",
+      "beforeSha256": null,
+      "afterSha256": "9f7550b5a0bb5817dbbe4005236c8566145d8de330a9e0e8488b314a0be07df0",
+      "bytes": 1541
+    },
+    {
+      "path": "lib/lesson-engine/delivery/position-layout.ts",
+      "beforeSha256": null,
+      "afterSha256": "5bff3abc4447c8fa45c9487472aa3827badf545c6a0a292c3e5a7a1bee4df533",
+      "bytes": 2500
+    },
+    {
+      "path": "lib/lesson-engine/delivery/presentation-key.ts",
+      "beforeSha256": null,
+      "afterSha256": "8813871eeec4bc5e04fe0ed6fb7f3705b9a0c28b5ef26763e488b8c5febdce4d",
+      "bytes": 586
+    },
+    {
+      "path": "lib/lesson-engine/delivery/presentation-overrides.json",
+      "beforeSha256": null,
+      "afterSha256": "6812640e7dca9645632f38c125ef9a445bf30b647d3d6fd0f07991b8f8d156aa",
+      "bytes": 45675
+    },
+    {
+      "path": "lib/lesson-engine/delivery/presentation.ts",
+      "beforeSha256": null,
+      "afterSha256": "72e6708942e7a171200ba68bfa6f346898c9bd9f139a78a60aa2415c8a45c4b9",
+      "bytes": 1701
+    },
+    {
+      "path": "lib/lesson-engine/delivery/print-page.ts",
+      "beforeSha256": null,
+      "afterSha256": "916ea26a96c14744efd671526d961e64f15a279bed4980b5c9c4c350ad6d3acf",
+      "bytes": 1915
+    },
+    {
+      "path": "lib/lesson-engine/delivery/reading.ts",
+      "beforeSha256": null,
+      "afterSha256": "2c13dd7f908ec8198a8da99ee014ed1711d6fbc4d118a705c538466764767945",
+      "bytes": 3294
+    },
+    {
+      "path": "lib/lesson-engine/delivery/recorded-speech.ts",
+      "beforeSha256": null,
+      "afterSha256": "203f02ebd43a3f5041fc2425871a79840113f60393fc77d87c035b9a848afc8e",
+      "bytes": 3002
+    },
+    {
+      "path": "lib/lesson-engine/delivery/reference-page.ts",
+      "beforeSha256": null,
+      "afterSha256": "ba95ea4e780e7af0d3cfe8b405fbf7faf238bc9bd2e891c93e10ebd50bbb97ea",
+      "bytes": 2087
+    },
+    {
+      "path": "lib/lesson-engine/delivery/scene-narration.ts",
+      "beforeSha256": null,
+      "afterSha256": "4418c624af9850a682fd5e5bf35fc24e77badf959180d7ec3ce7d426ed3b114f",
+      "bytes": 1407
+    },
+    {
+      "path": "lib/lesson-engine/delivery/sentences.ts",
+      "beforeSha256": null,
+      "afterSha256": "d21517ca512ed8cc374ddf0d70f919e350d96af1249b354f42a8148cadc5923a",
+      "bytes": 673
+    },
+    {
+      "path": "lib/lesson-engine/delivery/spoken-choice.ts",
+      "beforeSha256": null,
+      "afterSha256": "8f7ad8a2687e6321b3ddccb2d3371175050777da93d4e73efc3f9129499c085e",
+      "bytes": 998
+    },
+    {
+      "path": "lib/lesson-engine/delivery/spoken-fragment.ts",
+      "beforeSha256": null,
+      "afterSha256": "959e2082361868ceca5a26e4ec55ad117891dedd51b164756a8cdc9d1e8bdaab",
+      "bytes": 827
+    },
+    {
+      "path": "lib/lesson-engine/delivery/stone-match.ts",
+      "beforeSha256": null,
+      "afterSha256": "f1e32f47653adb51731df728c70fc7ac7c8b88f416bacec4ce49b69b6d40d1bf",
+      "bytes": 1570
+    },
+    {
+      "path": "lib/lesson-engine/delivery/store.ts",
+      "beforeSha256": null,
+      "afterSha256": "f3f1af27ea158f1236a32651d5e9fe20e9ef2d683625333c3a66c7ba7ce573e0",
+      "bytes": 842
+    },
+    {
+      "path": "lib/lesson-engine/delivery/types.ts",
+      "beforeSha256": null,
+      "afterSha256": "5eeb41f1b4c03ca1f564d6f71b144105293c27a6eb6f9a37152aa9796c0d9e21",
+      "bytes": 2290
+    },
+    {
+      "path": "lib/lesson-engine/delivery/use-slide-transition.ts",
+      "beforeSha256": null,
+      "afterSha256": "f06f81ef26ef95688f89c57d65be2ec9e27ae3ddb4eecad4a7722bf72a347a06",
+      "bytes": 1162
+    },
+    {
+      "path": "lib/lesson-engine/delivery/use-voice.ts",
+      "beforeSha256": null,
+      "afterSha256": "67af82e9a0872e4d4e18f0018e9217f29c5010bdab689f01903a709b7aaaa693",
+      "bytes": 5307
+    },
+    {
+      "path": "lib/lesson-engine/delivery/validate.ts",
+      "beforeSha256": null,
+      "afterSha256": "37a94f6975b637e11cff0f3763f0291ce358d65954af427fc4d675ca6ef04240",
+      "bytes": 7467
+    },
+    {
+      "path": "lib/lesson-engine/delivery/word-timings.ts",
+      "beforeSha256": null,
+      "afterSha256": "f6434509266b87bb38cf98aa601fbd7cdc3d1bb976338c1568c7db9351d3746a",
+      "bytes": 156
+    },
+    {
+      "path": "lib/lesson-engine/production/adaptive.ts",
+      "beforeSha256": null,
+      "afterSha256": "1cb2460331bff444ee712f789858deefcbf4b9227d5ec3e0ea9b3b64df094690",
+      "bytes": 3696
+    },
+    {
+      "path": "lib/lesson-engine/production/checkpoint-types.ts",
+      "beforeSha256": null,
+      "afterSha256": "7ac4f72d12f6a96807c0226d48733b5e16036d767fe3a938cfa9d521ce6a338e",
+      "bytes": 1723
+    },
+    {
+      "path": "lib/lesson-engine/production/checkpoint.ts",
+      "beforeSha256": null,
+      "afterSha256": "d0991e2cdd8ed7212ba9dc33af5941029178e52790b06117370a2bb547446fce",
+      "bytes": 8464
+    },
+    {
+      "path": "lib/lesson-engine/production/exam-readiness.ts",
+      "beforeSha256": null,
+      "afterSha256": "63c75ed6a24114a960c8c3326e61fccef119cb30d5caccdfd8b3aec7f28c8ade",
+      "bytes": 2326
+    },
+    {
+      "path": "lib/lesson-engine/production/practice.ts",
+      "beforeSha256": null,
+      "afterSha256": "b70dd7dde57cd17aa47fe5ae3691260cf4f5bf73bbb34f3bd0ace49cafab5c5f",
+      "bytes": 5933
+    },
+    {
+      "path": "lib/lesson-engine/registry.tsx",
+      "beforeSha256": "116825752980a68267d12b60735251b155563802616cd5fc0cee1841cb3f37c0",
+      "afterSha256": "15d04ba1ca0351bff16bcd430bc4d093fd41ab87777de1c64cbf0c1622ff6e92",
+      "bytes": 4213
+    },
+    {
+      "path": "lib/lesson-engine/response/ant-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "5ca6201e028d1cdc2ca37b2ce0449d62836cfc4e4711f69b04ae2a3ae5db1335",
+      "bytes": 5914
+    },
+    {
+      "path": "lib/lesson-engine/response/baker-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "0886d5fd9968cd92de4508a8aae9676593309db9bcb37c9236169e4f43332d5a",
+      "bytes": 2291
+    },
+    {
+      "path": "lib/lesson-engine/response/beacon-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "a778f1ada0e4c877f9996bab4d8f26c9243328a7cd4f43880d16535a66b6279a",
+      "bytes": 3849
+    },
+    {
+      "path": "lib/lesson-engine/response/beaver-creek-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "2d5d3837cf666d46d0dd2630ae2aa0ac24e4d598d9018f3a15891aab742531ad",
+      "bytes": 2513
+    },
+    {
+      "path": "lib/lesson-engine/response/blendo-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "2207036f9a68cecbd26e024d257fd771a98c248cd893b23e193dcfced9066586",
+      "bytes": 5411
+    },
+    {
+      "path": "lib/lesson-engine/response/camel-word-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "2ab22b23c6f5f1f6190343a4c40feb9fd4f423979169b973820f1213e95e6486",
+      "bytes": 3942
+    },
+    {
+      "path": "lib/lesson-engine/response/captain-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "c841c24a78621ab2ff3b398ee3b85a8de8f247af1dff50983bda30f76ae331e8",
+      "bytes": 7300
+    },
+    {
+      "path": "lib/lesson-engine/response/checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "c6b0b8963849c79433868b5920c2701cb357a691cf92359dd2f02ff54b52cb75",
+      "bytes": 2598
+    },
+    {
+      "path": "lib/lesson-engine/response/clue-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "044e3c40f393b8a6a6ad884cf712e26308ae5f4b2f069a2440afe8761501cc4f",
+      "bytes": 5312
+    },
+    {
+      "path": "lib/lesson-engine/response/comet-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "fb2a494c54644d1d54aa1e3b2a4b66cc6cc04a2368a947675a5c3334c60ae327",
+      "bytes": 2007
+    },
+    {
+      "path": "lib/lesson-engine/response/coral-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "7c738e1320579bc8c379048100aeb21955790d4128718696df8ce8584d549084",
+      "bytes": 2547
+    },
+    {
+      "path": "lib/lesson-engine/response/cove-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "4bbd1abb55eca5bd21475188e6c9529160e1881f00e400456beb0fcf45d557ee",
+      "bytes": 4603
+    },
+    {
+      "path": "lib/lesson-engine/response/deedee-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "a8f6b085728bc29d49871b8b651587179890bd887966cb6019f0f85ada55795f",
+      "bytes": 2407
+    },
+    {
+      "path": "lib/lesson-engine/response/dusk-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "646828d0c029aded9b9013adf7d8a0739d6b9c8b46d31d5db9a9894114ffa05a",
+      "bytes": 3301
+    },
+    {
+      "path": "lib/lesson-engine/response/evaluate.ts",
+      "beforeSha256": null,
+      "afterSha256": "ca316ee7d3961e1ff41a0923c97c68bc6660021b347a6158e01c6c58093bd50d",
+      "bytes": 4701
+    },
+    {
+      "path": "lib/lesson-engine/response/fair-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "ae27d22a3a6acdf033ca73fa44c369f05166397d350b9a1aa1e421d981e65c5c",
+      "bytes": 2576
+    },
+    {
+      "path": "lib/lesson-engine/response/farm-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "e4a18f333a0af463a484107fc7162bfc040378a3888139cf7769f7355c4727fe",
+      "bytes": 4347
+    },
+    {
+      "path": "lib/lesson-engine/response/field-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "bd945678b4e6a576dafd1d243e99bfa6357ba6d4dd3f6290f1a2f599a1137a88",
+      "bytes": 2443
+    },
+    {
+      "path": "lib/lesson-engine/response/finn-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "e1c1b937bcdcab289a4df08627235b2f4880a4e01a874ecb79d23992f7fc3bc6",
+      "bytes": 5532
+    },
+    {
+      "path": "lib/lesson-engine/response/g1-unit1-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "aa9cec05b5cb028d9e4dd6538811fe638a793e8bdbd804a5235474f8cf843cac",
+      "bytes": 1092
+    },
+    {
+      "path": "lib/lesson-engine/response/g1-unit2-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "d55386a366d9e915c2690a4709b53094c7a00686a31355b6d1fe2a8a58d23c5d",
+      "bytes": 5505
+    },
+    {
+      "path": "lib/lesson-engine/response/g1-unit3-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "4d50e05564d93be1bf018c7a4a49000018441481c4945c742a1c61b2f02764f1",
+      "bytes": 1013
+    },
+    {
+      "path": "lib/lesson-engine/response/g1-unit4-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "4bd0420733c72a5c5b8293cdf3425e0dbf015a16ccf17c37edec2a3e03a100ad",
+      "bytes": 972
+    },
+    {
+      "path": "lib/lesson-engine/response/g1-unit5-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "190472e5363ad579ab151c1be8c7f402e2d25112c2130d590a51ab042f3315eb",
+      "bytes": 952
+    },
+    {
+      "path": "lib/lesson-engine/response/garden-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "b164556c63f0d6d91f6afa3386cc9d97884c11391b73af4309464cf5e5262208",
+      "bytes": 1722
+    },
+    {
+      "path": "lib/lesson-engine/response/garden-exam-oral.ts",
+      "beforeSha256": null,
+      "afterSha256": "1672de00f74eaf9d17fece905bf77b8ac1aba186f90cf2eeac4599a927bc0c21",
+      "bytes": 2463
+    },
+    {
+      "path": "lib/lesson-engine/response/giraffe-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "19a278eb0401b80b9d45fec7609fa978b1283fc9ce6cb041d28ec914fe76d943",
+      "bytes": 4887
+    },
+    {
+      "path": "lib/lesson-engine/response/helper-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "069df9a800f4271e22880f89a59e223400ceaf28dd9185bde712f2493db606c4",
+      "bytes": 4231
+    },
+    {
+      "path": "lib/lesson-engine/response/informational-checkpoint-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "7627b0522e0ee5a049134e86097c0fdbb3f6c0139ea5eac49a71300365fed637",
+      "bytes": 2662
+    },
+    {
+      "path": "lib/lesson-engine/response/jade-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "d6674783a4f7c692cb0224b2d761b81f14583f12b591d21d18aa79d355889683",
+      "bytes": 1716
+    },
+    {
+      "path": "lib/lesson-engine/response/keepsake-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "dd92e804dcc5965120cec4c1fc3932a88c6e89609a9c6309ded201f447aff932",
+      "bytes": 4816
+    },
+    {
+      "path": "lib/lesson-engine/response/letter-name.ts",
+      "beforeSha256": null,
+      "afterSha256": "950a184bb7afae28bc4f5e65ae0cfc23d3d1a59bec0d129e9c846da156ddf68f",
+      "bytes": 1167
+    },
+    {
+      "path": "lib/lesson-engine/response/lighthouse-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "d1511ca408bf71de43189ecf6592561e210e27e5ef4ec3c042033a74e23672cd",
+      "bytes": 2473
+    },
+    {
+      "path": "lib/lesson-engine/response/lodge-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "60b92edfb3445f45b77ac25045356bb0ff45afd79a62cd5bd2e33b717f1bd965",
+      "bytes": 1767
+    },
+    {
+      "path": "lib/lesson-engine/response/lookout-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "28127a7d81411096a031b3ed6d3c1387382f1fdaf4e50ebc6a6c838f825f0224",
+      "bytes": 6062
+    },
+    {
+      "path": "lib/lesson-engine/response/maple-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "9fe7a38fb6481ae85872492b78e111ddb46542b30853597f5213afc7ac6e2b6e",
+      "bytes": 3543
+    },
+    {
+      "path": "lib/lesson-engine/response/maya-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "efe74a836aac5ad0d43e92a4c5d44d444ddee26dc73a8935c2fe9e01fbdd9371",
+      "bytes": 6996
+    },
+    {
+      "path": "lib/lesson-engine/response/moon-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "8d5f816c6eda178826bf503ebbb07781e6720ff65367d47154f85c5f96ac22ac",
+      "bytes": 7884
+    },
+    {
+      "path": "lib/lesson-engine/response/museum-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "68e3677a9410b9a2e1ded654d26b8686f2d81ac331c279a13d008f39b151ab07",
+      "bytes": 4728
+    },
+    {
+      "path": "lib/lesson-engine/response/nora-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "f0252e1696ebc63b53c608c233149f14410a9d566ed767edaccaac98eb0b342a",
+      "bytes": 3357
+    },
+    {
+      "path": "lib/lesson-engine/response/ollie-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "952839c18d7cf833ff4335cc2364aef5ea5ac71756c06e87579d2564b02b50d7",
+      "bytes": 4287
+    },
+    {
+      "path": "lib/lesson-engine/response/postcard-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "ec656424987b0d7e83478cf588879828f2176bcf63e0d1c90d18d296d4cc896e",
+      "bytes": 3887
+    },
+    {
+      "path": "lib/lesson-engine/response/prefix-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "095035187f9947a6292b9b6b079575014b1650facff401db740decdf0491be2a",
+      "bytes": 5371
+    },
+    {
+      "path": "lib/lesson-engine/response/rain-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "fdc37e2f0a97bf108cb488b6551044ac65909393cf61f457fa4ca3072285bc4e",
+      "bytes": 2096
+    },
+    {
+      "path": "lib/lesson-engine/response/rainy-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "b7012998d7039981663afd476d0168d6b276412edb28a3638bb0404bd85aeee1",
+      "bytes": 6026
+    },
+    {
+      "path": "lib/lesson-engine/response/reflection-bank.ts",
+      "beforeSha256": null,
+      "afterSha256": "07ffa8701911f2846354df37b567bc829c0ae4aeb2ecff5a1edc3dc433d874f9",
+      "bytes": 32140
+    },
+    {
+      "path": "lib/lesson-engine/response/rhyme-production.ts",
+      "beforeSha256": null,
+      "afterSha256": "0fce84af590581d2dac07db93dbf9638dd51226b8e5271ed6577193cde2bc2f6",
+      "bytes": 2648
+    },
+    {
+      "path": "lib/lesson-engine/response/robbie-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "c174286b96dbbf4695cca40c608ea2a43f924fc4d3e730204969e8c9fd35d278",
+      "bytes": 3391
+    },
+    {
+      "path": "lib/lesson-engine/response/rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "9609467d598d7df58313ecd1373510c7f6c6a2ff569ce92b338852142289ee0a",
+      "bytes": 116943
+    },
+    {
+      "path": "lib/lesson-engine/response/sam-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "d324153e1449a224abe1e9bcc9fe3a2355eef6af045946979d90f39bd3ff9a5c",
+      "bytes": 2100
+    },
+    {
+      "path": "lib/lesson-engine/response/shelf-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "e40c0f29caee8642d9a94d80018bee372d24e26f0c84def4051b9cc986c817da",
+      "bytes": 2567
+    },
+    {
+      "path": "lib/lesson-engine/response/sprout-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "5c65222c489b9293051ae0921c6417856718d5238694f0171beb7761928cc64c",
+      "bytes": 2823
+    },
+    {
+      "path": "lib/lesson-engine/response/stage-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "7a06d1376cda4843e1d3e4e01dc70bcd4476c49bd29418ae1bda97e8966bb5c3",
+      "bytes": 3588
+    },
+    {
+      "path": "lib/lesson-engine/response/syllable-example.ts",
+      "beforeSha256": null,
+      "afterSha256": "da9a76896bc2cf4a0aa51d4ef4fc55e6df06998d702f3210c99fb5f1e51bb9ba",
+      "bytes": 1103
+    },
+    {
+      "path": "lib/lesson-engine/response/ticket-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "f68fed3abf88f3be5b070f0652b536583fea322f8e29f1c4d57177168ed01f29",
+      "bytes": 1169
+    },
+    {
+      "path": "lib/lesson-engine/response/toolbox-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "279243b22e5a2edd1b2c45e194fe356a6ebf8fbfe6c2eaca257c54d93d3a2c8f",
+      "bytes": 4858
+    },
+    {
+      "path": "lib/lesson-engine/response/troupe-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "041de047377245424d440bfa59a6975d7623df1f5680b1a06355740b33d3abec",
+      "bytes": 3154
+    },
+    {
+      "path": "lib/lesson-engine/response/willow-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "e77d48c4e73c942d37d1d89d8b3f4ba562bf9cdf864ef429e4b2e0ceaffebb62",
+      "bytes": 3929
+    },
+    {
+      "path": "lib/lesson-engine/response/windy-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "be7519af3f09c728829dcc65d3f08075ade0b3864d000ee7e6ea6778017e83f1",
+      "bytes": 1657
+    },
+    {
+      "path": "lib/lesson-engine/response/word-change.ts",
+      "beforeSha256": null,
+      "afterSha256": "2076a80beaccddaebb38fd6b6b062660af445ca1f7c6354a5e2a9b88e2ddebc9",
+      "bytes": 933
+    },
+    {
+      "path": "lib/lesson-engine/response/workshop-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "5fecfb7c9f6abdd062d81d6a1fc2760ab56f288b90b97861a07ffd68a5a45a0e",
+      "bytes": 1690
+    },
+    {
+      "path": "lib/lesson-engine/response/wren-rubrics.ts",
+      "beforeSha256": null,
+      "afterSha256": "d25a5f3ddfc9f04e364fe21755f350f8694fac6969c046ff7d06558a7b88fa9e",
+      "bytes": 3926
+    },
+    {
+      "path": "lib/lesson-engine/shuffle.ts",
+      "beforeSha256": "cf3cff7b08ac24209933576be1221c8d515d4d31c6cbd8fdfe4f2e591016dcf6",
+      "afterSha256": "b5d4d2a3a14c57ad69568ef1658e957c4048ea6fdcff21737a813d1bd4227066",
+      "bytes": 2022
+    },
+    {
+      "path": "lib/lesson-engine/types.ts",
+      "beforeSha256": "4187d006938dd3240ed1ce46fe1820ddc0de7cdf6f52777287221f21a8b63ca8",
+      "afterSha256": "9060f88b55db0d00b2e6a2cf06e721c566021f5717f9a7538aa34ae0935a7c4b",
+      "bytes": 14964
+    },
+    {
+      "path": "next.config.ts",
+      "beforeSha256": "118f70adc8e453ee6e0207b24f51546cf81fd649266735033f62341074b8d3de",
+      "afterSha256": "955f665431080b6f445d379d4f3e8ea588e0ec5ba325c31583e4f32922b9936a",
+      "bytes": 3886
+    },
+    {
+      "path": "package-lock.json",
+      "beforeSha256": "468c99904db134b65946c22626deeb4971b7db6bb2d2ac739bcfab1e5c85f6e2",
+      "afterSha256": "0736689fe63235a7a2dd1a2c2487a80ec278c537f92827b4062167217c7fe882",
+      "bytes": 490647
+    },
+    {
+      "path": "package.json",
+      "beforeSha256": "1ea17cf53e24d8c532c14c7b1b7914cd51e6bffcee98cf6c7e2a4c4f96588f41",
+      "afterSha256": "45494c8752d6e05ea24e80bba965a5e2f16ff86537334e2cc302e6e1a084e26d",
+      "bytes": 3369
+    },
+    {
+      "path": "public/sw.js",
+      "beforeSha256": "488a599fe0a0d75123197a49b959ed03986579138fc4dc46693e655d1813be7a",
+      "afterSha256": "4b3ec63ff63b6fbcf09729b4b26910d447f275c593a1982ae627234f52b9b590",
+      "bytes": 4265
+    },
+    {
+      "path": "scripts/integration/export-unit-one.py",
+      "beforeSha256": null,
+      "afterSha256": "20974d1408a7848f46787249368b3f829b2c71ee295cd569f98f57fd84f16510",
+      "bytes": 1921
+    },
+    {
+      "path": "scripts/integration/unit-one-assets.py",
+      "beforeSha256": null,
+      "afterSha256": "ebadacbf1f7aab6865d1051cfcea0fc8a99eb5686e4b665a58e9eb87df7fc033",
+      "bytes": 2164
+    },
+    {
+      "path": "scripts/integration/unit-one-browser.mjs",
+      "beforeSha256": null,
+      "afterSha256": "a853817e4d69ee09442c63c5d3318c9e3c149b6339ef74d4adbd9245231dbe23",
+      "bytes": 18399
+    },
+    {
+      "path": "scripts/integration/unit-one-database.mjs",
+      "beforeSha256": null,
+      "afterSha256": "323dbc5d2ee40a2cb424a409cf07a8901837c85189d2819775bddbe1dc6e029a",
+      "bytes": 3756
+    },
+    {
+      "path": "supabase/migrations/202609150001_approved_unit_sessions.sql",
+      "beforeSha256": null,
+      "afterSha256": "95e1b2ad84777d47e88d075fcbbab74db2aea280172ebd8d029fa2f470dfe35c",
+      "bytes": 5325
+    },
+    {
+      "path": "tests/approved-unit/browser-fixtures.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "078edd835522c6376c4c72f8d752c035c9bf25a91ffb66d1355dae93137dc240",
+      "bytes": 2342
+    },
+    {
+      "path": "tests/approved-unit/release-compatibility.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "a83af5554db30d9608ba5be69675e245e2ebccef319fe3463519a8dad94af393",
+      "bytes": 2186
+    },
+    {
+      "path": "tests/approved-unit/save-queue.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "d2163ab9b23118f2fb7f09466f9185ca26061fdb16d823a55b07c969513ae4ae",
+      "bytes": 1202
+    },
+    {
+      "path": "tests/approved-unit/state.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "8e7958db8f805152bb80f728904e10374ea7dc12f6b86dab7ced652a8f391e17",
+      "bytes": 6781
+    }
+  ]
+}

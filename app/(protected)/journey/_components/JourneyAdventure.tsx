@@ -22,10 +22,11 @@ const serverMotion = () => false;
 type Model = ReturnType<typeof buildAdventureView>;
 
 export default function JourneyAdventure({
-  model, childId, placementId, introduce, justCompleted, openedChests,
+  model, childId, placementId, introduce, justCompleted, openedChests, approvedUnitEnabled,
   onStart, onPlan, onReward, billingNotice,
 }: {
   model: Model;
+  approvedUnitEnabled?: boolean;
   childId: string;
   placementId: string | null;
   introduce: boolean;
@@ -136,6 +137,7 @@ export default function JourneyAdventure({
               </label>
               <button className={styles.liveMenuButton} onClick={() => selectChapter(model.currentChapter)}>Return to current lesson</button>
               <button className={styles.liveMenuButton} onClick={() => { audioManager?.resumeContextSync(); setPhase(reduced ? 'ready' : 'magic'); }}>Watch the magic again</button>
+              {approvedUnitEnabled&&<Link className={styles.liveMenuButton} href={`/learn/unit-one?child=${childId}`}>Kindergarten Unit 1 · Lessons and check-in</Link>}
               <Link className={styles.liveMenuButton} href="/dashboard">Dashboard</Link>
             </div>
           </details>

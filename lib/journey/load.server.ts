@@ -1,3 +1,4 @@
+import { UNIT_VERSION, UNIT_ONE } from "@/lib/approved-unit/catalogue";
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
@@ -23,7 +24,8 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
     throw new Error("Could not load your reading journey.");
   if (!childRow.data) return null;
   const child = childRow.data;
-  const [practice, progress, placement] = await Promise.all([
+  const approvedUnitEnabled = process.env.APPROVED_K_UNIT_ONE_ENABLED === "true";
+  const [practice, progress, placement, approved] = await Promise.all([
     db.from("practice_results").select("standard_id, questions_correct").eq("child_id", child.id),
     db.from("lessons_progress").select("lesson_id, section, score").eq("child_id", child.id),
     db
@@ -33,12 +35,24 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
       .order("created_at", { ascending: false })
       .limit(1)
       .maybeSingle(),
+    approvedUnitEnabled
+      ? db
+          .from("approved_unit_sessions")
+          .select("lesson_id")
+          .eq("child_id", child.id)
+          .eq("release_id", UNIT_VERSION)
+          .eq("completed", true)
+      : Promise.resolve({ data: [], error: null }),
   ]);
-  if (practice.error || progress.error || placement.error)
+  if (practice.error || progress.error || placement.error || approved.error)
     throw new Error("Could not load your reading journey.");
   const row = placement.data;
   const enrolled = row ? Number(row.enrolled) : null;
-  if (row && (row.enrolled == null || !Number.isInteger(enrolled) || enrolled! < 0 || enrolled! > 4)) throw new Error("Could not load the enrollment grade.");
+  if (
+    row &&
+    (row.enrolled == null || !Number.isInteger(enrolled) || enrolled! < 0 || enrolled! > 4)
+  )
+    throw new Error("Could not load the enrollment grade.");
   const result: PlacementResult | null = row
     ? withCurrentPlan(
         {
@@ -59,6 +73,10 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
     : null;
   return {
     child,
+    approvedUnitEnabled,
+    completedStandards: UNIT_ONE.filter((l) =>
+      approved.data?.some((a) => a.lesson_id === l.id),
+    ).map((l) => l.standard),
     result,
     practice: practice.data ?? [],
     lessonProgress: progress.data ?? [],
