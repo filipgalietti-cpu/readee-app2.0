@@ -258,6 +258,32 @@ try {
       r.failure()?.errorText,
     ),
   );
+  // Discovery uses the same approved player, but never writes the reader's progress.
+  await page.goto(`${base}/explore?child=${child}`, {waitUntil:"networkidle",timeout:120000});
+  await page.getByRole("heading",{name:"Meet our Kindergarten adventures"}).waitFor();
+  assert.equal(await page.locator("#approved-k-heading").locator("..").getByRole("heading",{level:3}).count(),8);
+  for(const width of [390,768,1280]){
+    await page.setViewportSize({width,height:800});
+    await page.locator("#approved-k-heading").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Showcase has no horizontal overflow");
+    await page.screenshot({path:`/private/tmp/k1-discovery-${width}.png`,fullPage:true});
+  }
+  await page.goto(`${base}/placement/ready?child=${child}`,{waitUntil:"networkidle"});
+  await page.getByRole("link",{name:"Meet the Kindergarten lessons"}).click();
+  await page.waitForURL(`**/explore?child=${child}`);
+  await page.goto(`${base}/learn?standard=RL.K.1&preview=1`,{waitUntil:"networkidle"});
+  assert.ok(page.url().includes("/learn/unit-one/sample"),"Old sample link reaches approved player");
+  await page.getByRole("button",{name:/let.s begin/i}).click();
+  await page.getByRole("button",{name:/let.s play/i}).waitFor();
+  await page.screenshot({path:"/private/tmp/k1-discovery-sample.png"});
+  assert.equal((await db.query("select count(*)::int as n from approved_unit_sessions")).rows[0].n,0,"Sample cannot create child progress");
+  assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith("readee:preview:"))),[],"Sample evidence stays in memory");
+  const sampleSpeech=await context.request.post(base+"/api/approved-unit/sample",{headers:{origin:base},data:{kind:"speech"}});
+  assert.equal(sampleSpeech.status(),503,"Unavailable speech is honest; no dev endpoint fallback");
+  const escape=await context.request.post(base+"/api/approved-unit/sample",{headers:{origin:base},data:{kind:"speech",lessonId:"rhyme-time"}});
+  assert.equal(escape.status(),400,"Sample cannot escape its lesson scope");
+  console.log("PASS approved showcase, three viewports, assessment handoff, sample route and non-persistence");
   await page.goto(`${base}/learn/unit-one?child=${child}`, {
     waitUntil: "networkidle",
     timeout: 120000,

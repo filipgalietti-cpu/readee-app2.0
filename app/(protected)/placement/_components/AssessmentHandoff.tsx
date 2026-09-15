@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Glyph } from "@/app/_components/Glyph";
-import { PlacementAudioCancelled, playUrlRequired, stopClip, subscribePlayback, getPlaybackAnalyser } from "./audio";
+import {
+  PlacementAudioCancelled,
+  playUrlRequired,
+  stopClip,
+  subscribePlayback,
+  getPlaybackAnalyser,
+} from "./audio";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
@@ -14,11 +20,13 @@ export default function AssessmentHandoff({
   gradeLabel,
   startHref,
   exploreHref = "/explore",
+  showKindergartenSample = false,
 }: {
   name: string;
   gradeLabel: string;
   startHref: string;
   exploreHref?: string;
+  showKindergartenSample?: boolean;
   childId?: string;
   initialSaidAs?: string;
 }) {
@@ -71,7 +79,9 @@ export default function AssessmentHandoff({
                 <dd>Let’s find out</dd>
               </div>
             </dl>
-            <p className="pa-small">Luna will ask your reader to say hello and their name before reading.</p>
+            <p className="pa-small">
+              Luna will ask your reader to say hello and their name before reading.
+            </p>
             <p className="pa-small">
               School grade guides the first questions. What {name} can read and understand
               determines where their journey begins, even if that’s a different grade.
@@ -90,7 +100,11 @@ export default function AssessmentHandoff({
               <Glyph name={speaking ? "volume-x" : "volume2"} size={24} />
               {speaking ? "Stop welcome" : "Hear a welcome from Readee"}
             </button>
-            {welcomeError && <p role="alert" className="pa-small">The welcome could not play. Check your sound and tap Hear a welcome to retry.</p>}
+            {welcomeError && (
+              <p role="alert" className="pa-small">
+                The welcome could not play. Check your sound and tap Hear a welcome to retry.
+              </p>
+            )}
             <h2>Ready for your reader.</h2>
             <p>
               Hand over the device. Stay nearby for the microphone check, then let {name} answer
@@ -101,8 +115,14 @@ export default function AssessmentHandoff({
             </Link>
             <p className="pa-small">The assessment and full reading report are free.</p>
             <Link className="pa-text-link" href={exploreHref}>
-              Explore lessons first
+              {showKindergartenSample ? "Meet the Kindergarten lessons" : "Explore lessons first"}
             </Link>
+            {showKindergartenSample && (
+              <p className="pa-small">
+                Pip, Rory and six more adventures are ready to explore. The assessment helps choose
+                where your child begins.
+              </p>
+            )}
           </div>
         </div>
       </section>
