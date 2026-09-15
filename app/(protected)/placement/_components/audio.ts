@@ -1,4 +1,5 @@
 "use client";
+import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 
 /**
  * Clip playback for the placement: bank clips from the public audio bucket
@@ -44,7 +45,8 @@ function connectPlayback(audio: HTMLAudioElement): () => void {
   let analyser: AnalyserNode | null = null;
   let cancelled = false;
   try {
-    if (!playbackContext || playbackContext.state === "closed") playbackContext = new AudioContext();
+    if (!playbackContext || playbackContext.state === "closed")
+      playbackContext = new AudioContext();
     const context = playbackContext;
     const connect = () => {
       if (cancelled || context.state !== "running") return;
@@ -63,7 +65,10 @@ function connectPlayback(audio: HTMLAudioElement): () => void {
     // Resume on the caller's gesture, but do not route an element into a
     // suspended context: that can make a successfully playing clip silent.
     if (context.state === "running") connect();
-    else void context.resume().then(connect, () => {});
+    else void context.resume().catch(() => {});
+    // A suspended context warms up for the next clip. Never reroute this
+    // element after play() has started: switching its output mid-sentence
+    // can create a discontinuity/click. Native playback stays uninterrupted.
   } catch {
     // Plain element playback works even when Web Audio is unavailable.
   }
@@ -173,7 +178,7 @@ export function playUrlAsync(url: string, fallbackMs = 6000, required = false): 
 export const playUrlRequired = (url: string, fallbackMs = 6000) =>
   playUrlAsync(url, fallbackMs, true);
 export const playNarrRequired = (key: NarrationKey, fallbackMs = 8000) =>
-  playUrlRequired(narrUrl(key), fallbackMs);
+  playUrlRequired(spectrumClip(`narr-${key}`), fallbackMs);
 export async function playSeqRequired(urls: string[], gapMs = 250): Promise<void> {
   for (const url of urls) {
     await playUrlRequired(url);
@@ -181,7 +186,7 @@ export async function playSeqRequired(urls: string[], gapMs = 250): Promise<void
   }
 }
 
-export const narrUrl = (key: NarrationKey): string => getAudioUrl("placement", `narr-${key}`);
+export const narrUrl = (key: NarrationKey): string => spectrumClip(`narr-${key}`);
 export const clipUrl = (id: string): string => getAudioUrl("placement", id);
 export const phonemeUrl = (id: string): string => getAudioUrl("phonemes", id);
 

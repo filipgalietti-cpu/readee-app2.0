@@ -87,3 +87,39 @@ describe("required assessment instructions", () => {
     await expect(result).resolves.toBeUndefined();
   });
 });
+
+it("does not switch the output of a playing clip when its visualizer context wakes late", async () => {
+  let wake!: () => void;
+  const source = { connect: vi.fn(), disconnect: vi.fn() };
+  const analyser = { connect: vi.fn(), disconnect: vi.fn(), fftSize: 0 };
+  const context = {
+    state: "suspended",
+    destination: {},
+    resume: vi.fn(
+      () =>
+        new Promise<void>((resolve) => {
+          wake = () => {
+            context.state = "running";
+            resolve();
+          };
+        }),
+    ),
+    createMediaElementSource: vi.fn(() => source),
+    createAnalyser: vi.fn(() => analyser),
+  };
+  vi.stubGlobal("AudioContext", function () {
+    return context;
+  });
+  const first = playUrlRequired("first");
+  expect(FakeAudio.instances[0].play).toHaveBeenCalledOnce();
+  wake();
+  await Promise.resolve();
+  expect(context.createMediaElementSource).not.toHaveBeenCalled();
+  FakeAudio.instances[0].emit("ended");
+  await first;
+  const second = playUrlRequired("second");
+  expect(context.createMediaElementSource).toHaveBeenCalledOnce();
+  FakeAudio.instances[1].emit("ended");
+  await second;
+  context.state = "closed";
+});

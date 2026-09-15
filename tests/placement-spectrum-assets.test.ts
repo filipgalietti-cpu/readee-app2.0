@@ -1,24 +1,22 @@
-import { readFileSync, statSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { expect, it } from "vitest";
 import { spectrumAudioScripts } from "@/app/data/placement-spectrum/audio";
-import audioCheck from "@/app/data/placement-spectrum/audio-check.json";
+import audioCheck from "@/app/data/placement-spectrum/pcm-review-manifest.json";
+import { ASSESSMENT_PCM } from "@/lib/audio/assessment-pcm-quality";
+import { pcmReleaseProblems } from "@/lib/audio/assessment-pcm-release";
 import { LANGUAGE_ITEMS, ORAL_BLENDS } from "@/lib/placement/spectrum";
 
 it("ships every fixed narration and option clip with a matching transcript audit", () => {
-  const audit = audioCheck as Record<
-    string,
-    { script: string; audioSha256: string; status: string }
-  >;
-  for (const [id, script] of Object.entries(spectrumAudioScripts())) {
-    const path = `public/audio/placement-spectrum/${id}.mp3`;
-    expect(statSync(path).size, id).toBeGreaterThan(500);
-    expect(audit[id]?.script, id).toBe(script);
-    expect(audit[id]?.status, id).toBe("matched");
-    expect(createHash("sha256").update(readFileSync(path)).digest("hex"), id).toBe(
-      audit[id].audioSha256,
-    );
+  const scripts = spectrumAudioScripts();
+  const sourceHashes: Record<string, string> = {}, audioHashes: Record<string, string> = {};
+  const hash = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+  expect(Object.keys(scripts)).toHaveLength(440);
+  for (const [id, script] of Object.entries(scripts)) {
+    sourceHashes[id] = hash(JSON.stringify(ASSESSMENT_PCM) + script);
+    audioHashes[id] = hash(readFileSync(`public/audio/assessment-voice/${ASSESSMENT_PCM.version}/${id}.wav`));
   }
+  expect(pcmReleaseProblems({ scripts, entries: audioCheck, sourceHashes, audioHashes })).toEqual([]);
 });
 it("keeps every listening question separate from its answer narration", () => {
   expect(LANGUAGE_ITEMS.every((q) => typeof q.audioIncludesOptions === "boolean")).toBe(true);
