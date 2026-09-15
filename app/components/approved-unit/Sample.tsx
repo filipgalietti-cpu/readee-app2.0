@@ -5,8 +5,8 @@ import PipStudio from "./lessons/PipStudio";
 import { UnitRuntimeContext, type UnitRuntime } from "@/lib/approved-unit/runtime";
 import type { AttemptSnapshot } from "@/lib/lesson-engine/delivery/types";
 import type { PracticeAttempt } from "@/lib/lesson-engine/production/practice";
-/** The same approved player with ephemeral sample state; no child identity or persistence. */
-export default function Sample() {
+/** The same approved player with ephemeral sample state; no persisted child evidence or rewards. */
+export default function Sample({ backHref }: { backHref: string }) {
   const router = useRouter();
   const [runtime] = useState<UnitRuntime>(() => {
     let lesson: AttemptSnapshot | null = null,
@@ -47,7 +47,7 @@ export default function Sample() {
   });
   return (
     <UnitRuntimeContext.Provider value={runtime}>
-      <PipStudio onExit={() => router.push("/explore")} />
+      <PipStudio onExit={() => router.push(backHref)} />
     </UnitRuntimeContext.Provider>
   );
 }

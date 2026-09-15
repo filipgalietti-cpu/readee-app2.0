@@ -55,7 +55,7 @@ export default async function ExplorePage({
               carrots and answers stay in this visit; they do not change your child’s progress.
             </p>
             <Link
-              href="/learn/unit-one/sample"
+              href={reader ? `/learn/unit-one/sample?child=${reader.id}` : "/learn/unit-one/sample"}
               className="mt-4 inline-flex rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
             >
               Try Pip’s Tree free <Glyph name="arrow-right" size={20} className="ml-2" />
