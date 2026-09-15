@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
     if(!base)return [];
     const url=new URL(base);
     if(url.protocol!=="https:" || url.username || url.password || url.search || url.hash) throw new Error("APPROVED_UNIT_ASSET_BASE must be a public HTTPS directory");
-    return {beforeFiles:[{source:"/lesson-studio/:path*",destination:`${base}/lesson-studio/:path*`}],afterFiles:[],fallback:[]};
+    return {beforeFiles:[{source:"/lesson-studio/:path*",destination:`${base}/:path*`}],afterFiles:[],fallback:[]};
   },
   // Several client components (BookWizard, LeveledWizard, LessonWizard,
   // AssignmentWizard, AskReadeeWizard, ParentLetterEditor, etc.)
