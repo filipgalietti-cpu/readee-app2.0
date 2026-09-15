@@ -48,7 +48,7 @@ yarn-error.log*
 !/public/images/ui/grades/
 !/public/images/story-styles/
 !/public/images/story-types/
-/public/audio/
+/public/audio/*
 /scripts/image-progress.json
 
 # vercel
@@ -84,3 +84,9 @@ scripts/ad-out/
 /release-code/
 /release-assets/
 /public/lesson-studio/
+
+# Versioned assessment audio released September 2026
+!/public/audio/assessment-voice/
+/public/audio/assessment-voice/*
+!/public/audio/assessment-voice/autonoe-pcm-reading-v2/
+!/public/audio/assessment-voice/autonoe-pcm-reviewed-v1/

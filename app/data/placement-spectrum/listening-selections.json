@@ -1,0 +1,48 @@
+{
+  "baseVersion": "autonoe-pcm-reading-v2",
+  "version": "autonoe-pcm-reviewed-v1",
+  "clips": {
+    "q-g1-q1": {
+      "url": "/audio/assessment-voice/autonoe-pcm-reviewed-v1/q-g1-q1.wav",
+      "script": "What color is the spot on Max?",
+      "audioSha256": "57bf4b13bebd4623761f4cba3a8b3d72be1b07fccc295f4458d1b62893e80679",
+      "sourceVersion": "autonoe-texture-review-v1",
+      "sourceKey": "q-g1-q1-clear",
+      "variant": "clear",
+      "selectionLabel": "C",
+      "listeningStatus": "user-selected",
+      "selectedOn": "2026-09-15",
+      "direction": "Read only the supplied text. Use a clear, lightly bright American teaching voice in your comfortable speaking register. Keep the tone smooth and gently engaged throughout the sentence, including its ending. Speak naturally at about 145 words per minute, with connected phrasing rather than stretching individual words.",
+      "measurements": {
+        "seconds": 3.330958,
+        "lufs": -20.16,
+        "truePeakDb": -3,
+        "sampleRate": 24000,
+        "channels": 1,
+        "codec": "pcm_s16le"
+      },
+      "transcript": "What color is the spot on Max?"
+    },
+    "q-g1-q2": {
+      "url": "/audio/assessment-voice/autonoe-pcm-reviewed-v1/q-g1-q2.wav",
+      "script": "Where did Sam hide the ball first?",
+      "audioSha256": "9ec6c9c46508e9f6ca226abcef5e1864df34545cd0cfc7672e75faee9ad0fb16",
+      "sourceVersion": "autonoe-texture-review-v1",
+      "sourceKey": "q-g1-q2-repeat",
+      "variant": "repeat",
+      "selectionLabel": "A",
+      "listeningStatus": "user-selected",
+      "selectedOn": "2026-09-15",
+      "direction": "Speak in a calm, warm American reading-teacher voice, with clear consonants and a steady conversational pace of about 145 words per minute. Leave natural pauses between sentences and quoted texts. Do not exaggerate emphasis or rush answer choices. Read only the supplied text, without an introduction or additional words.",
+      "measurements": {
+        "seconds": 5.050958,
+        "lufs": -19.31,
+        "truePeakDb": -3,
+        "sampleRate": 24000,
+        "channels": 1,
+        "codec": "pcm_s16le"
+      },
+      "transcript": "Where did Sam hide the ball first?"
+    }
+  }
+}

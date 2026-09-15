@@ -99,14 +99,15 @@ export default function LunaOrb({
         an.getByteTimeDomainData(td);
         let sum = 0;
         for (let i = 0; i < td.length; i++) { const v = (td[i] - 128) / 128; sum += v * v; }
-        target = Math.min(1, Math.max(0, Math.sqrt(sum / td.length) - 0.006) * (response.responsive ? 6 : 4.5));
+        target = Math.min(1, Math.max(0, Math.sqrt(sum / td.length) - 0.006) * (response.responsive ? 8 : 4.5));
       } else if (m === "listening" || m === "thinking") {
         target = Math.min(1, 0.3 + 0.2 * Math.abs(Math.sin(t * 2) + 0.5 * Math.sin(t * 3.3)));
       } else if (m === "speaking" && !response.voiceDriven) {
         target = Math.min(1, 0.22 + 0.2 * Math.abs(Math.sin(t * 2.1) + 0.5 * Math.sin(t * 3.6)));
       }
-      amp += (target - amp) * (response.responsive ? (target > amp ? 0.075 : 0.045) : (target > amp ? 0.05 : 0.03));
-      const a = amp;
+      amp += (target - amp) * (response.responsive ? (target > amp ? 0.11 : 0.055) : (target > amp ? 0.05 : 0.03));
+      // Keep speech visible inside the fixed shell, without bouncing the surrounding layout.
+      const a = reduce ? 0 : amp;
 
       // --- engagement (state), eased apart from loudness ---
       const wantEng = m === "idle" ? 0 : 1;
@@ -129,7 +130,7 @@ export default function LunaOrb({
       const breathe = reduce ? 0.5 : Math.sin(t * 0.52) * 0.5 + 0.5; // resting inhale/exhale
       const wantLevel = 0.6 - e * 0.03 - a * 0.15 + (1 - e) * (breathe - 0.5) * 0.07;
       level += (wantLevel - level) * 0.05;
-      const wantAmp = 3 + (1 - e) * (4 + breathe * 6) + e * 9 + a * 30;
+      const wantAmp = 3 + (1 - e) * (4 + breathe * 6) + e * 9 + a * (response.responsive ? 38 : 30);
       wAmp += (wantAmp - wAmp) * 0.06;
 
       // --- canvas ---
@@ -179,7 +180,7 @@ export default function LunaOrb({
       // --- shell (breathing scale, rim, glow) ---
       const blob = blobRef.current;
       if (blob) {
-        const bs = 1 + (1 - e) * (breathe - 0.5) * 0.024 + e * 0.03 + a * (response.responsive && !reduce ? 0.025 : 0.06);
+        const bs = reduce ? 1 : 1 + (1 - e) * (breathe - 0.5) * 0.024 + e * 0.03 + a * (response.responsive ? 0.038 : 0.06);
         blob.style.transform = `scale(${bs})`;
         blob.style.borderColor = rgb(mix("#c4b5fd", "#5b21b6", e));
         blob.style.borderWidth = `${2 + e}px`;

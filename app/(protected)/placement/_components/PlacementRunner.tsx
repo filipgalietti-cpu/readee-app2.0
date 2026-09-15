@@ -52,7 +52,6 @@ import {
   playSeqRequired as playSeq,
   clipUrl,
   phonemeUrl,
-  childAudioUrl,
   stopClip,
   setFastAudio,
   softTick,
@@ -427,7 +426,7 @@ export default function PlacementRunner({
         if (!(error instanceof PlacementAudioCancelled)) throw error;
       };
       const promptAudio =
-        q.audio ?? (q.id.startsWith("sp-") ? spectrumClip(`q-${q.id}`) : clipUrl(`q-${q.id}`));
+        q.id.startsWith("sp-") ? spectrumClip(`q-${q.id}`) : (q.audio ?? clipUrl(`q-${q.id}`));
       const playPrompt = () =>
         q.promptAudio
           ? playSeq([promptAudio, q.promptAudio], 250)
@@ -781,7 +780,7 @@ export default function PlacementRunner({
       setStage("greeting");
       setOrb("speaking");
       setScreen({ kind: "luna", caption: "Hi there! I’m glad you’re here." });
-      await playUrlAsync(clipUrl("narr-hi-generic"), 8000);
+      await playUrlAsync(spectrumClip("hi-generic"), 8000);
       await say(
         "intro-frame",
         "Let's read some words together. Some will be easy and some will be tricky, and that's exactly how I learn about you.",

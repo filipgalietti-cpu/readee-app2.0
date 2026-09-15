@@ -1,8 +1,15 @@
+import pcmReview from "./pcm-review-state.json";
+import listeningSelections from "./listening-selections.json";
+import { ASSESSMENT_PCM } from "@/lib/audio/assessment-pcm-quality";
+import { getAudioUrl } from "@/lib/audio";
+import { PLACEMENT_NARRATION } from "@/app/data/placement-bank/narration";
 import { SPECTRUM_PASSAGES } from "./reading";
 import language from "./language.json";
 /** Fixed author scripts only; no child's name, voice or other personal data. */
 export function spectrumAudioScripts(): Record<string, string> {
   const clips: Record<string, string> = {
+    ...Object.fromEntries(Object.entries(PLACEMENT_NARRATION).map(([key, text]) => [`narr-${key}`, text])),
+    "hi-generic": "Hi! I’m Luna. Let’s read a little together.",
     "assessment-complete": "That’s everything. You did it. Let’s show your grown-up what you read.",
     "ask-name": "What is your name?",
     "nice-to-meet-you": "It’s so nice to meet you!",
@@ -32,4 +39,15 @@ export function spectrumAudioScripts(): Record<string, string> {
   }
   return clips;
 }
-export const spectrumClip = (id: string) => `/audio/placement-spectrum/${id}.mp3`;
+export const spectrumClip = (id: string) => {
+  if (pcmReview.ready && pcmReview.version === ASSESSMENT_PCM.version) {
+    const selected = (listeningSelections.clips as Record<string, { url: string; listeningStatus: string }>)[id];
+    if (listeningSelections.baseVersion === pcmReview.version && selected?.listeningStatus === "user-selected")
+      return selected.url;
+    return `/audio/assessment-voice/${ASSESSMENT_PCM.version}/${id}.wav`;
+  }
+  // Existing production assets remain the fallback if this release is disabled.
+  if (id.startsWith("narr-")) return getAudioUrl("placement", id);
+  if (id === "hi-generic") return getAudioUrl("placement", "narr-hi-generic");
+  return `/audio/placement-spectrum/${id}.mp3`;
+};
