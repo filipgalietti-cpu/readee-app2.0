@@ -238,6 +238,14 @@ export default function JourneyAdventure({
                   Kindergarten Unit 1 · Lessons and check-in
                 </Link>
               )}
+              {approvedUnitEnabled && (
+                <Link
+                  className={styles.liveMenuButton}
+                  href={`/learn/unit-one/report?child=${childId}`}
+                >
+                  Parent progress report
+                </Link>
+              )}
               <Link className={styles.liveMenuButton} href="/dashboard">
                 Dashboard
               </Link>

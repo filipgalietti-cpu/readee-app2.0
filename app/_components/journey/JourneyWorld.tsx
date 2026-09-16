@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNod
 import { animate, motion, useMotionValue } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import CompletedLessonNode from "./CompletedLessonNode";
 import { Glyph } from "@/app/_components/Glyph";
 import type {
   AdventureLesson,
@@ -327,18 +328,26 @@ export default function JourneyWorld({
                 style={position(geometry.points[index + 1])}
                 {...show(index + 1)}
               >
-                <button
-                  className={styles.destination}
-                  disabled={!!travel || !arrived}
-                  onClick={() => onLesson(lesson)}
-                  aria-label={`${done ? "Completed" : current ? "Current lesson" : "Upcoming lesson"}: ${lesson.title}${!access ? `, ${lesson.lockedReason ?? "Readee+ required"}` : ""}`}
-                >
-                  {done ? (
-                    <Glyph name="check" size={29} />
-                  ) : (
-                    <FluentIcon name={visual.icon} size={current ? 42 : 33} />
-                  )}
-                </button>
+                {done ? (
+                  <CompletedLessonNode
+                    lesson={lesson}
+                    disabled={!!travel || !arrived}
+                    onReplay={() => onLesson(lesson)}
+                  />
+                ) : (
+                  <button
+                    className={styles.destination}
+                    disabled={!!travel || !arrived}
+                    onClick={() => onLesson(lesson)}
+                    aria-label={`${done ? "Completed" : current ? "Current lesson" : "Upcoming lesson"}: ${lesson.title}${!access ? `, ${lesson.lockedReason ?? "Readee+ required"}` : ""}`}
+                  >
+                    {done ? (
+                      <Glyph name="check" size={29} />
+                    ) : (
+                      <FluentIcon name={visual.icon} size={current ? 42 : 33} />
+                    )}
+                  </button>
+                )}
                 <div
                   className={current ? styles.currentCard : styles.stopLabel}
                   data-card-enter={current && arrived}

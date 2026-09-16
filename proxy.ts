@@ -232,7 +232,7 @@ export async function proxy(request: NextRequest) {
   if (needsAuth && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
-    url.searchParams.set("redirect", pathname);
+    url.searchParams.set("redirect", pathname + request.nextUrl.search);
     return redirect(url);
   }
 

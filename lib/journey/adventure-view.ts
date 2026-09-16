@@ -1,3 +1,4 @@
+import type { SavedLessonStats } from "@/lib/approved-unit/lesson-stats";
 import { UNIT_ONE, approvedCoverage } from "@/lib/approved-unit/catalogue";
 import { unitGateway, UNIT_EXAM_ID } from "@/lib/approved-unit/gateway";
 import { unitHasAccess } from "@/lib/approved-unit/entitlement";
@@ -16,6 +17,7 @@ export type AdventureLesson = {
   shape: "page" | "garden" | "sign";
   available: boolean;
   lockedReason?: string;
+  stats?: SavedLessonStats;
 };
 export type AdventureChapter = {
   id: string;
@@ -108,6 +110,7 @@ export function buildAdventureView(
     const print = domain === "RF" && skill?.startsWith("1");
     const individualSounds = domain === "RF" && /^2[cd]/.test(skill ?? "");
     return {
+      stats: snapshot.lessonStats?.[lesson.standardId],
       nodeId: lesson.standardId,
       lessonId: lesson.standardId,
       title: lesson.title,

@@ -43,7 +43,6 @@ import { StreakFire } from "@/app/_components/StreakFire";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { sfxCorrect, sfxWrong } from "@/lib/lesson-engine/cues";
 import CompletionParty from "./CompletionParty";
-import PracticeResults from "./PracticeResults";
 import SealOfApproval from "@/app/(protected)/practice/_components/SealOfApproval";
 import Karaoke from "./Karaoke";
 import "./delivery.css";
@@ -78,7 +77,6 @@ export default function AdaptivePractice({
     autoAdvance?: boolean;
     acknowledgement?: string;
     resultSummary?: (attempt: PracticeAttempt) => string;
-    renderResults: (attempt: PracticeAttempt, onBack: () => void) => ReactNode;
   };
   id: string;
   renderVisual?: (scene: SceneDef, props: Record<string, string | number | boolean>) => ReactNode;
@@ -110,8 +108,6 @@ export default function AdaptivePractice({
     [stamp, setStamp] = useState(false),
     [review, setReview] = useState(false),
     [story, setStory] = useState(false);
-  const [showResults, setShowResults] = useState(false);
-  const [resultsVisited, setResultsVisited] = useState(false);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
     const update = () => setVisible(document.visibilityState === "visible");
@@ -155,8 +151,6 @@ export default function AdaptivePractice({
     if (!first) throw Error("No reviewed practice questions");
     save({ ...fresh, asked: [first.id] });
     setStamp(false);
-    setShowResults(false);
-    setResultsVisited(false);
     setReview(false);
     locked.current = false;
   }
@@ -478,18 +472,6 @@ export default function AdaptivePractice({
   const Interaction = q.scene.interaction ? getInteraction(q.scene.interaction.type) : null;
   const solved = sceneIsComplete(attempt.evidence, q.id, q.scene);
   const hideQuestionSource = (solved && !submitted) || review || savedInterstitial;
-  if (attempt.finished && showResults)
-    return exam ? (
-      <>{exam.renderResults(attempt, () => setShowResults(false))}</>
-    ) : (
-      <PracticeResults
-        title={title}
-        attempt={attempt}
-        pool={pool}
-        onExit={onExit}
-        onRead={(text) => voice.say(text)}
-      />
-    );
   return (
     <section
       className={`le-frame ${leaving ? "le-is-leaving" : ""}`}
@@ -562,13 +544,10 @@ export default function AdaptivePractice({
           outfitId="classic"
           active={!stamp}
           onRestart={runtime ? undefined : () => start(true)}
-          onContinue={() => {
-            setResultsVisited(true);
-            setShowResults(true);
-          }}
-          autoContinue={!resultsVisited}
+          onContinue={onExit}
+          autoContinue
           narrationFinished={voice.finished && !voice.error}
-          continueLabel="See results"
+          continueLabel="Back to my journey"
         />
       ) : (
         <main

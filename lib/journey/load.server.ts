@@ -1,4 +1,5 @@
-import { UNIT_VERSION, UNIT_ONE } from "@/lib/approved-unit/catalogue";
+import { savedLessonStats } from "@/lib/approved-unit/lesson-stats";
+import { UNIT_VERSION, UNIT_ONE, approvedLesson } from "@/lib/approved-unit/catalogue";
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
@@ -38,7 +39,7 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
     approvedUnitEnabled
       ? db
           .from("approved_unit_sessions")
-          .select("lesson_id,readiness:result->readiness")
+          .select("lesson_id,readiness:result->readiness,results:result->results,carrots_awarded")
           .eq("child_id", child.id)
           .eq("release_id", UNIT_VERSION)
           .eq("completed", true)
@@ -78,6 +79,12 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
       : undefined;
   return {
     child,
+    lessonStats: Object.fromEntries(
+      (approved.data ?? []).flatMap((row) => {
+        const stats = savedLessonStats(row.results, row.carrots_awarded);
+        return stats ? [[approvedLesson(row.lesson_id)?.standard ?? row.lesson_id, stats]] : [];
+      }),
+    ),
     approvedUnitEnabled,
     unitOneExamStatus:
       examStatus === "ready" || examStatus === "practice" || examStatus === "more-evidence"

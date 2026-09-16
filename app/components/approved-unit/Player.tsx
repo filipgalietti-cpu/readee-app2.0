@@ -4,7 +4,7 @@ import { SaveQueue } from "@/lib/approved-unit/save-queue";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UnitRuntimeContext, type UnitRuntime } from "@/lib/approved-unit/runtime";
-import type { ApprovedLessonId } from "@/lib/approved-unit/catalogue";
+import { approvedLesson, type ApprovedLessonId } from "@/lib/approved-unit/catalogue";
 import type { AttemptSnapshot } from "@/lib/lesson-engine/delivery/types";
 import type { PracticeAttempt } from "@/lib/lesson-engine/production/practice";
 const loading = () => <p role="status">Opening your lesson…</p>;
@@ -138,39 +138,6 @@ export default function ApprovedUnitPlayer({
       get isExamRetry() {
         return examRetry.current;
       },
-      getPracticeResults: async (attemptId) => {
-        await flush();
-        if (queue.current?.dirty) throw Error("Your results have not saved yet. Please retry.");
-        const r = await fetch(`${url}?child=${child}`, {
-          cache: "no-store",
-          signal: AbortSignal.timeout(15000),
-        });
-        if (!r.ok) throw Error("Saved results are temporarily unavailable.");
-        const saved = await r.json();
-        if (
-          !saved.state?.practice?.finished ||
-          saved.state.practice.id !== attemptId ||
-          !saved.result?.results
-        )
-          throw Error("Your results are not ready yet. Please retry.");
-        return saved.result.results;
-      },
-      retryExam: async () => {
-        await flush();
-        if (queue.current?.dirty) throw Error("Save your results before trying again.");
-        const r = await fetch(url, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            child,
-            kind: "retry-exam",
-            attemptId: state.current.practice?.id,
-          }),
-          signal: AbortSignal.timeout(15000),
-        });
-        if (!r.ok) throw Error("The exam could not restart. Please reload and try again.");
-        window.location.reload();
-      },
       store: {
         load: (id) => (state.current.lesson?.flowId === id ? state.current.lesson : null),
         save: (s) => {
@@ -198,7 +165,14 @@ export default function ApprovedUnitPlayer({
   const Player = players[lesson];
   async function exit() {
     await flush();
-    if (!queue.current?.dirty) router.push(`/learn/unit-one?child=${encodeURIComponent(child)}`);
+    if (!queue.current?.dirty) {
+      const completed = state.current.practice?.finished
+        ? (approvedLesson(lesson)?.standard ?? lesson)
+        : null;
+      router.push(
+        `/journey?child=${encodeURIComponent(child)}${completed ? `&completed=${encodeURIComponent(completed)}` : ""}`,
+      );
+    }
   }
   if (!ready)
     return (
