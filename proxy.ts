@@ -4,6 +4,7 @@ import { decodePlayCookie, PLAY_COOKIE_NAME } from "@/lib/auth/play-mode";
 import { effectivePlan } from "@/lib/plan/access";
 import { b2bBlocked } from "@/lib/plan/classroom-gate";
 import { carryCookies } from "@/lib/auth/carry-cookies";
+import { AUTH_REQUIRED_PREFIXES } from "@/lib/auth/auth-required-prefixes";
 
 /**
  * Proxy (Next.js 16 middleware).
@@ -45,65 +46,9 @@ const PREMIUM_ONLY_ROUTES: Record<string, string> = {
   // here only for genuinely premium surfaces.
 };
 
-/** Routes that require authentication — redirect to /login.
- *
- *  This must list every segment under `app/(protected)/`. A protected page
- *  missing here still renders, and its `requireProfile()` throws "Unauthorized"
- *  — the `(protected)` layout redirects to /login in parallel so the visitor
- *  lands in the right place, but the thrown page error is still reported as an
- *  unhandled 500 (Sentry JAVASCRIPT-NEXTJS-D, /placement). Gating here means
- *  the render never starts. */
-const AUTH_REQUIRED_PREFIXES = [
-  "/learn",
-  "/lesson",
-  "/practice",
-  "/practice-hub",
-  "/journey",
-  "/stories",
-  "/stories-for-me",
-  "/discover",
-  "/daily",
-  "/analytics",
-  "/dashboard",
-  "/settings",
-  "/account",
-  "/billing",
-  "/word-bank",
-  "/upgrade",
-  "/roadmap",
-  "/shop",
-  "/leaderboard",
-  "/levels",
-  "/more",
-  "/help",
-  "/feedback",
-  "/review",
-  "/fluency",
-  "/question-bank",
-  "/notifications",
-  "/placement",
-  "/assessment-results",
-  "/learning-report",
-  "/parent-lesson",
-  "/luna",
-  "/carrot-rewards",
-  "/classroom",
-  "/classroom-join",
-  "/admin",
-  "/owner",
-  "/play",
-  // Internal audit / dev surfaces — also under (protected).
-  "/assessment-audit",
-  "/classroom-dev",
-  "/dev",
-  "/interactive-audit",
-  "/k-audit",
-  "/k-interactive-audit",
-  "/lesson-audit",
-  "/phoneme-audit",
-  "/prototype",
-  "/question-audit",
-];
+/** Routes that require authentication — redirect to /login. The list lives in
+ *  lib/auth/auth-required-prefixes.ts so a unit test can check it against the
+ *  `app/(protected)` tree; every protected segment must be listed there. */
 
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
