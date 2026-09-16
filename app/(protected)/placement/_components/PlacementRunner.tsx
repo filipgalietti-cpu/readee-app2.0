@@ -16,6 +16,7 @@ import { captureNameTurn } from "@/lib/placement/name-turn";
  * between items. Progression never gates on audio `ended` alone.
  */
 import { reportFailure } from "@/lib/observability/critical";
+import { trackSignal } from "@/lib/observability/track";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PLACEMENT_NARRATION } from "@/app/data/placement-bank/narration";
@@ -61,6 +62,13 @@ import PlacementView, { type PlacementScreen as Screen } from "./PlacementView";
 
 import { isSpokenPass } from "@/lib/placement/spoken-pass";
 const WORD_THINKING_HINT_MS = 15000; // Silence changes the hint, never stops listening or scores a miss.
+// The microphone has heard speech-level audio for this many 250 ms samples
+// (ten seconds of it) over at least this long, and the recognizer has returned
+// nothing, not even a partial: audio is not reaching it. Partials normally
+// arrive within a second of speech, so this is a failure, not slow decoding.
+// A cough or a bumped tablet is a handful of samples and never adds up.
+const UNHEARD_READING_MS = 25000;
+const UNHEARD_LOUD_SAMPLES = 40;
 class NoSpeechCaptured extends Error {
   constructor() {
     super("No speech captured.");
@@ -539,12 +547,16 @@ export default function PlacementRunner({
       let stopNow: (() => void) | null = null;
       let lastAttempted = 0;
       let heardAudio = false;
+      let firstHeardAt = 0;
+      let loudSamples = 0;
+      let recognizedAnything = false;
       let captureError: string | null = null;
       const listener = await micRef.current.listen(
         p.text,
         (ph) => {
           phrases.push(ph.words);
           lastPhraseAt = Date.now();
+          recognizedAnything = true;
           const g = gradeRead(p.text, phrases);
           lastAttempted = g.wordsAttempted;
           // Wait for the complete reference or the child's Done reading button.
@@ -562,6 +574,7 @@ export default function PlacementRunner({
           stopNow?.();
         },
         (partial) => {
+          if (partial.trim()) recognizedAnything = true;
           const reached = previewReadingReached(p.text, partial, lastAttempted);
           setScreen(current => current.kind === "passage" ? { ...current, reached: Math.max(current.reached ?? 0, reached) } : current);
         },
@@ -572,6 +585,7 @@ export default function PlacementRunner({
       await new Promise<void>((res) => {
         let settled = false;
         const timers: number[] = [];
+        let quiet: number | undefined;
         const end = () => {
           if (settled) return;
           settled = true;
@@ -609,8 +623,23 @@ export default function PlacementRunner({
           ),
         );
         // Pausing to decode or turning a page is not an instruction to end.
-        const quiet = window.setInterval(() => {
-          heardAudio ||= micRef.current.level > 0.12;
+        quiet = window.setInterval(() => {
+          if (micRef.current.level > 0.12) {
+            heardAudio = true;
+            firstHeardAt ||= Date.now();
+            loudSamples++;
+          }
+          // Heard, but never recognized: say so now rather than waiting out the
+          // recognizer's minute of "silence" or the story cap. A parent read a
+          // whole story into this on Sep 15 2026 and nothing moved.
+          if (
+            !recognizedAnything &&
+            loudSamples >= UNHEARD_LOUD_SAMPLES &&
+            Date.now() - firstHeardAt > UNHEARD_READING_MS
+          ) {
+            captureError = "Luna could not hear the story.";
+            end();
+          }
         }, 250);
       });
       const elapsed = Math.min(custom ? 600 : PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
@@ -639,9 +668,27 @@ export default function PlacementRunner({
       }
       const blob = micRef.current.stopRecording();
       setOrb("idle");
-      if (captureError) throw new Error(captureError);
       const g = gradeRead(p.text, phrases);
-      if (g.wordsAttempted === 0) throw new Error("No reading was captured.");
+      if (captureError || g.wordsAttempted === 0) {
+        // The server never sees a read that produced nothing; record what the
+        // browser saw so the next report like this can be diagnosed.
+        trackSignal("placement.passage_unheard", {
+          route: "/placement",
+          level: "warning",
+          tags: { reason: captureError ?? "no_words" },
+          extra: {
+            band,
+            passage: custom?.id ?? null,
+            elapsed: Math.round(elapsed),
+            heardAudio,
+            recognizedAnything,
+            phrases: phrases.length,
+            mic: micRef.current.state,
+            userAgent: typeof navigator === "undefined" ? null : navigator.userAgent,
+          },
+        });
+        throw new Error(captureError ?? "No reading was captured.");
+      }
       const minute = passageRate(g, elapsed, finishedEarly);
       setScreen(current => current.kind === "passage" ? { ...current, reading: false } : current);
       if (!robot) {

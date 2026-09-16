@@ -92,10 +92,11 @@ describe("assessment audit: enrollment to reading level to journey", () => {
 
 describe("assessment audit: recognition timing", () => {
   afterEach(() => vi.useRealTimers());
-  it.each(["delayed speech", "silence", "stalled stop"])(
+  it.each(["delayed speech", "silence", "stalled stop", "unheard", "bumped"])(
     "handles passage capture: %s",
     async (mode) => {
       vi.useFakeTimers();
+      const trackSignal = vi.fn();
       const text = PLACEMENT_BANK.bands[2].passage!.text;
       const words = text
         .split(/\s+/)
@@ -110,10 +111,29 @@ describe("assessment audit: recognition timing", () => {
           durationSeconds: 0.5,
         }));
       // Model 70 correctly spoken words whose finalized recognition arrives at 61s.
+      // "unheard": the microphone level shows speech but the recognizer never
+      // returns a phrase or a partial, which is audio failing to reach it.
+      // "bumped": one loud second (a knock on the tablet), then a child who
+      // studies the page in silence; that must not read as a failure.
+      let level = mode === "delayed speech" || mode === "unheard" || mode === "bumped" ? 0.3 : 0;
+      if (mode === "bumped") setTimeout(() => (level = 0), 1000);
       const mic = {
-        level: mode === "delayed speech" ? 0.3 : 0,
-        listen: async (_text: string, onPhrase: (p: unknown) => void) => {
-          if (mode === "delayed speech") setTimeout(() => onPhrase({ words }), 61000);
+        get level() {
+          return level;
+        },
+        listen: async (
+          _text: string,
+          onPhrase: (p: unknown) => void,
+          _onError: unknown,
+          onPartial?: (partial: string) => void,
+        ) => {
+          if (mode === "delayed speech") {
+            // A live recognizer streams partial text while the child reads,
+            // long before it finalizes the phrase.
+            const opening = text.split(/\s+/).slice(0, 3).join(" ");
+            for (let at = 1000; at < 61000; at += 2000) setTimeout(() => onPartial?.(opening), at);
+            setTimeout(() => onPhrase({ words }), 61000);
+          }
           return {
             stop: async () => (mode === "stalled stop" ? new Promise<void>(() => {}) : undefined),
           };
@@ -136,7 +156,9 @@ describe("assessment audit: recognition timing", () => {
         clearTimeout,
         window: { setTimeout, clearTimeout, setInterval, clearInterval },
         require: (s: string) =>
-          s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "react"
+          s === "@/lib/audio/audio-manager" ? { audioManager: { playCorrectChime: vi.fn() } } : s === "@/lib/observability/track"
+            ? { trackSignal }
+            : s === "react"
             ? hooks
             : s === "next/navigation"
               ? { useRouter: () => ({}) }
@@ -183,18 +205,46 @@ describe("assessment audit: recognition timing", () => {
         outfitId: null,
       });
       const result = box.readPassageOnce(2);
+      if (mode === "bumped") {
+        let settled = false;
+        void result.then(() => (settled = true), () => (settled = true));
+        await vi.advanceTimersByTimeAsync(60000);
+        expect(settled).toBe(false);
+        expect(trackSignal).not.toHaveBeenCalled();
+        const failure = expect(result).rejects.toThrow("No reading was captured");
+        box.finishReading();
+        await vi.advanceTimersByTimeAsync(1000);
+        await failure;
+        return;
+      }
+      if (mode === "unheard") {
+        const failure = expect(result).rejects.toThrow("Luna could not hear the story");
+        await vi.advanceTimersByTimeAsync(26000);
+        await failure;
+        expect(trackSignal).toHaveBeenCalledWith(
+          "placement.passage_unheard",
+          expect.objectContaining({ tags: { reason: "Luna could not hear the story." } }),
+        );
+        return;
+      }
       if (mode !== "delayed speech") {
         const failure = expect(result).rejects.toThrow(
           mode === "silence" ? "No reading was captured" : "did not finish",
         );
         await vi.advanceTimersByTimeAsync(mode === "silence" ? 30000 : 34000);
         await failure;
+        if (mode === "silence")
+          expect(trackSignal).toHaveBeenCalledWith(
+            "placement.passage_unheard",
+            expect.objectContaining({ tags: { reason: "No reading was captured." } }),
+          );
         return;
       }
       await vi.advanceTimersByTimeAsync(80000);
       box.finishReading();
       await vi.advanceTimersByTimeAsync(1000);
       const { ev } = await result;
+      expect(trackSignal).not.toHaveBeenCalled();
       expect(ev.wordsCorrect).toBe(70);
       expect(ev.minuteWordsCorrect).toBe(70);
       expect(ev.minuteSeconds).toBe(60);

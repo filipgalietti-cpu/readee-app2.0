@@ -284,6 +284,7 @@ function StoryPages({
       </div>
       {controls &&
         createPortal(
+          <div className="pa-page-nav">
           <nav className="pa-page-controls" aria-label="Story pages">
             <button
               className="pa-secondary"
@@ -306,7 +307,22 @@ function StoryPages({
               {page >= pages.length - 1 ? "Finish story" : "Next page"}
               <Glyph name="arrow-right" size={24} />
             </button>
-          </nav>,
+          </nav>
+          {/* Pages normally turn as the child reads. When recognition stalls
+              they do not, and a child should never need to discover "Next page"
+              to reach the end: finishing is always one tap away. */}
+          {page < pages.length - 1 && (
+            <button
+              type="button"
+              className="pa-text-link pa-finish-early"
+              disabled={disabled}
+              onClick={() => onFinish?.()}
+              data-finish-reading
+            >
+              I finished reading
+            </button>
+          )}
+          </div>,
           controls,
         )}
     </>

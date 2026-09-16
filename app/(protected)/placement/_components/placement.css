@@ -1035,6 +1035,26 @@
 .pa-page-dock {
   width: min(100%, 840px);
 }
+.pa-page-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+.pa-frame .pa-finish-early {
+  align-self: center;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  color: var(--pa-ink);
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.pa-frame .pa-finish-early:disabled {
+  opacity: 0.45;
+}
 .pa-frame[data-screen="passage"] .pa-prompt .pa-eyebrow {
   display: none;
 }
@@ -1083,7 +1103,9 @@
   max-width: 100%;
 }
 .pa-frame.pa-book-frame {
-  grid-template-rows: 48px minmax(0, 1fr) 184px;
+  /* Dock: page controls + "I finished reading" + skip. The story card above
+     re-paginates to whatever height is left (StoryPages measures it). */
+  grid-template-rows: 48px minmax(0, 1fr) 232px;
 }
 .pa-frame.pa-book-frame .pa-voice-dock {
   display: grid;
@@ -1239,7 +1261,7 @@
 }
 @media (max-width: 767px) {
   .pa-frame.pa-book-frame {
-    grid-template-rows: 44px minmax(0, 1fr) 168px;
+    grid-template-rows: 44px minmax(0, 1fr) 216px;
   }
   .pa-frame.pa-book-frame .pa-voice-dock {
     grid-template-columns: 72px minmax(0, 1fr);
