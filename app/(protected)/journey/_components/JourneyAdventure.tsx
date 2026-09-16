@@ -7,6 +7,7 @@ import { FluentIcon } from '@/app/_components/FluentIcon';
 import JourneyWorld, { type BunnyTravel } from '@/app/_components/journey/JourneyWorld';
 import JourneyMagicReveal from '@/app/_components/journey/JourneyMagicReveal';
 import type { buildAdventureView } from '@/lib/journey/adventure-view';
+import { journeyReturnTransition } from '@/lib/journey/return-transition';
 import { audioManager } from '@/lib/audio/audio-manager';
 import JourneyPlanDialog from './JourneyPlanDialog';
 import styles from '@/app/_components/journey/journey-v2.module.css';
@@ -38,8 +39,8 @@ export default function JourneyAdventure({
   billingNotice?: ReactNode;
 }) {
   const reduced = useSyncExternalStore(subscribe, readMotion, serverMotion);
-  const returnedChapter = justCompleted ? model.chapters.findIndex((chapter) => chapter.lessonIds.includes(justCompleted)) : -1;
-  const [chapterIndex, setChapterIndex] = useState(returnedChapter >= 0 ? returnedChapter : model.currentChapter);
+  const transition = useMemo(() => journeyReturnTransition(model, justCompleted), [model, justCompleted]);
+  const [chapterIndex, setChapterIndex] = useState(transition.startChapter);
   const chapter = model.chapters[chapterIndex];
   const [phase, setPhase] = useState<'magic' | 'building' | 'ready'>(introduce ? 'magic' : 'ready');
   const [review, setReview] = useState(false);
@@ -47,14 +48,14 @@ export default function JourneyAdventure({
   const [rewardError, setRewardError] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
   const [travel, setTravel] = useState<BunnyTravel | null>(null);
-  const [arrived, setArrived] = useState(!justCompleted);
+  const [arrived, setArrived] = useState(!transition.travel);
   const returned = useRef(false);
   const openingKey = `readee:journey-adventure:${childId}:${placementId ?? 'none'}`;
   const actualPhase = reduced ? 'ready' : phase;
   const chapterDone = !!chapter && chapter.lessonIds.every((id) => model.completed.has(id));
   const unitDone = !!chapter && chapter.unitLessonIds.every((id) => model.completed.has(id));
   const rewardClaimed = !!chapter?.rewardId && openedChests.includes(chapter.rewardId);
-  const bunnyPresent = chapterIndex === model.currentChapter || returnedChapter === chapterIndex;
+  const bunnyPresent = chapterIndex === model.currentChapter || (!arrived && transition.startChapter === chapterIndex);
   const fromReport = introduce && !!placementId;
   useEffect(() => {
     if (!fromReport) return;
@@ -69,22 +70,26 @@ export default function JourneyAdventure({
     return () => clearTimeout(timer);
   }, [actualPhase, openingKey]);
   useEffect(() => {
-    if (returned.current || !justCompleted || returnedChapter < 0) return;
+    if (returned.current || !transition.travel || !justCompleted) return;
     returned.current = true;
+    const settle = () => { setArrived(true); setChapterIndex(transition.finishChapter); };
     const completionKey = `readee:journey-arrival:${childId}:${justCompleted}:${model.completed.size}`;
     try {
-      if (sessionStorage.getItem(completionKey)) { setArrived(true); return; }
+      if (sessionStorage.getItem(completionKey)) { settle(); return; }
       sessionStorage.setItem(completionKey, 'seen');
     } catch { /* Progress itself always comes from the server snapshot. */ }
-    const section = model.chapters[returnedChapter];
-    const index = section.lessonIds.indexOf(justCompleted);
-    setTravel({ from: justCompleted, to: section.lessonIds[index + 1] ?? 'checkpoint', serial: 1 });
+    if (reduced) { settle(); return; }
+    setTravel(transition.travel);
     if (soundOn) {
       audioManager.resumeContextSync();
       audioManager.playCompleteChime();
     }
-  }, [childId, justCompleted, model.chapters, model.completed.size, returnedChapter, soundOn]);
-  const arrival = useCallback(() => { setTravel(null); setArrived(true); }, []);
+  }, [childId, justCompleted, model.completed.size, reduced, soundOn, transition]);
+  const arrival = useCallback(() => {
+    setTravel(null);
+    setArrived(true);
+    setChapterIndex(transition.finishChapter);
+  }, [transition.finishChapter]);
   const interrupt = useCallback(() => { setPhase('ready'); }, []);
   const showMap = useCallback(() => setPhase('building'), []);
   const allDone = model.lessons.length > 0 && model.completed.size === model.lessons.length;
