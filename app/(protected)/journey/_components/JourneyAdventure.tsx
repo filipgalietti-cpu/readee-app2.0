@@ -178,8 +178,7 @@ export default function JourneyAdventure({
     >
       <header className={styles.header}>
         <Link href="/dashboard" className={styles.wordmark} aria-label="Readee dashboard">
-          read<span>ee</span>
-          <i>®</i>
+          <img src="/readee-logo.png" alt="Readee" width={160} height={54} />
         </Link>
         <div className={styles.readerHeading}>
           <h1>{model.reader.name}’s reading journey</h1>

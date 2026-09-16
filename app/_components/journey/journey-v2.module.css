@@ -2620,8 +2620,28 @@
 }
 
 /* The authenticated view uses the same map without studio chrome. */
+.liveExperience {
+  background: #fff;
+}
 .liveExperience .header {
-  flex-basis: 72px;
+  flex-basis: 76px;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e7;
+}
+.liveExperience .wordmark {
+  flex-shrink: 0;
+}
+.liveExperience .wordmark img {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+.liveExperience .readerHeading h1 {
+  color: #18181b;
+}
+.liveExperience .readerHeading > span,
+.liveExperience .headerTools > button {
+  color: #71717a;
 }
 .liveExperience .worldShell {
   width: min(100%, calc((100dvh - 124px) * 1.612903));
