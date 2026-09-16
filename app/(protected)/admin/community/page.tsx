@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Users, Clock, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowLeft, Users, Clock, CheckCircle2, XCircle, Flag } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import CommunityReviewList from "./_components/CommunityReviewList";
+import FlaggedReportsList, { type FlaggedReport } from "./_components/FlaggedReportsList";
 
 export const dynamic = "force-dynamic";
 
@@ -23,14 +24,49 @@ export default async function CommunityModerationPage({
     .eq("profile_id", profile.id);
   if ((adminCount ?? 0) === 0) notFound();
 
-  const { data: rows } = await admin
-    .from("community_passages")
-    .select(
-      "id, title, passage_text, questions, image_url, grade_level, topic, phonics_pattern, status, rejection_reason, created_at, reviewed_at, reviewed_by, source_parent_id, view_count, play_count, completion_count, auto_approved",
-    )
-    .eq("status", status)
-    .order("created_at", { ascending: false })
-    .limit(50);
+  const flaggedTab = status === "flagged";
+  const { data: rows } = flaggedTab
+    ? { data: [] }
+    : await admin
+        .from("community_passages")
+        .select(
+          "id, title, passage_text, questions, image_url, grade_level, topic, phonics_pattern, status, rejection_reason, created_at, reviewed_at, reviewed_by, source_parent_id, view_count, play_count, completion_count, auto_approved",
+        )
+        .eq("status", status)
+        .order("created_at", { ascending: false })
+        .limit(50);
+
+  // Flags: every report a reader filed, with the AI re-review it got. Until
+  // Sep 2026 the team email was the only record of these.
+  let flagged: FlaggedReport[] = [];
+  if (flaggedTab) {
+    const { data: reports } = await admin
+      .from("community_reports")
+      .select("id, community_id, slug, reason, verdict, removed, reporter_id, created_at, reviewed_at")
+      .eq("status", "open")
+      .order("created_at", { ascending: false })
+      .limit(100);
+    const list = (reports ?? []) as Array<Record<string, unknown>>;
+    const ids = [...new Set(list.map((r) => r.community_id).filter((v): v is string => typeof v === "string"))];
+    const { data: passages } = ids.length
+      ? await admin.from("community_passages").select("id, title, status, display_byline").in("id", ids)
+      : { data: [] };
+    const byId = new Map(
+      ((passages ?? []) as Array<{ id: string; title: string; status: string; display_byline: string | null }>).map(
+        (p) => [p.id, p],
+      ),
+    );
+    flagged = list.map((r) => ({
+      id: String(r.id),
+      slug: String(r.slug ?? ""),
+      reason: (r.reason as string | null) ?? null,
+      verdict: (r.verdict as string | null) ?? null,
+      removed: Boolean(r.removed),
+      anonymous: !r.reporter_id,
+      created_at: String(r.created_at),
+      passage: byId.get(String(r.community_id)) ?? null,
+    }));
+  }
 
   const counts = await Promise.all([
     admin
@@ -45,6 +81,10 @@ export default async function CommunityModerationPage({
       .from("community_passages")
       .select("id", { count: "exact", head: true })
       .eq("status", "rejected"),
+    admin
+      .from("community_reports")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "open"),
   ]);
 
   return (
@@ -94,13 +134,24 @@ export default async function CommunityModerationPage({
           count={counts[2].count ?? 0}
           active={status === "rejected"}
         />
+        <TabLink
+          href="/admin/community?status=flagged"
+          icon={<Flag className="h-3.5 w-3.5" />}
+          label="Flagged"
+          count={counts[3].count ?? 0}
+          active={flaggedTab}
+        />
       </div>
 
       <div className="mt-6">
-        <CommunityReviewList
-          items={(rows ?? []) as any[]}
-          currentStatus={status}
-        />
+        {flaggedTab ? (
+          <FlaggedReportsList items={flagged} />
+        ) : (
+          <CommunityReviewList
+            items={(rows ?? []) as any[]}
+            currentStatus={status}
+          />
+        )}
       </div>
     </div>
   );

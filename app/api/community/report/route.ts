@@ -5,6 +5,7 @@ import { containsUnsafeContent } from "@/lib/ai/safety";
 import { judgeCommunityCompliance } from "@/lib/ai/readee-ai";
 import { notifyTeam } from "@/lib/email/notify-team";
 import { rateLimit, clientIp } from "@/lib/security/rate-limit";
+import { normalizeReportReason, shouldEmailReport } from "@/lib/community/report-policy";
 
 export const dynamic = "force-dynamic";
 
@@ -25,8 +26,11 @@ function esc(s: unknown): string {
  *   2. Re-review the story with AI (banlist + compliance judge).
  *   3. If it now FAILS, auto-take it down (status -> rejected). Trolls can't
  *      nuke a clean story — takedown only happens when the AI agrees it's bad.
- *   4. Email the team (hello@readee.app) either way, with the AI verdict and
- *      whether it was removed.
+ *   4. Store the verdict on the report (the /admin/community Flagged tab) and
+ *      email the team only when a person can act on it: a takedown, an AI
+ *      verdict that no longer passes, a review that could not run, or a reader
+ *      who said what was wrong. A bare anonymous tap on a story the AI still
+ *      passes is queue-only (Sep 16 2026: a crawler flagged a featured story).
  *
  * Body (JSON): { slug: string, reason?: string }
  */
@@ -38,7 +42,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "bad request" }, { status: 400 });
   }
   const slug = String(b?.slug ?? "").trim();
-  const reason = b?.reason ? String(b.reason).trim().slice(0, 500) : null;
+  const reason = normalizeReportReason(b?.reason);
   if (!slug) return NextResponse.json({ error: "slug required" }, { status: 400 });
 
   // Anonymous reports are allowed by design, so throttle per IP — each report
@@ -69,20 +73,26 @@ export async function POST(req: Request) {
     /* anonymous report is fine */
   }
 
-  await admin.from("community_reports").insert({
-    community_id: p.id,
-    slug,
-    reason,
-    reporter_id: reporterId,
-  });
+  const { data: inserted } = await admin
+    .from("community_reports")
+    .insert({
+      community_id: p.id,
+      slug,
+      reason,
+      reporter_id: reporterId,
+    })
+    .select("id")
+    .maybeSingle();
+  const reportId = (inserted as { id?: string } | null)?.id ?? null;
 
-  // Background: re-review + maybe take down + email the team.
+  // Background: re-review + maybe take down + record + maybe email the team.
   after(async () => {
     let removed = false;
+    let compliant = true;
+    let errored = false;
     let verdict = "not re-reviewed";
     if (p.status === "approved") {
       const banned = containsUnsafeContent(`${p.title} ${p.passage_text}`);
-      let compliant = true;
       if (banned) {
         compliant = false;
         verdict = `banlist: "${banned}"`;
@@ -96,6 +106,7 @@ export async function POST(req: Request) {
           compliant = v.approve;
           verdict = v.approve ? "AI: still compliant" : `AI: ${v.reason}`;
         } catch {
+          errored = true;
           verdict = "AI re-review errored (left live for a human)";
         }
       }
@@ -115,6 +126,18 @@ export async function POST(req: Request) {
       verdict = `already ${p.status}`;
     }
 
+    if (reportId) {
+      await admin
+        .from("community_reports")
+        .update({ verdict: verdict.slice(0, 300), removed, reviewed_at: new Date().toISOString() })
+        .eq("id", reportId);
+    }
+
+    if (!shouldEmailReport({ removed, compliant, errored, reason })) {
+      console.log("[community/report] queued without email", { slug, verdict });
+      return;
+    }
+
     await notifyTeam(
       `Community story flagged${removed ? " + auto-removed" : ""}: ${p.title}`,
       `<p>A community story was flagged.</p>
@@ -122,11 +145,12 @@ export async function POST(req: Request) {
          <li><b>Title:</b> ${esc(p.title)}</li>
          <li><b>By:</b> ${esc(p.display_byline ?? "unknown")}</li>
          <li><b>Reason given:</b> ${esc(reason ?? "(none)")}</li>
+         <li><b>Reporter:</b> ${reporterId ? "signed in" : "anonymous"}</li>
          <li><b>AI re-review:</b> ${esc(verdict)}</li>
          <li><b>Action:</b> ${removed ? "TAKEN DOWN (status -> rejected)" : "left live; please review"}</li>
          <li><b>Link:</b> https://learn.readee.app/community/${esc(slug)}</li>
        </ul>
-       <p>Review the queue at /admin/community.</p>`,
+       <p>Review it at https://learn.readee.app/admin/community?status=flagged</p>`,
     );
   });
 
