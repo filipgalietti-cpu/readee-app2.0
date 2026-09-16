@@ -1,4 +1,6 @@
 "use client";
+import { approvedStandard } from "@/lib/approved-unit/catalogue";
+import { blockedByUnitExam, UNIT_EXAM_ID } from "@/lib/approved-unit/gateway";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -74,14 +76,18 @@ export default function JourneyClient({
   const childRef = useRef(child);
   const result = snapshot.result;
   const placement = result?.plan;
-  const adventure = useMemo(() => buildAdventureView({ ...snapshot, child }, fullAccess), [snapshot, child, fullAccess]);
+  const adventure = useMemo(
+    () => buildAdventureView({ ...snapshot, child }, fullAccess),
+    [snapshot, child, fullAccess],
+  );
   const copy = result ? buildRevealCopy(result) : null;
   const name = child.first_name || "Reader";
   const catalog = useMemo(
     () => assignedJourneyCatalog(child.reading_level ?? null, placement),
     [child.reading_level, placement],
   );
-  const done = (id: string) => lessonCompleted(id, snapshot.practice, snapshot.lessonProgress, snapshot.completedStandards);
+  const done = (id: string) =>
+    lessonCompleted(id, snapshot.practice, snapshot.lessonProgress, snapshot.completedStandards);
   const current = catalog.find((lesson) => !done(lesson.standardId));
   const first = catalog[0];
   const justCompleted = completed && done(completed) ? completed : null;
@@ -202,7 +208,21 @@ export default function JourneyClient({
     setShowPaywall(true);
   }
   function start(lesson: JLesson) {
-    const selected = catalog.find((l) => l.standardId === lesson.id);
+    if (lesson.id === UNIT_EXAM_ID) {
+      router.push(
+        `/learn/unit-one?child=${child.id}${adventure.gate.examAvailable ? "&lesson=" + UNIT_EXAM_ID : ""}`,
+      );
+      return;
+    }
+    if (blockedByUnitExam(snapshot, lesson.id)) {
+      router.push(`/learn/unit-one?child=${child.id}`);
+      return;
+    }
+    const selected =
+      catalog.find((l) => l.standardId === lesson.id) ??
+      (snapshot.approvedUnitEnabled
+        ? catalog.find((l) => approvedStandard(l.standardId)?.standard === lesson.id)
+        : undefined);
     if (!selected) return;
     if (!fullAccess && !free(selected)) {
       openPaywall();
@@ -213,24 +233,26 @@ export default function JourneyClient({
   }
   function creditReward(id: string, amount: number) {
     // Serialize chest writes so rapid rewards cannot overwrite the opened list.
-    rewardQueue.current = rewardQueue.current.catch(() => undefined).then(async () => {
-      const c = childRef.current;
-      if (c.opened_chests?.includes(id)) return;
-      const nextOpened = [...(c.opened_chests ?? []), id];
-      const saved = await savedOk(
-        "journey:reward",
-        supabaseBrowser().from("children").update({ opened_chests: nextOpened }).eq("id", c.id),
-      );
-      if (!saved) throw new Error("Could not save the keepsake.");
-      const awarded = await awardCarrots(supabaseBrowser(), c.id, amount);
-      const updated = {
-        ...childRef.current,
-        opened_chests: nextOpened,
-        carrots: awarded?.carrots ?? childRef.current.carrots,
-      };
-      childRef.current = updated;
-      setChild(updated);
-    });
+    rewardQueue.current = rewardQueue.current
+      .catch(() => undefined)
+      .then(async () => {
+        const c = childRef.current;
+        if (c.opened_chests?.includes(id)) return;
+        const nextOpened = [...(c.opened_chests ?? []), id];
+        const saved = await savedOk(
+          "journey:reward",
+          supabaseBrowser().from("children").update({ opened_chests: nextOpened }).eq("id", c.id),
+        );
+        if (!saved) throw new Error("Could not save the keepsake.");
+        const awarded = await awardCarrots(supabaseBrowser(), c.id, amount);
+        const updated = {
+          ...childRef.current,
+          opened_chests: nextOpened,
+          carrots: awarded?.carrots ?? childRef.current.carrots,
+        };
+        childRef.current = updated;
+        setChild(updated);
+      });
     return rewardQueue.current;
   }
   const grades: JGrade[] = [];
@@ -262,7 +284,12 @@ export default function JourneyClient({
         : lesson.standardId === current?.standardId
           ? "current"
           : "locked";
-    unit.lessons.push({ id: lesson.standardId, title: lesson.title, purpose: lessonPurpose(lesson.standardId), status });
+    unit.lessons.push({
+      id: lesson.standardId,
+      title: lesson.title,
+      purpose: lessonPurpose(lesson.standardId),
+      status,
+    });
   }
 
   const completedGrade = justCompleted
@@ -393,7 +420,11 @@ export default function JourneyClient({
         <section className={styles.membership} id="readee-trial">
           <h2>Keep going with Readee+</h2>
           <p>Open every lesson in {name}’s journey, with reading practice and support from Luna.</p>
-          <button type="button" className={styles.primary} onClick={() => openPaywall("plan_panel")}>
+          <button
+            type="button"
+            className={styles.primary}
+            onClick={() => openPaywall("plan_panel")}
+          >
             {snapshot.billing.eligibleForTrial
               ? `Start ${PRICING.trialDays}-day free trial`
               : "See membership options"}
@@ -423,22 +454,56 @@ export default function JourneyClient({
     </>
   );
 
-  if (presentation === "adventure") return <>
-    <JourneyAdventure approvedUnitEnabled={snapshot.approvedUnitEnabled} model={adventure} childId={child.id} placementId={result?.id ?? null}
-      introduce={introduce && !!result && !completed && !checkout} justCompleted={justCompleted}
-      openedChests={child.opened_chests ?? []} onStart={(id) => start({ id, title: "", status: "current" })}
-      onPlan={() => result ? setShowPlan(true) : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)}
-      onReward={creditReward}
-      billingNotice={checkout ? <div role="status" className={styles.connectedBilling} data-checkout-return>
-        {checkout === "canceled" ? "Your reading journey is saved. You can start Readee+ whenever you’re ready."
-          : fullAccess ? "Readee+ is ready. Let’s begin."
-          : confirming ? "Confirming your Readee+ access…"
-          : "We’re still checking your access. You don’t need to enter your card again."}
-        {confirmError && <button onClick={() => setConfirmAttempt((value) => value + 1)}>Check again</button>}
-      </div> : undefined} />
-    <PaywallModal open={showPaywall} onClose={() => setShowPaywall(false)} childId={child.id} childName={name} eligibleForTrial={snapshot.billing.eligibleForTrial} trigger="lesson" />
-    {showPlan && <JourneyPlanDialog onClose={() => setShowPlan(false)}>{planContent}</JourneyPlanDialog>}
-  </>;
+  if (presentation === "adventure")
+    return (
+      <>
+        <JourneyAdventure
+          approvedUnitEnabled={snapshot.approvedUnitEnabled}
+          model={adventure}
+          childId={child.id}
+          placementId={result?.id ?? null}
+          introduce={introduce && !!result && !completed && !checkout}
+          justCompleted={justCompleted}
+          openedChests={child.opened_chests ?? []}
+          onStart={(id) => start({ id, title: "", status: "current" })}
+          onPlan={() =>
+            result
+              ? setShowPlan(true)
+              : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)
+          }
+          onReward={creditReward}
+          billingNotice={
+            checkout ? (
+              <div role="status" className={styles.connectedBilling} data-checkout-return>
+                {checkout === "canceled"
+                  ? "Your reading journey is saved. You can start Readee+ whenever you’re ready."
+                  : fullAccess
+                    ? "Readee+ is ready. Let’s begin."
+                    : confirming
+                      ? "Confirming your Readee+ access…"
+                      : "We’re still checking your access. You don’t need to enter your card again."}
+                {confirmError && (
+                  <button onClick={() => setConfirmAttempt((value) => value + 1)}>
+                    Check again
+                  </button>
+                )}
+              </div>
+            ) : undefined
+          }
+        />
+        <PaywallModal
+          open={showPaywall}
+          onClose={() => setShowPaywall(false)}
+          childId={child.id}
+          childName={name}
+          eligibleForTrial={snapshot.billing.eligibleForTrial}
+          trigger="lesson"
+        />
+        {showPlan && (
+          <JourneyPlanDialog onClose={() => setShowPlan(false)}>{planContent}</JourneyPlanDialog>
+        )}
+      </>
+    );
 
   return (
     <div data-journey className={styles.page}>
@@ -452,7 +517,9 @@ export default function JourneyClient({
           </p>
         </div>
         <div className={styles.headerActions}>
-          <Link href="/dashboard" className={styles.textButton}>Dashboard</Link>
+          <Link href="/dashboard" className={styles.textButton}>
+            Dashboard
+          </Link>
           <button
             type="button"
             className={`${styles.textButton} ${styles.mobilePlanButton}`}
@@ -506,7 +573,11 @@ export default function JourneyClient({
         </section>
       )}
 
-      {snapshot.approvedUnitEnabled&&<Link href={`/learn/unit-one?child=${child.id}`}>Kindergarten Unit 1 · Lessons and check-in</Link>}
+      {snapshot.approvedUnitEnabled && (
+        <Link href={`/learn/unit-one?child=${child.id}`}>
+          Kindergarten Unit 1 · Lessons and check-in
+        </Link>
+      )}
       <JourneyOverview
         name={name}
         copy={copy}
@@ -522,53 +593,75 @@ export default function JourneyClient({
         onTrial={() => openPaywall("journey_overview")}
         onSample={() => {
           if (!sample) return;
-          trackFunnelClient("funnel.journey_sample_clicked", { source: "journey_overview", legacy_allowance: legacy });
+          trackFunnelClient("funnel.journey_sample_clicked", {
+            source: "journey_overview",
+            legacy_allowance: legacy,
+          });
           start({ id: sample.standardId, title: sample.title, status: "current" });
         }}
-        onLesson={() => { if (current) start({ id: current.standardId, title: current.title, status: "current" }); }}
-        onReport={() => result ? setShowPlan(true) : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)}
+        onLesson={() => {
+          if (current) start({ id: current.standardId, title: current.title, status: "current" });
+        }}
+        onReport={() =>
+          result
+            ? setShowPlan(true)
+            : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)
+        }
       />
 
       <div className={styles.layout}>
         <section id="lesson-path" className={styles.path} aria-label="Interactive reading journey">
           <div className={styles.gradeBar}>
-            <button type="button" className={styles.textButton} aria-expanded={browseJourney} aria-controls="journey-browse" onClick={() => { finishReveal(); setBrowseJourney(value => !value); }}>
-              {browseJourney ? "Close grade browser" : "Browse the full journey"} <Glyph name="chevron-down" size={16} />
+            <button
+              type="button"
+              className={styles.textButton}
+              aria-expanded={browseJourney}
+              aria-controls="journey-browse"
+              onClick={() => {
+                finishReveal();
+                setBrowseJourney((value) => !value);
+              }}
+            >
+              {browseJourney ? "Close grade browser" : "Browse the full journey"}{" "}
+              <Glyph name="chevron-down" size={16} />
             </button>
             <div id="journey-browse" hidden={!browseJourney}>
-            <div role="tablist" aria-label="Lesson grade" className={styles.gradeTabs}>
-              {grades.map((grade) => (
-                <button
-                  key={grade.grade}
-                  id={`grade-tab-${BADGES[grade.grade]}`}
-                  role="tab"
-                  tabIndex={grade.grade === selectedGrade?.grade ? 0 : -1}
-                  onKeyDown={(event) => {
-                    const index = grades.indexOf(grade);
-                    const next =
-                      event.key === "ArrowRight"
-                        ? (index + 1) % grades.length
-                        : event.key === "ArrowLeft"
-                          ? (index + grades.length - 1) % grades.length
-                          : event.key === "Home"
-                            ? 0
-                            : event.key === "End"
-                              ? grades.length - 1
-                              : null;
-                    if (next === null) return;
-                    event.preventDefault();
-                    finishReveal();
-                    setGradeChoice(grades[next].grade);
-                    document.getElementById(`grade-tab-${BADGES[grades[next].grade]}`)?.focus();
-                  }}
-                  aria-selected={grade.grade === selectedGrade?.grade}
-                  aria-controls="journey-grade-panel"
-                  onClick={() => { finishReveal(); setGradeChoice(grade.grade); }}
-                >
-                  {grade.grade}
-                </button>
-              ))}
-            </div>
+              <div role="tablist" aria-label="Lesson grade" className={styles.gradeTabs}>
+                {grades.map((grade) => (
+                  <button
+                    key={grade.grade}
+                    id={`grade-tab-${BADGES[grade.grade]}`}
+                    role="tab"
+                    tabIndex={grade.grade === selectedGrade?.grade ? 0 : -1}
+                    onKeyDown={(event) => {
+                      const index = grades.indexOf(grade);
+                      const next =
+                        event.key === "ArrowRight"
+                          ? (index + 1) % grades.length
+                          : event.key === "ArrowLeft"
+                            ? (index + grades.length - 1) % grades.length
+                            : event.key === "Home"
+                              ? 0
+                              : event.key === "End"
+                                ? grades.length - 1
+                                : null;
+                      if (next === null) return;
+                      event.preventDefault();
+                      finishReveal();
+                      setGradeChoice(grades[next].grade);
+                      document.getElementById(`grade-tab-${BADGES[grades[next].grade]}`)?.focus();
+                    }}
+                    aria-selected={grade.grade === selectedGrade?.grade}
+                    aria-controls="journey-grade-panel"
+                    onClick={() => {
+                      finishReveal();
+                      setGradeChoice(grade.grade);
+                    }}
+                  >
+                    {grade.grade}
+                  </button>
+                ))}
+              </div>
             </div>
             {selectedGrade && (
               <div
@@ -648,7 +741,11 @@ export default function JourneyClient({
             pauseTour={showPlan || showPaywall}
             onRevealEnd={finishReveal}
             assessmentComplete={!!result}
-            onAssessment={() => result ? setShowPlan(true) : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)}
+            onAssessment={() =>
+              result
+                ? setShowPlan(true)
+                : router.push(`/assessment?child=${encodeURIComponent(child.id)}`)
+            }
             kidName={name}
             streak={child.streak_days ?? 0}
             carrots={child.carrots ?? 0}

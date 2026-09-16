@@ -38,7 +38,7 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
     approvedUnitEnabled
       ? db
           .from("approved_unit_sessions")
-          .select("lesson_id")
+          .select("lesson_id,readiness:result->readiness")
           .eq("child_id", child.id)
           .eq("release_id", UNIT_VERSION)
           .eq("completed", true)
@@ -71,9 +71,18 @@ export async function loadJourneySnapshot(childId?: string): Promise<JourneySnap
         row.evidence,
       )
     : null;
+  const readiness = approved.data?.find((a) => a.lesson_id === "k-unit-1-checkpoint")?.readiness;
+  const examStatus =
+    readiness && typeof readiness === "object" && !Array.isArray(readiness)
+      ? readiness.status
+      : undefined;
   return {
     child,
     approvedUnitEnabled,
+    unitOneExamStatus:
+      examStatus === "ready" || examStatus === "practice" || examStatus === "more-evidence"
+        ? examStatus
+        : undefined,
     completedStandards: UNIT_ONE.filter((l) =>
       approved.data?.some((a) => a.lesson_id === l.id),
     ).map((l) => l.standard),

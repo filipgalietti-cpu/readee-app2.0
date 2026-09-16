@@ -1,4 +1,4 @@
-import { beforeEach, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
 const state = vi.hoisted(() => ({
   user: { id: "parent" } as { id: string } | null,
   rows: {} as Record<string, any>,
@@ -26,6 +26,7 @@ vi.mock("@/lib/supabase/server", () => ({
   }),
 }));
 import { loadJourneySnapshot } from "@/lib/journey/load.server";
+afterEach(() => vi.unstubAllEnvs());
 beforeEach(() => {
   state.user = { id: "parent" };
   state.filters = [];
@@ -67,8 +68,22 @@ it.each(["profiles", "placements", "practice_results", "lessons_progress"])(
 );
 
 it("normalizes legacy string enrollment before rendering grade comparisons", async () => {
-  state.rows.placements = { data: { enrolled: "0", decision: {}, plan: { version: 3 }, created_at: "2026-09-11" } };
+  state.rows.placements = {
+    data: { enrolled: "0", decision: {}, plan: { version: 3 }, created_at: "2026-09-11" },
+  };
   expect((await loadJourneySnapshot("reader"))?.result?.enrolled).toBe(0);
   state.rows.placements.data.enrolled = "unknown";
   await expect(loadJourneySnapshot("reader")).rejects.toThrow("enrollment grade");
+});
+
+it("loads exam readiness from the owned, completed release session", async () => {
+  vi.stubEnv("APPROVED_K_UNIT_ONE_ENABLED", "true");
+  state.rows.approved_unit_sessions = {
+    data: [{ lesson_id: "k-unit-1-checkpoint", readiness: { status: "practice" } }],
+  };
+  expect((await loadJourneySnapshot("reader"))?.unitOneExamStatus).toBe("practice");
+  expect(state.filters).toContainEqual(["approved_unit_sessions", "child_id", "reader"]);
+  expect(state.filters).toContainEqual(["approved_unit_sessions", "completed", true]);
+  state.rows.approved_unit_sessions = { data: null, error: { message: "unavailable" } };
+  await expect(loadJourneySnapshot("reader")).rejects.toThrow("reading journey");
 });

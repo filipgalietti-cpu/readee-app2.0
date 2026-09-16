@@ -1,6 +1,9 @@
 "use client";
-import {useUnitRuntime} from "@/lib/approved-unit/runtime";
-import { useSlideTransition, ANSWER_SELECTION_HOLD_MS } from "@/lib/lesson-engine/delivery/use-slide-transition";
+import { useUnitRuntime } from "@/lib/approved-unit/runtime";
+import {
+  useSlideTransition,
+  ANSWER_SELECTION_HOLD_MS,
+} from "@/lib/lesson-engine/delivery/use-slide-transition";
 import { lessonAutoAdvanceDelay } from "@/lib/lesson-engine/delivery/auto-advance";
 import { narrateScene } from "@/lib/lesson-engine/delivery/scene-narration";
 import PrintedPage from "./PrintedPage";
@@ -40,6 +43,7 @@ import { StreakFire } from "@/app/_components/StreakFire";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { sfxCorrect, sfxWrong } from "@/lib/lesson-engine/cues";
 import CompletionParty from "./CompletionParty";
+import PracticeResults from "./PracticeResults";
 import SealOfApproval from "@/app/(protected)/practice/_components/SealOfApproval";
 import Karaoke from "./Karaoke";
 import "./delivery.css";
@@ -70,9 +74,14 @@ export default function AdaptivePractice({
   renderVisual,
   exam,
 }: {
-  exam?: { autoAdvance?: boolean; acknowledgement?: string; resultSummary?: (attempt: PracticeAttempt) => string; renderResults: (attempt: PracticeAttempt, onBack: () => void) => ReactNode };
+  exam?: {
+    autoAdvance?: boolean;
+    acknowledgement?: string;
+    resultSummary?: (attempt: PracticeAttempt) => string;
+    renderResults: (attempt: PracticeAttempt, onBack: () => void) => ReactNode;
+  };
   id: string;
-  renderVisual?: (scene: SceneDef, props: Record<string,string|number|boolean>) => ReactNode;
+  renderVisual?: (scene: SceneDef, props: Record<string, string | number | boolean>) => ReactNode;
   /** Optional checkpoint selection reuses this runner and its evidence/rewards. */
   selectNext?: typeof nextPracticeQuestion;
   progressLabel?: (attempt: PracticeAttempt) => string;
@@ -95,13 +104,13 @@ export default function AdaptivePractice({
   speechToken?: ActivitySupport["speechToken"];
   evaluateResponse?: ActivitySupport["evaluateResponse"];
 }) {
-  const runtime=useUnitRuntime();
+  const runtime = useUnitRuntime();
   const [attempt, setAttempt] = useState<PracticeAttempt | null>(null),
     [saveError, setSaveError] = useState(false),
     [stamp, setStamp] = useState(false),
     [review, setReview] = useState(false),
     [story, setStory] = useState(false);
-  const [showResults,setShowResults]=useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [resultsVisited, setResultsVisited] = useState(false);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
@@ -111,7 +120,7 @@ export default function AdaptivePractice({
     return () => document.removeEventListener("visibilitychange", update);
   }, []);
   const [capturing, setCapturing] = useState(false);
-  const [visual, setVisual] = useState<Record<string,string|number|boolean>>({});
+  const [visual, setVisual] = useState<Record<string, string | number | boolean>>({});
   const [reaction, setReaction] = useState<ReactionState | null>(null);
   const reactionTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const current = useRef<PracticeAttempt | null>(null),
@@ -123,7 +132,7 @@ export default function AdaptivePractice({
     current.current = next;
     setAttempt(next);
     try {
-      if(runtime) runtime.savePractice(next);
+      if (runtime) runtime.savePractice(next);
       else localStorage.setItem(storageKey, JSON.stringify(next));
       setSaveError(false);
     } catch {
@@ -154,7 +163,9 @@ export default function AdaptivePractice({
   useEffect(() => {
     let saved: unknown;
     try {
-      saved = runtime ? runtime.loadPractice(id) : JSON.parse(localStorage.getItem(storageKey) ?? "null");
+      saved = runtime
+        ? runtime.loadPractice(id)
+        : JSON.parse(localStorage.getItem(storageKey) ?? "null");
     } catch {}
     if (
       validPracticeAttempt(saved, id, pool, maxItems) &&
@@ -171,13 +182,18 @@ export default function AdaptivePractice({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   const q = pool.find((q) => q.id === attempt?.asked.at(-1));
-  const { leaving, advance: finishQuestion, cancel: cancelTransition } = useSlideTransition(q?.id ?? "loading", commitQuestion);
-  useEffect(()=>setVisual({}),[q?.id]);
+  const {
+    leaving,
+    advance: finishQuestion,
+    cancel: cancelTransition,
+  } = useSlideTransition(q?.id ?? "loading", commitQuestion);
+  useEffect(() => setVisual({}), [q?.id]);
   function write(action: Parameters<typeof reduceEvidence>[1]) {
     const a = current.current;
     if (a) {
-      const evidence=reduceEvidence(a.evidence, action, a.startingStreak ?? 0);
-      if(exam && evidence[action.key]) evidence[action.key]={...evidence[action.key],carrots:0,streakAfter:0};
+      const evidence = reduceEvidence(a.evidence, action, a.startingStreak ?? 0);
+      if (exam && evidence[action.key])
+        evidence[action.key] = { ...evidence[action.key], carrots: 0, streakAfter: 0 };
       save({ ...a, evidence });
     }
   }
@@ -215,7 +231,8 @@ export default function AdaptivePractice({
     }
   }
   function readPassage(after?: () => void) {
-    if (q?.scene.contextMode === "print-first") write({ key: `${q.id}/help`, skill: q.standard, type: "help" });
+    if (q?.scene.contextMode === "print-first")
+      write({ key: `${q.id}/help`, skill: q.standard, type: "help" });
     const parts = spokenSentences(q?.scene.context ?? "");
     const play = (i: number) => {
       if (i >= parts.length) {
@@ -228,7 +245,17 @@ export default function AdaptivePractice({
   }
   useEffect(() => {
     if (!q || attempt?.finished) return;
-    if(exam && q.scene.evidence==='assessed' && sceneItemIds(q.scene).every(item=>(attempt?.evidence[`${q.id}/${item}`]?.attempts??0)>0)){locked.current=true;if(!exam.autoAdvance)voice.say(exam.acknowledgement??"Answer saved.");return;}
+    if (
+      exam &&
+      q.scene.evidence === "assessed" &&
+      sceneItemIds(q.scene).every(
+        (item) => (attempt?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0,
+      )
+    ) {
+      locked.current = true;
+      if (!exam.autoAdvance) voice.say(exam.acknowledgement ?? "Answer saved.");
+      return;
+    }
     // On reload a two-error item remains exhausted. Never grant another first try.
     const errors = Object.entries(attempt?.evidence ?? {})
       .filter(([k]) => k.startsWith(q.id + "/"))
@@ -243,21 +270,34 @@ export default function AdaptivePractice({
     else narrateScene(q.scene, voice.say);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q?.id]);
-  const examSubmitted = !!exam && !!q && q.scene.evidence === "assessed" &&
-    sceneItemIds(q.scene).every(item => (attempt?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0);
+  const examSubmitted =
+    !!exam &&
+    !!q &&
+    q.scene.evidence === "assessed" &&
+    sceneItemIds(q.scene).every(
+      (item) => (attempt?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0,
+    );
   useEffect(() => {
     if (!exam?.autoAdvance || !examSubmitted || attempt?.finished || !visible) return;
     locked.current = true;
     // Hold the actual selection on its card before fading, without a separate interstitial.
     // This also resumes a saved submission after a reload and absorbs double taps.
     const timer = setTimeout(finishQuestion, ANSWER_SELECTION_HOLD_MS);
-    return () => { clearTimeout(timer); cancelTransition(); };
+    return () => {
+      clearTimeout(timer);
+      cancelTransition();
+    };
     // A submission belongs to this question; ref-backed evidence supplies the latest save.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q?.id, examSubmitted, attempt?.finished, exam?.autoAdvance, visible, cancelTransition]);
   useEffect(() => {
     // A failed neutral acknowledgement happens after submission; it cannot erase an answer.
-    const alreadySubmitted=exam && q?.scene.evidence==='assessed' && sceneItemIds(q.scene).every(item=>(current.current?.evidence[`${q.id}/${item}`]?.attempts??0)>0);
+    const alreadySubmitted =
+      exam &&
+      q?.scene.evidence === "assessed" &&
+      sceneItemIds(q.scene).every(
+        (item) => (current.current?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0,
+      );
     if (voice.error && q && !attempt?.finished && !alreadySubmitted)
       write({ key: `${q.id}/availability`, skill: q.standard, type: "unavailable" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -268,16 +308,29 @@ export default function AdaptivePractice({
       return () => clearTimeout(timer);
     }
   }, [stamp]);
-  const autoDelay = !exam && q ? lessonAutoAdvanceDelay({
-    scene: q.scene, complete: !!attempt && sceneIsComplete(attempt.evidence, q.id, q.scene),
-    started: !!attempt, finished: !!attempt?.finished, warmupReady: true,
-    speechFinished: voice.finished, audioError: voice.error, capturing,
-    retrying: review, paused: false, visible,
-  }) : null;
+  const autoDelay =
+    !exam && q
+      ? lessonAutoAdvanceDelay({
+          scene: q.scene,
+          complete: !!attempt && sceneIsComplete(attempt.evidence, q.id, q.scene),
+          started: !!attempt,
+          finished: !!attempt?.finished,
+          warmupReady: true,
+          speechFinished: voice.finished,
+          audioError: voice.error,
+          capturing,
+          retrying: review,
+          paused: false,
+          visible,
+        })
+      : null;
   useEffect(() => {
     if (autoDelay === null) return;
     const timer = setTimeout(finishQuestion, autoDelay);
-    return () => { clearTimeout(timer); cancelTransition(); };
+    return () => {
+      clearTimeout(timer);
+      cancelTransition();
+    };
     // A timer belongs to one question and is cancelled by replay, recording or pause.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q?.id, autoDelay, voice.finished, cancelTransition]);
@@ -292,17 +345,23 @@ export default function AdaptivePractice({
     ? `${assessedCount} ${questionTopic} answers, first try!`
     : `${maxItems} out of ${maxItems}!`;
   const perfect = !exam && !!perfectCompletion && isPerfectPractice(attempt, maxItems);
-  const carrots = exam ? attempt.results.filter(r=>["correct","incorrect","assisted","practice"].includes(r.outcome)).length+(attempt.finished?3:0) :
-    carryCarrots +
-    practiceCarrots(attempt.evidence) +
-    (attempt.finished ? 3 : 0) +
-    (perfect ? 3 : 0);
-  const deferred=!!exam && q.scene.evidence==="assessed";
-  const submitted=examSubmitted;
-  const savedInterstitial=submitted && !exam?.autoAdvance;
+  const repeatExam = !!exam && !!runtime?.isExamRetry;
+  const carrots = repeatExam
+    ? 0
+    : exam
+      ? attempt.results.filter((r) =>
+          ["correct", "incorrect", "assisted", "practice"].includes(r.outcome),
+        ).length + (attempt.finished ? 3 : 0)
+      : carryCarrots +
+        practiceCarrots(attempt.evidence) +
+        (attempt.finished ? 3 : 0) +
+        (perfect ? 3 : 0);
+  const deferred = !!exam && q.scene.evidence === "assessed";
+  const submitted = examSubmitted;
+  const savedInterstitial = submitted && !exam?.autoAdvance;
   const support: ActivitySupport = {
     scene: q.scene,
-    deferFeedback:deferred,
+    deferFeedback: deferred,
     narration: {
       caption: voice.caption,
       activeWord: voice.activeWord,
@@ -316,7 +375,12 @@ export default function AdaptivePractice({
     speechToken,
     evaluateResponse,
     reflect: (item) => {
-      if (locked.current || current.current?.evidence[`${q.id}/${item}`]?.completed || (deferred && (current.current?.evidence[`${q.id}/${item}`]?.attempts??0)>0)) return false;
+      if (
+        locked.current ||
+        current.current?.evidence[`${q.id}/${item}`]?.completed ||
+        (deferred && (current.current?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0)
+      )
+        return false;
       write({ key: `${q.id}/${item}`, skill: q.standard, type: "reflection" });
       setReaction("correct");
       clearTimeout(reactionTimer.current);
@@ -355,7 +419,12 @@ export default function AdaptivePractice({
     unavailable: () =>
       write({ key: `${q.id}/availability`, skill: q.standard, type: "unavailable" }),
     answer: (item, correct, submission) => {
-      if (locked.current || current.current?.evidence[`${q.id}/${item}`]?.completed || (deferred && (current.current?.evidence[`${q.id}/${item}`]?.attempts??0)>0)) return false;
+      if (
+        locked.current ||
+        current.current?.evidence[`${q.id}/${item}`]?.completed ||
+        (deferred && (current.current?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0)
+      )
+        return false;
       if (
         !current.current?.evidence[`${q.id}/${item}`]?.attempts &&
         current.current?.evidence[`${q.id}/help`]?.helped
@@ -369,9 +438,15 @@ export default function AdaptivePractice({
         correct,
         practice: q.scene.evidence !== "assessed",
       });
-      if(deferred){
-        if(sceneItemIds(q.scene).every(item=>(current.current?.evidence[`${q.id}/${item}`]?.attempts??0)>0)){
-          locked.current=true;voice.stop();if(!exam!.autoAdvance)voice.say(exam!.acknowledgement??"Answer saved.");
+      if (deferred) {
+        if (
+          sceneItemIds(q.scene).every(
+            (item) => (current.current?.evidence[`${q.id}/${item}`]?.attempts ?? 0) > 0,
+          )
+        ) {
+          locked.current = true;
+          voice.stop();
+          if (!exam!.autoAdvance) voice.say(exam!.acknowledgement ?? "Answer saved.");
         }
         return false;
       }
@@ -403,9 +478,25 @@ export default function AdaptivePractice({
   const Interaction = q.scene.interaction ? getInteraction(q.scene.interaction.type) : null;
   const solved = sceneIsComplete(attempt.evidence, q.id, q.scene);
   const hideQuestionSource = (solved && !submitted) || review || savedInterstitial;
-  if(attempt.finished && showResults && exam) return <>{exam.renderResults(attempt,()=>setShowResults(false))}</>;
+  if (attempt.finished && showResults)
+    return exam ? (
+      <>{exam.renderResults(attempt, () => setShowResults(false))}</>
+    ) : (
+      <PracticeResults
+        title={title}
+        attempt={attempt}
+        pool={pool}
+        onExit={onExit}
+        onRead={(text) => voice.say(text)}
+      />
+    );
   return (
-    <section className={`le-frame ${leaving ? "le-is-leaving" : ""}`} inert={leaving} aria-label={title} data-question={q.id}>
+    <section
+      className={`le-frame ${leaving ? "le-is-leaving" : ""}`}
+      inert={leaving}
+      aria-label={title}
+      data-question={q.id}
+    >
       <div className="le-progress">
         <div
           role="progressbar"
@@ -423,17 +514,21 @@ export default function AdaptivePractice({
           </span>
         ) : (
           <span>
-            {attempt.finished ? title : (q.scene.interaction?.type === "choose" &&
-              q.scene.interaction.mode === "reflection") ||
-            (q.scene.interaction?.type === "speak" && !!q.scene.interaction.reflection)
-              ? "Your feelings"
-              : title}
+            {attempt.finished
+              ? title
+              : (q.scene.interaction?.type === "choose" &&
+                    q.scene.interaction.mode === "reflection") ||
+                  (q.scene.interaction?.type === "speak" && !!q.scene.interaction.reflection)
+                ? "Your feelings"
+                : title}
           </span>
         )}
         <div className="le-reward-hud">
-          {!exam && <StreakFire
-            consecutiveCorrect={practiceStreak(attempt.evidence, attempt.startingStreak ?? 0)}
-          />}
+          {!exam && (
+            <StreakFire
+              consecutiveCorrect={practiceStreak(attempt.evidence, attempt.startingStreak ?? 0)}
+            />
+          )}
           <div className="le-carrots">
             <img src="/icons/fluent/carrot.svg" width={30} height={30} alt="Carrots" />
             <b>{carrots}</b>
@@ -443,57 +538,100 @@ export default function AdaptivePractice({
       {attempt.finished ? (
         <CompletionParty
           kind={exam ? "exam" : "practice"}
-          title={completionTitle ?? (
-            perfect
+          title={
+            completionTitle ??
+            (perfect
               ? hasReading
                 ? `Every ${questionTopic} answer, first try!`
                 : "Every answer, first try!"
-              : `Your ${questionTopic} practice is complete!`
-          )}
+              : `Your ${questionTopic} practice is complete!`)
+          }
           learned={learned}
           activitySummary={
-            exam?.resultSummary ? exam.resultSummary(attempt) : lunaCount
-              ? `${attempt.results.length} activities: ${storyCount} ${questionTopic} questions + ${lunaCount} Luna turns.`
-              : undefined
+            exam?.resultSummary
+              ? exam.resultSummary(attempt)
+              : lunaCount
+                ? `${attempt.results.length} activities: ${storyCount} ${questionTopic} questions + ${lunaCount} Luna turns.`
+                : undefined
           }
           carrots={carrots}
-          bonus={3}
-          perfectBonus={perfect ? 3 : 0}
+          bonus={repeatExam ? 0 : 3}
+          rewardAlreadyEarned={repeatExam}
+          perfectBonus={!repeatExam && perfect ? 3 : 0}
           achievement={perfect ? perfectLabel : undefined}
           outfitId="classic"
           active={!stamp}
-          onRestart={runtime?undefined:()=>start(true)}
-          onContinue={exam ? () => { setResultsVisited(true); setShowResults(true); } : onExit}
-          autoContinue={!exam || !resultsVisited}
+          onRestart={runtime ? undefined : () => start(true)}
+          onContinue={() => {
+            setResultsVisited(true);
+            setShowResults(true);
+          }}
+          autoContinue={!resultsVisited}
           narrationFinished={voice.finished && !voice.error}
-          continueLabel={exam ? "See results" : "Back to my unit"}
+          continueLabel="See results"
         />
       ) : (
-        <main className={`le-stage le-slide-enter le-practice-stage ${q.scene.image && !q.scene.context && q.scene.interaction?.type === "speak" && q.scene.interaction.mode === "respond" ? "le-picture-response-stage" : ""}`} key={q.id}>
+        <main
+          className={`le-stage le-slide-enter le-practice-stage ${q.scene.image && !q.scene.context && q.scene.interaction?.type === "speak" && q.scene.interaction.mode === "respond" ? "le-picture-response-stage" : ""}`}
+          key={q.id}
+        >
           <div className="le-prompt">
             <p className="le-eyebrow">
-              {progressLabel ? progressLabel(attempt) : `Practice · ${attempt.asked.length} of ${maxItems}`}
+              {progressLabel
+                ? progressLabel(attempt)
+                : `Practice · ${attempt.asked.length} of ${maxItems}`}
             </p>
-            <h1><Karaoke text={q.scene.prompt} caption={voice.choiceId != null ? "" : voice.caption} activeWord={voice.activeWord}/></h1>
+            <h1>
+              <Karaoke
+                text={q.scene.prompt}
+                caption={voice.choiceId != null ? "" : voice.caption}
+                activeWord={voice.activeWord}
+              />
+            </h1>
           </div>
           {q.scene.image && !q.scene.context && !hideQuestionSource && (
             <div className="le-passage le-picture-only" aria-label="Question picture">
-              <img className="le-stimulus-picture" src={lessonAssetUrl(q.scene.image)}
-                alt={q.scene.imageAlt ?? "Question illustration"} decoding="async" />
+              <img
+                className="le-stimulus-picture"
+                src={lessonAssetUrl(q.scene.image)}
+                alt={q.scene.imageAlt ?? "Question illustration"}
+                decoding="async"
+              />
             </div>
           )}
-          {q.scene.referencePage && !hideQuestionSource && <ReferencePage
-            page={q.scene.referencePage} caption={voice.choiceId ? "" : voice.caption} activeWord={voice.activeWord}
-            key={q.id} disabled={capturing} onSelect={index => voice.say(q.scene.referencePage!.sections[index].heading)} onRead={index => readReferencePage(index === undefined ? q.scene.referencePage! : {sections:[q.scene.referencePage!.sections[index]]}, voice.say)}
-          />}
+          {q.scene.referencePage && !hideQuestionSource && (
+            <ReferencePage
+              page={q.scene.referencePage}
+              caption={voice.choiceId ? "" : voice.caption}
+              activeWord={voice.activeWord}
+              key={q.id}
+              disabled={capturing}
+              onSelect={(index) => voice.say(q.scene.referencePage!.sections[index].heading)}
+              onRead={(index) =>
+                readReferencePage(
+                  index === undefined
+                    ? q.scene.referencePage!
+                    : { sections: [q.scene.referencePage!.sections[index]] },
+                  voice.say,
+                )
+              }
+            />
+          )}
           {q.scene.context &&
             (visiblePassage && !hideQuestionSource ? (
               <div
-                className={`le-passage ${(spokenSentences(q.scene.context).length >= 5 || q.scene.context.trim().split(/\s+/).length >= 30) ? "le-passage-long" : ""}`}
+                className={`le-passage ${spokenSentences(q.scene.context).length >= 5 || q.scene.context.trim().split(/\s+/).length >= 30 ? "le-passage-long" : ""}`}
                 aria-label="Text to read"
               >
                 <div className="le-passage-label">
-                  <span>{q.scene.contextMode === "print-first" ? "Word to read" : q.scene.interaction?.type === "speak" && q.scene.interaction.mode === "respond" ? "Listen to the text" : "Read with Luna"}</span>
+                  <span>
+                    {q.scene.contextMode === "print-first"
+                      ? "Word to read"
+                      : q.scene.interaction?.type === "speak" &&
+                          q.scene.interaction.mode === "respond"
+                        ? "Listen to the text"
+                        : "Read with Luna"}
+                  </span>
                   <button aria-label="Read the passage" onClick={() => readPassage()}>
                     <Volume2 size={18} />
                   </button>
@@ -545,13 +683,32 @@ export default function AdaptivePractice({
                 {story && <p>{q.scene.context}</p>}
               </div>
             ))}
-          {q.scene.visual && q.scene.interaction?.type === "speak" && q.scene.interaction.visualFeedback && renderVisual && <div className="le-visual">{renderVisual(q.scene,{...q.scene.visual.props,...visual})}</div>}
-          <div className={`le-interaction ${submitted ? "le-answer-registered" : ""}`} inert={submitted && !!exam?.autoAdvance}>
-            {savedInterstitial ? <div className="le-exam-saved" role="status"><p>{exam!.acknowledgement??"Answer saved."}</p></div> : review ? (
+          {q.scene.visual &&
+            q.scene.interaction?.type === "speak" &&
+            q.scene.interaction.visualFeedback &&
+            renderVisual && (
+              <div className="le-visual">
+                {renderVisual(q.scene, { ...q.scene.visual.props, ...visual })}
+              </div>
+            )}
+          <div
+            className={`le-interaction ${submitted ? "le-answer-registered" : ""}`}
+            inert={submitted && !!exam?.autoAdvance}
+          >
+            {savedInterstitial ? (
+              <div className="le-exam-saved" role="status">
+                <p>{exam!.acknowledgement ?? "Answer saved."}</p>
+              </div>
+            ) : review ? (
               <div className="le-retry-exit" role="status">
                 <p className="le-eyebrow">Let’s learn this together</p>
                 {q.scene.interaction?.type === "choose" && q.scene.interaction.printPage && (
-                  <PrintedPage page={q.scene.interaction.printPage} picked={q.scene.interaction.correctId} solved onPick={() => {}} />
+                  <PrintedPage
+                    page={q.scene.interaction.printPage}
+                    picked={q.scene.interaction.correctId}
+                    solved
+                    onPick={() => {}}
+                  />
                 )}
                 <p className="le-sentence">{q.explanation ?? q.scene.feedback?.correct}</p>
                 <button className="le-primary" onClick={finishQuestion}>
@@ -585,21 +742,29 @@ export default function AdaptivePractice({
           <div className="le-navigation">
             {!solved && !review && !submitted && (
               <>
-                {!deferred && <button
-                  disabled={capturing}
-                  onClick={() => {
-                    support.help();
-                    voice.say(q.scene.feedback!.hint);
-                  }}
-                >
-                  Help
-                </button>}
+                {!deferred && (
+                  <button
+                    disabled={capturing}
+                    onClick={() => {
+                      support.help();
+                      voice.say(q.scene.feedback!.hint);
+                    }}
+                  >
+                    Help
+                  </button>
+                )}
                 <button onClick={finishQuestion}>Skip for now</button>
               </>
             )}
-            {!exam?.autoAdvance && <button className="le-primary" disabled={!solved && !review && !submitted} onClick={finishQuestion}>
-              Next <ArrowRight size={20} />
-            </button>}
+            {!exam?.autoAdvance && (
+              <button
+                className="le-primary"
+                disabled={!solved && !review && !submitted}
+                onClick={finishQuestion}
+              >
+                Next <ArrowRight size={20} />
+              </button>
+            )}
           </div>
         </footer>
       )}

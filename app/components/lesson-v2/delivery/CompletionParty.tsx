@@ -9,6 +9,7 @@ export default function CompletionParty({
   carrots,
   bonus,
   perfectBonus = 0,
+  rewardAlreadyEarned = false,
   achievement,
   activitySummary,
   outfitId,
@@ -25,6 +26,7 @@ export default function CompletionParty({
   carrots: number;
   bonus: number;
   perfectBonus?: number;
+  rewardAlreadyEarned?: boolean;
   achievement?: string;
   activitySummary?: string;
   outfitId: string;
@@ -49,7 +51,15 @@ export default function CompletionParty({
   }, []);
   const canContinue = !!onContinue;
   useEffect(() => {
-    if (!autoContinue || !canContinue || !active || count !== carrots || !narrationFinished || !visible) return;
+    if (
+      !autoContinue ||
+      !canContinue ||
+      !active ||
+      count !== carrots ||
+      !narrationFinished ||
+      !visible
+    )
+      return;
     const timer = setTimeout(() => {
       if (continued.current) return;
       continued.current = true;
@@ -95,7 +105,11 @@ export default function CompletionParty({
       </div>
       <div className="le-party-details">
         <p className="le-eyebrow">
-          {kind === "lesson" ? "Lesson completed" : kind === "exam" ? "Exam completed" : "Practice completed"}
+          {kind === "lesson"
+            ? "Lesson completed"
+            : kind === "exam"
+              ? "Exam completed"
+              : "Practice completed"}
         </p>
         <h1>{title}</h1>
         {achievement && <p className="le-perfect-score">{achievement}</p>}
@@ -109,39 +123,58 @@ export default function CompletionParty({
             </li>
           ))}
         </ul>
-        <div className="le-carrot-prize">
-          <img src="/icons/fluent/carrot.svg" width={62} height={62} alt="" />
-          <div>
-            <strong key={count} aria-hidden="true">
-              {count}
-            </strong>
-            <span>carrots earned</span>
-          </div>
-        </div>
-        <p className={`le-completion-bonus ${count > carrots - bonus ? "is-earned" : ""}`}>
-          <img src="/icons/fluent/carrot.svg" width={23} height={23} alt="" />
-          Includes +{bonus} for finishing!
-        </p>
-        {perfectBonus > 0 && (
-          <p className="le-completion-bonus is-earned">
-            <img src="/icons/fluent/carrot.svg" width={23} height={23} alt="" />
-            Plus +{perfectBonus} for first-try answers!
+        {rewardAlreadyEarned ? (
+          <p className="le-completion-bonus">
+            Your exam carrots were earned on your first check-in. This try updates your skills and
+            readiness.
           </p>
+        ) : (
+          <>
+            <div className="le-carrot-prize">
+              <img src="/icons/fluent/carrot.svg" width={62} height={62} alt="" />
+              <div>
+                <strong key={count} aria-hidden="true">
+                  {count}
+                </strong>
+                <span>carrots earned</span>
+              </div>
+            </div>
+            <p className={`le-completion-bonus ${count > carrots - bonus ? "is-earned" : ""}`}>
+              <img src="/icons/fluent/carrot.svg" width={23} height={23} alt="" />
+              Includes +{bonus} for finishing!
+            </p>
+            {perfectBonus > 0 && (
+              <p className="le-completion-bonus is-earned">
+                <img src="/icons/fluent/carrot.svg" width={23} height={23} alt="" />
+                Plus +{perfectBonus} for first-try answers!
+              </p>
+            )}
+            <span className="le-sr-only" role="status">
+              {count === carrots
+                ? `${carrots} carrots earned, including ${bonus} for finishing${perfectBonus ? ` and ${perfectBonus} for first-try answers` : ""}.`
+                : "Counting your carrots."}
+            </span>
+          </>
         )}
-        <span className="le-sr-only" role="status">
-          {count === carrots
-            ? `${carrots} carrots earned, including ${bonus} for finishing${perfectBonus ? ` and ${perfectBonus} for first-try answers` : ""}.`
-            : "Counting your carrots."}
-        </span>
         {onContinue && (
-          <button className="le-primary" onClick={() => { if (!continued.current) { continued.current = true; onContinue(); } }}>
+          <button
+            className="le-primary"
+            onClick={() => {
+              if (!continued.current) {
+                continued.current = true;
+                onContinue();
+              }
+            }}
+          >
             {continueLabel}
           </button>
         )}
-        {onRestart && <button onClick={onRestart}>
-          <RotateCcw size={17} />
-          Play again
-        </button>}
+        {onRestart && (
+          <button onClick={onRestart}>
+            <RotateCcw size={17} />
+            Play again
+          </button>
+        )}
       </div>
     </section>
   );

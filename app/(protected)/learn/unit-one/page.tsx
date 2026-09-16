@@ -67,6 +67,11 @@ export default async function UnitOne({
         <p className="mt-3 text-lg">
           {count} of {UNIT_ONE.length} lessons completed
         </p>
+        <p className="mt-3">
+          Finish these lessons, then take the unit exam. At least 80% at regular difficulty or
+          above, with every question independently checked, opens the next unit. Microphone problems
+          need another check, not a wrong mark.
+        </p>
         <ol className="my-8 grid gap-4 sm:grid-cols-2">
           {UNIT_ONE.map((l, n) => (
             <li key={l.id}>
@@ -97,7 +102,7 @@ export default async function UnitOne({
         <section className="rounded-3xl bg-white p-6">
           <h2 className="text-2xl font-bold">The Story Garden</h2>
           <p className="my-3">
-            Your Unit 1 check-in: ten questions, including two answers spoken to Luna.
+            Your Unit 1 gateway: ten questions, including two answers spoken to Luna.
           </p>
           {count === UNIT_ONE.length ? (
             <Link
@@ -111,11 +116,19 @@ export default async function UnitOne({
               {locked("k-unit-1-checkpoint")
                 ? "Continue with Readee+"
                 : exam?.completed
-                  ? "See your results"
+                  ? "Results or another attempt"
                   : "Start the unit exam"}
             </Link>
           ) : (
             <p>Finish the eight lessons to open your unit exam.</p>
+          )}
+          {exam?.result?.readiness?.status === "ready" && (
+            <p className="mt-4 font-bold text-green-700">
+              Unit exam passed.{" "}
+              <Link href={`/journey?child=${child}&completed=k-unit-1-checkpoint`}>
+                Continue your journey →
+              </Link>
+            </p>
           )}
           {exam?.completed && exam.result?.readiness && (
             <p className="mt-4">
