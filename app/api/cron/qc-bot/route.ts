@@ -35,7 +35,7 @@ import { updateQuestionQcStatus } from "@/lib/content/db";
 import lessonsData from "@/app/data/sample-lessons.json";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 type Counters = {
   fp_dismissed: number;

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { runHealExisting } from "@/lib/qc/heal-existing";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 /**
  * Nightly: walk every content_type for pieces that are currently

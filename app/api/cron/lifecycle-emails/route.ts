@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { sendLifecycleBatch } from "@/lib/email/lifecycle";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 /**
  * Daily lifecycle cron. Vercel hits this once a day; each parent is

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { runAssetFill } from "@/lib/qc/asset-fill";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 /**
  * Nightly question asset backfill. Tops up rows in questions_db with

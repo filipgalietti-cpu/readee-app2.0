@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { runTriage } from "@/lib/qc/triage";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 /**
  * Nightly stale-content triage. Auto-resolves audit findings whose
