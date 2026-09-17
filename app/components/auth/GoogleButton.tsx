@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { cleanCampaignValue, safePostLoginDestination } from "@/lib/auth/auth-navigation";
 
 export default function GoogleButton({ role }: { role?: "parent" | "educator" } = {}) {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,11 @@ export default function GoogleButton({ role }: { role?: "parent" | "educator" } 
       // to the matching surface so educators don't bounce through /dashboard.
       const params = new URLSearchParams(window.location.search);
       const fallbackNext = role === "educator" ? "/classroom" : "/dashboard";
-      const next = params.get("next") ?? fallbackNext;
+      const next = safePostLoginDestination(
+        params.get("next") ?? params.get("redirect"),
+        fallbackNext,
+      );
+      const ref = cleanCampaignValue(params.get("ref"));
 
       const supabase = createClient();
 
@@ -23,6 +28,7 @@ export default function GoogleButton({ role }: { role?: "parent" | "educator" } 
       // the new profile correctly when this is the user's first sign-in.
       const callbackParams = new URLSearchParams({ next });
       if (role) callbackParams.set("signup_role", role);
+      if (ref) callbackParams.set("ref", ref);
       const redirectTo = `${window.location.origin}/auth/callback?${callbackParams.toString()}`;
 
       const { error } = await supabase.auth.signInWithOAuth({
