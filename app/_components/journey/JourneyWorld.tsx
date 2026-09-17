@@ -18,7 +18,7 @@ import type {
   AdventureChapter,
   AdventureReader,
 } from "@/lib/journey/adventure-view";
-import { JOURNEY_REVEAL_STEP_SECONDS } from "@/lib/journey/reveal-timing";
+import { JOURNEY_REVEAL_STEP_MS, JOURNEY_REVEAL_STEP_SECONDS } from "@/lib/journey/reveal-timing";
 import { mapGeometry, type Point } from "./geometry";
 import { useJourneyCamera } from "./useJourneyCamera";
 import JourneyLandscape, { CheckpointLandmark, MilestoneLandmark } from "./JourneyLandscape";
@@ -132,8 +132,20 @@ export default function JourneyWorld({
     // settle animation toward the newly-completed model is what made the view
     // snap forward, back to the bunny, and forward again.
     if (travel) return;
-    if (phase === "building" && !reduced) camera.target(geometry.points[0].x * scale, "reveal");
-    else camera.target(geometry.points[activePoint].x * scale, "settled");
+    if (phase === "building" && !reduced) {
+      camera.begin();
+      camera.target(geometry.points[0].x * scale, "reveal", true);
+      const tour = geometry.points
+        .slice(1)
+        .map((point, index) =>
+          window.setTimeout(
+            () => camera.target(point.x * scale, "reveal"),
+            (index + 1) * JOURNEY_REVEAL_STEP_MS,
+          ),
+        );
+      return () => tour.forEach((timer) => window.clearTimeout(timer));
+    }
+    camera.target(geometry.points[activePoint].x * scale, "settled");
     // Settle on chapter/viewport changes, never on camera state updates or by moving focus.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, geometry, activePoint, reduced, travel]);
