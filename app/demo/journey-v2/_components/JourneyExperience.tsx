@@ -18,6 +18,7 @@ import JourneyWorld, { type BunnyTravel, type JourneyPhase } from "./JourneyWorl
 import { JourneyDialog, JourneyInsightPanel, JourneyPaywall } from "./JourneyPanels";
 import JourneyMagicReveal from "./JourneyMagicReveal";
 import { audioManager } from "@/lib/audio/audio-manager";
+import { journeyRevealDurationMs } from "@/lib/journey/reveal-timing";
 import styles from "@/app/_components/journey/journey-v2.module.css";
 
 const motionQuery = "(prefers-reduced-motion: reduce)";
@@ -121,11 +122,17 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
   );
   const unitDone = chapter.lessonIds.every((id) => completed.has(`${fixture.id}:${id}`));
   const effectivePhase = reduced ? "ready" : phase;
+  const revealPointCount = chapter.lessonIds.length + 3;
   useEffect(() => {
     if (reduced || magicActive || phase !== "building") return;
-    const timer = window.setTimeout(() => setPhase("ready"), 3200);
+    const timer = window.setTimeout(() => setPhase("ready"), journeyRevealDurationMs(revealPointCount));
     return () => clearTimeout(timer);
-  }, [phase, reduced, replay, magicActive]);
+  }, [phase, reduced, replay, magicActive, revealPointCount]);
+  useEffect(() => {
+    if (reduced || magicActive || phase !== "building" || !soundOn) return;
+    const cancel = audioManager.playJourneyRevealSteps(revealPointCount);
+    return cancel;
+  }, [magicActive, phase, reduced, revealPointCount, soundOn]);
   const buildJourney = () => {
     audioManager?.resumeContextSync();
     if (reduced) setPhase("ready");

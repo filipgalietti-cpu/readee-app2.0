@@ -18,6 +18,7 @@ import type {
   AdventureChapter,
   AdventureReader,
 } from "@/lib/journey/adventure-view";
+import { JOURNEY_REVEAL_STEP_SECONDS } from "@/lib/journey/reveal-timing";
 import { mapGeometry, type Point } from "./geometry";
 import { useJourneyCamera } from "./useJourneyCamera";
 import JourneyLandscape, { CheckpointLandmark, MilestoneLandmark } from "./JourneyLandscape";
@@ -193,7 +194,10 @@ export default function JourneyWorld({
   const show = (index: number) => ({
     initial: false as const,
     animate: { opacity: phase === "insights" ? 0 : 1, scale: 1, y: 0 },
-    transition: { duration: reduced ? 0 : 0.35, delay: phase === "building" ? index * 0.32 : 0 },
+    transition: {
+      duration: reduced ? 0 : 0.35,
+      delay: phase === "building" ? index * JOURNEY_REVEAL_STEP_SECONDS : 0,
+    },
   });
   const movingFrom = travel ? lessons.findIndex((l) => l.lessonId === travel.from) + 1 : -1;
   const bunnyPoint = rest(activePoint);

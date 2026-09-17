@@ -1,4 +1,4 @@
-import { scheduleJourneyMagic } from "./journey-magic";
+import { scheduleJourneyMagic, scheduleJourneyRevealSteps } from "./journey-magic";
 import { Howl, Howler } from "howler";
 import { useAudioStore } from "@/lib/stores/audio-store";
 
@@ -149,6 +149,12 @@ class AudioManager {
   playJourneyMagic(): () => void {
     if (useAudioStore.getState().isMuted) return () => {};
     try { return scheduleJourneyMagic(this.getAudioCtx()); } catch { return () => {}; }
+  }
+
+  /** Cancellable accents that match the map destination reveal cadence. */
+  playJourneyRevealSteps(count: number): () => void {
+    if (useAudioStore.getState().isMuted) return () => {};
+    try { return scheduleJourneyRevealSteps(this.getAudioCtx(), count); } catch { return () => {}; }
   }
 
   /** Play correct answer chime: C5 → E5 */
