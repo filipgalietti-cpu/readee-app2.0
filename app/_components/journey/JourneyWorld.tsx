@@ -127,11 +127,15 @@ export default function JourneyWorld({
 
   useEffect(() => {
     if (phase === "insights") return;
+    // Travel owns the camera from departure through arrival. Starting a second
+    // settle animation toward the newly-completed model is what made the view
+    // snap forward, back to the bunny, and forward again.
+    if (travel) return;
     if (phase === "building" && !reduced) camera.target(geometry.points[0].x * scale, "reveal");
     else camera.target(geometry.points[activePoint].x * scale, "settled");
     // Settle on chapter/viewport changes, never on camera state updates or by moving focus.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, geometry, activePoint, reduced]);
+  }, [phase, geometry, activePoint, reduced, travel]);
 
   useEffect(() => {
     if (!travel) return;
@@ -433,17 +437,27 @@ export default function JourneyWorld({
           </motion.div>
           <motion.div
             className={styles.milestone}
+            data-milestone-ready={checkpointComplete}
             style={position(geometry.points[lessons.length + 2])}
             {...show(lessons.length + 2)}
           >
             <button
               onClick={onMilestone}
-              disabled={!arrived}
-              aria-label="View chapter completion keepsake"
+              disabled={!arrived || !checkpointComplete}
+              aria-label={
+                checkpointComplete
+                  ? "Open the unit completion keepsake"
+                  : "Pass the unit exam to unlock the keepsake"
+              }
             >
               <MilestoneLandmark complete={milestoneComplete} />
+              <strong>{chapter.milestoneLabel ?? "Chapter keepsake"}</strong>
               <span>
-                {milestoneComplete ? "Collected" : (chapter.milestoneLabel ?? "Chapter keepsake")}
+                {milestoneComplete
+                  ? "Unit complete!"
+                  : checkpointComplete
+                    ? "Ready to open"
+                    : "Pass the exam to unlock"}
               </span>
             </button>
           </motion.div>

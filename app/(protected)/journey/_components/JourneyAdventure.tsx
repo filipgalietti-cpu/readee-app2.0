@@ -4,7 +4,6 @@ import {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
   useSyncExternalStore,
   type ReactNode,
@@ -70,14 +69,18 @@ export default function JourneyAdventure({
   const [soundOn, setSoundOn] = useState(true);
   const [travel, setTravel] = useState<BunnyTravel | null>(null);
   const [arrived, setArrived] = useState(!transition.travel);
-  const returned = useRef(false);
+  const [returnedCompletion, setReturnedCompletion] = useState<string | null>(null);
   const openingKey = `readee:journey-adventure:${childId}:${placementId ?? "none"}`;
   const actualPhase = reduced ? "ready" : phase;
   const chapterDone = !!chapter && chapter.lessonIds.every((id) => model.completed.has(id));
   const unitDone = !!chapter && chapter.unitLessonIds.every((id) => model.completed.has(id));
   const rewardClaimed = !!chapter?.rewardId && openedChests.includes(chapter.rewardId);
+  const returnPending =
+    !!justCompleted && !!transition.travel && returnedCompletion !== justCompleted;
+  const visiblyArrived = arrived && !returnPending;
   const bunnyPresent =
-    chapterIndex === model.currentChapter || (!arrived && transition.startChapter === chapterIndex);
+    chapterIndex === model.currentChapter ||
+    (!visiblyArrived && transition.startChapter === chapterIndex);
   const fromReport = introduce && !!placementId;
   useEffect(() => {
     if (!fromReport) return;
@@ -100,8 +103,9 @@ export default function JourneyAdventure({
     return () => clearTimeout(timer);
   }, [actualPhase, openingKey]);
   useEffect(() => {
-    if (returned.current || !transition.travel || !justCompleted) return;
-    returned.current = true;
+    if (returnedCompletion === justCompleted || !transition.travel || !justCompleted) return;
+    setReturnedCompletion(justCompleted);
+    setArrived(false);
     const settle = () => {
       setArrived(true);
       setChapterIndex(transition.finishChapter);
@@ -125,7 +129,15 @@ export default function JourneyAdventure({
       audioManager.resumeContextSync();
       audioManager.playCompleteChime();
     }
-  }, [childId, justCompleted, model.completed.size, reduced, soundOn, transition]);
+  }, [
+    childId,
+    justCompleted,
+    model.completed.size,
+    reduced,
+    returnedCompletion,
+    soundOn,
+    transition,
+  ]);
   const arrival = useCallback(() => {
     setTravel(null);
     setArrived(true);
@@ -162,13 +174,13 @@ export default function JourneyAdventure({
   }
   // Hide the just-completed destination only during the return hop's first render.
   const displayCompleted = useMemo(() => {
-    if (!arrived && !travel && justCompleted) {
+    if (!visiblyArrived && !travel && justCompleted) {
       const set = new Set(model.completed);
       set.delete(justCompleted);
       return set;
     }
     return model.completed;
-  }, [arrived, travel, justCompleted, model.completed]);
+  }, [visiblyArrived, travel, justCompleted, model.completed]);
   return (
     <div
       className={`${styles.experience} ${styles.liveExperience}`}
@@ -263,7 +275,7 @@ export default function JourneyAdventure({
               chapter={chapter}
               completed={displayCompleted}
               checkpointComplete={chapterDone}
-              milestoneComplete={rewardClaimed}
+              milestoneComplete={chapter.unitKey === "approved:k-unit-1" ? unitDone : rewardClaimed}
               bunnyPresent={bunnyPresent}
               phase={actualPhase === "magic" ? "insights" : actualPhase}
               intro={
