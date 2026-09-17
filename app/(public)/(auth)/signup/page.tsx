@@ -11,6 +11,7 @@ import Divider from "@/app/components/auth/Divider";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
 import { Glyph } from "@/app/_components/Glyph";
+import { cleanCampaignValue, safePostLoginDestination } from "@/lib/auth/auth-navigation";
 
 const CTA_BTN =
   "w-full bg-indigo-700 text-white py-3.5 rounded-full font-extrabold text-base shadow-[0_8px_20px_-8px_rgba(67,56,202,0.5)] hover:bg-indigo-800 transition disabled:opacity-50 disabled:cursor-not-allowed";
@@ -81,14 +82,21 @@ function SignupInner() {
     setErrors({});
     try {
       const supabase = createClient();
+      const fallbackNext = role === "educator" ? "/classroom" : "/dashboard";
+      const next = safePostLoginDestination(
+        searchParams.get("next") ?? searchParams.get("redirect"),
+        fallbackNext,
+      );
+      const ref = cleanCampaignValue(searchParams.get("ref"));
+      const callbackParams = new URLSearchParams({ next });
+      callbackParams.set("signup_role", role);
+      if (ref) callbackParams.set("ref", ref);
 
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=${
-            role === "educator" ? "/classroom" : "/dashboard"
-          }`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?${callbackParams.toString()}`,
           // The handle_new_user Postgres trigger reads this `role` hint and
           // stamps the new profiles row accordingly.
           data: { role },
@@ -123,13 +131,19 @@ function SignupInner() {
               tos_version: CURRENT_TOS_VERSION,
             }),
           );
-          router.push("/login?message=Account created! Check your email to confirm, then sign in.");
+          const loginParams = new URLSearchParams({
+            message: "Account created! Check your email to confirm, then sign in.",
+            redirect: next,
+          });
+          if (ref) loginParams.set("ref", ref);
+          router.push(`/login?${loginParams.toString()}`);
         }
       }
     } catch (err) {
       reportFailure("signup.submit", err, { route: "/signup" });
       console.error("Signup error:", err);
-      const msg = err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
+      const msg =
+        err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
       setErrors({ general: msg });
       setIsLoading(false);
     }

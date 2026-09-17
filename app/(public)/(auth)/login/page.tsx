@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
+import { cleanCampaignValue, safePostLoginDestination } from "@/lib/auth/auth-navigation";
 
 const CTA_BTN =
   "w-full bg-indigo-700 text-white py-3.5 rounded-full font-extrabold text-base shadow-[0_8px_20px_-8px_rgba(67,56,202,0.5)] hover:bg-indigo-800 transition disabled:opacity-50 disabled:cursor-not-allowed";
@@ -99,14 +100,11 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
             exit="exit"
           >
             <div className="mb-4 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm text-center">
-              If an account exists for that email, a reset link is on its
-              way. Check your inbox (and spam folder).
+              If an account exists for that email, a reset link is on its way. Check your inbox (and
+              spam folder).
             </div>
             <p className="text-center text-sm text-indigo-900 mt-4">
-              <button
-                onClick={onBack}
-                className="text-indigo-600 font-medium hover:underline"
-              >
+              <button onClick={onBack} className="text-indigo-600 font-medium hover:underline">
                 &larr; Back to login
               </button>
             </p>
@@ -134,7 +132,10 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
                 type="email"
                 name="email"
                 value={email}
-                onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError("");
+                }}
                 placeholder="your@email.com"
                 error={undefined}
                 required
@@ -144,10 +145,7 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
               </button>
             </form>
             <p className="mt-6 text-center text-sm text-indigo-900">
-              <button
-                onClick={onBack}
-                className="text-indigo-600 font-medium hover:underline"
-              >
+              <button onClick={onBack} className="text-indigo-600 font-medium hover:underline">
                 &larr; Back to login
               </button>
             </p>
@@ -173,6 +171,11 @@ function LoginForm() {
   const [view, setView] = useState<"login" | "forgot">("login");
   const [magicSending, setMagicSending] = useState(false);
   const [magicSent, setMagicSent] = useState<string | null>(null);
+  const requestedDestination = safePostLoginDestination(
+    searchParams.get("redirect") ?? searchParams.get("next"),
+    "/dashboard",
+  );
+  const signupRef = cleanCampaignValue(searchParams.get("ref"));
 
   const handleMagicLink = async () => {
     // Reuse the email field. We don't require a password — the whole
@@ -194,7 +197,11 @@ function LoginForm() {
           // takes over from there.
           emailRedirectTo:
             typeof window !== "undefined"
-              ? `${window.location.origin}/login`
+              ? (() => {
+                  const params = new URLSearchParams({ redirect: requestedDestination });
+                  if (signupRef) params.set("ref", signupRef);
+                  return `${window.location.origin}/login?${params.toString()}`;
+                })()
               : undefined,
         },
       });
@@ -260,13 +267,8 @@ function LoginForm() {
           // anon endpoint.
           let friendly = "Couldn't sign you in. Check your email and password.";
           const msg = (error.message ?? "").toLowerCase();
-          if (
-            error.status === 429 ||
-            msg.includes("rate limit") ||
-            msg.includes("too many")
-          ) {
-            friendly =
-              "Too many sign-in attempts. Wait a minute and try again.";
+          if (error.status === 429 || msg.includes("rate limit") || msg.includes("too many")) {
+            friendly = "Too many sign-in attempts. Wait a minute and try again.";
           } else if (msg.includes("invalid login credentials") || msg.includes("invalid email")) {
             try {
               const hintRes = await fetch("/api/auth/login-hint", {
@@ -276,11 +278,9 @@ function LoginForm() {
               });
               const j = (await hintRes.json().catch(() => ({}))) as { hint?: string };
               if (j.hint === "no_account") {
-                friendly =
-                  "We couldn't find an account with that email. Want to sign up?";
+                friendly = "We couldn't find an account with that email. Want to sign up?";
               } else if (j.hint === "oauth_only") {
-                friendly =
-                  'This account uses Google. Click "Continue with Google" above.';
+                friendly = 'This account uses Google. Click "Continue with Google" above.';
               } else if (j.hint === "wrong_password") {
                 friendly = "Wrong password. Try again or use Forgot password.";
               }
@@ -299,8 +299,11 @@ function LoginForm() {
           // dev right after a cookie write, and occasionally races in
           // prod). Prefer ?redirect=... when present (set by the proxy
           // when an unauthed user hit a protected route).
-          const wanted = searchParams?.get("redirect") ?? null;
-          if (wanted && wanted.startsWith("/") && !wanted.startsWith("/login")) {
+          const wanted = safePostLoginDestination(
+            searchParams?.get("redirect") ?? searchParams?.get("next"),
+            "",
+          );
+          if (wanted) {
             router.replace(wanted);
             router.refresh();
             return;
@@ -309,7 +312,11 @@ function LoginForm() {
           // Lookup the role + admin scope so we land on the right home.
           const [{ data: profileRow }, { data: ownerRow }] = await Promise.all([
             supabase.from("profiles").select("role").eq("id", data.user.id).maybeSingle(),
-            supabase.from("platform_admins").select("profile_id").eq("profile_id", data.user.id).maybeSingle(),
+            supabase
+              .from("platform_admins")
+              .select("profile_id")
+              .eq("profile_id", data.user.id)
+              .maybeSingle(),
           ]);
           const role = (profileRow as { role?: string } | null)?.role ?? null;
           const isOwner = !!ownerRow;
@@ -323,7 +330,10 @@ function LoginForm() {
         }
       } catch (error) {
         console.error("Login error:", error);
-        const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred. Please try again.";
+        const errorMessage =
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred. Please try again.";
         setErrors({ general: errorMessage });
         setIsLoading(false);
       }
