@@ -23,6 +23,15 @@ it("uses the eight released lessons across domains, then the exam", () => {
     ...UNIT_ONE.map((l) => l.standard),
     UNIT_EXAM_ID,
   ]);
+  expect(view.chapters[0]).toMatchObject({
+    id: "approved:k-unit-1:part-1",
+    name: "Kindergarten Unit 1",
+    eyebrow: "UNIT 1",
+    subtitle: "8 lessons · Story Garden unit exam",
+    part: 1,
+    parts: 1,
+  });
+  expect(view.chapters[0].lessonIds).toEqual([...UNIT_ONE.map((l) => l.standard), UNIT_EXAM_ID]);
   expect(view.chapters[0].unitLessonIds).toHaveLength(9);
   expect(view.lessons[9].available).toBe(false);
   expect(blockedByUnitExam(snapshot, view.lessons[9].lessonId)).toBe(true);

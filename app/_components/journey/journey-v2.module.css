@@ -668,9 +668,9 @@
   margin-top: 4px;
 }
 .milestone {
-  width: 92px;
-  translate: -50% -75%;
-  z-index: 4;
+  width: 132px;
+  translate: -50% -68%;
+  z-index: 7;
 }
 .milestone button {
   display: flex;
@@ -681,13 +681,32 @@
   padding: 0;
 }
 .milestone svg {
-  width: 67px;
+  width: 104px;
+}
+.milestone strong,
+.milestone span {
+  max-width: 132px;
+  line-height: 1.15;
+  text-align: center;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.milestone strong {
+  margin-top: 2px;
+  color: #6d5534;
+  font-size: 13px;
 }
 .milestone span {
-  font-size: 9px;
-  color: #988264;
-  font-weight: 800;
-  white-space: nowrap;
+  margin-top: 3px;
+  color: #806a45;
+  font-size: 10px;
+}
+.milestone button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+.milestone[data-milestone-ready="true"] svg {
+  filter: drop-shadow(0 0 13px #e8c66eaa) drop-shadow(0 6px 2px #604f3929);
 }
 .bunnyAnchor {
   position: absolute;
@@ -1349,10 +1368,10 @@
     font-size: 10px;
   }
   .milestone {
-    width: 73px;
+    width: 110px;
   }
   .milestone svg {
-    width: 53px;
+    width: 86px;
   }
   .stopLabel {
     width: 140px;
@@ -1535,7 +1554,7 @@
     font-size: 10px;
   }
   .milestone svg {
-    width: 75px;
+    width: 86px;
   }
   .milestone span {
     font-size: 10px;
@@ -2413,13 +2432,22 @@
   max-height: none;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: #a98abe #f1ecdf;
   display: flex;
   align-items: center;
   overscroll-behavior: contain;
 }
 .viewport::-webkit-scrollbar {
-  display: none;
+  height: 9px;
+}
+.viewport::-webkit-scrollbar-track {
+  background: #f1ecdf;
+}
+.viewport::-webkit-scrollbar-thumb {
+  background: #a98abe;
+  border: 2px solid #f1ecdf;
+  border-radius: 999px;
 }
 .canvas {
   flex: 0 0 auto;
@@ -2429,6 +2457,26 @@
   flex: 0 0 38px;
   min-height: 38px;
   padding: 6px 20px;
+}
+.mapControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.mapControls > span {
+  color: #817288;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.mapControls > button[aria-label^="See"] {
+  width: 34px;
+  min-height: 34px;
+  justify-content: center;
+  border: 1px solid #d9cde0;
+  border-radius: 999px;
+  background: #fff;
 }
 .worldCaption {
   position: absolute;
@@ -2542,6 +2590,12 @@
   .mapFooter {
     font-size: 11px;
     padding: 5px 12px;
+  }
+  .mapControls > span {
+    display: none;
+  }
+  .mapControls > button[aria-label^="See"] {
+    width: 38px;
   }
   .reviewPopover {
     right: -4px;

@@ -1,5 +1,13 @@
 "use client";
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { animate, motion, useMotionValue } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -56,13 +64,15 @@ export default function JourneyWorld({
   const frame = useRef<HTMLDivElement>(null),
     canvas = useRef<HTMLDivElement>(null);
   const paths = useRef<(SVGPathElement | null)[]>([]);
-  const [width, setWidth] = useState(1000);
   const camera = useJourneyCamera(frame, reduced, onInterrupt);
   const lessons = useMemo(
     () => chapter.lessonIds.map((id) => fixture.definition.lessons.find((l) => l.lessonId === id)!),
     [chapter, fixture],
   );
   const geometry = useMemo(() => mapGeometry(lessons.length, false), [lessons.length]);
+  // Start at the geometry's native scale so a long unit never flashes as a
+  // compressed overview before ResizeObserver measures the viewport.
+  const [width, setWidth] = useState(geometry.width);
   const scale = width / geometry.width;
   const currentIndex = lessons.findIndex((l) => !completed.has(l.nodeId));
   const remainingLessons = lessons.filter((lesson) => !completed.has(lesson.nodeId)).length;
@@ -81,36 +91,51 @@ export default function JourneyWorld({
     if (!el) return;
     const observer = new ResizeObserver(([entry]) => {
       const { width: availableWidth, height } = entry.contentRect;
-      const proportionalWidth = (height * 1000) / 620;
-      // Desktop shows the complete chapter. Narrow screens explore the same
-      // readable scene horizontally, never a vertically clipped map.
+      const proportionalWidth = (height * geometry.width) / geometry.height;
+      // Compact chapters can fit in the available frame. A complete unit keeps
+      // each destination readable and uses the existing horizontal camera.
       setWidth(
-        availableWidth < 980 ? proportionalWidth : Math.min(availableWidth, proportionalWidth),
+        geometry.width > 1000
+          ? Math.max(availableWidth, proportionalWidth)
+          : availableWidth < 980
+            ? proportionalWidth
+            : Math.min(availableWidth, proportionalWidth),
       );
     });
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [geometry.height, geometry.width]);
+  const restSide = useCallback(
+    (point: Point) => {
+      const split = geometry.mobile ? 180 : geometry.width > 1000 ? geometry.width / 2 : 750;
+      return point.x < split ? 1 : -1;
+    },
+    [geometry.mobile, geometry.width],
+  );
   const rest = (index: number) => {
     const p = geometry.points[index];
-    const side = p.x < (geometry.mobile ? 180 : 750) ? 1 : -1;
+    const side = restSide(p);
     return { x: p.x * scale + side * (geometry.mobile ? 83 : 86), y: p.y * scale - 3 };
   };
   useEffect(() => {
     if (travel) return;
     const p = geometry.points[activePoint];
-    const side = p.x < (geometry.mobile ? 180 : 750) ? 1 : -1;
+    const side = restSide(p);
     bunnyX.set(p.x * scale + side * (geometry.mobile ? 83 : 86));
     bunnyY.set(p.y * scale - 3);
-  }, [activePoint, geometry, scale, travel, bunnyX, bunnyY]);
+  }, [activePoint, geometry, scale, travel, bunnyX, bunnyY, restSide]);
 
   useEffect(() => {
     if (phase === "insights") return;
+    // Travel owns the camera from departure through arrival. Starting a second
+    // settle animation toward the newly-completed model is what made the view
+    // snap forward, back to the bunny, and forward again.
+    if (travel) return;
     if (phase === "building" && !reduced) camera.target(geometry.points[0].x * scale, "reveal");
     else camera.target(geometry.points[activePoint].x * scale, "settled");
     // Settle on chapter/viewport changes, never on camera state updates or by moving focus.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, geometry, activePoint, reduced]);
+  }, [phase, geometry, activePoint, reduced, travel]);
 
   useEffect(() => {
     if (!travel) return;
@@ -127,8 +152,7 @@ export default function JourneyWorld({
     const pathLength = segment.getTotalLength();
     const from = geometry.points[fromIndex],
       to = geometry.points[toIndex];
-    const offset = (p: Point) =>
-      (p.x < (geometry.mobile ? 180 : 750) ? 1 : -1) * (geometry.mobile ? 83 : 86);
+    const offset = (p: Point) => restSide(p) * (geometry.mobile ? 83 : 86);
     bunnyX.set(from.x * scale + offset(from));
     bunnyY.set(from.y * scale - 3);
     camera.begin();
@@ -137,14 +161,13 @@ export default function JourneyWorld({
       duration: reduced ? 0 : 2.15,
       ease: "easeInOut",
       onUpdate: (t) => {
-        const moving = Math.max(0, Math.min(1, (t - 0.18) / 0.64));
+        const moving = Math.max(0, Math.min(1, t));
         const p = segment.getPointAtLength(pathLength * moving);
-        const departure = Math.max(0, 1 - t / 0.18),
-          arrival = Math.max(0, (t - 0.82) / 0.18);
-        bunnyX.set(p.x * scale + offset(from) * departure + offset(to) * arrival);
+        const sideOffset = offset(from) + (offset(to) - offset(from)) * moving;
+        bunnyX.set(p.x * scale + sideOffset);
         bunnyY.set(p.y * scale - 3);
         hop.set(reduced ? 0 : -Math.abs(Math.sin(moving * Math.PI * 4)) * 23);
-        drawing.set(Math.min(1, t * 1.6));
+        drawing.set(moving);
         camera.target(p.x * scale, "follow");
       },
       onComplete: () => {
@@ -156,7 +179,7 @@ export default function JourneyWorld({
     return () => controls.stop();
     // Geometry changes cancel and restart travel from the same measured segment, never a second path formula.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [travel, geometry, scale, reduced, lessons]);
+  }, [travel, geometry, scale, reduced, lessons, restSide]);
   useEffect(() => {
     if (!landing) return;
     const timer = window.setTimeout(() => setLanding(false), 700);
@@ -168,7 +191,7 @@ export default function JourneyWorld({
   });
   const arrived = phase === "ready" || reduced;
   const show = (index: number) => ({
-    initial: reduced ? (false as const) : { opacity: 0, scale: 0.85, y: 16 },
+    initial: false as const,
     animate: { opacity: phase === "insights" ? 0 : 1, scale: 1, y: 0 },
     transition: { duration: reduced ? 0 : 0.35, delay: phase === "building" ? index * 0.32 : 0 },
   });
@@ -183,7 +206,7 @@ export default function JourneyWorld({
     >
       {intro}
       <div className={styles.worldCaption}>
-        <span>CHAPTER {fixture.chapters.indexOf(chapter) + 1}</span>
+        <span>{chapter.eyebrow ?? `CHAPTER ${fixture.chapters.indexOf(chapter) + 1}`}</span>
         <h2>{chapter.name}</h2>
         <p>{chapter.subtitle}</p>
       </div>
@@ -194,7 +217,7 @@ export default function JourneyWorld({
         data-camera={camera.mode}
         data-world-viewport
         tabIndex={0}
-        aria-label={`${chapter.name} adventure map. On a narrow screen, swipe sideways to explore. Use Back to bunny to return.`}
+        aria-label={`${chapter.name} adventure map. Swipe, scroll, or use the arrow buttons to explore the full path. Use Back to bunny to return.`}
       >
         <div
           ref={canvas}
@@ -413,17 +436,27 @@ export default function JourneyWorld({
           </motion.div>
           <motion.div
             className={styles.milestone}
+            data-milestone-ready={checkpointComplete}
             style={position(geometry.points[lessons.length + 2])}
             {...show(lessons.length + 2)}
           >
             <button
               onClick={onMilestone}
-              disabled={!arrived}
-              aria-label="View chapter completion keepsake"
+              disabled={!arrived || !checkpointComplete}
+              aria-label={
+                checkpointComplete
+                  ? "Open the unit completion keepsake"
+                  : "Pass the unit exam to unlock the keepsake"
+              }
             >
               <MilestoneLandmark complete={milestoneComplete} />
+              <strong>{chapter.milestoneLabel ?? "Chapter keepsake"}</strong>
               <span>
-                {milestoneComplete ? "Collected" : (chapter.milestoneLabel ?? "Chapter keepsake")}
+                {milestoneComplete
+                  ? "Unit complete!"
+                  : checkpointComplete
+                    ? "Ready to open"
+                    : "Pass the exam to unlock"}
               </span>
             </button>
           </motion.div>
@@ -473,14 +506,27 @@ export default function JourneyWorld({
               completed.has(fixture.definition.lessons.find((l) => l.lessonId === id)!.nodeId),
             ).length
           }{" "}
-          of {chapter.lessonIds.length} chapter lessons complete
+          of {chapter.lessonIds.length} {chapter.progressLabel ?? "chapter lessons"} complete
         </span>
-        {bunnyPresent && (
-          <button onClick={() => camera.target(bunnyPoint.x, "settled", true)}>
-            <Glyph name="target" size={17} />
-            Back to bunny
-          </button>
-        )}
+        <div className={styles.mapControls} aria-label="Explore the journey path">
+          {geometry.width > 1000 && (
+            <>
+              <button onClick={() => camera.nudge(-1)} aria-label="See earlier journey stops">
+                <Glyph name="arrow-left" size={18} />
+              </button>
+              <span>Scroll the path</span>
+              <button onClick={() => camera.nudge(1)} aria-label="See later journey stops">
+                <Glyph name="arrow-right" size={18} />
+              </button>
+            </>
+          )}
+          {bunnyPresent && (
+            <button onClick={() => camera.target(bunnyPoint.x, "settled", true)}>
+              <Glyph name="target" size={17} />
+              Back to bunny
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

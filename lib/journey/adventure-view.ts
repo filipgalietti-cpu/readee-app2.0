@@ -23,6 +23,8 @@ export type AdventureChapter = {
   id: string;
   name: string;
   subtitle: string;
+  eyebrow?: string;
+  progressLabel?: string;
   theme: JourneyTheme;
   lessonIds: string[];
   checkpointLabel?: string;
@@ -55,7 +57,8 @@ const TITLES: Record<string, string> = {
 };
 
 /** View adapter only. Retains the existing catalog order, completion rules and access rules.
- * Three stops per scene is pagination, not a curriculum unit or a new prescription.
+ * Reviewed units are one path. Legacy groups retain three-stop pagination until their unit
+ * membership is reviewed; pagination never invents a curriculum unit or prescription.
  */
 export function buildAdventureView(
   snapshot: JourneySnapshot,
@@ -179,7 +182,8 @@ export function buildAdventureView(
     const first = group.lessons[0];
     const released = group.key === "approved:k-unit-1";
     const domain = first.standardId.split(".")[0];
-    const parts = Math.ceil(group.lessons.length / 3);
+    const sceneSize = released ? group.lessons.length : 3;
+    const parts = Math.ceil(group.lessons.length / sceneSize);
     const reason = snapshot.result?.plan.steps.find(
       (step) =>
         step.kind !== "skipped" &&
@@ -192,14 +196,20 @@ export function buildAdventureView(
       grade: first.grade,
       domain: first.domain,
       name: released ? "Kindergarten Unit 1" : (TITLES[domain] ?? first.domain),
-      subtitle: `${first.grade} · ${parts > 1 ? `Part ${index + 1} of ${parts}` : first.domain}`,
+      subtitle: released
+        ? "8 lessons · Story Garden unit exam"
+        : `${first.grade} · ${parts > 1 ? `Part ${index + 1} of ${parts}` : first.domain}`,
+      eyebrow: released ? "UNIT 1" : undefined,
+      progressLabel: released ? "unit stops" : "chapter lessons",
       theme:
         domain === "RF"
           ? ("garden" as const)
           : domain === "RL" || domain === "RI"
             ? ("valley" as const)
             : ("woods" as const),
-      lessonIds: group.lessons.slice(index * 3, index * 3 + 3).map((lesson) => lesson.standardId),
+      lessonIds: group.lessons
+        .slice(index * sceneSize, index * sceneSize + sceneSize)
+        .map((lesson) => lesson.standardId),
       unitLessonIds: group.lessons.map((lesson) => lesson.standardId),
       checkpointLabel:
         released && index === parts - 1
