@@ -13,7 +13,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 describe("Journey V2 development boundary", () => {
-  it.each(JOURNEY_FIXTURES)(
+  const syntheticFixtures = JOURNEY_FIXTURES.filter(
+    (fixture) => fixture.id !== "kindergarten-unit-one",
+  );
+  it.each(syntheticFixtures)(
     "keeps $id compatible with Journey contracts and exact standards",
     (fixture) => {
       expect(fixture.definition.schemaVersion).toBe(1);
@@ -38,12 +41,30 @@ describe("Journey V2 development boundary", () => {
         expect(fixture.chapters.some((c) => c.checkpointId === checkpoint)).toBe(true);
     },
   );
+  it("renders the approved Kindergarten unit as one complete reviewed path", () => {
+    const fixture = JOURNEY_FIXTURES.find((entry) => entry.id === "kindergarten-unit-one")!;
+    expect(fixture.definition.curriculumReleaseId).toBe("k1-2026-09-14");
+    expect(fixture.definition.sourcePlacementId).toBeNull();
+    expect(fixture.definition.lessons).toHaveLength(8);
+    expect(fixture.chapters).toHaveLength(1);
+    expect(fixture.chapters[0]).toMatchObject({
+      eyebrow: "UNIT 1",
+      checkpointId: "k-unit-1-checkpoint",
+      checkpointLabel: "Story Garden exam",
+      milestoneLabel: "Unit keepsake",
+    });
+    expect(fixture.chapters[0].lessonIds).toEqual(
+      fixture.definition.lessons.map((lesson) => lesson.lessonId),
+    );
+  });
   it("has different starting areas, focus routes, and lengths", () => {
     expect(JOURNEY_FIXTURES.find((f) => f.id === "farther")!.chapters.map((c) => c.theme)).toEqual([
       "valley",
       "woods",
     ]);
-    const profiles = JOURNEY_FIXTURES.slice(0, 4);
+    const profiles = ["foundations", "farther", "meaning", "above"].map(
+      (id) => JOURNEY_FIXTURES.find((fixture) => fixture.id === id)!,
+    );
     expect(new Set(profiles.map((p) => p.definition.lessons[0].lessonId)).size).toBe(4);
     expect(new Set(profiles.map((p) => p.definition.lessons.length)).size).toBeGreaterThan(2);
     const higher = profiles[3];

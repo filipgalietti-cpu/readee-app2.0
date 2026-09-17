@@ -1,5 +1,7 @@
 import type { JourneyDefinition, PlannedJourneyLesson } from "@/lib/journey/planner-contract";
 import type { Band } from "@/lib/journey/evidence-contract";
+import { UNIT_ONE, UNIT_VERSION } from "@/lib/approved-unit/catalogue";
+import { UNIT_EXAM_ID } from "@/lib/approved-unit/gateway";
 import metadata from "./lesson-metadata.json";
 
 export type Theme = "garden" | "woods" | "valley";
@@ -12,6 +14,11 @@ export type JourneyChapter = {
   lessonIds: string[];
   checkpointId: string;
   why: string;
+  eyebrow?: string;
+  progressLabel?: string;
+  checkpointLabel?: string;
+  milestoneLabel?: string;
+  originLabel?: string;
 };
 export type JourneyFixture = {
   id: string;
@@ -31,6 +38,115 @@ export type JourneyFixture = {
   subscriber: boolean;
 };
 type LessonId = keyof typeof metadata;
+type Presentation = {
+  icon: "memo" | "musical-note" | "magnifying-glass" | "open-book" | "newspaper" | "seedling";
+  shape: "page" | "garden" | "sign";
+  objective?: string;
+};
+
+const approvedPresentation: Record<(typeof UNIT_ONE)[number]["id"], Presentation> = {
+  "rhyme-time": {
+    icon: "musical-note",
+    shape: "garden",
+    objective: "Listen for words that rhyme and make a rhyme of your own.",
+  },
+  "key-details": {
+    icon: "open-book",
+    shape: "page",
+    objective: "Use story details to answer who, what, and where questions.",
+  },
+  "syllable-beats": {
+    icon: "musical-note",
+    shape: "garden",
+    objective: "Hear and count the syllables in spoken words.",
+  },
+  "book-makers": {
+    icon: "open-book",
+    shape: "page",
+    objective: "Tell how authors and illustrators help make a book.",
+  },
+  "letter-pairs": {
+    icon: "memo",
+    shape: "page",
+    objective: "Match uppercase letters with their lowercase partners.",
+  },
+  "book-basics": {
+    icon: "memo",
+    shape: "page",
+    objective: "Follow print from left to right and page by page.",
+  },
+  "story-kinds": {
+    icon: "open-book",
+    shape: "page",
+    objective: "Explore familiar kinds of books and what happens inside them.",
+  },
+  "big-kid-words": {
+    icon: "seedling",
+    shape: "garden",
+    objective: "Use position words to describe where objects are.",
+  },
+};
+
+const approvedUnitSource = {
+  source: "Founder-approved Kindergarten Unit 1 catalogue",
+  locator: "lib/approved-unit/catalogue.ts",
+  version: UNIT_VERSION,
+};
+
+const approvedLessons: PlannedJourneyLesson[] = UNIT_ONE.map((lesson) => ({
+  nodeId: `kindergarten-unit-one:${lesson.id}`,
+  lessonId: lesson.id,
+  slug: lesson.id,
+  contentVersion: UNIT_VERSION,
+  unitId: UNIT_VERSION,
+  standardIds: [lesson.standard],
+  reason: { category: "normal-curriculum-sequence", curriculumSource: approvedUnitSource },
+  parentExplanation: approvedPresentation[lesson.id].objective ?? lesson.title,
+  explanationTemplateVersion: "approved-unit-review-v1",
+  ruleVersion: UNIT_VERSION,
+}));
+
+const approvedUnitFixture: JourneyFixture = {
+  id: "kindergarten-unit-one",
+  label: "Approved · Kindergarten Unit 1",
+  name: "Reader",
+  enrollment: 0,
+  entry: 0,
+  provisional: false,
+  strength: "Learning through reviewed reading activities",
+  focus: "Kindergarten Unit 1 reading foundations",
+  goal: "Complete the Story Garden unit exam",
+  evidence: "Founder-approved Kindergarten Unit 1 review fixture.",
+  definition: {
+    schemaVersion: 1,
+    plannerVersion: "approved-unit-review-v1",
+    curriculumReleaseId: UNIT_VERSION,
+    sourcePlacementId: null,
+    learnerAdapterVersion: "learner-evidence-v1",
+    lessons: approvedLessons,
+  },
+  chapters: [
+    {
+      id: "approved-k-unit-1",
+      unitId: UNIT_VERSION,
+      name: "Kindergarten Unit 1",
+      subtitle: "8 lessons · Story Garden unit exam",
+      theme: "garden",
+      lessonIds: UNIT_ONE.map((lesson) => lesson.id),
+      checkpointId: UNIT_EXAM_ID,
+      why: "Eight reviewed lessons build toward the Story Garden unit exam. Passing the exam opens the next unit.",
+      eyebrow: "UNIT 1",
+      progressLabel: "unit lessons",
+      checkpointLabel: "Story Garden exam",
+      milestoneLabel: "Unit keepsake",
+      originLabel: "Your assessment",
+    },
+  ],
+  completed: approvedLessons.slice(0, 2).map((lesson) => lesson.nodeId),
+  completedCheckpoints: [],
+  subscriber: true,
+};
+
 const source = {
   source: "Journey V2 development fixture",
   locator: "Illustrative sequencing; not approved curriculum",
@@ -189,6 +305,7 @@ const base = {
     "Synthetic profile: familiar-word success with guided sound-blending practice proposed. No specific phonics deficiency is asserted.",
 };
 export const JOURNEY_FIXTURES: JourneyFixture[] = [
+  approvedUnitFixture,
   makeFixture({ ...base, id: "foundations", label: "A · Grade 1 / foundations" }),
   makeFixture({
     ...base,
@@ -271,7 +388,8 @@ export const JOURNEY_FIXTURES: JourneyFixture[] = [
       "Synthetic later instructional entry. Earlier lessons are omitted, not recorded as completed or mastered.",
   }),
 ];
-export const lessonTitle = (id: string) => metadata[id as LessonId]?.title ?? id;
+export const lessonTitle = (id: string) =>
+  UNIT_ONE.find((lesson) => lesson.id === id)?.title ?? metadata[id as LessonId]?.title ?? id;
 export function firstIncomplete(fixture: JourneyFixture, completed: ReadonlySet<string>) {
   return fixture.definition.lessons.find((l) => !completed.has(l.nodeId));
 }
@@ -297,11 +415,9 @@ export function canOpenDemoLesson(
 export const gradeName = (band: Band) => (band === 0 ? "Kindergarten" : `Grade ${band}`);
 
 // Visual variants only: these are not new instructional categories or prescriptions.
-export function lessonPresentation(id: string): {
-  icon: "memo" | "musical-note" | "magnifying-glass" | "open-book" | "newspaper" | "seedling";
-  shape: "page" | "garden" | "sign";
-  objective?: string;
-} {
+export function lessonPresentation(id: string): Presentation {
+  const approved = approvedPresentation[id as keyof typeof approvedPresentation];
+  if (approved) return approved;
   if (id === "sentence-shapes")
     return { icon: "memo", shape: "page", objective: "Find the parts of a complete sentence." };
   if (id === "blend-builders")

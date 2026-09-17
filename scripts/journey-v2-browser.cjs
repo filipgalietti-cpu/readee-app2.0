@@ -73,9 +73,13 @@ async function ready(page) {
   await page.waitForTimeout(750);
 }
 async function fixture(page, id) {
-  await page.getByText("Design studio", { exact: false }).first().click();
+  await ready(page);
+  const summary = page.getByLabel("Journey review controls", { exact: true });
+  if ((await summary.locator("..").getAttribute("open")) === null) await summary.click();
   await page.getByLabel("Reader fixture", { exact: true }).selectOption(id);
-  await page.getByText("Design studio", { exact: false }).first().click();
+  const refreshedSummary = page.getByLabel("Journey review controls", { exact: true });
+  if ((await refreshedSummary.locator("..").getAttribute("open")) !== null)
+    await refreshedSummary.click();
   await ready(page);
 }
 (async () => {
@@ -88,7 +92,7 @@ async function fixture(page, id) {
     ]) {
       console.log("Checking", name);
       const { page, context } = await pageFor(browser, { width, height });
-      await ready(page);
+      await fixture(page, "foundations");
       await expect(page.locator("[data-site-header]")).toBeHidden();
       await expect(page.locator("[data-site-footer]")).toBeHidden();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -104,7 +108,9 @@ async function fixture(page, id) {
       expect(layers.lastIndexOf("fill")).toBeLessThan(layers.indexOf("progress"));
       const layout = await page.locator("[data-map-layout]").getAttribute("data-map-layout");
       expect(layout).toBe("wide");
-      expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight)).toBe(true);
+      expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight)).toBe(
+        true,
+      );
       const map = page.locator("[data-world-viewport]");
       expect(await map.evaluate((e) => e.scrollHeight <= e.clientHeight + 1)).toBe(true);
       await map.hover();
@@ -121,9 +127,25 @@ async function fixture(page, id) {
           .locator('[data-lesson="sentence-shapes"] button')
           .evaluate((e) => getComputedStyle(e).opacity),
       ).toBe("1");
-      const start = await page.locator("[data-bunny]").getAttribute("style");
-      await page.waitForTimeout(700);
-      expect(await page.locator("[data-bunny]").getAttribute("style")).not.toBe(start);
+      const travelTrace = [];
+      for (let sample = 0; sample < 12; sample += 1) {
+        await page.waitForTimeout(100);
+        travelTrace.push(
+          await page.locator("[data-bunny]").evaluate((element) => {
+            const viewport = element.closest("[data-world-viewport]");
+            return {
+              mapX: new DOMMatrix(getComputedStyle(element).transform).m41,
+              scrollLeft: viewport?.scrollLeft ?? 0,
+            };
+          }),
+        );
+      }
+      for (let sample = 1; sample < travelTrace.length; sample += 1) {
+        expect(travelTrace[sample].mapX).toBeGreaterThanOrEqual(travelTrace[sample - 1].mapX - 1);
+        expect(travelTrace[sample].scrollLeft).toBeGreaterThanOrEqual(
+          travelTrace[sample - 1].scrollLeft - 1,
+        );
+      }
       if (name === "mobile") {
         const view = page.locator("[data-world-viewport]");
         await view.hover();
@@ -187,7 +209,10 @@ async function fixture(page, id) {
       await context.close();
     }
     const { page, context } = await pageFor(browser, { width: 1440, height: 1000 });
-    await ready(page);
+    await fixture(page, "kindergarten-unit-one");
+    await expect(page.locator("[data-lesson]")).toHaveCount(8);
+    await expect(page.getByText("Story Garden exam", { exact: true })).toBeAttached();
+    await expect(page.getByText("Unit keepsake", { exact: true })).toBeAttached();
     await expect(page.locator('[aria-label="Journey chapters"]')).toHaveCount(0);
     for (const id of [
       "foundations",
@@ -245,7 +270,7 @@ async function fixture(page, id) {
     await page.waitForTimeout(1750);
     await page.screenshot({ path: path.join(output, "assessment-reveal.png"), fullPage: true });
     await page.getByRole("button", { name: "Build my journey", exact: true }).click();
-    await expect(page.locator('[data-magic-cover]')).toBeVisible();
+    await expect(page.locator("[data-magic-cover]")).toBeVisible();
     await expect(page.getByRole("button", { name: "Skip animation", exact: true })).toHaveCount(0);
     await page.getByRole("button", { name: "Show reading journey now" }).click();
     await expect(page.locator('[data-phase="ready"]')).toHaveCount(1, { timeout: 5000 });

@@ -2869,3 +2869,11 @@
 .liveExperience .currentCard h3 {
   overflow-wrap: anywhere;
 }
+
+/* The review route uses production chrome; its controls live behind the header gear. */
+.reviewExperience .header {
+  flex-basis: 76px;
+}
+.reviewExperience .main {
+  padding-top: 14px;
+}

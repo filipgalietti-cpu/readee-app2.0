@@ -1,5 +1,14 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Glyph } from "@/app/_components/Glyph";
@@ -30,9 +39,14 @@ function subscribeMotionPreference(notify: () => void) {
 const readMotionPreference = () => window.matchMedia(motionQuery).matches;
 const serverMotionPreference = () => false;
 
-export default function JourneyExperience({ initialFixture, initialPhase = "insights" }: { initialFixture?: JourneyFixture; initialPhase?: JourneyPhase } = {}) {
-  const fixtures = initialFixture ? [initialFixture, ...JOURNEY_FIXTURES.filter((fixture) => fixture.id !== initialFixture.id)] : JOURNEY_FIXTURES;
-  const [fixtureId, setFixtureId] = useState(initialFixture?.id ?? "foundations"),
+export default function JourneyExperience({
+  initialFixture,
+  initialPhase = "insights",
+}: { initialFixture?: JourneyFixture; initialPhase?: JourneyPhase } = {}) {
+  const fixtures = initialFixture
+    ? [initialFixture, ...JOURNEY_FIXTURES.filter((fixture) => fixture.id !== initialFixture.id)]
+    : JOURNEY_FIXTURES;
+  const [fixtureId, setFixtureId] = useState(initialFixture?.id ?? "kindergarten-unit-one"),
     [revision, setRevision] = useState(0);
   const [simulateReduced, setSimulateReduced] = useState(false);
   // Preserve the server's first render, then apply the OS preference before animation begins.
@@ -43,50 +57,64 @@ export default function JourneyExperience({ initialFixture, initialPhase = "insi
   );
   const reduced = simulateReduced || !!prefersReduced;
   const fixture = fixtures.find((f) => f.id === fixtureId)!;
+  const reviewControls = (
+    <>
+      <span className={styles.srOnly}>Design studio</span>
+      <label>
+        Reader fixture
+        <select
+          aria-label="Reader fixture"
+          value={fixtureId}
+          onChange={(event) => setFixtureId(event.target.value)}
+        >
+          {fixtures.map((entry) => (
+            <option key={entry.id} value={entry.id}>
+              {entry.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className={styles.checkLabel}>
+        <input
+          type="checkbox"
+          checked={simulateReduced}
+          onChange={(event) => setSimulateReduced(event.target.checked)}
+        />
+        Simulate reduced motion
+      </label>
+      <button onClick={() => setRevision((value) => value + 1)}>Reset reader</button>
+      <Link href="/demo/journey">Original Journey</Link>
+      <Link href="/demo/journey-v2/from-assessment">Assessment → Journey mock</Link>
+    </>
+  );
   return (
-    <div className={styles.experience} data-journey-v2 data-reduced={reduced}>
-      <div className={styles.devbar}>
-        <details>
-          <summary>
-            Design studio <Glyph name="chevron-down" size={14} />
-          </summary>
-          <div className={styles.devControls}>
-            <label>
-              Reader fixture
-              <select
-                aria-label="Reader fixture"
-                value={fixtureId}
-                onChange={(e) => setFixtureId(e.target.value)}
-              >
-                {fixtures.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className={styles.checkLabel}>
-              <input
-                type="checkbox"
-                checked={simulateReduced}
-                onChange={(e) => setSimulateReduced(e.target.checked)}
-              />
-              Simulate reduced motion
-            </label>
-            <button onClick={() => setRevision((r) => r + 1)}>Reset reader</button>
-            <Link href="/demo/journey">Original Journey</Link>
-            <Link href="/demo/journey-v2/from-assessment">Assessment → Journey mock</Link>
-          </div>
-        </details>
-        <span>Synthetic readers · unapproved presentation routes</span>
-        <span className={styles.studioVersion}>JOURNEY / 02</span>
-      </div>
-      <ReaderJourney key={`${fixtureId}-${revision}`} fixture={fixture} reduced={reduced} initialPhase={initialPhase} />
+    <div
+      className={`${styles.experience} ${styles.liveExperience} ${styles.reviewExperience}`}
+      data-journey-v2
+      data-reduced={reduced}
+    >
+      <ReaderJourney
+        key={`${fixtureId}-${revision}`}
+        fixture={fixture}
+        reduced={reduced}
+        initialPhase={initialPhase}
+        reviewControls={reviewControls}
+      />
     </div>
   );
 }
 
-function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFixture; reduced: boolean; initialPhase: JourneyPhase }) {
+function ReaderJourney({
+  fixture,
+  reduced,
+  initialPhase,
+  reviewControls,
+}: {
+  fixture: JourneyFixture;
+  reduced: boolean;
+  initialPhase: JourneyPhase;
+  reviewControls: ReactNode;
+}) {
   const [soundOn, setSoundOn] = useState(true);
   const completeSound = () => {
     if (!soundOn) return;
@@ -111,10 +139,20 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
   const [travel, setTravel] = useState<BunnyTravel | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const serial = useRef(0);
-  const worldFixture = useMemo(() => ({ ...fixture, definition: { lessons: fixture.definition.lessons.map((lesson) => ({
-    ...lesson, title: lessonTitle(lesson.lessonId), ...lessonPresentation(lesson.lessonId),
-    available: canOpenDemoLesson(fixture, lesson, subscriber, completed),
-  })) } }), [fixture, subscriber, completed]);
+  const worldFixture = useMemo(
+    () => ({
+      ...fixture,
+      definition: {
+        lessons: fixture.definition.lessons.map((lesson) => ({
+          ...lesson,
+          title: lessonTitle(lesson.lessonId),
+          ...lessonPresentation(lesson.lessonId),
+          available: canOpenDemoLesson(fixture, lesson, subscriber, completed),
+        })),
+      },
+    }),
+    [fixture, subscriber, completed],
+  );
   const chapter = fixture.chapters[chapterIndex];
   const current = firstIncomplete(fixture, completed);
   const currentInChapter = fixture.definition.lessons.find(
@@ -125,7 +163,10 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
   const revealPointCount = chapter.lessonIds.length + 3;
   useEffect(() => {
     if (reduced || magicActive || phase !== "building") return;
-    const timer = window.setTimeout(() => setPhase("ready"), journeyRevealDurationMs(revealPointCount));
+    const timer = window.setTimeout(
+      () => setPhase("ready"),
+      journeyRevealDurationMs(revealPointCount),
+    );
     return () => clearTimeout(timer);
   }, [phase, reduced, replay, magicActive, revealPointCount]);
   useEffect(() => {
@@ -196,12 +237,13 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
           className={styles.wordmark}
           aria-label="Readee Journey studio"
         >
-          read<span>ee</span>
-          <i>®</i>
+          <Image src="/readee-logo.png" alt="Readee" width={160} height={54} priority />
         </Link>
         <div className={styles.readerHeading}>
           <h1>{fixture.name}’s reading journey</h1>
-          <span>{completed.size} of {fixture.definition.lessons.length} lessons complete</span>
+          <span>
+            {completed.size} of {fixture.definition.lessons.length} lessons complete
+          </span>
         </div>
         <div className={styles.headerTools}>
           <button
@@ -222,52 +264,56 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
             Why this journey?
           </button>
           <details className={styles.reviewMenu}>
-            <summary aria-label="Journey review controls"><Glyph name="settings" size={20} /></summary>
+            <summary aria-label="Journey review controls">
+              <Glyph name="settings" size={20} />
+            </summary>
             <div className={styles.reviewPopover}>
-        <div className={styles.reviewControls}>
-          <span>REVIEW CONTROLS</span>
-          <label>
-            Access
-            <select
-              aria-label="Fixture access"
-              value={subscriber ? "subscriber" : "free"}
-              onChange={(e) => setSubscriber(e.target.value === "subscriber")}
-            >
-              <option value="free">Non-subscriber</option>
-              <option value="subscriber">Readee+ subscriber</option>
-            </select>
-          </label>
-          <label>
-            Completed
-            <select
-              aria-label="Completed lessons"
-              value={completed.size}
-              onChange={(e) => jumpProgress(Number(e.target.value))}
-            >
-              {Array.from({ length: fixture.definition.lessons.length + 1 }, (_, i) => (
-                <option key={i} value={i}>
-                  {i} lessons
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            onClick={() => {
-              setTravel(null);
-              setBuildPending(false);
-              setMagicActive(false);
-              setPhase(reduced ? "ready" : "insights");
-              setReplay((n) => n + 1);
-            }}
-          >
-            Replay the reveal
-          </button>
-          <button onClick={() => navigate(bunnyChapter)}>Go to current chapter</button>
-        </div>
-        <p className={styles.fixtureNote}>
-          Design preview. Chapter names and lesson selections are illustrative, not approved
-          prescriptions. No child progress or subscription is saved.
-        </p>
+              <div className={styles.reviewControls}>
+                <span>REVIEW CONTROLS</span>
+                {reviewControls}
+                <label>
+                  Access
+                  <select
+                    aria-label="Fixture access"
+                    value={subscriber ? "subscriber" : "free"}
+                    onChange={(e) => setSubscriber(e.target.value === "subscriber")}
+                  >
+                    <option value="free">Non-subscriber</option>
+                    <option value="subscriber">Readee+ subscriber</option>
+                  </select>
+                </label>
+                <label>
+                  Completed
+                  <select
+                    aria-label="Completed lessons"
+                    value={completed.size}
+                    onChange={(e) => jumpProgress(Number(e.target.value))}
+                  >
+                    {Array.from({ length: fixture.definition.lessons.length + 1 }, (_, i) => (
+                      <option key={i} value={i}>
+                        {i} lessons
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  onClick={() => {
+                    setTravel(null);
+                    setBuildPending(false);
+                    setMagicActive(false);
+                    setPhase(reduced ? "ready" : "insights");
+                    setReplay((n) => n + 1);
+                  }}
+                >
+                  Replay the reveal
+                </button>
+                <button onClick={() => navigate(bunnyChapter)}>Go to current chapter</button>
+              </div>
+              <p className={styles.fixtureNote}>
+                {fixture.id === "kindergarten-unit-one"
+                  ? "Approved Kindergarten Unit 1 review path. No child progress or subscription is saved."
+                  : "Design preview. Chapter names and lesson selections are illustrative, not approved prescriptions. No child progress or subscription is saved."}
+              </p>
             </div>
           </details>
           <span className={styles.avatar} aria-label={`Reader: ${fixture.name}`}>
@@ -285,11 +331,22 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
             checkpointComplete={checkpoints.has(chapter.checkpointId)}
             bunnyPresent={chapterIndex === bunnyChapter}
             phase={magicActive && !reduced ? "insights" : effectivePhase}
-            intro={magicActive && !reduced ? <JourneyMagicReveal soundEnabled={soundOn} onComplete={() => setMagicActive(false)} /> : undefined}
+            intro={
+              magicActive && !reduced ? (
+                <JourneyMagicReveal
+                  soundEnabled={soundOn}
+                  onComplete={() => setMagicActive(false)}
+                />
+              ) : undefined
+            }
             reduced={reduced}
             travel={travel}
             onArrival={arrival}
-            onLesson={(lesson) => openLesson(fixture.definition.lessons.find((entry) => entry.nodeId === lesson.nodeId)!)}
+            onLesson={(lesson) =>
+              openLesson(
+                fixture.definition.lessons.find((entry) => entry.nodeId === lesson.nodeId)!,
+              )
+            }
             onAssessment={() => {
               showAll();
               setPanel("insights");
@@ -307,12 +364,14 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
               </button>
             </div>
           )}
-          <AnimatePresence onExitComplete={() => {
-            if (!buildPending) return;
-            setBuildPending(false);
-            setMagicActive(!reduced);
-            setPhase(reduced ? "ready" : "building");
-          }}>
+          <AnimatePresence
+            onExitComplete={() => {
+              if (!buildPending) return;
+              setBuildPending(false);
+              setMagicActive(!reduced);
+              setPhase(reduced ? "ready" : "building");
+            }}
+          >
             {effectivePhase === "insights" && !buildPending && (
               <motion.div
                 className={styles.reveal}
@@ -360,17 +419,18 @@ function ReaderJourney({ fixture, reduced, initialPhase }: { fixture: JourneyFix
                       </motion.div>
                     ))}
                   </dl>
-                  <button
-                    className={styles.primary}
-                    onClick={buildJourney}
-                  >
+                  <button className={styles.primary} onClick={buildJourney}>
                     Build my journey
                     <Glyph name="arrow-right" size={18} />
                   </button>
                   <button className={styles.skipReveal} onClick={showAll}>
                     Skip animation
                   </button>
-                  <small>Illustrative assessment · development fixture</small>
+                  <small>
+                    {fixture.id === "kindergarten-unit-one"
+                      ? "Approved Kindergarten Unit 1 · review preview"
+                      : "Illustrative assessment · development fixture"}
+                  </small>
                 </div>
               </motion.div>
             )}
