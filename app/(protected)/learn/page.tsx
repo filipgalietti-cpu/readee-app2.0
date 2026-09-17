@@ -1,3 +1,4 @@
+import { blockedByUnitExam } from "@/lib/approved-unit/gateway";
 import { approvedStandard } from "@/lib/approved-unit/catalogue";
 import { unitOneEnabled } from "@/lib/approved-unit/access";
 import { redirect, notFound } from "next/navigation";
@@ -46,12 +47,23 @@ export default async function LearnPage({
     return <PreviewLesson lesson={v2} />;
   }
 
-  if (!standardId || !sampleLessons.some((lesson) => lesson.standardId === standardId)) notFound();
+  if (
+    !standardId ||
+    (!sampleLessons.some((lesson) => lesson.standardId === standardId) &&
+      !approvedStandard(standardId))
+  )
+    notFound();
   const snapshot = await loadJourneySnapshot(sp.child);
   if (!snapshot) redirect("/placement/setup");
   if (!sp.child)
     redirect(`/learn?child=${snapshot.child.id}&standard=${encodeURIComponent(standardId)}`);
-  const lesson = sampleLessons.find((item) => item.standardId === standardId)!;
+  if (blockedByUnitExam(snapshot, standardId))
+    redirect(`/learn/unit-one?child=${snapshot.child.id}`);
+  const approved = approvedStandard(standardId);
+  if (unitOneEnabled() && approved)
+    redirect(`/learn/unit-one?child=${snapshot.child.id}&lesson=${approved.id}`);
+  const lesson = sampleLessons.find((item) => item.standardId === standardId);
+  if (!lesson) notFound();
   placementStartUnlocked = freeJourneyLesson({
     lesson,
     signupAt: snapshot.billing.signupAt,
@@ -60,10 +72,6 @@ export default async function LearnPage({
   });
   if (!snapshot.billing.fullAccess && !placementStartUnlocked)
     redirect(`/journey?child=${snapshot.child.id}&locked=${encodeURIComponent(standardId)}`);
-
-  const approved = approvedStandard(standardId);
-  if (unitOneEnabled() && approved)
-    redirect(`/learn/unit-one?child=${snapshot.child.id}&lesson=${approved.id}`);
 
   // V2 when the standard has an authored lesson; legacy otherwise.
   if (standardId) {

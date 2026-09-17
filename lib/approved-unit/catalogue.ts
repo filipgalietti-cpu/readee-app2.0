@@ -15,8 +15,15 @@ export function approvedLesson(id: string) {
   return UNIT_ONE.find((l) => l.id === id);
 }
 export function approvedStandard(standard: string) {
-  return UNIT_ONE.find((l) => l.standard === standard);
+  return UNIT_ONE.find((l) => l.standard === standard || approvedCoverage(l.id).includes(standard));
 }
 export function isApprovedId(id: string): id is ApprovedLessonId {
   return id === "k-unit-1-checkpoint" || !!approvedLesson(id);
+}
+
+/** Worm's authored objective covers RF.K.1a–c; its package identity is RF.K.1. */
+export function approvedCoverage(id: string): readonly string[] {
+  return id === "book-basics"
+    ? ["RF.K.1a", "RF.K.1b", "RF.K.1c"]
+    : UNIT_ONE.filter((l) => l.id === id).map((l) => l.standard);
 }

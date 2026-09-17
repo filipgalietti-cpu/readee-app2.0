@@ -38,7 +38,9 @@ export default async function UnitOne({
   }
   const { data: progress, error } = await db
     .from("approved_unit_sessions")
-    .select("lesson_id,completed,result,carrots_awarded")
+    .select(
+      "lesson_id,completed,result,carrots_awarded,practice_finished:state->practice->finished",
+    )
     .eq("child_id", child)
     .eq("release_id", UNIT_VERSION);
   if (error)
@@ -62,10 +64,21 @@ export default async function UnitOne({
         <Link className="font-semibold text-violet-700" href={`/journey?child=${child}`}>
           ← Reading journey
         </Link>
+        <Link
+          className="ml-6 font-semibold text-violet-700"
+          href={`/learn/unit-one/report?child=${child}`}
+        >
+          Parent progress report
+        </Link>
         <p className="mt-8 text-sm font-bold uppercase tracking-widest">Kindergarten · Unit 1</p>
         <h1 className="mt-2 text-4xl font-bold">Let’s grow, {reader.first_name}!</h1>
         <p className="mt-3 text-lg">
           {count} of {UNIT_ONE.length} lessons completed
+        </p>
+        <p className="mt-3">
+          Finish these lessons, then take the unit exam. At least 80% at regular difficulty or
+          above, with every question independently checked, opens the next unit. Microphone problems
+          need another check, not a wrong mark.
         </p>
         <ol className="my-8 grid gap-4 sm:grid-cols-2">
           {UNIT_ONE.map((l, n) => (
@@ -97,7 +110,7 @@ export default async function UnitOne({
         <section className="rounded-3xl bg-white p-6">
           <h2 className="text-2xl font-bold">The Story Garden</h2>
           <p className="my-3">
-            Your Unit 1 check-in: ten questions, including two answers spoken to Luna.
+            Your Unit 1 gateway: ten questions, including two answers spoken to Luna.
           </p>
           {count === UNIT_ONE.length ? (
             <Link
@@ -105,17 +118,29 @@ export default async function UnitOne({
               href={
                 locked("k-unit-1-checkpoint")
                   ? "/upgrade?reason=lesson"
-                  : href("k-unit-1-checkpoint")
+                  : exam?.practice_finished === true
+                    ? `/learn/unit-one/report?child=${child}`
+                    : href("k-unit-1-checkpoint")
               }
             >
               {locked("k-unit-1-checkpoint")
                 ? "Continue with Readee+"
-                : exam?.completed
-                  ? "See your results"
-                  : "Start the unit exam"}
+                : exam?.practice_finished === true
+                  ? "See parent results"
+                  : exam?.completed
+                    ? "Continue the unit exam"
+                    : "Start the unit exam"}
             </Link>
           ) : (
             <p>Finish the eight lessons to open your unit exam.</p>
+          )}
+          {exam?.result?.readiness?.status === "ready" && (
+            <p className="mt-4 font-bold text-green-700">
+              Unit exam passed.{" "}
+              <Link href={`/journey?child=${child}&completed=k-unit-1-checkpoint`}>
+                Continue your journey →
+              </Link>
+            </p>
           )}
           {exam?.completed && exam.result?.readiness && (
             <p className="mt-4">

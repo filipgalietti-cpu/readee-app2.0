@@ -1,3 +1,5 @@
+import { UNIT_VERSION, approvedLesson } from "@/lib/approved-unit/catalogue";
+import {savedLessonStats,lessonStatsLine} from "@/lib/approved-unit/lesson-stats";
 /**
  * Weekly parent digest — assembled per parent from last-7-days activity.
  *
@@ -43,6 +45,7 @@ function displayGrade(grade: string | null | undefined): string {
 
 type ChildSummary = {
   childId: string;
+  reviewedLessons?: {title:string;line:string}[];
   firstName: string;
   grade: string | null;
   passagesFinished: number;
@@ -129,7 +132,7 @@ async function buildParentSummary(parentId: string): Promise<{
   }
 
   const childIds = children.map((c) => c.id);
-  const [{ data: practiceRows }, { data: lessonRows }, { data: unlockRows }] = await Promise.all([
+  const [{ data: practiceRows }, { data: lessonRows }, { data: unlockRows }, approved] = await Promise.all([
     admin
       .from("practice_results")
       .select("child_id, standard_id, questions_attempted, questions_correct, created_at")
@@ -149,7 +152,12 @@ async function buildParentSummary(parentId: string): Promise<{
       .select("child_id, item_id, purchased_at")
       .in("child_id", childIds)
       .gte("purchased_at", since),
+    process.env.APPROVED_K_UNIT_ONE_ENABLED === "true" ? admin.from("approved_unit_sessions")
+      .select("child_id,lesson_id,results:result->results,carrots_awarded")
+      .in("child_id", childIds).eq("release_id", UNIT_VERSION).eq("completed", true).gte("updated_at", since)
+      : Promise.resolve({data: [], error: null}),
   ]);
+  if (approved.error) throw Error("Reviewed lesson progress is temporarily unavailable");
 
   const summaries: ChildSummary[] = children.map((c) => {
     const rows = (practiceRows ?? []).filter((r: any) => r.child_id === c.id);
@@ -212,6 +220,10 @@ async function buildParentSummary(parentId: string): Promise<{
 
     return {
       childId: c.id,
+      reviewedLessons: (approved.data ?? []).filter(row => row.child_id === c.id).flatMap(row => {
+        const stats = savedLessonStats(row.results, row.carrots_awarded);
+        return stats ? [{title: approvedLesson(row.lesson_id)?.title ?? "The Story Garden · Unit exam", line: lessonStatsLine(stats)}] : [];
+      }),
       firstName: c.first_name,
       grade: c.grade ?? null,
       passagesFinished,
@@ -284,7 +296,7 @@ async function buildParentSummary(parentId: string): Promise<{
 }
 
 function hasActivity(children: ChildSummary[]): boolean {
-  return children.some((c) => c.questionsAttempted > 0 || c.passagesFinished > 0);
+  return children.some((c) => c.questionsAttempted > 0 || c.passagesFinished > 0 || !!c.reviewedLessons?.length);
 }
 
 export function renderDigest(input: {
@@ -293,14 +305,12 @@ export function renderDigest(input: {
   unsubscribeUrl: string;
 }): { subject: string; text: string; html: string } {
   const activeKids = input.children.filter(
-    (c) => c.questionsAttempted > 0 || c.passagesFinished > 0,
+    (c) => c.questionsAttempted > 0 || c.passagesFinished > 0 || !!c.reviewedLessons?.length,
   );
   const leadKid = activeKids[0];
   const subject =
     activeKids.length === 1
-      ? `${leadKid.firstName}'s Readee week - ${leadKid.questionsAttempted} questions, ${
-          leadKid.comprehensionPct ?? "-"
-        }% correct`
+      ? (leadKid.questionsAttempted > 0 ? `${leadKid.firstName}'s Readee week - ${leadKid.questionsAttempted} questions, ${leadKid.comprehensionPct ?? "-"}% correct` : `${leadKid.firstName}'s Readee week - new lesson progress`)
       : `Your family's Readee week - ${activeKids
           .map((c) => c.firstName)
           .join(", ")}`;
@@ -341,8 +351,12 @@ export function renderDigest(input: {
         lines.push(
           `  · Tricky spot: ${standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
         );
-      if (c.passagesFinished === 0 && c.questionsAttempted === 0)
+      if (c.passagesFinished === 0 && c.questionsAttempted === 0 && !c.reviewedLessons?.length)
         lines.push("  · No Readee time this week - try a passage together tonight!");
+      if (c.reviewedLessons?.length) {
+        lines.push("  Recently updated lesson results:", ...c.reviewedLessons.map(l => `  · ${l.title}: ${l.line}`));
+        lines.push(`  View question-by-question progress: ${BASE_URL}/learn/unit-one/report?child=${encodeURIComponent(c.childId)}`);
+      }
       return lines.join("\n");
     }),
     "",
@@ -426,6 +440,7 @@ export function renderDigest(input: {
                 </div>
                 <div style="text-align:right;">${metric}</div>
               </div>
+              ${c.reviewedLessons?.length ? `<div style="margin-top:18px;padding:16px;background:#f5f3ff;border-radius:12px"><strong>Recently updated lesson results</strong>${c.reviewedLessons.map(l => `<p style="font-size:14px;line-height:1.5"><b>${escapeHtml(l.title)}</b><br>${escapeHtml(l.line)}</p>`).join('')}<a href="${BASE_URL}/learn/unit-one/report?child=${encodeURIComponent(c.childId)}" style="color:#6d28d9;font-weight:700">See question-by-question progress</a></div>` : ''}
               ${aiNoteBlock}
               ${journeyBlock}
               ${winsLossesBlock}
@@ -442,13 +457,13 @@ export function renderDigest(input: {
     : activeKids.length > 1
       ? "Your family's week on Readee"
       : `A quiet week on Readee`;
-  const heroStats = leadKid
+  const heroStats = leadKid?.questionsAttempted
     ? [
         { value: String(leadKid.questionsAttempted), label: leadKid.questionsAttempted === 1 ? "question" : "questions" },
         { value: `${leadKid.comprehensionPct ?? 0}%`, label: "correct" },
         { value: String(leadKid.daysThisWeek), label: leadKid.daysThisWeek === 1 ? "day of reading" : "days of reading" },
       ]
-    : [];
+    : leadKid?.reviewedLessons?.length ? [{value:String(leadKid.reviewedLessons.length),label:"lesson results updated"}] : [];
   const intro = activeKids.length
     ? "What each child nailed, what they unlocked, and where to focus next."
     : "No Readee time this week. A single 10-minute lesson tonight brings the streak back.";

@@ -3,8 +3,13 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNod
 import { animate, motion, useMotionValue } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import CompletedLessonNode from "./CompletedLessonNode";
 import { Glyph } from "@/app/_components/Glyph";
-import type { AdventureLesson, AdventureChapter, AdventureReader } from "@/lib/journey/adventure-view";
+import type {
+  AdventureLesson,
+  AdventureChapter,
+  AdventureReader,
+} from "@/lib/journey/adventure-view";
 import { mapGeometry, type Point } from "./geometry";
 import { useJourneyCamera } from "./useJourneyCamera";
 import JourneyLandscape, { CheckpointLandmark, MilestoneLandmark } from "./JourneyLandscape";
@@ -76,10 +81,12 @@ export default function JourneyWorld({
     if (!el) return;
     const observer = new ResizeObserver(([entry]) => {
       const { width: availableWidth, height } = entry.contentRect;
-      const proportionalWidth = height * 1000 / 620;
+      const proportionalWidth = (height * 1000) / 620;
       // Desktop shows the complete chapter. Narrow screens explore the same
       // readable scene horizontally, never a vertically clipped map.
-      setWidth(availableWidth < 980 ? proportionalWidth : Math.min(availableWidth, proportionalWidth));
+      setWidth(
+        availableWidth < 980 ? proportionalWidth : Math.min(availableWidth, proportionalWidth),
+      );
     });
     observer.observe(el);
     return () => observer.disconnect();
@@ -210,8 +217,7 @@ export default function JourneyWorld({
                   checkpointComplete;
                 const ahead = i === activePoint && bunnyPresent && !checkpointComplete;
                 const nextLesson = lessons[i];
-                const locked =
-                  nextLesson && !nextLesson.available;
+                const locked = nextLesson && !nextLesson.available;
                 return (
                   <g
                     key={`${layer}-${d}`}
@@ -287,9 +293,16 @@ export default function JourneyWorld({
           <motion.div className={styles.origin} style={position(geometry.points[0])} {...show(0)}>
             <button
               onClick={onAssessment}
-              aria-label={fixture.assessmentComplete === false ? "Find a reading starting point" : "View the reading assessment"}
+              aria-label={
+                fixture.assessmentComplete === false
+                  ? "Find a reading starting point"
+                  : "View the reading assessment"
+              }
             >
-              <Glyph name={fixture.assessmentComplete === false ? "book-open" : "check"} size={30} />
+              <Glyph
+                name={fixture.assessmentComplete === false ? "book-open" : "check"}
+                size={30}
+              />
               <span>{chapter.originLabel ?? "Your assessment"}</span>
             </button>
           </motion.div>
@@ -315,18 +328,26 @@ export default function JourneyWorld({
                 style={position(geometry.points[index + 1])}
                 {...show(index + 1)}
               >
-                <button
-                  className={styles.destination}
-                  disabled={!!travel || !arrived}
-                  onClick={() => onLesson(lesson)}
-                  aria-label={`${done ? "Completed" : current ? "Current lesson" : "Upcoming lesson"}: ${lesson.title}${!access ? ", Readee+ required" : ""}`}
-                >
-                  {done ? (
-                    <Glyph name="check" size={29} />
-                  ) : (
-                    <FluentIcon name={visual.icon} size={current ? 42 : 33} />
-                  )}
-                </button>
+                {done ? (
+                  <CompletedLessonNode
+                    lesson={lesson}
+                    disabled={!!travel || !arrived}
+                    onReplay={() => onLesson(lesson)}
+                  />
+                ) : (
+                  <button
+                    className={styles.destination}
+                    disabled={!!travel || !arrived}
+                    onClick={() => onLesson(lesson)}
+                    aria-label={`${done ? "Completed" : current ? "Current lesson" : "Upcoming lesson"}: ${lesson.title}${!access ? `, ${lesson.lockedReason ?? "Readee+ required"}` : ""}`}
+                  >
+                    {done ? (
+                      <Glyph name="check" size={29} />
+                    ) : (
+                      <FluentIcon name={visual.icon} size={current ? 42 : 33} />
+                    )}
+                  </button>
+                )}
                 <div
                   className={current ? styles.currentCard : styles.stopLabel}
                   data-card-enter={current && arrived}
@@ -346,11 +367,17 @@ export default function JourneyWorld({
                       onClick={() => onLesson(lesson)}
                       disabled={!!travel || !arrived}
                     >
-                      {access ? "Let’s begin" : "Continue with Readee+"}
+                      {access ? "Let’s begin" : (lesson.lockedReason ?? "Continue with Readee+")}
                       <Glyph name="arrow-right" size={18} />
                     </button>
                   ) : (
-                    <span>{done ? "Completed" : !access ? "Readee+" : "Coming up"}</span>
+                    <span>
+                      {done
+                        ? "Completed"
+                        : !access
+                          ? (lesson.lockedReason ?? "Readee+")
+                          : "Coming up"}
+                    </span>
                   )}
                 </div>
               </motion.article>
@@ -371,7 +398,8 @@ export default function JourneyWorld({
               <CheckpointLandmark complete={checkpointComplete} />
               <div className={styles.checkpointSign}>
                 <strong>
-                  {chapter.checkpointLabel ?? (fixture.provisional ? "Starting-point check" : "Storybook checkpoint")}
+                  {chapter.checkpointLabel ??
+                    (fixture.provisional ? "Starting-point check" : "Storybook checkpoint")}
                 </strong>
                 <span>
                   {checkpointComplete
@@ -394,7 +422,9 @@ export default function JourneyWorld({
               aria-label="View chapter completion keepsake"
             >
               <MilestoneLandmark complete={milestoneComplete} />
-              <span>{milestoneComplete ? "Collected" : chapter.milestoneLabel ?? "Chapter keepsake"}</span>
+              <span>
+                {milestoneComplete ? "Collected" : (chapter.milestoneLabel ?? "Chapter keepsake")}
+              </span>
             </button>
           </motion.div>
           {phase !== "insights" && bunnyPresent && (

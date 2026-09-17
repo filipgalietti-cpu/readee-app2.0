@@ -4,6 +4,7 @@ import type { ActivitySupport, AttemptStore } from "@/lib/lesson-engine/delivery
 import type { PracticeAttempt } from "@/lib/lesson-engine/production/practice";
 export type UnitRuntime = {
   store: AttemptStore;
+  readonly isExamRetry?: boolean;
   loadPractice: (id: string) => PracticeAttempt | null;
   savePractice: (attempt: PracticeAttempt) => void;
   speechToken: NonNullable<ActivitySupport["speechToken"]>;

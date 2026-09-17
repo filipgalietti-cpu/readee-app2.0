@@ -4,7 +4,7 @@ import { SaveQueue } from "@/lib/approved-unit/save-queue";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UnitRuntimeContext, type UnitRuntime } from "@/lib/approved-unit/runtime";
-import type { ApprovedLessonId } from "@/lib/approved-unit/catalogue";
+import { approvedLesson, type ApprovedLessonId } from "@/lib/approved-unit/catalogue";
 import type { AttemptSnapshot } from "@/lib/lesson-engine/delivery/types";
 import type { PracticeAttempt } from "@/lib/lesson-engine/production/practice";
 const loading = () => <p role="status">Opening your lesson…</p>;
@@ -54,7 +54,8 @@ export default function ApprovedUnitPlayer({
   const state = useRef<State>({}),
     queue = useRef<SaveQueue | null>(null),
     alive = useRef(true),
-    conflict = useRef(false);
+    conflict = useRef(false),
+    examRetry = useRef(false);
   const url = `/api/approved-unit/${lesson}`;
   async function flush() {
     if (!queue.current || conflict.current) return;
@@ -79,6 +80,7 @@ export default function ApprovedUnitPlayer({
       })
       .then((r) => {
         state.current = r.state;
+        examRetry.current = lesson === "k-unit-1-checkpoint" && !!r.result?.previousAttemptId;
         queue.current = new SaveQueue(r.revision, async (snapshot, revision) => {
           const r = await fetch(url, {
             method: "PUT",
@@ -113,7 +115,7 @@ export default function ApprovedUnitPlayer({
       ac.abort();
       window.removeEventListener("beforeunload", before);
     };
-  }, [url, child]);
+  }, [url, child, lesson]);
   const runtime = useMemo<UnitRuntime>(() => {
     let token: { token: string; region: string; expires: number } | undefined;
     async function service(payload: Record<string, unknown>, signal?: AbortSignal) {
@@ -133,6 +135,9 @@ export default function ApprovedUnitPlayer({
       void flush();
     }
     return {
+      get isExamRetry() {
+        return examRetry.current;
+      },
       store: {
         load: (id) => (state.current.lesson?.flowId === id ? state.current.lesson : null),
         save: (s) => {
@@ -160,7 +165,14 @@ export default function ApprovedUnitPlayer({
   const Player = players[lesson];
   async function exit() {
     await flush();
-    if (!queue.current?.dirty) router.push(`/learn/unit-one?child=${encodeURIComponent(child)}`);
+    if (!queue.current?.dirty) {
+      const completed = state.current.practice?.finished
+        ? (approvedLesson(lesson)?.standard ?? lesson)
+        : null;
+      router.push(
+        `/journey?child=${encodeURIComponent(child)}${completed ? `&completed=${encodeURIComponent(completed)}` : ""}`,
+      );
+    }
   }
   if (!ready)
     return (

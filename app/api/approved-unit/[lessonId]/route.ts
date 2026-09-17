@@ -1,3 +1,4 @@
+import { examRetry, type StoredExamResult } from "@/lib/approved-unit/exam-retry";
 import { isDeepStrictEqual } from "node:util";
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -40,7 +41,7 @@ export async function PUT(req: Request, { params }: Context) {
     if ("error" in a) return json({ error: "Lesson unavailable" }, a.error);
     const { data: prior, error } = await a.db
       .from("approved_unit_sessions")
-      .select("state,revision")
+      .select("state,revision,result")
       .eq("child_id", p.child)
       .eq("release_id", UNIT_VERSION)
       .eq("lesson_id", lessonId)
@@ -51,6 +52,11 @@ export async function PUT(req: Request, { params }: Context) {
       return json({ error: "This lesson changed in another tab. Reload to continue." }, 409);
     }
     const checked = validateState(lessonId, p.child, p.state, (prior?.state ?? {}) as SessionState);
+    if (lessonId === "k-unit-1-checkpoint" && checked.result && prior?.result) {
+      const previous = prior.result as StoredExamResult;
+      checked.result.history = previous.history ?? [];
+      checked.result.previousAttemptId = previous.previousAttemptId;
+    }
     const { data: revision, error: saveError } = await a.admin.rpc("save_approved_unit", {
       p_parent: a.user.id,
       p_child: p.child,
@@ -84,7 +90,8 @@ export async function POST(req: Request, { params }: Context) {
       p = z
         .object({
           child: z.uuid(),
-          kind: z.enum(["speech", "response"]),
+          kind: z.enum(["speech", "response", "retry-exam"]),
+          attemptId: z.uuid().optional(),
           rubricId: z.string().max(100).optional(),
           transcript: z.string().max(240).optional(),
           confidence: z.number().min(0).max(1).optional(),
@@ -93,7 +100,48 @@ export async function POST(req: Request, { params }: Context) {
     const { lessonId } = await params,
       a = await unitAccess(p.child, lessonId);
     if ("error" in a) return json({ error: "Lesson unavailable" }, a.error);
-    return await serveUnitSpeech(a.user.id, lessonId, p, p.child);
+    if (p.kind === "retry-exam") {
+      if (lessonId !== "k-unit-1-checkpoint" || !p.attemptId)
+        return json({ error: "Invalid exam" }, 400);
+      const { data: prior, error } = await a.db
+        .from("approved_unit_sessions")
+        .select("state,result,revision,completed")
+        .eq("child_id", p.child)
+        .eq("release_id", UNIT_VERSION)
+        .eq("lesson_id", lessonId)
+        .maybeSingle();
+      if (error) return json({ error: "Results unavailable" }, 503);
+      if (!prior?.completed) return json({ error: "Finish this exam first" }, 409);
+      let retry;
+      try {
+        retry = examRetry(
+          prior as { state: SessionState; result: StoredExamResult | null },
+          p.attemptId,
+        );
+      } catch {
+        return json({ error: "This exam changed. Reload to continue." }, 409);
+      }
+      if (!retry) return json({ revision: prior.revision });
+      const saved = await a.admin.rpc("save_approved_unit", {
+        p_parent: a.user.id,
+        p_child: p.child,
+        p_release: UNIT_VERSION,
+        p_lesson: lessonId,
+        p_revision: prior.revision,
+        p_state: retry.state,
+        p_completed: true,
+        p_result: retry.result,
+        p_carrots: 0,
+        p_standard: null,
+      });
+      if (saved.error)
+        return json(
+          { error: "The exam could not restart. Reload to continue." },
+          saved.error.code === "40001" ? 409 : 503,
+        );
+      return json({ revision: saved.data });
+    }
+    return await serveUnitSpeech(a.user.id, lessonId, { ...p, kind: p.kind }, p.child);
   } catch {
     return json({ error: "Luna could not check that answer" }, 503);
   }
