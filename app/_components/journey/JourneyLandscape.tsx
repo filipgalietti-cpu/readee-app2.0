@@ -180,7 +180,7 @@ export default function JourneyLandscape({
           <path d="M-40 440 Q50 340 120 405 T180 550 Q60 600 -40 550Z" fill="#cad9b9" />
         </>
       ) : (
-        <>
+        <g transform={g.width > 1000 ? `scale(${g.width / 1000} 1)` : undefined}>
           <path
             d="M-60 310 Q-10 108 160 140 Q260 30 452 112 Q641 56 772 75 Q942 6 1070 187 L1050 515 Q890 624 704 560 Q495 652 329 562 Q71 636 -60 455Z"
             fill="#d9d7bc"
@@ -218,7 +218,7 @@ export default function JourneyLandscape({
               strokeWidth="2.5"
             />
           </g>
-        </>
+        </g>
       )}
       <rect width={g.width} height={g.height} fill={`url(#paper-${theme})`} />
       <RegionalArtwork theme={theme} mobile={g.mobile} height={g.height} artAspect={artAspect} />
@@ -230,17 +230,17 @@ export default function JourneyLandscape({
             [40, g.height - 180, 0.65],
             [285, g.height - 75, 0.7],
           ]
-        : [
-            [100, 218, 1.05],
-            [165, 206, 0.75],
-            [435, 420, 0.8],
-            [530, 500, 1.1],
-            [580, 465, 0.75],
-            [770, 86, 0.8],
-            [955, 345, 1.1],
-            [905, 390, 0.8],
-            [40, 415, 0.8],
-          ]
+        : Array.from({ length: Math.ceil(g.width / 1000) }, (_, section) => [
+            [100 + section * 1000, 218, 1.05],
+            [165 + section * 1000, 206, 0.75],
+            [435 + section * 1000, 420, 0.8],
+            [530 + section * 1000, 500, 1.1],
+            [580 + section * 1000, 465, 0.75],
+            [770 + section * 1000, 86, 0.8],
+            [955 + section * 1000, 345, 1.1],
+            [905 + section * 1000, 390, 0.8],
+            [40 + section * 1000, 415, 0.8],
+          ]).flat()
       ).map(([x, y, size], i) => (
         <Tree
           key={i}
@@ -260,30 +260,35 @@ export default function JourneyLandscape({
             [290, 800],
             [195, g.height - 80],
           ]
-        : [
-            [190, 490],
-            [220, 495],
-            [390, 170],
-            [608, 305],
-            [645, 292],
-            [735, 475],
-            [90, 355],
-            [958, 235],
-          ]
+        : Array.from({ length: Math.ceil(g.width / 1000) }, (_, section) => [
+            [190 + section * 1000, 490],
+            [220 + section * 1000, 495],
+            [390 + section * 1000, 170],
+            [608 + section * 1000, 305],
+            [645 + section * 1000, 292],
+            [735 + section * 1000, 475],
+            [90 + section * 1000, 355],
+            [958 + section * 1000, 235],
+          ]).flat()
       ).map(([x, y], i) => (
         <Flower key={i} x={x} y={y} artAspect={artAspect} color={i % 2 ? "#c2a9d6" : "#e8c7b4"} />
       ))}
-      <g transform={g.mobile ? "translate(310 440)" : "translate(588 145)"}>
-        <ellipse cx="0" cy="19" rx="22" ry="5" fill="#768768" opacity=".2" />
-        <path d="M-19 12L-3 9L19 12V19L-3 17L-19 20Z" fill="#b99e79" />
-        <path
-          d="M-17 1Q-4-3 0 4Q10-4 20 0V13Q10 10 0 15Q-8 10-17 14Z"
-          fill="#fffaf0"
-          stroke="#a39177"
-          strokeWidth="1.5"
-        />
-        <path d="M0 4V15" stroke="#cec3ac" />
-      </g>
+      {Array.from({ length: g.mobile ? 1 : Math.ceil(g.width / 1000) }, (_, section) => (
+        <g
+          key={`book-${section}`}
+          transform={g.mobile ? "translate(310 440)" : `translate(${588 + section * 1000} 145)`}
+        >
+          <ellipse cx="0" cy="19" rx="22" ry="5" fill="#768768" opacity=".2" />
+          <path d="M-19 12L-3 9L19 12V19L-3 17L-19 20Z" fill="#b99e79" />
+          <path
+            d="M-17 1Q-4-3 0 4Q10-4 20 0V13Q10 10 0 15Q-8 10-17 14Z"
+            fill="#fffaf0"
+            stroke="#a39177"
+            strokeWidth="1.5"
+          />
+          <path d="M0 4V15" stroke="#cec3ac" />
+        </g>
+      ))}
     </svg>
   );
 }

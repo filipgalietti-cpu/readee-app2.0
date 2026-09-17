@@ -212,7 +212,8 @@ export default function JourneyAdventure({
                 >
                   {model.chapters.map((entry, index) => (
                     <option key={entry.id} value={index}>
-                      {entry.grade} · {entry.name} · {entry.part}/{entry.parts}
+                      {entry.name}
+                      {entry.parts > 1 ? ` · ${entry.part}/${entry.parts}` : ""}
                     </option>
                   ))}
                 </select>
@@ -313,7 +314,10 @@ export default function JourneyAdventure({
             <h2>{chapterDone ? "A chapter worth celebrating." : chapter.name}</h2>
             <p>
               {chapter.lessonIds.filter((id) => model.completed.has(id)).length} of{" "}
-              {chapter.lessonIds.length} lessons complete in this part.
+              {chapter.lessonIds.length}{" "}
+              {chapter.unitKey === "approved:k-unit-1"
+                ? "learning stops complete in this unit."
+                : "lessons complete in this part."}
             </p>
             <p>{chapter.reason}</p>
             <ul>
@@ -354,7 +358,11 @@ export default function JourneyAdventure({
             {rewardError && <p role="alert">We couldn’t save the keepsake. Please try again.</p>}
             {chapterIndex < model.chapters.length - 1 && (
               <button className={styles.primary} onClick={next}>
-                {chapterDone ? "Explore the next part" : "Look ahead"}{" "}
+                {chapterDone
+                  ? chapter.unitKey === "approved:k-unit-1"
+                    ? "Explore the next unit"
+                    : "Explore the next part"
+                  : "Look ahead"}{" "}
                 <Glyph name="arrow-right" size={18} />
               </button>
             )}

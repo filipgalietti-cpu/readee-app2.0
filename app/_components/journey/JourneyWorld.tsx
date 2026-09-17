@@ -1,5 +1,13 @@
 "use client";
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { animate, motion, useMotionValue } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -56,13 +64,15 @@ export default function JourneyWorld({
   const frame = useRef<HTMLDivElement>(null),
     canvas = useRef<HTMLDivElement>(null);
   const paths = useRef<(SVGPathElement | null)[]>([]);
-  const [width, setWidth] = useState(1000);
   const camera = useJourneyCamera(frame, reduced, onInterrupt);
   const lessons = useMemo(
     () => chapter.lessonIds.map((id) => fixture.definition.lessons.find((l) => l.lessonId === id)!),
     [chapter, fixture],
   );
   const geometry = useMemo(() => mapGeometry(lessons.length, false), [lessons.length]);
+  // Start at the geometry's native scale so a long unit never flashes as a
+  // compressed overview before ResizeObserver measures the viewport.
+  const [width, setWidth] = useState(geometry.width);
   const scale = width / geometry.width;
   const currentIndex = lessons.findIndex((l) => !completed.has(l.nodeId));
   const remainingLessons = lessons.filter((lesson) => !completed.has(lesson.nodeId)).length;
@@ -81,28 +91,39 @@ export default function JourneyWorld({
     if (!el) return;
     const observer = new ResizeObserver(([entry]) => {
       const { width: availableWidth, height } = entry.contentRect;
-      const proportionalWidth = (height * 1000) / 620;
-      // Desktop shows the complete chapter. Narrow screens explore the same
-      // readable scene horizontally, never a vertically clipped map.
+      const proportionalWidth = (height * geometry.width) / geometry.height;
+      // Compact chapters can fit in the available frame. A complete unit keeps
+      // each destination readable and uses the existing horizontal camera.
       setWidth(
-        availableWidth < 980 ? proportionalWidth : Math.min(availableWidth, proportionalWidth),
+        geometry.width > 1000
+          ? Math.max(availableWidth, proportionalWidth)
+          : availableWidth < 980
+            ? proportionalWidth
+            : Math.min(availableWidth, proportionalWidth),
       );
     });
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [geometry.height, geometry.width]);
+  const restSide = useCallback(
+    (point: Point) => {
+      const split = geometry.mobile ? 180 : geometry.width > 1000 ? geometry.width / 2 : 750;
+      return point.x < split ? 1 : -1;
+    },
+    [geometry.mobile, geometry.width],
+  );
   const rest = (index: number) => {
     const p = geometry.points[index];
-    const side = p.x < (geometry.mobile ? 180 : 750) ? 1 : -1;
+    const side = restSide(p);
     return { x: p.x * scale + side * (geometry.mobile ? 83 : 86), y: p.y * scale - 3 };
   };
   useEffect(() => {
     if (travel) return;
     const p = geometry.points[activePoint];
-    const side = p.x < (geometry.mobile ? 180 : 750) ? 1 : -1;
+    const side = restSide(p);
     bunnyX.set(p.x * scale + side * (geometry.mobile ? 83 : 86));
     bunnyY.set(p.y * scale - 3);
-  }, [activePoint, geometry, scale, travel, bunnyX, bunnyY]);
+  }, [activePoint, geometry, scale, travel, bunnyX, bunnyY, restSide]);
 
   useEffect(() => {
     if (phase === "insights") return;
@@ -127,8 +148,7 @@ export default function JourneyWorld({
     const pathLength = segment.getTotalLength();
     const from = geometry.points[fromIndex],
       to = geometry.points[toIndex];
-    const offset = (p: Point) =>
-      (p.x < (geometry.mobile ? 180 : 750) ? 1 : -1) * (geometry.mobile ? 83 : 86);
+    const offset = (p: Point) => restSide(p) * (geometry.mobile ? 83 : 86);
     bunnyX.set(from.x * scale + offset(from));
     bunnyY.set(from.y * scale - 3);
     camera.begin();
@@ -156,7 +176,7 @@ export default function JourneyWorld({
     return () => controls.stop();
     // Geometry changes cancel and restart travel from the same measured segment, never a second path formula.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [travel, geometry, scale, reduced, lessons]);
+  }, [travel, geometry, scale, reduced, lessons, restSide]);
   useEffect(() => {
     if (!landing) return;
     const timer = window.setTimeout(() => setLanding(false), 700);
@@ -168,7 +188,7 @@ export default function JourneyWorld({
   });
   const arrived = phase === "ready" || reduced;
   const show = (index: number) => ({
-    initial: reduced ? (false as const) : { opacity: 0, scale: 0.85, y: 16 },
+    initial: false as const,
     animate: { opacity: phase === "insights" ? 0 : 1, scale: 1, y: 0 },
     transition: { duration: reduced ? 0 : 0.35, delay: phase === "building" ? index * 0.32 : 0 },
   });
@@ -183,7 +203,7 @@ export default function JourneyWorld({
     >
       {intro}
       <div className={styles.worldCaption}>
-        <span>CHAPTER {fixture.chapters.indexOf(chapter) + 1}</span>
+        <span>{chapter.eyebrow ?? `CHAPTER ${fixture.chapters.indexOf(chapter) + 1}`}</span>
         <h2>{chapter.name}</h2>
         <p>{chapter.subtitle}</p>
       </div>
@@ -473,7 +493,7 @@ export default function JourneyWorld({
               completed.has(fixture.definition.lessons.find((l) => l.lessonId === id)!.nodeId),
             ).length
           }{" "}
-          of {chapter.lessonIds.length} chapter lessons complete
+          of {chapter.lessonIds.length} {chapter.progressLabel ?? "chapter lessons"} complete
         </span>
         {bunnyPresent && (
           <button onClick={() => camera.target(bunnyPoint.x, "settled", true)}>
