@@ -34,7 +34,7 @@ import { getCap } from "@/lib/content/caps";
 import { recordQcRun } from "@/lib/qc/auto-heal";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 const ASSET_KIND = "calibrated_mcq";
 const PROMPT_VERSION = "calibrated_mcq_v1";

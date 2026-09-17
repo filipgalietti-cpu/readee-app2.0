@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { sendWeeklyDigestBatch } from "@/lib/email/parent-digest";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300; // 5 min — enough for a few thousand sends
+export const maxDuration = 800; // Pro-plan ceiling — plenty for a few thousand sends
 
 /**
  * Weekly digest cron. Vercel cron hits this Monday 8am ET

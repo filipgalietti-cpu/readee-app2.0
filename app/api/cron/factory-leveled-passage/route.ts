@@ -34,8 +34,8 @@ import { getCap } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
 // Per-run can take 5+ minutes — 10 leveled passages × ~30s each plus
-// QC + image. Keep at the Vercel max for now.
-export const maxDuration = 300;
+// QC + image. 800s is the Pro-plan ceiling (Hobby stops at 300).
+export const maxDuration = 800;
 
 const ASSET_KIND = "leveled_passage";
 const PROMPT_VERSION = "leveled_v1";

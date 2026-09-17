@@ -29,7 +29,7 @@ import {
 import { getCap } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 // Fallback when the caps table somehow has no row for us (shouldn't
 // happen post-seed, but safe default).
