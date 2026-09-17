@@ -161,14 +161,13 @@ export default function JourneyWorld({
       duration: reduced ? 0 : 2.15,
       ease: "easeInOut",
       onUpdate: (t) => {
-        const moving = Math.max(0, Math.min(1, (t - 0.18) / 0.64));
+        const moving = Math.max(0, Math.min(1, t));
         const p = segment.getPointAtLength(pathLength * moving);
-        const departure = Math.max(0, 1 - t / 0.18),
-          arrival = Math.max(0, (t - 0.82) / 0.18);
-        bunnyX.set(p.x * scale + offset(from) * departure + offset(to) * arrival);
+        const sideOffset = offset(from) + (offset(to) - offset(from)) * moving;
+        bunnyX.set(p.x * scale + sideOffset);
         bunnyY.set(p.y * scale - 3);
         hop.set(reduced ? 0 : -Math.abs(Math.sin(moving * Math.PI * 4)) * 23);
-        drawing.set(Math.min(1, t * 1.6));
+        drawing.set(moving);
         camera.target(p.x * scale, "follow");
       },
       onComplete: () => {
