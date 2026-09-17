@@ -214,7 +214,7 @@ export default function JourneyWorld({
         data-camera={camera.mode}
         data-world-viewport
         tabIndex={0}
-        aria-label={`${chapter.name} adventure map. On a narrow screen, swipe sideways to explore. Use Back to bunny to return.`}
+        aria-label={`${chapter.name} adventure map. Swipe, scroll, or use the arrow buttons to explore the full path. Use Back to bunny to return.`}
       >
         <div
           ref={canvas}
@@ -495,12 +495,25 @@ export default function JourneyWorld({
           }{" "}
           of {chapter.lessonIds.length} {chapter.progressLabel ?? "chapter lessons"} complete
         </span>
-        {bunnyPresent && (
-          <button onClick={() => camera.target(bunnyPoint.x, "settled", true)}>
-            <Glyph name="target" size={17} />
-            Back to bunny
-          </button>
-        )}
+        <div className={styles.mapControls} aria-label="Explore the journey path">
+          {geometry.width > 1000 && (
+            <>
+              <button onClick={() => camera.nudge(-1)} aria-label="See earlier journey stops">
+                <Glyph name="arrow-left" size={18} />
+              </button>
+              <span>Scroll the path</span>
+              <button onClick={() => camera.nudge(1)} aria-label="See later journey stops">
+                <Glyph name="arrow-right" size={18} />
+              </button>
+            </>
+          )}
+          {bunnyPresent && (
+            <button onClick={() => camera.target(bunnyPoint.x, "settled", true)}>
+              <Glyph name="target" size={17} />
+              Back to bunny
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

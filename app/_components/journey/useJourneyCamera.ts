@@ -36,13 +36,20 @@ export function useJourneyCamera(
       )
         interrupt();
     };
-    node.addEventListener("wheel", interrupt, { passive: true });
+    const wheel = (event: WheelEvent) => {
+      interrupt();
+      if (node.scrollWidth <= node.clientWidth || Math.abs(event.deltaX) > Math.abs(event.deltaY))
+        return;
+      event.preventDefault();
+      node.scrollLeft += event.deltaY;
+    };
+    node.addEventListener("wheel", wheel, { passive: false });
     node.addEventListener("touchstart", interrupt, { passive: true });
     node.addEventListener("pointerdown", interrupt, { passive: true });
     node.addEventListener("keydown", key);
     return () => {
       stop();
-      node.removeEventListener("wheel", interrupt);
+      node.removeEventListener("wheel", wheel);
       node.removeEventListener("touchstart", interrupt);
       node.removeEventListener("pointerdown", interrupt);
       node.removeEventListener("keydown", key);
@@ -59,7 +66,10 @@ export function useJourneyCamera(
       Math.min(node.scrollWidth - node.clientWidth, x - node.clientWidth * 0.5),
     );
     if (reduced || requested === "follow") {
-      node.scrollTo({ left: reduced ? left : node.scrollLeft + (left - node.scrollLeft) * 0.08, top: 0 });
+      node.scrollTo({
+        left: reduced ? left : node.scrollLeft + (left - node.scrollLeft) * 0.08,
+        top: 0,
+      });
       return;
     }
     const start = node.scrollLeft,
@@ -76,5 +86,17 @@ export function useJourneyCamera(
     manual.current = false;
     setMode("follow");
   }, []);
-  return { mode, target, begin, interrupt };
+  function nudge(direction: -1 | 1) {
+    const node = viewport.current;
+    if (!node) return;
+    manual.current = true;
+    stop();
+    setMode("manual");
+    interruptCallback.current();
+    node.scrollBy({
+      left: direction * Math.max(260, node.clientWidth * 0.72),
+      behavior: reduced ? "auto" : "smooth",
+    });
+  }
+  return { mode, target, begin, interrupt, nudge };
 }
