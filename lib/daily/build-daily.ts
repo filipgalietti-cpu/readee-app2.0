@@ -35,6 +35,14 @@ import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate, isPinnedHoliday } from "@/lib/daily/themes";
 import { pickDaily, MEDIUM_PROMPT, isInformationalBucket, type Bucket, type DailyPick } from "@/lib/daily/catalog";
 import { inclusiveHolidayFor } from "@/lib/daily/holidays-inclusive";
+import {
+  EASY_ABSOLUTE_MIN_WORDS,
+  FULL_LENGTH_RETRIES,
+  FULL_MAX_WORDS,
+  FULL_MIN_WORDS,
+  easyRenditionLengths,
+  wordCount,
+} from "@/lib/daily/lengths";
 import { trackError, trackSignal } from "@/lib/observability/track";
 import { runAutoHealLoop, type Finding, type Healer } from "@/lib/qc/auto-heal";
 import {
@@ -252,10 +260,10 @@ function informationalRow(bucket: string | null | undefined): boolean | undefine
 
 /**
  * K-1 "easy rendition" of an existing daily passage: same topic, same
- * true facts (nonfiction) or story beats (fiction), told in 55-85
- * words of short decodable sentences, with 3 K-1 MCQs and its own TTS
- * narration. Reuses the exact generators + QC judges the base
- * rendition uses (with a K-1 level hint).
+ * true facts (nonfiction) or story beats (fiction), told in about half
+ * the base passage's words (see lib/daily/lengths.ts) in short decodable
+ * sentences, with 3 K-1 MCQs and its own TTS narration. Reuses the exact
+ * generators + QC judges the base rendition uses (with a K-1 level hint).
  *
  * Filip's article-a-day rule applies: this must NEVER block the day.
  * One QC failure regenerates with the judge's feedback folded in; a
@@ -274,6 +282,12 @@ export async function generateEasyRendition(opts: {
 }): Promise<DailyEasyVariant | null> {
   const { teacherId, baseTitle, baseBody, dateStr, isInformational } = opts;
 
+  // Sized against the passage it actually got, not a fixed band. A flat 55-85
+  // overlapped the full read whenever the full read came in short: 2026-09-17
+  // shipped 67 words against 58 and the Short/Full toggle changed nothing.
+  const baseWords = wordCount(baseBody);
+  const { target: easyTarget, ceiling: easyCeiling } = easyRenditionLengths(baseWords);
+
   const easyBrief = [
     SAFETY_PREAMBLE,
     "",
@@ -281,7 +295,7 @@ export async function generateEasyRendition(opts: {
     "Write an EASY rendition of the SAME topic for kindergarten and 1st grade readers.",
     "",
     "Hard rules for the easy rendition:",
-    "- 55-85 words total.",
+    `- About ${easyTarget} words, never more than ${easyCeiling}. The base passage is ${baseWords} words; this rendition must be visibly shorter and simpler, not a light edit of it. Keep only the most important facts or story beats.`,
     "- Short decodable sentences, 8 words or fewer each.",
     "- Simple high-frequency vocabulary a K-1 reader can decode.",
     "- Keep the SAME topic: the same true facts if informational, the same story beats and characters if narrative. Do not invent new facts or new plot.",
@@ -313,15 +327,15 @@ export async function generateEasyRendition(opts: {
     const easyBody = passageRes.passage.passage;
 
     // Deterministic gate before spending judge credits: word window
-    // (tolerance around the 55-85 spec) + sentence length.
-    const words = easyBody.split(/\s+/).filter(Boolean).length;
+    // relative to the base passage + sentence length.
+    const words = wordCount(easyBody);
     const sentences = easyBody
       .split(/[.!?]+/)
       .map((s) => s.split(/\s+/).filter(Boolean).length)
       .filter((n) => n > 0);
     const longest = sentences.length ? Math.max(...sentences) : 0;
-    if (words < 45 || words > 100 || longest > 12) {
-      feedback = `IMPORTANT — the previous attempt broke the length rules: ${words} words (need 55-85) with a ${longest}-word sentence (every sentence must be 8 words or fewer). Fix both.`;
+    if (words < EASY_ABSOLUTE_MIN_WORDS || words > easyCeiling || longest > 12) {
+      feedback = `IMPORTANT — the previous attempt broke the length rules: ${words} words with a ${longest}-word sentence. The base passage is ${baseWords} words, so this rendition must be about ${easyTarget} words and never more than ${easyCeiling}, with every sentence 8 words or fewer. Fix both.`;
       continue;
     }
 
@@ -717,22 +731,26 @@ ${theme.topic}${avoidBlock}`;
   // ‼️ Enforce the length tier, because nothing else did.
   //
   // The full read is generated at 2nd grade / medium = 100-150 words, and the
-  // easy rendition targets 55-85. Those bands do not overlap, so the toggle is
-  // only meaningful while the full passage actually reaches its window. On
+  // easy rendition is about half of whatever the full read turns out to be. The
+  // toggle is only meaningful while the full passage reaches its window. On
   // 2026-09-06 it came out at 75 words - below its own floor and inside the easy
   // band - and Short read and Full read were indistinguishable. Nothing noticed,
   // because length was never checked after generation.
   //
-  // One retry with the miss stated plainly. If it still falls short we ship it:
-  // a slightly short passage beats no daily, and Filip's rule is that an article
-  // ships every day.
-  const FULL_MIN_WORDS = 100;
-  const wordCount = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
-  if (wordCount(passageBody) < FULL_MIN_WORDS) {
-    console.warn(`[daily] ${dateStr}: full passage ${wordCount(passageBody)}w, below ${FULL_MIN_WORDS}; retrying`);
+  // Up to three retries with the miss stated plainly, keeping the longest
+  // attempt. One retry was not enough: 2026-09-17 retried once and still shipped
+  // 67 words. If it stays short we ship it anyway - an article goes out every
+  // day - and the easy rendition is sized against whatever length we got.
+  for (
+    let attempt = 1;
+    attempt <= FULL_LENGTH_RETRIES && wordCount(passageBody) < FULL_MIN_WORDS;
+    attempt++
+  ) {
+    const have = wordCount(passageBody);
+    console.warn(`[daily] ${dateStr}: full passage ${have}w, below ${FULL_MIN_WORDS}; retry ${attempt}/${FULL_LENGTH_RETRIES}`);
     const retry = await generatePassage({
       teacherId,
-      topic: `${datedTopic}\n\nThe previous attempt was ${wordCount(passageBody)} words, which is too short. Write ${FULL_MIN_WORDS}-150 words this time: keep the same subject and add real detail rather than padding.`,
+      topic: `${datedTopic}\n\nThe previous attempt was ${have} words, which is TOO SHORT. This is the FULL read and must be ${FULL_MIN_WORDS}-${FULL_MAX_WORDS} words; a separate shorter version exists for younger readers. Keep the same subject and facts, and reach the length with real specific detail - what something looked like, what happened next, why it matters - never with filler or by repeating yourself.`,
       gradeLevel,
       phonicsPattern: null,
       lengthLevel: "medium",
@@ -741,8 +759,15 @@ ${theme.topic}${avoidBlock}`;
     if (retry.ok && wordCount(retry.passage.passage) > wordCount(passageBody)) {
       passageTitle = retry.passage.title;
       passageBody = retry.passage.passage;
-      console.info(`[daily] ${dateStr}: retry gave ${wordCount(passageBody)}w`);
+      console.info(`[daily] ${dateStr}: retry ${attempt} gave ${wordCount(passageBody)}w`);
     }
+  }
+  if (wordCount(passageBody) < FULL_MIN_WORDS) {
+    trackSignal("daily full read shipped below its word floor", {
+      route: "daily-question.length",
+      level: "warning",
+      extra: { date: dateStr, words: wordCount(passageBody), floor: FULL_MIN_WORDS },
+    });
   }
 
   // 2) Questions — three MCQs, the first becomes the surfaced one,
@@ -1313,7 +1338,12 @@ export async function targetedPassageRegen(opts: {
   // the next pass treat them as hard constraints without changing
   // the generator signature.
   const theme = String((row as any).theme ?? "");
-  const reasons = passageFailReasons.map((c) => `${c.name}: ${c.message}`).join(" ");
+  // A length miss only reports at warn, so it never triggers this healer on its
+  // own. When the healer runs for another reason, fix the length in the same pass.
+  const lengthMiss = checks.find((c) => c.name === "passage.length" && c.severity !== "pass");
+  const reasons = [...passageFailReasons, ...(lengthMiss ? [lengthMiss] : [])]
+    .map((c) => `${c.name}: ${c.message}`)
+    .join(" ");
   const constraintBlock = [
     `IMPORTANT — the previous attempt at this topic failed quality review:`,
     reasons,
@@ -1324,18 +1354,36 @@ export async function targetedPassageRegen(opts: {
     `If learning_objective was flagged or the passage taught nothing concrete, focus on ONE teachable idea.`,
   ].join(" ");
 
+  // "medium", not "short": this rewrites the FULL read. At the short tier every
+  // healed passage landed inside the easy rendition's range by construction,
+  // and nothing here checked length, so a heal silently undid the build's floor.
+  const fullLengthRule = `This is the FULL read and must be ${FULL_MIN_WORDS}-${FULL_MAX_WORDS} words; a separate shorter version exists for younger readers.`;
   const passageRes = await generatePassage({
     teacherId,
-    topic: `${theme}. ${constraintBlock}`,
+    topic: `${theme}. ${constraintBlock} ${fullLengthRule}`,
     gradeLevel: "2nd",
-    lengthLevel: "short",
+    lengthLevel: "medium",
     trustedSystem: true,
   });
   if (!passageRes.ok) {
     return { ok: false, error: `passage regen: ${passageRes.error}` };
   }
-  const newTitle = passageRes.passage.title;
-  const newBody = passageRes.passage.passage;
+  let newTitle = passageRes.passage.title;
+  let newBody = passageRes.passage.passage;
+  for (let attempt = 1; attempt <= FULL_LENGTH_RETRIES && wordCount(newBody) < FULL_MIN_WORDS; attempt++) {
+    const retry = await generatePassage({
+      teacherId,
+      topic: `${theme}. ${constraintBlock} ${fullLengthRule} The previous attempt was ${wordCount(newBody)} words, TOO SHORT. Keep the same subject and facts, and reach the length with real specific detail rather than filler.`,
+      gradeLevel: "2nd",
+      lengthLevel: "medium",
+      trustedSystem: true,
+    });
+    if (retry.ok && wordCount(retry.passage.passage) > wordCount(newBody)) {
+      newTitle = retry.passage.title;
+      newBody = retry.passage.passage;
+    }
+  }
+  console.info(`[daily] passage-heal ${dateStr}: ${wordCount(newBody)}w`);
 
   // Regen audio to match new passage text. Reuse the storage URL
   // returned by generateSpeech — daily TTS isn't pinned to a
