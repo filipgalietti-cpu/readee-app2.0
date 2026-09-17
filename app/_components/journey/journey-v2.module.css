@@ -2618,7 +2618,9 @@
   height: 100dvh;
   border: 0;
   border-radius: 0;
-  background: #2d1b3d;
+  background: rgba(94, 74, 110, 0.5);
+  -webkit-backdrop-filter: blur(2px) saturate(0.88);
+  backdrop-filter: blur(2px) saturate(0.88);
   color: #fffdf8;
   display: grid;
   place-items: center;
@@ -2636,7 +2638,7 @@
   width: min(86vw, 840px);
   height: 92%;
   translate: -50% 0;
-  background: #3c2850;
+  background: rgba(164, 134, 183, 0.28);
   clip-path: polygon(38% 0, 62% 0, 94% 100%, 6% 100%);
 }
 .magicCover::after {
@@ -2647,8 +2649,8 @@
   right: 0;
   bottom: 0;
   height: 18%;
-  background: #21132d;
-  border-top: 2px solid #a98abe;
+  background: rgba(73, 53, 85, 0.42);
+  border-top: 2px solid rgba(221, 199, 232, 0.72);
 }
 .magicPresentation {
   position: relative;
@@ -2687,7 +2689,7 @@
   display: block;
   padding: 2px 18px 4px;
   border-radius: 999px;
-  background: #21132d;
+  background: rgba(54, 35, 67, 0.78);
   font-family: var(--font-baloo), sans-serif;
   font-size: clamp(27px, 3.2vw, 43px);
   font-weight: 700;
