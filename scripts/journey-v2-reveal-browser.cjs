@@ -1,65 +1,108 @@
 /* eslint-disable @typescript-eslint/no-require-imports -- Standalone local browser regression check. */
-const { chromium, expect } = require('@playwright/test');
+const { chromium, expect } = require("@playwright/test");
+const base = process.env.JOURNEY_V2_URL || "http://127.0.0.1:3443/demo/journey-v2";
 
 async function run() {
   const browser = await chromium.launch();
   const errors = [];
   try {
-    for (const [width, height] of [[1440, 900], [390, 844]]) {
+    for (const [width, height] of [
+      [1440, 900],
+      [390, 844],
+    ]) {
       const page = await browser.newPage({ viewport: { width, height } });
-      page.on('pageerror', (error) => errors.push(error.message));
-      await page.goto('http://127.0.0.1:3443/demo/journey-v2');
-      await page.getByRole('button', { name: 'Skip animation', exact: true }).click();
-      await expect(page.locator('[data-reveal-card]')).toHaveCount(0);
+      page.on("pageerror", (error) => errors.push(error.message));
+      await page.goto(base);
+      await page.getByRole("button", { name: "Skip animation", exact: true }).click();
+      await expect(page.locator("[data-reveal-card]")).toHaveCount(0);
       for (let replay = 0; replay < 2; replay++) {
-        await page.getByLabel('Journey review controls', { exact: true }).click();
-        await page.getByRole('button', { name: 'Replay the reveal' }).click();
-        await page.getByLabel('Journey review controls', { exact: true }).click();
+        await page.getByLabel("Journey review controls", { exact: true }).click();
+        await page.getByRole("button", { name: "Replay the reveal" }).click();
+        await page.getByLabel("Journey review controls", { exact: true }).click();
         // Observe through the complete stagger, including Framer's final transform cleanup.
         const samples = await page.evaluate(async () => {
           const frames = [];
           for (let i = 0; i < 30; i++) {
-            const card = document.querySelector('[data-reveal-card]');
-            frames.push([...card.querySelectorAll('dl > div')].map((row) => {
-              const r = row.getBoundingClientRect();
-              const icon = row.querySelector('dt > span').getBoundingClientRect();
-              return { x: icon.x - r.x, y: icon.y - r.y };
-            }));
+            const card = document.querySelector("[data-reveal-card]");
+            frames.push(
+              [...card.querySelectorAll("dl > div")].map((row) => {
+                const r = row.getBoundingClientRect();
+                const icon = row.querySelector("dt > span").getBoundingClientRect();
+                return { x: icon.x - r.x, y: icon.y - r.y };
+              }),
+            );
             await new Promise((resolve) => setTimeout(resolve, 40));
           }
           return frames;
         });
         for (let row = 0; row < 3; row++) {
-          for (const axis of ['x', 'y']) {
+          for (const axis of ["x", "y"]) {
             const values = samples.map((frame) => frame[row][axis]);
             expect(Math.max(...values) - Math.min(...values)).toBeLessThan(1);
           }
         }
         await page.screenshot({ path: `/tmp/journey-reveal-stable-${width}.png` });
-        await page.getByRole('button', { name: 'Build my journey', exact: true }).click();
-        await expect(page.locator('[data-magic-cover]')).toBeVisible();
-        await expect(page.locator('[data-reveal-card]')).toHaveCount(0);
-        await expect(page.getByRole('button', { name: 'Skip animation', exact: true })).toHaveCount(0);
+        await page.getByRole("button", { name: "Build my journey", exact: true }).click();
+        await expect(page.locator("[data-magic-cover]")).toBeVisible();
+        await expect(page.locator("[data-reveal-card]")).toHaveCount(0);
+        await expect(page.getByRole("button", { name: "Skip animation", exact: true })).toHaveCount(
+          0,
+        );
         if (replay === 0) {
-          await page.getByRole('button', { name: 'Show reading journey now' }).click();
+          await page.getByRole("button", { name: "Show reading journey now" }).click();
+          const cameraTour = await page.evaluate(async () => {
+            const samples = [];
+            for (let index = 0; index < 34; index += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 160));
+              const viewport = document.querySelector("[data-world-viewport]");
+              samples.push({
+                left: viewport.scrollLeft,
+                revealed: [
+                  ...document.querySelectorAll("article,[class*=checkpoint],[class*=milestone]"),
+                ].filter((element) => Number(getComputedStyle(element).opacity) > 0.5).length,
+              });
+            }
+            return samples;
+          });
+          const furthest = Math.max(...cameraTour.map((sample) => sample.left));
+          const furthestIndex = cameraTour.findIndex((sample) => sample.left === furthest);
+          const outwardSteps = cameraTour
+            .slice(0, furthestIndex + 1)
+            .map((sample, index, samples) =>
+              index === 0 ? 0 : sample.left - samples[index - 1].left,
+            )
+            .filter((distance) => distance > 2)
+            .slice(1, -1);
+          expect(furthest).toBeGreaterThan(cameraTour[0].left + 300);
+          expect(Math.max(...outwardSteps) / Math.min(...outwardSteps)).toBeLessThan(1.6);
+          expect(cameraTour.at(-1).left).toBeLessThan(furthest - 100);
+          for (let index = 1; index < cameraTour.length; index += 1)
+            expect(cameraTour[index].revealed).toBeGreaterThanOrEqual(
+              cameraTour[index - 1].revealed,
+            );
         } else {
-          await expect(page.locator('.mt-play')).toHaveCount(1);
+          await expect(page.locator(".mt-play")).toHaveCount(1);
         }
-        await expect(page.locator('[data-magic-cover]')).toHaveCount(0, { timeout: 12000 });
-        await expect(page.locator('[data-phase=ready]')).toHaveCount(1, { timeout: 5000 });
-        await expect(page.getByRole('button', { name: 'Let’s begin', exact: true })).toBeVisible();
+        await expect(page.locator("[data-magic-cover]")).toHaveCount(0, { timeout: 12000 });
+        await expect(page.locator("[data-phase=ready]")).toHaveCount(1, { timeout: 5000 });
+        await expect(page.getByRole("button", { name: "Let’s begin", exact: true })).toBeVisible();
       }
-      console.log(`PASS ${width}×${height}: stable icons, repeated reveal, ordered exit/build, skip and finish`);
+      console.log(
+        `PASS ${width}×${height}: stable icons, repeated reveal, ordered exit/build, skip and finish`,
+      );
       await page.close();
     }
-    const page = await browser.newPage({ reducedMotion: 'reduce' });
-    await page.goto('http://127.0.0.1:3443/demo/journey-v2');
-    await expect(page.locator('[data-phase=ready]')).toHaveCount(1);
-    await expect(page.locator('[data-reveal-card]')).toHaveCount(0);
+    const page = await browser.newPage({ reducedMotion: "reduce" });
+    await page.goto(base);
+    await expect(page.locator("[data-phase=ready]")).toHaveCount(1);
+    await expect(page.locator("[data-reveal-card]")).toHaveCount(0);
     expect(errors).toEqual([]);
-    console.log('PASS reduced motion; no browser runtime errors');
+    console.log("PASS reduced motion; no browser runtime errors");
   } finally {
     await browser.close();
   }
 }
-run().catch((error) => { console.error(error); process.exitCode = 1; });
+run().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

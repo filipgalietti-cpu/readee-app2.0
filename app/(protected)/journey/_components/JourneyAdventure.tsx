@@ -16,6 +16,7 @@ import JourneyMagicReveal from "@/app/_components/journey/JourneyMagicReveal";
 import type { buildAdventureView } from "@/lib/journey/adventure-view";
 import { UNIT_EXAM_ID } from "@/lib/approved-unit/gateway";
 import { journeyReturnTransition } from "@/lib/journey/return-transition";
+import { journeyRevealDurationMs } from "@/lib/journey/reveal-timing";
 import { audioManager } from "@/lib/audio/audio-manager";
 import JourneyPlanDialog from "./JourneyPlanDialog";
 import styles from "@/app/_components/journey/journey-v2.module.css";
@@ -72,6 +73,7 @@ export default function JourneyAdventure({
   const [returnedCompletion, setReturnedCompletion] = useState<string | null>(null);
   const openingKey = `readee:journey-adventure:${childId}:${placementId ?? "none"}`;
   const actualPhase = reduced ? "ready" : phase;
+  const revealPointCount = (chapter?.lessonIds.length ?? 0) + 3;
   const chapterDone = !!chapter && chapter.lessonIds.every((id) => model.completed.has(id));
   const unitDone = !!chapter && chapter.unitLessonIds.every((id) => model.completed.has(id));
   const rewardClaimed = !!chapter?.rewardId && openedChests.includes(chapter.rewardId);
@@ -99,9 +101,14 @@ export default function JourneyAdventure({
       } catch {
         /* Optional UI storage. */
       }
-    }, 3200);
+    }, journeyRevealDurationMs(revealPointCount));
     return () => clearTimeout(timer);
-  }, [actualPhase, openingKey]);
+  }, [actualPhase, openingKey, revealPointCount]);
+  useEffect(() => {
+    if (actualPhase !== "building" || reduced || !soundOn) return;
+    const cancel = audioManager.playJourneyRevealSteps(revealPointCount);
+    return cancel;
+  }, [actualPhase, reduced, revealPointCount, soundOn]);
   useEffect(() => {
     if (returnedCompletion === justCompleted || !transition.travel || !justCompleted) return;
     setReturnedCompletion(justCompleted);

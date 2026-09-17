@@ -82,6 +82,36 @@ export function useJourneyCamera(
     };
     frame.current = requestAnimationFrame(tick);
   }
+  function jump(x: number, requested: CameraMode = "reveal") {
+    const node = viewport.current;
+    if (!node) return;
+    manual.current = false;
+    stop();
+    setMode(requested);
+    node.scrollTo({
+      left: Math.max(0, Math.min(node.scrollWidth - node.clientWidth, x - node.clientWidth * 0.5)),
+      top: 0,
+    });
+  }
+  function tour(fromX: number, toX: number, durationMs: number) {
+    const node = viewport.current;
+    if (!node) return;
+    manual.current = false;
+    stop();
+    setMode("reveal");
+    const scrollFor = (center: number) =>
+      Math.max(0, Math.min(node.scrollWidth - node.clientWidth, center - node.clientWidth * 0.5));
+    const fromLeft = scrollFor(fromX);
+    const toLeft = scrollFor(toX);
+    const started = performance.now();
+    node.scrollTo({ left: fromLeft, top: 0 });
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - started) / Math.max(1, durationMs));
+      node.scrollTo({ left: fromLeft + (toLeft - fromLeft) * progress, top: 0 });
+      if (progress < 1 && !manual.current) frame.current = requestAnimationFrame(tick);
+    };
+    frame.current = requestAnimationFrame(tick);
+  }
   const begin = useCallback(() => {
     manual.current = false;
     setMode("follow");
@@ -98,5 +128,5 @@ export function useJourneyCamera(
       behavior: reduced ? "auto" : "smooth",
     });
   }
-  return { mode, target, begin, interrupt, nudge };
+  return { mode, target, jump, tour, begin, interrupt, nudge };
 }

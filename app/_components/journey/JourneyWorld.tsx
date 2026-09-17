@@ -18,6 +18,7 @@ import type {
   AdventureChapter,
   AdventureReader,
 } from "@/lib/journey/adventure-view";
+import { JOURNEY_REVEAL_STEP_MS, JOURNEY_REVEAL_STEP_SECONDS } from "@/lib/journey/reveal-timing";
 import { mapGeometry, type Point } from "./geometry";
 import { useJourneyCamera } from "./useJourneyCamera";
 import JourneyLandscape, { CheckpointLandmark, MilestoneLandmark } from "./JourneyLandscape";
@@ -125,14 +126,29 @@ export default function JourneyWorld({
     bunnyY.set(p.y * scale - 3);
   }, [activePoint, geometry, scale, travel, bunnyX, bunnyY, restSide]);
 
+  const introVisible = Boolean(intro);
+  useEffect(() => {
+    if (!introVisible || reduced || travel) return;
+    camera.jump(geometry.points[0].x * scale);
+    // The magician hides this reset so the visible reveal can be one continuous forward pan.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [introVisible, reduced, travel, geometry, scale]);
+
   useEffect(() => {
     if (phase === "insights") return;
     // Travel owns the camera from departure through arrival. Starting a second
     // settle animation toward the newly-completed model is what made the view
     // snap forward, back to the bunny, and forward again.
     if (travel) return;
-    if (phase === "building" && !reduced) camera.target(geometry.points[0].x * scale, "reveal");
-    else camera.target(geometry.points[activePoint].x * scale, "settled");
+    if (phase === "building" && !reduced) {
+      camera.tour(
+        geometry.points[0].x * scale,
+        geometry.points.at(-1)!.x * scale,
+        (geometry.points.length - 1) * JOURNEY_REVEAL_STEP_MS,
+      );
+      return;
+    }
+    camera.target(geometry.points[activePoint].x * scale, "settled");
     // Settle on chapter/viewport changes, never on camera state updates or by moving focus.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, geometry, activePoint, reduced, travel]);
@@ -193,7 +209,10 @@ export default function JourneyWorld({
   const show = (index: number) => ({
     initial: false as const,
     animate: { opacity: phase === "insights" ? 0 : 1, scale: 1, y: 0 },
-    transition: { duration: reduced ? 0 : 0.35, delay: phase === "building" ? index * 0.32 : 0 },
+    transition: {
+      duration: reduced ? 0 : 0.35,
+      delay: phase === "building" ? index * JOURNEY_REVEAL_STEP_SECONDS : 0,
+    },
   });
   const movingFrom = travel ? lessons.findIndex((l) => l.lessonId === travel.from) + 1 : -1;
   const bunnyPoint = rest(activePoint);
