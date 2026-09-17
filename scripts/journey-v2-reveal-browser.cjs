@@ -65,7 +65,16 @@ async function run() {
             return samples;
           });
           const furthest = Math.max(...cameraTour.map((sample) => sample.left));
+          const furthestIndex = cameraTour.findIndex((sample) => sample.left === furthest);
+          const outwardSteps = cameraTour
+            .slice(0, furthestIndex + 1)
+            .map((sample, index, samples) =>
+              index === 0 ? 0 : sample.left - samples[index - 1].left,
+            )
+            .filter((distance) => distance > 2)
+            .slice(1, -1);
           expect(furthest).toBeGreaterThan(cameraTour[0].left + 300);
+          expect(Math.max(...outwardSteps) / Math.min(...outwardSteps)).toBeLessThan(1.6);
           expect(cameraTour.at(-1).left).toBeLessThan(furthest - 100);
           for (let index = 1; index < cameraTour.length; index += 1)
             expect(cameraTour[index].revealed).toBeGreaterThanOrEqual(

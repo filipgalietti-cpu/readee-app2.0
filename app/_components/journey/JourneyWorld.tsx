@@ -126,6 +126,14 @@ export default function JourneyWorld({
     bunnyY.set(p.y * scale - 3);
   }, [activePoint, geometry, scale, travel, bunnyX, bunnyY, restSide]);
 
+  const introVisible = Boolean(intro);
+  useEffect(() => {
+    if (!introVisible || reduced || travel) return;
+    camera.jump(geometry.points[0].x * scale);
+    // The magician hides this reset so the visible reveal can be one continuous forward pan.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [introVisible, reduced, travel, geometry, scale]);
+
   useEffect(() => {
     if (phase === "insights") return;
     // Travel owns the camera from departure through arrival. Starting a second
@@ -133,17 +141,12 @@ export default function JourneyWorld({
     // snap forward, back to the bunny, and forward again.
     if (travel) return;
     if (phase === "building" && !reduced) {
-      camera.begin();
-      camera.target(geometry.points[0].x * scale, "reveal", true);
-      const tour = geometry.points
-        .slice(1)
-        .map((point, index) =>
-          window.setTimeout(
-            () => camera.target(point.x * scale, "reveal"),
-            (index + 1) * JOURNEY_REVEAL_STEP_MS,
-          ),
-        );
-      return () => tour.forEach((timer) => window.clearTimeout(timer));
+      camera.tour(
+        geometry.points[0].x * scale,
+        geometry.points.at(-1)!.x * scale,
+        (geometry.points.length - 1) * JOURNEY_REVEAL_STEP_MS,
+      );
+      return;
     }
     camera.target(geometry.points[activePoint].x * scale, "settled");
     // Settle on chapter/viewport changes, never on camera state updates or by moving focus.
