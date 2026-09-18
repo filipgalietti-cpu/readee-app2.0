@@ -590,8 +590,15 @@ function PlanCard({ copy, reduced }: CardProps) {
         <motion.p className="mt-3 hidden text-sm text-zinc-500 @2xl:mt-6 @2xl:block" {...rise(reduced, 0.3)}>
           {p.projection}
         </motion.p>
-        <motion.div className="relative mt-2 hidden h-52 w-52 @2xl:ml-12 @2xl:block" {...rise(reduced, 0.45)}>
-          <Image src="/images/ui/bunny-reading.png" alt="" fill sizes="208px" className="object-contain" />
+        {/* ‼️ Filip: the bunny "should be better position there is alot of dead
+            space". It sat in a fixed 208 square, pushed 48px off the left edge
+            of its column, with object-contain letterboxing the artwork inside
+            that square. So the column carried a 208px block of which the bunny
+            used a fraction, and the rest was a margin. It now spans the column
+            and is capped by height instead, which is what the art was drawn
+            for. */}
+        <motion.div className="relative mt-2 hidden h-44 w-full @2xl:block" {...rise(reduced, 0.45)}>
+          <Image src="/images/ui/bunny-reading.png" alt="" fill sizes="(min-width: 1280px) 320px, 240px" className="object-contain object-center" />
         </motion.div>
       </div>
 
