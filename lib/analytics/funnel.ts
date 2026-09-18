@@ -45,7 +45,13 @@ export type FunnelEvent =
   | "funnel.first_lesson_complete"
   | "funnel.trial_started"
   | "funnel.subscription_active"
-  | "funnel.subscription_canceled";
+  | "funnel.subscription_canceled"
+  /** Public Free Reading Library (learn.readee.app/community): a logged-out
+   *  visitor opened a story page. `gated` = the second-story signup gate showed. */
+  | "library.story_view"
+  | "library.gate_view"
+  /** Any library CTA click (header, story card, gate). `placement` says which. */
+  | "library.cta_click";
 
 export type FunnelProps = Record<string, string | number | boolean | null | undefined>;
 

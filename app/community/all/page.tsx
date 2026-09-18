@@ -3,14 +3,16 @@ import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { CoverFallback } from "@/app/_components/EmptyState";
 import { Glyph } from "@/app/_components/Glyph";
+import LibraryCta from "../_components/LibraryCta";
+import { PUBLIC_KIND_FILTER } from "../_lib/public-filter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "All Community Reading Passages - Readee",
+  title: "All Free Reading Passages - Readee",
   description:
-    "Browse every approved K-4 reading passage in the Readee community library. Free, child-safe, with audio and comprehension questions.",
+    "Browse every K-4 reading passage in the Readee Free Reading Library. Free, with read-aloud audio and comprehension questions.",
   alternates: { canonical: "/community/all" },
   robots: { index: true, follow: true },
 };
@@ -32,6 +34,7 @@ export default async function CommunityAllPage({
       "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at",
     )
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .not("slug", "is", null);
   if (query) {
     const safe = query.replace(/[%_]/g, "");
@@ -88,12 +91,7 @@ export default async function CommunityAllPage({
             >
               Sign in
             </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-violet-700 sm:text-sm"
-            >
-              Try Readee free
-            </Link>
+            <LibraryCta placement="library-all-header" compact />
           </div>
         </div>
       </header>
@@ -104,10 +102,10 @@ export default async function CommunityAllPage({
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-700"
         >
           <Glyph name="arrow-left" size={14} />
-          Community library
+          Free reading library
         </Link>
         <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          All community passages
+          All passages
         </h1>
         <p className="mt-1 text-sm text-zinc-500">
           {items.length.toLocaleString()}{" "}

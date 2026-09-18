@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { CoverFallback } from "@/app/_components/EmptyState";
 import { Glyph } from "@/app/_components/Glyph";
+import LibraryCta from "../../_components/LibraryCta";
+import { PUBLIC_KIND_FILTER } from "../../_lib/public-filter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -32,12 +34,12 @@ export async function generateMetadata({
     return { title: "Not found", robots: { index: false, follow: false } };
   }
   return {
-    title: `${g.label} Reading Passages - Readee Community`,
-    description: `Free ${g.label.toLowerCase()} reading passages with comprehension questions, audio, and illustrations. Made and shared by Readee families.`,
+    title: `${g.label} Reading Passages - Readee Free Reading Library`,
+    description: `Free ${g.label.toLowerCase()} reading passages with comprehension questions, read-aloud audio and illustrations. Made by Readee.`,
     alternates: { canonical: `/community/grade/${grade.toLowerCase()}` },
     openGraph: {
-      title: `${g.label} reading passages - Readee Community`,
-      description: `Child-safe ${g.label.toLowerCase()} reading passages from real Readee families.`,
+      title: `${g.label} reading passages - Readee Free Reading Library`,
+      description: `Free ${g.label.toLowerCase()} reading passages with audio and questions, made by Readee.`,
       type: "website",
       url: `/community/grade/${grade.toLowerCase()}`,
     },
@@ -68,6 +70,7 @@ export default async function CommunityGradePage({
       "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at",
     )
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .eq("grade_level", g.key)
     .not("slug", "is", null);
   if (activeTopic) {
@@ -158,12 +161,7 @@ export default async function CommunityGradePage({
             >
               Sign in
             </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-violet-700 sm:text-sm"
-            >
-              Try Readee free
-            </Link>
+            <LibraryCta placement="library-grade-header" grade={g.key} compact />
           </div>
         </div>
       </header>
@@ -181,9 +179,9 @@ export default async function CommunityGradePage({
           {g.label} reading passages
         </h1>
         <p className="mt-2 max-w-2xl text-base text-zinc-600">
-          Free, child-safe passages for {g.label.toLowerCase()} readers - each
-          with comprehension questions, read-aloud audio, and an illustration.
-          Made and shared by Readee families.
+          Free passages for {g.label.toLowerCase()} readers, each with
+          comprehension questions, read-aloud audio and an illustration.
+          Made by Readee.
         </p>
         <div className="mt-2 text-sm text-zinc-500">
           {items.length.toLocaleString()}{" "}
@@ -322,21 +320,8 @@ export default async function CommunityGradePage({
           </ul>
         )}
 
-        <div className="mt-12 rounded-3xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-6 text-center sm:p-8">
-          <h2 className="text-xl font-extrabold tracking-tight text-zinc-900 sm:text-2xl">
-            Want a {g.label.toLowerCase()} passage about something specific?
-          </h2>
-          <p className="mt-1 text-sm text-zinc-600">
-            Make your own with Readee.ai - pick the topic, get a level-locked
-            passage with audio in under a minute.
-          </p>
-          <Link
-            href="/signup"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
-          >
-            Try Readee free
-            <Glyph name="arrow-right" size={16} />
-          </Link>
+        <div className="mt-12">
+          <LibraryCta placement="library-grade" grade={g.key} />
         </div>
       </div>
     </div>

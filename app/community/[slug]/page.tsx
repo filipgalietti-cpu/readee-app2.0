@@ -7,6 +7,9 @@ import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { Glyph } from "@/app/_components/Glyph";
+import GatedPassage from "../_components/GatedPassage";
+import LibraryCta from "../_components/LibraryCta";
+import { PUBLIC_KIND_FILTER } from "../_lib/public-filter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -39,6 +42,7 @@ async function loadBySlug(slug: string): Promise<CommunityPassage | null> {
     )
     .eq("slug", slug)
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .maybeSingle();
   return (data as CommunityPassage | null) ?? null;
 }
@@ -94,6 +98,7 @@ export default async function PublicCommunityPassagePage({
     .from("community_passages")
     .select("id, slug, title, image_url, grade_level, view_count, display_byline")
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .eq("grade_level", passage.grade_level)
     .neq("id", passage.id)
     .not("slug", "is", null)
@@ -120,14 +125,18 @@ export default async function PublicCommunityPassagePage({
     <div className="min-h-screen bg-white">
       <RecordCommunityRead slug={passage.slug} />
       <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
-        <div className="flex items-center gap-3">
+        {/* This used to point at /practice-hub/community, which is behind
+            login, so a logged-out reader hit the login wall by tapping
+            "back". The public shelf is /community. */}
+        <div className="flex items-center justify-between gap-3">
           <Link
-            href="/practice-hub/community"
+            href="/community"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600"
           >
             <Glyph name="arrow-left" size={16} />
-            Library
+            Free reading library
           </Link>
+          <LibraryCta placement="library-story-top" slug={passage.slug} grade={passage.grade_level} compact />
         </div>
 
         <div className="mt-6 grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
@@ -146,8 +155,10 @@ export default async function PublicCommunityPassagePage({
               )}
               <span className="text-sm font-bold text-zinc-700">
                 {passage.display_byline
-                  ? `${passage.source_kind === "kid_story" ? "Written by" : "Shared by"} ${passage.display_byline}`
-                  : "Shared by a Readee family"}
+                  ? passage.source_kind === "kid_story"
+                    ? `Written by ${passage.display_byline}`
+                    : passage.display_byline
+                  : "By Readee"}
               </span>
               <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
                 {passage.grade_level}
@@ -187,15 +198,11 @@ export default async function PublicCommunityPassagePage({
               </span>
             </div>
 
-            <div
-              className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
-              style={{
-                fontFamily:
-                  'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
-              }}
-            >
-              {passage.passage_text}
-            </div>
+            <GatedPassage
+              slug={passage.slug}
+              grade={passage.grade_level}
+              text={passage.passage_text}
+            />
           </div>
 
           {/* RIGHT — the quiz, sticky, same player as Daily Readee + Studio */}
@@ -204,6 +211,12 @@ export default async function PublicCommunityPassagePage({
               <TodayQuestionPlayer questions={passage.questions} />
             </div>
           )}
+        </div>
+
+        {/* The ask, right under the reading. Story pages are where the
+            library's reads happen and they carried no CTA at all. */}
+        <div className="mt-10">
+          <LibraryCta placement="library-story" slug={passage.slug} grade={passage.grade_level} />
         </div>
 
         {/* More like this — same grade, top reads */}
@@ -261,7 +274,7 @@ export default async function PublicCommunityPassagePage({
         )}
 
         <p className="mt-10 text-center text-[11px] text-zinc-500">
-          Reviewed before publishing. © Readee Learning LLC.
+          Made by Readee, reviewed before publishing. © Readee Learning LLC.
         </p>
       </div>
     </div>

@@ -5,17 +5,29 @@ import TrendingCarousel from "./_components/TrendingCarousel";
 import { CoverFallback } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
+import LibraryCta from "./_components/LibraryCta";
+import { PUBLIC_KIND_FILTER } from "./_lib/public-filter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
+/**
+ * The public Free Reading Library (was "Community library").
+ *
+ * Sep 17 2026, Filip: the community framing was conflating three things
+ * (the daily reading, Readee's own passages, and kids' Story Studio
+ * stories), and the page converted nobody. Now: Readee-made passages only
+ * on the public shelf (see _lib/public-filter.ts), one ask everywhere (the
+ * free assessment, via LibraryCta), and a signup gate on the second story
+ * (GatedPassage). The URL stays /community because ChatGPT already cites it.
+ */
 export const metadata: Metadata = {
-  title: "Readee Community Library - child-safe reading passages",
+  title: "Free Reading Library - K-4 reading passages with audio · Readee",
   description:
-    "Free reading passages for K-4 children, made by Readee. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
+    "Free reading passages for kindergarten through 4th grade, made by Readee. Every one has read-aloud audio, an illustration and comprehension questions. Browse by grade.",
   alternates: { canonical: "/community" },
   openGraph: {
-    title: "Readee Community - child-safe reading passages",
+    title: "Readee Free Reading Library - K-4 reading passages",
     description:
       "Free K-4 reading passages with audio, illustrations, and comprehension questions.",
     type: "website",
@@ -119,6 +131,7 @@ export default async function CommunityLanding() {
       "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at",
     )
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .not("slug", "is", null)
     .order("view_count", { ascending: false })
     .order("created_at", { ascending: false })
@@ -132,6 +145,7 @@ export default async function CommunityLanding() {
       "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at, passage_text",
     )
     .eq("status", "approved")
+    .or(PUBLIC_KIND_FILTER)
     .not("slug", "is", null)
     .order("created_at", { ascending: false })
     .limit(12);
@@ -144,31 +158,13 @@ export default async function CommunityLanding() {
         .from("community_passages")
         .select("id", { count: "exact", head: true })
         .eq("status", "approved")
+        .or(PUBLIC_KIND_FILTER)
         .eq("grade_level", g.key)
         .not("slug", "is", null);
       return { ...g, count: count ?? 0 };
     }),
   );
   const totalPassages = gradeData.reduce((acc, g) => acc + g.count, 0);
-
-  // Recent contributors — distinct bylines from the last 50 approved
-  // entries so the "people behind it" strip shows variety.
-  const { data: bylineRows } = await admin
-    .from("community_passages")
-    .select("display_byline, created_at")
-    .eq("status", "approved")
-    .not("display_byline", "is", null)
-    .order("created_at", { ascending: false })
-    .limit(50);
-  const seenBylines = new Set<string>();
-  const contributors: string[] = [];
-  for (const r of (bylineRows ?? []) as { display_byline: string }[]) {
-    if (!seenBylines.has(r.display_byline)) {
-      seenBylines.add(r.display_byline);
-      contributors.push(r.display_byline);
-    }
-    if (contributors.length >= 6) break;
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -201,12 +197,7 @@ export default async function CommunityLanding() {
             >
               Sign in
             </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-violet-700 sm:text-sm"
-            >
-              Try Readee free
-            </Link>
+            <LibraryCta placement="library-header" compact />
           </div>
         </div>
       </header>
@@ -215,15 +206,15 @@ export default async function CommunityLanding() {
         {/* Compact intro */}
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-md">
-            <Glyph name="users" size={24} />
+            <Glyph name="book-open" size={24} />
           </div>
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
-              Community library
+              Free reading library
             </h1>
             <p className="text-xs font-semibold text-zinc-500">
-              {totalPassages.toLocaleString()} child-safe reading passages ·
-              free · reviewed
+              {totalPassages.toLocaleString()} K-4 reading passages · made by
+              Readee · free
             </p>
           </div>
         </div>
@@ -270,38 +261,12 @@ export default async function CommunityLanding() {
           </section>
         )}
 
-        {/* Contributors strip — "people behind the library" */}
-        {contributors.length > 0 && (
-          <section className="mt-5 flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3">
-            <div className="flex -space-x-2">
-              {contributors.slice(0, 5).map((c) => (
-                <div
-                  key={c}
-                  title={c}
-                  className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${avatarTone(c)} text-xs font-extrabold text-white ring-2 ring-white`}
-                >
-                  {bylineInitial(c)}
-                </div>
-              ))}
-            </div>
-            <div className="text-xs text-zinc-600">
-              <span className="font-bold text-zinc-900">
-                {contributors.length} contributors
-              </span>{" "}
-              keeping the library fresh.{" "}
-              <Link href="/signup" className="font-semibold text-violet-700 hover:underline">
-                Add yours →
-              </Link>
-            </div>
-          </section>
-        )}
-
         {/* Feed — image-dominant shop tiles (Fortnite-store style) */}
         {feed.length > 0 && (
           <section className="mt-6">
             <div className="flex items-baseline justify-between">
               <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
-                Latest in the community
+                Latest passages
               </h2>
               <Link
                 href="/community/all"
@@ -334,34 +299,10 @@ export default async function CommunityLanding() {
           />
         </section>
 
-        {/* Final CTA */}
-        <section className="mt-8 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 to-indigo-100 p-6 text-center shadow-sm sm:p-8">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
-            Want to make your own?
-          </div>
-          <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
-            Build a passage for your child in 3 taps.
-          </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-700">
-            Pick a topic, pick a mode, Readee builds it. Pass our quality
-            check and your passage shows up here.
-          </p>
-          <div className="mt-5 flex items-center justify-center gap-2">
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-base font-bold text-white shadow hover:bg-violet-700"
-            >
-              Try Readee free
-              <Glyph name="arrow-right" size={16} />
-            </Link>
-            <Link
-              href="/about"
-              className="rounded-full border border-zinc-200 bg-white px-5 py-3 text-base font-bold text-zinc-700 hover:border-violet-300"
-            >
-              How it works
-            </Link>
-          </div>
-        </section>
+        {/* Final CTA — the assessment, same as everywhere else in the library. */}
+        <div className="mt-8">
+          <LibraryCta placement="library-home" />
+        </div>
 
         <footer className="mt-10 pb-8 text-center text-xs text-zinc-400">
           © Readee Learning LLC ·{" "}
