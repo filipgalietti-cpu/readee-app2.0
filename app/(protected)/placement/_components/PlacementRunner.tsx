@@ -1141,8 +1141,14 @@ export default function PlacementRunner({
             ? () => {
                 void replayRef.current?.().catch((error) => {
                   if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
-                  micRef.current.close();
-                  setScreen({ kind: "blocked", reason: "audio" });
+                  // ‼️ NOT FATAL. Replay is a convenience: the question is on
+                  // screen and answerable without it. This used to close the
+                  // mic and show the blocked screen, whose only button reloads
+                  // the page, which replays the greeting, the intro, the mic
+                  // check and the name capture. Filip hit exactly that: "check
+                  // the microphone restarts the whole thing". A speaker that
+                  // will not play is not a reason to end an assessment.
+                  setOrb("idle");
                 });
               }
             : undefined
@@ -1161,8 +1167,9 @@ export default function PlacementRunner({
         )
           .catch((error) => {
             if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
-            micRef.current.close();
-            setScreen({ kind: "blocked", reason: "audio" });
+            // Same reasoning as the replay above: reading one option aloud is
+            // help, not the assessment. The finally below returns the orb and
+            // the highlight to rest, and the child answers as normal.
           })
           .finally(() => {
             if (cancelledRef.current) return;
