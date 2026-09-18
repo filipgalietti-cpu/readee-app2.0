@@ -7,6 +7,8 @@ import {
   autoHealDaily,
 } from "@/lib/daily/build-daily";
 import { timeBudget } from "@/lib/daily/time-budget";
+import { sendDailyReviewEmail } from "@/lib/daily/review-email";
+import { after } from "next/server";
 
 export const dynamic = "force-dynamic";
 // Image gen + TTS + 5 LLM calls + QC ≈ 60-90s per phase on a slow day, and a
@@ -118,6 +120,25 @@ async function run(req: NextRequest) {
         else break;
       }
     }
+  }
+
+  /*
+   * The proof sheet, once the day has settled.
+   *
+   * Filip, 18 Sep 2026: "send me a daily email when our daily readee is
+   * created... To make sure our slop isn't too apparent."
+   *
+   * Sent AFTER the heal and rebuild loop rather than at build time, so the
+   * email shows what actually shipped rather than a draft that was about to be
+   * replaced. `after` keeps it off the cron's critical path, and the send is
+   * keyed on the day, so the three or four times this route can run for one
+   * date still produce one email.
+   */
+  if (res.ok) {
+    after(async () => {
+      const mail = await sendDailyReviewEmail(date);
+      if (!mail.ok) console.error("[daily-cron] review email not sent:", mail.reason);
+    });
   }
 
   return NextResponse.json({ ...res, attempts, elapsedMs: budget.elapsedMs() });
