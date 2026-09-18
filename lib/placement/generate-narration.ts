@@ -2,12 +2,36 @@ import { createHash } from "node:crypto";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateVerifiedSpeech, verifySpeech } from "@/lib/audio/verified-speech";
 import { spokenNameOf } from "@/lib/audio/name-spoken";
+import { spokenTense } from "@/lib/audio/spoken-tense";
 import { withSpokenName } from "@/lib/audio/name-spoken";
 import { reportFailure } from "@/lib/observability/critical";
 import type { NarrationLine } from "./types";
 
 const jobs = new Map<string, Promise<void>>();
-/** Two workers, serialized atomic merges. A failed line remains retryable; existing clips survive. */
+
+/**
+ * How the report gets its voice, and why these two numbers are what they are.
+ *
+ * ‼️ FILIP HIT THE WAITING SCREEN: "we should not just have Luna's narration is
+ * getting ready. This slide will stay here. Try narration again". Nothing had
+ * failed. All ten clips arrived, just later than he did.
+ *
+ * Each clip is synthesized, then transcribed back and compared word for word
+ * against its script, with up to two attempts. Ten of those, two at a time,
+ * inside sixty seconds is not achievable, so the parent simply outran it. The
+ * route already allows five minutes (maxDuration = 300 on
+ * /api/placement/complete), so the old budget was leaving most of it unused.
+ *
+ * Workers pull in NARRATION_ORDER, so raising the count also means the clips
+ * the parent hears first are the ones finished first.
+ */
+const WORKERS = 4;
+const BUDGET_MS = 240_000;
+
+/** A parent hearing their child's results should not be raced through them. */
+const REPORT_SPEAKING_RATE = 0.92;
+
+/** Workers, serialized atomic merges. A failed line remains retryable; existing clips survive. */
 export function generatePlacementNarration(placementId: string, childName: string, saidAs?: string | null): Promise<void> {
   const running = jobs.get(placementId);
   if (running) return running;
@@ -20,7 +44,7 @@ async function generate(placementId: string, childName: string, saidAs?: string 
   const { data: row, error } = await admin.from("placements").select("child_id,narration").eq("id", placementId).single();
   if (error || !row) throw new Error("Narration unavailable");
   const childId = String(row.child_id);
-  const deadline = Date.now() + 60000;
+  const deadline = Date.now() + BUDGET_MS;
   const lines = row.narration as NarrationLine[];
   const missing = lines.filter(line => !line.audioPath || line.audioVerified !== "script-v1");
   const generated = new Map<string, { text: string; path: string }>();
@@ -30,7 +54,10 @@ async function generate(placementId: string, childName: string, saidAs?: string 
     while (next < missing.length && Date.now() < deadline) {
       const line = missing[next++];
       try {
-        const script = withSpokenName(line.text, childName, saidAs);
+        // The written line keeps "read"; only the voice hears "red". Same split
+        // the app already makes between displayed and spoken text, and the
+        // caption, the report page and the parent's email all keep line.text.
+        const script = spokenTense(withSpokenName(line.text, childName, saidAs));
         const names = [childName, spokenNameOf(childName, saidAs)];
         if (line.audioPath) {
           const { data: existing } = await admin.storage.from("child-audio").download(line.audioPath);
@@ -42,7 +69,7 @@ async function generate(placementId: string, childName: string, saidAs?: string 
             }
           }
         }
-        const audio = await generateVerifiedSpeech(script, names);
+        const audio = await generateVerifiedSpeech(script, names, { speakingRate: REPORT_SPEAKING_RATE });
         await publish(line, audio);
       } catch (error) {
         reportFailure("placement.narration", error, { route: "/api/placement/narration", eventType: line.id });
@@ -74,6 +101,6 @@ async function generate(placementId: string, childName: string, saidAs?: string 
     }
     throw new Error("Narration changed while saving");
   }
-  await Promise.all([worker(), worker()]);
+  await Promise.all(Array.from({ length: WORKERS }, () => worker()));
   await saves;
 }

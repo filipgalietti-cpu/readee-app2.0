@@ -97,6 +97,41 @@ function AnswerCards({
   const [selected, setSelected] = useState<string | null>(picked);
   const [submitted, setSubmitted] = useState(false);
   const locked = picked !== null || submitted;
+
+  /*
+   * One tap answers.
+   *
+   * ‼️ FILIP: "I think a k student answering mcq should not have to press the
+   * answer AND press next. It should register... then fade into the next Q."
+   *
+   * The second tap was not an oversight. Selection was provisional on purpose
+   * so a child could change their mind before confirming. For a five year old
+   * that trade is the wrong way round: finding and pressing a second button in
+   * a different part of the screen loses the thread of the question, and
+   * reconsidering a choice is not a skill this age reliably has.
+   *
+   * So the tap commits, after a beat long enough to see the check mark land on
+   * what they picked. Next stays, disabled, as the confirmation that the answer
+   * registered, and as the immediate path for anyone who taps it inside the
+   * beat. It also keeps the automated driver's `data-confirm-answer` hook alive.
+   */
+  const commit = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    if (!selected || locked) return;
+    const id = window.setTimeout(() => {
+      setSubmitted(true);
+      onAnswer(selected);
+    }, 520);
+    commit.current = () => {
+      window.clearTimeout(id);
+      setSubmitted(true);
+      onAnswer(selected);
+    };
+    return () => {
+      window.clearTimeout(id);
+      commit.current = null;
+    };
+  }, [selected, locked, onAnswer]);
   return (
     <>
       <div className="pa-options">
@@ -137,28 +172,63 @@ function AnswerCards({
         createPortal(
           <div className="pa-answer-action">
             <span aria-live="polite">
-              {locked
-                ? "Answer saved for this activity"
-                : selected
-                  ? "Selected. Tap Next."
-                  : "Choose an answer."}
+              {locked || selected ? "Answer saved for this activity" : "Choose an answer."}
             </span>
             <button
               className="pa-primary"
               disabled={!selected || locked}
               data-confirm-answer
-              onClick={() => {
-                if (selected && !locked) {
-                  setSubmitted(true);
-                  onAnswer(selected);
-                }
-              }}
+              onClick={() => commit.current?.()}
             >
               Next <Glyph name="arrow-right" size={20} />
             </button>
           </div>,
           actionHost,
         )}
+    </>
+  );
+}
+
+/**
+ * A passage, one block per line, with a leading label set apart from the text
+ * it introduces.
+ *
+ * ‼️ FILIP, ON THE TWO-BOOK COMPARISON: "we need to indent a bit better between
+ * the two stories... confusing for young readers visually."
+ *
+ *   Book 1: "Butterflies have colorful wings and drink nectar from flowers."
+ *   Book 2: "Butterflies start as caterpillars and go through metamorphosis."
+ *
+ * Both blurbs are one string with a newline between them, and they rendered
+ * inside a single paragraph whose only separation was `white-space: pre-line`.
+ * The labels were ordinary inline words at the same size, weight and colour as
+ * the sentences they introduce. A child being asked to compare two texts has to
+ * be able to see that there ARE two texts.
+ *
+ * Deliberately general: any passage that arrives with line breaks gets the
+ * same treatment, and a single-line passage renders exactly as before.
+ */
+function PassageText({ text }: { text: string }) {
+  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+  if (lines.length < 2) return <p>{text}</p>;
+  return (
+    <>
+      {lines.map((line, i) => {
+        // "Book 1: ..." / "Text A: ..." — a short label, then the passage.
+        const labelled = /^([^:]{1,18}:)\s*(.+)$/.exec(line);
+        return (
+          <p key={i} className="pa-passage-part">
+            {labelled ? (
+              <>
+                <span className="pa-passage-part-label">{labelled[1]}</span>
+                {labelled[2]}
+              </>
+            ) : (
+              line
+            )}
+          </p>
+        );
+      })}
     </>
   );
 }
@@ -560,7 +630,7 @@ export default function PlacementView({
                   tabIndex={0}
                   aria-label="Look back at the story"
                 >
-                  <p>{screen.passage.text}</p>
+                  <PassageText text={screen.passage.text} />
                 </div>
               </section>
             )}

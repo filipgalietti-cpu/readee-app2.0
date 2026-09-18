@@ -6,7 +6,8 @@ import { REVIEWER_PHOTO } from "./copy";
 import { motion } from "framer-motion";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 import type { PlanMilestone, PlanStep, PlanStepKind } from "@/lib/placement/types";
-import { subtleT, useReduced } from "./motion";
+import { subtleT, useCountUp, useReduced } from "./motion";
+import { useEffect, useState } from "react";
 
 export type PathRouteProps = {
   steps: PlanStep[];
@@ -45,6 +46,34 @@ export function milestoneDate(iso: string): string {
  * route takes the left three fifths and the milestones, count and reviewer
  * move into a column on the right.
  */
+/**
+ * One number, counted up rather than printed.
+ *
+ * ‼️ FILIP, on the plan card: "38 lessons / 10 weeks / 10 minutes a day one by
+ * one". Three figures appearing at once read as a label. Counting them, in
+ * order, makes the reader look at each one, and the third is the number the
+ * whole offer rests on.
+ *
+ * `useCountUp` is the same hook the words-per-minute figure and the carrot
+ * total already use, so the motion matches the rest of the reveal. Reduced
+ * motion prints them immediately.
+ */
+function StatTile({ value, label, delayMs, reduced }: { value: number; label: string; delayMs: number; reduced: boolean }) {
+  const [active, setActive] = useState(reduced);
+  useEffect(() => {
+    if (reduced) return;
+    const t = window.setTimeout(() => setActive(true), delayMs);
+    return () => window.clearTimeout(t);
+  }, [delayMs, reduced]);
+  const shown = useCountUp(value, active, { instant: reduced });
+  return (
+    <div className="rounded-2xl bg-violet-50 px-2 py-1.5 text-center @2xl:py-2">
+      <dt className="text-2xl font-semibold tabular-nums text-violet-800">{shown}</dt>
+      <dd className="text-xs text-violet-600 @2xl:text-sm">{label}</dd>
+    </div>
+  );
+}
+
 export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, reviewedBy, trustChips = [], litCount }: PathRouteProps) {
   const reduced = useReduced();
   // Milestone flags sit beside the last nodes of the route, in order: the
@@ -130,15 +159,12 @@ export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, re
           </ul>
         )}
         <dl className="mt-3 grid grid-cols-3 gap-2 @2xl:mt-4 @2xl:gap-2">
-          {[
-            [String(lessons), "lessons"],
-            [`${weeks}`, "weeks"],
-            [`${minutesPerDay}`, "minutes a day"],
-          ].map(([v, l]) => (
-            <div key={l} className="rounded-2xl bg-violet-50 px-2 py-1.5 text-center @2xl:py-2">
-              <dt className="text-2xl font-semibold text-violet-800">{v}</dt>
-              <dd className="text-xs text-violet-600 @2xl:text-sm">{l}</dd>
-            </div>
+          {([
+            [lessons, "lessons"],
+            [weeks, "weeks"],
+            [minutesPerDay, "minutes a day"],
+          ] as const).map(([v, l], i) => (
+            <StatTile key={l} value={v} label={l} delayMs={reduced ? 0 : 160 + i * 220} reduced={reduced} />
           ))}
         </dl>
         <div className="mt-3 hidden items-center gap-3 @2xl:flex @2xl:gap-4">

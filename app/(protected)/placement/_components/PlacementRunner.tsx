@@ -130,14 +130,24 @@ export default function PlacementRunner({
     r?.(id);
   }, []);
   const say = useCallback(async (key: Parameters<typeof playNarr>[0], _caption: string) => {
-    const caption =
-      key === "intro-frame"
-        ? "Some words are easy. Some are tricky. Just try your best."
-        : key === "words-intro"
-          ? "Read the word. You can always pass."
-          : key === "warmup-word"
-            ? "Let’s try one together."
-            : PLACEMENT_NARRATION[key];
+    /*
+     * The caption is the transcript of the clip, always.
+     *
+     * ‼️ THREE KEYS USED TO OVERRIDE IT WITH A SHORTER PARAPHRASE, and the
+     * paraphrase said the same thing in different words. Filip, walking it as a
+     * kindergartener: "Some words are easy. Some are tricky. Just try your best.
+     * is redundant to the prior TTS."
+     *
+     *   heard   "Let's read some words together. Some will be easy and some
+     *            will be tricky, and that's exactly how I learn about you."
+     *   read    "Some words are easy. Some are tricky. Just try your best."
+     *
+     * A beginning reader should never be handed two versions of one sentence to
+     * decode while a voice speaks a third. If a line needs to be shorter on
+     * screen, shorten the line itself in placement-bank/narration.ts so the
+     * clip and the caption stay the same words.
+     */
+    const caption = PLACEMENT_NARRATION[key];
     replayRef.current = null;
     setOrb("speaking");
     setScreen({ kind: "luna", caption });
@@ -1131,8 +1141,14 @@ export default function PlacementRunner({
             ? () => {
                 void replayRef.current?.().catch((error) => {
                   if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
-                  micRef.current.close();
-                  setScreen({ kind: "blocked", reason: "audio" });
+                  // ‼️ NOT FATAL. Replay is a convenience: the question is on
+                  // screen and answerable without it. This used to close the
+                  // mic and show the blocked screen, whose only button reloads
+                  // the page, which replays the greeting, the intro, the mic
+                  // check and the name capture. Filip hit exactly that: "check
+                  // the microphone restarts the whole thing". A speaker that
+                  // will not play is not a reason to end an assessment.
+                  setOrb("idle");
                 });
               }
             : undefined
@@ -1151,8 +1167,9 @@ export default function PlacementRunner({
         )
           .catch((error) => {
             if (error instanceof PlacementAudioCancelled || cancelledRef.current) return;
-            micRef.current.close();
-            setScreen({ kind: "blocked", reason: "audio" });
+            // Same reasoning as the replay above: reading one option aloud is
+            // help, not the assessment. The finally below returns the orb and
+            // the highlight to rest, and the child answers as normal.
           })
           .finally(() => {
             if (cancelledRef.current) return;

@@ -327,3 +327,35 @@ export function usePlacementMic(
 
   return { state, level, analyser, open, listen, startRecording, stopRecording, close };
 }
+
+/**
+ * Ask for the microphone once, while the PARENT is still holding the device,
+ * and release it immediately. The browser remembers the grant for the origin,
+ * so the child's turn opens the mic without a permission dialog.
+ *
+ * ‼️ FILIP: "It then asks permission for the mic, but I think that should
+ * happen when the parent is controlling the screen, not a kindergartener."
+ *
+ * The product already agreed with him. The handoff screen says, in as many
+ * words, "Stay nearby for the microphone check" and then linked away without
+ * touching the microphone: permission was requested later, behind the child
+ * tapping Start with Luna, after two more lines of child-directed speech.
+ *
+ * Must be called from a user gesture, or browsers reject it out of hand. A
+ * denial here is not fatal: the runner still has its own recovery path, and
+ * this only moves WHERE the question is asked.
+ */
+export async function primeMicPermission(): Promise<MicState> {
+  if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) return "unavailable";
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    });
+    stream.getTracks().forEach((track) => track.stop());
+    return "open";
+  } catch (error) {
+    return error instanceof DOMException && ["NotAllowedError", "SecurityError"].includes(error.name)
+      ? "denied"
+      : "unavailable";
+  }
+}

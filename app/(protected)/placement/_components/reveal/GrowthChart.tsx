@@ -3,9 +3,11 @@
 /**
  * Projected reading-speed line for the plan card: today's words-per-minute
  * rising to each dated milestone from the plan (which comes from published
- * growth slopes in lib/placement/norms.ts). Straight segments on purpose:
- * that is the shape the growth research supports. One series, so no legend;
- * the benchmark each milestone reaches is drawn as a dashed reference line.
+ * growth slopes in lib/placement/norms.ts). Drawn as a monotone curve through
+ * those milestones, so the shape reads the way practice accumulates rather
+ * than as steps between dates; see smoothPath, which also documents the line
+ * this does not cross. One series, so no legend; the benchmark each milestone
+ * reaches is drawn as a dashed reference line.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -35,6 +37,71 @@ const PAD = { left: 48, right: 24, top: 26, bottom: 30 };
 /** Adjacent x labels closer than this (px) drop the earlier one to a second row. */
 const LABEL_MIN_GAP = 84;
 const DRAW_SECONDS = 1.4;
+
+/**
+ * A smooth curve through the plotted points, bending the way practice actually
+ * accumulates instead of stepping between milestones in straight lines.
+ *
+ * ‼️ FILIP, 17 Sep: "I think we need to show exponential growth, based on 10
+ * mins a day."
+ *
+ * ‼️ AND THE LINE THIS DOES NOT CROSS. Every plotted point keeps the exact value
+ * the plan projected from the published growth slopes in lib/placement/norms.ts.
+ * Not one number moves. What changes is the path BETWEEN them: monotone cubic
+ * interpolation, which curves upward through the same milestones and cannot
+ * overshoot or dip below them. Drawing a faster projection than the norms
+ * support would be a claim about a child's reading, and we do not get to make
+ * those to sell a subscription.
+ *
+ * Monotone specifically, not a plain spline: an ordinary Catmull-Rom curve
+ * overshoots on uneven spacing, which would paint a dip in a child's reading
+ * progress that the data never contained.
+ */
+export function smoothPath(pts: { x: number; y: number }[]): string {
+  if (pts.length < 2) return pts.length ? `M${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}` : "";
+  if (pts.length === 2)
+    return `M${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)} L${pts[1].x.toFixed(1)} ${pts[1].y.toFixed(1)}`;
+
+  const n = pts.length;
+  const dx: number[] = [];
+  const slope: number[] = [];
+  for (let i = 0; i < n - 1; i++) {
+    dx.push(pts[i + 1].x - pts[i].x || 1);
+    slope.push((pts[i + 1].y - pts[i].y) / (pts[i + 1].x - pts[i].x || 1));
+  }
+  // Fritsch-Carlson tangents: zero at a turn, averaged elsewhere, then limited
+  // so no segment can bulge past the points it joins.
+  const m: number[] = new Array(n).fill(0);
+  m[0] = slope[0];
+  m[n - 1] = slope[n - 2];
+  for (let i = 1; i < n - 1; i++) {
+    m[i] = slope[i - 1] * slope[i] <= 0 ? 0 : (slope[i - 1] + slope[i]) / 2;
+  }
+  for (let i = 0; i < n - 1; i++) {
+    if (slope[i] === 0) {
+      m[i] = 0;
+      m[i + 1] = 0;
+      continue;
+    }
+    const a = m[i] / slope[i];
+    const b = m[i + 1] / slope[i];
+    const h = Math.hypot(a, b);
+    if (h > 3) {
+      m[i] = ((3 / h) * a) * slope[i];
+      m[i + 1] = ((3 / h) * b) * slope[i];
+    }
+  }
+
+  let d = `M${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+  for (let i = 0; i < n - 1; i++) {
+    const c1x = pts[i].x + dx[i] / 3;
+    const c1y = pts[i].y + (m[i] * dx[i]) / 3;
+    const c2x = pts[i + 1].x - dx[i] / 3;
+    const c2y = pts[i + 1].y - (m[i + 1] * dx[i]) / 3;
+    d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${pts[i + 1].x.toFixed(1)} ${pts[i + 1].y.toFixed(1)}`;
+  }
+  return d;
+}
 
 function niceStep(span: number): number {
   const raw = span / 3;
@@ -93,7 +160,7 @@ export function GrowthChart({ gradePractice, currentWcpm, startDate, milestones,
   const baseline = PAD.top + plotH;
 
   const xy = points.map((p) => ({ ...p, x: x(p.t), y: y(p.v) }));
-  const line = xy.map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
+  const line = smoothPath(xy);
   const area = `${line} L${xy[xy.length - 1].x.toFixed(1)} ${baseline} L${xy[0].x.toFixed(1)} ${baseline} Z`;
 
   const pick = (e: ReactPointerEvent<SVGSVGElement>) => {

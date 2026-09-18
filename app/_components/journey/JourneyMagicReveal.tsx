@@ -25,6 +25,27 @@ export default function JourneyMagicReveal({
     onComplete();
   };
   const [poof, setPoof] = useState(false);
+  /*
+   * ‼️ FILIP: "The magician should appear before the background does btw that
+   * looked cheap. The background should fade in the blurry background as the
+   * magician waves his wand."
+   *
+   * Everything used to mount at once: stars, kicker, headline and magician all
+   * arrived together, so nothing was conjured, it was just there. Now the
+   * magician stands alone on an empty stage, and the world he is summoning
+   * arrives out of focus and resolves, on the beat where the routine actually
+   * starts.
+   *
+   * Driven by the routine's own animation rather than a second guessed timer,
+   * so the two cannot drift apart: `mtBody` starts when MagicTrick's 1.5s mount
+   * delay elapses, which is the wand waggle. The timeout below is only the
+   * safety net for a backgrounded tab or disabled CSS animations.
+   */
+  const [conjured, setConjured] = useState(false);
+  useEffect(() => {
+    const t = window.setTimeout(() => setConjured(true), 1800);
+    return () => window.clearTimeout(t);
+  }, []);
   useEffect(() => {
     // A backgrounded tab or disabled CSS animation must never trap the preview.
     const fallback = window.setTimeout(() => setPoof(true), 9000);
@@ -50,20 +71,41 @@ export default function JourneyMagicReveal({
       onAnimationStartCapture={(event) => {
         if (event.animationName !== "mtBody" || played.current) return;
         played.current = true;
+        setConjured(true);
         if (soundEnabled) cancelAudio.current = audioManager?.playJourneyMagic();
       }}
       onAnimationEndCapture={(event) => {
         if (event.animationName === "mtBody") setPoof(true);
       }}
     >
-      <span className={styles.magicBackdrop} aria-hidden="true">
+      <motion.span
+        className={styles.magicBackdrop}
+        aria-hidden="true"
+        initial={{ opacity: 0, filter: "blur(16px)" }}
+        animate={conjured ? { opacity: 1, filter: "blur(0px)" } : { opacity: 0, filter: "blur(16px)" }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+      >
         {Array.from({ length: 18 }, (_, index) => (
           <span key={index} style={{ "--star": index } as CSSProperties} />
         ))}
-      </span>
+      </motion.span>
       <span className={styles.magicPresentation}>
-        <span className={styles.magicKicker}>READEE’S MAP MAKER</span>
-        <span className={styles.magicTitle}>Watch your reading journey appear!</span>
+        <motion.span
+          className={styles.magicKicker}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: conjured ? 1 : 0 }}
+          transition={{ duration: 0.7, delay: conjured ? 0.25 : 0 }}
+        >
+          READEE’S MAP MAKER
+        </motion.span>
+        <motion.span
+          className={styles.magicTitle}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: conjured ? 1 : 0, y: conjured ? 0 : 6 }}
+          transition={{ duration: 0.7, delay: conjured ? 0.35 : 0 }}
+        >
+          Watch your reading journey appear!
+        </motion.span>
         <motion.span
           className={styles.magicBunny}
           aria-hidden="true"

@@ -27,6 +27,18 @@ export default async function ExplorePage({
   return (
     <main className="container-page py-8 sm:py-12">
       <div className="mx-auto max-w-5xl">
+        {/* ‼️ Filip: "there is no back button btw to go back to the sign up".
+            This page hides the sidebar, so it had no nav, no breadcrumb and no
+            way out except one link at the very bottom, past both lesson lists.
+            Parents arrive here from "Explore first" while setting a reader up,
+            and some of them never went back. */}
+        <Link
+          href={setup}
+          className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
+        >
+          <Glyph name="arrow-left" size={18} />
+          {reader ? "Back to setup" : "Back to setting up your reader"}
+        </Link>
         <div className="flex items-center gap-6">
           <Image
             src="/images/ui/bunny-reading.png"
@@ -60,6 +72,17 @@ export default async function ExplorePage({
             >
               Try Pip’s Tree free <Glyph name="arrow-right" size={20} className="ml-2" />
             </Link>
+            {/* ‼️ Filip: "we should not give them the entire lesson unit one
+                preview for k, make it hidden in the drop down". Eight cards
+                opened flat, then four more below them, in front of a parent who
+                has not set a reader up yet. The one thing worth acting on is
+                the free sample above; the catalogue is reassurance, and
+                reassurance folds away. */}
+            <details className="group mt-6">
+              <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-violet-700">
+                <Glyph name="chevron-right" size={18} className="transition-transform group-open:rotate-90" />
+                See all {UNIT_ONE.length} Kindergarten lessons
+              </summary>
             <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {UNIT_ONE.map((l) => (
                 <li
@@ -93,12 +116,18 @@ export default async function ExplorePage({
               Full lessons follow your family’s plan and save progress for your selected reader. The
               unit exam opens after all eight lessons are completed.
             </p>
+            </details>
           </section>
         )}
         <section className="mt-10" aria-labelledby="other-samples">
           <h2 id="other-samples" className="text-2xl font-semibold">
             {enabled ? "Explore other grades" : "Try a lesson sample"}
           </h2>
+          <details className="group">
+            <summary className="mt-4 flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-violet-700">
+              <Glyph name="chevron-right" size={18} className="transition-transform group-open:rotate-90" />
+              See {samples.length} lessons from other grades
+            </summary>
           <div className="mt-4 divide-y divide-violet-100 overflow-hidden rounded-3xl border border-violet-100 bg-white">
             {samples.map((l) => (
               <Link
@@ -118,6 +147,7 @@ export default async function ExplorePage({
           <p className="mt-3 text-sm text-zinc-500">
             Samples don’t set a reading level or save child progress.
           </p>
+          </details>
         </section>
         <section className="mt-8 rounded-3xl bg-violet-50 p-6">
           <h2 className="text-xl font-semibold">Find your child’s starting point</h2>

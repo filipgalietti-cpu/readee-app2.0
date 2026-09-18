@@ -60,6 +60,12 @@ function tokens(text: string): string[] {
     .replace(/\bthat's\b/g, "that is")
     .replace(/\blet's\b/g, "let us")
     .replace(/\bhundred and\b/g, "hundred")
+    // Past-tense "read" is respelled "red" for the voice (lib/audio/spoken-tense.ts),
+    // but a transcriber writes back whichever spelling makes the sentence
+    // grammatical, which is usually "read". Without folding the two together the
+    // verifier rejects correct audio and burns both attempts on every line that
+    // mentions reading, which is most of them.
+    .replace(/\bred\b/g, "read")
     .replace(/[^a-z0-9\s]/g, " ")
     .split(/\s+/)
     .filter(Boolean);
@@ -82,8 +88,15 @@ export async function verifySpeech(
   names: string[] = [],
 ): Promise<boolean> {
   const seconds = mp3DurationSeconds(audio);
+  const words = tokens(script).length;
   // A ten-word sentence cannot justify a half-minute recording, even when ASR drops the extra speech.
-  if (seconds === null || seconds > 4 + tokens(script).length * 0.8) return false;
+  if (seconds === null || seconds > 4 + words * 0.8) return false;
+  // ...and it cannot be rattled off either. The guard above was one-sided, so
+  // audio that ran TOO FAST always passed: Filip heard the report "read the
+  // passage fast asf" and nothing objected. A warm reading-teacher pace is
+  // around three words a second, so this floor only catches a genuine gabble.
+  // Short lines are exempt because leading and trailing silence dominates them.
+  if (words >= 6 && seconds < words * 0.22) return false;
   const result = await transcribeAudio({
     audioBase64: audio.toString("base64"),
     mimeType: "audio/mpeg",
@@ -95,10 +108,11 @@ export async function verifySpeech(
 export async function generateVerifiedSpeech(
   script: string,
   names: string[] = [],
+  opts: { speakingRate?: number } = {},
 ): Promise<Buffer> {
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const audio = await generateReadeeSpeech(script, "MP3", "gemini-2.5-pro-tts");
+      const audio = await generateReadeeSpeech(script, "MP3", "gemini-2.5-pro-tts", opts);
       if (await verifySpeech(audio, script, names)) return audio;
     } catch {
       // Transient synthesis or verification failures are retryable, never publishable.
