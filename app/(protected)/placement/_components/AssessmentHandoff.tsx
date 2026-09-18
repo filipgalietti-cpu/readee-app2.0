@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { useRouter } from "next/navigation";
 import { Glyph } from "@/app/_components/Glyph";
 import {
   PlacementAudioCancelled,
@@ -10,6 +11,7 @@ import {
   subscribePlayback,
   getPlaybackAnalyser,
 } from "./audio";
+import { primeMicPermission } from "./mic";
 import { spectrumClip } from "@/app/data/placement-spectrum/audio";
 import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
@@ -30,8 +32,10 @@ export default function AssessmentHandoff({
   childId?: string;
   initialSaidAs?: string;
 }) {
+  const router = useRouter();
   const [speaking, setSpeaking] = useState(false);
   const [welcomeError, setWelcomeError] = useState(false);
+  const [handingOver, setHandingOver] = useState(false);
   const analyser = useSyncExternalStore(subscribePlayback, getPlaybackAnalyser, () => null);
   useEffect(() => () => stopClip(), []);
   const welcome = async () => {
@@ -110,9 +114,19 @@ export default function AssessmentHandoff({
               Hand over the device. Stay nearby for the microphone check, then let {name} answer
               independently.
             </p>
-            <Link className="pa-primary" href={startHref}>
-              Over to {name} <Glyph name="arrow-right" size={20} />
-            </Link>
+            {/* The microphone is asked for HERE, in the parent's hands, not two
+                screens later in the child's. See primeMicPermission(). */}
+            <button
+              className="pa-primary"
+              disabled={handingOver}
+              onClick={async () => {
+                setHandingOver(true);
+                await primeMicPermission();
+                router.push(startHref);
+              }}
+            >
+              {handingOver ? "One moment" : `Over to ${name}`} <Glyph name="arrow-right" size={20} />
+            </button>
             <p className="pa-small">The assessment and full reading report are free.</p>
             <Link className="pa-text-link" href={exploreHref}>
               {showKindergartenSample ? "Meet the Kindergarten lessons" : "Explore lessons first"}

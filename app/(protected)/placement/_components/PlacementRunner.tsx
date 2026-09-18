@@ -130,14 +130,24 @@ export default function PlacementRunner({
     r?.(id);
   }, []);
   const say = useCallback(async (key: Parameters<typeof playNarr>[0], _caption: string) => {
-    const caption =
-      key === "intro-frame"
-        ? "Some words are easy. Some are tricky. Just try your best."
-        : key === "words-intro"
-          ? "Read the word. You can always pass."
-          : key === "warmup-word"
-            ? "Let’s try one together."
-            : PLACEMENT_NARRATION[key];
+    /*
+     * The caption is the transcript of the clip, always.
+     *
+     * ‼️ THREE KEYS USED TO OVERRIDE IT WITH A SHORTER PARAPHRASE, and the
+     * paraphrase said the same thing in different words. Filip, walking it as a
+     * kindergartener: "Some words are easy. Some are tricky. Just try your best.
+     * is redundant to the prior TTS."
+     *
+     *   heard   "Let's read some words together. Some will be easy and some
+     *            will be tricky, and that's exactly how I learn about you."
+     *   read    "Some words are easy. Some are tricky. Just try your best."
+     *
+     * A beginning reader should never be handed two versions of one sentence to
+     * decode while a voice speaks a third. If a line needs to be shorter on
+     * screen, shorten the line itself in placement-bank/narration.ts so the
+     * clip and the caption stay the same words.
+     */
+    const caption = PLACEMENT_NARRATION[key];
     replayRef.current = null;
     setOrb("speaking");
     setScreen({ kind: "luna", caption });
