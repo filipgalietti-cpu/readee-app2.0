@@ -833,45 +833,75 @@ export default function PlacementRunner({
       }
     };
     (async () => {
+      /*
+       * ‼️ RESUMING SKIPS THE OPENING. Filip: "check the microphone restarts the
+       * whole thing."
+       *
+       * Anything that reaches the outermost catch shows a screen whose only
+       * button reloads the page, and a reload used to replay the greeting, the
+       * intro, the microphone hello turn and the unscored warm-up word before
+       * returning the child to where they were. The warm-up is the cruel one:
+       * it asks a child who has already been reading for five minutes to read
+       * "sun" out loud again.
+       *
+       * No new state was needed to fix it. `checkpoint()` is first written
+       * AFTER the warm-up, so a restored checkpoint is itself proof that every
+       * one of these turns is already behind the child. If they reloaded during
+       * the opening there is no checkpoint, `restored` is null, and the full
+       * opening plays exactly as before, which is correct: there is nothing to
+       * resume.
+       */
       // 0. Greet without guessing pronunciation; hear the reader’s name after hello.
-      setStage("greeting");
-      setOrb("speaking");
-      setScreen({ kind: "luna", caption: "Hi there! I’m glad you’re here." });
-      await playUrlAsync(spectrumClip("hi-generic"), 8000);
-      await say(
-        "intro-frame",
-        "Let's read some words together. Some will be easy and some will be tricky, and that's exactly how I learn about you.",
-      );
+      if (!restored) {
+        setStage("greeting");
+        setOrb("speaking");
+        setScreen({ kind: "luna", caption: "Hi there! I’m glad you’re here." });
+        await playUrlAsync(spectrumClip("hi-generic"), 8000);
+        await say(
+          "intro-frame",
+          "Let's read some words together. Some will be easy and some will be tricky, and that's exactly how I learn about you.",
+        );
+      }
 
       // 1. Mic check: open the mic, ask for a hello, wait for sound.
+      //    Opening it is always required. The hello call and response is how a
+      //    first-timer learns Luna can hear them, and a returning child has
+      //    already been told.
       setStage("mic");
       let status: MicState = robot ? "open" : await micRef.current.open();
       if (status !== "open") {
         setScreen({ kind: "blocked", reason: status });
         return;
       }
-      const heard = () => waitForHello(() => micRef.current.level, cancelled);
-      setScreen({ kind: "mic", status, retry: false });
-      setOrb("speaking");
-      await playNarr("mic-check", 4000);
-      setOrb("listening");
-      let ok = robot ? true : await heard();
-      if (!ok) {
-        setScreen({ kind: "mic", status, retry: true });
+      if (!restored) {
+        const heard = () => waitForHello(() => micRef.current.level, cancelled);
+        setScreen({ kind: "mic", status, retry: false });
         setOrb("speaking");
-        await playNarr("mic-again", 4000);
+        await playNarr("mic-check", 4000);
         setOrb("listening");
-        ok = await heard();
+        let ok = robot ? true : await heard();
+        if (!ok) {
+          setScreen({ kind: "mic", status, retry: true });
+          setOrb("speaking");
+          await playNarr("mic-again", 4000);
+          setOrb("listening");
+          ok = await heard();
+        }
+        if (!ok) {
+          status = "unavailable";
+          setScreen({ kind: "blocked", reason: status });
+          return;
+        }
+        setScreen({ kind: "mic", status, retry: false, received: true });
+        setOrb("speaking");
+        await playUrlAsync(spectrumClip("hello-back"));
+        setOrb("idle");
+      } else if (!robot) {
+        // One line so a child is not dropped back mid-word-list with no idea
+        // what happened. Already recorded, and it is the right sentence:
+        // "Wow, look how far you climbed."
+        await say("climb-generic", "");
       }
-      if (!ok) {
-        status = "unavailable";
-        setScreen({ kind: "blocked", reason: status });
-        return;
-      }
-      setScreen({ kind: "mic", status, retry: false, received: true });
-      setOrb("speaking");
-      await playUrlAsync(spectrumClip("hello-back"));
-      setOrb("idle");
       if (!robot && !restored) {
         // One owner for microphone and playback through hello, name and reading.
         // Unmounting a name recorder used to cancel the next required narration.
@@ -916,15 +946,20 @@ export default function PlacementRunner({
       // The unscored warm-up checks recognition before any reading evidence.
       if (!demo && !restored)
         trackFunnelClient("funnel.assessment_start", { child_id: childId, enrolled });
-      setStage("warmup");
-      await say("warmup-word", "Let's try one together first.");
-      const practiceCorrect = await listenWord(WARMUP_WORD);
-      if (practiceCorrect) {
-        setScreen({ kind: "word", word: WARMUP_WORD, listening: false, practiceCorrect: true });
-        if (!robot) {
-          const { audioManager } = await import("@/lib/audio/audio-manager");
-          audioManager.playCorrectChime();
-          await new Promise((resolve) => setTimeout(resolve, 700));
+      // Unscored, and only worth doing once. A resumed run has already passed
+      // it, and asking a child to read "sun" again after five minutes of real
+      // reading is the part of the replay that stings most.
+      if (!restored) {
+        setStage("warmup");
+        await say("warmup-word", "Let's try one together first.");
+        const practiceCorrect = await listenWord(WARMUP_WORD);
+        if (practiceCorrect) {
+          setScreen({ kind: "word", word: WARMUP_WORD, listening: false, practiceCorrect: true });
+          if (!robot) {
+            const { audioManager } = await import("@/lib/audio/audio-manager");
+            audioManager.playCorrectChime();
+            await new Promise((resolve) => setTimeout(resolve, 700));
+          }
         }
       }
       checkpoint();
