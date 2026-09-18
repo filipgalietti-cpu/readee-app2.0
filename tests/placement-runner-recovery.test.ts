@@ -38,6 +38,8 @@ function runner(
     setItem: vi.fn((key: string, value: string) => values.set(key, value)),
   };
   const effects: (() => (() => void) | undefined)[] = [];
+  /** Every clip the script asks for, in order. */
+  const played: string[] = [];
   const hooks = {
     useEffect: (effect: () => (() => void) | undefined) => effects.push(effect),
     useCallback: (fn: unknown) => fn,
@@ -70,8 +72,12 @@ function runner(
           : s === "./audio"
             ? {
                 stopClip: vi.fn(),
-                playUrlRequired: async () => {},
-                playNarrRequired: async () => {},
+                playUrlRequired: async (url: string) => {
+                  played.push(String(url));
+                },
+                playNarrRequired: async (key: string) => {
+                  played.push(`narr:${key}`);
+                },
                 setFastAudio: () => {},
                 childAudioUrl: async () => null,
                 clipUrl: (s: string) => s,
@@ -132,7 +138,7 @@ function runner(
     outfitId: null,
     ...options,
   });
-  return { ...box.callbacks, fetch, push, states, storage, start: () => effects[0]() };
+  return { ...box.callbacks, fetch, push, states, storage, played, start: () => effects[0]() };
 }
 
 describe("placement runner recovery", () => {
@@ -391,7 +397,31 @@ describe("placement runner recovery", () => {
       }
     }
     cleanup?.();
-    expect(words).toEqual(["sun"]); // unscored microphone recognition check only
+    /*
+     * ‼️ THIS USED TO EXPECT ["sun"], AND THAT WAS THE BUG. Filip: "check the
+     * microphone restarts the whole thing."
+     *
+     * Any uncaught error shows a screen whose only button reloads the page, and
+     * a reload replayed the greeting, the intro, the microphone hello turn and
+     * this unscored warm-up before returning the child to where they were.
+     * Asking a child who has been reading for five minutes to read "sun" out
+     * loud again is the part that stings.
+     *
+     * A restored checkpoint is proof the opening is already behind them,
+     * because `checkpoint()` is first written after the warm-up. So a resume
+     * now starts where they stopped.
+     */
+    expect(words).toEqual([]);
+    // And it is silent about the opening: no greeting, no intro, no hello turn.
+    expect(r.played).not.toContain("narr:intro-frame");
+    expect(r.played).not.toContain("narr:mic-check");
+    expect(r.played).not.toContain("narr:warmup-word");
+    expect(r.played).not.toContain(spectrumClip("hi-generic"));
+    expect(r.played).not.toContain(spectrumClip("ask-name"));
+    // The one spoken line that DOES play on a resume ("Wow, look how far you
+    // climbed") is guarded by !robot, and this fixture is a QA robot, so it is
+    // absent here by design rather than by accident.
+    expect(r.played).not.toContain("narr:climb-generic");
     expect(questions[0]).toBe(sub.spectrum!.reading.at(-1)!.choices[1].itemId);
     expect(questions).not.toContain(sub.spectrum!.reading.at(-1)!.choices[0].itemId);
     expect(r.fetch).toHaveBeenCalledOnce();
