@@ -7,6 +7,7 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 import LibraryCta from "./_components/LibraryCta";
 import { PUBLIC_KIND_FILTER } from "./_lib/public-filter";
+import { trackError } from "@/lib/observability/track";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -121,50 +122,100 @@ function deriveGenre(topic: string, title: string): { label: string; cls: string
   return { label: "Reading", cls: "bg-violet-600" };
 }
 
-export default async function CommunityLanding() {
-  const admin = supabaseAdmin();
+/**
+ * Everything the shelf needs, in three round trips instead of seven, and never
+ * throwing.
+ *
+ * ‼️ WHY THIS IS WRAPPED. Sentry aff62aa0, 18 Sep 2026: a parent who had signed
+ * up eight minutes earlier and added a child opened this page, got
+ * "Something went wrong", and never started the assessment. The error was a
+ * bare `TypeError: network error` with nothing of ours in the stack.
+ *
+ * The queries already tolerated a query-level error, because each one
+ * destructures `data` and ignores `error`. What they did not tolerate was the
+ * fetch itself failing, which rejects rather than returning an error, and an
+ * unhandled rejection in a server component takes the whole route to the error
+ * boundary. This is a public acquisition page, the one ChatGPT cites, and it
+ * must not show an error page because a database call blinked.
+ *
+ * It was also seven live queries per visit with no caching (`force-dynamic`
+ * makes the `revalidate` below dead code), on an indexable page, so every bot
+ * hit paid the same cost and had the same seven chances to fail. The five
+ * per-grade counts are now one read of 32 rows, tallied here.
+ */
+type Library = {
+  trending: Card[];
+  feed: Card[];
+  gradeData: { key: string; label: string; short: string; count: number }[];
+  totalPassages: number;
+  degraded: boolean;
+};
 
-  // Trending — top 8 by recent view momentum.
-  const { data: trendingRows } = await admin
-    .from("community_passages")
-    .select(
-      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at",
-    )
-    .eq("status", "approved")
-    .or(PUBLIC_KIND_FILTER)
-    .not("slug", "is", null)
-    .order("view_count", { ascending: false })
-    .order("created_at", { ascending: false })
-    .limit(8);
-  const trending = (trendingRows ?? []) as Card[];
-
-  // Feed — newest first, 12 entries with passage preview text.
-  const { data: feedRows } = await admin
-    .from("community_passages")
-    .select(
-      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at, passage_text",
-    )
-    .eq("status", "approved")
-    .or(PUBLIC_KIND_FILTER)
-    .not("slug", "is", null)
-    .order("created_at", { ascending: false })
-    .limit(12);
-  const feed = (feedRows ?? []) as Card[];
-
-  // Per-grade counts for the tab bar.
-  const gradeData = await Promise.all(
-    GRADES.map(async (g) => {
-      const { count } = await admin
+async function loadLibrary(): Promise<Library> {
+  const empty: Library = {
+    trending: [],
+    feed: [],
+    gradeData: GRADES.map((g) => ({ ...g, count: 0 })),
+    totalPassages: 0,
+    degraded: true,
+  };
+  try {
+    const admin = supabaseAdmin();
+    const [trendingRes, feedRes, gradeRes] = await Promise.all([
+      // Trending — top 8 by recent view momentum.
+      admin
         .from("community_passages")
-        .select("id", { count: "exact", head: true })
+        .select(
+          "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at",
+        )
         .eq("status", "approved")
         .or(PUBLIC_KIND_FILTER)
-        .eq("grade_level", g.key)
-        .not("slug", "is", null);
-      return { ...g, count: count ?? 0 };
-    }),
-  );
-  const totalPassages = gradeData.reduce((acc, g) => acc + g.count, 0);
+        .not("slug", "is", null)
+        .order("view_count", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(8),
+      // Feed — newest first, 12 entries with passage preview text.
+      admin
+        .from("community_passages")
+        .select(
+          "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at, passage_text",
+        )
+        .eq("status", "approved")
+        .or(PUBLIC_KIND_FILTER)
+        .not("slug", "is", null)
+        .order("created_at", { ascending: false })
+        .limit(12),
+      // One read for the tab bar, tallied below.
+      admin
+        .from("community_passages")
+        .select("grade_level")
+        .eq("status", "approved")
+        .or(PUBLIC_KIND_FILTER)
+        .not("slug", "is", null),
+    ]);
+
+    const tally = new Map<string, number>();
+    for (const row of (gradeRes.data ?? []) as { grade_level: string | null }[]) {
+      if (row.grade_level) tally.set(row.grade_level, (tally.get(row.grade_level) ?? 0) + 1);
+    }
+    const gradeData = GRADES.map((g) => ({ ...g, count: tally.get(g.key) ?? 0 }));
+    return {
+      trending: (trendingRes.data ?? []) as Card[],
+      feed: (feedRes.data ?? []) as Card[],
+      gradeData,
+      totalPassages: gradeData.reduce((acc, g) => acc + g.count, 0),
+      degraded: false,
+    };
+  } catch (error) {
+    // Deliberately not rethrown. An empty shelf with the assessment call to
+    // action still converts; an error page never does.
+    trackError(error, { route: "/community" });
+    return empty;
+  }
+}
+
+export default async function CommunityLanding() {
+  const { trending, feed, gradeData, totalPassages } = await loadLibrary();
 
   return (
     <div className="min-h-screen bg-white">
