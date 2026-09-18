@@ -47,6 +47,31 @@ export const REASSURANCE =
   "Below grade level does not mean failing. It means the practice needs to be aimed.";
 export const ASK_CLOSE = "Your custom reading journey is ready. Let’s explore the lessons chosen for your reader.";
 /** On top of bank.FORBIDDEN_CHILD_WORDS. */
+/**
+ * What the parent is told about listening comprehension.
+ *
+ * ‼️ THIS USED TO BE ONE SENTENCE WITH NO BRANCH. It said "This shows
+ * understanding with read-aloud support" at three out of ten exactly as it did
+ * at nine out of ten. Fil answered 3 of 10 and was told his answers showed
+ * understanding. A parent who can divide reads that once and stops believing
+ * the rest of the report, which is the whole asset we have.
+ *
+ * The score is still stated first in every band, because the number is the
+ * honest part and parents came here for it. Only the sentence after it moves.
+ *
+ * ‼️ JENNIFER SHOULD OWN THIS WORDING. These are a working draft written to be
+ * true rather than to be final; the low band in particular is the sentence a
+ * worried parent reads twice.
+ */
+export function listeningLine(name: string, correct: number, total: number): string {
+  const counted = `${name} answered ${correct} of ${total} listening questions correctly.`;
+  if (total <= 0) return `${name} has not answered listening questions yet. The early lessons build understanding by listening first.`;
+  const share = correct / total;
+  if (share >= 0.8) return `${counted} Understanding what they hear is a strength, and reading lessons build on it.`;
+  if (share >= 0.5) return `${counted} That is a working base, and the stories on the path build on it.`;
+  return `${counted} Understanding what they hear is the place to start, and the early lessons are built for it.`;
+}
+
 export const FORBIDDEN_NARRATION_WORDS = [
   "typical",
   "behind",
@@ -411,7 +436,11 @@ export function narrate(input: NarrateInput): NarrationLine[] {
           : `Two texts supported independent reading at ${g(profile.readingBand)}. We build accuracy and understanding before speed.`,
       "skill-comprehension":
         profile.languageBand === null
-          ? `${name} answered ${profile.languageByBand.reduce((n, b) => n + b.correct, 0)} of ${profile.languageByBand.reduce((n, b) => n + b.total, 0)} listening questions correctly. This shows understanding with read-aloud support.`
+          ? listeningLine(
+              name,
+              profile.languageByBand.reduce((n, b) => n + b.correct, 0),
+              profile.languageByBand.reduce((n, b) => n + b.total, 0),
+            )
           : `With read-aloud support, ${name} answered questions drawn from ${g(profile.languageBand)}. We can explore those ideas together while independent reading develops.`,
       path: "The journey starts with today's reading evidence and builds word reading and understanding together. A short assessment does not skip whole units.",
       "path-crafted":

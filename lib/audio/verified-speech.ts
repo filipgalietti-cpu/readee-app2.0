@@ -60,6 +60,12 @@ function tokens(text: string): string[] {
     .replace(/\bthat's\b/g, "that is")
     .replace(/\blet's\b/g, "let us")
     .replace(/\bhundred and\b/g, "hundred")
+    // Past-tense "read" is respelled "red" for the voice (lib/audio/spoken-tense.ts),
+    // but a transcriber writes back whichever spelling makes the sentence
+    // grammatical, which is usually "read". Without folding the two together the
+    // verifier rejects correct audio and burns both attempts on every line that
+    // mentions reading, which is most of them.
+    .replace(/\bred\b/g, "read")
     .replace(/[^a-z0-9\s]/g, " ")
     .split(/\s+/)
     .filter(Boolean);

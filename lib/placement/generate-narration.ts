@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateVerifiedSpeech, verifySpeech } from "@/lib/audio/verified-speech";
 import { spokenNameOf } from "@/lib/audio/name-spoken";
+import { spokenTense } from "@/lib/audio/spoken-tense";
 import { withSpokenName } from "@/lib/audio/name-spoken";
 import { reportFailure } from "@/lib/observability/critical";
 import type { NarrationLine } from "./types";
@@ -30,7 +31,10 @@ async function generate(placementId: string, childName: string, saidAs?: string 
     while (next < missing.length && Date.now() < deadline) {
       const line = missing[next++];
       try {
-        const script = withSpokenName(line.text, childName, saidAs);
+        // The written line keeps "read"; only the voice hears "red". Same split
+        // the app already makes between displayed and spoken text, and the
+        // caption, the report page and the parent's email all keep line.text.
+        const script = spokenTense(withSpokenName(line.text, childName, saidAs));
         const names = [childName, spokenNameOf(childName, saidAs)];
         if (line.audioPath) {
           const { data: existing } = await admin.storage.from("child-audio").download(line.audioPath);
