@@ -7,8 +7,14 @@ import { Glyph } from "@/app/_components/Glyph";
 import LibraryCta from "../../_components/LibraryCta";
 import { PUBLIC_KIND_FILTER } from "../../_lib/public-filter";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 600;
+// Cached, deliberately. `force-dynamic` used to sit here and silently override
+// the revalidate below, so every visit and every crawler re-queried the
+// database and every one of those was a chance to show an error page instead of
+// the library (Sentry aff62aa0, a parent eight minutes into their first
+// account). /today/[slug] hit the same trap and already carries the same note.
+// The window is short so moderation still bites quickly: a passage pulled from
+// the shelf disappears within it.
+export const revalidate = 180;
 
 const GRADE_MAP: Record<string, { key: string; label: string }> = {
   k: { key: "K", label: "Kindergarten" },
