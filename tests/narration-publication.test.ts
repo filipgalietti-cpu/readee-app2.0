@@ -84,7 +84,13 @@ it("uses the saved pronunciation for report speech and keeps the written report 
   // respelling, and past-tense "read" becomes "red" so the voice stops saying
   // "reed" (Filip, 17 Sep). The stored line keeps both written forms, because
   // the caption, the report page and the parent's email all render it.
-  expect(s.generate).toHaveBeenCalledWith("Feeloosh red 61 words per minute.", ["Filus", "Feeloosh"]);
+  expect(s.generate).toHaveBeenCalledWith(
+    "Feeloosh red 61 words per minute.",
+    ["Filus", "Feeloosh"],
+    // Below the voice's natural pace, so a parent is not raced through their
+    // child's results.
+    expect.objectContaining({ speakingRate: expect.any(Number) }),
+  );
   expect(s.row.narration[0].text).toBe("Filus read 61 words per minute.");
   expect(s.row.narration[0].audioVerified).toBe("script-v1");
 });

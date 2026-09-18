@@ -88,8 +88,15 @@ export async function verifySpeech(
   names: string[] = [],
 ): Promise<boolean> {
   const seconds = mp3DurationSeconds(audio);
+  const words = tokens(script).length;
   // A ten-word sentence cannot justify a half-minute recording, even when ASR drops the extra speech.
-  if (seconds === null || seconds > 4 + tokens(script).length * 0.8) return false;
+  if (seconds === null || seconds > 4 + words * 0.8) return false;
+  // ...and it cannot be rattled off either. The guard above was one-sided, so
+  // audio that ran TOO FAST always passed: Filip heard the report "read the
+  // passage fast asf" and nothing objected. A warm reading-teacher pace is
+  // around three words a second, so this floor only catches a genuine gabble.
+  // Short lines are exempt because leading and trailing silence dominates them.
+  if (words >= 6 && seconds < words * 0.22) return false;
   const result = await transcribeAudio({
     audioBase64: audio.toString("base64"),
     mimeType: "audio/mpeg",
@@ -101,10 +108,11 @@ export async function verifySpeech(
 export async function generateVerifiedSpeech(
   script: string,
   names: string[] = [],
+  opts: { speakingRate?: number } = {},
 ): Promise<Buffer> {
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const audio = await generateReadeeSpeech(script, "MP3", "gemini-2.5-pro-tts");
+      const audio = await generateReadeeSpeech(script, "MP3", "gemini-2.5-pro-tts", opts);
       if (await verifySpeech(audio, script, names)) return audio;
     } catch {
       // Transient synthesis or verification failures are retryable, never publishable.

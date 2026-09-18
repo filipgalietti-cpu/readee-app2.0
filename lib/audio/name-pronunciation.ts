@@ -19,7 +19,7 @@ function client(): GoogleGenAI {
   return cached;
 }
 
-export { SAID_AS_MAX, cleanSaidAs, spokenNameOf, withSpokenName } from "./name-spoken";
+export { SAID_AS_MAX, cleanSaidAs, spokenNameOf, withSpokenName, usableSaidAs } from "./name-spoken";
 import { cleanSaidAs } from "./name-spoken";
 
 /**
@@ -34,6 +34,7 @@ export async function respellNameFromAudio(input: { audioBase64: string; mimeTyp
     `Do not translate the name into an English name or infer pronunciation from a written spelling. ` +
     `Reply with JSON only: {"heard": "<the name as you heard it, plain letters>", "saidAs": "<a respelling for an English text-to-speech voice: ` +
     `lowercase syllables joined by hyphens, the stressed syllable in CAPITALS, plain English sound spellings, for example fee-LOOSH or ma-REE-ah>"}. ` +
+    `The respelling must SPELL OUT the sounds, so that a voice reading it plainly says the name correctly. It must not be the written name with its capitalisation changed: for the one-syllable name Fil, "FIL" is useless because a voice reads it as the word file, while "fill" is right. ` +
     `If the audio is silent, is not a name, or you are not sure, set both fields to "".`;
   const contents = [{ role: "user", parts: [{ inlineData: { mimeType: input.mimeType, data: input.audioBase64 } }, { text: prompt }] }];
   const config = { responseMimeType: "application/json", temperature: 0.1 };
