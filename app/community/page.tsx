@@ -9,8 +9,14 @@ import LibraryCta from "./_components/LibraryCta";
 import { PUBLIC_KIND_FILTER } from "./_lib/public-filter";
 import { trackError } from "@/lib/observability/track";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 600;
+// Cached, deliberately. `force-dynamic` used to sit here and silently override
+// the revalidate below, so every visit and every crawler re-queried the
+// database and every one of those was a chance to show an error page instead of
+// the library (Sentry aff62aa0, a parent eight minutes into their first
+// account). /today/[slug] hit the same trap and already carries the same note.
+// The window is short so moderation still bites quickly: a passage pulled from
+// the shelf disappears within it.
+export const revalidate = 180;
 
 /**
  * The public Free Reading Library (was "Community library").
@@ -138,10 +144,11 @@ function deriveGenre(topic: string, title: string): { label: string; cls: string
  * boundary. This is a public acquisition page, the one ChatGPT cites, and it
  * must not show an error page because a database call blinked.
  *
- * It was also seven live queries per visit with no caching (`force-dynamic`
- * makes the `revalidate` below dead code), on an indexable page, so every bot
- * hit paid the same cost and had the same seven chances to fail. The five
- * per-grade counts are now one read of 32 rows, tallied here.
+ * It was also seven live queries per visit with no caching at all, on an
+ * indexable page, so every bot hit paid the same cost and had the same seven
+ * chances to fail. The five per-grade counts are now one read of 32 rows
+ * tallied here, and the page is cached again (see the note at the top), so on
+ * most visits this function does not run.
  */
 type Library = {
   trending: Card[];
