@@ -34,7 +34,7 @@
 import { Type } from "@google/genai";
 import { getClient, MODEL_ID, logUsage, generateImage } from "@/lib/ai/readee-ai";
 import { CREDIT_COST } from "@/lib/ai/credits";
-import { trackError } from "@/lib/observability/track";
+import { trackError, trackSignal } from "@/lib/observability/track";
 import type { QcCheck, QcSeverity } from "@/lib/ai/qc";
 import type { SceneSpec, SceneCharacter } from "@/lib/ai/scene-spec";
 
@@ -152,7 +152,14 @@ function describeCharacterTarget(c: SceneCharacter): string {
     c.color ?? null,
     c.species,
   ].filter(Boolean) as string[];
-  return bits.join(" ").trim();
+  const base = bits.join(" ").trim();
+  // Appearance has to reach the JUDGE as well as the brief, or the gate keeps
+  // passing the thing the brief now forbids: on 2026-09-16 the cast was two
+  // boys named Tariq and Mohammed and the image was two white children, and
+  // every per-item check answered "yes, a boy is visible" because a boy was.
+  // A target of "a boy" cannot fail on who the boy is.
+  const look = c.appearance?.trim();
+  return look ? `${base} with ${look}` : base;
 }
 
 /**
@@ -556,16 +563,28 @@ export async function generateBestImage(input: {
       });
     } else {
       // One bad gen shouldn't sink the whole batch — keep going with
-      // whatever we have. trackError so we can see whether one
+      // whatever we have, and record it so we can see whether one
       // candidate keeps failing for a particular brief shape.
-      trackError(new Error(`best-of-N candidate ${i} failed: ${r.error}`), {
+      //
+      // WARNING, not error: this branch is the design working as intended —
+      // two of three candidates is still a best-of-N. Paged at error level it
+      // was just Sentry noise on days that shipped a perfectly good image.
+      // The genuine failure is "no candidate survived", tracked below.
+      trackSignal(`best-of-N candidate ${i} failed: ${r.error}`, {
         route: "qc-scene.generateBestImage",
+        level: "warning",
         userId: input.teacherId,
       });
     }
   }
 
   if (candidates.length === 0) {
+    // Every candidate failed. The daily builder's response to this is to ship
+    // the day with no picture at all, silently — so this one IS worth paging.
+    trackError(new Error(`best-of-${n}: all candidate generations failed`), {
+      route: "qc-scene.generateBestImage",
+      userId: input.teacherId,
+    });
     return { ok: false, error: "all candidate generations failed" };
   }
   // Only one candidate — no comparison needed, return it.
