@@ -7,8 +7,9 @@
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { shell, escapeHtml, BASE_URL } from "./lifecycle";
+import { FAMILY_FROM } from "./sender";
 
-const FROM = "Readee <hello@readee.app>";
+const FROM = FAMILY_FROM;
 
 export interface WhatsNewContent {
   /** Uppercase eyebrow (default "What's new"). */

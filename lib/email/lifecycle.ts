@@ -25,8 +25,9 @@ import { ANNOUNCEMENTS } from "@/lib/data/announcements";
 import { renderWhatsNew } from "@/lib/email/whats-new";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { TRIAL_DAYS } from "@/lib/plan/access";
+import { FAMILY_FROM } from "./sender";
 
-const FROM = "Readee <hello@readee.app>";
+const FROM = FAMILY_FROM;
 export const BASE_URL = "https://learn.readee.app";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -320,6 +321,50 @@ async function alreadySentEver(parentId: string, stage: Stage): Promise<boolean>
     .limit(1)
     .maybeSingle();
   return !!data;
+}
+
+/**
+ * Three, then silence.
+ *
+ * ‼️ 19 Sep 2026: the send log held 400 re-engagement emails to 81 people. An
+ * average of five each, nineteen people at ten or more, one at eleven. The
+ * stage was written as "at most once every 7 days" and nobody wrote down
+ * "and then stop", so a parent who signed up in July and never came back has
+ * heard from us every single week since.
+ *
+ * Someone who ignored three of these is not going to be moved by a fourth, and
+ * the list they are on is the only marketing asset the company owns. Every
+ * seasonal announcement and every product update goes to the same addresses,
+ * and it lands next to whatever reputation these earned.
+ *
+ * Filip confirmed the number (19 Sep). After it, the only emails a quiet
+ * parent gets are ones with news in them.
+ */
+export const RE_ENGAGE_CAP = 3;
+
+async function reEngageCount(parentId: string): Promise<number> {
+  const admin = supabaseAdmin();
+  const { count } = await admin
+    .from("lifecycle_email_sends")
+    .select("id", { count: "exact", head: true })
+    .eq("profile_id", parentId)
+    .eq("stage", "re_engage")
+    .eq("status", "sent");
+  return count ?? 0;
+}
+
+/**
+ * Addresses that can never receive mail: QA robots and seeded test accounts.
+ *
+ * Resend rejects them outright ("Invalid `to` field... domains like
+ * example.com"), and because a failed send is never recorded as done, the
+ * football announcement retried the same test account every morning for
+ * twelve days. Not a deliverability problem, but it reads as one in the log,
+ * and it is twelve pointless API calls per announcement per dead address.
+ */
+export function isDeliverable(email: string | null | undefined): boolean {
+  if (!email) return false;
+  return !/@(example\.(com|org|net)|test\.[a-z]+|localhost)$/i.test(email.trim());
 }
 
 async function lastReEngageSentAt(parentId: string): Promise<Date | null> {
@@ -644,7 +689,11 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
     if (daysSince >= 7) {
       const lastSent = await lastReEngageSentAt(parent.id);
       const daysSinceLastSend = lastSent ? (now - lastSent.getTime()) / DAY_MS : Infinity;
-      if (daysSinceLastSend >= 7 && !(await alreadySentToday(parent.id, "re_engage"))) {
+      if (
+        daysSinceLastSend >= 7 &&
+        (await reEngageCount(parent.id)) < RE_ENGAGE_CAP &&
+        !(await alreadySentToday(parent.id, "re_engage"))
+      ) {
         const kidName = await firstKidName(parent.id);
         const email = renderReEngage(displayName, kidName, daysSince, unsubscribeUrl);
         const res = await sendEmail({
@@ -701,7 +750,7 @@ export async function sendLifecycleBatch(): Promise<{
     if (!a.email || a.email.emailDate > today) continue;
     const stage = `whats_new:${a.id}`;
     for (const p of (parents ?? []) as ParentRow[]) {
-      if (!p.email) continue;
+      if (!p.email || !isDeliverable(p.email)) continue;
       try {
         if (await alreadySentStage(p.id, stage)) continue;
         const unsubscribeUrl = `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(p.id)}`;

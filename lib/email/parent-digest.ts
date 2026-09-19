@@ -26,8 +26,9 @@ import { buildParentSnapshot } from "@/lib/ai/build-parent-snapshot";
 import { standardShortName } from "@/lib/data/standard-short-name";
 import { childJourneyContext } from "@/lib/email/journey-context";
 import { shell } from "@/lib/email/lifecycle";
+import { FAMILY_FROM } from "./sender";
 
-const FROM = "Readee <hello@readee.app>";
+const FROM = FAMILY_FROM;
 const BASE_URL = "https://learn.readee.app";
 
 function displayGrade(grade: string | null | undefined): string {
