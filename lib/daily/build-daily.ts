@@ -54,6 +54,62 @@ import {
 // existing rate-limit + log infrastructure has someone to bill. We
 // use the platform-admin profile id (Filip) — set via env so we can
 // rotate without code changes.
+/**
+ * An archival photograph has to EARN the page, the same as a drawing does.
+ *
+ * ‼️ Filip, 19 Sep: "The image and passage should be about the topic... Why do
+ * I still have to fix this every 5 mins."
+ *
+ * This is the hole he kept landing in. Both Wikipedia paths take an article's
+ * LEAD IMAGE on trust: the subject detector confirms the passage really is
+ * about that subject, and then whatever picture happens to sit at the top of
+ * that article goes straight onto the page. Nothing ever looks at it.
+ *
+ * Wikipedia's lead image for "Mexican Independence" is a photograph of the 1821
+ * Act of Independence: a page of handwritten Spanish legal text. That shipped,
+ * on 2026-09-19, above a passage about a girl clapping to music. The judge even
+ * said so afterwards ("The image contains extensive readable text") but by then
+ * it was already the picture.
+ *
+ * A drawing goes through best-of-3 and a comparative judge before it is
+ * allowed on the page. A photograph went through nothing. So now it is judged
+ * first, against the actual passage, and a photo that fails is simply not used:
+ * the build falls through and draws instead, which is the better picture in
+ * every case that reaches here.
+ */
+async function photoFitsPassage(
+  imageUrl: string,
+  subject: string,
+  passageTitle: string,
+  passageBody: string,
+  dateStr: string,
+): Promise<boolean> {
+  try {
+    const verdict = await judgeImageQuality({
+      imageUrl,
+      expectedScene: `A photograph illustrating "${passageTitle}", a children's reading passage about ${subject}.`,
+      passageBody,
+    });
+    if (!verdict.ok) {
+      // Could not judge it. An unvetted photo is exactly what this exists to
+      // stop, so decline and let the build draw.
+      console.info(`[daily] ${dateStr}: photo for "${subject}" unjudged (${verdict.error}), drawing instead`);
+      return false;
+    }
+    if (verdict.severity === "fail") {
+      trackSignal(`daily archival photo rejected for "${subject}": ${verdict.reason}`, {
+        route: "daily.photoFitsPassage",
+        level: "warning",
+      });
+      console.info(`[daily] ${dateStr}: photo for "${subject}" rejected - ${verdict.reason}`);
+      return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function systemTeacherId(): string {
   const id = process.env.DAILY_QUESTION_TEACHER_ID;
   if (!id) {
@@ -808,7 +864,10 @@ ${theme.topic}${avoidBlock}`;
       : null
     : null = null as any;
   const resolved = await resolveHistoricalImage(passageTitle, passageBody);
-  if (resolved.kind === "royalty_free") {
+  const figurePhotoFits =
+    resolved.kind === "royalty_free" &&
+    (await photoFitsPassage(resolved.imageUrl, resolved.figureName, passageTitle, passageBody, dateStr));
+  if (resolved.kind === "royalty_free" && figurePhotoFits) {
     const cachedUrl = await cacheWikipediaImageToSupabase(
       resolved.figureName,
       resolved.imageUrl,
@@ -882,7 +941,10 @@ ${theme.topic}${avoidBlock}`;
       const wantsPhoto = depiction.mode !== "free" || drawn?.medium === "photograph";
       if (wantsPhoto) {
         const real = await resolveRealSubjectImage(passageTitle, passageBody);
-        if (real.kind === "photo") {
+        if (
+          real.kind === "photo" &&
+          (await photoFitsPassage(real.imageUrl, real.subject, passageTitle, passageBody, dateStr))
+        ) {
           const cached = await cacheWikipediaImageToSupabase(real.subject, real.imageUrl);
           imageUrl = cached ?? real.imageUrl;
           imageScene = `Wikipedia photograph of ${real.subject}`;
@@ -890,7 +952,11 @@ ${theme.topic}${avoidBlock}`;
           imageAttribution = real.attribution;
           console.info(`[daily] ${dateStr}: real photo for "${real.subject}" (${real.attribution})`);
         } else {
-          console.info(`[daily] ${dateStr}: no photo - ${real.reason}`);
+          // Either no subject was found, or one was and its picture did not
+          // suit the passage. photoFitsPassage has already said which.
+          console.info(
+            `[daily] ${dateStr}: no photo - ${real.kind === "none" ? real.reason : "the photo did not fit the passage"}`,
+          );
         }
       }
 
