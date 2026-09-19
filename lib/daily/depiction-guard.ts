@@ -110,18 +110,40 @@ const REAL_HISTORY = matcher([
 /**
  * Decide what may be drawn for a daily.
  *
- * Checks title, body and theme together: the theme alone is too coarse ("On
- * this day in history" covers both the Ferris wheel and the Voting Rights
- * Act) and the title alone is too thin ("A Day for Freedom" reads as fiction).
+ * The sensitive tier reads the theme as well as the passage. The real-history
+ * tier reads only what the passage actually depicts: see the note inside.
  */
 export function depictionModeFor(input: {
   title: string;
   body: string;
   theme: string;
 }): { mode: DepictionMode; reason: string } {
-  const hay = `${input.title}\n${input.theme}\n${input.body}`.toLowerCase();
+  /*
+   * ‼️ THE THEME IS A SHELF LABEL, NOT THE STORY ON IT.
+   *
+   * Filip, 19 Sep: "The image and passage should be about the topic... Why do I
+   * still have to fix this every 5 mins."
+   *
+   * This was the root of that day. The theme was "Hispanic Heritage Month" and
+   * the passage was an invented story about two children baking empanadas with
+   * their grandmother. Nothing real is depicted in it. But the theme label
+   * matched "heritage month", so the guard declared real people and real
+   * events, banned every person from the picture, and sent the build looking
+   * for a photograph instead. Wikipedia handed back the 1821 Act of
+   * Independence, a page of legal text, and that shipped.
+   *
+   * The catalogue draws a theme for the DAY and then writes whatever passage it
+   * likes underneath it, so the theme cannot be trusted to say what is being
+   * depicted. Only the title and the body can.
+   *
+   * The sensitive tier still reads the theme, deliberately. Getting slavery or
+   * a massacre wrong is unrecoverable, and being over-cautious there costs a
+   * picture; being over-cautious HERE cost a story about children its children.
+   */
+  const depictedHay = `${input.title}\n${input.body}`.toLowerCase();
+  const sensitiveHay = `${depictedHay}\n${input.theme.toLowerCase()}`;
 
-  const sensitive = hay.match(NO_DEPICTION);
+  const sensitive = sensitiveHay.match(NO_DEPICTION);
   if (sensitive) {
     return {
       mode: "none",
@@ -129,7 +151,7 @@ export function depictionModeFor(input: {
     };
   }
 
-  const historic = hay.match(REAL_HISTORY);
+  const historic = depictedHay.match(REAL_HISTORY);
   if (historic) {
     return {
       mode: "symbol",
