@@ -7,8 +7,9 @@
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { shell, escapeHtml, BASE_URL } from "./lifecycle";
+import { FAMILY_FROM } from "./sender";
 
-const FROM = "Readee <hello@readee.app>";
+const FROM = FAMILY_FROM;
 
 export interface WhatsNewContent {
   /** Uppercase eyebrow (default "What's new"). */
@@ -23,6 +24,13 @@ export interface WhatsNewContent {
   ctaHref?: string;
   /** Bunny mascot filename (default "bunny-cheer.png"). */
   bunny?: string;
+  /**
+   * One sentence joining the news to THIS family's next step, set per reader by
+   * lib/announcements/audience.ts. The football email had none, so "there are
+   * new hats" was the whole message even to a family that had never taken the
+   * reading check.
+   */
+  nextStepLine?: string;
 }
 
 function unsub(parentId: string): string {
@@ -38,6 +46,7 @@ export function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { su
   const text = [
     "Hi there,", "", c.intro, "",
     ...items.map((i) => `  · ${i}`), "",
+    ...(c.nextStepLine ? [c.nextStepLine, ""] : []),
     `${ctaLabel}: ${ctaHref}`, "",
     `Unsubscribe: ${unsubscribeUrl}`, "- Readee",
   ].join("\n");
@@ -45,7 +54,11 @@ export function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { su
     <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;text-align:center;">${escapeHtml(c.intro)}</p>
     <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-top:14px;">
       ${items.map((i) => `<tr><td style="padding:5px 0;"><table cellpadding="0" cellspacing="0" role="presentation"><tr><td valign="top" style="color:#10b981;font-weight:900;padding-right:10px;line-height:1.55;">&#10003;</td><td style="font-size:14px;line-height:1.55;color:#3f3f46;font-weight:600;">${escapeHtml(i)}</td></tr></table></td></tr>`).join("")}
-    </table>`;
+    </table>${
+      c.nextStepLine
+        ? `<p style="margin:16px 0 0;font-size:15px;line-height:1.6;color:#27272a;text-align:center;font-weight:600;">${escapeHtml(c.nextStepLine)}</p>`
+        : ""
+    }`;
   const html = shell({
     preheader: c.intro,
     parentName: null,

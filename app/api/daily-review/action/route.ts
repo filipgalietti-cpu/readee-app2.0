@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { after } from "next/server";
 import { runReviewAction } from "@/lib/daily/run-review-action";
-import { isReviewAction, reviewTokenValid, ACTION_LABEL } from "@/lib/daily/review-actions";
+import { isReviewAction, reviewTokenValid, ACTION_LABEL, type ReviewAction } from "@/lib/daily/review-actions";
+import { confirmPage, resultPage } from "@/lib/email/action-page";
 
 export const dynamic = "force-dynamic";
 // A rebuild is the full daily pipeline. The work runs in `after`, but the
@@ -16,44 +17,53 @@ export const maxDuration = 800;
  * inbox is the credential. This is what makes the feature work on the day it
  * ships, before any MX record exists for the reply route.
  *
+ * ‼️ Two steps since 19 Sep 2026. This used to redraw on the GET itself, and a
+ * mail scanner fetching the links in the review email is indistinguishable
+ * from Filip tapping them. A live picture that changes with nobody asking is
+ * the exact complaint this email exists to prevent. The link now shows a
+ * confirmation and the button on it (a POST) does the work.
+ *
  * Answers immediately and does the work in the background, because a redraw
  * takes minutes and nobody should watch a browser tab spin for it.
  */
-function page(title: string, body: string, tone: "ok" | "bad"): NextResponse {
-  const accent = tone === "ok" ? "#4c1d95" : "#a8301f";
-  return new NextResponse(
-    `<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>${title}</title></head>
-<body style="margin:0;background:#f0f0e4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-<div style="max-width:520px;margin:12vh auto;padding:0 20px;">
-  <div style="background:#fff;border:1px solid #e6e6d6;border-radius:18px;padding:30px 26px;">
-    <h1 style="margin:0 0 10px;font-size:22px;color:${accent};">${title}</h1>
-    <p style="margin:0;font-size:16px;line-height:1.6;color:#3f3f46;">${body}</p>
-  </div>
-</div></body></html>`,
-    { status: tone === "ok" ? 200 : 400, headers: { "content-type": "text/html; charset=utf-8" } },
-  );
-}
+type Checked = { ok: true; slug: string; action: ReviewAction } | { ok: false; res: NextResponse };
 
-export async function GET(req: NextRequest) {
+function check(req: NextRequest): Checked {
   const url = new URL(req.url);
   const slug = url.searchParams.get("date") ?? "";
   const action = url.searchParams.get("a") ?? "";
   const token = url.searchParams.get("t") ?? "";
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(slug) || !isReviewAction(action)) {
-    return page("That link is not valid", "Check the address, or use the buttons in the newest daily email.", "bad");
+    return { ok: false, res: resultPage("That link is not valid", "Check the address, or use the buttons in the newest daily email.", false) };
   }
   if (!reviewTokenValid(slug, action, token)) {
-    return page("That link has expired or was changed", "Use the buttons in the daily email itself.", "bad");
+    return { ok: false, res: resultPage("That link has expired or was changed", "Use the buttons in the daily email itself.", false) };
   }
+  return { ok: true, slug, action };
+}
+
+export async function GET(req: NextRequest) {
+  const c = check(req);
+  if (!c.ok) return c.res;
+  return confirmPage(
+    `${ACTION_LABEL[c.action]}?`,
+    `This changes the live Daily Readee for <strong>${c.slug}</strong>. It takes a few minutes, and you will get an updated email when it is done.`,
+    ACTION_LABEL[c.action],
+  );
+}
+
+export async function POST(req: NextRequest) {
+  const c = check(req);
+  if (!c.ok) return c.res;
+  const { slug, action } = c;
 
   after(async () => {
     await runReviewAction(slug, action);
   });
 
-  return page(
+  return resultPage(
     "On it",
-    `${ACTION_LABEL[action]} for <strong>${slug}</strong> is running now. It takes a few minutes. You will get the new version in tomorrow's email, or refresh the day to see it sooner.`,
-    "ok",
+    `${ACTION_LABEL[action]} for <strong>${slug}</strong> is running now. It takes a few minutes. You will get an updated email when it is done, or refresh the day to see it sooner.`,
   );
 }
