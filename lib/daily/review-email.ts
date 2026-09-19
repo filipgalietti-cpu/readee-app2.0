@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { slugForDate } from "@/lib/daily/themes";
@@ -34,7 +35,7 @@ type Row = {
   passage_body: string | null;
   image_url: string | null;
   qc_overall: string | null;
-  qc_report: { checks?: { name: string; severity: string; message: string }[] } | null;
+  qc_report: { checks?: { name: string; severity: string; message: string }[]; reviewEmailedVersion?: string } | null;
   easy_variant: DailyEasyVariant | null;
 };
 
@@ -170,7 +171,38 @@ export async function sendDailyReviewEmail(date: Date): Promise<{ ok: boolean; r
     .maybeSingle();
   if (error || !data) return { ok: false, reason: `no row for ${slug}` };
 
-  const { subject, html } = buildReviewEmail(data as Row);
+  const row = data as Row;
+  /*
+   * ‼️ ONE EMAIL PER VERSION OF THE DAY, NOT ONE PER DAY.
+   *
+   * Filip, 19 Sep: "why would it auto update w/o notifying me? the live one is
+   * worse." He had the picture in his inbox, and by the time he opened the page
+   * it was a different one.
+   *
+   * He was right and the cause was here. The key was `daily-review-<date>`, so
+   * the first send won and every later version was silent. That is exactly
+   * backwards for this feature: the cron can rebuild a day three times, on a
+   * different SUBJECT each time, and the whole point of the email is to show
+   * what actually shipped.
+   *
+   * The key now covers what a reader would notice changing. A rebuild sends a
+   * second email, marked as one, and a cron that changes nothing still sends
+   * only the original.
+   */
+  const version = createHash("sha256")
+    .update(
+      [row.passage_title, row.passage_body, row.image_url, row.easy_variant?.passage_body, row.qc_overall]
+        .map((v) => v ?? "")
+        .join("\u0000"),
+    )
+    .digest("hex")
+    .slice(0, 12);
+  // What we last told the inbox about this day, parked in the qc_report we
+  // already own rather than paying for a column.
+  const lastSent = (row.qc_report as { reviewEmailedVersion?: string } | null)?.reviewEmailedVersion;
+  const revision = !!lastSent && lastSent !== version;
+  if (lastSent === version) return { ok: true, reason: "already sent for this version" };
+  const { subject, html } = buildReviewEmail(row);
   // Replies land here, and the day is carried in the address so the webhook
   // knows which row to act on without trusting the subject line. Unset until
   // the MX record exists, and then the email simply has no reply route while
@@ -185,14 +217,18 @@ export async function sendDailyReviewEmail(date: Date): Promise<{ ok: boolean; r
       {
         from: FROM,
         to: process.env.TEAM_INBOX_EMAIL || "hello@readee.app",
-        subject,
+        subject: revision ? `${subject} · updated` : subject,
         html,
         ...(replyTo ? { replyTo } : {}),
       },
       // One review per day, however many times the cron runs.
-      { idempotencyKey: `daily-review-${slug}` },
+      { idempotencyKey: `daily-review-${slug}-${version}` },
     );
     if (sendError) return { ok: false, reason: String(sendError.message ?? sendError) };
+    await admin
+      .from("daily_questions")
+      .update({ qc_report: { ...(row.qc_report ?? {}), reviewEmailedVersion: version } })
+      .eq("date", slug);
     return { ok: true };
   } catch (e) {
     return { ok: false, reason: e instanceof Error ? e.message : String(e) };
