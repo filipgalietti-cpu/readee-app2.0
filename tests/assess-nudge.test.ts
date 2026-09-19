@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
+import { existsSync } from "node:fs";
+import path from "node:path";
 
 /**
  * Until 19 Sep 2026 a family that signed up and never took the assessment got
@@ -69,7 +71,7 @@ describe("a family that never started", () => {
     expect(res).toMatchObject({ sent: true, stage: "assess_nudge" });
     expect(sends).toHaveLength(1);
     expect(sends[0].from).toContain("Jennifer");
-    expect(sends[0].subject).toBe("A ten minute reading assessment for Maya");
+    expect(sends[0].subject).toBe("Wondering where Maya stands in reading?");
     expect(sends[0].text).toContain("/placement/ready?child=c1");
   });
 
@@ -82,8 +84,8 @@ describe("a family that never started", () => {
   it("gets the second, and last, fourteen days later, and then nothing", async () => {
     tables.lifecycle_email_sends = [{ profile_id: "p1", stage: "assess_nudge", status: "sent", sent_at: daysAgo(15) }];
     await evaluateAndSendLifecycle(parent({ created_at: daysAgo(30) }), { assessNudgeApproved: true });
-    expect(sends[0].subject).toBe("What you get from Maya's reading assessment");
-    expect(sends[0].text).toContain("This is the last reminder I will send about it.");
+    expect(sends[0].subject).toBe("One last note about Maya's reading assessment");
+    expect(sends[0].text).toContain("This is the last reminder I'll send about it.");
 
     tables.lifecycle_email_sends[1].sent_at = daysAgo(20);
     await evaluateAndSendLifecycle(parent({ created_at: daysAgo(60) }), { assessNudgeApproved: true });
@@ -131,22 +133,52 @@ describe("the copy", () => {
       expect(e.text + e.subject).not.toMatch(/\p{Extended_Pictographic}/u);
     }
   });
-  it("says what free means in the same sentence", () => {
-    for (const e of both) expect(e.text).toMatch(/free[^.]*no card/);
+  /*
+   * Filip, 19 Sep, on the first draft: "needs to be more personal. Look at the
+   * landing page, we have her signature and picture to use." The first draft
+   * was me writing as her. This one is her.
+   */
+  it("uses the sentences Jennifer wrote herself, not an imitation of her", () => {
+    const t = both[0].text;
+    expect(t).toContain("I'm a reading teacher with over 6 years of experience teaching kindergarten through 5th grade, and I'm currently teaching 3rd grade.");
+    expect(t).toContain("I created Readee because I've seen too many children struggle with reading simply because they haven't been taught the skills they need.");
+    expect(t).toContain("If you're wondering where Maya stands or what they should be working on, start with our free assessment.");
+    expect(t).toContain("Every child deserves to feel confident when they read.");
+  });
+  it("is a letter: her photo on top, her signature and name at the bottom, no mascot", () => {
+    for (const e of both) {
+      expect(e.html).toContain("/images/email/jen-headshot.jpg");
+      expect(e.html).toContain("/images/email/jen-signature.png");
+      expect(e.html.indexOf("jen-headshot")).toBeLessThan(e.html.indexOf("jen-signature"));
+      expect(e.html).toContain("Jennifer Klingerman");
+      expect(e.html).not.toContain("placement-nudge.png");
+      expect(e.html).toContain("A note from Jen");
+    }
+  });
+  it("ships the two pictures it points at", () => {
+    for (const f of ["jen-headshot.jpg", "jen-signature.png"]) {
+      expect(existsSync(path.join(process.cwd(), "public", "images", "email", f))).toBe(true);
+    }
+  });
+  it("opens with the parent's name instead of a headline", () => {
+    expect(both[0].html).toMatch(/<h1[^>]*>Hi Dana,<\/h1>/);
+  });
+  it("invites a reply", () => {
+    for (const e of both) expect(e.text).toContain("just reply to this email");
+  });
+  it("has none of the reassurance lines Filip cut from the site", () => {
+    for (const e of both) expect(e.text).not.toMatch(/no card|credit card|any device|microphone/i);
   });
   it("never shows a price or the paid plan to a family that has not seen a report", () => {
     for (const e of both) expect(e.text + e.html).not.toMatch(/\$\d|Readee\+|trial|upgrade/i);
   });
-  it("credits Jennifer with the role the report already gives her", () => {
-    expect(both[0].text).toContain("certified reading specialist and 3rd-grade teacher");
-  });
   it("uses the same button words as the website", () => {
     for (const e of both) expect(e.html).toContain("Start Reading Assessment");
   });
-  it("does not tell a family with no child profile that their child's account is set up", () => {
+  it("reads naturally, and links to setup, for a family with no child profile yet", () => {
     const e = renderAssessNudge({ parentName: null, kidName: null, childId: null, nth: 1, unsubscribeUrl: "u" });
-    expect(e.text).toContain("Your account is set up");
-    expect(e.text).not.toContain("child's account");
+    expect(e.text).not.toMatch(/account is set up/);
+    expect(e.text).toContain("where your child stands");
     expect(e.text).toContain("/placement/setup");
   });
 });
@@ -159,8 +191,8 @@ describe("approval", () => {
     const { subject, html } = buildAssessNudgePreview(54);
     expect(subject).toMatch(/^Approve\?/);
     expect(html).toContain("<strong>54</strong> families are due");
-    expect(html).toContain("A ten minute reading assessment for Maya");
-    expect(html).toMatch(/What you get from Maya(&#39;|&#x27;|&apos;|')s reading assessment/);
+    expect(html).toContain("Wondering where Maya stands in reading?");
+    expect(html).toMatch(/One last note about Maya(&#39;|&#x27;|&apos;|')s reading assessment/);
     expect(html).toContain(`a=approve&t=${announceToken(ASSESS_NUDGE_ID, "approve")}`);
     expect(html).toContain(`a=cancel&t=${announceToken(ASSESS_NUDGE_ID, "cancel")}`);
     expect(html).not.toContain("a=redraw");

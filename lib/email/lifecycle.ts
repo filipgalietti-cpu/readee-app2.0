@@ -86,6 +86,8 @@ export function shell(opts: {
   secondary?: { href: string; label: string };
   /** A wide 2:1 scene illustration across the top of the card (a key under /images/email); replaces `hero` when set. */
   banner?: string;
+  /** A person, not a mascot: a round photo (a file under /images/email) for a letter someone signs. Replaces `hero`. */
+  portrait?: { file: string; alt: string };
 }): string {
   const greeting = opts.parentName ? `Hi ${opts.parentName},` : "Hi there,";
   const heading = opts.heading ?? greeting;
@@ -98,6 +100,8 @@ export function shell(opts: {
     : null;
   const heroImg = bannerSrc
     ? `<tr><td align="center" style="padding:0 0 18px;"><img src="${bannerSrc}" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>`
+    : opts.portrait
+    ? `<tr><td align="center"><img src="${BASE_URL}/images/email/${opts.portrait.file}" alt="${escapeHtml(opts.portrait.alt)}" width="88" height="88" style="display:block;width:88px;height:88px;border-radius:50%;margin:0 auto 14px;" /></td></tr>`
     : opts.hero
     ? `<tr><td align="center"><img src="${BASE_URL}/images/email/${opts.hero}.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto 10px;" /></td></tr>`
     : "";
