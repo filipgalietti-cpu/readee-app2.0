@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { after } from "next/server";
-import { ANNOUNCEMENTS, type Announcement } from "@/lib/data/announcements";
+import { findCampaign, canRedraw, type Campaign } from "@/lib/announcements/campaigns";
 import {
   ANNOUNCE_LABEL,
   announceTokenValid,
@@ -22,7 +22,8 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 /**
- * The three buttons in a product-update preview.
+ * The buttons in an approval preview: a product update, or a new family email
+ * such as the assessment reminder (lib/announcements/campaigns.ts lists them).
  *
  * Signed per (announcement, action), so a link cannot be pointed at a different
  * announcement or turned from "cancel" into "approve". No session is read: the
@@ -36,7 +37,7 @@ export const maxDuration = 300;
  * cron sends it on or after its date. That keeps one code path responsible for
  * reaching families, with its per-family idempotency, rather than two.
  */
-type Checked = { ok: true; a: Announcement; action: AnnounceAction } | { ok: false; res: NextResponse };
+type Checked = { ok: true; c: Campaign; action: AnnounceAction } | { ok: false; res: NextResponse };
 
 function check(req: NextRequest): Checked {
   const url = new URL(req.url);
@@ -44,44 +45,45 @@ function check(req: NextRequest): Checked {
   const action = url.searchParams.get("a") ?? "";
   const token = url.searchParams.get("t") ?? "";
 
-  const a = ANNOUNCEMENTS.find((x) => x.id === id);
-  if (!a?.email || !isAnnounceAction(action)) {
+  const c = findCampaign(id);
+  // "redraw" on something with no generated picture is not a real link.
+  if (!c || !isAnnounceAction(action) || (action === "redraw" && !canRedraw(c))) {
     return { ok: false, res: resultPage("That link is not valid", "Use the buttons in the newest preview email.", false) };
   }
   if (!announceTokenValid(id, action, token)) {
     return { ok: false, res: resultPage("That link was changed or has expired", "Use the buttons in the preview email itself.", false) };
   }
-  return { ok: true, a, action };
+  return { ok: true, c, action };
 }
 
-const QUESTION: Record<AnnounceAction, (heading: string, date: string) => string> = {
-  approve: (h, d) => `<strong>${h}</strong> will go to every opted-in family on or after ${d}. Nothing has been sent yet.`,
+const QUESTION: Record<AnnounceAction, (heading: string, when: string) => string> = {
+  approve: (h, w) => `<strong>${h}</strong> will go to families ${w}. Nothing has been sent yet.`,
   redraw: (h) => `A new picture will be drawn for <strong>${h}</strong> and a fresh preview sent to you. Families get nothing.`,
   cancel: (h) => `<strong>${h}</strong> will not be sent to anyone.`,
 };
 
 export async function GET(req: NextRequest) {
-  const c = check(req);
-  if (!c.ok) return c.res;
-  const e = c.a.email!;
-  return confirmPage(ANNOUNCE_LABEL[c.action] + "?", QUESTION[c.action](escapeHtml(e.heading), escapeHtml(e.emailDate)), ANNOUNCE_LABEL[c.action]);
+  const r = check(req);
+  if (!r.ok) return r.res;
+  return confirmPage(ANNOUNCE_LABEL[r.action] + "?", QUESTION[r.action](escapeHtml(r.c.heading), escapeHtml(r.c.when)), ANNOUNCE_LABEL[r.action]);
 }
 
 export async function POST(req: NextRequest) {
-  const c = check(req);
-  if (!c.ok) return c.res;
-  const { a, action } = c;
-  const e = a.email!;
-  const heading = escapeHtml(e.heading);
+  const r = check(req);
+  if (!r.ok) return r.res;
+  const { c, action } = r;
+  const heading = escapeHtml(c.heading);
 
   if (action === "approve") {
-    await approve(a.id);
-    return resultPage("Approved", `<strong>${heading}</strong> will go to families on or after ${escapeHtml(e.emailDate)}. You can still cancel it from the same email until then.`);
+    await approve(c.id);
+    return resultPage("Approved", `<strong>${heading}</strong> will go to families ${escapeHtml(c.when)}. You can cancel it from the same email.`);
   }
   if (action === "cancel") {
-    await cancel(a.id);
+    await cancel(c.id);
     return resultPage("Cancelled", `<strong>${heading}</strong> will not be sent. Approving it from the same email undoes this.`);
   }
+
+  const a = c.announcement!; // check() only lets "redraw" through for an announcement
 
   // redraw: a new picture, then a fresh preview asking the question again.
   after(async () => {
