@@ -1,5 +1,6 @@
 import { buildDailyQuestion, targetedImageRegen, targetedPassageRegen } from "@/lib/daily/build-daily";
 import { notifyTeam } from "@/lib/email/notify-team";
+import { sendDailyReviewEmail } from "@/lib/daily/review-email";
 import { trackError } from "@/lib/observability/track";
 import type { ReviewAction } from "@/lib/daily/review-actions";
 
@@ -53,5 +54,8 @@ async function report(slug: string, action: ReviewAction, detail: string, ok: bo
     // One report per attempt, not per retry of the same attempt.
     `daily-review-${slug}-${action}-${ok ? "ok" : "err"}`,
   );
+  // The proof sheet again, so the new picture is in the inbox and not only
+  // behind a link. It is keyed on the content, so "no change" sends nothing.
+  if (ok) await sendDailyReviewEmail(dayFromSlug(slug)).catch(() => undefined);
   return { ok, detail };
 }

@@ -26,6 +26,10 @@ import { renderWhatsNew } from "@/lib/email/whats-new";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { TRIAL_DAYS } from "@/lib/plan/access";
 import { FAMILY_FROM } from "./sender";
+import { isApproved, isCancelled, previewSent, markPreviewSent, ownerProfileId } from "@/lib/announcements/approval";
+import { loadAudience, countByStage, askFor } from "@/lib/announcements/audience";
+import { generateBanner, latestBanner } from "@/lib/announcements/banner";
+import { sendAnnouncementPreview } from "@/lib/announcements/preview";
 
 const FROM = FAMILY_FROM;
 export const BASE_URL = "https://learn.readee.app";
@@ -84,8 +88,15 @@ export function shell(opts: {
 }): string {
   const greeting = opts.parentName ? `Hi ${opts.parentName},` : "Hi there,";
   const heading = opts.heading ?? greeting;
-  const heroImg = opts.banner
-    ? `<tr><td align="center" style="padding:0 0 18px;"><img src="${BASE_URL}/images/email/${opts.banner}.png" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>`
+  // A banner is either a key under /images/email (the hand-made ones) or a full
+  // URL (the generated ones, which live in storage so a redraw needs no deploy).
+  const bannerSrc = opts.banner
+    ? /^https?:\/\//.test(opts.banner)
+      ? opts.banner
+      : `${BASE_URL}/images/email/${opts.banner}.png`
+    : null;
+  const heroImg = bannerSrc
+    ? `<tr><td align="center" style="padding:0 0 18px;"><img src="${bannerSrc}" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>`
     : opts.hero
     ? `<tr><td align="center"><img src="${BASE_URL}/images/email/${opts.hero}.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto 10px;" /></td></tr>`
     : "";
@@ -341,6 +352,10 @@ async function alreadySentEver(parentId: string, stage: Stage): Promise<boolean>
  * parent gets are ones with news in them.
  */
 export const RE_ENGAGE_CAP = 3;
+
+/** How early the team sees a preview, and how long an announcement stays news. */
+export const ANNOUNCE_PREVIEW_LEAD_DAYS = 5;
+export const ANNOUNCE_WINDOW_DAYS = 7;
 
 async function reEngageCount(parentId: string): Promise<number> {
   const admin = supabaseAdmin();
@@ -743,20 +758,58 @@ export async function sendLifecycleBatch(): Promise<{
   let skipped = 0;
   let errors = 0;
 
-  // Pre-timed announcements (a season launch, say): each has an emailDate; on or after it every
-  // opted-in parent gets the email once (stage whats_new:<id>), then the stages below run as usual.
+  /*
+   * Product updates: one announcement object drives the in-app popup AND this
+   * email. Reshaped 19 Sep 2026 with Filip; three things changed.
+   *
+   * ‼️ 1. NOTHING SENDS WITHOUT APPROVAL. This loop used to send to every
+   * opted-in family the morning an announcement's date arrived, with no
+   * preview and no way to stop it. Now an unapproved announcement gets a banner
+   * drawn and ONE preview to the team inbox, and waits.
+   *
+   * ‼️ 2. IT EXPIRES. There was no upper bound, so every family that signed up
+   * afterwards was sent every past announcement: the log shows the football
+   * teaser ("lands Thursday", 10 Sep) still going out on the 19th, to people
+   * who joined after the season had started. News older than a week is not
+   * news.
+   *
+   * 3. THE ASK MATCHES THE FAMILY. Same headline, but the closing line and the
+   * button follow how far they have actually got (lib/announcements/audience).
+   */
   const today = new Date().toISOString().slice(0, 10);
+  const audience = await loadAudience(isDeliverable);
   for (const a of ANNOUNCEMENTS) {
-    if (!a.email || a.email.emailDate > today) continue;
+    if (!a.email) continue;
+    const daysUntil = Math.round((Date.parse(a.email.emailDate) - Date.parse(today)) / DAY_MS);
+    if (daysUntil > ANNOUNCE_PREVIEW_LEAD_DAYS || daysUntil < -ANNOUNCE_WINDOW_DAYS) continue;
+    if (await isCancelled(a.id)) continue;
+
+    if (!(await isApproved(a.id))) {
+      if (await previewSent(a.id)) continue;
+      const owner = ownerProfileId();
+      let bannerUrl = await latestBanner(a.id);
+      if (!bannerUrl && a.email.banner === "generated" && owner) {
+        const drawn = await generateBanner(a, owner);
+        if (drawn.ok) bannerUrl = drawn.url;
+      }
+      const preview = await sendAnnouncementPreview(a, bannerUrl, countByStage(audience));
+      if (preview.ok) await markPreviewSent(a.id);
+      else errors++;
+      continue;
+    }
+
+    if (daysUntil > 0) continue; // approved, but its day has not come
     const stage = `whats_new:${a.id}`;
-    for (const p of (parents ?? []) as ParentRow[]) {
-      if (!p.email || !isDeliverable(p.email)) continue;
+    const banner = (a.email.banner === "generated" ? await latestBanner(a.id) : a.email.banner) ?? undefined;
+    const fallback = { ctaLabel: a.email.ctaLabel ?? "Open Readee", ctaHref: a.email.ctaHref ?? `${BASE_URL}/dashboard` };
+    for (const m of audience) {
       try {
-        if (await alreadySentStage(p.id, stage)) continue;
-        const unsubscribeUrl = `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(p.id)}`;
-        const e = renderWhatsNew({ eyebrow: "What's new", heading: a.email.heading, intro: a.email.intro, items: a.email.items, ctaLabel: a.email.ctaLabel, ctaHref: a.email.ctaHref, bunny: a.email.banner }, unsubscribeUrl);
-        const res = await sendEmail({ to: p.email, subject: e.subject, text: e.text, html: e.html });
-        await recordSendStage(p.id, stage, res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
+        if (await alreadySentStage(m.parentId, stage)) continue;
+        const ask = askFor(m.stage, m.childId, fallback);
+        const unsubscribeUrl = `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(m.parentId)}`;
+        const e = renderWhatsNew({ eyebrow: "What's new", heading: a.email.heading, intro: a.email.intro, items: a.email.items, ctaLabel: ask.ctaLabel, ctaHref: ask.ctaHref, bunny: banner, nextStepLine: ask.line }, unsubscribeUrl);
+        const res = await sendEmail({ to: m.email, subject: e.subject, text: e.text, html: e.html });
+        await recordSendStage(m.parentId, stage, res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
         if (res.ok) sent++; else errors++;
         await new Promise((r) => setTimeout(r, 60));
       } catch { errors++; }

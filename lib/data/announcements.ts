@@ -76,5 +76,29 @@ export const ANNOUNCEMENTS: Announcement[] = [
       "bunny_candycorn",
       "bunny_spider",
     ],
+    // ‼️ These ten costumes went live on 22 Aug and no parent was ever told:
+    // the popup ran, the email block was never written. Found 19 Sep while
+    // reshaping the update emails with Filip. The copy says the costumes are IN
+    // the Shop, which is true, and never that they are new today, which is not.
+    //
+    // banner "generated": drawn from this announcement against the football
+    // banner as a style reference, previewed to the team inbox, and sent only
+    // after someone approves it (lib/announcements).
+    email: {
+      emailDate: "2026-09-24",
+      heading: "Halloween costumes are in the Shop",
+      intro: "Ten spooky looks are waiting in the Readee Shop: a pumpkin, a ghost, a skeleton, a black cat, and more.",
+      items: [
+        "Ten costumes, from pumpkin to candy corn",
+        "Bought with carrots, which your child earns by reading",
+        // Checked against outfits.ts on 19 Sep: acorn is the cheapest at 160.
+        // An earlier draft promised a costume "by Halloween", which is probably
+        // true and is still a projection, so it says the price instead.
+        "Costumes start at 160 carrots",
+      ],
+      ctaLabel: "See the Shop",
+      ctaHref: "https://learn.readee.app/shop",
+      banner: "generated",
+    },
   },
 ];
