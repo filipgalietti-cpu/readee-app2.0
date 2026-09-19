@@ -123,6 +123,46 @@
   align-items: center;
   justify-content: space-between;
 }
+/* The only way off this page, spelled out. The wordmark beside it still
+   links home, but a logo is not a control (Filip, 19 Sep: "We have to
+   include a back button, or a home page button on /journey"). */
+.headerHome {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.homeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff8e8;
+  border: 2px solid #ddd1ad;
+  box-shadow: 0 2px 0 0 #ddd1ad;
+  color: #62418b;
+  font-weight: 800;
+  font-size: 14px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.homeButton:hover {
+  background: #fff2d6;
+}
+.homeButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 0 #ddd1ad;
+}
+@media (max-width: 640px) {
+  .homeButton span {
+    display: none;
+  }
+  .homeButton {
+    padding: 8px 10px;
+  }
+}
+
 .wordmark {
   font-family: var(--font-baloo), sans-serif;
   font-size: 35px;
@@ -683,21 +723,34 @@
 .milestone svg {
   width: 104px;
 }
-.milestone strong,
-.milestone span {
+/* A signpost, not floating text. The two lines used to sit straight on the
+   painted map, so whether you could read them depended on what was behind
+   them (Filip, 19 Sep: "this needs a text box around Next Discoveries"). */
+.milestoneLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+  padding: 5px 10px 6px;
+  border-radius: 10px;
+  background: #fff8e8;
+  border: 2px solid #ddd1ad;
+  box-shadow: 0 2px 0 0 #ddd1ad;
+}
+.milestoneLabel strong,
+.milestoneLabel span {
   max-width: 132px;
   line-height: 1.15;
   text-align: center;
   font-weight: 900;
   white-space: nowrap;
 }
-.milestone strong {
-  margin-top: 2px;
+.milestoneLabel strong {
   color: #6d5534;
   font-size: 13px;
 }
-.milestone span {
-  margin-top: 3px;
+.milestoneLabel span {
+  margin-top: 2px;
   color: #806a45;
   font-size: 10px;
 }

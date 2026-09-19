@@ -62,9 +62,30 @@ export default function JourneyMagicReveal({
       onKeyDown={(event) => {
         if (event.key === "Escape") finish();
       }}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: poof ? 0 : 1 }}
-      transition={{ duration: 0.95, delay: poof ? 0.15 : 0 }}
+      /*
+       * ‼️ THE STAGE STARTS DARK. Filip, 19 Sep: "the magician animations should
+       * show up first, right now we see the map already there, and the magician
+       * renders in a bit afterwards."
+       *
+       * The cover's own background is rgba(67,45,80,0.18) and leans on a 10px
+       * backdrop blur, so the finished map was legible underneath from the
+       * first frame. Nothing was being revealed, because nothing was hidden:
+       * the magician was performing in front of the thing he was meant to
+       * conjure.
+       *
+       * So it opens nearly opaque, and eases back to the designed tint on the
+       * same beat the backdrop resolves, which is when the wand actually moves.
+       * The magician stands on an empty stage, waves, and the world arrives.
+       */
+      initial={{ opacity: 1, backgroundColor: "rgba(43,27,58,0.94)" }}
+      animate={{
+        opacity: poof ? 0 : 1,
+        backgroundColor: conjured ? "rgba(67,45,80,0.18)" : "rgba(43,27,58,0.94)",
+      }}
+      transition={{
+        opacity: { duration: 0.95, delay: poof ? 0.15 : 0 },
+        backgroundColor: { duration: 1.2, ease: "easeOut" },
+      }}
       onAnimationComplete={() => {
         if (poof) finish();
       }}

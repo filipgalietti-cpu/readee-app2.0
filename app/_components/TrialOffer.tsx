@@ -131,10 +131,32 @@ export default function TrialOffer({
               <span className="block text-sm font-semibold text-zinc-900">
                 {option === "monthly" ? "Monthly" : "Annual"}
               </span>
+              {/*
+                ‼️ Filip, 19 Sep: "instead of 9.99, can you make it 0.00
+                insinuating the free trial". A parent choosing a plan from a
+                locked lesson is being shown the price of a thing they are not
+                about to be charged for, which reads as the ask rather than the
+                offer.
+                
+                So the number they see is the number that leaves their account
+                today, and the real price follows in the same breath. The "then"
+                is not optional: an FTC-safe free claim states its condition
+                immediately beside it, not in a footnote, and the terms line
+                below repeats the renewal and how to cancel.
+              */}
               <span className="block text-xs text-zinc-600">
-                {option === "monthly"
-                  ? `$${PRICING.monthly.perMonth.toFixed(2)} billed each month`
-                  : `$${PRICING.annual.perYear.toFixed(2)} billed each year`}
+                {eligibleForTrial ? (
+                  <>
+                    <strong className="font-semibold text-zinc-900">$0.00 today</strong>
+                    {option === "monthly"
+                      ? `, then $${PRICING.monthly.perMonth.toFixed(2)} each month`
+                      : `, then $${PRICING.annual.perYear.toFixed(2)} each year`}
+                  </>
+                ) : option === "monthly" ? (
+                  `$${PRICING.monthly.perMonth.toFixed(2)} billed each month`
+                ) : (
+                  `$${PRICING.annual.perYear.toFixed(2)} billed each year`
+                )}
               </span>
             </span>
             {option === "annual" && (

@@ -597,7 +597,10 @@ function PlanCard({ copy, reduced }: CardProps) {
             used a fraction, and the rest was a margin. It now spans the column
             and is capped by height instead, which is what the art was drawn
             for. */}
-        <motion.div className="relative mt-2 hidden h-44 w-full @2xl:block" {...rise(reduced, 0.45)}>
+        {/* Filip, 19 Sep: "i think this needs to be larger on the assessment
+            report". It was a fixed 208 square with a 48px margin; freeing it to
+            the column was the first half, and this is the second. */}
+        <motion.div className="relative mt-2 hidden h-56 w-full @2xl:block @4xl:h-64" {...rise(reduced, 0.45)}>
           <Image src="/images/ui/bunny-reading.png" alt="" fill sizes="(min-width: 1280px) 320px, 240px" className="object-contain object-center" />
         </motion.div>
       </div>
