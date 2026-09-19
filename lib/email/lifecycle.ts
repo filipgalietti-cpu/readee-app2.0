@@ -30,13 +30,14 @@ import { isApproved, isCancelled, previewSent, markPreviewSent, ownerProfileId }
 import { loadAudience, countByStage, askFor } from "@/lib/announcements/audience";
 import { generateBanner, latestBanner } from "@/lib/announcements/banner";
 import { sendAnnouncementPreview } from "@/lib/announcements/preview";
+import { ASSESS_NUDGE_ID, ASSESS_NUDGE_MIN_AGE_DAYS, assessNudgeDue, renderAssessNudge, sendAssessNudgePreview } from "@/lib/email/assess-nudge";
 
 const FROM = FAMILY_FROM;
 export const BASE_URL = "https://learn.readee.app";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-type Stage = "welcome" | "first_lesson_nudge" | "trial_ending" | "re_engage" | "quiet_3d";
+type Stage = "welcome" | "first_lesson_nudge" | "trial_ending" | "re_engage" | "quiet_3d" | "assess_nudge";
 
 type ParentRow = {
   id: string;
@@ -357,16 +358,17 @@ export const RE_ENGAGE_CAP = 3;
 export const ANNOUNCE_PREVIEW_LEAD_DAYS = 5;
 export const ANNOUNCE_WINDOW_DAYS = 7;
 
-async function reEngageCount(parentId: string): Promise<number> {
+async function sentCount(parentId: string, stage: Stage): Promise<number> {
   const admin = supabaseAdmin();
   const { count } = await admin
     .from("lifecycle_email_sends")
     .select("id", { count: "exact", head: true })
     .eq("profile_id", parentId)
-    .eq("stage", "re_engage")
+    .eq("stage", stage)
     .eq("status", "sent");
   return count ?? 0;
 }
+const reEngageCount = (parentId: string) => sentCount(parentId, "re_engage");
 
 /**
  * Addresses that can never receive mail: QA robots and seeded test accounts.
@@ -470,6 +472,24 @@ async function anyChildHasPlacement(parentId: string): Promise<boolean> {
   if (ids.length === 0) return false;
   const { data } = await admin.from("placements").select("id").in("child_id", ids).limit(1);
   return !!data && data.length > 0;
+}
+
+/**
+ * A family that has never been assessed AND never opened a lesson, with their
+ * first child if they have one. Families from before the assessment existed
+ * (May to August 2026) can have reading history and no placement; the streak
+ * emails are true for them, so they are not "never started".
+ */
+async function neverStarted(parentId: string): Promise<{ never: boolean; childId: string | null }> {
+  const admin = supabaseAdmin();
+  const { data: kids } = await admin.from("children").select("id").eq("parent_id", parentId).order("created_at");
+  const ids = ((kids ?? []) as { id: string }[]).map((k) => k.id);
+  if (ids.length === 0) return { never: true, childId: null };
+  const [{ data: placed }, { data: progress }] = await Promise.all([
+    admin.from("placements").select("id").in("child_id", ids).limit(1),
+    admin.from("lessons_progress").select("id").in("child_id", ids).limit(1),
+  ]);
+  return { never: !(placed?.length || progress?.length), childId: ids[0] };
 }
 
 export function renderPlacementNudge(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
@@ -593,8 +613,12 @@ type StageResult =
  * now, then send it. Sends at most one stage per call — re-engage
  * never fights with the welcome funnel for the same inbox slot.
  */
-export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<StageResult> {
+export async function evaluateAndSendLifecycle(
+  parent: ParentRow,
+  opts: { assessNudgeApproved?: boolean } = {},
+): Promise<StageResult> {
   if (!parent.email) return { ok: true, sent: false, reason: "no_email" };
+  if (!isDeliverable(parent.email)) return { ok: true, sent: false, reason: "undeliverable" };
   if (!parent.email_weekly_digest) {
     return { ok: true, sent: false, reason: "unsubscribed" };
   }
@@ -680,6 +704,40 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
     }
   }
 
+  /*
+   * Stage 2.6: never started. ‼️ Everything below this point talks about a
+   * reading habit: "hasn't logged a lesson in 14 days, streaks rebuild fast".
+   * Sent to a family that never took the assessment, that describes a streak
+   * that never existed and asks for the wrong thing. They were three quarters
+   * of the people receiving it (19 Sep 2026).
+   *
+   * So a family that has never started gets the assessment email from Jennifer
+   * (twice at most, once it has been approved) and NEVER falls through to the
+   * habit emails, whether or not one is due today.
+   */
+  if (ageDays >= ASSESS_NUDGE_MIN_AGE_DAYS && parent.plan !== "premium" && parent.plan !== "teacher_solo") {
+    const start = await neverStarted(parent.id);
+    if (start.never) {
+      const last = await lastSentAtStage(parent.id, "assess_nudge");
+      const due = assessNudgeDue({
+        approved: !!opts.assessNudgeApproved,
+        ageDays,
+        sentCount: await sentCount(parent.id, "assess_nudge"),
+        daysSinceLast: last ? (now - last.getTime()) / DAY_MS : null,
+      });
+      if (!due.due) return { ok: true, sent: false, reason: "never_started_no_nudge_due" };
+      const kidName = await firstKidName(parent.id);
+      const email = renderAssessNudge({ parentName: displayName, kidName, childId: start.childId, nth: due.nth, unsubscribeUrl });
+      const res = await sendEmail({ to: parent.email, subject: email.subject, text: email.text, html: email.html });
+      if (!res.ok) {
+        await recordSend(parent.id, "assess_nudge", "failed", res.error);
+        return { ok: false, error: res.error, stage: "assess_nudge" };
+      }
+      await recordSend(parent.id, "assess_nudge", "sent");
+      return { ok: true, sent: true, stage: "assess_nudge" };
+    }
+  }
+
   // Stage 2.7: quiet for 3 to 6 days (after the first week) — the next lesson by
   // name and why it matters. At most once every 7 days; re-engage takes over at 7+.
   if (ageDays >= 7) {
@@ -752,7 +810,7 @@ export async function sendLifecycleBatch(): Promise<{
     welcome: 0,
     first_lesson_nudge: 0,
     trial_ending: 0,
-    re_engage: 0, quiet_3d: 0,
+    re_engage: 0, quiet_3d: 0, assess_nudge: 0,
   };
   let sent = 0;
   let skipped = 0;
@@ -816,9 +874,25 @@ export async function sendLifecycleBatch(): Promise<{
     }
   }
 
+  /*
+   * The assessment reminder goes out in Jennifer's name, so it waits for a
+   * person exactly as a product update does: one preview to the team inbox,
+   * then nothing until someone approves it.
+   */
+  const assessNudgeApproved = await isApproved(ASSESS_NUDGE_ID);
+  if (!assessNudgeApproved && !(await isCancelled(ASSESS_NUDGE_ID)) && !(await previewSent(ASSESS_NUDGE_ID))) {
+    const cutoff = Date.now() - ASSESS_NUDGE_MIN_AGE_DAYS * DAY_MS;
+    const oldEnough = new Set(((parents ?? []) as ParentRow[]).filter((p) => new Date(p.created_at).getTime() <= cutoff).map((p) => p.id));
+    // The same rule the send uses: never assessed AND never opened a lesson.
+    const dueNow = audience.filter((m) => m.stage === "unassessed" && !m.everOpenedLesson && oldEnough.has(m.parentId)).length;
+    const preview = await sendAssessNudgePreview(dueNow);
+    if (preview.ok) await markPreviewSent(ASSESS_NUDGE_ID);
+    else errors++;
+  }
+
   for (const p of (parents ?? []) as ParentRow[]) {
     try {
-      const res = await evaluateAndSendLifecycle(p);
+      const res = await evaluateAndSendLifecycle(p, { assessNudgeApproved });
       if (res.ok && "sent" in res && res.sent) {
         sent++;
         if ("stage" in res) byStage[res.stage]++;

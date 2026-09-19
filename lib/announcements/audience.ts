@@ -30,7 +30,14 @@ export type StageAsk = {
   ctaHref: string;
 };
 
-export type AudienceMember = { parentId: string; email: string; stage: FamilyStage; childId: string | null };
+export type AudienceMember = {
+  parentId: string;
+  email: string;
+  stage: FamilyStage;
+  childId: string | null;
+  /** Any child of theirs has ever opened a lesson (true for some families from before the assessment existed). */
+  everOpenedLesson?: boolean;
+};
 
 /** Where a family is, from what they have actually done. Pure, so it can be tested. */
 export function stageOf(input: {
@@ -73,6 +80,7 @@ export async function loadAudience(isDeliverable: (email: string | null) => bool
       parentId: p.id,
       email: p.email as string,
       ...stageOf({ plan: p.plan, childIds: byParent.get(p.id) ?? [], assessed, withLesson }),
+      everOpenedLesson: (byParent.get(p.id) ?? []).some((id) => withLesson.has(id)),
     }));
 }
 
