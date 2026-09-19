@@ -134,11 +134,44 @@ async function verifyCommonsLicense(
     const md = page.imageinfo?.[0]?.extmetadata ?? {};
     const license = md.LicenseShortName?.value ?? null;
     if (!isFreeLicense(license)) return null;
-    const artist = (md.Artist?.value ?? "").replace(/<[^>]+>/g, "").trim() || null;
+    const artist = cleanCommonsArtist(md.Artist?.value);
     return { license: license as string, artist };
   } catch {
     return null;
   }
+}
+
+
+/**
+ * The credit line, out of Commons' HTML.
+ *
+ * ‼️ Filip, 19 Sep: "Unknown authorUnknown author · Public domain · via
+ * Wikimedia Commons ... what is that".
+ *
+ * That. Commons' author templates carry a hidden machine-readable copy of the
+ * name beside the visible one, so the Roberto Clemente photograph arrives as:
+ *
+ *   Unknown author<span style="display: none;">Unknown author</span>
+ *
+ * Stripping tags glued the two together and we printed it under a photograph on
+ * a children's page. The hidden element has to be removed WITH its contents
+ * before any tag stripping, which is the general fix: every file using that
+ * template was affected, not just this one.
+ *
+ * The doubling check after it is belt and braces for templates that repeat the
+ * name some other way.
+ */
+export function cleanCommonsArtist(raw: string | null | undefined): string | null {
+  const withoutHidden = String(raw ?? "").replace(
+    /<([a-z]+)[^>]*style=(?:"|')[^"']*display\s*:\s*none[^"']*(?:"|')[^>]*>[\s\S]*?<\/\1>/gi,
+    "",
+  );
+  const text = withoutHidden.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  if (!text) return null;
+  // "Unknown authorUnknown author" -> "Unknown author".
+  const half = text.length / 2;
+  if (text.length % 2 === 0 && text.slice(0, half) === text.slice(half)) return text.slice(0, half);
+  return text;
 }
 
 function getClient(): GoogleGenAI {
