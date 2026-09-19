@@ -91,3 +91,43 @@ describe("bodySceneConstraint", () => {
     expect(bodySceneConstraint("The Red Planet", "Mars is dry and dusty.")).toBeNull();
   });
 });
+
+/**
+ * 2026-09-19. The theme was "Hispanic Heritage Month" and the passage was an
+ * invented story about two children baking empanadas with their grandmother.
+ * The theme label matched "heritage month", so the guard banned every person
+ * from the picture and sent the build looking for a photograph instead.
+ * Wikipedia returned the 1821 Act of Independence, a page of legal text, and
+ * that shipped above a story about children.
+ *
+ * The catalogue draws a theme for the DAY and writes whatever passage it likes
+ * underneath it. The theme cannot say what is being depicted.
+ */
+describe("the theme is a shelf label, not the story on it", () => {
+  const baking =
+    "Lucia and Ivan loved fall days. Grandma Elena planned a big meal. Let's make empanadas! Lucia helped roll the dough flat and Ivan watched.";
+
+  it("lets an invented story keep its people, whatever shelf it sits on", () => {
+    expect(
+      depictionModeFor({ title: "Lucia's Special Treat", body: baking, theme: "Hispanic Heritage Month" }).mode,
+    ).toBe("free");
+  });
+
+  it("still strips people when the PASSAGE is about a real event", () => {
+    expect(
+      depictionModeFor({
+        title: "The Fourth of July",
+        body: "Independence day marks when the founding fathers signed the declaration of independence.",
+        theme: "Summer",
+      }).mode,
+    ).toBe("symbol");
+  });
+
+  it("still refuses to draw a sensitive subject named only by the theme", () => {
+    // Being over-cautious here costs a picture. Being over-cautious the other
+    // way cost a story about children its children.
+    expect(
+      depictionModeFor({ title: "A Day to Remember", body: "Children played in the park.", theme: "Juneteenth" }).mode,
+    ).toBe("none");
+  });
+});
