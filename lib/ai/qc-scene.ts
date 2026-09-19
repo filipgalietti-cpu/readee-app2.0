@@ -153,14 +153,23 @@ function describeCharacterTarget(c: SceneCharacter): string {
     c.color ?? null,
     c.species,
   ].filter(Boolean) as string[];
-  const base = bits.join(" ").trim();
-  // Appearance has to reach the JUDGE as well as the brief, or the gate keeps
-  // passing the thing the brief now forbids: on 2026-09-16 the cast was two
-  // boys named Tariq and Mohammed and the image was two white children, and
-  // every per-item check answered "yes, a boy is visible" because a boy was.
-  // A target of "a boy" cannot fail on who the boy is.
-  const look = c.appearance?.trim();
-  return look ? `${base} with ${look}` : base;
+  /*
+   * ‼️ APPEARANCE STEERS THE DRAWING; IT NO LONGER GATES IT.
+   *
+   * On 2026-09-16 I put appearance into this target too, reasoning that a
+   * per-item check of "a boy" can never fail on WHICH boy. That was right about
+   * the hole and wrong about the cost. The judge's per-item verdict is binary,
+   * so every day now had to survive questions like "does a child in this image
+   * have BOTH light brown skin AND short curly hair", and on 2026-09-19 a
+   * perfectly good illustration failed on exactly that, plus a cold describer
+   * that said "teacher" where the spec said "woman".
+   *
+   * A day that cannot ship is worse than a day drawn a shade off. The brief
+   * still carries appearance, which is where the 09-16 defect was actually
+   * fixed: the generator is told who these children are. The judge goes back to
+   * checking that the right cast, in the right number, is present.
+   */
+  return bits.join(" ").trim();
 }
 
 /**
