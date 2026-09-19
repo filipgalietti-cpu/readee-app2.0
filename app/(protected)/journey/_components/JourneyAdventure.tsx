@@ -196,9 +196,23 @@ export default function JourneyAdventure({
       data-reduced={reduced}
     >
       <header className={styles.header}>
-        <Link href="/dashboard" className={styles.wordmark} aria-label="Readee dashboard">
-          <img src="/readee-logo.png" alt="Readee" width={160} height={54} />
-        </Link>
+        {/* ‼️ Filip, 19 Sep: "We have to include a back button, or a home page
+            button on /journey."
+            
+            There WAS one: the wordmark linked to the dashboard. He did not find
+            it, and he built the thing, which settles whether a logo reads as a
+            way out. /journey hides the sidebar (SidebarShell HIDDEN_PAGES), so
+            this header is the only chrome a parent has, and a labelled control
+            is not optional when it is the only exit. */}
+        <div className={styles.headerHome}>
+          <Link href="/dashboard" className={styles.homeButton}>
+            <Glyph name="arrow-left" size={18} />
+            <span>Dashboard</span>
+          </Link>
+          <Link href="/dashboard" className={styles.wordmark} aria-label="Readee dashboard">
+            <img src="/readee-logo.png" alt="Readee" width={160} height={54} />
+          </Link>
+        </div>
         <div className={styles.readerHeading}>
           <h1>{model.reader.name}’s reading journey</h1>
           <span>

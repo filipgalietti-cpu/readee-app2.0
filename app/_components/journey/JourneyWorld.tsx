@@ -469,13 +469,18 @@ export default function JourneyWorld({
               }
             >
               <MilestoneLandmark complete={milestoneComplete} />
-              <strong>{chapter.milestoneLabel ?? "Chapter keepsake"}</strong>
-              <span>
-                {milestoneComplete
-                  ? "Unit complete!"
-                  : checkpointComplete
-                    ? "Ready to open"
-                    : "Pass the exam to unlock"}
+              {/* Filip, 19 Sep: this "needs a text box around Next Discoveries".
+                  The two lines were set straight onto the painted map, so their
+                  legibility depended on whatever happened to be behind them. */}
+              <span className={styles.milestoneLabel}>
+                <strong>{chapter.milestoneLabel ?? "Chapter keepsake"}</strong>
+                <span>
+                  {milestoneComplete
+                    ? "Unit complete!"
+                    : checkpointComplete
+                      ? "Ready to open"
+                      : "Pass the exam to unlock"}
+                </span>
               </span>
             </button>
           </motion.div>
