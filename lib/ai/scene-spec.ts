@@ -182,8 +182,68 @@ const PERSON_WORDS =
  * nouns, so the vowel-letter test is right far more often than it is wrong, and
  * the failure mode is a slightly odd article rather than a wrong picture.
  */
+/**
+ * Pluralise the last word of a roster entry, so a count reads as English.
+ * "2 child" and "2 boy with brown skin" were both shipping; the model is being
+ * asked to draw two of something, and the sentence should say so.
+ */
+export function pluralize(phrase: string): string {
+  const parts = phrase.split(" ");
+  // The head noun is the last word before any "with ..." clause.
+  const withAt = parts.indexOf("with");
+  const headIndex = (withAt > 0 ? withAt : parts.length) - 1;
+  const head = parts[headIndex];
+  if (!head) return phrase;
+  const irregular: Record<string, string> = {
+    child: "children",
+    man: "men",
+    woman: "women",
+    person: "people",
+    foot: "feet",
+    goose: "geese",
+    mouse: "mice",
+    tooth: "teeth",
+  };
+  const lower = head.toLowerCase();
+  let plural: string;
+  if (irregular[lower]) plural = irregular[lower];
+  // Already plural: "glasses" must not become "glasseses". Checked before the
+  // sibilant rule below, which would otherwise claim it. "dress" ends in ss,
+  // not es, so it still becomes "dresses".
+  else if (/es$/i.test(head)) plural = head;
+  else if (/(s|x|z|ch|sh)$/i.test(head)) plural = `${head}es`;
+  else if (/[^aeiou]y$/i.test(head)) plural = `${head.slice(0, -1)}ies`;
+  else plural = `${head}s`;
+  parts[headIndex] = plural;
+  return parts.join(" ");
+}
+
 export function indefiniteArticle(phrase: string): string {
   return /^[aeiou]/i.test(phrase.trim()) ? "an" : "a";
+}
+
+/**
+ * An attribute is a short visual cue, so keep it one.
+ *
+ * ‼️ 2026-09-19: the Hispanic Heritage daily extracted a character as
+ * species "child", attribute "dancing, in brightly colored clothes", and the
+ * roster line came out as "2 dancing, in brightly colored clothes child". Three
+ * image candidates in a row came back with "The model didn't return an image.
+ * Try rephrasing", which is what the model says when it cannot make sense of a
+ * prompt. The brief was asking it to draw a sentence fragment.
+ *
+ * A comma means the extractor wrote a clause rather than a cue, so take the
+ * first one and cap the length. The drawing loses nothing: "in brightly
+ * colored clothes" is not what makes a picture right, and the parts that are
+ * (species, count, appearance) all survive.
+ */
+export function cleanAttribute(raw: string | null | undefined): string | null {
+  const first = String(raw ?? "").split(",")[0].trim();
+  if (!first) return null;
+  const words = first.split(/\s+/);
+  // Four, because the extractor's own instructions offer "in a red coat" as the
+  // model attribute and a tighter cap clipped it to "in a red".
+  return words.length > 4 ? words.slice(0, 4).join(" ") : first;
 }
 
 /** Vague person nouns the roster must never ship — "a astronaut human". */
@@ -201,9 +261,9 @@ const VAGUE_SPECIES = /^(human|humans|person|people|figure|character|individual|
  */
 export function normalizeCharacter(c: SceneCharacter): SceneCharacter {
   let species = (c.species ?? "").trim();
-  let attribute = c.attribute ?? null;
-  if (VAGUE_SPECIES.test(species) && attribute && attribute.trim()) {
-    species = attribute.trim();
+  let attribute = cleanAttribute(c.attribute);
+  if (VAGUE_SPECIES.test(species) && attribute) {
+    species = attribute;
     attribute = null;
   }
   const is_person =
@@ -313,7 +373,7 @@ export async function extractSceneSpec(input: {
  * asks for, but built mechanically from structured data so it can't
  * drift back into "cute woodland critters."
  */
-export function renderSpecAsBrief(spec: SceneSpec): string {
+export function renderSpecAsBrief(spec: SceneSpec, opts: { plain?: boolean } = {}): string {
   const sceneParts: string[] = [];
   if (spec.key_action) sceneParts.push(spec.key_action);
   if (spec.setting) sceneParts.push(`at ${spec.setting}`);
@@ -362,9 +422,10 @@ export function renderSpecAsBrief(spec: SceneSpec): string {
       // "a engineer woman" — the meta.adversarial judge caught this on the
       // 2026-09-16 regen and warned on the brief itself. A brief with a
       // grammatical error in it is a brief the illustrator reads less well.
-      const lead = c.count && c.count > 1 ? `${c.count}` : indefiniteArticle(tail);
-      const base = `${lead} ${tail}`.trim();
-      const look = c.appearance?.trim();
+      const many = !!c.count && c.count > 1;
+      const lead = many ? `${c.count}` : indefiniteArticle(tail);
+      const base = `${lead} ${many ? pluralize(tail) : tail}`.trim();
+      const look = opts.plain ? null : c.appearance?.trim();
       return look ? `${base} with ${look}` : base;
     })
     .join("; ");
@@ -376,9 +437,10 @@ export function renderSpecAsBrief(spec: SceneSpec): string {
   // One sentence, not three. The first version of this said the same thing
   // three ways and meta.adversarial warned that the brief carried "redundant,
   // confusing instructions for the types of humans to be shown".
-  const peopleRule = spec.characters.some(isPersonCharacter)
-    ? " Draw the people exactly as listed: the same number, the same gender, and the same skin tone and hair for each one."
-    : "";
+  const peopleRule =
+    !opts.plain && spec.characters.some(isPersonCharacter)
+      ? " Draw the people exactly as listed: the same number, the same gender, and the same skin tone and hair for each one."
+      : "";
 
   return `${sceneSentence}\n\nShow exactly: ${roster}. Each item must be drawn as a clearly recognizable real-world species/object — no chimeras, no invented hybrids.${peopleRule}${rules}`;
 }

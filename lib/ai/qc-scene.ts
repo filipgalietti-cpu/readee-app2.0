@@ -36,6 +36,7 @@ import { getClient, MODEL_ID, logUsage, generateImage } from "@/lib/ai/readee-ai
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError, trackSignal } from "@/lib/observability/track";
 import type { QcCheck, QcSeverity } from "@/lib/ai/qc";
+import { renderSpecAsBrief } from "@/lib/ai/scene-spec";
 import type { SceneSpec, SceneCharacter } from "@/lib/ai/scene-spec";
 
 /**
@@ -579,8 +580,47 @@ export async function generateBestImage(input: {
   }
 
   if (candidates.length === 0) {
-    // Every candidate failed. The daily builder's response to this is to ship
-    // the day with no picture at all, silently — so this one IS worth paging.
+    /*
+     * ‼️ ONE MORE TRY, WITHOUT THE ADJECTIVES, BEFORE GIVING UP.
+     *
+     * 2026-09-19: three candidates in a row came back "The model didn't return
+     * an image. Try rephrasing." That is not an outage or a quota, it is the
+     * model declining to draw a prompt it could not parse, and the brief that
+     * day asked for "2 dancing, in brightly colored clothes child" because the
+     * extractor had written a clause into an attribute field.
+     *
+     * The clause is fixed at the source (cleanAttribute), but a brief is
+     * generated text and the next confusing one is only a passage away. A
+     * refusal should cost a plainer picture, never no picture: the day ships
+     * either way and an imageless daily is the worse outcome. The plain
+     * rendering keeps the scene, the cast and the counts, and drops the
+     * appearance clauses and the people rule, which is the wordiest part.
+     */
+    const plain = renderSpecAsBrief(input.spec, { plain: true });
+    if (plain && plain !== input.prompt) {
+      const retry = await generateImage({
+        teacherId: input.teacherId,
+        prompt: plain,
+        stylePrefix: input.stylePrefix,
+      });
+      if (retry.ok) {
+        trackSignal("best-of-N recovered on a plain brief", {
+          route: "qc-scene.generateBestImage",
+          level: "warning",
+          userId: input.teacherId,
+        });
+        return {
+          ok: true,
+          imageUrl: retry.imageUrl,
+          storagePath: retry.storagePath,
+          candidateCount: 1,
+          winnerIndex: 0,
+          reason: "recovered on a plain brief after every candidate was refused",
+          runnerUpScores: [],
+        };
+      }
+    }
+    // Now it is worth paging: the day ships with no picture at all.
     trackError(new Error(`best-of-${n}: all candidate generations failed`), {
       route: "qc-scene.generateBestImage",
       userId: input.teacherId,
